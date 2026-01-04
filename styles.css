@@ -1,13 +1,23 @@
 :root{
-  --bg:#0b1220;
-  --text:#111827;
-  --muted:#4b5563;
-  --card:#ffffff;
-  --alt:#f3f4f6;
-  --accent:#0ea5e9;
-  --border:#e5e7eb;
+  /* Brand */
+  --navy:#13344C;       /* Elephant */
+  --blue:#005792;       /* Bahama Blue */
+  --offwhite:#F6F6E9;   /* Ecru White */
+  --orange:#FD5F00;     /* Blaze Orange */
+  --grey:#7F7F7F;       /* Medium Grey */
+  --yellow:#FFCC00;     /* Yellow */
+
+  /* Site tokens */
+  --bg: var(--navy);            /* hero background */
+  --text:#13344C;               /* default text */
+  --muted: var(--grey);         /* muted text */
+  --card:#ffffff;               /* card background */
+  --alt: var(--offwhite);       /* alternate section background */
+  --accent: var(--orange);      /* primary buttons/links */
+  --border: rgba(19,52,76,0.18);/* subtle navy border */
   --max: 1000px;
 }
+
 
 *{box-sizing:border-box}
 body{
@@ -27,11 +37,12 @@ body{
 .nav{
   position: sticky;
   top: 0;
-  background: rgba(255,255,255,0.9);
+  background: rgba(246,246,233,0.92); /* offwhite */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   z-index: 10;
 }
+
 
 .nav .container{
   display:flex;
@@ -48,19 +59,19 @@ body{
   color: var(--text);
 }
 
-.links a:hover{ text-decoration: underline; }
-
-.btn{
-  display:inline-block;
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: var(--accent);
-  color: #fff !important;
-  text-decoration:none;
-  border: none;
-  cursor:pointer;
-  font-weight:600;
+.links a:hover{
+  color: var(--blue);
+  text-decoration: underline;
 }
+
+.btn:hover{
+  filter: brightness(0.95);
+}
+
+.btn:active{
+  transform: translateY(1px);
+}
+
 
 .hero{
   background: var(--bg);
