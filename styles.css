@@ -152,3 +152,29 @@ input, textarea{
   .grid{grid-template-columns: 1fr;}
   .links{display:none;}
 }
+
+.logo{
+  display:flex;
+  align-items:center;
+}
+
+/* Crop window */
+.logo-crop{
+  height: 34px;          /* visible height of logo in nav */
+  width: 180px;          /* visible width of logo in nav */
+  overflow: hidden;      /* actually crops */
+  background: var(--alt);/* cream/off-white background */
+  border-radius: 6px;    /* optional, looks clean */
+}
+
+/* Image fills crop window */
+.logo-crop img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* crops top/bottom/left/right */
+  object-position: center;    /* start centered */
+  display:block;
+}
+
+
+
