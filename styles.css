@@ -153,17 +153,18 @@ input, textarea{
   .links{display:none;}
 }
 
-/* TEMP: force logo visibility */
-.logo-crop{
-  background: #ffcc00; /* bright yellow so we see the box */
-  padding: 6px;
+/* Logo */
+.logo{
+  display: flex;
+  align-items: center;
 }
 
 .logo img{
-  height: 48px;
+  height: 56px;   /* THIS is the main control */
   width: auto;
   display: block;
 }
+
 
 
 
