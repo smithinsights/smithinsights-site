@@ -147,7 +147,7 @@ body{
 }
 
 /* SECTIONS */
-.section{padding: 56px 0;}
+.section{padding: 48px 0;}
 .section.alt{background: var(--alt);}
 
 h2{margin: 0 0 16px 0; font-size: 28px;}
