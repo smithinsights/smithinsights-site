@@ -58,8 +58,9 @@ body{
 }
 
 .logo-frame{
-  height: 56px;        /* visible height in nav */
+  height: 52px;        /* visible height in nav */
   width: 220px;        /* forces horizontal crop */
+  margin-top: 2px;
   overflow: hidden;
 }
 
