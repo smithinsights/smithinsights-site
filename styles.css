@@ -153,28 +153,18 @@ input, textarea{
   .links{display:none;}
 }
 
-.logo{
-  display:flex;
-  align-items:center;
-}
-
-/* Crop window */
+/* TEMP: force logo visibility */
 .logo-crop{
-  height: 34px;          /* visible height of logo in nav */
-  width: 180px;          /* visible width of logo in nav */
-  overflow: hidden;      /* actually crops */
-  background: var(--alt);/* cream/off-white background */
-  border-radius: 6px;    /* optional, looks clean */
+  background: #ffcc00; /* bright yellow so we see the box */
+  padding: 6px;
 }
 
-/* Image fills crop window */
-.logo-crop img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* crops top/bottom/left/right */
-  object-position: center;    /* start centered */
-  display:block;
+.logo img{
+  height: 48px;
+  width: auto;
+  display: block;
 }
+
 
 
 
