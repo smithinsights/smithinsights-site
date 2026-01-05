@@ -53,15 +53,18 @@ body{
 
 /* LOGO */
 .logo{
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 }
 
 .logo img{
-  height: 56px;   /* main control */
+  height: 72px;          /* nav alignment height */
   width: auto;
-  display:block;
+  display: block;
+  transform: scale(1.6); /* THIS is the key */
+  transform-origin: left center;
 }
+
 
 /* LINKS */
 .links a{
