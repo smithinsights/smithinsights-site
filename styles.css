@@ -57,13 +57,20 @@ body{
   align-items: center;
 }
 
-.logo img{
-  height: 72px;          /* nav alignment height */
-  width: auto;
-  display: block;
-  transform: scale(1.6); /* THIS is the key */
-  transform-origin: left center;
+.logo-frame{
+  height: 56px;        /* visible height in nav */
+  width: 220px;        /* forces horizontal crop */
+  overflow: hidden;
 }
+
+.logo-frame img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* crops square into wide */
+  object-position: center; /* center the real logo */
+  display: block;
+}
+
 
 
 /* LINKS */
