@@ -57,14 +57,23 @@ h1, h2, h3{
 }
 
 .logo{
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 }
 
-.logo img{
-  height: 64px;
-  width: auto;
-  display:block;
+.logo-frame{
+  height: 52px;        /* visible height in nav */
+  width: 220px;        /* forces horizontal crop */
+  margin-top: 2px;
+  overflow: hidden;
+}
+
+.logo-frame img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* crops square into wide */
+  object-position: center; /* center the real logo */
+  display: block;
 }
 
 .links a{
