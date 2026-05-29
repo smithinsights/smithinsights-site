@@ -10,7 +10,6 @@
       content="Smith Insights increases accuracy in the world by helping organizations navigate complex data landscapes and make informed decisions."
     />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
@@ -23,14 +22,25 @@
       <div class="container">
         <div class="logo">
           <div class="logo-frame">
-        <img src="/assets/logo.png" alt="Smith Insights logo" />
-      </div>
-    </div>
+            <img src="logo-white.png" alt="Smith Insights logo" />
+          </div>
+        </div>
 
         <nav class="links">
           <a href="#services">Services</a>
-          <a class="btn" href="#contact">Contact</a>
+          <a href="#about">About</a>
+          <a class="btn btn-ghost" href="#contact">Contact</a>
         </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobile-menu">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a class="btn btn-ghost" href="#contact">Contact</a>
       </div>
     </header>
 
@@ -58,64 +68,96 @@
           <div class="grid">
             <article class="card">
               <h3>Data Strategy</h3>
-              <p>Establishing how data supports organizational goals.</p>
+              <p>Establishing how data supports organizational goals. Understanding what data exists, what does not, and what you actually need to make better decisions.</p>
             </article>
 
             <article class="card">
               <h3>Data Warehousing</h3>
-              <p>Centralizing and maintaining data for analysis and reporting.</p>
+              <p>Centralizing and maintaining data for analysis and reporting. Evaluating how your data is structured and integrated so analysis is reliable and repeatable.</p>
             </article>
 
             <article class="card">
               <h3>Data Analysis</h3>
-              <p>Using data to inform decisions.</p>
+              <p>Using data to inform decisions. Identifying target predictors, clustering populations, and building models that turn data into direction.</p>
             </article>
 
             <article class="card">
               <h3>Data Visualization</h3>
-              <p>Making data easier to interpret and share.</p>
+              <p>Making data easier to interpret and share. Turning analysis into easily understood visuals that stakeholders can read, comprehend, and act on.</p>
             </article>
           </div>
         </div>
       </section>
 
+      <!-- WHO I WORK WITH -->
+      <section id="who" class="section alt">
+        <div class="container">
+          <h2>Who I Work With</h2>
+          <p class="section-intro">My clients are membership-driven organizations navigating data complexity: national associations, Greek-letter organizations, foundations, and higher education institutions.</p>
+
+          <div class="grid grid-4">
+            <article class="card">
+              <div class="card-icon">⬡</div>
+              <h3>Fraternities &amp; Sororities</h3>
+              <p>Recruitment analysis, membership trends, and data infrastructure for national organizations and their foundations.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">⬡</div>
+              <h3>Associations</h3>
+              <p>Reporting, trend analysis, and survey insights across member organizations at the national level.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">⬡</div>
+              <h3>Foundations</h3>
+              <p>Donor propensity modeling, portfolio development, and donation forecasting to support development officers.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">⬡</div>
+              <h3>Higher Education</h3>
+              <p>Data strategy and analysis for institutions looking to make better decisions around student success and engagement.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <div class="container about-layout">
+          <div class="about-text">
+            <h2>About</h2>
+            <p>Chris Smith is the founder of Smith Insights, a data consulting practice built on a single mission: increase accuracy in the world. Since 2008, he has connected membership data and behavioral metrics to drive successful initiatives for fraternities, foundations, and the associations that serve them. His clients include the North American Interfraternity Conference (NIC) and the National Panhellenic Conference (NPC).</p>
+            <p>In addition to his consulting work, Chris serves as Director of Systems at Alpha Tau Omega National Fraternity and Director of Research for the Alpha Tau Omega Foundation, where he oversees membership data, predictive modeling, and donor research. He is also a certified Birkman Method consultant with over a decade of practice.</p>
+            <p>Chris holds a B.S. in Mathematics with a Professional Mathematics concentration from Middle Tennessee State University (MTSU) and is a member of Alpha Tau Omega Fraternity. Based in Atlanta, he works with clients nationwide.</p>
+            <a class="btn btn-schedule" href="https://smithinsightsllc.hbportal.co/schedule/626207fc751b0b23f508ec3c" target="_blank" rel="noopener">Schedule a Discovery Call</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIAL placeholder -->
+//      <section class="section testimonial-section">
+//        <div class="container">
+//          <blockquote class="testimonial">
+//           <p>"Testimonial coming soon."</p>
+//            <cite>Client Name, Organization</cite>
+//          </blockquote>
+//        </div>
+//      </section>
+
       <!-- CONTACT -->
       <section id="contact" class="section alt">
         <div class="container">
           <h2>Contact</h2>
-          <p>Get in touch.</p>
-
-          <form
-            class="form"
-            action="mailto:chris@smithinsights.co?subject=Smith%20Insights%20Webpage%20Contact"
-            method="post"
-            enctype="text/plain"
-          >
-            <label>
-              Name
-              <input name="name" type="text" required />
-            </label>
-
-            <label>
-              Email
-              <input name="email" type="email" required />
-            </label>
-
-            <label>
-              Message
-              <textarea name="message" rows="5" required></textarea>
-            </label>
-
-            <button class="btn" type="submit">Submit</button>
-            <p class="small">This form opens your email client to send the message.</p>
-          </form>
+          <p>You can reach me at <a href="mailto:chris@smithinsights.co">chris@smithinsights.co</a>.</p>
         </div>
       </section>
     </main>
 
     <footer class="footer">
       <div class="container">
-        <span>© <span id="year"></span> Smith Insights, LLC · Atlanta, GA</span>
+        <span>Copyright <span id="year"></span> Smith Insights, LLC · Atlanta, GA</span>
       </div>
     </footer>
 
