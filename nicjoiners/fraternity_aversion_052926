@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fraternity Aversion Analysis | NIC Joiners Survey</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ed;
+    --surface: #faf8f5;
+    --surface2: #edeae4;
+    --ink: #1a1714;
+    --ink2: #5a554e;
+    --ink3: #9a9288;
+    --accent: #2b4a8c;
+    --accent2: #b03a2e;
+    --accent3: #1e6b4a;
+    --border: rgba(26,23,20,0.1);
+    --border2: rgba(26,23,20,0.06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: #f5f2ed;
+    padding: 4rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 60px,
+      rgba(255,255,255,0.015) 60px,
+      rgba(255,255,255,0.015) 61px
+    );
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.5);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: #f5f2ed;
+    margin-bottom: 1.25rem;
+    max-width: 700px;
+  }
+  h1 em {
+    font-style: italic;
+    color: rgba(245,242,237,0.7);
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .header-stat { }
+  .header-stat-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: #f5f2ed;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .header-stat-label {
+    font-size: 12px;
+    color: rgba(245,242,237,0.5);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  section { margin-bottom: 4rem; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink3);
+    letter-spacing: 0.1em;
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  /* ── STAT CARDS ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem;
+  }
+  .stat-card-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.25rem;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .stat-card-label {
+    font-size: 12px;
+    color: var(--ink3);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+  .stat-card-sub {
+    font-size: 12px;
+    color: var(--ink2);
+    margin-top: 6px;
+  }
+
+  /* ── GRID LAYOUTS ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  @media (max-width: 700px) {
+    .two-col, .three-col { grid-template-columns: 1fr; }
+  }
+
+  /* ── CHART CARDS ── */
+  .chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem;
+  }
+  .chart-card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 12px;
+  }
+  .chart-wrap { position: relative; width: 100%; }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: var(--ink2);
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .ld { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .chart-note {
+    font-size: 12px;
+    color: var(--ink3);
+    margin-top: 10px;
+    line-height: 1.5;
+    padding-top: 8px;
+    border-top: 1px solid var(--border2);
+  }
+
+  /* ── INSIGHT BLOCKS ── */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+  .insight {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem;
+    border-left: 3px solid var(--accent);
+  }
+  .insight.red { border-left-color: var(--accent2); }
+  .insight.green { border-left-color: var(--accent3); }
+  .insight-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 6px;
+  }
+  .insight-text {
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  /* ── TABS ── */
+  .tab-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .tab {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--ink3);
+    transition: all 0.15s;
+  }
+  .tab:hover { background: var(--surface2); color: var(--ink); }
+  .tab.active {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  /* ── CONCERN ITEM TABLE ── */
+  .concern-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .concern-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 400;
+  }
+  .concern-table th:not(:first-child) { text-align: right; }
+  .concern-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border2);
+    color: var(--ink);
+    vertical-align: middle;
+  }
+  .concern-table td:not(:first-child) { text-align: right; font-family: 'DM Mono', monospace; font-size: 12px; }
+  .concern-table tr:last-child td { border-bottom: none; }
+  .concern-table tr:hover td { background: var(--surface2); }
+  .diff-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .diff-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--accent2);
+    display: inline-block;
+  }
+  .diff-val { min-width: 36px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent2); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(245,242,237,0.4);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div style="background:#8b1a0e; color:#fdf0ee; text-align:center; padding:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em;">
+    INTERNAL USE ONLY &middot; NIC / Smith Insights &middot; May 2026
+  </div>
+  <div class="header-inner">
+    <div class="eyebrow">NIC Joiners Survey · PCA Deep Dive</div>
+    <h1>Fraternity <em>Aversion</em></h1>
+    <div class="header-meta">
+      <div class="header-stat">
+        <div class="header-stat-value">32,171</div>
+        <div class="header-stat-label">Total respondents</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">d = 0.96</div>
+        <div class="header-stat-label">Effect size (Cohen's d)</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">42.6%</div>
+        <div class="header-stat-label">Variance captured by PC1</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">11 → 1</div>
+        <div class="header-stat-label">Concern items → composite</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- SECTION 1: COMPOSITE -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>The Composite Score</h2>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-card-value">+2.57</div>
+        <div class="stat-card-label">Non-joiner mean score</div>
+        <div class="stat-card-sub">vs −0.01 for joiners</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-value">60%</div>
+        <div class="stat-card-label">Non-joiners above 75th percentile</div>
+        <div class="stat-card-sub">vs 25% of joiners by definition</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-value">81%</div>
+        <div class="stat-card-label">Non-joiners above median</div>
+        <div class="stat-card-sub">vs 50% of joiners</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-value">PCA</div>
+        <div class="stat-card-label">Method</div>
+        <div class="stat-card-sub">Principal component 1 of 11 concern items</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="chart-card">
+        <div class="chart-card-title">Score distribution</div>
+        <div class="legend">
+          <span><span class="ld" style="background:#2b4a8c;"></span>Joiners</span>
+          <span><span class="ld" style="background:#b03a2e;"></span>Non-joiners</span>
+        </div>
+        <div class="chart-wrap" style="height:220px;">
+          <canvas id="distChart" role="img" aria-label="Density chart. Joiners peak at negative aversion scores. Non-joiners spread across positive values."></canvas>
+        </div>
+        <p class="chart-note">Non-joiner scores are strongly right-skewed. Joiner scores cluster near zero and below. The distributions overlap in the mid-range.</p>
+          <p class="tab-finding">Non-joiners average a composite score of +2.57. Joiners average −0.01. Eighty-one percent of non-joiners score above the joiner median. The effect size is Cohen's d = 0.96, which is large by conventional standards. Despite the separation, the overlap is substantial enough that aversion score alone cannot reliably classify individuals.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-title">Concern items: mean score (1 to 4)</div>
+        <div class="legend">
+          <span><span class="ld" style="background:#2b4a8c;"></span>Joiners</span>
+          <span><span class="ld" style="background:#b03a2e;"></span>Non-joiners</span>
+        </div>
+        <div class="chart-wrap" style="height:220px;">
+          <canvas id="itemBarChart" role="img" aria-label="Mean concern scores by item. Drug use and hazing show the largest gaps."></canvas>
+        </div>
+        <p class="chart-note">Drug use (+1.10 gap) and hazing (+0.94) are the sharpest dividers. Cost of joining has the smallest gap (+0.34).</p>
+          <p class="tab-finding">Non-joiners score higher than joiners on every concern item. Drug and alcohol use shows the largest mean difference (joiners 1.39, non-joiners 2.49). Hazing is second (joiners 1.60, non-joiners 2.54). Cost of joining shows the smallest difference (joiners 2.13, non-joiners 2.47), meaning cost concern is relatively similar across both groups.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: ITEM TABLE -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Concern Item Breakdown</h2>
+    </div>
+    <div class="chart-card">
+      <table class="concern-table">
+        <thead>
+          <tr>
+            <th>Concern</th>
+            <th>Joiners</th>
+            <th>Non-joiners</th>
+            <th>Gap</th>
+            <th style="text-align:right; min-width:120px;">Magnitude</th>
+          </tr>
+        </thead>
+        <tbody id="concernTableBody"></tbody>
+      </table>
+      <p class="chart-note" style="margin-top:12px;">All items scored 1 (not at all concerned) to 4 (very concerned). Sorted by gap size descending.</p>
+      <p class="tab-finding" style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(26,23,20,0.08); font-size:14px; color:#1a1714; line-height:1.7; font-style:italic;">The top four concern items by gap size are drug/alcohol use, hazing, living in a fraternity house, and not fitting the stereotype. These four items all have larger gaps than any of the cost or time-commitment items, which are elevated for both groups. All 11 items load onto a single principal component in the PCA, confirming they measure one underlying attitude rather than distinct concerns.</p>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight red">
+        <div class="insight-label">Key finding</div>
+        <div class="insight-text">Drug use and hazing are the primary behavioral barriers. These concern levels are more than double for non-joiners compared to joiners.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-label">Cost gap</div>
+        <div class="insight-text">Cost of joining shows the smallest mean difference between joiners and non-joiners (+0.34). All behavioral concerns (drug use, hazing, stigma, stereotype) show larger gaps than any cost item.</div>
+      </div>
+      <div class="insight green">
+        <div class="insight-label">Time and academic concerns</div>
+        <div class="insight-text">Time commitment and academic impact show moderate gaps (+0.41 and +0.52). Both are elevated among non-joiners but score below the midpoint of the 1-to-4 scale for that group.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: WHO SCORES HIGH -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Who Scores High on Aversion?</h2>
+    </div>
+
+    <p style="font-size:14px; color:#5a554e; line-height:1.7; margin-bottom:1.25rem;">Each tab below shows a different demographic or background variable and its relationship to the aversion composite score. Click through all seven tabs. The pattern shifts meaningfully across each one, and no single variable tells the whole story.</p>
+    <div class="tab-row" id="profileTabs">
+      <button class="tab active" data-tab="politics">Politics</button>
+      <button class="tab" data-tab="race">Race</button>
+      <button class="tab" data-tab="religion">Religion</button>
+      <button class="tab" data-tab="hsinterest">HS Interest</button>
+      <button class="tab" data-tab="sports">HS Activities</button>
+      <button class="tab" data-tab="schoolchoice">School Choice</button>
+      <button class="tab" data-tab="finance">Finances</button>
+    </div>
+
+    <div class="chart-card">
+      <div id="tab-politics">
+        <div class="chart-card-title">Mean aversion score by political views</div>
+        <div class="chart-wrap" style="height:200px;"><canvas id="polChart" role="img" aria-label="Mean aversion by politics. Very liberal +1.29 to very conservative -0.45, monotonic."></canvas></div>
+        <p class="chart-note">Monotonic relationship across the full spectrum. The 1.74-unit spread from very conservative (−0.45) to very liberal (+1.29) is the single strongest demographic predictor of aversion.</p>
+        <p class="tab-finding">Political orientation is the strongest demographic predictor of aversion in this dataset. The relationship is monotonic across all five categories: conservative respondents score below the mean, moderate respondents cluster near zero, and liberal respondents score above. The 1.74-unit spread between the two endpoints is larger than any other single variable in the analysis.</p>
+      </div>
+      <div id="tab-race" style="display:none;">
+        <div class="chart-card-title">Mean aversion score by race/ethnicity</div>
+        <div class="chart-wrap" style="height:220px;"><canvas id="raceChart" role="img" aria-label="Asian/Asian American highest at 0.74. Non-Hispanic White lowest at -0.12."></canvas></div>
+        <p class="chart-note">All non-White groups score above the overall mean. Asian and Asian American respondents show the highest aversion (+0.74). Non-Hispanic White respondents are the only group below zero.</p>
+        <p class="tab-finding">Aversion is higher among all non-White racial groups relative to Non-Hispanic White respondents. Asian and Asian American students show the highest mean score (+0.74). Non-Hispanic White respondents are the only group below zero. The survey does not capture why these differences exist; further qualitative research would be needed to interpret the drivers.</p>
+      </div>
+      <div id="tab-religion" style="display:none;">
+        <div class="chart-card-title">Mean aversion score by religious identity</div>
+        <div class="chart-wrap" style="height:160px;"><canvas id="religChart" role="img" aria-label="Spiritual not religious +0.40, neither +0.22, religious -0.05."></canvas></div>
+        <p class="chart-note">Self-identified religious respondents average near zero (−0.05). Secular and spiritual-but-not-religious respondents are substantially higher. Consistent with the conservative/religious cluster being more fraternity-oriented.</p>
+        <p class="tab-finding">Students who identify as religious score substantially lower on aversion than those who identify as secular or spiritual-but-not-religious. This is consistent with the PCA finding that conservative political identity and formal religious affiliation load together on the same component.</p>
+      </div>
+      <div id="tab-hsinterest" style="display:none;">
+        <div class="chart-card-title">Mean aversion score by HS fraternity interest</div>
+        <div class="chart-wrap" style="height:180px;"><canvas id="interestChart" role="img" aria-label="Not interested +1.05 down to very interested -0.85."></canvas></div>
+        <p class="chart-note">Strong gradient. Those "not interested" in HS average +1.05; they arrived with both low intent and high concern. "Very interested" averages −0.85. Pre-college interest and concern level co-travel as a single orientation, not independent inputs.</p>
+        <p class="tab-finding">Pre-college interest in fraternities and aversion co-move across the full range of the scale. Students who were actively disinterested in high school arrived on campus with both lower intent and higher concern scores. Students who were very interested arrived with both high motivation and low concern scores. The PCA confirmed these two variables load on the same component rather than operating independently.</p>
+      </div>
+      <div id="tab-sports" style="display:none;">
+        <div class="chart-card-title">Mean aversion score: HS sports vs. music participation</div>
+        <div class="legend">
+          <span><span class="ld" style="background:#2b4a8c;"></span>HS Sports (never → all 4 years)</span>
+          <span><span class="ld" style="background:#e67e22;"></span>HS Music (never → all 4 years)</span>
+        </div>
+        <div class="chart-wrap" style="height:180px;"><canvas id="sportsChart" role="img" aria-label="Sports: never +0.46 to all 4 years -0.11. Music: never -0.08 to all 4 years +0.61."></canvas></div>
+        <p class="chart-note">These two activities define contrasting cultural tracks. Four-year athletes average −0.11; four-year music participants average +0.61. Not just different hobbies, but different social orientations toward Greek life.</p>
+        <p class="tab-finding">Aversion scores move in opposite directions across years of athletic versus music participation. Four-year athletes average the lowest aversion scores in the dataset (−0.11). Four-year music participants average among the highest (+0.61). The gradient is consistent across participation levels for both activities.</p>
+      </div>
+      <div id="tab-schoolchoice" style="display:none;">
+        <div class="chart-card-title">Mean aversion score by school choice motivation</div>
+        <div class="chart-wrap" style="height:220px;"><canvas id="schoolChart" role="img" aria-label="Greek life very important: -0.59. Academic rep very important: +0.25."></canvas></div>
+        <p class="chart-note">Choosing school for Greek life strongly predicts low aversion (−0.59 for "very important"). Academic reputation as the primary driver predicts higher aversion (+0.25); these students chose schools where fraternity culture is secondary.</p>
+        <p class="tab-finding">School selection motivation is strongly associated with aversion scores. Students who rated Greek life as very important when choosing their school average −0.59. Students who rated academic reputation as very important average +0.25. Students who rated Greek life as not at all important average +0.26. The school choice decision and the aversion score move together consistently across all response categories.</p>
+      </div>
+      <div id="tab-finance" style="display:none;">
+        <div class="chart-card-title">Mean aversion score: financial indicators</div>
+        <div class="chart-wrap" style="height:160px;"><canvas id="finChart" role="img" aria-label="Pell Grant users +0.38, non-users -0.01. First-gen +0.17, not first-gen +0.02."></canvas></div>
+        <p class="chart-note">Pell Grant recipients score +0.38 vs −0.01 for non-recipients. Financial constraint and aversion are linked, but this is a secondary driver compared to politics, race, and HS interest.</p>
+        <p class="tab-finding">Pell Grant recipients average an aversion score of +0.38, compared to −0.01 for non-recipients. First-generation students average +0.17, compared to +0.02 for non-first-generation students. Both gaps are statistically significant but smaller in magnitude than the gaps observed for political orientation, race, and HS interest.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: FACTOR STRUCTURE -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>What the PCA Revealed</h2>
+    </div>
+    <div class="insight-grid">
+      <div class="insight">
+        <div class="insight-label">PC2: General Fraternity Aversion</div>
+        <div class="insight-text">All 11 concern variables collapse onto one principal component (PC2). In the predictive model they were counted as 11 separate predictors accounting for 33% of total importance. The PCA shows they share a single underlying dimension.</div>
+      </div>
+      <div class="insight red">
+        <div class="insight-label">PC2 loadings (all positive)</div>
+        <div class="insight-text">Time commitment (0.75), academic impact (0.73), too many commitments (0.73), stigma (0.68), hazing (0.66), drug use (0.63), not fitting stereotype (0.63), frat house (0.56), cost to participate (0.43), cost to join (0.42), not top choice (0.38).</div>
+      </div>
+      <div class="insight green">
+        <div class="insight-label">Recommendation</div>
+        <div class="insight-text">Replace all 11 concern variables with this single composite score in future models. Reduces feature set while retaining predictive power, and produces a more interpretable output for NIC stakeholders.</div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-top:16px;">
+      <div class="chart-card-title">PC2 loadings: contribution of each concern to the aversion composite</div>
+      <div class="chart-wrap" style="height:220px;">
+        <canvas id="loadingsChart" role="img" aria-label="Bar chart of PC2 loadings. Time commitment highest at 0.75. Not top choice lowest at 0.20."></canvas>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  NIC Joiners Survey · PCA · n = 32,171 · PC1 composite · Internal use only: NIC / Smith Insights · May 2026
+</footer>
+
+<script>
+const TC = '#9a9288';
+const JOINER_COLOR = '#2b4a8c';
+const NJ_COLOR = '#b03a2e';
+
+const baseOpts = (extra = {}) => ({
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + (typeof ctx.parsed.y !== 'undefined' ? ctx.parsed.y : ctx.parsed.x).toFixed(2) } }
+  },
+  scales: {
+    x: { ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { color: 'rgba(26,23,20,0.06)' } },
+    y: { ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { color: 'rgba(26,23,20,0.06)' } }
+  },
+  ...extra
+});
+
+// 1. Distribution
+const centers = [-2.25,-1.75,-1.25,-0.75,-0.25,0.25,0.75,1.25,1.75,2.25,2.75,3.25,3.75,4.25,4.75,5.25,5.75,6.25,6.75,7.25];
+const jDen =    [0.346,0.212,0.289,0.170,0.155,0.142,0.125,0.110,0.114,0.076,0.062,0.050,0.039,0.032,0.023,0.017,0.015,0.008,0.006,0.004];
+const njDen =   [0.133,0.050,0.150,0.050,0.067,0.117,0.133,0.150,0.117,0.083,0.133,0.083,0.100,0.100,0.067,0.117,0.133,0.017,0.033,0.083];
+new Chart(document.getElementById('distChart'), {
+  type: 'line',
+  data: { labels: centers, datasets: [
+    { label: 'Joiners', data: jDen, borderColor: JOINER_COLOR, backgroundColor: 'rgba(43,74,140,0.12)', fill: true, tension: 0.4, pointRadius: 0, borderWidth: 2 },
+    { label: 'Non-joiners', data: njDen, borderColor: NJ_COLOR, backgroundColor: 'rgba(176,58,46,0.12)', fill: true, tension: 0.4, pointRadius: 0, borderWidth: 2 }
+  ]},
+  options: { ...baseOpts(), plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC, maxTicksLimit: 8 }, grid: { color: 'rgba(26,23,20,0.06)' }, title: { display: true, text: 'Aversion score', font: { size: 10, family: "'DM Mono', monospace" }, color: TC } },
+      y: { ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { color: 'rgba(26,23,20,0.06)' }, title: { display: true, text: 'Density', font: { size: 10, family: "'DM Mono', monospace" }, color: TC } }
+    }
+  }
+});
+
+// 2. Item bar chart
+const concernItems = ['Drug use','Hazing','Frat house','Not stereotype','Stigma','Too many commit.','Cost participate','Impact academics','Time commit.','Cost join','Not top choice'];
+const jMeans = [1.39,1.60,1.34,1.54,1.56,1.54,1.67,1.84,2.06,2.13,1.35];
+const njMeans = [2.49,2.54,2.17,2.27,2.28,2.24,2.33,2.36,2.47,2.47,1.54];
+new Chart(document.getElementById('itemBarChart'), {
+  type: 'bar',
+  data: { labels: concernItems, datasets: [
+    { label: 'Joiners', data: jMeans, backgroundColor: JOINER_COLOR },
+    { label: 'Non-joiners', data: njMeans, backgroundColor: NJ_COLOR }
+  ]},
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) } } },
+    scales: {
+      x: { ticks: { font: { size: 9, family: "'DM Mono', monospace" }, color: TC, maxRotation: 35, autoSkip: false }, grid: { display: false } },
+      y: { min: 1, max: 3, ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { color: 'rgba(26,23,20,0.06)' } }
+    }
+  }
+});
+
+// 3. Concern table
+const concernData = [
+  { label: 'Drug use', j: 1.39, nj: 2.49 },
+  { label: 'Hazing', j: 1.60, nj: 2.54 },
+  { label: 'Frat house', j: 1.34, nj: 2.17 },
+  { label: 'Not stereotype', j: 1.54, nj: 2.27 },
+  { label: 'Stigma', j: 1.56, nj: 2.28 },
+  { label: 'Too many commitments', j: 1.54, nj: 2.24 },
+  { label: 'Cost to participate', j: 1.67, nj: 2.33 },
+  { label: 'Academic impact', j: 1.84, nj: 2.36 },
+  { label: 'Time commitment', j: 2.06, nj: 2.47 },
+  { label: 'Cost to join', j: 2.13, nj: 2.47 },
+  { label: 'Not top choice', j: 1.35, nj: 1.54 },
+].sort((a,b) => (b.nj - b.j) - (a.nj - a.j));
+
+const maxGap = Math.max(...concernData.map(d => d.nj - d.j));
+const tbody = document.getElementById('concernTableBody');
+concernData.forEach(d => {
+  const gap = d.nj - d.j;
+  const barW = Math.round((gap / maxGap) * 80);
+  tbody.innerHTML += `<tr>
+    <td>${d.label}</td>
+    <td>${d.j.toFixed(2)}</td>
+    <td>${d.nj.toFixed(2)}</td>
+    <td><span style="color:#b03a2e; font-family:'DM Mono',monospace; font-size:12px;">+${gap.toFixed(2)}</span></td>
+    <td><div class="diff-bar-wrap"><div class="diff-bar" style="width:${barW}px;"></div></div></td>
+  </tr>`;
+});
+
+// 4. Profile charts helper
+function hBar(id, labels, data) {
+  new Chart(document.getElementById(id), {
+    type: 'bar',
+    data: { labels, datasets: [{ label: 'Mean aversion score', data, backgroundColor: data.map(v => v > 0 ? '#b03a2e' : '#2b4a8c') }] },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' Score: ' + ctx.parsed.x.toFixed(2) } } },
+      scales: {
+        x: { ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { color: 'rgba(26,23,20,0.06)' } },
+        y: { ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { display: false } }
+      }
+    }
+  });
+}
+
+hBar('polChart', ['Very liberal','Liberal','Moderate','Conservative','Very conservative'], [1.291, 0.824, 0.157, -0.180, -0.448]);
+hBar('raceChart', ['Asian/Asian Am.','Non-Hisp. Black','Two+ races','Latino (Other)','Other','Latino (White)','Non-Hisp. White'], [0.738, 0.489, 0.431, 0.423, 0.332, 0.245, -0.120]);
+hBar('religChart', ['Spiritual not religious','Neither','Religious'], [0.403, 0.216, -0.050]);
+hBar('interestChart', ['Not interested (HS)','Not considered','Somewhat interested','Very interested (HS)'], [1.047, 0.233, 0.042, -0.846]);
+
+new Chart(document.getElementById('sportsChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Never','1 year','2–3 years','All 4 years'],
+    datasets: [
+      { label: 'HS Sports', data: [0.461, 0.218, 0.119, -0.111], backgroundColor: JOINER_COLOR },
+      { label: 'HS Music', data: [-0.075, 0.194, 0.443, 0.606], backgroundColor: '#e67e22' }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) } } },
+    scales: {
+      x: { ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { display: false } },
+      y: { ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { color: 'rgba(26,23,20,0.06)' } }
+    }
+  }
+});
+
+new Chart(document.getElementById('schoolChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Greek: Very imp.','Greek: Important','Greek: Slightly','Greek: Not at all','Acad: Not at all','Acad: Slightly','Acad: Important','Acad: Very imp.'],
+    datasets: [{ label: 'Mean aversion', data: [-0.592,-0.318,0.089,0.256,-0.439,0.055,0.058,0.250],
+      backgroundColor: [-0.592,-0.318,0.089,0.256,-0.439,0.055,0.058,0.250].map(v => v > 0 ? '#b03a2e' : '#2b4a8c') }]
+  },
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + ctx.parsed.y.toFixed(2) } } },
+    scales: {
+      x: { ticks: { font: { size: 9, family: "'DM Mono', monospace" }, color: TC, maxRotation: 35 }, grid: { display: false } },
+      y: { ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { color: 'rgba(26,23,20,0.06)' } }
+    }
+  }
+});
+
+hBar('finChart', ['Pell Grant user','Not Pell Grant','First-gen','Not first-gen'], [0.381, -0.006, 0.171, 0.019]);
+
+// Loadings chart
+new Chart(document.getElementById('loadingsChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Time commit.','Acad. impact','Too many commit.','Stigma','Hazing','Drug use','Not stereotype','Frat house','Cost participate','Cost join','Not top choice'],
+    datasets: [{ label: 'PC1 loading', data: [0.348,0.344,0.338,0.326,0.316,0.317,0.288,0.240,0.237,0.195], backgroundColor: '#2b4a8c' }]
+  },
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' Loading: ' + ctx.parsed.y.toFixed(3) } } },
+    scales: {
+      x: { ticks: { font: { size: 9, family: "'DM Mono', monospace" }, color: TC, maxRotation: 30, autoSkip: false }, grid: { display: false } },
+      y: { min: 0, max: 0.45, ticks: { font: { size: 10, family: "'DM Mono', monospace" }, color: TC }, grid: { color: 'rgba(26,23,20,0.06)' } }
+    }
+  }
+});
+
+// Tab switching
+document.getElementById('profileTabs').addEventListener('click', e => {
+  if (!e.target.matches('.tab')) return;
+  document.querySelectorAll('#profileTabs .tab').forEach(t => t.classList.remove('active'));
+  e.target.classList.add('active');
+  const tab = e.target.dataset.tab;
+  ['politics','race','religion','hsinterest','sports','schoolchoice','finance'].forEach(id => {
+    document.getElementById('tab-' + id).style.display = id === tab ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
