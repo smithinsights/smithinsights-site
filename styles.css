@@ -238,10 +238,21 @@ h3{ margin:0 0 8px 0; font-size:18px; }
   font-size:15px;
 }
 
+.card-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.card-header h3{
+  margin:0;
+}
+
 .card-icon{
   font-size:22px;
   color:var(--accent);
-  margin-bottom:10px;
+  flex-shrink:0;
 }
 
 /* ABOUT */
