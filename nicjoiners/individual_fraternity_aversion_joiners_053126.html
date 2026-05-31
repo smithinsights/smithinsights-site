@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aversion by Fraternity, Join Motivation & College Choice | NIC Joiners Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ed;
+    --surface: #faf8f5;
+    --surface2: #edeae4;
+    --ink: #1a1714;
+    --ink2: #5a554e;
+    --ink3: #9a9288;
+    --accent: #2b4a8c;
+    --accent2: #b03a2e;
+    --accent3: #1e6b4a;
+    --border: rgba(26,23,20,0.1);
+    --border2: rgba(26,23,20,0.06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ---- HEADER ---- */
+  .internal-banner {
+    background: #8b1a0e;
+    color: #fdf0ee;
+    text-align: center;
+    padding: 8px;
+    font-family: 'Merriweather', serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  header {
+    background: #13344C;
+    color: #ffffff;
+    padding: 4rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 60px,
+      rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px
+    );
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+
+  .eyebrow {
+    font-family: 'Merriweather', serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    max-width: 700px;
+  }
+  h1 em { font-style: italic; color: rgba(255,255,255,0.65); font-weight: 700; }
+
+  .header-sub {
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.625rem);
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.03em;
+    margin-top: 0.25rem;
+    margin-bottom: 0;
+  }
+
+  .header-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(255,255,255,0.3);
+  }
+  .header-stat {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+  .header-stat-value {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .header-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+
+  /* ---- LAYOUT ---- */
+  main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+  section { margin-bottom: 4rem; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-number {
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink2);
+    letter-spacing: 0.06em;
+  }
+  h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .section-sub {
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 720px;
+  }
+  .anova-note {
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink2);
+    letter-spacing: 0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ---- STAT ROW ---- */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem;
+  }
+  .stat-card-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.25rem;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .stat-card-label {
+    font-size: 12px;
+    color: var(--ink3);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+  .stat-card-sub { font-size: 12px; color: var(--ink2); margin-top: 6px; }
+
+  /* ---- CHART CARD ---- */
+  .chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem;
+  }
+  .chart-card-title {
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 12px;
+  }
+  .chart-note {
+    font-size: 14px;
+    color: var(--ink2);
+    margin: 8px 24px 0;
+    line-height: 1.6;
+    padding-top: 8px;
+    border-top: 1px solid var(--border2);
+  }
+  .chart-narrative {
+    font-size: 13.5px;
+    color: var(--ink2);
+    line-height: 1.7;
+    margin-top: 10px;
+  }
+  .chart-reasoning {
+    font-size: 14px;
+    color: var(--ink2);
+    line-height: 1.6;
+    margin: 8px 24px 0;
+    padding-bottom: 12px;
+  }
+  .chart-reasoning-wrap {
+    margin-top: 0;
+  }
+
+  /* ---- BAR CHART ROWS (sections 01-03) ---- */
+  .bar-section { margin-bottom: 2px; }
+
+  .chart-header-row {
+    display: grid;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2px;
+  }
+  .frat-header   { grid-template-columns: 220px 1fr 72px 56px; }
+  .reason-header { grid-template-columns: 290px 1fr 72px 64px; }
+
+  .chart-header-row span {
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink2);
+  }
+  .chart-header-row .center { text-align: center; }
+  .chart-header-row .right  { text-align: right; }
+
+  .chart-row {
+    display: grid;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border2);
+  }
+  .frat-row-grid   { grid-template-columns: 220px 1fr 72px 56px; }
+  .reason-row-grid { grid-template-columns: 290px 1fr 72px 64px; }
+  .chart-row:hover { background: var(--surface2); border-radius: 3px; }
+
+  .row-label {
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink2);
+    text-align: right;
+    padding-right: 8px;
+    line-height: 1.3;
+  }
+  .bar-wrap {
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .bar-axis-line {
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .bar-seg {
+    position: absolute;
+    height: 10px;
+    top: 50%; transform: translateY(-50%);
+    border-radius: 1px;
+  }
+  .bar-neg { background: #005792; right: 50%; }
+  .bar-pos { background: #FD5F00; left: 50%; }
+
+  .row-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    text-align: right;
+  }
+  .val-neg  { color: #005792; }
+  .val-pos  { color: #FD5F00; }
+  .val-zero { color: var(--ink3); }
+
+  .row-n {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink3);
+    text-align: right;
+  }
+
+  /* ---- GRADIENT BARS ---- */
+  .grad-section { margin-bottom: 28px; }
+  .grad-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .grad-name {
+    font-size: 14px;
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .r-tag {
+    font-family: 'Merriweather', serif;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--surface2);
+    padding: 2px 8px;
+    border-radius: 2px;
+    color: var(--ink2);
+    letter-spacing: 0.03em;
+  }
+  .grad-bars-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .grad-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .grad-bar-outer {
+    width: 100%;
+    height: 60px;
+    background: var(--surface2);
+    border-radius: 3px;
+    position: relative;
+  }
+  .zero-stripe {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--border);
+    top: 50%;
+  }
+  .grad-fill {
+    position: absolute;
+    left: 0; right: 0;
+    border-radius: 2px;
+    opacity: 0.85;
+  }
+  .grad-val {
+    font-family: 'Merriweather', serif;
+    font-size: 10.5px;
+    text-align: center;
+  }
+  .grad-lbl {
+    font-size: 9.5px;
+    color: var(--ink3);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* ---- TABS ---- */
+  .tab-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .tab {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--ink3);
+    transition: all 0.15s;
+  }
+  .tab:hover { background: var(--surface2); color: var(--ink); }
+  .tab.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ---- INSIGHT BLOCKS ---- */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+  .insight {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem;
+    border-left: 3px solid #13344C;
+  }
+  .insight.orange { border-left-color: #FD5F00; }
+  .insight.blue   { border-left-color: #005792; }
+  .insight.navy   { border-left-color: #13344C; }
+  /* legacy aliases */
+  .insight.red    { border-left-color: #FD5F00; }
+  .insight.green  { border-left-color: #005792; }
+  .insight-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 6px;
+  }
+  .insight-text { font-size: 13.5px; color: var(--ink); line-height: 1.55; }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: #13344C;
+    color: rgba(255,255,255,0.55);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+  }
+</style>
+</head>
+<body>
+
+<div class="internal-banner">INTERNAL USE ONLY &middot; NIC / Smith Insights &middot; May 2026</div>
+
+<header>
+  <div class="header-inner">
+    <div class="eyebrow">NIC Joiners Survey &middot; Individual-Level Aversion Analysis on Joiners</div>
+    <h1>Fraternity Aversion</h1>
+    <div class="header-sub">Fraternity Name &middot; Join Motivation &middot; College Choice &middot; Membership Pipelines</div>
+    <div class="header-meta">
+      <div class="header-stat">
+        <div class="header-stat-value">27</div>
+        <div class="header-stat-label">Fraternities analyzed (n &ge; 40)</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">-0.77</div>
+        <div class="header-stat-label">Avg aversion: chose school for Greek life</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">+0.87</div>
+        <div class="header-stat-label">Avg aversion: joined for scholarship money</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">1.09</div>
+        <div class="header-stat-label">Aversion spread: cost as primary school choice</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================ -->
+  <!-- 01: FRATERNITY -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Aversion by Fraternity</h2>
+    </div>
+    <div class="anova-note">ANOVA F = 10.29 &nbsp;&middot;&nbsp; p &lt; 0.0001 &nbsp;&middot;&nbsp; 27 organizations with n &ge; 40</div>
+    <p class="section-sub">All 27 organizations with 40 or more survey respondents, sorted from lowest to highest aversion. Blue bars extend left (less averse); orange bars extend right (more averse). Zero is the full joiner sample mean.</p>
+
+    <div class="chart-card">
+      <div class="chart-header-row frat-header">
+        <span class="right">Organization</span>
+        <span class="center">Less Averse &nbsp;/&nbsp; More Averse</span>
+        <span class="right">Score</span>
+        <span class="right">n</span>
+      </div>
+      <div id="fratChart"></div>
+      <div class="chart-reasoning-wrap">
+        <p class="chart-reasoning">Differences across fraternities are statistically significant but the practical spread is modest. Kappa Alpha Order (mean -0.51, n = 1,053) and Sigma Alpha Epsilon (-0.26, n = 3,398) hold large, reliable samples well below zero. Pi Kappa Alpha is the largest single sample (n = 8,977) and sits at essentially zero (+0.008), making it the closest thing to a fraternity-wide baseline.</p>
+      </div>
+      <p class="chart-narrative">ATO (+0.27, n = 3,427) and Phi Kappa Psi (+0.21, n = 1,644) are large enough that these scores reflect structural patterns in who is joining, not sampling variance. Kappa Alpha Psi (n = 111, mean -0.18) is a historically Black fraternity more enthusiastic than most historically White fraternities of comparable size, which runs counter to the racial demographic aggregate where non-White groups score substantially higher on aversion.</p>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight orange">
+        <div class="insight-label">Highest aversion</div>
+        <div class="insight-text">Phi Kappa Tau (+0.55) is the highest-aversion fraternity with a qualifying sample. Delta Sigma Phi (+0.35), ATO (+0.27), and Beta Theta Pi (+0.28) follow. These are structural, not statistical noise.</div>
+      </div>
+      <div class="insight blue">
+        <div class="insight-label">Most enthusiastic</div>
+        <div class="insight-text">Delta Kappa Epsilon (-0.56), Kappa Alpha Order (-0.51), and Sigma Nu (-0.46) lead. KA Order and SAE are also two of the three largest samples in the dataset -- reliable signal, not small-n artifacts.</div>
+      </div>
+      <div class="insight navy">
+        <div class="insight-label">Notable: Kappa Alpha Psi</div>
+        <div class="insight-text">Mean -0.18 with n = 111. More enthusiastic than most historically White fraternities of comparable size, despite racial demographics predicting the opposite in aggregate.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- 02: JOIN REASONS -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Reasons for Joining</h2>
+    </div>
+    <div class="anova-note">ANOVA F = 14.65 &nbsp;&middot;&nbsp; p &lt; 0.0001 &nbsp;&middot;&nbsp; variables external to aversion score construction</div>
+    <p class="section-sub">Two views of the data: the single most important reason each student named for joining, and the aversion gradient across importance levels for four key reasons. These variables are independent of the concern items that make up the aversion score.</p>
+
+    <div class="tab-row">
+      <button class="tab active" onclick="switchTab(event,'join','primary')">Most Important Reason</button>
+      <button class="tab" onclick="switchTab(event,'join','gradient')">Importance Gradients</button>
+    </div>
+
+    <div id="join-primary" class="tab-panel active">
+      <div class="chart-card">
+        <div class="chart-header-row reason-header">
+          <span class="right">Primary Reason for Joining</span>
+          <span class="center">Less Averse &nbsp;/&nbsp; More Averse</span>
+          <span class="right">Score</span>
+          <span class="right">n</span>
+        </div>
+        <div id="joinReasons"></div>
+        <p class="chart-note">Family legacy (-0.42, n = 381) produces the most enthusiastic joiners by a wide margin. Professional networking (-0.02) and campus leadership (-0.04) also land below zero. Finding a place to belong (+0.19, n = 7,992) is the second most common primary reason and the largest aversion-positive group by count.</p>
+        <p class="chart-narrative">Encouraged by a friend (+0.47, n = 1,521) and scholarship money (+0.87, n = 216) are the highest-aversion primary motivations. The gap between Family Legacy (-0.42) and Encouraged by a Friend (+0.47) is a 0.89-unit spread -- the largest in this section. Recruitment leaning on peer pressure is pulling in the most conflicted members.</p>
+      </div>
+    </div>
+
+    <div id="join-gradient" class="tab-panel">
+      <div class="chart-card">
+        <p style="font-family:'Merriweather',serif;font-size:11px;font-weight:400;color:var(--ink2);margin-bottom:20px;line-height:1.6;">Average aversion at each importance level: 1 = Not at all important &nbsp;&middot;&nbsp; 4 = Very important. Sense of Belonging and Professional Networking are omitted -- their near-zero r values and non-monotonic patterns mean there is no interpretable gradient.</p>
+        <div id="joinGradients"></div>
+        <p class="chart-note">Family Encouragement shows the steepest gradient (r = -0.120): students rating it "very important" average -0.42 versus +0.33 for "not important" -- a 0.74-unit spread. Family Legacy is nearly as sharp (r = -0.092): "very important" averages -0.45. Community Service and Campus Leadership both show clean negative gradients as motivation intensifies.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- 03: COLLEGE CHOICE -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Why They Chose This College</h2>
+    </div>
+    <div class="anova-note">All correlations p &lt; 0.001 unless noted &nbsp;&middot;&nbsp; n approximately 30,000 per item</div>
+    <p class="section-sub">School selection motivation is the sharpest external predictor of aversion in the dataset. Students who factored Greek life into their college decision arrive having already made peace with it. Students who chose primarily for cost or academic prestige arrive with the same aversion profile as the broader non-joiner population.</p>
+
+    <div class="tab-row">
+      <button class="tab active" onclick="switchTab(event,'choice','primary')">Most Important Reason</button>
+      <button class="tab" onclick="switchTab(event,'choice','gradient')">Importance Gradients</button>
+    </div>
+
+    <div id="choice-primary" class="tab-panel active">
+      <div class="chart-card">
+        <div class="chart-header-row reason-header">
+          <span class="right">Primary School Choice Reason</span>
+          <span class="center">Less Averse &nbsp;/&nbsp; More Averse</span>
+          <span class="right">Score</span>
+          <span class="right">n</span>
+        </div>
+        <div id="choiceReasons"></div>
+        <p class="chart-note">Greek or sorority life as the primary choice factor produces an average aversion of -0.77 (n = 485) -- the single most aversion-negative segment in this section. Athletic reputation (-0.26) follows. Cost as primary reason (+0.42, n = 4,265) is the second-highest aversion group.</p>
+        <p class="chart-narrative">The gap between Greek Life as primary reason (-0.77) and Cost as primary reason (+0.42) is 1.19 units -- the largest single contrast in the college choice data. Students who chose their school as a financial decision rather than a social one are arriving at fraternity membership through a very different motivational pathway.</p>
+      </div>
+    </div>
+
+    <div id="choice-gradient" class="tab-panel">
+      <div class="chart-card">
+        <p style="font-family:'Merriweather',serif;font-size:11px;font-weight:400;color:var(--ink2);margin-bottom:20px;line-height:1.6;">Average aversion at each importance level: 1 = Not at all important &nbsp;&middot;&nbsp; 4 = Very important.</p>
+        <div id="choiceGradients"></div>
+        <p class="chart-note">The Greek Life gradient is the steepest (r = -0.112): "very important" averages -0.59 versus +0.26 for "not at all important" -- a 0.85-unit swing. Cost runs opposite (r = +0.169): "very important" averages +0.54 versus -0.55 for "not at all important" -- a 1.09-unit spread, the largest raw gap in the college choice section. Academic Reputation (r = +0.083) steps from -0.44 to +0.25 across the importance scale.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- 04: SYNTHESIS -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Two Pipelines Into Membership</h2>
+    </div>
+    <p class="section-sub">Fraternity, join motivation, and college choice converge on a single structural finding. There are two distinct pathways into Greek membership, and they produce meaningfully different members.</p>
+
+    <div class="insight-grid">
+      <div class="insight green">
+        <div class="insight-label">Pipeline A: Self-Selected</div>
+        <div class="insight-text">Student chose school partly for Greek life, comes from a Greek family, and joins with purpose -- legacy, leadership, or professional goals. Arrives below zero on aversion. Concerns were resolved before bid day. Most likely in KA Order, SAE, or Phi Gamma Delta. This pipeline produces the most stable, committed members.</div>
+      </div>
+      <div class="insight red">
+        <div class="insight-label">Pipeline B: Socially or Financially Routed</div>
+        <div class="insight-text">Student chose school for cost or academic reputation and joins because a friend encouraged them or for scholarship money. Arrives above zero -- concerns were not resolved before joining. Most likely in ATO, Phi Kappa Psi, or Phi Kappa Tau. This pipeline is larger by count and more at risk for attrition and engagement issues.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-label">The recruitment implication</div>
+        <div class="insight-text">Addressing aversion after bid acceptance is too late for Pipeline B members. The divergence begins at school selection and is largely established before recruitment starts. Interventions that reach cost-constrained or academically-oriented students earlier in their college experience operate upstream of where current recruitment efforts focus.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  NIC Joiners Survey &middot; Individual-Level Aversion Analysis on Joiners &middot; n = 32,171 &middot; Internal use only: NIC / Smith Insights &middot; May 2026
+</footer>
+
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const fratData = [
+  ["Delta Kappa Epsilon",-0.5570,50],
+  ["Kappa Alpha Order",-0.5136,1053],
+  ["Sigma Nu",-0.4637,271],
+  ["Sigma Alpha Epsilon",-0.2581,3398],
+  ["Phi Gamma Delta",-0.2263,2293],
+  ["Kappa Alpha Psi Fraternity, Inc.",-0.1778,111],
+  ["Delta Chi",-0.1573,206],
+  ["Delta Upsilon",-0.1144,586],
+  ["Tau Epsilon Phi",-0.1143,537],
+  ["Chi Phi",-0.1137,568],
+  ["FarmHouse",-0.1054,244],
+  ["Alpha Kappa Lambda",-0.0259,101],
+  ["Lambda Chi Alpha",-0.0130,1641],
+  ["Delta Tau Delta",-0.0033,2439],
+  ["Pi Kappa Alpha",0.0079,8977],
+  ["Sigma Alpha Mu",0.0662,132],
+  ["Sigma Pi",0.0814,1819],
+  ["Psi Upsilon",0.0989,276],
+  ["Acacia",0.1196,217],
+  ["Alpha Gamma Rho",0.1230,115],
+  ["Phi Kappa Sigma",0.1356,335],
+  ["Phi Kappa Psi",0.2062,1644],
+  ["Zeta Psi",0.2668,938],
+  ["Alpha Tau Omega",0.2727,3427],
+  ["Beta Theta Pi",0.2817,117],
+  ["Delta Sigma Phi",0.3492,241],
+  ["Phi Kappa Tau",0.5538,156],
+];
+
+const joinReasonData = [
+  ["Family legacy",-0.4204,381],
+  ["Academic support",-0.0846,1991],
+  ["Campus leadership",-0.0420,1294],
+  ["Professional networking",-0.0239,7231],
+  ["Fun",0.0029,2724],
+  ["Making friends",0.0145,5350],
+  ["Too much free time",0.1105,268],
+  ["Finding a place to belong",0.1906,7992],
+  ["Encouraged by a family member",0.1916,368],
+  ["Community service",0.2612,419],
+  ["Encouraged by a friend",0.4658,1521],
+  ["Potential scholarship money",0.8682,216],
+];
+
+const joinGradData = [
+  { label:"Family Encouragement", r:-0.120, vals:[0.325,0.053,-0.160,-0.415] },
+  { label:"Family Legacy",         r:-0.092, vals:[0.180,0.016,-0.212,-0.453] },
+  { label:"Community Service",     r:-0.085, vals:[0.368,0.298,0.021,-0.187] },
+  { label:"Campus Leadership",     r:-0.073, vals:[0.310,0.310,0.034,-0.134] },
+];
+
+const choiceReasonData = [
+  ["Fraternity / Sorority life",-0.7672,485],
+  ["Athletic reputation",-0.2555,881],
+  ["Friends / partner going here",-0.0261,1130],
+  ["Party reputation",-0.0118,278],
+  ["Location of the school",0.0128,1960],
+  ["School is close to home",0.0261,1923],
+  ["Parents / others wanted me here",0.0382,2632],
+  ["Major(s) available",0.0601,4400],
+  ["Academic reputation",0.1158,10624],
+  ["Cost of the school",0.4193,4265],
+  ["Religious affiliation",0.4997,147],
+];
+
+const choiceGradData = [
+  { label:"Greek Life Factor",   r:-0.112, vals:[0.256,0.089,-0.318,-0.592] },
+  { label:"Athletic Reputation", r:-0.016, vals:[0.064,0.159,0.060,-0.071] },
+  { label:"Cost Factor",         r:0.169,  vals:[-0.552,-0.078,0.175,0.540] },
+  { label:"Academic Reputation", r:0.083,  vals:[-0.439,0.055,0.058,0.250] },
+];
+
+// ============================================================
+// HELPERS
+// ============================================================
+function fmt(v) { return (v >= 0 ? '+' : '') + v.toFixed(3); }
+function valCls(v) { return v < -0.04 ? 'val-neg' : v > 0.04 ? 'val-pos' : 'val-zero'; }
+
+// ============================================================
+// BAR CHART
+// ============================================================
+function buildBarChart(containerId, data, maxVal, rowClass) {
+  const el = document.getElementById(containerId);
+  data.forEach(([name, val, n]) => {
+    const row = document.createElement('div');
+    row.className = 'chart-row ' + rowClass;
+
+    const lbl = document.createElement('div');
+    lbl.className = 'row-label';
+    lbl.textContent = name;
+
+    const bw = document.createElement('div');
+    bw.className = 'bar-wrap';
+
+    const ax = document.createElement('div');
+    ax.className = 'bar-axis-line';
+
+    const bar = document.createElement('div');
+    bar.className = 'bar-seg ' + (val < 0 ? 'bar-neg' : 'bar-pos');
+    bar.style.width = (Math.abs(val) / maxVal * 50) + '%';
+
+    bw.appendChild(ax);
+    bw.appendChild(bar);
+
+    const vEl = document.createElement('div');
+    vEl.className = 'row-val ' + valCls(val);
+    vEl.textContent = fmt(val);
+
+    const nEl = document.createElement('div');
+    nEl.className = 'row-n';
+    nEl.textContent = n.toLocaleString();
+
+    row.appendChild(lbl);
+    row.appendChild(bw);
+    row.appendChild(vEl);
+    row.appendChild(nEl);
+    el.appendChild(row);
+  });
+}
+
+// ============================================================
+// GRADIENT BARS (horizontal, shared zero line, sorted Very->Not)
+// ============================================================
+function buildGradients(containerId, data) {
+  const el = document.getElementById(containerId);
+  const sortedIdxs = [3, 2, 1, 0];
+  const labels = ['Not important', 'Slightly important', 'Important', 'Very important'];
+  const absMax = Math.max(...data.flatMap(d => d.vals.map(Math.abs)));
+  const zeroPos = 50; // % -- fixed across all rows
+
+  data.forEach(item => {
+    const sec = document.createElement('div');
+    sec.className = 'grad-section';
+
+    // Title
+    const titleRow = document.createElement('div');
+    titleRow.className = 'grad-title-row';
+    const nm = document.createElement('span');
+    nm.className = 'grad-name';
+    nm.textContent = item.label;
+    const rt = document.createElement('span');
+    rt.className = 'r-tag';
+    rt.textContent = 'r = ' + (item.r >= 0 ? '+' : '') + item.r.toFixed(3);
+    titleRow.appendChild(nm);
+    titleRow.appendChild(rt);
+    sec.appendChild(titleRow);
+
+    // Rows
+    sortedIdxs.forEach(i => {
+      const v = item.vals[i];
+      const w = (Math.abs(v) / absMax) * zeroPos; // % width of bar
+
+      const row = document.createElement('div');
+      row.style.cssText = 'display:grid;grid-template-columns:130px 1fr 56px;align-items:center;gap:8px;margin-bottom:6px;';
+
+      // Label
+      const lbl = document.createElement('div');
+      lbl.style.cssText = 'font-family:"Merriweather",serif;font-size:14px;color:#5a554e;text-align:right;padding-right:8px;line-height:1.3;';
+      lbl.textContent = labels[i];
+
+      // Bar wrap -- key: explicit px height, relative positioning
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'position:relative;height:14px;background:rgba(26,23,20,0.04);border-radius:2px;';
+
+      // Zero line
+      const zLine = document.createElement('div');
+      zLine.style.cssText = `position:absolute;left:${zeroPos}%;top:0;bottom:0;width:2px;background:#9a9288;z-index:2;`;
+
+      // Bar
+      const bar = document.createElement('div');
+      const barLeft = v < 0 ? (zeroPos - w) : zeroPos;
+      const barColor = v < 0 ? '#005792' : '#FD5F00';
+      bar.style.cssText = `position:absolute;left:${barLeft}%;width:${w}%;top:1px;height:12px;background:${barColor};border-radius:2px;z-index:1;`;
+
+      wrap.appendChild(zLine);
+      wrap.appendChild(bar);
+
+      // Value
+      const valEl = document.createElement('div');
+      valEl.style.cssText = `font-family:"Merriweather",serif;font-size:14px;font-weight:700;color:${v < -0.04 ? '#005792' : v > 0.04 ? '#FD5F00' : '#9a9288'};padding-left:4px;`;
+      valEl.textContent = fmt(v);
+
+      row.appendChild(lbl);
+      row.appendChild(wrap);
+      row.appendChild(valEl);
+      sec.appendChild(row);
+    });
+
+    el.appendChild(sec);
+  });
+}
+
+// ============================================================
+// TABS
+// ============================================================
+function switchTab(e, group, panel) {
+  e.currentTarget.parentElement.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  document.querySelectorAll('[id^="' + group + '-"]').forEach(p => p.classList.remove('active'));
+  document.getElementById(group + '-' + panel).classList.add('active');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+buildBarChart('fratChart',    fratData,         0.65, 'frat-row-grid');
+buildBarChart('joinReasons',  joinReasonData,   0.95, 'reason-row-grid');
+buildBarChart('choiceReasons',choiceReasonData, 0.82, 'reason-row-grid');
+buildGradients('joinGradients',   joinGradData);
+buildGradients('choiceGradients', choiceGradData);
+</script>
+</body>
+</html>
