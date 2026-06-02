@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1.1 Quiz – Mitteleuropa von der Altsteinzeit zur Eisenzeit</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --stone: #2c2416;
+  --clay: #8b6f47;
+  --ochre: #c4872a;
+  --parchment: #f5f0e8;
+  --cream: #faf7f2;
+  --ash: #6b6258;
+  --iron: #4a4540;
+  --gold: #d4a843;
+  --red-earth: #8b3a2a;
+  --moss: #5a6b4a;
+  --border: rgba(139,111,71,0.25);
+  --correct-bg: #eaf3de;
+  --correct-border: #3B6D11;
+  --correct-text: #27500A;
+  --wrong-bg: #FCEBEB;
+  --wrong-border: #A32D2D;
+  --wrong-text: #791F1F;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--parchment);
+  color: var(--stone);
+  font-size: 18px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.site-header {
+  background: var(--stone);
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-header img { height: 46px; }
+.site-header .label {
+  font-family: 'Barlow Condensed', sans-serif;
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+}
+.site-header .label span {
+  display: block;
+  color: rgba(255,255,255,0.55);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.hero {
+  background: var(--iron);
+  padding: 40px 60px 36px;
+  border-bottom: 3px solid var(--ochre);
+}
+.hero h1 {
+  font-size: 2rem;
+  color: var(--parchment);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero p {
+  color: rgba(245,240,232,0.65);
+  font-size: 1rem;
+  font-style: italic;
+  max-width: 600px;
+}
+
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 30px 80px;
+}
+
+/* Progress bar */
+.progress-wrap {
+  margin-bottom: 36px;
+}
+.progress-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+.progress-track {
+  height: 6px;
+  background: rgba(139,111,71,0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--ochre);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+/* Section headers */
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+
+/* Cloze paragraph */
+.cloze-para {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 22px 26px;
+  margin-bottom: 28px;
+  font-size: 1.05rem;
+  line-height: 2.0;
+}
+.cloze-para p { margin-bottom: 0.8em; }
+.cloze-para p:last-child { margin-bottom: 0; }
+
+/* Blank select */
+.blank-wrap {
+  display: inline-block;
+  position: relative;
+  margin: 0 2px;
+  vertical-align: middle;
+}
+.blank-select {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--stone);
+  background: white;
+  border: 2px solid var(--clay);
+  border-radius: 4px;
+  padding: 2px 24px 2px 8px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 140px;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+}
+.blank-select:hover { border-color: var(--ochre); }
+.blank-select:focus { border-color: var(--ochre); box-shadow: 0 0 0 3px rgba(196,135,42,0.15); }
+.blank-select option[value=""] { color: var(--ash); font-style: italic; }
+
+/* Arrow indicator on select */
+.blank-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: var(--clay);
+  pointer-events: none;
+}
+
+/* Answered states */
+.blank-select.correct {
+  background: var(--correct-bg);
+  border-color: var(--correct-border);
+  color: var(--correct-text);
+}
+.blank-select.wrong {
+  background: var(--wrong-bg);
+  border-color: var(--wrong-border);
+  color: var(--wrong-text);
+}
+
+/* Grammar section */
+.grammar-block {
+  background: linear-gradient(135deg, rgba(139,111,71,0.07) 0%, rgba(90,107,74,0.05) 100%);
+  border-left: 4px solid var(--ochre);
+  border-radius: 0 6px 6px 0;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+.grammar-block .g-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 6px;
+}
+.grammar-block .g-rule {
+  font-size: 0.95rem;
+  color: var(--iron);
+  margin-bottom: 6px;
+}
+.grammar-block .g-example {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--ash);
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+/* Grammar cloze */
+.grammar-cloze {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  line-height: 2.0;
+}
+.grammar-cloze .g-prompt {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin-bottom: 8px;
+}
+
+/* Submit button */
+.submit-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--stone);
+  color: var(--parchment);
+  border: none;
+  padding: 14px 44px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 32px;
+}
+.submit-btn:hover { background: var(--iron); }
+.submit-btn:active { transform: scale(0.98); }
+.submit-btn:disabled { opacity: 0.5; cursor: default; }
+
+/* Results panel */
+.results-panel {
+  display: none;
+  margin-top: 40px;
+  border-top: 2px solid var(--border);
+  padding-top: 36px;
+}
+.results-panel.visible { display: block; }
+
+.score-banner {
+  background: var(--stone);
+  color: var(--parchment);
+  border-radius: 6px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 32px;
+}
+.score-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.score-msg {
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.score-msg strong {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.feedback-item {
+  border-radius: 6px;
+  padding: 14px 18px;
+  border: 1px solid;
+  font-size: 0.93rem;
+}
+.feedback-item.correct-item {
+  background: var(--correct-bg);
+  border-color: var(--correct-border);
+  color: var(--correct-text);
+}
+.feedback-item.wrong-item {
+  background: var(--wrong-bg);
+  border-color: var(--wrong-border);
+  color: var(--wrong-text);
+}
+.fi-head {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fi-icon { font-size: 14px; }
+.fi-blank-label { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+.fi-your { font-size: 0.9rem; opacity: 0.8; }
+.fi-hint { font-size: 0.9rem; margin-top: 6px; font-style: italic; }
+
+/* Retry button */
+.retry-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--stone);
+  border: 2px solid var(--stone);
+  padding: 10px 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background 0.2s, color 0.2s;
+}
+.retry-btn:hover { background: var(--stone); color: var(--parchment); }
+
+.ornament {
+  text-align: center;
+  color: var(--clay);
+  font-size: 1.2rem;
+  margin: 40px 0;
+  opacity: 0.5;
+  letter-spacing: 0.4em;
+}
+
+footer {
+  background: var(--stone);
+  color: rgba(245,240,232,0.5);
+  font-size: 0.82rem;
+  text-align: center;
+  padding: 24px 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.08em;
+  margin-top: 60px;
+}
+footer a { color: var(--gold); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .hero { padding: 28px 24px; }
+  .wrap { padding: 32px 18px 60px; }
+  .site-header { padding: 12px 18px; }
+  .score-banner { flex-direction: column; gap: 12px; }
+  .score-num { font-size: 3rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <img src="https://cdn.firespring.com/images/63085f2b-88ae-48a7-8bd4-1ff82dc5f328.png" alt="Goethe-Zentrum Atlanta">
+  <div class="label">
+    B1.1 · Vokabelquiz
+    <span>Mitteleuropa von der Urgeschichte</span>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Vokabel- und Grammatikquiz — <em>B1.1</em></h1>
+  <p>Wähle das richtige Wort für jede Lücke. Am Ende bekommst du detailliertes Feedback.</p>
+</div>
+
+<div class="wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Fortschritt</span>
+      <span id="prog-count">0 / 22 beantwortet</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="prog-bar"></div></div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       SECTION 1: DIE STEINZEIT
+  ══════════════════════════════════ -->
+  <div class="section-tag">Abschnitt 1 von 4</div>
+  <div class="section-title">Die Steinzeit – Jäger, Sammler und frühe Siedler</div>
+
+  <div class="cloze-para">
+    <p>
+      In der Altsteinzeit wurde Nahrung durch Jagen und
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="1" data-answer="Sammeln" data-meaning="'das Sammeln' means gathering — in this context, foraging for plants" data-hint="Think of the compound phrase 'Jäger und ___' — what did Stone Age people do with plants and berries?">
+          <option value="">— wählen —</option>
+          <option value="Kochen">Kochen</option>
+          <option value="Sammeln">Sammeln</option>
+          <option value="Züchten">Züchten</option>
+          <option value="Lagern">Lagern</option>
+        </select>
+      </span>
+      gewonnen. Die Menschen lebten als
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="2" data-answer="Nomaden" data-meaning="'Nomaden' (nomads) means people who move from place to place — the opposite of sesshaft" data-hint="Before people built permanent villages, they moved constantly. What do we call such a group?">
+          <option value="">— wählen —</option>
+          <option value="Bauern">Bauern</option>
+          <option value="Händler">Händler</option>
+          <option value="Nomaden">Nomaden</option>
+          <option value="Krieger">Krieger</option>
+        </select>
+      </span>
+      und wechselten ihre Lager, wenn Nahrung
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="3" data-answer="knapp" data-meaning="'knapp' means scarce or in short supply — the opposite of reichlich (plentiful)" data-hint="When food runs out, it becomes ___. It rhymes with 'Kapp' and means the opposite of 'reichlich'.">
+          <option value="">— wählen —</option>
+          <option value="giftig">giftig</option>
+          <option value="saisonal">saisonal</option>
+          <option value="knapp">knapp</option>
+          <option value="haltbar">haltbar</option>
+        </select>
+      </span>
+      wurde.
+    </p>
+    <p>
+      In der Jungsteinzeit erlebte Mitteleuropa einen grundlegenden
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="4" data-answer="Wandel" data-meaning="'der Wandel' means transformation or fundamental change — not a small adjustment" data-hint="This noun describes a deep, lasting change — used throughout the course for major historical shifts.">
+          <option value="">— wählen —</option>
+          <option value="Handel">Handel</option>
+          <option value="Wandel">Wandel</option>
+          <option value="Verfall">Verfall</option>
+          <option value="Angriff">Angriff</option>
+        </select>
+      </span>.
+      Die Menschen wurden
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="5" data-answer="sesshaft" data-meaning="'sesshaft' means settled — living in one permanent place, the opposite of nomadic" data-hint="When people stop moving and build permanent homes, they become ___.">
+          <option value="">— wählen —</option>
+          <option value="sesshaft">sesshaft</option>
+          <option value="kriegerisch">kriegerisch</option>
+          <option value="spezialisiert">spezialisiert</option>
+          <option value="regional">regional</option>
+        </select>
+      </span>,
+      trieben
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="6" data-answer="Ackerbau" data-meaning="'der Ackerbau' means arable farming — cultivating fields to grow grain and plants" data-hint="This compound noun combines 'Acker' (field) and 'Bau' (cultivation). What activity does that describe?">
+          <option value="">— wählen —</option>
+          <option value="Fernhandel">Fernhandel</option>
+          <option value="Handwerk">Handwerk</option>
+          <option value="Ackerbau">Ackerbau</option>
+          <option value="Bergbau">Bergbau</option>
+        </select>
+      </span>
+      und züchteten Tiere. Vorräte wurden gespeichert, und
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="7" data-answer="Eigentum" data-meaning="'das Eigentum' means property/ownership — what you own personally, distinct from shared resources" data-hint="When people store food and build homes, this concept becomes important: what belongs to whom?">
+          <option value="">— wählen —</option>
+          <option value="Eigentum">Eigentum</option>
+          <option value="Ritual">Ritual</option>
+          <option value="Zusammenhalt">Zusammenhalt</option>
+          <option value="Wissen">Wissen</option>
+        </select>
+      </span>
+      wurde wichtig.
+    </p>
+  </div>
+
+  <div class="ornament">· · ◆ · ·</div>
+
+  <!-- ══════════════════════════════════
+       SECTION 2: ÖTZI UND DIE EISENZEIT
+  ══════════════════════════════════ -->
+  <div class="section-tag">Abschnitt 2 von 4</div>
+  <div class="section-title">Ötzi, die Eisenzeit und Metallproduktion</div>
+
+  <div class="cloze-para">
+    <p>
+      Ötzi lebte um 3.300 v. Chr. und war auf der
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="8" data-answer="Flucht" data-meaning="'die Flucht' means flight or escape — the act of fleeing from danger" data-hint="Ötzi left his hut because there had been a fight. He wasn't on a planned trip — he was on a ___.">
+          <option value="">— wählen —</option>
+          <option value="Jagd">Jagd</option>
+          <option value="Flucht">Flucht</option>
+          <option value="Wanderung">Wanderung</option>
+          <option value="Zeremonie">Zeremonie</option>
+        </select>
+      </span>.
+      Der
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="9" data-answer="Täter" data-meaning="'der Täter' means the perpetrator or culprit — the person who committed the act" data-hint="In a crime story, who commits the deed? The Mörder is one option, but the more neutral, legal term used in the story is ___.">
+          <option value="">— wählen —</option>
+          <option value="Zeuge">Zeuge</option>
+          <option value="Forscher">Forscher</option>
+          <option value="Täter">Täter</option>
+          <option value="Händler">Händler</option>
+        </select>
+      </span>
+      blieb unbekannt, und der Mord wurde nie
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="10" data-answer="aufgeklärt" data-meaning="'aufgeklärt' (past participle of aufklären) means solved or clarified — used for crimes and mysteries" data-hint="A cold case that was never ___. The verb 'aufklären' is used for solving mysteries.">
+          <option value="">— wählen —</option>
+          <option value="verhütet">verhütet</option>
+          <option value="aufgeklärt">aufgeklärt</option>
+          <option value="versenkt">versenkt</option>
+          <option value="geprägt">geprägt</option>
+        </select>
+      </span>.
+    </p>
+    <p>
+      In der Eisenzeit entstanden große
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="11" data-answer="Fürstengräber" data-meaning="'Fürstengräber' means princely graves — elaborate burial sites for elite members of society" data-hint="The Hallstatt culture buried their leaders with weapons and luxury goods in elaborate ___.">
+          <option value="">— wählen —</option>
+          <option value="Opferplätze">Opferplätze</option>
+          <option value="Pfahlbauten">Pfahlbauten</option>
+          <option value="Fürstengräber">Fürstengräber</option>
+          <option value="Rennofen">Rennofen</option>
+        </select>
+      </span>
+      mit wertvollem Schmuck und Waffen. Über das Rhônetal wurde ein wichtiger
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="12" data-answer="Fernhandel" data-meaning="'der Fernhandel' means long-distance trade — commerce between geographically distant regions" data-hint="Trade routes over the Alps and down the Rhône were used for what kind of trade? It's not local — it's 'fern' (far away) + 'Handel'.">
+          <option value="">— wählen —</option>
+          <option value="Ackerbau">Ackerbau</option>
+          <option value="Fernhandel">Fernhandel</option>
+          <option value="Handwerk">Handwerk</option>
+          <option value="Bergbau">Bergbau</option>
+        </select>
+      </span>
+      betrieben. Die Eisenverhüttung war
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="13" data-answer="komplizierter" data-meaning="'komplizierter' is the comparative of 'kompliziert' — meaning more complex. Requires higher temps than bronze." data-hint="Iron production needed temperatures over 1,100°C — much harder than bronze. So iron was ___ als Bronze herzustellen.">
+          <option value="">— wählen —</option>
+          <option value="einfacher">einfacher</option>
+          <option value="günstiger">günstiger</option>
+          <option value="komplizierter">komplizierter</option>
+          <option value="schneller">schneller</option>
+        </select>
+      </span>
+      als Bronzeherstellung, weil höhere Temperaturen nötig waren.
+    </p>
+    <p>
+      Zuerst wurde das Erz
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="14" data-answer="abgebaut" data-meaning="'abgebaut' (Partizip II of abbauen) means mined/extracted from the earth — the first step in metal production" data-hint="Before you can process ore, you have to get it out of the ground. The verb for mining is 'abbauen'. What is the Partizip II?">
+          <option value="">— wählen —</option>
+          <option value="geschmolzen">geschmolzen</option>
+          <option value="abgebaut">abgebaut</option>
+          <option value="gegossen">gegossen</option>
+          <option value="poliert">poliert</option>
+        </select>
+      </span>,
+      dann wurde es im Rennofen mit Holzkohle
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="15" data-answer="erhitzt" data-meaning="'erhitzt' (Partizip II of erhitzen) means heated — step 2 in the iron production sequence" data-hint="After mining, the ore goes into a furnace. What happens to it there? Think: 'heiß' → the verb → Partizip II.">
+          <option value="">— wählen —</option>
+          <option value="zerkleinert">zerkleinert</option>
+          <option value="gehämmert">gehämmert</option>
+          <option value="erhitzt">erhitzt</option>
+          <option value="abgekühlt">abgekühlt</option>
+        </select>
+      </span>.
+      Zum Schluss wurde das Eisen zu Werkzeugen oder
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="16" data-answer="Waffen" data-meaning="'Waffen' means weapons — swords, spears, axes — the most important products of iron smithing" data-hint="Iron smiths made two things: 'Werkzeuge' (tools) for farming, and ___ for fighting.">
+          <option value="">— wählen —</option>
+          <option value="Gefäßen">Gefäßen</option>
+          <option value="Münzen">Münzen</option>
+          <option value="Waffen">Waffen</option>
+          <option value="Fibeln">Fibeln</option>
+        </select>
+      </span>
+      verarbeitet.
+    </p>
+  </div>
+
+  <div class="ornament">· · ◆ · ·</div>
+
+  <!-- ══════════════════════════════════
+       SECTION 3: OPFERPLÄTZE & KULTUR
+  ══════════════════════════════════ -->
+  <div class="section-tag">Abschnitt 3 von 4</div>
+  <div class="section-title">Opferplätze und religiöses Leben</div>
+
+  <div class="cloze-para">
+    <p>
+      Die frühen Menschen in Mitteleuropa opferten an
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="17" data-answer="heilig" data-meaning="'heilig' means sacred or holy — describing a place or object of religious significance" data-hint="The mountains and rivers were not ordinary — they were considered ___. The German word shares its root with 'Heilung' (healing).">
+          <option value="">— wählen —</option>
+          <option value="befestigt">befestigt</option>
+          <option value="imposant">imposant</option>
+          <option value="heilig">heilig</option>
+          <option value="dauerhaft">dauerhaft</option>
+        </select>
+      </span>
+      Orten — auf Bergen und an Flüssen. Man glaubte, dass Wasser ein Eingang zur
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="18" data-answer="Unterwelt" data-meaning="'die Unterwelt' means the underworld — the realm of the dead in ancient belief systems" data-hint="When objects were thrown into water, they passed into the realm of the gods or the dead — the ___.">
+          <option value="">— wählen —</option>
+          <option value="Gemeinschaft">Gemeinschaft</option>
+          <option value="Unterwelt">Unterwelt</option>
+          <option value="Zeremonie">Zeremonie</option>
+          <option value="Wandlung">Wandlung</option>
+        </select>
+      </span>
+      sei. Deshalb wurden wertvolle Gegenstände wie Schwerter
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="19" data-answer="versenkt" data-meaning="'versenkt' (Partizip II of versenken) means submerged or sunk — deliberately dropped into water" data-hint="Objects thrown intentionally into a river or lake were ___ — made to sink and disappear. Verb: 'versenken'.">
+          <option value="">— wählen —</option>
+          <option value="zerbrochen">zerbrochen</option>
+          <option value="deponiert">deponiert</option>
+          <option value="versenkt">versenkt</option>
+          <option value="geprägt">geprägt</option>
+        </select>
+      </span>.
+    </p>
+    <p>
+      Mit der Zeit entwickelte sich das Naturheiligtum hin zum
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="20" data-answer="Tempelbau" data-meaning="'der Tempelbau' means temple construction — the architectural phase of religious development" data-hint="The text describes an evolution: from natural sacred spots ('Naturheiligtum') to actual buildings — called ___.">
+          <option value="">— wählen —</option>
+          <option value="Oppidum">Oppidum</option>
+          <option value="Langhaus">Langhaus</option>
+          <option value="Tempelbau">Tempelbau</option>
+          <option value="Hockergrab">Hockergrab</option>
+        </select>
+      </span>.
+      Diese
+      <span class="blank-wrap">
+        <select class="blank-select" data-id="21" data-answer="Wandlung" data-meaning="'die Wandlung' means transformation — a gradual process of becoming something different" data-hint="The shift from natural sites to planned temples was a slow process. This noun (related to 'wandeln') describes that kind of deep transformation.">
+          <option value="">— wählen —</option>
+          <option value="Entdeckung">Entdeckung</option>
+          <option value="Bestattung">Bestattung</option>
+          <option value="Wandlung">Wandlung</option>
+          <option value="Rodung">Rodung</option>
+        </select>
+      </span>
+      zeigt, dass religiöse Praktiken sich über Jahrhunderte entwickelten.
+    </p>
+  </div>
+
+  <div class="ornament">· · ◆ · ·</div>
+
+  <!-- ══════════════════════════════════
+       SECTION 4: GRAMMAR
+  ══════════════════════════════════ -->
+  <div class="section-tag">Abschnitt 4 von 4</div>
+  <div class="section-title">Grammatikfokus – Die wichtigsten Strukturen</div>
+
+  <div class="grammar-block">
+    <div class="g-label">Passiv Präteritum</div>
+    <div class="g-rule">Historische Prozesse werden im Passiv beschrieben: <strong>wurden + Partizip II</strong>. Das Subjekt ist die Handlung, nicht die Person.</div>
+    <div class="g-example">Aktiv: Die Menschen jagten Tiere. → Passiv: Tiere <strong>wurden gejagt</strong>.</div>
+  </div>
+  <div class="grammar-block">
+    <div class="g-label">Relativsätze mit <em>wo</em> und <em>was</em></div>
+    <div class="g-rule"><strong>wo</strong> bezieht sich auf Orte. <strong>was</strong> bezieht sich auf ganze Situationen, Sätze oder Indefinitpronomen (alles, nichts, das).</div>
+    <div class="g-example">… Orte, <strong>wo</strong> Menschen lebten. · … eine Entdeckung, <strong>was</strong> alles veränderte.</div>
+  </div>
+  <div class="grammar-block">
+    <div class="g-label">Modalpartikeln</div>
+    <div class="g-rule">Modalpartikeln drücken Einstellung und Ton aus — sie verändern die Bedeutung des Satzes subtil.</div>
+    <div class="g-example"><strong>eben/halt</strong> = unvermeidlich/resigniert · <strong>ja</strong> = etwas Bekanntes · <strong>denn</strong> = Interesse in Fragen · <strong>eigentlich</strong> = ursprünglicher Plan · <strong>schon</strong> = Beruhigung</div>
+  </div>
+  <div class="grammar-block">
+    <div class="g-label">Temporaladverbien (Reihenfolge)</div>
+    <div class="g-rule">Prozesse werden mit Reihenfolge-Adverbien strukturiert: <strong>zuerst → dann → danach → anschließend → zum Schluss</strong>.</div>
+    <div class="g-example">Zuerst wird Erz abgebaut, <strong>dann</strong> wird es erhitzt, <strong>danach</strong> gehämmert.</div>
+  </div>
+
+  <p style="font-size:0.95rem; color:var(--ash); font-style:italic; margin-bottom:18px;">Wähle die richtige Grammatikform für jede Lücke:</p>
+
+  <div class="grammar-cloze">
+    <div class="g-prompt">Passiv oder Modalpartikel?</div>
+    Das Erz
+    <span class="blank-wrap">
+      <select class="blank-select" data-id="22" data-answer="wurde abgebaut" data-meaning="'wurde abgebaut' is Passiv Präteritum — correct for describing a historical process with no named subject" data-hint="You need a passive form in the past tense (Präteritum). That's 'wurde' + Partizip II. Which option gives you that?">
+        <option value="">— wählen —</option>
+        <option value="wurde abgebaut">wurde abgebaut</option>
+        <option value="hat abgebaut">hat abgebaut</option>
+        <option value="baut ab">baut ab</option>
+        <option value="wird abbauen">wird abbauen</option>
+      </select>
+    </span>,
+    danach
+    <span class="blank-wrap">
+      <select class="blank-select" data-id="23" data-answer="wurde es erhitzt" data-meaning="'wurde es erhitzt' is Passiv Präteritum — subject 'es' refers to the ore, passive verb follows" data-hint="Still in the past passive: 'wurde' + subject pronoun + Partizip II. Which option maintains that structure?">
+        <option value="">— wählen —</option>
+        <option value="es hat sich erhitzt">es hat sich erhitzt</option>
+        <option value="wurde es erhitzt">wurde es erhitzt</option>
+        <option value="es erhitzte sich">es erhitzte sich</option>
+        <option value="wird es erhitzen">wird es erhitzen</option>
+      </select>
+    </span>.
+  </div>
+
+  <div class="grammar-cloze">
+    <div class="g-prompt">Relativsatz: wo oder was?</div>
+    Es gibt viele Orte, <span class="blank-wrap">
+      <select class="blank-select" data-id="24" data-answer="wo" data-meaning="'wo' is the correct relative pronoun here because the antecedent is 'Orte' — a specific place reference" data-hint="The antecedent is 'Orte' — a physical location. Which relative pronoun connects to a place?">
+        <option value="">— wählen —</option>
+        <option value="was">was</option>
+        <option value="wo">wo</option>
+        <option value="der">der</option>
+        <option value="die">die</option>
+      </select>
+    </span> man Opfer fand.
+    Metall wurde entdeckt,
+    <span class="blank-wrap">
+      <select class="blank-select" data-id="25" data-answer="was" data-meaning="'was' refers back to the entire previous clause ('Metall wurde entdeckt') — a whole situation, not just a noun" data-hint="The relative clause here refers to the entire preceding statement as a whole — not a single noun. That calls for which pronoun?">
+        <option value="">— wählen —</option>
+        <option value="wo">wo</option>
+        <option value="was">was</option>
+        <option value="das">das</option>
+        <option value="welches">welches</option>
+      </select>
+    </span> das Leben in Mitteleuropa grundlegend veränderte.
+  </div>
+
+  <div style="text-align: center;">
+    <button class="submit-btn" id="submit-btn" onclick="gradeQuiz()">Quiz auswerten →</button>
+  </div>
+
+  <!-- ══════════════ RESULTS ══════════════ -->
+  <div class="results-panel" id="results-panel">
+    <div class="section-tag">Ergebnis</div>
+    <div class="score-banner" id="score-banner">
+      <div class="score-num" id="score-num">–</div>
+      <div class="score-msg" id="score-msg"></div>
+    </div>
+
+    <div class="section-title" style="margin-top:0;">Detailliertes Feedback</div>
+    <div class="feedback-list" id="feedback-list"></div>
+
+    <div style="text-align: center;">
+      <button class="retry-btn" onclick="resetQuiz()">Nochmal versuchen ↺</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Goethe-Zentrum Atlanta · B1+ Deutsch mit Geschichte &amp; Kultur · B1.1 Lernquiz</p>
+  <p style="margin-top:6px;"><a href="https://german-institute.org/">german-institute.org</a></p>
+</footer>
+
+<script>
+const TOTAL = 25;
+
+function updateProgress() {
+  const answered = document.querySelectorAll('.blank-select:not([value=""])').length;
+  let filled = 0;
+  document.querySelectorAll('.blank-select').forEach(s => {
+    if (s.value !== '') filled++;
+  });
+  const pct = Math.round((filled / TOTAL) * 100);
+  document.getElementById('prog-bar').style.width = pct + '%';
+  document.getElementById('prog-count').textContent = filled + ' / ' + TOTAL + ' beantwortet';
+}
+
+document.querySelectorAll('.blank-select').forEach(sel => {
+  sel.addEventListener('change', updateProgress);
+});
+
+function gradeQuiz() {
+  const selects = document.querySelectorAll('.blank-select');
+  let correct = 0;
+  const feedbackItems = [];
+
+  selects.forEach(sel => {
+    const id = sel.dataset.id;
+    const answer = sel.dataset.answer;
+    const meaning = sel.dataset.meaning;
+    const hint = sel.dataset.hint;
+    const chosen = sel.value;
+    const isCorrect = chosen === answer;
+
+    if (isCorrect) {
+      correct++;
+      sel.classList.add('correct');
+      sel.classList.remove('wrong');
+      feedbackItems.push({ id, isCorrect: true, chosen, answer, meaning, hint });
+    } else {
+      sel.classList.add('wrong');
+      sel.classList.remove('correct');
+      feedbackItems.push({ id, isCorrect: false, chosen: chosen || '(nichts gewählt)', answer, meaning, hint });
+    }
+  });
+
+  // Score banner
+  const pct = Math.round((correct / TOTAL) * 100);
+  document.getElementById('score-num').textContent = correct + '/' + TOTAL;
+
+  let msg, msgDetail;
+  if (pct >= 90) {
+    msg = 'Ausgezeichnet!';
+    msgDetail = 'Du beherrschst den Wortschatz und die Grammatik aus B1.1 sehr gut.';
+  } else if (pct >= 75) {
+    msg = 'Sehr gut!';
+    msgDetail = 'Du hast die meisten Konzepte gut verstanden. Lies das Feedback unten durch.';
+  } else if (pct >= 55) {
+    msg = 'Gut gemacht.';
+    msgDetail = 'Du kennst viele Wörter, aber einige Bereiche brauchen noch Übung. Schau dir die Hinweise an.';
+  } else {
+    msg = 'Weiter üben!';
+    msgDetail = 'Lies die Kurszusammenfassung noch einmal durch — das hilft dir bei dem nächsten Versuch.';
+  }
+
+  document.getElementById('score-msg').innerHTML = '<strong>' + msg + '</strong>' + msgDetail;
+
+  // Feedback list
+  const list = document.getElementById('feedback-list');
+  list.innerHTML = '';
+
+  feedbackItems.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'feedback-item ' + (item.isCorrect ? 'correct-item' : 'wrong-item');
+
+    if (item.isCorrect) {
+      div.innerHTML =
+        '<div class="fi-head"><span class="fi-icon">✓</span> Lücke ' + item.id + ' — Richtig</div>' +
+        '<div class="fi-blank-label">„' + item.answer + '" — korrekt!</div>';
+    } else {
+      let chosenDisplay = item.chosen !== '(nichts gewählt)'
+        ? '„' + item.chosen + '"'
+        : '(keine Antwort)';
+
+      div.innerHTML =
+        '<div class="fi-head"><span class="fi-icon">✗</span> Lücke ' + item.id + ' — Falsch</div>' +
+        '<div class="fi-blank-label">Deine Antwort: ' + chosenDisplay + '</div>' +
+        '<div class="fi-your">' + (item.chosen !== '(nichts gewählt)' ? '→ ' + item.meaning : 'Du hast nichts gewählt.') + '</div>' +
+        '<div class="fi-hint">💡 Hinweis zur richtigen Antwort: ' + item.hint + '</div>';
+    }
+
+    list.appendChild(div);
+  });
+
+  const panel = document.getElementById('results-panel');
+  panel.classList.add('visible');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  document.getElementById('submit-btn').disabled = true;
+}
+
+function resetQuiz() {
+  document.querySelectorAll('.blank-select').forEach(sel => {
+    sel.value = '';
+    sel.classList.remove('correct', 'wrong');
+  });
+  document.getElementById('results-panel').classList.remove('visible');
+  document.getElementById('submit-btn').disabled = false;
+  document.getElementById('prog-bar').style.width = '0%';
+  document.getElementById('prog-count').textContent = '0 / 25 beantwortet';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
