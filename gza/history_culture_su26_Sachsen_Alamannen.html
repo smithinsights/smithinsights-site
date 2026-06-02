@@ -66,23 +66,20 @@ body{font-family:'EB Garamond',Georgia,serif;background:var(--parch);color:var(-
    HERO (magazine)
    ==================================================== */
 .hero{background:var(--s-forest);padding:52px 0 0;border-bottom:5px solid var(--s-ochre);overflow:hidden;}
-.hero-inner{max-width:1100px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:end;}
+.hero-inner{max-width:1100px;margin:0 auto;padding:0 48px;}
 .hero-text{padding-bottom:40px;}
 .hero-kicker{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--s-ochre);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
 .hero-kicker::before{content:'';width:28px;height:2px;background:var(--s-ochre);display:block;}
 .hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.9rem,5vw,3.3rem);color:var(--s-bone);font-weight:900;line-height:1.1;margin-bottom:18px;}
 .hero h1 strong em{color:var(--s-ochre);font-style:italic;font-weight:900;}
 .hero-deck{font-size:1.1rem;color:rgba(217,210,195,0.7);font-style:italic;line-height:1.6;max-width:540px;border-top:1px solid rgba(166,124,46,0.35);padding-top:14px;}
-.hero-sidebar{background:var(--s-oak);padding:22px 20px;border-left:3px solid var(--s-ochre);display:flex;flex-direction:column;justify-content:flex-end;}
-.hs-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--s-ochre);margin-bottom:10px;}
-.hs-item{font-size:0.88rem;color:var(--s-bone);padding:7px 0;border-bottom:1px solid rgba(217,210,195,0.1);display:flex;gap:8px;align-items:baseline;}
-.hs-item:last-child{border-bottom:none;}
-.hs-num{font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--s-ochre);font-weight:700;flex-shrink:0;}
 
 /* TAB NAV */
-.tab-nav{background:#26362A;display:flex;flex-wrap:wrap;border-bottom:3px solid var(--s-ochre);}
-.tab-nav a{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(217,210,195,0.6);text-decoration:none;padding:12px 19px;border-right:1px solid rgba(255,255,255,0.06);transition:color 0.2s,background 0.2s;}
+.tab-nav{background:#26362A;display:flex;flex-wrap:wrap;align-items:stretch;border-bottom:3px solid var(--s-ochre);}
+.tab-nav-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--s-ochre);padding:0 18px;display:flex;align-items:center;border-right:2px solid var(--s-ochre);flex-shrink:0;}
+.tab-nav a{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(217,210,195,0.6);text-decoration:none;padding:13px 18px;border-right:1px solid rgba(255,255,255,0.06);transition:color 0.2s,background 0.2s;display:flex;align-items:center;gap:6px;}
 .tab-nav a:hover{color:var(--s-ochre);background:rgba(166,124,46,0.1);}
+.tn{font-size:10px;color:var(--s-ochre);font-weight:700;opacity:0.8;}
 
 /* ====================================================
    HISTORY ZONE
@@ -97,21 +94,110 @@ body{font-family:'EB Garamond',Georgia,serif;background:var(--parch);color:var(-
 
 p{margin-bottom:.9em;} p:last-child{margin-bottom:0;}
 
-.byline-strip{background:var(--s-oak);color:var(--s-bone);padding:11px 18px;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:26px;}
-.byline-strip strong{color:var(--s-ochre);font-size:13px;}
+/* ---- MAGAZINE ARTICLE ---- */
+.byline-strip{display:flex;align-items:center;gap:16px;margin-bottom:0;padding:14px 0;border-top:1px solid var(--border-p);border-bottom:1px solid var(--border-p);}
+.byline-strip .by-author{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--s-oak);}
+.byline-strip .by-title{font-family:'Barlow Condensed',sans-serif;font-size:12px;color:var(--muted);letter-spacing:0.06em;}
+.byline-strip .by-sep{width:1px;height:22px;background:var(--border-p);}
 
-/* Two-column magazine */
-.magazine-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-bottom:48px;align-items:start;}
+/* Full-width standfirst / intro */
+.mag-standfirst{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.45rem;font-style:italic;font-weight:400;
+  color:var(--s-forest);
+  line-height:1.55;
+  padding:24px 0 20px;
+  border-bottom:2px solid var(--s-ochre);
+  margin-bottom:32px;
+}
 
-.lesetext{font-size:1.05rem;line-height:1.85;}
-.lesetext-intro::first-letter{font-family:'Playfair Display',Georgia,serif;font-size:4.2em;font-weight:900;float:left;line-height:0.75;padding-right:10px;padding-top:6px;color:var(--s-forest);}
-.lesetext h3{font-family:'Playfair Display',Georgia,serif;font-size:1.12rem;font-weight:700;margin:24px 0 8px;color:var(--s-forest);border-left:3px solid var(--s-ochre);padding-left:10px;}
+/* 3-column editorial grid: narrow | body | sidebar */
+.mag-body{
+  display:grid;
+  grid-template-columns:3fr 1px 2fr;
+  gap:0 36px;
+  margin-bottom:40px;
+}
+.mag-col-main{}
+.mag-divider{background:var(--border-p);margin:0;}
+.mag-col-side{}
+
+/* Section label in margin — magazine style */
+.mag-section-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--s-ochre);
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  float:left;margin-right:16px;margin-top:4px;
+  line-height:1;
+  height:fit-content;
+  user-select:none;
+}
+.lesetext h3{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.1rem;font-weight:700;
+  margin:26px 0 6px;color:var(--ink);
+  clear:both;
+}
+.lesetext h3::before{
+  content:'';display:block;
+  width:36px;height:2px;background:var(--s-ochre);
+  margin-bottom:6px;
+}
 .lesetext h3:first-child{margin-top:0;}
+.lesetext-intro::first-letter{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:5em;font-weight:900;
+  float:left;line-height:0.72;
+  padding-right:12px;padding-top:8px;
+  color:var(--s-forest);
+}
+/* Sidebar elements */
+.mag-rubric{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;
+  color:white;background:var(--s-ochre);
+  display:inline-block;padding:3px 8px;border-radius:2px;
+  margin-bottom:10px;
+}
+.mag-pull{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.55rem;font-weight:700;font-style:italic;
+  color:var(--s-forest);line-height:1.35;
+  border-left:4px solid var(--s-ochre);
+  padding:4px 0 4px 16px;
+  margin:28px 0;
+}
+.mag-fact-box{
+  background:var(--s-forest);color:var(--s-bone);
+  border-radius:4px;padding:18px 18px;
+  margin:28px 0;
+  font-size:0.88rem;
+  line-height:1.6;
+}
+.mag-fact-box .mfb-head{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--s-ochre);margin-bottom:10px;
+}
+.mag-fact-box ul{padding-left:1.1em;}
+.mag-fact-box ul li{margin-bottom:5px;}
+.mag-img-caption{font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:6px;text-align:center;}
+
+/* Full-width ruled section break inside article */
+.mag-full-rule{
+  display:flex;align-items:center;gap:14px;
+  margin:10px 0 28px;
+  grid-column:1/-1;
+}
+.mag-full-rule span{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--s-ochre);white-space:nowrap;}
+.mag-full-rule::before,.mag-full-rule::after{content:'';flex:1;height:1px;background:var(--border-p);}
+
+.key-legend{font-size:0.82rem;color:var(--muted);font-style:italic;padding:10px 14px;background:rgba(255,255,255,0.5);border-radius:4px;border:1px solid var(--border-p);margin-top:20px;}
+.lesetext{font-size:1.05rem;line-height:1.88;}
 .hin-word{font-weight:700;font-style:italic;color:var(--s-forest);}
 .her-word{font-weight:700;font-style:italic;color:var(--a-slate);}
-.key-legend{font-size:0.82rem;color:var(--muted);font-style:italic;margin-top:10px;padding:10px 14px;background:rgba(255,255,255,0.5);border-radius:4px;border:1px solid var(--border-p);}
-
-.pull-quote{font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;font-style:italic;font-weight:700;color:var(--s-forest);border-top:3px solid var(--s-ochre);border-bottom:3px solid var(--s-ochre);padding:16px 0;margin:28px 0;line-height:1.45;}
 
 /* tribe boxes */
 .tribe-box{border-radius:6px;overflow:hidden;margin-bottom:14px;}
@@ -179,7 +265,31 @@ p{margin-bottom:.9em;} p:last-child{margin-bottom:0;}
 .zone-textbook .wrap{max-width:1060px;margin:0 auto;padding:56px 32px;}
 
 /* Chapter header — mimics Sicher! page header */
+/* Sicher! book name banner */
+.sicher-book-name{
+  background:var(--tb-coral);
+  padding:9px 20px;
+  display:flex;align-items:center;gap:14px;
+  border-radius:4px 4px 0 0;
+  margin-bottom:0;
+}
+.sbn-label{
+  font-family:'Noto Sans','Barlow Condensed',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.7);
+  background:rgba(0,0,0,0.2);
+  padding:2px 8px;border-radius:2px;
+  flex-shrink:0;
+}
+.sbn-title{
+  font-family:'Noto Sans','Barlow Condensed',sans-serif;
+  font-size:14px;font-weight:700;letter-spacing:0.06em;
+  color:white;
+}
 .sicher-chapter-bar{
+  border-radius:0 0 0 0;
+  border-top:none;
+}
   display:flex;align-items:center;justify-content:space-between;
   border-bottom:2px solid var(--tb-coral);
   padding-bottom:10px;margin-bottom:32px;
@@ -399,8 +509,10 @@ footer{background:var(--s-oak);padding:30px 44px;}
    RESPONSIVE
    ==================================================== */
 @media(max-width:780px){
-  .hero-inner{grid-template-columns:1fr;}.hero-sidebar{display:none;}
-  .magazine-grid,.video-grid,.sicher-zwei-spalten,.sicher-praep .sp-grid{grid-template-columns:1fr;}
+  .hero-inner{padding:0 20px;}
+  .magazine-grid,.video-grid,.sicher-zwei-spalten,.sicher-praep .sp-grid,.mag-body{grid-template-columns:1fr;}
+  .mag-divider{display:none;}
+  .mag-col-side{border-top:2px solid var(--border-p);padding-top:24px;}
   .compare-grid{grid-template-columns:100px 1fr 1fr;font-size:0.82rem;}
   .hero{padding:34px 0 0;}.hero-inner{padding:0 20px;}
   .site-header{padding:11px 18px;}
@@ -429,28 +541,20 @@ footer{background:var(--s-oak);padding:30px 44px;}
       <h1>Sachsen und Alamannen<br><strong><em>Zwei germanische Stämme am Vorabend der Christianisierung</em></strong></h1>
       <p class="hero-deck">Wie lebten die Menschen vor über 1.200 Jahren? Ein Vergleich zwischen zwei großen germanischen Stämmen, kurz bevor das Christentum ihr Leben grundlegend verändern sollte.</p>
     </div>
-    <div class="hero-sidebar">
-      <div class="hs-label">Auf dieser Seite</div>
-      <div class="hs-item"><span class="hs-num">01</span>Lesetext (Stefan Bauer)</div>
-      <div class="hs-item"><span class="hs-num">02</span>Videos &amp; Überblick</div>
-      <div class="hs-item"><span class="hs-num">03</span>Vergleich &amp; Steckbrief Franken</div>
-      <div class="hs-item"><span class="hs-num">04</span>Vokabeln</div>
-      <div class="hs-item"><span class="hs-num">05</span>Grammatik: hin/her (Sicher! B2)</div>
-      <div class="hs-item"><span class="hs-num">06</span>Quiz (Kreidetafel)</div>
-      <div class="hs-item"><span class="hs-num">07</span>Hausaufgabe</div>
-    </div>
+
   </div>
 </div>
 
-<!-- NAV -->
+<!-- NAV with numbered sections -->
 <nav class="tab-nav">
-  <a href="#lesetext">Lesetext</a>
-  <a href="#videos">Videos</a>
-  <a href="#vergleich">Vergleich</a>
-  <a href="#vokabeln">Vokabeln</a>
-  <a href="#grammatik">Grammatik</a>
-  <a href="#quiz">Quiz</a>
-  <a href="#aufgabe">Hausaufgabe</a>
+  <span class="tab-nav-label">Auf dieser Seite</span>
+  <a href="#lesetext"><span class="tn">01</span>Lesetext</a>
+  <a href="#videos"><span class="tn">02</span>Videos</a>
+  <a href="#vergleich"><span class="tn">03</span>Vergleich</a>
+  <a href="#vokabeln"><span class="tn">04</span>Vokabeln</a>
+  <a href="#grammatik"><span class="tn">05</span>Grammatik</a>
+  <a href="#quiz"><span class="tn">06</span>Quiz</a>
+  <a href="#aufgabe"><span class="tn">07</span>Hausaufgabe</a>
 </nav>
 
 <!-- ============================================================
@@ -464,40 +568,80 @@ footer{background:var(--s-oak);padding:30px 44px;}
     <div class="section-title">GEO Historie // Wissen Kompakt: Sachsen und Alamannen</div>
 
     <div class="byline-strip">
-      <span>Von</span><strong>Stefan Bauer M.A.</strong>
-      <span style="opacity:0.4;">|</span>
-      <span>Manager Language &amp; Examination Programs, Goethe-Zentrum Atlanta</span>
+      <span class="by-author">Stefan Bauer M.A.</span>
+      <div class="by-sep"></div>
+      <span class="by-title">Manager Language &amp; Examination Programs &nbsp;&middot;&nbsp; Goethe-Zentrum Atlanta</span>
     </div>
 
-    <div class="magazine-grid">
-      <div>
+    <!-- Full-width standfirst -->
+    <p class="mag-standfirst">Wie lebten die Menschen vor über 1.200 Jahren? Am Vorabend ihrer Christianisierung gab es fundamentale Unterschiede zwischen zwei großen germanischen Stämmen &mdash; Unterschiede, die bis heute in der Archäologie, der Sprache und der Kirchengeschichte sichtbar sind.</p>
+
+    <!-- 3-column editorial body: main | rule | sidebar -->
+    <div class="mag-body">
+
+      <!-- MAIN COLUMN -->
+      <div class="mag-col-main">
         <div class="lesetext">
-          <p class="lesetext-intro">Wie lebten die Menschen vor über 1200 Jahren? Schauen wir <strong class="hin-word">dorthin</strong>, wo die großen germanischen Stämme wohnten. Am Vorabend ihrer Christianisierung gab es fundamentale Unterschiede zwischen den Sachsen und den Alamannen.</p>
+          <p class="lesetext-intro">Schauen wir <strong class="hin-word">dorthin</strong>, wo die großen germanischen Stämme wohnten. Am Vorabend ihrer Christianisierung gab es fundamentale Unterschiede zwischen den Sachsen und den Alamannen. Klima, Geographie und Kontakt mit dem Römischen Reich formten zwei völlig unterschiedliche Kulturen &mdash; die eine aus Holz und Wald, die andere aus Stein und Straße.</p>
 
           <h3>1. Politik und Macht</h3>
           <p>Die Sachsen hatten keinen König. Sie lebten dezentral in Teilstämmen zusammen. Wenn Gefahr drohte, wählten sie einen Herzog. Dieser zog mit den Kriegern <strong class="hin-word">hierhin</strong> und <strong class="hin-word">dorthin</strong>, um das Land zu verteidigen. Nach dem Krieg legte er seine Macht wieder ab. Die Alamannen dagegen hatten früher kleine Könige. Später wurden sie vom Frankenreich erobert. Ein zentraler Herzog regierte sie nun von seiner Machtposition <strong class="her-word">herab</strong>.</p>
 
           <h3>2. Die Gesellschaft</h3>
           <p>Bei den Sachsen war die Gesellschaft sehr streng aufgeteilt. Es gab Adelige, Freie und Halbfreie. Niemand durfte in eine andere Schicht wechseln; Heiraten zwischen den Ständen waren verboten. Bei den Alamannen war das System durchlässiger. Wer dem König oder Herzog treu diente, konnte in der Hierarchie nach oben <strong class="hin-word">hinaufsteigen</strong>.</p>
-        </div>
 
-        <div class="pull-quote">"Die Sachsen blickten nie auf die römische Kultur hinüber. Die Alamannen bauten direkt neben alte römische Ruinen."</div>
-      </div>
-
-      <div>
-        <div class="lesetext">
           <h3>3. Siedlungswesen und das römische Erbe</h3>
           <p>Die Sachsen bauten nur einfache Holzhäuser. Sie blickten nie auf die römische Kultur <strong class="her-word">hinüber</strong>, weil sie im Norden weniger Kontakt dazu hatten. Die Alamannen bauten ihre Holzhäuser dagegen oft direkt neben alte römische Ruinen <strong class="hin-word">hin</strong>. Sie nutzten die Steine der Römer pragmatisch als Baumaterial. Die alten römischen Straßen blieben aktiv, um von einem Ort zum anderen <strong class="hin-word">hinzureisen</strong>. Auch alte Kastelle am Rhein nutzten sie weiterhin als Wohnorte.</p>
 
           <h3>4. Der Prozess der Christianisierung</h3>
           <p>Die Christianisierung lief völlig unterschiedlich ab. Karl der Große brachte das Christentum mit brutaler Gewalt zu den Sachsen. Er marschierte mit seinem Heer in ihr Land <strong class="hin-word">hinein</strong>, zerstörte Heiligtümer und erließ die Todesstrafe auf heidnische Rituale. Zu den Alamannen kamen dagegen meist friedliche Mönche aus Irland und Schottland <strong class="her-word">herüber</strong>. Sie gründeten Klöster und überzeugten die Eliten ohne Waffen.</p>
         </div>
-        <div class="key-legend">
-          <strong style="color:var(--s-forest);">Grün/kursiv-fett</strong> = <em>hin-</em> (Bewegung vom Sprecher weg) &nbsp;|&nbsp;
-          <strong style="color:var(--a-slate);">Blau/kursiv-fett</strong> = <em>her-</em> (Bewegung zum Sprecher hin)
+
+        <div class="key-legend" style="margin-top:28px;">
+          <strong style="color:var(--s-forest);">Grün + kursiv-fett</strong> = <em>hin-</em> (Bewegung vom Sprecher weg) &nbsp;&nbsp;
+          <strong style="color:var(--a-slate);">Blau + kursiv-fett</strong> = <em>her-</em> (Bewegung zum Sprecher hin)
         </div>
       </div>
-    </div>
+
+      <!-- VERTICAL RULE -->
+      <div class="mag-divider"></div>
+
+      <!-- SIDEBAR COLUMN -->
+      <div class="mag-col-side">
+
+        <div class="mag-rubric">Im Text</div>
+        <div class="mag-pull">"Die Sachsen blickten nie auf die römische Kultur hinüber. Die Alamannen bauten direkt neben alte römische Ruinen hin."</div>
+
+        <div class="mag-fact-box">
+          <div class="mfb-head">Die Sachsen &nbsp;&mdash;&nbsp; Wald &amp; Holz</div>
+          <ul>
+            <li>Kein König &mdash; Thing-System</li>
+            <li>Strikte Kasten: Edhilingui &middot; Frilingi &middot; Lazzi</li>
+            <li>Reiner Holzbau, kein Stein</li>
+            <li>Kein Kontakt zur römischen Kultur</li>
+            <li>Christianisierung durch Krieg (772 bis 804)</li>
+          </ul>
+        </div>
+
+        <div class="mag-fact-box" style="background:var(--a-burg);">
+          <div class="mfb-head">Die Alamannen &nbsp;&mdash;&nbsp; Stein &amp; Rom</div>
+          <ul>
+            <li>Herzog unter fränkischer Krone</li>
+            <li>Durchlässigere Gesellschaft; Aufstieg möglich</li>
+            <li>Spolien: römische Steine als Baumaterial</li>
+            <li>Röm. Straßen und Kastelle weitergenutzt</li>
+            <li>Friedliche Missionierung durch Mönche</li>
+          </ul>
+        </div>
+
+        <div class="mag-pull" style="font-size:1.1rem;margin-top:32px;">"Karl der Große erließ die Todesstrafe auf heidnische Rituale. Irische Mönche überzeugten die Alamannen ohne Waffen."</div>
+
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:28px;padding-top:14px;border-top:1px solid var(--border-p);">
+          Grammatikhinweis: Die fettgedruckten kursiven Wörter im Text zeigen <em>hin-</em> und <em>her-</em> in ihrer historischen Verwendung. Mehr dazu im Grammatikteil unten.
+        </div>
+      </div>
+
+    </div><!-- /mag-body -->
 
     <!-- Videos -->
     <div class="section-rule" id="videos" style="scroll-margin-top:80px;"><span class="rule-tag">Videos</span></div>
@@ -597,6 +741,11 @@ footer{background:var(--s-oak);padding:30px 44px;}
 <div class="zone-textbook">
 <div class="wrap">
   <section id="grammatik" style="scroll-margin-top:80px;">
+
+    <div class="sicher-book-name">
+      <span class="sbn-label">Lehrbuch</span>
+      <span class="sbn-title">Sicher! Übungsgrammatik &nbsp;&middot;&nbsp; Hueber Verlag</span>
+    </div>
 
     <div class="sicher-chapter-bar">
       <div class="sicher-chapter-num">5</div>
