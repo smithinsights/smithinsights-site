@@ -469,8 +469,9 @@ p{margin-bottom:.9em;} p:last-child{margin-bottom:0;}
 .fi{border-radius:6px;padding:12px 16px;border:1px solid;font-size:0.9rem;margin-bottom:10px;}
 .fi.ok{background:var(--ok-bg);border-color:var(--ok-bd);color:var(--ok-tx);}
 .fi.no{background:var(--no-bg);border-color:var(--no-bd);color:var(--no-tx);}
-.fi-head{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px;}
-.fi-hint{font-style:italic;margin-top:4px;}
+.fi-head{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;}
+.fi-explain{font-size:0.9rem;margin-bottom:5px;line-height:1.5;}
+.fi-hint{font-style:italic;font-size:0.88rem;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.08);line-height:1.5;}
 .email-ok{background:rgba(126,200,151,0.18);border:2px solid var(--chalk-ok);border-radius:6px;padding:16px 20px;margin-top:18px;display:none;}
 .email-ok.visible{display:block;}
 .email-ok .eo-head{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chalk-ok);margin-bottom:6px;}
@@ -861,31 +862,31 @@ footer{background:var(--s-oak);padding:30px 44px;}
     <div class="chalk-part">Teil 1 &mdash; rein, raus, rauf, rüber, runter</div>
     <div class="chalk-card">
       <div class="cq-lbl">Ein Sommerabend</div>
-      <p>a) Es ist so schön warm draußen. Wollen wir uns nicht in den Garten <span class="blank-wrap"><select class="blank-select" data-id="q1" data-answer="raus" data-meaning="'raus' (= heraus/hinaus) means going outside, from indoors to outdoors" data-hint="Du bewegst dich aus dem Haus in den Garten. Welches Wort bedeutet 'nach draußen'?"><option value="">—</option><option>rein</option><option>raus</option><option>rauf</option><option>runter</option></select></span> setzen?</p>
-      <p>b) Stell doch die Gartenmöbel schon mal <span class="blank-wrap"><select class="blank-select" data-id="q2" data-answer="raus" data-meaning="'raus' again — the furniture moves from inside to outside" data-hint="Die Möbel sollen auch nach draußen. Gleiche Richtung wie (a)."><option value="">—</option><option>rein</option><option>raus</option><option>rauf</option><option>runter</option></select></span>.</p>
-      <p>c) Bei den Nachbarn ist ein Gartenfest. Sie haben gefragt, ob wir nicht <span class="blank-wrap"><select class="blank-select" data-id="q3" data-answer="rüber" data-meaning="'rüber' (= hinüber/herüber) means crossing horizontally to the neighbor's place" data-hint="Du gehst zu den Nachbarn nebenan. Nicht rauf, nicht rein. Du gehst hinüber."><option value="">—</option><option>raus</option><option>rauf</option><option>rüber</option><option>rein</option></select></span> kommen wollen.</p>
-      <p>d) Tom, wir haben keinen Wein mehr. Doch, ich geh gleich <span class="blank-wrap"><select class="blank-select" data-id="q4" data-answer="runter" data-meaning="'runter' (= hinunter) means downward — going down to the cellar" data-hint="Der Wein ist im Keller, also unter dir. Welche Richtung?"><option value="">—</option><option>rauf</option><option>rüber</option><option>runter</option><option>raus</option></select></span> in den Keller und hol noch welchen <span class="blank-wrap"><select class="blank-select" data-id="q5" data-answer="rauf" data-meaning="'rauf' (= herauf) means coming back up with the wine" data-hint="Nach dem Keller bringst du den Wein nach oben. Welche Richtung?"><option value="">—</option><option>rein</option><option>rauf</option><option>runter</option><option>rüber</option></select></span>.</p>
-      <p>e) Wo ist die Toilette? Oben im ersten Stock. Gut, dann geh ich mal kurz <span class="blank-wrap"><select class="blank-select" data-id="q6" data-answer="rauf" data-meaning="'rauf' — the toilet is upstairs, so you go up" data-hint="Die Toilette ist im ersten Stock. Du musst nach oben."><option value="">—</option><option>raus</option><option>rüber</option><option>runter</option><option>rauf</option></select></span>.</p>
-      <p>f) Es wird mir hier draußen zu kalt. Können wir uns nicht <span class="blank-wrap"><select class="blank-select" data-id="q7" data-answer="rein" data-meaning="'rein' (= hinein/herein) means going inside — from outside into an enclosed space" data-hint="Es ist kalt draußen. Du willst wieder nach drinnen ins Haus."><option value="">—</option><option>raus</option><option>rauf</option><option>runter</option><option>rein</option></select></span> setzen?</p>
+      <p>a) Es ist so schön warm draußen. Wollen wir uns nicht in den Garten <span class="blank-wrap"><select class="blank-select" data-id="q1" data-answer="raus" data-meaning="'raus' (= heraus/hinaus) beschreibt eine Bewegung von drinnen nach draußen." data-hint="Du gehst vom Haus in den Garten. Denkst du an eine Bewegung nach innen oder nach außen?"><option value="">—</option><option>rein</option><option>raus</option><option>rauf</option><option>runter</option></select></span> setzen?</p>
+      <p>b) Stell doch die Gartenmöbel schon mal <span class="blank-wrap"><select class="blank-select" data-id="q2" data-answer="raus" data-meaning="'raus' (= heraus/hinaus) beschreibt eine Bewegung von drinnen nach draußen." data-hint="Die Gartenmöbel sollen in den Garten — ist das eine Bewegung nach innen oder nach außen?"><option value="">—</option><option>rein</option><option>raus</option><option>rauf</option><option>runter</option></select></span>.</p>
+      <p>c) Bei den Nachbarn ist ein Gartenfest. Sie haben gefragt, ob wir nicht <span class="blank-wrap"><select class="blank-select" data-id="q3" data-answer="rüber" data-meaning="'rüber' (= hinüber/herüber) beschreibt eine Bewegung seitwärts zu einem anderen Ort, z.B. zum Nachbarn." data-hint="Du gehst nicht hoch, nicht runter, nicht rein. Du gehst zur Seite — zu den Nachbarn. Welche Richtung ist das?"><option value="">—</option><option>raus</option><option>rauf</option><option>rüber</option><option>rein</option></select></span> kommen wollen.</p>
+      <p>d) Tom, wir haben keinen Wein mehr. Doch, ich geh gleich <span class="blank-wrap"><select class="blank-select" data-id="q4" data-answer="runter" data-meaning="'runter' (= hinunter/herunter) beschreibt eine Bewegung nach unten." data-hint="Der Keller liegt unterhalb. In welche Richtung gehst du, wenn du dahin möchtest?"><option value="">—</option><option>rauf</option><option>rüber</option><option>runter</option><option>raus</option></select></span> in den Keller und hol noch welchen <span class="blank-wrap"><select class="blank-select" data-id="q5" data-answer="rauf" data-meaning="'rauf' (= hinauf/herauf) beschreibt eine Bewegung nach oben." data-hint="Du bist im Keller und willst zurück zu den anderen Leuten. In welche Richtung bewegst du dich?"><option value="">—</option><option>rein</option><option>rauf</option><option>runter</option><option>rüber</option></select></span>.</p>
+      <p>e) Wo ist die Toilette? Oben im ersten Stock. Gut, dann geh ich mal kurz <span class="blank-wrap"><select class="blank-select" data-id="q6" data-answer="rauf" data-meaning="'rauf' (= hinauf/herauf) beschreibt eine Bewegung nach oben." data-hint="Die Toilette ist im ersten Stock. Denkst du an eine Bewegung nach oben oder nach unten?"><option value="">—</option><option>raus</option><option>rüber</option><option>runter</option><option>rauf</option></select></span>.</p>
+      <p>f) Es wird mir hier draußen zu kalt. Können wir uns nicht <span class="blank-wrap"><select class="blank-select" data-id="q7" data-answer="rein" data-meaning="'rein' (= hinein/herein) beschreibt eine Bewegung von draußen nach drinnen." data-hint="Du bist draußen und es ist kalt. Wohin möchtest du — nach innen oder nach außen?"><option value="">—</option><option>raus</option><option>rauf</option><option>runter</option><option>rein</option></select></span> setzen?</p>
     </div>
 
     <div class="chalk-part">Teil 2 &mdash; hin oder her (Kurz vor dem Gipfel)</div>
     <div class="chalk-card">
       <div class="cq-lbl">Dialog auf dem Bergpfad</div>
-      <p>Bernd, komm doch (a) <span class="blank-wrap"><select class="blank-select" data-id="q8" data-answer="her" data-meaning="'her' — Bernd is called toward the speaker. Movement toward the speaker = her." data-hint="Der Sprecher ruft Bernd zu sich. Bernd kommt zum Sprecher hin."><option value="">—</option><option>hin</option><option>her</option></select></span> zu mir!</p>
-      <p>Rechts und links geht es ziemlich tief (b) <span class="blank-wrap"><select class="blank-select" data-id="q9" data-answer="hin" data-meaning="'hinunter' — the drop goes steeply downward, away from the speaker" data-hint="Der Abgrund geht nach unten, weg von dir in die Tiefe."><option value="">—</option><option>hin</option><option>her</option></select></span>unter.</p>
-      <p>Du darfst halt nicht (c) <span class="blank-wrap"><select class="blank-select" data-id="q10" data-answer="hin" data-meaning="'hinunterschauen' — looking down away from where you stand" data-hint="Du schaust nach unten in die Tiefe, weg von deiner Position."><option value="">—</option><option>hin</option><option>her</option></select></span>schauen.</p>
-      <p>Schau (d) <span class="blank-wrap"><select class="blank-select" data-id="q11" data-answer="her" data-meaning="'schau her' = look here, toward me — attention directed toward the speaker" data-hint="'Schau ___, hier ist ein schöner Platz' — der Sprecher will, dass du zu ihm schaust."><option value="">—</option><option>hin</option><option>her</option></select></span>, hier ist ein wunderschöner Platz! Willst du nicht zu mir (e) <span class="blank-wrap"><select class="blank-select" data-id="q12" data-answer="her" data-meaning="'herkommen' — coming to where the speaker already is" data-hint="'Zu mir kommen' ist Bewegung zum Sprecher hin."><option value="">—</option><option>hin</option><option>her</option></select></span>kommen?</p>
-      <p>Man kann sogar bis nach Italien (f) <span class="blank-wrap"><select class="blank-select" data-id="q13" data-answer="hin" data-meaning="'hinübersehen' — the gaze travels far away toward Italy, away from the speaker" data-hint="Du siehst bis nach Italien, weit weg von dir."><option value="">—</option><option>hin</option><option>her</option></select></span>übersehen. Ich helfe dir auch (g) <span class="blank-wrap"><select class="blank-select" data-id="q14" data-answer="her" data-meaning="'herauf' — helping someone come up to where the speaker already is" data-hint="Du bist oben und hilfst jemandem zu dir. Bewegung zum Sprecher."><option value="">—</option><option>hin</option><option>her</option></select></span>auf.</p>
+      <p>Bernd, komm doch (a) <span class="blank-wrap"><select class="blank-select" data-id="q8" data-answer="her" data-meaning="'her' beschreibt eine Bewegung zum Sprecher hin. 'hin' beschreibt eine Bewegung vom Sprecher weg." data-hint="Der Sprecher sagt 'komm zu mir'. Kommt Bernd zum Sprecher hin oder geht er vom Sprecher weg?"><option value="">—</option><option>hin</option><option>her</option></select></span> zu mir!</p>
+      <p>Rechts und links geht es ziemlich tief (b) <span class="blank-wrap"><select class="blank-select" data-id="q9" data-answer="hin" data-meaning="'hin' bedeutet: Bewegung vom Sprecher weg. 'her' bedeutet: Bewegung zum Sprecher hin." data-hint="Der Abgrund ist tief unten — weg von dir. Geht die Bewegung zum Sprecher hin oder weg vom Sprecher?"><option value="">—</option><option>hin</option><option>her</option></select></span>unter.</p>
+      <p>Du darfst halt nicht (c) <span class="blank-wrap"><select class="blank-select" data-id="q10" data-answer="hin" data-meaning="'hin' bedeutet: Bewegung vom Sprecher weg. 'her' bedeutet: Bewegung zum Sprecher hin." data-hint="Du schaust in die Tiefe unter dir. Geht dein Blick zum Sprecher hin oder weg vom Sprecher?"><option value="">—</option><option>hin</option><option>her</option></select></span>schauen.</p>
+      <p>Schau (d) <span class="blank-wrap"><select class="blank-select" data-id="q11" data-answer="her" data-meaning="'her' bedeutet: Bewegung oder Ausrichtung zum Sprecher hin." data-hint="Der Sprecher sagt: 'Schau ___, hier ist ein schöner Platz.' Der Sprecher möchte, dass du ihn anschaust. Kommt die Aufmerksamkeit zum Sprecher oder geht sie weg?"><option value="">—</option><option>hin</option><option>her</option></select></span>, hier ist ein wunderschöner Platz! Willst du nicht zu mir (e) <span class="blank-wrap"><select class="blank-select" data-id="q12" data-answer="her" data-meaning="'her' bedeutet: Bewegung zum Sprecher hin." data-hint="'Zu mir kommen' — der Sprecher ist oben. Wer bewegt sich wohin? Zum Sprecher oder weg vom Sprecher?"><option value="">—</option><option>hin</option><option>her</option></select></span>kommen?</p>
+      <p>Man kann sogar bis nach Italien (f) <span class="blank-wrap"><select class="blank-select" data-id="q13" data-answer="hin" data-meaning="'hin' bedeutet: Bewegung oder Blickrichtung vom Sprecher weg, in die Ferne." data-hint="Du stehst auf dem Gipfel und siehst bis nach Italien. Geht dein Blick zu dir hin oder weg von dir in die Ferne?"><option value="">—</option><option>hin</option><option>her</option></select></span>übersehen. Ich helfe dir auch (g) <span class="blank-wrap"><select class="blank-select" data-id="q14" data-answer="her" data-meaning="'her' bedeutet: Bewegung zum Sprecher hin." data-hint="Du bist schon oben auf dem Gipfel. Die andere Person soll zu dir kommen. Bewegt sie sich zu dir hin oder weg von dir?"><option value="">—</option><option>hin</option><option>her</option></select></span>auf.</p>
     </div>
 
     <div class="chalk-part">Teil 3 &mdash; Verb-Präposition-Verbindungen</div>
     <div class="chalk-card">
       <div class="cq-lbl">Interrogativpronomen mit Präposition</div>
-      <p>1. <span class="blank-wrap"><select class="blank-select" data-id="q15" data-answer="Wofür" data-meaning="'wofür' = wo + für, used with 'sich interessieren FÜR'" data-hint="Das Verb ist 'sich interessieren FÜR'. Welches wo-Wort benutzt man mit 'für'?"><option value="">—</option><option>Wofür</option><option>Womit</option><option>Wovor</option><option>Woran</option></select></span> interessieren Sie sich bei den Sachsen? <em style="font-size:0.84rem;color:var(--chalk-dim);">(sich interessieren für)</em></p>
-      <p>2. <span class="blank-wrap"><select class="blank-select" data-id="q16" data-answer="Woran" data-meaning="'woran' = wo + an, used with 'glauben AN'" data-hint="Das Verb ist 'glauben AN'. Welches wo-Wort benutzt man mit 'an'?"><option value="">—</option><option>Wofür</option><option>Woran</option><option>Worüber</option><option>Wodurch</option></select></span> glaubten die Menschen vor dem Christentum? <em style="font-size:0.84rem;color:var(--chalk-dim);">(glauben an)</em></p>
-      <p>3. <span class="blank-wrap"><select class="blank-select" data-id="q17" data-answer="Wovor" data-meaning="'wovor' = wo + vor, used with 'Angst haben VOR'" data-hint="Der Ausdruck ist 'Angst haben VOR'. Welches wo-Wort benutzt man mit 'vor'?"><option value="">—</option><option>Wogegen</option><option>Worüber</option><option>Wovor</option><option>Wofür</option></select></span> hatten die Menschen damals Angst? <em style="font-size:0.84rem;color:var(--chalk-dim);">(Angst haben vor)</em></p>
-      <p>4. <span class="blank-wrap"><select class="blank-select" data-id="q18" data-answer="Worin" data-meaning="'worin' = wo + in, used with 'sich unterscheiden IN'" data-hint="Das Verb ist 'sich unterscheiden IN'. Welches wo-Wort benutzt man mit 'in'?"><option value="">—</option><option>Womit</option><option>Wogegen</option><option>Worin</option><option>Wodurch</option></select></span> unterschieden sich Sachsen und Alamannen am meisten? <em style="font-size:0.84rem;color:var(--chalk-dim);">(sich unterscheiden in)</em></p>
+      <p>1. <span class="blank-wrap"><select class="blank-select" data-id="q15" data-answer="Wofür" data-meaning="Das Verb 'sich interessieren' verbindet sich mit der Präposition 'für'. Bei Fragen über Dinge (nicht Personen) setzt man 'wo-' vor die Präposition." data-hint="Schau auf die Präposition im Klammertipp. Welches Fragewort entsteht, wenn du 'wo-' vor diese Präposition setzt?"><option value="">—</option><option>Wofür</option><option>Womit</option><option>Wovor</option><option>Woran</option></select></span> interessieren Sie sich bei den Sachsen? <em style="font-size:0.84rem;color:var(--chalk-dim);">(sich interessieren für)</em></p>
+      <p>2. <span class="blank-wrap"><select class="blank-select" data-id="q16" data-answer="Woran" data-meaning="Das Verb 'glauben' verbindet sich mit der Präposition 'an'. Bei Fragen über Dinge setzt man 'wo-' vor die Präposition." data-hint="Schau auf die Präposition im Klammertipp. Welches Fragewort entsteht, wenn du 'wo-' vor diese Präposition setzt? Beachte: Vor Vokalen wird 'wor-' benutzt."><option value="">—</option><option>Wofür</option><option>Woran</option><option>Worüber</option><option>Wodurch</option></select></span> glaubten die Menschen vor dem Christentum? <em style="font-size:0.84rem;color:var(--chalk-dim);">(glauben an)</em></p>
+      <p>3. <span class="blank-wrap"><select class="blank-select" data-id="q17" data-answer="Wovor" data-meaning="Der Ausdruck 'Angst haben' verbindet sich mit der Präposition 'vor'. Bei Fragen über Dinge setzt man 'wo-' vor die Präposition." data-hint="Schau auf die Präposition im Klammertipp. Welches Fragewort entsteht, wenn du 'wo-' vor diese Präposition setzt? Beachte: Vor Vokalen wird 'wor-' benutzt."><option value="">—</option><option>Wogegen</option><option>Worüber</option><option>Wovor</option><option>Wofür</option></select></span> hatten die Menschen damals Angst? <em style="font-size:0.84rem;color:var(--chalk-dim);">(Angst haben vor)</em></p>
+      <p>4. <span class="blank-wrap"><select class="blank-select" data-id="q18" data-answer="Worin" data-meaning="Das Verb 'sich unterscheiden' verbindet sich mit der Präposition 'in'. Bei Fragen über Dinge setzt man 'wo-' vor die Präposition." data-hint="Schau auf die Präposition im Klammertipp. Welches Fragewort entsteht, wenn du 'wo-' vor diese Präposition setzt? Beachte: Vor Vokalen wird 'wor-' benutzt."><option value="">—</option><option>Womit</option><option>Wogegen</option><option>Worin</option><option>Wodurch</option></select></span> unterschieden sich Sachsen und Alamannen am meisten? <em style="font-size:0.84rem;color:var(--chalk-dim);">(sich unterscheiden in)</em></p>
     </div>
 
     <div class="chalk-name-row">
@@ -895,7 +896,7 @@ footer{background:var(--s-oak);padding:30px 44px;}
     <p class="chalk-note">Bei 18/18 wird automatisch eine Bestätigung an Stefan Bauer vorbereitet.</p>
 
     <div style="text-align:center;margin-top:20px;">
-      <button class="btn-chalk" id="quiz-btn" onclick="gradeQuiz()">Quiz auswerten &#8594;</button>
+      <button class="btn-chalk" id="quiz-btn">Quiz auswerten &#8594;</button>
     </div>
 
     <div class="chalk-results" id="results-wrap">
@@ -984,83 +985,135 @@ footer{background:var(--s-oak);padding:30px 44px;}
 </footer>
 
 <script>
-const TOTAL = 18;
+var TOTAL = 18;
+
 function updateProg() {
-  let f = 0;
-  document.querySelectorAll('.blank-select').forEach(s => { if(s.value !== '') f++; });
+  var f = 0;
+  document.querySelectorAll('.blank-select').forEach(function(s){ if(s.value !== '') f++; });
   document.getElementById('prog-bar').style.width = Math.round(f/TOTAL*100)+'%';
   document.getElementById('prog-txt').textContent = f+' / '+TOTAL+' beantwortet';
 }
-document.querySelectorAll('.blank-select').forEach(s => s.addEventListener('change', updateProg));
+document.querySelectorAll('.blank-select').forEach(function(s){ s.addEventListener('change', updateProg); });
 
 function switchTab(e, name) {
-  document.querySelectorAll('.vtab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.vtab-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.vtab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.vtab-content').forEach(function(c){ c.classList.remove('active'); });
   e.currentTarget.classList.add('active');
   document.getElementById('tab-'+name).classList.add('active');
 }
 
 function gradeQuiz() {
-  const sels = document.querySelectorAll('.blank-select');
-  let correct = 0; const items = [];
-  sels.forEach((sel,i) => {
-    const ok = sel.value === sel.dataset.answer;
-    if(ok) { correct++; sel.classList.add('correct'); sel.classList.remove('wrong'); }
-    else { sel.classList.add('wrong'); sel.classList.remove('correct'); }
-    items.push({num:i+1,ok,chosen:sel.value||'(nichts)',answer:sel.dataset.answer,meaning:sel.dataset.meaning,hint:sel.dataset.hint});
+  var sels = document.querySelectorAll('.blank-select');
+  var correct = 0;
+  var items = [];
+
+  sels.forEach(function(sel, i) {
+    var ok = sel.value === sel.dataset.answer;
+    if(ok) {
+      correct++;
+      sel.classList.add('correct');
+      sel.classList.remove('wrong');
+    } else {
+      sel.classList.add('wrong');
+      sel.classList.remove('correct');
+    }
+    items.push({
+      num: i+1,
+      ok: ok,
+      chosen: sel.value || '(nichts)',
+      answer: sel.dataset.answer,
+      meaning: sel.dataset.meaning,
+      hint: sel.dataset.hint
+    });
   });
-  const isPerfect = correct === TOTAL;
+
+  var isPerfect = (correct === TOTAL);
   document.getElementById('score-num').textContent = correct+'/'+TOTAL;
-  const banner = document.getElementById('score-banner');
-  banner.className = 'score-banner '+(isPerfect?'sb-perfect':correct>=14?'sb-good':'sb-ok');
-  document.getElementById('score-msg').innerHTML = isPerfect
-    ? '<strong>Perfekt! 18/18 &#10003;</strong>Alle Formen korrekt.'
-    : correct>=14 ? '<strong>Sehr gut!</strong>Fast perfekt. Schau dir das Feedback an.'
-    : correct>=10 ? '<strong>Gut gemacht.</strong>Noch etwas Übung nötig.'
-    : '<strong>Weiter üben!</strong>Schau dir den Grammatikteil nochmal an.';
-  const list = document.getElementById('feedback-list');
+
+  var banner = document.getElementById('score-banner');
+  banner.className = 'score-banner ' + (isPerfect ? 'sb-perfect' : correct >= 14 ? 'sb-good' : 'sb-ok');
+
+  var msg = isPerfect
+    ? '<strong>Perfekt! 18/18 &#10003;</strong> Alle Formen korrekt.'
+    : correct >= 14
+      ? '<strong>Sehr gut!</strong> Fast perfekt. Schau dir das Feedback an.'
+      : correct >= 10
+        ? '<strong>Gut gemacht.</strong> Noch etwas &Uuml;bung n&ouml;tig.'
+        : '<strong>Weiter &uuml;ben!</strong> Schau dir den Grammatikteil nochmal an.';
+  document.getElementById('score-msg').innerHTML = msg;
+
+  var list = document.getElementById('feedback-list');
   list.innerHTML = '';
-  items.forEach(item => {
-    const d = document.createElement('div');
-    d.className = 'fi '+(item.ok?'ok':'no');
-    d.innerHTML = item.ok
-      ? '<div class="fi-head">&#10003; Frage '+item.num+' &#8212; Richtig: &bdquo;'+item.answer+'&ldquo;</div>'
-      : '<div class="fi-head">&#10007; Frage '+item.num+' &#8212; Deine Antwort: &bdquo;'+item.chosen+'&ldquo;</div><div>'+(item.chosen!='(nichts)'?'&rarr; '+item.meaning:'Keine Antwort gewählt.')+'</div><div class="fi-hint">&#128161; '+item.hint+'</div>';
+  items.forEach(function(item) {
+    var d = document.createElement('div');
+    d.className = 'fi ' + (item.ok ? 'ok' : 'no');
+    if(item.ok) {
+      d.innerHTML = '<div class="fi-head">&#10003; Frage '+item.num+' &mdash; Richtig!</div>';
+    } else {
+      d.innerHTML =
+        '<div class="fi-head">&#10007; Frage '+item.num+' &mdash; Deine Antwort: &bdquo;'+item.chosen+'&ldquo;</div>'+
+        '<div class="fi-explain">'+(item.chosen !== '(nichts)' ? '<strong>Erkl&auml;rung:</strong> '+item.meaning : 'Du hast keine Antwort gew&auml;hlt.')+'</div>'+
+        '<div class="fi-hint"><strong>Denk mal nach:</strong> '+item.hint+'</div>';
+    }
     list.appendChild(d);
   });
-  if(isPerfect) {
-    const name = document.getElementById('student-name').value.trim()||'Ein Kursteilnehmer';
-    const sub = encodeURIComponent('B1+ Quiz: 18/18 - '+name);
-    const bod = encodeURIComponent('Hallo Stefan,
 
-'+name+' hat das Quiz "Sachsen und Alamannen" mit 18/18 abgeschlossen.
+  // Show results panel
+  var wrap = document.getElementById('results-wrap');
+  wrap.classList.add('visible');
 
-Kurs: B1+ German with History & Culture: Classical Antiquity & Transformations
-Sitzung 3 - hin/her und Verb-Praeposition-Verbindungen
+  // Scroll after paint
+  setTimeout(function() {
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
 
-Viele Gruesse');
-    window.location.href = 'mailto:stefan.bauer@goetheatlanta.org?subject='+sub+'&body='+bod;
-    const eo = document.getElementById('email-ok');
-    eo.classList.add('visible');
-    document.getElementById('email-msg').textContent = 'Eine E-Mail an stefan.bauer@goetheatlanta.org wurde für '+name+' vorbereitet. Bitte sende sie ab.';
-  }
-  document.getElementById('results-wrap').classList.add('visible');
-  setTimeout(() => document.getElementById('results-wrap').scrollIntoView({behavior:'smooth',block:'start'}),100);
   document.getElementById('quiz-btn').disabled = true;
+
+  // Email on perfect score, delayed so page renders first
+  if(isPerfect) {
+    var nameVal = (document.getElementById('student-name').value || '').trim() || 'Ein Kursteilnehmer';
+    var sub = encodeURIComponent('B1+ Quiz: 18/18 - ' + nameVal);
+    var bod = encodeURIComponent(
+      'Hallo Stefan,\n\n' + nameVal +
+      ' hat das Quiz "Sachsen und Alamannen" mit 18/18 abgeschlossen.\n\n' +
+      'Kurs: B1+ German with History & Culture: Classical Antiquity & Transformations\n' +
+      'Sitzung 3 - hin/her und Verb-Praeposition-Verbindungen\n\nViele Gruesse'
+    );
+    var eo = document.getElementById('email-ok');
+    eo.classList.add('visible');
+    document.getElementById('email-msg').textContent =
+      'Eine E-Mail an stefan.bauer@goetheatlanta.org wurde f\u00FCr ' + nameVal + ' vorbereitet. Bitte sende sie ab.';
+    setTimeout(function() {
+      window.location.href = 'mailto:stefan.bauer@goetheatlanta.org?subject=' + sub + '&body=' + bod;
+    }, 1500);
+  }
 }
 
 function resetQuiz() {
-  document.querySelectorAll('.blank-select').forEach(s => {s.value='';s.classList.remove('correct','wrong');});
+  document.querySelectorAll('.blank-select').forEach(function(s) {
+    s.value = '';
+    s.classList.remove('correct', 'wrong');
+  });
   document.getElementById('results-wrap').classList.remove('visible');
   document.getElementById('email-ok').classList.remove('visible');
   document.getElementById('quiz-btn').disabled = false;
-  document.getElementById('prog-bar').style.width='0%';
-  document.getElementById('prog-txt').textContent='0 / 18 beantwortet';
-  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('prog-bar').style.width = '0%';
+  document.getElementById('prog-txt').textContent = '0 / 18 beantwortet';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-document.querySelectorAll('.tab-nav a').forEach(a => {
-  a.addEventListener('click', e => { e.preventDefault(); const t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth'}); });
+// Wire up buttons after DOM ready
+window.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('quiz-btn').addEventListener('click', gradeQuiz);
+  var resetBtn = document.querySelector('.btn-chalk-out');
+  if(resetBtn) resetBtn.addEventListener('click', resetQuiz);
+  document.querySelectorAll('.tab-nav a').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var t = document.querySelector(a.getAttribute('href'));
+      if(t) t.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 });
 </script>
 </body>
