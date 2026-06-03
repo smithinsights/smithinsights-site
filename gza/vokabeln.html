@@ -8,24 +8,14 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --blue-a1: #1A6CB5;
-    --green-a2: #3AAA5C;
-    --red-b1: #D42B2B;
-    --blue-b2: #2B6FA8;
-    --gza-green: #8DC63F;
-    --black: #1a1a1a;
-    --bg: #f5f4f1;
-    --white: #ffffff;
-    --border: #e0e0e0;
-    --text-muted: #888;
-    --text-hint: #aaa;
+    --blue-a1: #1A6CB5; --green-a2: #3AAA5C; --red-b1: #D42B2B;
+    --blue-b2: #2B6FA8; --gza-green: #8DC63F; --black: #1a1a1a;
+    --bg: #f5f4f1; --white: #ffffff; --border: #e0e0e0;
+    --text-muted: #888; --text-hint: #aaa;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--black); min-height: 100vh; }
-  .hidden { display: none !important; }
   .page { display: none; flex-direction: column; min-height: 100vh; }
   .page.active { display: flex; }
-
-  /* HEADER */
   .gza-header { background: var(--black); padding: 14px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
   .back-btn { background: rgba(255,255,255,0.1); border: none; color: white; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
   .back-btn:hover { background: rgba(255,255,255,0.18); }
@@ -38,20 +28,14 @@
   .level-badge .lvl { font-weight: 700; }
   .level-badge .sep { width: 1px; height: 13px; background: rgba(255,255,255,0.3); }
   .level-badge .bk  { font-weight: 500; }
-
-  /* HERO */
   .hero-band { padding: 18px 20px 0; border-bottom: 3px solid var(--gza-green); flex-shrink: 0; }
   .hero-supra { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.55); font-weight: 600; margin-bottom: 3px; }
   .hero-band h1 { font-size: 24px; font-weight: 600; color: white; letter-spacing: -0.02em; margin-bottom: 6px; }
   .hero-band h1 em { font-style: italic; color: var(--gza-green); }
   .hero-band p { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 300; margin-bottom: 14px; }
   .hero-btn { background: white; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 9px 18px; border-radius: 7px; cursor: pointer; margin-bottom: 14px; display: inline-block; }
-
-  /* BODY */
   .body-pad { padding: 20px; flex: 1; }
   .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-hint); margin-bottom: 12px; font-weight: 600; }
-
-  /* HOME: LEVEL CARDS */
   .level-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
   .level-card { border-radius: 12px; overflow: hidden; cursor: pointer; border: 2.5px solid transparent; transition: transform 0.15s; }
   .level-card:hover { transform: translateY(-2px); }
@@ -65,13 +49,10 @@
   .card-a2 { background: var(--green-a2); } .card-a2 .lc-pill { background: rgba(255,255,255,0.2); } .card-a2 .sp { background: rgba(255,255,255,0.35); } .card-a2 .lc-bottom { color: rgba(255,255,255,0.7); }
   .card-b1 { background: var(--red-b1); }  .card-b1 .lc-pill { background: rgba(255,255,255,0.2); } .card-b1 .sp { background: rgba(255,255,255,0.35); } .card-b1 .lc-bottom { color: rgba(255,255,255,0.7); }
   .card-b2 { background: white; border: 1.5px solid #c0d4e8; } .card-b2 .lc-pill { background: rgba(43,111,168,0.14); } .card-b2 .lv, .card-b2 .bk { color: var(--blue-b2) !important; } .card-b2 .sp { background: rgba(43,111,168,0.3); } .card-b2 .lc-bottom { color: rgba(43,111,168,0.65); }
-
-  /* EINHEITEN GRID */
   .einheit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .e-card { background: white; border-radius: 10px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: transform 0.12s, border-color 0.12s; }
   .e-card:hover { transform: translateY(-2px); }
-  .e-card.tbd { cursor: default; opacity: 0.4; }
-  .e-card.tbd:hover { transform: none; }
+  .e-card.tbd { cursor: default; opacity: 0.4; } .e-card.tbd:hover { transform: none; }
   .e-card-top { padding: 12px 14px 10px; }
   .e-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.22); padding: 3px 10px; border-radius: 5px; }
   .e-pill-label { font-size: 11px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -80,35 +61,24 @@
   .e-card-bottom { padding: 10px 14px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   .e-card-name { font-size: 13px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3; flex: 1; }
   .e-card-arrow { font-size: 15px; opacity: 0.5; }
-
-  /* WORD LIST TABS */
   .tabs-bar { display: flex; border-top: 1px solid rgba(255,255,255,0.15); }
   .tab { padding: 10px 16px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); cursor: pointer; border-bottom: 3px solid transparent; user-select: none; }
-  .tab:hover { color: rgba(255,255,255,0.8); }
-  .tab.on { color: white; border-bottom-color: white; font-weight: 600; }
-  .tab-panel { display: none; }
-  .tab-panel.on { display: block; }
-
-  /* TABLES */
+  .tab:hover { color: rgba(255,255,255,0.8); } .tab.on { color: white; border-bottom-color: white; font-weight: 600; }
+  .tab-panel { display: none; } .tab-panel.on { display: block; }
   table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
   thead tr { background: var(--level-color, var(--blue-a1)); }
   thead th { padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255,255,255,0.75); }
   tbody tr { border-bottom: 0.5px solid #f0f0f0; transition: background 0.1s; }
-  tbody tr:last-child { border-bottom: none; }
-  tbody tr:hover { background: #f7f9fc; }
+  tbody tr:last-child { border-bottom: none; } tbody tr:hover { background: #f7f9fc; }
   td { padding: 10px 14px; vertical-align: middle; font-size: 14px; font-weight: 500; color: var(--black); }
   .pill { display: inline-block; background: #EAF3FB; color: var(--blue-a1); font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
   .note { font-size: 12px; color: #bbb; font-style: italic; font-weight: 400; }
-
-  /* QUIZ */
   .mode-bar { display: flex; border-top: 1px solid rgba(255,255,255,0.15); }
   .mode-tab { padding: 10px 14px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); cursor: pointer; border-bottom: 3px solid transparent; user-select: none; white-space: nowrap; }
-  .mode-tab:hover { color: rgba(255,255,255,0.8); }
-  .mode-tab.on { color: white; border-bottom-color: white; font-weight: 600; }
+  .mode-tab:hover { color: rgba(255,255,255,0.8); } .mode-tab.on { color: white; border-bottom-color: white; font-weight: 600; }
   .quiz-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
   .score-bar { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-  .si { font-size: 13px; color: var(--text-muted); }
-  .si b { color: var(--black); }
+  .si { font-size: 13px; color: var(--text-muted); } .si b { color: var(--black); }
   .karte-badge { font-size: 12px; color: var(--text-hint); margin-left: auto; }
   .pbar { height: 4px; background: #ddd; border-radius: 2px; overflow: hidden; }
   .pfill { height: 100%; border-radius: 2px; transition: width 0.3s; }
@@ -133,32 +103,26 @@
   .sm-sub { font-size: 13px; color: var(--text-hint); margin-bottom: 16px; }
   .sm-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 16px; }
   .sm-metric { background: var(--bg); border-radius: 8px; padding: 12px; text-align: center; }
-  .sm-metric .n { font-size: 22px; font-weight: 600; }
-  .sm-metric .l { font-size: 10px; color: var(--text-hint); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+  .sm-metric .n { font-size: 22px; font-weight: 600; } .sm-metric .l { font-size: 10px; color: var(--text-hint); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
   .missed-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-hint); margin: 12px 0 6px; }
   .missed-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 0.5px solid #f0f0f0; font-size: 13px; }
   .missed-item:last-child { border-bottom: none; }
-  .missed-de { font-weight: 600; }
-  .missed-en { color: var(--blue-a1); font-size: 12px; }
-  .missed-r  { font-size: 11px; color: var(--text-hint); }
+  .missed-de { font-weight: 600; } .missed-en { color: var(--blue-a1); font-size: 12px; } .missed-r { font-size: 11px; color: var(--text-hint); }
   .sm-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
-  .btn-drill   { padding: 10px 18px; color: white; border: 2px solid; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; background: var(--level-color, var(--blue-a1)); border-color: var(--level-color, var(--blue-a1)); }
+  .btn-drill { padding: 10px 18px; color: white; border: 2px solid; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; background: var(--level-color, var(--blue-a1)); border-color: var(--level-color, var(--blue-a1)); }
   .btn-drill:disabled { opacity: 0.35; cursor: default; }
   .btn-restart { padding: 10px 18px; background: #e8e8e8; color: var(--black); border: 2px solid #d0d0d0; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; border-radius: 8px; cursor: pointer; }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     PAGE: HOME
-══════════════════════════════════════ -->
+<!-- HOME -->
 <div class="page active" id="page-home">
   <div class="gza-header">
     <div class="header-logo">
       <div class="logo-block">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="22" cy="6" r="3.5" fill="white"/>
-          <circle cx="22" cy="6" r="1.8" fill="#8DC63F"/>
+          <circle cx="22" cy="6" r="3.5" fill="white"/><circle cx="22" cy="6" r="1.8" fill="#8DC63F"/>
           <path d="M4 26 Q4 5 16 5" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round"/>
           <path d="M4 26 Q4 9 19 9" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round"/>
           <path d="M4 26 Q4 13 22 13" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round"/>
@@ -199,15 +163,11 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     PAGE: EINHEITEN (dynamic)
-══════════════════════════════════════ -->
+<!-- EINHEITEN (dynamic) -->
 <div class="page" id="page-einheiten">
   <div class="gza-header">
     <button class="back-btn" onclick="showPage('page-home')">← Zurück</button>
-    <div class="level-badge" id="einheiten-badge">
-      <span class="lvl"></span><span class="sep"></span><span class="bk"></span>
-    </div>
+    <div class="level-badge" id="einheiten-badge"><span class="lvl"></span><span class="sep"></span><span class="bk"></span></div>
   </div>
   <div class="hero-band" id="einheiten-hero">
     <div class="hero-supra" id="einheiten-supra"></div>
@@ -220,15 +180,11 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     PAGE: WORD LIST (dynamic)
-══════════════════════════════════════ -->
+<!-- WORD LIST (dynamic) -->
 <div class="page" id="page-wordlist">
   <div class="gza-header">
     <button class="back-btn" onclick="showPage('page-einheiten')">← Zurück</button>
-    <div class="level-badge" id="wl-badge">
-      <span class="lvl"></span><span class="sep"></span><span class="bk"></span>
-    </div>
+    <div class="level-badge" id="wl-badge"><span class="lvl"></span><span class="sep"></span><span class="bk"></span></div>
   </div>
   <div class="hero-band" id="wl-hero">
     <div class="hero-supra" id="wl-supra"></div>
@@ -243,35 +199,25 @@
   </div>
   <div class="body-pad">
     <div class="tab-panel on" id="wl-nomen">
-      <table>
-        <thead><tr><th style="width:30%">Singular</th><th style="width:30%">Plural</th><th>Englisch</th></tr></thead>
-        <tbody id="wl-nomen-body"></tbody>
-      </table>
+      <table><thead><tr><th style="width:30%">Singular</th><th style="width:30%">Plural</th><th>Englisch</th></tr></thead>
+      <tbody id="wl-nomen-body"></tbody></table>
     </div>
     <div class="tab-panel" id="wl-verben">
-      <table>
-        <thead><tr><th style="width:18%">Infinitiv</th><th style="width:16%">Präsens</th><th style="width:22%">Perfekt</th><th style="width:16%">Präteritum</th><th>Englisch</th></tr></thead>
-        <tbody id="wl-verben-body"></tbody>
-      </table>
+      <table><thead><tr><th style="width:18%">Infinitiv</th><th style="width:16%">Präsens</th><th style="width:22%">Perfekt</th><th style="width:16%">Präteritum</th><th>Englisch</th></tr></thead>
+      <tbody id="wl-verben-body"></tbody></table>
     </div>
     <div class="tab-panel" id="wl-andere">
-      <table>
-        <thead><tr><th style="width:40%">Deutsch</th><th>Englisch</th></tr></thead>
-        <tbody id="wl-andere-body"></tbody>
-      </table>
+      <table><thead><tr><th style="width:40%">Deutsch</th><th>Englisch</th></tr></thead>
+      <tbody id="wl-andere-body"></tbody></table>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     PAGE: QUIZ (dynamic)
-══════════════════════════════════════ -->
+<!-- QUIZ (dynamic) -->
 <div class="page" id="page-quiz">
   <div class="gza-header">
     <button class="back-btn" onclick="showPage('page-wordlist')">← Zurück</button>
-    <div class="level-badge" id="quiz-badge">
-      <span class="lvl"></span><span class="sep"></span><span class="bk"></span>
-    </div>
+    <div class="level-badge" id="quiz-badge"><span class="lvl"></span><span class="sep"></span><span class="bk"></span></div>
   </div>
   <div class="hero-band" id="quiz-hero">
     <div class="hero-supra" id="quiz-supra"></div>
@@ -282,7 +228,6 @@
       <div class="mode-tab" onclick="setMode('verb',this)">Verben</div>
     </div>
   </div>
-
   <div id="quiz-area" class="quiz-body">
     <div class="score-bar">
       <div class="si">Richtig: <b id="sc">0</b></div>
@@ -307,7 +252,6 @@
     </div>
     <div class="feedback" id="feedback" style="display:none"></div>
   </div>
-
   <div id="summary-area" class="quiz-body" style="display:none">
     <div class="score-bar">
       <div class="si">Richtig: <b id="sm-sc">0</b></div>
@@ -332,81 +276,80 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════
-     MASTER VOCAB DATA
-     To add a new Einheit: add one block to VOCAB[level]
-     Format: { title, nouns: [{de, pl, en:[]}], verbs: [{de, praesens, perfekt, praeteritum, en:[]}], andere: [{de, en:[]}] }
-══════════════════════════════════════════════════════════════ -->
 <script>
+// ══════════════════════════════════════════════════════════
+// MASTER VOCAB DATA
+// To add a new Einheit: add one block to VOCAB[level].units
+// ══════════════════════════════════════════════════════════
 const VOCAB = {
   a1: {
-    meta: { label: 'A1', book: 'Das Leben', color: '#1A6CB5', einheiten: 16 },
+    meta: { label:'A1', book:'Das Leben', color:'#1A6CB5', einheiten:16 },
     units: {
+
       'start': {
         title: 'Willkommen!',
         nouns: [
-          {de:'der Name',        pl:'die Namen',         en:['name']},
-          {de:'die Frau',        pl:'die Frauen',        en:['mrs','ms','woman']},
-          {de:'der Herr',        pl:'die Herren',        en:['mr','gentleman']},
-          {de:'der Moment',      pl:'die Momente',       en:['moment']},
-          {de:'die Frage',       pl:'die Fragen',        en:['question']},
-          {de:'die Bitte',       pl:'die Bitten',        en:['request']},
-          {de:'die Entschuldigung', pl:'die Entschuldigungen', en:['excuse me','apology']},
-          {de:'die Ahnung',      pl:'die Ahnungen',      en:['idea','clue']},
-          {de:'die Tafel',       pl:'die Tafeln',        en:['board']},
-          {de:'das Buch',        pl:'die Bücher',        en:['book']},
-          {de:'der Text',        pl:'die Texte',         en:['text']},
-          {de:'das Wort',        pl:'die Wörter',        en:['word']},
-          {de:'die Uhr',         pl:'die Uhren',         en:['clock','watch']},
-          {de:'die Tür',         pl:'die Türen',         en:['door']},
-          {de:'der Stuhl',       pl:'die Stühle',        en:['chair']},
-          {de:'der Tisch',       pl:'die Tische',        en:['table','desk']},
-          {de:'die Tasche',      pl:'die Taschen',       en:['bag']},
-          {de:'der Laptop',      pl:'die Laptops',       en:['laptop']},
-          {de:'das Handy',       pl:'die Handys',        en:['mobile phone','cell phone','phone']},
-          {de:'der Kuli',        pl:'die Kulis',         en:['pen']},
-          {de:'der Bleistift',   pl:'die Bleistifte',    en:['pencil']},
-          {de:'das Heft',        pl:'die Hefte',         en:['exercise book','notebook']},
-          {de:'der Kaffee',      pl:'die Kaffees',       en:['coffee']},
-          {de:'die Pause',       pl:'die Pausen',        en:['break']},
-          {de:'das Deutsch',     pl:'nur Sg.',           en:['german','german language']},
+          {de:'der Name',           pl:'die Namen',              en:['name']},
+          {de:'die Frau',           pl:'die Frauen',             en:['Mrs.','Ms.','woman']},
+          {de:'der Herr',           pl:'die Herren',             en:['Mr.','gentleman']},
+          {de:'der Moment',         pl:'die Momente',            en:['moment']},
+          {de:'die Frage',          pl:'die Fragen',             en:['question']},
+          {de:'die Bitte',          pl:'die Bitten',             en:['request']},
+          {de:'die Entschuldigung', pl:'die Entschuldigungen',   en:['excuse me','apology']},
+          {de:'die Ahnung',         pl:'die Ahnungen',           en:['idea','clue']},
+          {de:'die Tafel',          pl:'die Tafeln',             en:['board']},
+          {de:'das Buch',           pl:'die Bücher',             en:['book']},
+          {de:'der Text',           pl:'die Texte',              en:['text']},
+          {de:'das Wort',           pl:'die Wörter',             en:['word']},
+          {de:'die Uhr',            pl:'die Uhren',              en:['clock','watch']},
+          {de:'die Tür',            pl:'die Türen',              en:['door']},
+          {de:'der Stuhl',          pl:'die Stühle',             en:['chair']},
+          {de:'der Tisch',          pl:'die Tische',             en:['table','desk']},
+          {de:'die Tasche',         pl:'die Taschen',            en:['bag']},
+          {de:'der Laptop',         pl:'die Laptops',            en:['laptop']},
+          {de:'das Handy',          pl:'die Handys',             en:['mobile phone','cell phone','phone']},
+          {de:'der Kuli',           pl:'die Kulis',              en:['pen']},
+          {de:'der Bleistift',      pl:'die Bleistifte',         en:['pencil']},
+          {de:'das Heft',           pl:'die Hefte',              en:['exercise book','notebook']},
+          {de:'der Kaffee',         pl:'die Kaffees',            en:['coffee']},
+          {de:'die Pause',          pl:'die Pausen',             en:['break']},
+          {de:'das Deutsch',        pl:'nur Sg.',                en:['german','german language']},
         ],
         verbs: [
-          {de:'sein',        praesens:'ist',        perfekt:'ist gewesen',    praeteritum:'war',          en:['to be']},
-          {de:'haben',       praesens:'hat',        perfekt:'hat gehabt',     praeteritum:'hatte',        en:['to have']},
-          {de:'heißen',      praesens:'heißt',      perfekt:'hat geheißen',   praeteritum:'hieß',         en:['to be called']},
-          {de:'können',      praesens:'kann',       perfekt:'hat gekonnt',    praeteritum:'konnte',       en:['can','to be able to']},
-          {de:'sprechen',    praesens:'spricht',    perfekt:'hat gesprochen', praeteritum:'sprach',       en:['to speak']},
-          {de:'verstehen',   praesens:'versteht',   perfekt:'hat verstanden', praeteritum:'verstand',     en:['to understand']},
-          {de:'schreiben',   praesens:'schreibt',   perfekt:'hat geschrieben',praeteritum:'schrieb',      en:['to write']},
-          {de:'lesen',       praesens:'liest',      perfekt:'hat gelesen',    praeteritum:'las',          en:['to read']},
-          {de:'hören',       praesens:'hört',       perfekt:'hat gehört',     praeteritum:'hörte',        en:['to listen','to hear']},
-          {de:'machen',      praesens:'macht',      perfekt:'hat gemacht',    praeteritum:'machte',       en:['to make','to do']},
-          {de:'telefonieren',praesens:'telefoniert',perfekt:'hat telefoniert',praeteritum:'telefonierte', en:['to phone','to call']},
+          {de:'sein',         praesens:'ist',         perfekt:'ist gewesen',     praeteritum:'war',          en:['to be']},
+          {de:'haben',        praesens:'hat',         perfekt:'hat gehabt',      praeteritum:'hatte',        en:['to have']},
+          {de:'heißen',       praesens:'heißt',       perfekt:'hat geheißen',    praeteritum:'hieß',         en:['to be called']},
+          {de:'können',       praesens:'kann',        perfekt:'hat gekonnt',     praeteritum:'konnte',       en:['can','to be able to']},
+          {de:'sprechen',     praesens:'spricht',     perfekt:'hat gesprochen',  praeteritum:'sprach',       en:['to speak']},
+          {de:'verstehen',    praesens:'versteht',    perfekt:'hat verstanden',  praeteritum:'verstand',     en:['to understand']},
+          {de:'schreiben',    praesens:'schreibt',    perfekt:'hat geschrieben', praeteritum:'schrieb',      en:['to write']},
+          {de:'lesen',        praesens:'liest',       perfekt:'hat gelesen',     praeteritum:'las',          en:['to read']},
+          {de:'hören',        praesens:'hört',        perfekt:'hat gehört',      praeteritum:'hörte',        en:['to listen','to hear']},
+          {de:'machen',       praesens:'macht',       perfekt:'hat gemacht',     praeteritum:'machte',       en:['to make','to do']},
+          {de:'telefonieren', praesens:'telefoniert', perfekt:'hat telefoniert', praeteritum:'telefonierte', en:['to phone','to call']},
           {de:'buchstabieren',praesens:'buchstabiert',perfekt:'hat buchstabiert',praeteritum:'buchstabierte',en:['to spell']},
-          {de:'wiederholen', praesens:'wiederholt', perfekt:'hat wiederholt', praeteritum:'wiederholte',  en:['to repeat']},
-          {de:'ordnen',      praesens:'ordnet',     perfekt:'hat geordnet',   praeteritum:'ordnete',      en:['to arrange','to sort']},
+          {de:'wiederholen',  praesens:'wiederholt',  perfekt:'hat wiederholt',  praeteritum:'wiederholte',  en:['to repeat']},
+          {de:'ordnen',       praesens:'ordnet',      perfekt:'hat geordnet',    praeteritum:'ordnete',      en:['to arrange','to sort']},
         ],
         andere: [
-          {de:'Guten Tag!',         en:['good afternoon']},
-          {de:'Keine Ahnung!',      en:['no idea']},
-          {de:'danke',              en:['thank you']},
-          {de:'bitte',              en:['please']},
-          {de:'ja',                 en:['yes']},
-          {de:'nicht',              en:['not']},
-          {de:'kein',               en:['no','none']},
-          {de:'hier',               en:['here']},
-          {de:'wie',                en:['how']},
-          {de:'langsam',            en:['slow','slowly']},
-          {de:'gern',               en:['gladly','with pleasure']},
-          {de:'klar',               en:['of course','clear']},
-          {de:'und',                en:['and']},
-          {de:'mit',                en:['with']},
-          {de:'auf',                en:['on','in']},
+          {de:'Guten Tag!',     en:['good afternoon']},
+          {de:'Keine Ahnung!',  en:['no idea']},
+          {de:'danke',          en:['thank you']},
+          {de:'bitte',          en:['please']},
+          {de:'ja',             en:['yes']},
+          {de:'nicht',          en:['not']},
+          {de:'kein',           en:['no','none']},
+          {de:'hier',           en:['here']},
+          {de:'wie',            en:['how']},
+          {de:'langsam',        en:['slow','slowly']},
+          {de:'gern',           en:['gladly','with pleasure']},
+          {de:'klar',           en:['of course','clear']},
+          {de:'und',            en:['and']},
+          {de:'mit',            en:['with']},
+          {de:'auf',            en:['on','in']},
         ],
       },
 
-      // ── EINHEIT 1 ──────────────────────────────────────
       '1': {
         title: 'Möller oder Müller?',
         nouns: [
@@ -435,7 +378,6 @@ const VOCAB = {
           {de:'der Partner',        pl:'die Partner',          en:['partner']},
           {de:'die Mannschaft',     pl:'die Mannschaften',     en:['team']},
           {de:'die Woche',          pl:'die Wochen',           en:['week']},
-          {de:'die Profimannschaft',pl:'die Profimannschaften',en:['professional team']},
           {de:'das Dorf',           pl:'die Dörfer',           en:['village']},
           {de:'der Trainer',        pl:'die Trainer',          en:['trainer','coach']},
           {de:'der Spieler',        pl:'die Spieler',          en:['player']},
@@ -446,11 +388,12 @@ const VOCAB = {
           {de:'der Lehrer',         pl:'die Lehrer',           en:['teacher']},
           {de:'der Torwart',        pl:'die Torwarte',         en:['goalkeeper']},
           {de:'der Nationalspieler',pl:'die Nationalspieler',  en:['national team player']},
+          {de:'die Profimannschaft',pl:'die Profimannschaften',en:['professional team']},
         ],
         verbs: [
-          {de:'sagen',  praesens:'sagt', perfekt:'hat gesagt',    praeteritum:'sagte',  en:['to say']},
-          {de:'mögen',  praesens:'mag',  perfekt:'hat gemocht',   praeteritum:'mochte', en:['to like']},
-          {de:'geben',  praesens:'gibt', perfekt:'hat gegeben',   praeteritum:'gab',    en:['to give','there is']},
+          {de:'sagen', praesens:'sagt', perfekt:'hat gesagt',  praeteritum:'sagte',  en:['to say']},
+          {de:'mögen', praesens:'mag',  perfekt:'hat gemocht', praeteritum:'mochte', en:['to like']},
+          {de:'geben', praesens:'gibt', perfekt:'hat gegeben', praeteritum:'gab',    en:['to give','there is']},
         ],
         andere: [
           {de:'Guten Morgen!',       en:['good morning']},
@@ -473,43 +416,328 @@ const VOCAB = {
         ],
       },
 
-      // ── ADD NEW EINHEITEN HERE ──────────────────────────
-      // '2': { title: 'Lecker essen!', nouns: [...], verbs: [...], andere: [...] },
-      // '3': { title: 'Arbeiten im Café', nouns: [...], verbs: [...], andere: [...] },
+      '2': {
+        title: 'Lecker essen!',
+        nouns: [
+          {de:'das Essen',          pl:'die Essen',            en:['food','meal']},
+          {de:'das Sushi',          pl:'die Sushis',           en:['sushi']},
+          {de:'der Fisch',          pl:'die Fische',           en:['fish']},
+          {de:'das Tier',           pl:'die Tiere',            en:['animal']},
+          {de:'das Fleisch',        pl:'nur Sg.',              en:['meat']},
+          {de:'das Getränk',        pl:'die Getränke',         en:['drink']},
+          {de:'das Foto',           pl:'die Fotos',            en:['photo']},
+          {de:'der Kommentar',      pl:'die Kommentare',       en:['comment']},
+          {de:'die Idee',           pl:'die Ideen',            en:['idea']},
+          {de:'die Pizza',          pl:'die Pizzas',           en:['pizza']},
+          {de:'die Ananas',         pl:'die Ananasse',         en:['pineapple']},
+          {de:'der Schinken',       pl:'die Schinken',         en:['ham']},
+          {de:'der Hunger',         pl:'nur Sg.',              en:['hunger']},
+          {de:'die Suppe',          pl:'die Suppen',           en:['soup']},
+          {de:'das Rezept',         pl:'die Rezepte',          en:['recipe']},
+          {de:'der Blog',           pl:'die Blogs',            en:['blog']},
+          {de:'die Spezialität',    pl:'die Spezialitäten',    en:['speciality']},
+          {de:'das Schnitzel',      pl:'die Schnitzel',        en:['schnitzel']},
+          {de:'der Kartoffelsalat', pl:'die Kartoffelsalate',  en:['potato salad']},
+          {de:'das Hähnchen',       pl:'die Hähnchen',         en:['chicken']},
+          {de:'das Gemüse',         pl:'nur Sg.',              en:['vegetable','vegetables']},
+          {de:'der Hamburger',      pl:'die Hamburger',        en:['hamburger']},
+          {de:'die Pommes',         pl:'Pl.',                  en:['chips','fries']},
+          {de:'der Reis',           pl:'nur Sg.',              en:['rice']},
+          {de:'der Kuchen',         pl:'die Kuchen',           en:['cake']},
+          {de:'die Currywurst',     pl:'die Currywürste',      en:['currywurst']},
+          {de:'die Speisekarte',    pl:'die Speisekarten',     en:['menu']},
+          {de:'die Vorspeise',      pl:'die Vorspeisen',       en:['starter']},
+          {de:'das Hauptgericht',   pl:'die Hauptgerichte',    en:['main course']},
+          {de:'das Steak',          pl:'die Steaks',           en:['steak']},
+          {de:'die Kartoffel',      pl:'die Kartoffeln',       en:['potato']},
+          {de:'der Salat',          pl:'die Salate',           en:['salad']},
+          {de:'der Käse',           pl:'die Käse',             en:['cheese']},
+          {de:'die Tomate',         pl:'die Tomaten',          en:['tomato']},
+          {de:'die Olive',          pl:'die Oliven',           en:['olive']},
+          {de:'der Freund',         pl:'die Freunde',          en:['friend']},
+          {de:'die Kultur',         pl:'die Kulturen',         en:['culture']},
+          {de:'das Leben',          pl:'die Leben',            en:['life']},
+          {de:'das Thema',          pl:'die Themen',           en:['topic']},
+          {de:'der Dank',           pl:'nur Sg.',              en:['thanks']},
+        ],
+        verbs: [
+          {de:'essen',        praesens:'isst',      perfekt:'hat gegessen',   praeteritum:'aß',          en:['to eat']},
+          {de:'kennen',       praesens:'kennt',     perfekt:'hat gekannt',    praeteritum:'kannte',      en:['to know']},
+          {de:'finden',       praesens:'findet',    perfekt:'hat gefunden',   praeteritum:'fand',        en:['to find']},
+          {de:'lieben',       praesens:'liebt',     perfekt:'hat geliebt',    praeteritum:'liebte',      en:['to love']},
+          {de:'fotografieren',praesens:'fotografiert',perfekt:'hat fotografiert',praeteritum:'fotografierte',en:['to photograph']},
+          {de:'posten',       praesens:'postet',    perfekt:'hat gepostet',   praeteritum:'postete',     en:['to post']},
+          {de:'glauben',      praesens:'glaubt',    perfekt:'hat geglaubt',   praeteritum:'glaubte',     en:['to believe','to think']},
+          {de:'wissen',       praesens:'weiß',      perfekt:'hat gewusst',    praeteritum:'wusste',      en:['to know']},
+          {de:'stimmen',      praesens:'stimmt',    perfekt:'hat gestimmt',   praeteritum:'stimmte',     en:['to be true','to be correct']},
+          {de:'aussehen',     praesens:'sieht aus', perfekt:'hat ausgesehen', praeteritum:'sah aus',     en:['to look','to appear']},
+        ],
+        andere: [
+          {de:'lecker',        en:['delicious','tasty']},
+          {de:'vegetarisch',   en:['vegetarian']},
+          {de:'scharf',        en:['hot','spicy']},
+          {de:'süß',           en:['sweet']},
+          {de:'echt',          en:['really','genuinely']},
+          {de:'vielleicht',    en:['maybe','perhaps']},
+          {de:'gut',           en:['good']},
+          {de:'interessant',   en:['interesting']},
+          {de:'endlich',       en:['finally']},
+          {de:'fast',          en:['almost']},
+          {de:'alles',         en:['everything']},
+          {de:'pro',           en:['for','pro']},
+          {de:'kontra',        en:['against','con']},
+          {de:'Gute Idee!',    en:['good idea']},
+          {de:'Vielen Dank!',  en:['thank you very much']},
+        ],
+      },
+
+      '3': {
+        title: 'Arbeiten im Café',
+        nouns: [
+          {de:'der Park',        pl:'die Parks',         en:['park']},
+          {de:'das Restaurant',  pl:'die Restaurants',   en:['restaurant']},
+          {de:'das Internet',    pl:'nur Sg.',           en:['internet']},
+          {de:'die Atmosphäre',  pl:'die Atmosphären',   en:['atmosphere']},
+          {de:'der Kopfhörer',   pl:'die Kopfhörer',    en:['headphones']},
+          {de:'die Bar',         pl:'die Bars',          en:['bar']},
+          {de:'der Milchkaffee', pl:'die Milchkaffees',  en:['coffee with milk']},
+          {de:'das Croissant',   pl:'die Croissants',    en:['croissant']},
+          {de:'der Fußball',     pl:'nur Sg.',           en:['football','soccer']},
+        ],
+        verbs: [
+          {de:'kennenlernen', praesens:'lernt kennen', perfekt:'hat kennengelernt', praeteritum:'lernte kennen', en:['to meet','to get to know']},
+          {de:'brauchen',     praesens:'braucht',      perfekt:'hat gebraucht',     praeteritum:'brauchte',      en:['to need']},
+          {de:'gehen',        praesens:'geht',         perfekt:'ist gegangen',      praeteritum:'ging',          en:['to go']},
+          {de:'möchten',      praesens:'möchte',       perfekt:'hat gemocht',       praeteritum:'mochte',        en:['would like']},
+          {de:'trinken',      praesens:'trinkt',       perfekt:'hat getrunken',     praeteritum:'trank',         en:['to drink']},
+          {de:'nehmen',       praesens:'nimmt',        perfekt:'hat genommen',      praeteritum:'nahm',          en:['to take','to have']},
+          {de:'schicken',     praesens:'schickt',      perfekt:'hat geschickt',     praeteritum:'schickte',      en:['to send']},
+          {de:'zahlen',       praesens:'zahlt',        perfekt:'hat gezahlt',       praeteritum:'zahlte',        en:['to pay']},
+          {de:'freuen (sich)',praesens:'freut sich',   perfekt:'hat sich gefreut',  praeteritum:'freute sich',   en:['to look forward','to be happy']},
+        ],
+        andere: [
+          {de:'einfach',     en:['simple','easy']},
+          {de:'überall',     en:['everywhere']},
+          {de:'toll',        en:['great']},
+          {de:'ein bisschen',en:['a bit','a little']},
+          {de:'warum',       en:['why']},
+          {de:'super',       en:['super','great']},
+          {de:'perfekt',     en:['perfect']},
+          {de:'sehr',        en:['very']},
+          {de:'zurück',      en:['back']},
+          {de:'zusammen',    en:['together']},
+          {de:'Bis dann!',   en:['see you then']},
+          {de:'Bis gleich!', en:['see you soon']},
+          {de:'Bis morgen!', en:['see you tomorrow']},
+          {de:'Bis später!', en:['see you later']},
+        ],
+      },
+
+      '4': {
+        title: 'Freizeit und Hobbys',
+        nouns: [
+          {de:'die Freizeit',         pl:'nur Sg.',              en:['free time','leisure']},
+          {de:'das Hobby',            pl:'die Hobbys',           en:['hobby']},
+          {de:'das Tennis',           pl:'nur Sg.',              en:['tennis']},
+          {de:'der Winter',           pl:'die Winter',           en:['winter']},
+          {de:'der Ski',              pl:'die Ski',              en:['ski']},
+          {de:'das Snowboard',        pl:'die Snowboards',       en:['snowboard']},
+          {de:'der Berg',             pl:'die Berge',            en:['mountain']},
+          {de:'der Schnee',           pl:'nur Sg.',              en:['snow']},
+          {de:'die Gitarre',          pl:'die Gitarren',         en:['guitar']},
+          {de:'das Yoga',             pl:'nur Sg.',              en:['yoga']},
+          {de:'die Bergbahn',         pl:'die Bergbahnen',       en:['mountain railway']},
+          {de:'der/die Student/in',   pl:'die Studenten',        en:['student']},
+          {de:'das Stadtzentrum',     pl:'die Stadtzentren',     en:['city centre']},
+          {de:'das Seminar',          pl:'die Seminare',         en:['seminar']},
+          {de:'der Geburtstag',       pl:'die Geburtstage',      en:['birthday']},
+          {de:'das Studium',          pl:'meist Sg.',            en:['studies']},
+          {de:'der Hobbykurs',        pl:'die Hobbykurse',       en:['hobby course']},
+          {de:'die Volkshochschule',  pl:'die Volkshochschulen', en:['adult education centre']},
+          {de:'das Angebot',          pl:'die Angebote',         en:['offer','programme']},
+          {de:'die Altstadt',         pl:'die Altstädte',        en:['old town']},
+          {de:'der Tanzkurs',         pl:'die Tanzkurse',        en:['dance class']},
+          {de:'der Kletterkurs',      pl:'die Kletterkurse',     en:['climbing class']},
+          {de:'der Campus',           pl:'die Campus',           en:['campus']},
+          {de:'die Mensa',            pl:'die Mensen',           en:['canteen']},
+          {de:'der Sport',            pl:'nur Sg.',              en:['sport']},
+          {de:'die Fitness',          pl:'nur Sg.',              en:['fitness']},
+          {de:'das Programm',         pl:'die Programme',        en:['programme']},
+          {de:'der Kontakt',          pl:'die Kontakte',         en:['contact']},
+        ],
+        verbs: [
+          {de:'trainieren',  praesens:'trainiert',  perfekt:'hat trainiert',     praeteritum:'trainierte',  en:['to train']},
+          {de:'klettern',    praesens:'klettert',   perfekt:'ist geklettert',    praeteritum:'kletterte',   en:['to climb']},
+          {de:'tanzen',      praesens:'tanzt',      perfekt:'hat getanzt',       praeteritum:'tanzte',      en:['to dance']},
+          {de:'wandern',     praesens:'wandert',    perfekt:'ist gewandert',     praeteritum:'wanderte',    en:['to hike','to walk']},
+          {de:'ausgehen',    praesens:'geht aus',   perfekt:'ist ausgegangen',   praeteritum:'ging aus',    en:['to go out']},
+          {de:'rodeln',      praesens:'rodelt',     perfekt:'ist gerodelt',      praeteritum:'rodelte',     en:['to sled','to toboggan']},
+          {de:'eislaufen',   praesens:'läuft eis',  perfekt:'ist eisgelaufen',   praeteritum:'lief eis',    en:['to ice skate']},
+          {de:'snowboarden', praesens:'snowboardet',perfekt:'ist gesnowboardet', praeteritum:'snowboardete',en:['to snowboard']},
+          {de:'malen',       praesens:'malt',       perfekt:'hat gemalt',        praeteritum:'malte',       en:['to paint']},
+          {de:'kombinieren', praesens:'kombiniert', perfekt:'hat kombiniert',    praeteritum:'kombinierte', en:['to combine']},
+          {de:'Ski fahren',  praesens:'fährt Ski',  perfekt:'ist Ski gefahren',  praeteritum:'fuhr Ski',    en:['to ski']},
+        ],
+        andere: [
+          {de:'gestern',    en:['yesterday']},
+          {de:'zu Hause',   en:['at home']},
+          {de:'kaputt',     en:['broken','exhausted']},
+          {de:'warm',       en:['warm']},
+          {de:'nass',       en:['wet']},
+          {de:'normal',     en:['normal']},
+          {de:'attraktiv',  en:['attractive']},
+          {de:'alt',        en:['old']},
+          {de:'ideal',      en:['ideal']},
+          {de:'ziemlich',   en:['quite','fairly']},
+          {de:'alle',       en:['all','everyone']},
+          {de:'zusammen',   en:['together']},
+          {de:'schon',      en:['already']},
+        ],
+      },
+
+      '5': {
+        title: 'Ab in den Urlaub',
+        nouns: [
+          {de:'der Strand',        pl:'die Strände',        en:['beach']},
+          {de:'der Platz',         pl:'die Plätze',         en:['place','square','space']},
+          {de:'der Sound',         pl:'die Sounds',         en:['sound']},
+          {de:'die Route',         pl:'die Routen',         en:['route']},
+          {de:'die Ausstellung',   pl:'die Ausstellungen',  en:['exhibition']},
+          {de:'die Rucksacktour',  pl:'die Rucksacktouren', en:['backpacking tour']},
+          {de:'die Bahn',          pl:'die Bahnen',         en:['railway','train']},
+          {de:'das Hotel',         pl:'die Hotels',         en:['hotel']},
+          {de:'die Reise',         pl:'die Reisen',         en:['journey','trip','travel']},
+          {de:'der Plan',          pl:'die Pläne',          en:['plan']},
+          {de:'der Traum',         pl:'die Träume',         en:['dream']},
+          {de:'das Gewässer',      pl:'die Gewässer',       en:['body of water']},
+          {de:'die Sonnenbrille',  pl:'die Sonnenbrillen',  en:['sunglasses']},
+          {de:'das Ticket',        pl:'die Tickets',        en:['ticket']},
+          {de:'der Reiseführer',   pl:'die Reiseführer',    en:['guidebook']},
+          {de:'der Naturpark',     pl:'die Naturparks',     en:['national park']},
+          {de:'der Lieblingsurlaub',pl:'die Lieblingsurlaube',en:['favourite holiday']},
+        ],
+        verbs: [
+          {de:'setzen',       praesens:'setzt',       perfekt:'hat gesetzt',       praeteritum:'setzte',      en:['to put','to place']},
+          {de:'genießen',     praesens:'genießt',     perfekt:'hat genossen',      praeteritum:'genoss',      en:['to enjoy']},
+          {de:'stören',       praesens:'stört',       perfekt:'hat gestört',       praeteritum:'störte',      en:['to disturb','to bother']},
+          {de:'sitzen',       praesens:'sitzt',       perfekt:'hat gesessen',      praeteritum:'saß',         en:['to sit']},
+          {de:'übernachten',  praesens:'übernachtet', perfekt:'hat übernachtet',   praeteritum:'übernachtete',en:['to stay overnight']},
+          {de:'fliegen',      praesens:'fliegt',      perfekt:'ist geflogen',      praeteritum:'flog',        en:['to fly']},
+          {de:'besichtigen',  praesens:'besichtigt',  perfekt:'hat besichtigt',    praeteritum:'besichtigte', en:['to visit','to view']},
+          {de:'mitkommen',    praesens:'kommt mit',   perfekt:'ist mitgekommen',   praeteritum:'kam mit',     en:['to come along']},
+          {de:'weiterreisen', praesens:'reist weiter',perfekt:'ist weitergereist', praeteritum:'reiste weiter',en:['to travel on']},
+        ],
+        andere: [
+          {de:'allein',       en:['alone']},
+          {de:'wohin',        en:['where to']},
+          {de:'spontan',      en:['spontaneous']},
+          {de:'fantastisch',  en:['fantastic']},
+          {de:'nördlich',     en:['northern','northward']},
+          {de:'südlich',      en:['southern','southward']},
+          {de:'östlich',      en:['eastern','eastward']},
+          {de:'westlich',     en:['western','westward']},
+        ],
+      },
+
+      '6': {
+        title: 'Jahreszeiten und Feste',
+        nouns: [
+          {de:'das Wetter',       pl:'nur Sg.',           en:['weather']},
+          {de:'der Herbst',       pl:'die Herbste',       en:['autumn','fall']},
+          {de:'die Jahreszeit',   pl:'die Jahreszeiten',  en:['season']},
+          {de:'die Sonne',        pl:'die Sonnen',        en:['sun']},
+          {de:'die Wolke',        pl:'die Wolken',        en:['cloud']},
+          {de:'der Schnee',       pl:'nur Sg.',           en:['snow']},
+          {de:'der Grad',         pl:'die Grade',         en:['degree']},
+          {de:'das Gewitter',     pl:'die Gewitter',      en:['storm','thunderstorm']},
+          {de:'der Schirm',       pl:'die Schirme',       en:['umbrella']},
+          {de:'das Zelt',         pl:'die Zelte',         en:['tent']},
+          {de:'das Fest',         pl:'die Feste',         en:['festival','celebration']},
+          {de:'das Sommerfest',   pl:'die Sommerfeste',   en:['summer festival']},
+          {de:'das Feuerwerk',    pl:'die Feuerwerke',    en:['fireworks']},
+          {de:'die Bühne',        pl:'die Bühnen',        en:['stage']},
+          {de:'die Parade',       pl:'die Paraden',       en:['parade']},
+          {de:'der Markt',        pl:'die Märkte',        en:['market']},
+          {de:'der Tanz',         pl:'die Tänze',         en:['dance']},
+          {de:'das Ende',         pl:'die Enden',         en:['end']},
+          {de:'der Ort',          pl:'die Orte',          en:['place','town']},
+          {de:'der Fluss',        pl:'die Flüsse',        en:['river']},
+          {de:'der See',          pl:'die Seen',          en:['lake']},
+          {de:'die Sommerferien', pl:'Pl.',               en:['summer holidays']},
+          {de:'das Würstchen',    pl:'die Würstchen',     en:['sausage']},
+          {de:'der Spargel',      pl:'die Spargel',       en:['asparagus']},
+          {de:'der Meinung',      pl:'die Meinungen',     en:['opinion']},
+          {de:'das Geld',         pl:'nur Sg.',           en:['money']},
+          {de:'der Urlaub',       pl:'die Urlaube',       en:['holiday','vacation']},
+          {de:'das Kino',         pl:'die Kinos',         en:['cinema']},
+          {de:'der Sportverein',  pl:'die Sportvereine',  en:['sports club']},
+          {de:'der Festplatz',    pl:'die Festplätze',    en:['festival grounds']},
+        ],
+        verbs: [
+          {de:'feiern',    praesens:'feiert',  perfekt:'hat gefeiert',  praeteritum:'feierte',  en:['to celebrate']},
+          {de:'grillen',   praesens:'grillt',  perfekt:'hat gegrillt',  praeteritum:'grillte',  en:['to grill','to barbecue']},
+          {de:'regnen',    praesens:'regnet',  perfekt:'hat geregnet',  praeteritum:'regnete',  en:['to rain']},
+          {de:'beginnen',  praesens:'beginnt', perfekt:'hat begonnen',  praeteritum:'begann',   en:['to begin','to start']},
+          {de:'werden',    praesens:'wird',    perfekt:'ist geworden',  praeteritum:'wurde',    en:['to become']},
+          {de:'erwarten',  praesens:'erwartet',perfekt:'hat erwartet',  praeteritum:'erwartete',en:['to expect']},
+          {de:'schmecken', praesens:'schmeckt',perfekt:'hat geschmeckt',praeteritum:'schmeckte',en:['to taste']},
+          {de:'erzählen',  praesens:'erzählt', perfekt:'hat erzählt',   praeteritum:'erzählte', en:['to tell','to narrate']},
+          {de:'zuhören',   praesens:'hört zu', perfekt:'hat zugehört',  praeteritum:'hörte zu', en:['to listen']},
+        ],
+        andere: [
+          {de:'sonnig',      en:['sunny']},
+          {de:'bewölkt',     en:['cloudy']},
+          {de:'kühl',        en:['cool']},
+          {de:'heiß',        en:['hot']},
+          {de:'kalt',        en:['cold']},
+          {de:'nass',        en:['wet']},
+          {de:'meistens',    en:['mostly','usually']},
+          {de:'regional',    en:['regional','local']},
+          {de:'berühmt',     en:['famous']},
+          {de:'natürlich',   en:['naturally','of course']},
+          {de:'fantastisch', en:['fantastic']},
+          {de:'asiatisch',   en:['asian']},
+          {de:'italienisch', en:['italian']},
+          {de:'positiv',     en:['positive']},
+          {de:'negativ',     en:['negative']},
+          {de:'neutral',     en:['neutral']},
+          {de:'Mist!',       en:['damn!']},
+        ],
+      },
+
+      // ── ADD NEW EINHEITEN BELOW THIS LINE ──
+      // '7': { title: '...', nouns: [...], verbs: [...], andere: [...] },
     }
   },
 
   a2: {
-    meta: { label: 'A2', book: 'Das Leben', color: '#3AAA5C', einheiten: 16 },
-    units: {
-      // '1': { title: 'Klassentreffen', nouns: [...], verbs: [...], andere: [...] },
-    }
+    meta: { label:'A2', book:'Das Leben', color:'#3AAA5C', einheiten:16 },
+    units: {}
   },
-
   b1: {
-    meta: { label: 'B1', book: 'Das Leben', color: '#D42B2B', einheiten: 12 },
-    units: {
-      // '1': { title: 'Bildung (Er)leben', nouns: [...], verbs: [...], andere: [...] },
-    }
+    meta: { label:'B1', book:'Das Leben', color:'#D42B2B', einheiten:12 },
+    units: {}
   },
-
   b2: {
-    meta: { label: 'B2', book: 'Weitblick', color: '#2B6FA8', einheiten: 12 },
-    units: {
-      // '1': { title: 'Den Horizont erweitern', nouns: [...], verbs: [...], andere: [...] },
-    }
+    meta: { label:'B2', book:'Weitblick', color:'#2B6FA8', einheiten:12 },
+    units: {}
   },
 };
 
 // ══════════════════════════════════════════════════════════
-// EINHEIT TITLES — update as chapters are confirmed
+// EINHEIT TITLES (for grid display — confirmed from PDF)
 // ══════════════════════════════════════════════════════════
 const EINHEIT_TITLES = {
   a1: {
-    start:'Willkommen!', 1:'Möller oder Müller?', 2:'Lecker essen!',
-    3:'Arbeiten im Café', 4:'Freizeit und Hobbys', 5:'Ab in den Urlaub',
+    start:'Willkommen!',
+    1:'Möller oder Müller?',
+    2:'Lecker essen!',
+    3:'Arbeiten im Café',
+    4:'Freizeit und Hobbys',
+    5:'Ab in den Urlaub',
+    6:'Jahreszeiten und Feste',
   },
-  a2: { 1:'Klassentreffen', 2:'Mobilleben', 3:'So arbeiten wir heute', 4:'Glück und Lebensträume' },
+  a2: {},
   b1: { 1:'Bildung (Er)leben', 2:'Miteinander – Füreinander', 3:'Talente gesucht!', 4:'Natur erleben', 5:'Hin und weg!', 6:'Worte und Orte', 7:'Gestern – heute – morgen' },
   b2: { 1:'Den Horizont erweitern', 2:'Miteinander leben', 3:'Suchen und Finden', 5:'Einfach mal abschalten', 6:'In Erinnerungen schwelgen', 7:'Sich und die Welt verändern' },
 };
@@ -517,8 +745,8 @@ const EINHEIT_TITLES = {
 // ══════════════════════════════════════════════════════════
 // APP STATE
 // ══════════════════════════════════════════════════════════
-let currentLevel = null;   // 'a1' | 'a2' | 'b1' | 'b2'
-let currentUnit  = null;   // 'start' | '1' | '2' ...
+let currentLevel = null;
+let currentUnit  = null;
 let quizMode     = 'de-en';
 let deck=[], cur=0, answered=false;
 let sC=0, sW=0, sS=0, missed=[], wof={}, att={};
@@ -532,7 +760,6 @@ function showPage(id) {
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
-
 function setLevelColor(color) {
   document.documentElement.style.setProperty('--level-color', color);
 }
@@ -542,36 +769,24 @@ function setLevelColor(color) {
 // ══════════════════════════════════════════════════════════
 function goEinheiten(level) {
   currentLevel = level;
-  const meta = VOCAB[level].meta;
+  const meta   = VOCAB[level].meta;
   const titles = EINHEIT_TITLES[level] || {};
-  const units = VOCAB[level].units;
-
+  const units  = VOCAB[level].units;
   setLevelColor(meta.color);
-
-  // badge
-  const badge = document.getElementById('einheiten-badge');
-  badge.querySelector('.lvl').textContent = meta.label;
-  badge.querySelector('.bk').textContent  = meta.book;
-
-  // hero
-  document.getElementById('einheiten-hero').style.background = meta.color;
-  document.getElementById('einheiten-supra').textContent = `${meta.book} ${meta.label}`;
-  document.getElementById('einheiten-title').textContent = 'Einheiten';
-  document.getElementById('einheiten-sub').textContent   = `Wähle eine Einheit, um mit dem Vokabeltraining zu beginnen.`;
-  document.getElementById('einheiten-count').textContent = `${meta.einheiten} Einheiten`;
-
-  // build grid
-  const grid = document.getElementById('einheit-grid');
+  document.getElementById('einheiten-badge').querySelector('.lvl').textContent = meta.label;
+  document.getElementById('einheiten-badge').querySelector('.bk').textContent  = meta.book;
+  document.getElementById('einheiten-hero').style.background  = meta.color;
+  document.getElementById('einheiten-supra').textContent      = `${meta.book} ${meta.label}`;
+  document.getElementById('einheiten-title').textContent      = 'Einheiten';
+  document.getElementById('einheiten-sub').textContent        = 'Wähle eine Einheit, um mit dem Vokabeltraining zu beginnen.';
+  document.getElementById('einheiten-count').textContent      = `${meta.einheiten} Einheiten`;
   const keys = ['start', ...Array.from({length: meta.einheiten - 1}, (_,i) => String(i+1))];
-  grid.innerHTML = keys.map(key => {
-    const title = titles[key] || null;
+  document.getElementById('einheit-grid').innerHTML = keys.map(key => {
+    const title   = titles[key] || null;
     const hasData = !!units[key];
     const isStart = key === 'start';
-    const tbd = !title;
-    const inactive = !hasData;
-    return `<div class="e-card${tbd?' tbd':''}${inactive&&!tbd?' tbd':''}"
-      style="--card-color:${meta.color}"
-      ${hasData ? `onclick="goWordList('${key}')"` : ''}>
+    const tbd     = !title;
+    return `<div class="e-card${tbd||!hasData?' tbd':''}" ${hasData?`onclick="goWordList('${key}')"`:''}> 
       <div class="e-card-top" style="background:${tbd?'#c8d8e8':meta.color}">
         <div class="e-pill">
           <span class="e-pill-label">${isStart?'Start':'Einheit'}</span>
@@ -584,7 +799,6 @@ function goEinheiten(level) {
       </div>
     </div>`;
   }).join('');
-
   showPage('page-einheiten');
 }
 
@@ -593,43 +807,31 @@ function goEinheiten(level) {
 // ══════════════════════════════════════════════════════════
 function goWordList(unit) {
   currentUnit = unit;
-  const meta  = VOCAB[currentLevel].meta;
-  const data  = VOCAB[currentLevel].units[unit];
-
+  const meta = VOCAB[currentLevel].meta;
+  const data = VOCAB[currentLevel].units[unit];
   setLevelColor(meta.color);
-
-  // badge
-  const badge = document.getElementById('wl-badge');
-  badge.querySelector('.lvl').textContent = meta.label;
-  badge.querySelector('.bk').textContent  = `${unit === 'start' ? 'Start' : 'Einheit ' + unit} · ${data.title}`;
-
-  // hero
-  document.getElementById('wl-hero').style.background   = meta.color;
-  document.getElementById('wl-supra').textContent        = `${meta.book} ${meta.label} · ${unit === 'start' ? 'Einheit Start' : 'Einheit ' + unit}`;
-  document.getElementById('wl-title').textContent        = data.title;
+  const unitLabel = unit === 'start' ? 'Start' : 'Einheit ' + unit;
+  document.getElementById('wl-badge').querySelector('.lvl').textContent = meta.label;
+  document.getElementById('wl-badge').querySelector('.bk').textContent  = `${unitLabel} · ${data.title}`;
+  document.getElementById('wl-hero').style.background  = meta.color;
+  document.getElementById('wl-supra').textContent      = `${meta.book} ${meta.label} · ${unitLabel}`;
+  document.getElementById('wl-title').textContent      = data.title;
   const total = data.nouns.length + data.verbs.length + data.andere.length;
-  document.getElementById('wl-count').textContent        = `${total} Wörter · Nomen · Verben · Andere`;
-  document.getElementById('wl-ueben-btn').style.color    = meta.color;
-
-  // render tables
-  document.getElementById('wl-nomen-body').innerHTML = data.nouns.map(n =>
-    `<tr><td>${n.de}</td><td>${n.pl.startsWith('nur')||n.pl.startsWith('meist')?`<span class="note">${n.pl}</span>`:n.pl}</td><td><span class="pill">${n.en.join(' / ')}</span></td></tr>`
+  document.getElementById('wl-count').textContent      = `${total} Wörter · Nomen · Verben · Andere`;
+  document.getElementById('wl-ueben-btn').style.color  = meta.color;
+  document.getElementById('wl-nomen-body').innerHTML   = data.nouns.map(n =>
+    `<tr><td>${n.de}</td><td>${/^(nur|meist|Pl\.)/.test(n.pl)?`<span class="note">${n.pl}</span>`:n.pl}</td><td><span class="pill">${n.en.join(' / ')}</span></td></tr>`
   ).join('');
-
-  document.getElementById('wl-verben-body').innerHTML = data.verbs.map(v =>
+  document.getElementById('wl-verben-body').innerHTML  = data.verbs.map(v =>
     `<tr><td>${v.de}</td><td>${v.praesens}</td><td>${v.perfekt}</td><td>${v.praeteritum}</td><td><span class="pill">${v.en.join(' / ')}</span></td></tr>`
   ).join('');
-
-  document.getElementById('wl-andere-body').innerHTML = data.andere.map(a =>
+  document.getElementById('wl-andere-body').innerHTML  = data.andere.map(a =>
     `<tr><td>${a.de}</td><td><span class="pill">${a.en.join(' / ')}</span></td></tr>`
   ).join('');
-
-  // reset tabs
   document.querySelectorAll('#page-wordlist .tab').forEach(t => t.classList.remove('on'));
   document.querySelectorAll('#page-wordlist .tab-panel').forEach(p => p.classList.remove('on'));
   document.querySelector('#page-wordlist .tabs-bar .tab').classList.add('on');
   document.getElementById('wl-nomen').classList.add('on');
-
   showPage('page-wordlist');
 }
 
@@ -646,19 +848,14 @@ function switchWordTab(name, el) {
 function goQuiz() {
   const meta = VOCAB[currentLevel].meta;
   const data = VOCAB[currentLevel].units[currentUnit];
-
-  // badge + hero
-  const badge = document.getElementById('quiz-badge');
-  badge.querySelector('.lvl').textContent = meta.label;
-  badge.querySelector('.bk').textContent  = currentUnit === 'start' ? `Start · ${data.title}` : `Einheit ${currentUnit} · ${data.title}`;
+  const unitLabel = currentUnit === 'start' ? 'Start' : 'Einheit ' + currentUnit;
+  document.getElementById('quiz-badge').querySelector('.lvl').textContent = meta.label;
+  document.getElementById('quiz-badge').querySelector('.bk').textContent  = `${unitLabel} · ${data.title}`;
   document.getElementById('quiz-hero').style.background = meta.color;
-  document.getElementById('quiz-supra').textContent = `${meta.book} ${meta.label} · ${currentUnit === 'start' ? 'Einheit Start' : 'Einheit ' + currentUnit}`;
-
-  // reset mode tabs
+  document.getElementById('quiz-supra').textContent     = `${meta.book} ${meta.label} · ${unitLabel}`;
   document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('on'));
   document.querySelector('.mode-tab').classList.add('on');
   quizMode = 'de-en';
-
   showPage('page-quiz');
   quizRestart();
 }
@@ -716,7 +913,7 @@ function updScore() {
 }
 
 function quizRestart() {
-  sC=0;sW=0;sS=0;missed=[];wof={};att={};cur=0;answered=false;
+  sC=0; sW=0; sS=0; missed=[]; wof={}; att={}; cur=0; answered=false;
   deck = buildDeck();
   updScore();
   document.getElementById('quiz-area').style.display    = 'flex';
@@ -734,7 +931,6 @@ function quizShow() {
   document.getElementById('q-tense').innerHTML = '';
   document.getElementById('pf').style.width = Math.round(cur / deck.length * 100) + '%';
   document.getElementById('karte').textContent = `Karte ${cur+1} / ${deck.length}`;
-
   if (quizMode === 'de-en') {
     document.getElementById('q-label').textContent = 'Wie heiẞt das auf Englisch?';
     document.getElementById('q-word').textContent  = w.de;
@@ -764,13 +960,9 @@ function quizCheck() {
   const ok = grade(inp, w);
   const fb = document.getElementById('feedback');
   if (ok) {
-    sC++;
-    fb.className = 'feedback ok';
-    fb.textContent = 'Richtig! ✓';
+    sC++; fb.className = 'feedback ok'; fb.textContent = 'Richtig! ✓';
   } else {
-    sW++;
-    fb.className = 'feedback bad';
-    fb.textContent = `Falsch. Richtige Antwort: ${getAns(w)}`;
+    sW++; fb.className = 'feedback bad'; fb.textContent = `Falsch. Richtige Antwort: ${getAns(w)}`;
     if (att[cur] === 1) wof[cur] = true;
     const lbl  = w.type === 'verb' ? `${w.de} (${w.tense})` : w.de;
     const disp = w.type === 'verb' ? w.answer : w.en.join(', ');
@@ -828,8 +1020,7 @@ function quizSummary() {
   document.getElementById('sm-wrong').textContent = sW;
   document.getElementById('sm-skip').textContent  = sS;
   document.getElementById('btn-drill').disabled   = missed.length === 0;
-  const el = document.getElementById('sm-missed');
-  el.innerHTML = missed.length > 0
+  document.getElementById('sm-missed').innerHTML  = missed.length > 0
     ? `<div class="missed-label">Zu wiederholen</div>` + missed.map(w =>
         `<div class="missed-item"><div><div class="missed-de">${w.lbl}</div><div class="missed-en">${w.disp}</div></div><div class="missed-r">${w.r}</div></div>`
       ).join('')
