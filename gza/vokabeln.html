@@ -21,13 +21,11 @@
     --text-hint: #aaa;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--black); min-height: 100vh; }
-
-  /* ── UTILITIES ─────────────────────────────────────── */
   .hidden { display: none !important; }
   .page { display: none; flex-direction: column; min-height: 100vh; }
   .page.active { display: flex; }
 
-  /* ── SHARED HEADER ──────────────────────────────────── */
+  /* HEADER */
   .gza-header { background: var(--black); padding: 14px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
   .back-btn { background: rgba(255,255,255,0.1); border: none; color: white; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
   .back-btn:hover { background: rgba(255,255,255,0.18); }
@@ -36,113 +34,73 @@
   .header-text .site-name { font-size: 20px; font-weight: 600; color: white; letter-spacing: -0.02em; }
   .header-text .site-sub { font-size: 10px; color: var(--gza-green); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; font-weight: 500; }
   .level-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 13px; border-radius: 6px; background: rgba(255,255,255,0.13); }
-  .level-badge-level { font-size: 15px; font-weight: 700; color: white; }
-  .level-badge-sep { width: 1px; height: 14px; background: rgba(255,255,255,0.3); }
-  .level-badge-book { font-size: 15px; font-weight: 500; color: white; }
+  .level-badge span { font-size: 14px; color: white; }
+  .level-badge .lvl { font-weight: 700; }
+  .level-badge .sep { width: 1px; height: 13px; background: rgba(255,255,255,0.3); }
+  .level-badge .bk  { font-weight: 500; }
 
-  /* ── HERO BANDS ─────────────────────────────────────── */
-  .hero-band { padding: 20px 22px 0; border-bottom: 3px solid var(--gza-green); flex-shrink: 0; }
+  /* HERO */
+  .hero-band { padding: 18px 20px 0; border-bottom: 3px solid var(--gza-green); flex-shrink: 0; }
   .hero-supra { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.55); font-weight: 600; margin-bottom: 3px; }
-  .hero-band h1 { font-size: 26px; font-weight: 600; color: white; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .hero-band h1 { font-size: 24px; font-weight: 600; color: white; letter-spacing: -0.02em; margin-bottom: 6px; }
   .hero-band h1 em { font-style: italic; color: var(--gza-green); }
-  .hero-band p { font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 300; margin-bottom: 16px; }
-  .hero-btn { background: white; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 9px 18px; border-radius: 7px; cursor: pointer; margin-bottom: 16px; }
+  .hero-band p { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 300; margin-bottom: 14px; }
+  .hero-btn { background: white; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 9px 18px; border-radius: 7px; cursor: pointer; margin-bottom: 14px; display: inline-block; }
 
-  /* ── SHARED BODY ─────────────────────────────────────── */
-  .body-pad { padding: 22px 20px; flex: 1; }
-  .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-hint); margin-bottom: 14px; font-weight: 600; }
+  /* BODY */
+  .body-pad { padding: 20px; flex: 1; }
+  .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-hint); margin-bottom: 12px; font-weight: 600; }
 
-  /* ════════════════════════════════════════════════════
-     PAGE 1: HOMEPAGE
-  ════════════════════════════════════════════════════ */
-  .level-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+  /* HOME: LEVEL CARDS */
+  .level-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
   .level-card { border-radius: 12px; overflow: hidden; cursor: pointer; border: 2.5px solid transparent; transition: transform 0.15s; }
   .level-card:hover { transform: translateY(-2px); }
-  .level-card.active { border-color: rgba(0,0,0,0.4); }
-  .lc-top { padding: 20px 16px 16px; }
-  .lc-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: 6px; margin-bottom: 0; }
-  .lc-badge-level { font-size: 17px; font-weight: 700; }
-  .lc-badge-sep { width: 1px; height: 16px; }
-  .lc-badge-book { font-size: 17px; font-weight: 500; }
-  .lc-bottom { padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-  .card-a1 { background: var(--blue-a1); }
-  .card-a1 .lc-badge { background: rgba(255,255,255,0.2); }
-  .card-a1 .lc-badge-level, .card-a1 .lc-badge-book, .card-a1 .lc-badge-sep { color: white; background: none; }
-  .card-a1 .lc-badge-sep { background: rgba(255,255,255,0.35); }
-  .card-a1 .lc-bottom { color: rgba(255,255,255,0.7); }
-  .card-a2 { background: var(--green-a2); }
-  .card-a2 .lc-badge { background: rgba(255,255,255,0.2); }
-  .card-a2 .lc-badge-level, .card-a2 .lc-badge-book { color: white; }
-  .card-a2 .lc-badge-sep { background: rgba(255,255,255,0.35); }
-  .card-a2 .lc-bottom { color: rgba(255,255,255,0.7); }
-  .card-b1 { background: var(--red-b1); }
-  .card-b1 .lc-badge { background: rgba(255,255,255,0.2); }
-  .card-b1 .lc-badge-level, .card-b1 .lc-badge-book { color: white; }
-  .card-b1 .lc-badge-sep { background: rgba(255,255,255,0.35); }
-  .card-b1 .lc-bottom { color: rgba(255,255,255,0.7); }
-  .card-b2 { background: white; border: 1.5px solid #c0d4e8; }
-  .card-b2 .lc-badge { background: rgba(43,111,168,0.14); }
-  .card-b2 .lc-badge-level, .card-b2 .lc-badge-book { color: var(--blue-b2); }
-  .card-b2 .lc-badge-sep { background: rgba(43,111,168,0.3); }
-  .card-b2 .lc-bottom { color: rgba(43,111,168,0.65); }
-  .einheit-panel { background: white; border-radius: 10px; overflow: hidden; border: 0.5px solid var(--border); margin-bottom: 24px; }
-  .ep-header { padding: 13px 16px; display: flex; align-items: center; gap: 10px; border-bottom: 0.5px solid #eee; }
-  .ep-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .ep-title { font-size: 14px; font-weight: 600; }
-  .ep-book { font-size: 11px; color: var(--text-hint); margin-left: auto; }
-  .e-row { padding: 12px 16px; display: flex; align-items: center; gap: 10px; border-bottom: 0.5px solid #f2f2f2; cursor: pointer; transition: background 0.1s; }
-  .e-row:last-child { border-bottom: none; }
-  .e-row:hover { background: #fafaf8; }
-  .e-row.tbd { cursor: default; opacity: 0.45; }
-  .e-row.tbd:hover { background: transparent; }
-  .e-num { font-size: 10px; font-weight: 700; color: #ccc; min-width: 30px; letter-spacing: 0.04em; }
-  .e-name { font-size: 14px; font-weight: 500; flex: 1; }
-  .e-arr { font-size: 14px; color: #ccc; }
+  .lc-top { padding: 18px 16px 14px; }
+  .lc-pill { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: 6px; }
+  .lc-pill .lv { font-size: 17px; font-weight: 700; color: white; }
+  .lc-pill .sp { width: 1px; height: 16px; }
+  .lc-pill .bk { font-size: 17px; font-weight: 500; color: white; }
+  .lc-bottom { padding: 9px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+  .card-a1 { background: var(--blue-a1); } .card-a1 .lc-pill { background: rgba(255,255,255,0.2); } .card-a1 .sp { background: rgba(255,255,255,0.35); } .card-a1 .lc-bottom { color: rgba(255,255,255,0.7); }
+  .card-a2 { background: var(--green-a2); } .card-a2 .lc-pill { background: rgba(255,255,255,0.2); } .card-a2 .sp { background: rgba(255,255,255,0.35); } .card-a2 .lc-bottom { color: rgba(255,255,255,0.7); }
+  .card-b1 { background: var(--red-b1); }  .card-b1 .lc-pill { background: rgba(255,255,255,0.2); } .card-b1 .sp { background: rgba(255,255,255,0.35); } .card-b1 .lc-bottom { color: rgba(255,255,255,0.7); }
+  .card-b2 { background: white; border: 1.5px solid #c0d4e8; } .card-b2 .lc-pill { background: rgba(43,111,168,0.14); } .card-b2 .lv, .card-b2 .bk { color: var(--blue-b2) !important; } .card-b2 .sp { background: rgba(43,111,168,0.3); } .card-b2 .lc-bottom { color: rgba(43,111,168,0.65); }
 
-  /* ════════════════════════════════════════════════════
-     PAGE 2: A1 EINHEITEN
-  ════════════════════════════════════════════════════ */
-  .einheit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  /* EINHEITEN GRID */
+  .einheit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .e-card { background: white; border-radius: 10px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: transform 0.12s, border-color 0.12s; }
-  .e-card:hover { transform: translateY(-2px); border-color: var(--blue-a1); }
+  .e-card:hover { transform: translateY(-2px); }
   .e-card.tbd { cursor: default; opacity: 0.4; }
-  .e-card.tbd:hover { transform: none; border-color: transparent; }
-  .e-card-top { background: var(--blue-a1); padding: 13px 14px 11px; }
-  .e-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.22); padding: 4px 10px; border-radius: 5px; }
+  .e-card.tbd:hover { transform: none; }
+  .e-card-top { padding: 12px 14px 10px; }
+  .e-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.22); padding: 3px 10px; border-radius: 5px; }
   .e-pill-label { font-size: 11px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.04em; }
   .e-pill-num { font-size: 11px; font-weight: 500; color: white; }
   .e-pill-sep { width: 1px; height: 11px; background: rgba(255,255,255,0.4); }
-  .e-card.tbd .e-card-top { background: #c8d8e8; }
-  .e-card-bottom { padding: 11px 14px 13px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .e-card-name { font-size: 14px; font-weight: 500; color: var(--blue-a1); letter-spacing: -0.01em; line-height: 1.3; flex: 1; }
-  .e-card-arrow { font-size: 16px; color: var(--blue-a1); opacity: 0.5; }
-  .e-card.tbd .e-card-name { color: #bbb; font-style: italic; font-weight: 400; }
+  .e-card-bottom { padding: 10px 14px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .e-card-name { font-size: 13px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3; flex: 1; }
+  .e-card-arrow { font-size: 15px; opacity: 0.5; }
 
-  /* ════════════════════════════════════════════════════
-     PAGE 3: WORD LIST
-  ════════════════════════════════════════════════════ */
+  /* WORD LIST TABS */
   .tabs-bar { display: flex; border-top: 1px solid rgba(255,255,255,0.15); }
-  .tab { padding: 10px 18px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); cursor: pointer; border-bottom: 3px solid transparent; user-select: none; }
+  .tab { padding: 10px 16px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); cursor: pointer; border-bottom: 3px solid transparent; user-select: none; }
   .tab:hover { color: rgba(255,255,255,0.8); }
   .tab.on { color: white; border-bottom-color: white; font-weight: 600; }
   .tab-panel { display: none; }
   .tab-panel.on { display: block; }
+
+  /* TABLES */
   table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
-  thead tr { background: var(--blue-a1); }
-  thead th { padding: 11px 14px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255,255,255,0.75); }
+  thead tr { background: var(--level-color, var(--blue-a1)); }
+  thead th { padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255,255,255,0.75); }
   tbody tr { border-bottom: 0.5px solid #f0f0f0; transition: background 0.1s; }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: #f7f9fc; }
-  td { padding: 11px 14px; vertical-align: middle; font-size: 14px; font-weight: 500; color: var(--black); }
+  td { padding: 10px 14px; vertical-align: middle; font-size: 14px; font-weight: 500; color: var(--black); }
   .pill { display: inline-block; background: #EAF3FB; color: var(--blue-a1); font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
   .note { font-size: 12px; color: #bbb; font-style: italic; font-weight: 400; }
-  .conj-stack { display: flex; flex-direction: column; gap: 3px; }
-  .conj-chip { font-size: 11px; background: #EAF3FB; color: var(--blue-a1); padding: 2px 7px; border-radius: 4px; font-weight: 500; display: inline-block; }
-  .tense-label { font-size: 10px; color: #7aabce; margin-right: 3px; }
 
-  /* ════════════════════════════════════════════════════
-     PAGE 4: QUIZ
-  ════════════════════════════════════════════════════ */
+  /* QUIZ */
   .mode-bar { display: flex; border-top: 1px solid rgba(255,255,255,0.15); }
   .mode-tab { padding: 10px 14px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); cursor: pointer; border-bottom: 3px solid transparent; user-select: none; white-space: nowrap; }
   .mode-tab:hover { color: rgba(255,255,255,0.8); }
@@ -153,19 +111,19 @@
   .si b { color: var(--black); }
   .karte-badge { font-size: 12px; color: var(--text-hint); margin-left: auto; }
   .pbar { height: 4px; background: #ddd; border-radius: 2px; overflow: hidden; }
-  .pfill { height: 100%; background: var(--blue-a1); border-radius: 2px; transition: width 0.3s; }
+  .pfill { height: 100%; border-radius: 2px; transition: width 0.3s; }
   .q-card { background: white; border-radius: 10px; padding: 18px; border: 0.5px solid var(--border); }
   .q-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #bbb; margin-bottom: 6px; }
   .q-word { font-size: 24px; font-weight: 600; color: var(--black); line-height: 1.2; }
-  .q-tense { display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 600; background: #EAF3FB; color: var(--blue-a1); padding: 3px 9px; border-radius: 4px; }
+  .q-tense-pill { display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 600; background: #EAF3FB; color: var(--blue-a1); padding: 3px 9px; border-radius: 4px; }
   .input-row { display: flex; gap: 8px; }
   .input-row input { flex: 1; padding: 10px 13px; border: 1.5px solid #ddd; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--black); background: white; outline: none; }
-  .input-row input:focus { border-color: var(--blue-a1); }
-  .btn-prufen { padding: 10px 18px; background: var(--blue-a1); color: white; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; }
+  .input-row input:focus { border-color: var(--level-color, var(--blue-a1)); }
+  .btn-prufen { padding: 10px 18px; color: white; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; background: var(--level-color, var(--blue-a1)); }
   .nav-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
   .nav-row button { padding: 12px 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; border: 2px solid #d0d0d0; background: #e8e8e8; color: var(--black); transition: opacity 0.15s; }
   .nav-row button.dim { opacity: 0.25; pointer-events: none; }
-  #btn-next { background: var(--blue-a1); color: white; border-color: var(--blue-a1); }
+  #btn-next { border-color: var(--level-color, var(--blue-a1)); background: var(--level-color, var(--blue-a1)); color: white; }
   .feedback { padding: 12px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; }
   .feedback.ok   { background: #edfaed; color: #2a7a2a; border: 0.5px solid #b2e0b2; }
   .feedback.bad  { background: #fdecea; color: #c0392b; border: 0.5px solid #f5b8b3; }
@@ -184,16 +142,16 @@
   .missed-en { color: var(--blue-a1); font-size: 12px; }
   .missed-r  { font-size: 11px; color: var(--text-hint); }
   .sm-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
-  .btn-drill   { padding: 10px 18px; background: var(--blue-a1); color: white; border: 2px solid var(--blue-a1); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; }
+  .btn-drill   { padding: 10px 18px; color: white; border: 2px solid; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; background: var(--level-color, var(--blue-a1)); border-color: var(--level-color, var(--blue-a1)); }
   .btn-drill:disabled { opacity: 0.35; cursor: default; }
   .btn-restart { padding: 10px 18px; background: #e8e8e8; color: var(--black); border: 2px solid #d0d0d0; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; border-radius: 8px; cursor: pointer; }
 </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════════════════
-     PAGE 1: HOMEPAGE
-════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════ -->
 <div class="page active" id="page-home">
   <div class="gza-header">
     <div class="header-logo">
@@ -214,203 +172,114 @@
       </div>
     </div>
   </div>
-
-  <div class="hero-band" style="background:#1a1a1a; padding-bottom:0;">
-    <h1 style="margin-bottom:8px;">Lern<em>en</em> mit Wörtern.</h1>
-    <p>Vokabeltraining für alle Kursniveaus am Goethe-Zentrum Atlanta — passend zu deinem Lehrbuch, Einheit für Einheit.</p>
+  <div class="hero-band" style="background:var(--black);">
+    <h1>Lern<em>en</em> mit Wörtern.</h1>
+    <p>Vokabeltraining für alle Kursniveaus — passend zu deinem Lehrbuch, Einheit für Einheit.</p>
   </div>
-
   <div class="body-pad">
     <div class="section-label">Wähle dein Niveau</div>
     <div class="level-grid">
-      <div class="level-card card-a1" onclick="goA1Einheiten()">
-        <div class="lc-top">
-          <div class="lc-badge">
-            <span class="lc-badge-level">A1</span>
-            <span class="lc-badge-sep"></span>
-            <span class="lc-badge-book">Das Leben</span>
-          </div>
-        </div>
+      <div class="level-card card-a1" onclick="goEinheiten('a1')">
+        <div class="lc-top"><div class="lc-pill"><span class="lv">A1</span><span class="sp"></span><span class="bk">Das Leben</span></div></div>
         <div class="lc-bottom"><span>16 Einheiten</span><span>→</span></div>
       </div>
       <div class="level-card card-a2">
-        <div class="lc-top">
-          <div class="lc-badge">
-            <span class="lc-badge-level">A2</span>
-            <span class="lc-badge-sep"></span>
-            <span class="lc-badge-book">Das Leben</span>
-          </div>
-        </div>
+        <div class="lc-top"><div class="lc-pill"><span class="lv">A2</span><span class="sp"></span><span class="bk">Das Leben</span></div></div>
         <div class="lc-bottom"><span>16 Einheiten</span><span>→</span></div>
       </div>
       <div class="level-card card-b1">
-        <div class="lc-top">
-          <div class="lc-badge">
-            <span class="lc-badge-level">B1</span>
-            <span class="lc-badge-sep"></span>
-            <span class="lc-badge-book">Das Leben</span>
-          </div>
-        </div>
+        <div class="lc-top"><div class="lc-pill"><span class="lv">B1</span><span class="sp"></span><span class="bk">Das Leben</span></div></div>
         <div class="lc-bottom"><span>12 Einheiten</span><span>→</span></div>
       </div>
       <div class="level-card card-b2">
-        <div class="lc-top">
-          <div class="lc-badge">
-            <span class="lc-badge-level">B2</span>
-            <span class="lc-badge-sep"></span>
-            <span class="lc-badge-book">Weitblick</span>
-          </div>
-        </div>
+        <div class="lc-top"><div class="lc-pill"><span class="lv">B2</span><span class="sp"></span><span class="bk">Weitblick</span></div></div>
         <div class="lc-bottom"><span>12 Einheiten</span><span>→</span></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════
-     PAGE 2: A1 EINHEITEN
-════════════════════════════════════════════════════ -->
-<div class="page" id="page-a1">
+<!-- ══════════════════════════════════════
+     PAGE: EINHEITEN (dynamic)
+══════════════════════════════════════ -->
+<div class="page" id="page-einheiten">
   <div class="gza-header">
     <button class="back-btn" onclick="showPage('page-home')">← Zurück</button>
-    <div class="level-badge">
-      <span class="level-badge-level">A1</span>
-      <span class="level-badge-sep"></span>
-      <span class="level-badge-book">Das Leben</span>
+    <div class="level-badge" id="einheiten-badge">
+      <span class="lvl"></span><span class="sep"></span><span class="bk"></span>
     </div>
   </div>
-  <div class="hero-band" style="background:var(--blue-a1);">
-    <div class="hero-supra">Das Leben A1</div>
-    <h1>Einheiten</h1>
-    <p>Wähle eine Einheit, um mit dem Vokabeltraining zu beginnen.</p>
+  <div class="hero-band" id="einheiten-hero">
+    <div class="hero-supra" id="einheiten-supra"></div>
+    <h1 id="einheiten-title"></h1>
+    <p id="einheiten-sub"></p>
   </div>
   <div class="body-pad">
-    <div class="section-label">16 Einheiten</div>
-    <div class="einheit-grid" id="a1-grid"></div>
+    <div class="section-label" id="einheiten-count"></div>
+    <div class="einheit-grid" id="einheit-grid"></div>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════
-     PAGE 3: WORD LIST (Start / Willkommen!)
-════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     PAGE: WORD LIST (dynamic)
+══════════════════════════════════════ -->
 <div class="page" id="page-wordlist">
   <div class="gza-header">
-    <button class="back-btn" onclick="showPage('page-a1')">← Zurück</button>
-    <div class="level-badge">
-      <span class="level-badge-level">A1</span>
-      <span class="level-badge-sep"></span>
-      <span class="level-badge-book">Start · Willkommen!</span>
+    <button class="back-btn" onclick="showPage('page-einheiten')">← Zurück</button>
+    <div class="level-badge" id="wl-badge">
+      <span class="lvl"></span><span class="sep"></span><span class="bk"></span>
     </div>
   </div>
-  <div class="hero-band" style="background:var(--blue-a1);">
-    <div class="hero-supra">Das Leben A1 · Einheit Start</div>
-    <h1>Willkommen!</h1>
-    <p>38 Wörter · Nomen · Verben · Andere</p>
-    <button class="hero-btn" style="color:var(--blue-a1);" onclick="showPage('page-quiz'); quizRestart();">Vokabeln üben →</button>
+  <div class="hero-band" id="wl-hero">
+    <div class="hero-supra" id="wl-supra"></div>
+    <h1 id="wl-title"></h1>
+    <p id="wl-count"></p>
+    <button class="hero-btn" id="wl-ueben-btn" onclick="goQuiz()">Vokabeln üben →</button>
     <div class="tabs-bar">
-      <div class="tab on" onclick="switchTab('nomen',this)">Nomen</div>
-      <div class="tab" onclick="switchTab('verben',this)">Verben</div>
-      <div class="tab" onclick="switchTab('andere',this)">Andere</div>
+      <div class="tab on" onclick="switchWordTab('nomen',this)">Nomen</div>
+      <div class="tab" onclick="switchWordTab('verben',this)">Verben</div>
+      <div class="tab" onclick="switchWordTab('andere',this)">Andere</div>
     </div>
   </div>
   <div class="body-pad">
-    <div class="tab-panel on" id="tab-nomen">
+    <div class="tab-panel on" id="wl-nomen">
       <table>
         <thead><tr><th style="width:30%">Singular</th><th style="width:30%">Plural</th><th>Englisch</th></tr></thead>
-        <tbody>
-          <tr><td>der Name</td><td>die Namen</td><td><span class="pill">name</span></td></tr>
-          <tr><td>die Frau</td><td>die Frauen</td><td><span class="pill">Mrs / Ms / woman</span></td></tr>
-          <tr><td>der Herr</td><td>die Herren</td><td><span class="pill">Mr / gentleman</span></td></tr>
-          <tr><td>der Moment</td><td>die Momente</td><td><span class="pill">moment</span></td></tr>
-          <tr><td>die Frage</td><td>die Fragen</td><td><span class="pill">question</span></td></tr>
-          <tr><td>die Bitte</td><td>die Bitten</td><td><span class="pill">request</span></td></tr>
-          <tr><td>die Entschuldigung</td><td>die Entschuldigungen</td><td><span class="pill">excuse me</span></td></tr>
-          <tr><td>die Ahnung</td><td>die Ahnungen</td><td><span class="pill">idea / clue</span></td></tr>
-          <tr><td>die Tafel</td><td>die Tafeln</td><td><span class="pill">board</span></td></tr>
-          <tr><td>das Buch</td><td>die Bücher</td><td><span class="pill">book</span></td></tr>
-          <tr><td>der Text</td><td>die Texte</td><td><span class="pill">text</span></td></tr>
-          <tr><td>das Wort</td><td>die Wörter</td><td><span class="pill">word</span></td></tr>
-          <tr><td>die Uhr</td><td>die Uhren</td><td><span class="pill">clock / watch</span></td></tr>
-          <tr><td>die Tür</td><td>die Türen</td><td><span class="pill">door</span></td></tr>
-          <tr><td>der Stuhl</td><td>die Stühle</td><td><span class="pill">chair</span></td></tr>
-          <tr><td>der Tisch</td><td>die Tische</td><td><span class="pill">table / desk</span></td></tr>
-          <tr><td>die Tasche</td><td>die Taschen</td><td><span class="pill">bag</span></td></tr>
-          <tr><td>der Laptop</td><td>die Laptops</td><td><span class="pill">laptop</span></td></tr>
-          <tr><td>das Handy</td><td>die Handys</td><td><span class="pill">mobile phone</span></td></tr>
-          <tr><td>der Kuli</td><td>die Kulis</td><td><span class="pill">pen</span></td></tr>
-          <tr><td>der Bleistift</td><td>die Bleistifte</td><td><span class="pill">pencil</span></td></tr>
-          <tr><td>das Heft</td><td>die Hefte</td><td><span class="pill">exercise book</span></td></tr>
-          <tr><td>der Kaffee</td><td>die Kaffees</td><td><span class="pill">coffee</span></td></tr>
-          <tr><td>die Pause</td><td>die Pausen</td><td><span class="pill">break</span></td></tr>
-          <tr><td>das Deutsch</td><td><span class="note">nur Sg.</span></td><td><span class="pill">German (language)</span></td></tr>
-        </tbody>
+        <tbody id="wl-nomen-body"></tbody>
       </table>
     </div>
-    <div class="tab-panel" id="tab-verben">
+    <div class="tab-panel" id="wl-verben">
       <table>
-        <thead><tr><th style="width:18%">Infinitiv</th><th style="width:16%">Präsens</th><th style="width:24%">Perfekt</th><th style="width:18%">Präteritum</th><th>Englisch</th></tr></thead>
-        <tbody>
-          <tr><td>sein</td><td>ist</td><td>ist gewesen</td><td>war</td><td><span class="pill">to be</span></td></tr>
-          <tr><td>haben</td><td>hat</td><td>hat gehabt</td><td>hatte</td><td><span class="pill">to have</span></td></tr>
-          <tr><td>heißen</td><td>heißt</td><td>hat geheißen</td><td>hieß</td><td><span class="pill">to be called</span></td></tr>
-          <tr><td>können</td><td>kann</td><td>hat gekonnt</td><td>konnte</td><td><span class="pill">can / to be able to</span></td></tr>
-          <tr><td>sprechen</td><td>spricht</td><td>hat gesprochen</td><td>sprach</td><td><span class="pill">to speak</span></td></tr>
-          <tr><td>verstehen</td><td>versteht</td><td>hat verstanden</td><td>verstand</td><td><span class="pill">to understand</span></td></tr>
-          <tr><td>schreiben</td><td>schreibt</td><td>hat geschrieben</td><td>schrieb</td><td><span class="pill">to write</span></td></tr>
-          <tr><td>lesen</td><td>liest</td><td>hat gelesen</td><td>las</td><td><span class="pill">to read</span></td></tr>
-          <tr><td>hören</td><td>hört</td><td>hat gehört</td><td>hörte</td><td><span class="pill">to listen / hear</span></td></tr>
-          <tr><td>machen</td><td>macht</td><td>hat gemacht</td><td>machte</td><td><span class="pill">to make / do</span></td></tr>
-          <tr><td>telefonieren</td><td>telefoniert</td><td>hat telefoniert</td><td>telefonierte</td><td><span class="pill">to phone</span></td></tr>
-          <tr><td>buchstabieren</td><td>buchstabiert</td><td>hat buchstabiert</td><td>buchstabierte</td><td><span class="pill">to spell</span></td></tr>
-          <tr><td>wiederholen</td><td>wiederholt</td><td>hat wiederholt</td><td>wiederholte</td><td><span class="pill">to repeat</span></td></tr>
-          <tr><td>ordnen</td><td>ordnet</td><td>hat geordnet</td><td>ordnete</td><td><span class="pill">to arrange</span></td></tr>
-        </tbody>
+        <thead><tr><th style="width:18%">Infinitiv</th><th style="width:16%">Präsens</th><th style="width:22%">Perfekt</th><th style="width:16%">Präteritum</th><th>Englisch</th></tr></thead>
+        <tbody id="wl-verben-body"></tbody>
       </table>
     </div>
-    <div class="tab-panel" id="tab-andere">
+    <div class="tab-panel" id="wl-andere">
       <table>
         <thead><tr><th style="width:40%">Deutsch</th><th>Englisch</th></tr></thead>
-        <tbody>
-          <tr><td>Guten Tag!</td><td><span class="pill">Good afternoon!</span></td></tr>
-          <tr><td>Keine Ahnung!</td><td><span class="pill">No idea!</span></td></tr>
-          <tr><td>danke</td><td><span class="pill">thank you</span></td></tr>
-          <tr><td>bitte</td><td><span class="pill">please</span></td></tr>
-          <tr><td>ja</td><td><span class="pill">yes</span></td></tr>
-          <tr><td>nicht</td><td><span class="pill">not</span></td></tr>
-          <tr><td>kein</td><td><span class="pill">no / none</span></td></tr>
-          <tr><td>hier</td><td><span class="pill">here</span></td></tr>
-          <tr><td>wie</td><td><span class="pill">how</span></td></tr>
-          <tr><td>langsam</td><td><span class="pill">slow / slowly</span></td></tr>
-          <tr><td>gern(e)</td><td><span class="pill">gladly / with pleasure</span></td></tr>
-          <tr><td>klar</td><td><span class="pill">of course / clear</span></td></tr>
-          <tr><td>und</td><td><span class="pill">and</span></td></tr>
-          <tr><td>mit</td><td><span class="pill">with</span></td></tr>
-          <tr><td>auf</td><td><span class="pill">on / in</span></td></tr>
-        </tbody>
+        <tbody id="wl-andere-body"></tbody>
       </table>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════
-     PAGE 4: QUIZ
-════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     PAGE: QUIZ (dynamic)
+══════════════════════════════════════ -->
 <div class="page" id="page-quiz">
   <div class="gza-header">
     <button class="back-btn" onclick="showPage('page-wordlist')">← Zurück</button>
-    <div class="level-badge">
-      <span class="level-badge-level">A1</span>
-      <span class="level-badge-sep"></span>
-      <span class="level-badge-book">Start · Willkommen!</span>
+    <div class="level-badge" id="quiz-badge">
+      <span class="lvl"></span><span class="sep"></span><span class="bk"></span>
     </div>
   </div>
-  <div class="hero-band" style="background:var(--blue-a1);">
-    <div class="hero-supra">Das Leben A1 · Einheit Start</div>
+  <div class="hero-band" id="quiz-hero">
+    <div class="hero-supra" id="quiz-supra"></div>
     <h1>Vokabeln üben</h1>
     <div class="mode-bar">
-      <div class="mode-tab on" onclick="setQuizMode('de-en',this)">Deutsch → Englisch</div>
-      <div class="mode-tab" onclick="setQuizMode('en-de',this)">Englisch → Deutsch</div>
-      <div class="mode-tab" onclick="setQuizMode('verb',this)">Verben</div>
+      <div class="mode-tab on" onclick="setMode('de-en',this)">Deutsch → Englisch</div>
+      <div class="mode-tab" onclick="setMode('en-de',this)">Englisch → Deutsch</div>
+      <div class="mode-tab" onclick="setMode('verb',this)">Verben</div>
     </div>
   </div>
 
@@ -463,266 +332,519 @@
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════════════════════
+     MASTER VOCAB DATA
+     To add a new Einheit: add one block to VOCAB[level]
+     Format: { title, nouns: [{de, pl, en:[]}], verbs: [{de, praesens, perfekt, praeteritum, en:[]}], andere: [{de, en:[]}] }
+══════════════════════════════════════════════════════════════ -->
 <script>
-/* ── NAVIGATION ─────────────────────────────────── */
+const VOCAB = {
+  a1: {
+    meta: { label: 'A1', book: 'Das Leben', color: '#1A6CB5', einheiten: 16 },
+    units: {
+      'start': {
+        title: 'Willkommen!',
+        nouns: [
+          {de:'der Name',        pl:'die Namen',         en:['name']},
+          {de:'die Frau',        pl:'die Frauen',        en:['mrs','ms','woman']},
+          {de:'der Herr',        pl:'die Herren',        en:['mr','gentleman']},
+          {de:'der Moment',      pl:'die Momente',       en:['moment']},
+          {de:'die Frage',       pl:'die Fragen',        en:['question']},
+          {de:'die Bitte',       pl:'die Bitten',        en:['request']},
+          {de:'die Entschuldigung', pl:'die Entschuldigungen', en:['excuse me','apology']},
+          {de:'die Ahnung',      pl:'die Ahnungen',      en:['idea','clue']},
+          {de:'die Tafel',       pl:'die Tafeln',        en:['board']},
+          {de:'das Buch',        pl:'die Bücher',        en:['book']},
+          {de:'der Text',        pl:'die Texte',         en:['text']},
+          {de:'das Wort',        pl:'die Wörter',        en:['word']},
+          {de:'die Uhr',         pl:'die Uhren',         en:['clock','watch']},
+          {de:'die Tür',         pl:'die Türen',         en:['door']},
+          {de:'der Stuhl',       pl:'die Stühle',        en:['chair']},
+          {de:'der Tisch',       pl:'die Tische',        en:['table','desk']},
+          {de:'die Tasche',      pl:'die Taschen',       en:['bag']},
+          {de:'der Laptop',      pl:'die Laptops',       en:['laptop']},
+          {de:'das Handy',       pl:'die Handys',        en:['mobile phone','cell phone','phone']},
+          {de:'der Kuli',        pl:'die Kulis',         en:['pen']},
+          {de:'der Bleistift',   pl:'die Bleistifte',    en:['pencil']},
+          {de:'das Heft',        pl:'die Hefte',         en:['exercise book','notebook']},
+          {de:'der Kaffee',      pl:'die Kaffees',       en:['coffee']},
+          {de:'die Pause',       pl:'die Pausen',        en:['break']},
+          {de:'das Deutsch',     pl:'nur Sg.',           en:['german','german language']},
+        ],
+        verbs: [
+          {de:'sein',        praesens:'ist',        perfekt:'ist gewesen',    praeteritum:'war',          en:['to be']},
+          {de:'haben',       praesens:'hat',        perfekt:'hat gehabt',     praeteritum:'hatte',        en:['to have']},
+          {de:'heißen',      praesens:'heißt',      perfekt:'hat geheißen',   praeteritum:'hieß',         en:['to be called']},
+          {de:'können',      praesens:'kann',       perfekt:'hat gekonnt',    praeteritum:'konnte',       en:['can','to be able to']},
+          {de:'sprechen',    praesens:'spricht',    perfekt:'hat gesprochen', praeteritum:'sprach',       en:['to speak']},
+          {de:'verstehen',   praesens:'versteht',   perfekt:'hat verstanden', praeteritum:'verstand',     en:['to understand']},
+          {de:'schreiben',   praesens:'schreibt',   perfekt:'hat geschrieben',praeteritum:'schrieb',      en:['to write']},
+          {de:'lesen',       praesens:'liest',      perfekt:'hat gelesen',    praeteritum:'las',          en:['to read']},
+          {de:'hören',       praesens:'hört',       perfekt:'hat gehört',     praeteritum:'hörte',        en:['to listen','to hear']},
+          {de:'machen',      praesens:'macht',      perfekt:'hat gemacht',    praeteritum:'machte',       en:['to make','to do']},
+          {de:'telefonieren',praesens:'telefoniert',perfekt:'hat telefoniert',praeteritum:'telefonierte', en:['to phone','to call']},
+          {de:'buchstabieren',praesens:'buchstabiert',perfekt:'hat buchstabiert',praeteritum:'buchstabierte',en:['to spell']},
+          {de:'wiederholen', praesens:'wiederholt', perfekt:'hat wiederholt', praeteritum:'wiederholte',  en:['to repeat']},
+          {de:'ordnen',      praesens:'ordnet',     perfekt:'hat geordnet',   praeteritum:'ordnete',      en:['to arrange','to sort']},
+        ],
+        andere: [
+          {de:'Guten Tag!',         en:['good afternoon']},
+          {de:'Keine Ahnung!',      en:['no idea']},
+          {de:'danke',              en:['thank you']},
+          {de:'bitte',              en:['please']},
+          {de:'ja',                 en:['yes']},
+          {de:'nicht',              en:['not']},
+          {de:'kein',               en:['no','none']},
+          {de:'hier',               en:['here']},
+          {de:'wie',                en:['how']},
+          {de:'langsam',            en:['slow','slowly']},
+          {de:'gern',               en:['gladly','with pleasure']},
+          {de:'klar',               en:['of course','clear']},
+          {de:'und',                en:['and']},
+          {de:'mit',                en:['with']},
+          {de:'auf',                en:['on','in']},
+        ],
+      },
+
+      // ── EINHEIT 1 ──────────────────────────────────────
+      '1': {
+        title: 'Möller oder Müller?',
+        nouns: [
+          {de:'die Klingel',        pl:'die Klingeln',        en:['bell','doorbell']},
+          {de:'das Paket',          pl:'die Pakete',           en:['parcel','package']},
+          {de:'der Absender',       pl:'die Absender',         en:['sender']},
+          {de:'der Empfänger',      pl:'die Empfänger',        en:['recipient']},
+          {de:'die Adresse',        pl:'die Adressen',         en:['address']},
+          {de:'die Arbeit',         pl:'die Arbeiten',         en:['work']},
+          {de:'die Zeit',           pl:'die Zeiten',           en:['time']},
+          {de:'der Brief',          pl:'die Briefe',           en:['letter']},
+          {de:'der Hund',           pl:'die Hunde',            en:['dog']},
+          {de:'der Zusteller',      pl:'die Zusteller',        en:['postman','delivery person']},
+          {de:'das Tempo',          pl:'meist Sg.',            en:['speed','pace']},
+          {de:'der Stress',         pl:'nur Sg.',              en:['stress']},
+          {de:'die Handynummer',    pl:'die Handynummern',     en:['mobile number','cell number']},
+          {de:'der Familienname',   pl:'die Familiennamen',    en:['surname','last name','family name']},
+          {de:'der Nachname',       pl:'die Nachnamen',        en:['last name','surname']},
+          {de:'das Problem',        pl:'die Probleme',         en:['problem']},
+          {de:'die Hausnummer',     pl:'die Hausnummern',      en:['house number']},
+          {de:'die Straße',         pl:'die Straßen',          en:['street','road']},
+          {de:'die Postleitzahl',   pl:'die Postleitzahlen',   en:['postcode','zip code']},
+          {de:'der Briefkasten',    pl:'die Briefkästen',      en:['letterbox','mailbox']},
+          {de:'die Postkarte',      pl:'die Postkarten',       en:['postcard']},
+          {de:'die Antwort',        pl:'die Antworten',        en:['answer','reply']},
+          {de:'der Partner',        pl:'die Partner',          en:['partner']},
+          {de:'die Mannschaft',     pl:'die Mannschaften',     en:['team']},
+          {de:'die Woche',          pl:'die Wochen',           en:['week']},
+          {de:'die Profimannschaft',pl:'die Profimannschaften',en:['professional team']},
+          {de:'das Dorf',           pl:'die Dörfer',           en:['village']},
+          {de:'der Trainer',        pl:'die Trainer',          en:['trainer','coach']},
+          {de:'der Spieler',        pl:'die Spieler',          en:['player']},
+          {de:'das Training',       pl:'nur Sg.',              en:['training']},
+          {de:'die Heimat',         pl:'meist Sg.',            en:['home','homeland']},
+          {de:'die Region',         pl:'die Regionen',         en:['region']},
+          {de:'der Mensch',         pl:'die Menschen',         en:['person','human']},
+          {de:'der Lehrer',         pl:'die Lehrer',           en:['teacher']},
+          {de:'der Torwart',        pl:'die Torwarte',         en:['goalkeeper']},
+          {de:'der Nationalspieler',pl:'die Nationalspieler',  en:['national team player']},
+        ],
+        verbs: [
+          {de:'sagen',  praesens:'sagt', perfekt:'hat gesagt',    praeteritum:'sagte',  en:['to say']},
+          {de:'mögen',  praesens:'mag',  perfekt:'hat gemocht',   praeteritum:'mochte', en:['to like']},
+          {de:'geben',  praesens:'gibt', perfekt:'hat gegeben',   praeteritum:'gab',    en:['to give','there is']},
+        ],
+        andere: [
+          {de:'Guten Morgen!',       en:['good morning']},
+          {de:'Herzlich willkommen!',en:['welcome']},
+          {de:'sorry',               en:['sorry']},
+          {de:'tschüss',             en:['bye']},
+          {de:'wenig',               en:['little','few']},
+          {de:'so',                  en:['so','like that']},
+          {de:'groß',                en:['large','big']},
+          {de:'aber',                en:['but']},
+          {de:'oder',                en:['or']},
+          {de:'deutsch',             en:['german']},
+          {de:'typisch',             en:['typical']},
+          {de:'oft',                 en:['often']},
+          {de:'nur',                 en:['only']},
+          {de:'seit',                en:['since','for']},
+          {de:'herzlich',            en:['warm','sincere']},
+          {de:'für',                 en:['for']},
+          {de:'bei',                 en:['near','by','at']},
+        ],
+      },
+
+      // ── ADD NEW EINHEITEN HERE ──────────────────────────
+      // '2': { title: 'Lecker essen!', nouns: [...], verbs: [...], andere: [...] },
+      // '3': { title: 'Arbeiten im Café', nouns: [...], verbs: [...], andere: [...] },
+    }
+  },
+
+  a2: {
+    meta: { label: 'A2', book: 'Das Leben', color: '#3AAA5C', einheiten: 16 },
+    units: {
+      // '1': { title: 'Klassentreffen', nouns: [...], verbs: [...], andere: [...] },
+    }
+  },
+
+  b1: {
+    meta: { label: 'B1', book: 'Das Leben', color: '#D42B2B', einheiten: 12 },
+    units: {
+      // '1': { title: 'Bildung (Er)leben', nouns: [...], verbs: [...], andere: [...] },
+    }
+  },
+
+  b2: {
+    meta: { label: 'B2', book: 'Weitblick', color: '#2B6FA8', einheiten: 12 },
+    units: {
+      // '1': { title: 'Den Horizont erweitern', nouns: [...], verbs: [...], andere: [...] },
+    }
+  },
+};
+
+// ══════════════════════════════════════════════════════════
+// EINHEIT TITLES — update as chapters are confirmed
+// ══════════════════════════════════════════════════════════
+const EINHEIT_TITLES = {
+  a1: {
+    start:'Willkommen!', 1:'Möller oder Müller?', 2:'Lecker essen!',
+    3:'Arbeiten im Café', 4:'Freizeit und Hobbys', 5:'Ab in den Urlaub',
+  },
+  a2: { 1:'Klassentreffen', 2:'Mobilleben', 3:'So arbeiten wir heute', 4:'Glück und Lebensträume' },
+  b1: { 1:'Bildung (Er)leben', 2:'Miteinander – Füreinander', 3:'Talente gesucht!', 4:'Natur erleben', 5:'Hin und weg!', 6:'Worte und Orte', 7:'Gestern – heute – morgen' },
+  b2: { 1:'Den Horizont erweitern', 2:'Miteinander leben', 3:'Suchen und Finden', 5:'Einfach mal abschalten', 6:'In Erinnerungen schwelgen', 7:'Sich und die Welt verändern' },
+};
+
+// ══════════════════════════════════════════════════════════
+// APP STATE
+// ══════════════════════════════════════════════════════════
+let currentLevel = null;   // 'a1' | 'a2' | 'b1' | 'b2'
+let currentUnit  = null;   // 'start' | '1' | '2' ...
+let quizMode     = 'de-en';
+let deck=[], cur=0, answered=false;
+let sC=0, sW=0, sS=0, missed=[], wof={}, att={};
+const BUCKET = 10;
+
+// ══════════════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════════════
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
-function goA1Einheiten() { showPage('page-a1'); }
 
-/* ── A1 EINHEITEN DATA ──────────────────────────── */
-const A1_EINHEITEN = [
-  { num:'Start', name:'Willkommen!' },
-  { num:'1',    name:'Möller oder Müller?' },
-  { num:'2',    name:'Lecker essen!' },
-  { num:'3',    name:'Arbeiten im Café' },
-  { num:'4',    name:'Freizeit und Hobbys' },
-  { num:'5',    name:'Ab in den Urlaub' },
-  { num:'6',    name:null }, { num:'7', name:null }, { num:'8', name:null },
-  { num:'9',    name:null }, { num:'10', name:null }, { num:'11', name:null },
-  { num:'12',   name:null }, { num:'13', name:null }, { num:'14', name:null },
-  { num:'15',   name:null },
-];
+function setLevelColor(color) {
+  document.documentElement.style.setProperty('--level-color', color);
+}
 
-(function buildA1Grid() {
-  const grid = document.getElementById('a1-grid');
-  grid.innerHTML = A1_EINHEITEN.map(e => {
-    const tbd = !e.name;
-    const isStart = e.num === 'Start';
-    return `<div class="e-card${tbd?' tbd':''}" ${!tbd?`onclick="goWordList('${e.num}')"`:''}>
-      <div class="e-card-top">
+// ══════════════════════════════════════════════════════════
+// HOME → EINHEITEN
+// ══════════════════════════════════════════════════════════
+function goEinheiten(level) {
+  currentLevel = level;
+  const meta = VOCAB[level].meta;
+  const titles = EINHEIT_TITLES[level] || {};
+  const units = VOCAB[level].units;
+
+  setLevelColor(meta.color);
+
+  // badge
+  const badge = document.getElementById('einheiten-badge');
+  badge.querySelector('.lvl').textContent = meta.label;
+  badge.querySelector('.bk').textContent  = meta.book;
+
+  // hero
+  document.getElementById('einheiten-hero').style.background = meta.color;
+  document.getElementById('einheiten-supra').textContent = `${meta.book} ${meta.label}`;
+  document.getElementById('einheiten-title').textContent = 'Einheiten';
+  document.getElementById('einheiten-sub').textContent   = `Wähle eine Einheit, um mit dem Vokabeltraining zu beginnen.`;
+  document.getElementById('einheiten-count').textContent = `${meta.einheiten} Einheiten`;
+
+  // build grid
+  const grid = document.getElementById('einheit-grid');
+  const keys = ['start', ...Array.from({length: meta.einheiten - 1}, (_,i) => String(i+1))];
+  grid.innerHTML = keys.map(key => {
+    const title = titles[key] || null;
+    const hasData = !!units[key];
+    const isStart = key === 'start';
+    const tbd = !title;
+    const inactive = !hasData;
+    return `<div class="e-card${tbd?' tbd':''}${inactive&&!tbd?' tbd':''}"
+      style="--card-color:${meta.color}"
+      ${hasData ? `onclick="goWordList('${key}')"` : ''}>
+      <div class="e-card-top" style="background:${tbd?'#c8d8e8':meta.color}">
         <div class="e-pill">
           <span class="e-pill-label">${isStart?'Start':'Einheit'}</span>
-          ${!isStart?`<span class="e-pill-sep"></span><span class="e-pill-num">${e.num}</span>`:''}
+          ${!isStart?`<span class="e-pill-sep"></span><span class="e-pill-num">${key}</span>`:''}
         </div>
       </div>
       <div class="e-card-bottom">
-        <div class="e-card-name">${tbd?'wird ergänzt':e.name}</div>
-        ${!tbd?'<div class="e-card-arrow">→</div>':''}
+        <div class="e-card-name" style="color:${tbd?'#bbb':meta.color}">${tbd?'wird ergänzt':title}</div>
+        ${hasData?`<div class="e-card-arrow" style="color:${meta.color}">→</div>`:''}
       </div>
     </div>`;
   }).join('');
-})();
 
-function goWordList(num) {
-  if(num === 'Start') showPage('page-wordlist');
+  showPage('page-einheiten');
 }
 
-/* ── WORD LIST TABS ─────────────────────────────── */
-function switchTab(name, el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('on'));
+// ══════════════════════════════════════════════════════════
+// EINHEITEN → WORD LIST
+// ══════════════════════════════════════════════════════════
+function goWordList(unit) {
+  currentUnit = unit;
+  const meta  = VOCAB[currentLevel].meta;
+  const data  = VOCAB[currentLevel].units[unit];
+
+  setLevelColor(meta.color);
+
+  // badge
+  const badge = document.getElementById('wl-badge');
+  badge.querySelector('.lvl').textContent = meta.label;
+  badge.querySelector('.bk').textContent  = `${unit === 'start' ? 'Start' : 'Einheit ' + unit} · ${data.title}`;
+
+  // hero
+  document.getElementById('wl-hero').style.background   = meta.color;
+  document.getElementById('wl-supra').textContent        = `${meta.book} ${meta.label} · ${unit === 'start' ? 'Einheit Start' : 'Einheit ' + unit}`;
+  document.getElementById('wl-title').textContent        = data.title;
+  const total = data.nouns.length + data.verbs.length + data.andere.length;
+  document.getElementById('wl-count').textContent        = `${total} Wörter · Nomen · Verben · Andere`;
+  document.getElementById('wl-ueben-btn').style.color    = meta.color;
+
+  // render tables
+  document.getElementById('wl-nomen-body').innerHTML = data.nouns.map(n =>
+    `<tr><td>${n.de}</td><td>${n.pl.startsWith('nur')||n.pl.startsWith('meist')?`<span class="note">${n.pl}</span>`:n.pl}</td><td><span class="pill">${n.en.join(' / ')}</span></td></tr>`
+  ).join('');
+
+  document.getElementById('wl-verben-body').innerHTML = data.verbs.map(v =>
+    `<tr><td>${v.de}</td><td>${v.praesens}</td><td>${v.perfekt}</td><td>${v.praeteritum}</td><td><span class="pill">${v.en.join(' / ')}</span></td></tr>`
+  ).join('');
+
+  document.getElementById('wl-andere-body').innerHTML = data.andere.map(a =>
+    `<tr><td>${a.de}</td><td><span class="pill">${a.en.join(' / ')}</span></td></tr>`
+  ).join('');
+
+  // reset tabs
+  document.querySelectorAll('#page-wordlist .tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('#page-wordlist .tab-panel').forEach(p => p.classList.remove('on'));
+  document.querySelector('#page-wordlist .tabs-bar .tab').classList.add('on');
+  document.getElementById('wl-nomen').classList.add('on');
+
+  showPage('page-wordlist');
+}
+
+function switchWordTab(name, el) {
+  document.querySelectorAll('#page-wordlist .tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('#page-wordlist .tab-panel').forEach(p => p.classList.remove('on'));
   el.classList.add('on');
-  document.getElementById('tab-' + name).classList.add('on');
+  document.getElementById('wl-' + name).classList.add('on');
 }
 
-/* ── QUIZ DATA ──────────────────────────────────── */
-const NOUNS = [
-  {de:"der Name",en:["name"],type:"noun"},
-  {de:"die Frau",en:["mrs","ms","woman"],type:"noun"},
-  {de:"der Herr",en:["mr","gentleman"],type:"noun"},
-  {de:"der Moment",en:["moment"],type:"noun"},
-  {de:"die Frage",en:["question"],type:"noun"},
-  {de:"die Bitte",en:["request"],type:"noun"},
-  {de:"die Entschuldigung",en:["excuse me","apology"],type:"noun"},
-  {de:"die Ahnung",en:["idea","clue"],type:"noun"},
-  {de:"die Tafel",en:["board"],type:"noun"},
-  {de:"das Buch",en:["book"],type:"noun"},
-  {de:"der Text",en:["text"],type:"noun"},
-  {de:"das Wort",en:["word"],type:"noun"},
-  {de:"die Uhr",en:["clock","watch"],type:"noun"},
-  {de:"die Tür",en:["door"],type:"noun"},
-  {de:"der Stuhl",en:["chair"],type:"noun"},
-  {de:"der Tisch",en:["table","desk"],type:"noun"},
-  {de:"die Tasche",en:["bag"],type:"noun"},
-  {de:"der Laptop",en:["laptop"],type:"noun"},
-  {de:"das Handy",en:["mobile phone","cell phone","phone"],type:"noun"},
-  {de:"der Kuli",en:["pen"],type:"noun"},
-  {de:"der Bleistift",en:["pencil"],type:"noun"},
-  {de:"das Heft",en:["exercise book","notebook"],type:"noun"},
-  {de:"der Kaffee",en:["coffee"],type:"noun"},
-  {de:"die Pause",en:["break"],type:"noun"},
-  {de:"das Deutsch",en:["german","german language"],type:"noun"},
-];
-const VRAW = [
-  {de:"sein",en:["to be"],p:"ist",f:"ist gewesen",t:"war"},
-  {de:"haben",en:["to have"],p:"hat",f:"hat gehabt",t:"hatte"},
-  {de:"heißen",en:["to be called"],p:"heißt",f:"hat geheißen",t:"hieß"},
-  {de:"können",en:["can"],p:"kann",f:"hat gekonnt",t:"konnte"},
-  {de:"sprechen",en:["to speak"],p:"spricht",f:"hat gesprochen",t:"sprach"},
-  {de:"verstehen",en:["to understand"],p:"versteht",f:"hat verstanden",t:"verstand"},
-  {de:"schreiben",en:["to write"],p:"schreibt",f:"hat geschrieben",t:"schrieb"},
-  {de:"lesen",en:["to read"],p:"liest",f:"hat gelesen",t:"las"},
-  {de:"hören",en:["to listen","to hear"],p:"hört",f:"hat gehört",t:"hörte"},
-  {de:"machen",en:["to make","to do"],p:"macht",f:"hat gemacht",t:"machte"},
-];
-function vCards(){const c=[];VRAW.forEach(v=>[['p','Präsens'],['f','Perfekt'],['t','Präteritum']].forEach(([k,l])=>c.push({de:v.de,answer:v[k],tense:l,en:v.en,type:'verb'})));return c;}
+// ══════════════════════════════════════════════════════════
+// WORD LIST → QUIZ
+// ══════════════════════════════════════════════════════════
+function goQuiz() {
+  const meta = VOCAB[currentLevel].meta;
+  const data = VOCAB[currentLevel].units[currentUnit];
 
-/* ── QUIZ STATE ─────────────────────────────────── */
-const BUCKET = 10;
-let qMode='de-en', deck=[], cur=0, answered=false;
-let sC=0, sW=0, sS=0, missed=[], wof={}, att={};
+  // badge + hero
+  const badge = document.getElementById('quiz-badge');
+  badge.querySelector('.lvl').textContent = meta.label;
+  badge.querySelector('.bk').textContent  = currentUnit === 'start' ? `Start · ${data.title}` : `Einheit ${currentUnit} · ${data.title}`;
+  document.getElementById('quiz-hero').style.background = meta.color;
+  document.getElementById('quiz-supra').textContent = `${meta.book} ${meta.label} · ${currentUnit === 'start' ? 'Einheit Start' : 'Einheit ' + currentUnit}`;
+
+  // reset mode tabs
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('on'));
+  document.querySelector('.mode-tab').classList.add('on');
+  quizMode = 'de-en';
+
+  showPage('page-quiz');
+  quizRestart();
+}
+
+// ══════════════════════════════════════════════════════════
+// QUIZ ENGINE
+// ══════════════════════════════════════════════════════════
 const norm = s => s.trim().toLowerCase();
+const shuf = a => { const b=[...a]; for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];} return b; };
 
-function qGrade(inp,w){const n=norm(inp);if(qMode==='de-en')return w.en.map(norm).includes(n);if(qMode==='en-de')return norm(w.de)===n;return norm(w.answer)===n;}
-function qAns(w){if(qMode==='de-en')return w.en.join(' / ');if(qMode==='en-de')return w.de;return w.answer;}
-function shuf(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
-
-function setQuizMode(m,el){
-  qMode=m;
-  document.querySelectorAll('.mode-tab').forEach(t=>t.classList.remove('on'));
+function setMode(m, el) {
+  quizMode = m;
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('on'));
   el.classList.add('on');
   quizRestart();
 }
 
-function buildDeck(){
-  if(qMode==='verb') return shuf(vCards()).slice(0,BUCKET);
-  return shuf([...NOUNS]).slice(0,BUCKET);
+function buildDeck() {
+  const data = VOCAB[currentLevel].units[currentUnit];
+  if (quizMode === 'verb') {
+    const cards = [];
+    data.verbs.forEach(v => {
+      [['praesens','Präsens'],['perfekt','Perfekt'],['praeteritum','Präteritum']].forEach(([k,l]) => {
+        cards.push({de:v.de, answer:v[k], tense:l, en:v.en, type:'verb'});
+      });
+    });
+    return shuf(cards).slice(0, BUCKET);
+  }
+  return shuf(data.nouns.map(n => ({de:n.de, en:n.en, type:'noun'}))).slice(0, BUCKET);
 }
 
-function setNav(s){
-  document.getElementById('btn-skip').classList.toggle('dim', s!=='input');
-  document.getElementById('btn-retry').classList.toggle('dim', s!=='wrong');
-  document.getElementById('btn-next').classList.toggle('dim', s==='input');
+function grade(inp, w) {
+  const n = norm(inp);
+  if (quizMode === 'de-en') return w.en.map(norm).includes(n);
+  if (quizMode === 'en-de') return norm(w.de) === n;
+  return norm(w.answer) === n;
 }
 
-function updScore(){
-  document.getElementById('sc').textContent=sC;
-  document.getElementById('sw').textContent=sW;
-  document.getElementById('ss').textContent=sS;
+function getAns(w) {
+  if (quizMode === 'de-en') return w.en.join(' / ');
+  if (quizMode === 'en-de') return w.de;
+  return w.answer;
 }
 
-function quizRestart(){
+function setNav(state) {
+  document.getElementById('btn-skip').classList.toggle('dim',  state !== 'input');
+  document.getElementById('btn-retry').classList.toggle('dim', state !== 'wrong');
+  document.getElementById('btn-next').classList.toggle('dim',  state === 'input');
+}
+
+function updScore() {
+  document.getElementById('sc').textContent = sC;
+  document.getElementById('sw').textContent = sW;
+  document.getElementById('ss').textContent = sS;
+}
+
+function quizRestart() {
   sC=0;sW=0;sS=0;missed=[];wof={};att={};cur=0;answered=false;
-  deck=buildDeck();
+  deck = buildDeck();
   updScore();
-  document.getElementById('quiz-area').style.display='flex';
-  document.getElementById('summary-area').style.display='none';
+  document.getElementById('quiz-area').style.display    = 'flex';
+  document.getElementById('summary-area').style.display = 'none';
   quizShow();
 }
 
-function quizShow(){
-  if(cur>=deck.length){quizSummary();return;}
-  const w=deck[cur];
-  answered=false;
-  document.getElementById('feedback').style.display='none';
-  document.getElementById('ans').value='';
-  document.getElementById('input-row').style.display='flex';
-  document.getElementById('q-tense').innerHTML='';
-  document.getElementById('pf').style.width=Math.round(cur/deck.length*100)+'%';
-  document.getElementById('karte').textContent=`Karte ${cur+1} / ${deck.length}`;
-  if(qMode==='de-en'){
-    document.getElementById('q-label').textContent='Wie heiẞt das auf Englisch?';
-    document.getElementById('q-word').textContent=w.de;
-    document.getElementById('ans').placeholder='English translation...';
-  } else if(qMode==='en-de'){
-    document.getElementById('q-label').textContent='Wie heiẞt das auf Deutsch?';
-    document.getElementById('q-word').textContent=w.en[0];
-    document.getElementById('ans').placeholder='Deutsches Wort (mit Artikel)...';
+function quizShow() {
+  if (cur >= deck.length) { quizSummary(); return; }
+  const w = deck[cur];
+  answered = false;
+  document.getElementById('feedback').style.display = 'none';
+  document.getElementById('ans').value = '';
+  document.getElementById('input-row').style.display = 'flex';
+  document.getElementById('q-tense').innerHTML = '';
+  document.getElementById('pf').style.width = Math.round(cur / deck.length * 100) + '%';
+  document.getElementById('karte').textContent = `Karte ${cur+1} / ${deck.length}`;
+
+  if (quizMode === 'de-en') {
+    document.getElementById('q-label').textContent = 'Wie heiẞt das auf Englisch?';
+    document.getElementById('q-word').textContent  = w.de;
+    document.getElementById('ans').placeholder     = 'English translation...';
+  } else if (quizMode === 'en-de') {
+    document.getElementById('q-label').textContent = 'Wie heiẞt das auf Deutsch?';
+    document.getElementById('q-word').textContent  = w.en[0];
+    document.getElementById('ans').placeholder     = 'Deutsches Wort (mit Artikel)...';
   } else {
-    document.getElementById('q-label').textContent='Konjugiere — 3. Person Singular';
-    document.getElementById('q-word').textContent=w.de;
-    document.getElementById('q-tense').innerHTML=`<span class="q-tense">${w.tense}</span>`;
-    document.getElementById('ans').placeholder=`${w.de} in ${w.tense}...`;
+    document.getElementById('q-label').textContent = 'Konjugiere — 3. Person Singular';
+    document.getElementById('q-word').textContent  = w.de;
+    document.getElementById('q-tense').innerHTML   = `<span class="q-tense-pill">${w.tense}</span>`;
+    document.getElementById('ans').placeholder     = `${w.de} in ${w.tense}...`;
   }
   setNav('input');
-  setTimeout(()=>document.getElementById('ans').focus(),50);
+  setTimeout(() => document.getElementById('ans').focus(), 50);
 }
 
-function quizCheck(){
-  if(answered)return;
-  const inp=document.getElementById('ans').value;
-  if(!inp.trim())return;
-  answered=true;
-  if(!att[cur])att[cur]=0;
+function quizCheck() {
+  if (answered) return;
+  const inp = document.getElementById('ans').value;
+  if (!inp.trim()) return;
+  answered = true;
+  if (!att[cur]) att[cur] = 0;
   att[cur]++;
-  const w=deck[cur];
-  const ok=qGrade(inp,w);
-  const fb=document.getElementById('feedback');
-  if(ok){
-    sC++;fb.className='feedback ok';fb.textContent='Richtig! ✓';
+  const w = deck[cur];
+  const ok = grade(inp, w);
+  const fb = document.getElementById('feedback');
+  if (ok) {
+    sC++;
+    fb.className = 'feedback ok';
+    fb.textContent = 'Richtig! ✓';
   } else {
-    sW++;fb.className='feedback bad';fb.textContent=`Falsch. Richtige Antwort: ${qAns(w)}`;
-    if(att[cur]===1)wof[cur]=true;
-    const lbl=w.type==='verb'?`${w.de} (${w.tense})`:w.de;
-    const disp=w.type==='verb'?w.answer:w.en.join(', ');
-    if(!missed.find(m=>m.lbl===lbl))missed.push({lbl,disp,r:'Falsch',card:{...w}});
+    sW++;
+    fb.className = 'feedback bad';
+    fb.textContent = `Falsch. Richtige Antwort: ${getAns(w)}`;
+    if (att[cur] === 1) wof[cur] = true;
+    const lbl  = w.type === 'verb' ? `${w.de} (${w.tense})` : w.de;
+    const disp = w.type === 'verb' ? w.answer : w.en.join(', ');
+    if (!missed.find(m => m.lbl === lbl)) missed.push({lbl, disp, r:'Falsch', card:{...w}});
   }
-  fb.style.display='block';
-  document.getElementById('input-row').style.display='none';
+  fb.style.display = 'block';
+  document.getElementById('input-row').style.display = 'none';
   updScore();
-  setNav(ok?'correct':'wrong');
+  setNav(ok ? 'correct' : 'wrong');
 }
 
-function quizRetry(){
-  if(document.getElementById('btn-retry').classList.contains('dim'))return;
-  answered=false;
-  document.getElementById('feedback').style.display='none';
-  document.getElementById('input-row').style.display='flex';
-  document.getElementById('ans').value='';
+function quizRetry() {
+  if (document.getElementById('btn-retry').classList.contains('dim')) return;
+  answered = false;
+  document.getElementById('feedback').style.display = 'none';
+  document.getElementById('input-row').style.display = 'flex';
+  document.getElementById('ans').value = '';
   setNav('input');
-  setTimeout(()=>document.getElementById('ans').focus(),50);
+  setTimeout(() => document.getElementById('ans').focus(), 50);
 }
 
-function quizSkip(){
-  if(document.getElementById('btn-skip').classList.contains('dim'))return;
-  if(answered)return;
-  answered=true;sS++;
-  const w=deck[cur];
-  if(!wof[cur])wof[cur]=true;
-  const lbl=w.type==='verb'?`${w.de} (${w.tense})`:w.de;
-  const disp=w.type==='verb'?w.answer:w.en.join(', ');
-  if(!missed.find(m=>m.lbl===lbl))missed.push({lbl,disp,r:'Übersprungen',card:{...w}});
+function quizSkip() {
+  if (document.getElementById('btn-skip').classList.contains('dim')) return;
+  if (answered) return;
+  answered = true; sS++;
+  const w = deck[cur];
+  if (!wof[cur]) wof[cur] = true;
+  const lbl  = w.type === 'verb' ? `${w.de} (${w.tense})` : w.de;
+  const disp = w.type === 'verb' ? w.answer : w.en.join(', ');
+  if (!missed.find(m => m.lbl === lbl)) missed.push({lbl, disp, r:'Übersprungen', card:{...w}});
   updScore();
-  const fb=document.getElementById('feedback');
-  fb.className='feedback skip';
-  fb.textContent=`Übersprungen. Richtige Antwort: ${qAns(w)}`;
-  fb.style.display='block';
-  document.getElementById('input-row').style.display='none';
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback skip';
+  fb.textContent = `Übersprungen. Richtige Antwort: ${getAns(w)}`;
+  fb.style.display = 'block';
+  document.getElementById('input-row').style.display = 'none';
   setNav('skipped');
 }
 
-function quizNext(){
-  if(document.getElementById('btn-next').classList.contains('dim'))return;
-  cur++;quizShow();
+function quizNext() {
+  if (document.getElementById('btn-next').classList.contains('dim')) return;
+  cur++; quizShow();
 }
 
-function quizSummary(){
-  document.getElementById('quiz-area').style.display='none';
-  document.getElementById('summary-area').style.display='flex';
-  const fc=deck.length-Object.keys(wof).length;
-  const ml={'de-en':'Deutsch → Englisch','en-de':'Englisch → Deutsch','verb':'Verben'}[qMode];
-  document.getElementById('sm-sc').textContent=sC;
-  document.getElementById('sm-sw').textContent=sW;
-  document.getElementById('sm-ss').textContent=sS;
-  document.getElementById('sm-sub').textContent=`${deck.length} Karten · ${ml}`;
-  document.getElementById('sm-first').textContent=fc;
-  document.getElementById('sm-wrong').textContent=sW;
-  document.getElementById('sm-skip').textContent=sS;
-  document.getElementById('btn-drill').disabled=missed.length===0;
-  const missedEl=document.getElementById('sm-missed');
-  if(missed.length>0){
-    missedEl.innerHTML=`<div class="missed-label">Zu wiederholen</div>`+
-      missed.map(w=>`<div class="missed-item"><div><div class="missed-de">${w.lbl}</div><div class="missed-en">${w.disp}</div></div><div class="missed-r">${w.r}</div></div>`).join('');
-  } else {
-    missedEl.innerHTML=`<p style="font-size:13px;color:var(--text-hint);margin-top:8px">Alle Karten richtig!</p>`;
-  }
+function quizSummary() {
+  document.getElementById('quiz-area').style.display    = 'none';
+  document.getElementById('summary-area').style.display = 'flex';
+  const fc = deck.length - Object.keys(wof).length;
+  const ml = {'de-en':'Deutsch → Englisch','en-de':'Englisch → Deutsch','verb':'Verben'}[quizMode];
+  document.getElementById('sm-sc').textContent    = sC;
+  document.getElementById('sm-sw').textContent    = sW;
+  document.getElementById('sm-ss').textContent    = sS;
+  document.getElementById('sm-sub').textContent   = `${deck.length} Karten · ${ml}`;
+  document.getElementById('sm-first').textContent = fc;
+  document.getElementById('sm-wrong').textContent = sW;
+  document.getElementById('sm-skip').textContent  = sS;
+  document.getElementById('btn-drill').disabled   = missed.length === 0;
+  const el = document.getElementById('sm-missed');
+  el.innerHTML = missed.length > 0
+    ? `<div class="missed-label">Zu wiederholen</div>` + missed.map(w =>
+        `<div class="missed-item"><div><div class="missed-de">${w.lbl}</div><div class="missed-en">${w.disp}</div></div><div class="missed-r">${w.r}</div></div>`
+      ).join('')
+    : `<p style="font-size:13px;color:var(--text-hint);margin-top:8px">Alle Karten richtig!</p>`;
 }
 
-function quizDrill(){
-  if(missed.length===0)return;
-  deck=shuf(missed.map(m=>({...m.card})));
-  missed=[];wof={};att={};sC=0;sW=0;sS=0;cur=0;answered=false;
+function quizDrill() {
+  if (!missed.length) return;
+  deck = shuf(missed.map(m => ({...m.card})));
+  missed=[]; wof={}; att={}; sC=0; sW=0; sS=0; cur=0; answered=false;
   updScore();
-  document.getElementById('quiz-area').style.display='flex';
-  document.getElementById('summary-area').style.display='none';
+  document.getElementById('quiz-area').style.display    = 'flex';
+  document.getElementById('summary-area').style.display = 'none';
   quizShow();
 }
-
-/* init */
-quizRestart();
 </script>
 </body>
 </html>
