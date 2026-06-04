@@ -184,7 +184,7 @@
 <!-- SECTIONS PAGE (dynamic — for B1/B2 units with subsections) -->
 <div class="page" id="page-sections">
   <div class="gza-header">
-    <button class="back-btn" onclick="showPage('page-einheiten')">← Zurück</button>
+    <button class="back-btn" id="back-sections" onclick="showPage('page-einheiten')">← Zurück</button>
     <div class="level-badge" id="sec-badge"><span class="lvl"></span><span class="sep"></span><span class="bk"></span></div>
   </div>
   <div class="hero-band" id="sec-hero">
@@ -201,7 +201,7 @@
 <!-- WORD LIST (dynamic) -->
 <div class="page" id="page-wordlist">
   <div class="gza-header">
-    <button class="back-btn" onclick="showPage('page-einheiten')">← Zurück</button>
+    <button class="back-btn" id="back-wordlist">← Zurück</button>
     <div class="level-badge" id="wl-badge"><span class="lvl"></span><span class="sep"></span><span class="bk"></span></div>
   </div>
   <div class="hero-band" id="wl-hero">
@@ -234,7 +234,7 @@
 <!-- QUIZ (dynamic) -->
 <div class="page" id="page-quiz">
   <div class="gza-header">
-    <button class="back-btn" onclick="showPage('page-wordlist')">← Zurück</button>
+    <button class="back-btn" id="back-quiz" onclick="showPage('page-wordlist')">← Zurück</button>
     <div class="level-badge" id="quiz-badge"><span class="lvl"></span><span class="sep"></span><span class="bk"></span></div>
   </div>
   <div class="hero-band" id="quiz-hero">
@@ -1930,7 +1930,7 @@ const VOCAB = {
               {de:'die Voraussetzung',      pl:'die Voraussetzungen',      en:['requirement','prerequisite']},
               {de:'das Medienrecht',        pl:'die Medienrechte',         en:['media law']},
               {de:'die Reportage',          pl:'die Reportagen',           en:['report','documentary']},
-              {de:'der Master',             pl:'die Master',               en:['master's degree']},
+              {de:'der Master',             pl:'die Master',               en:['master\'s degree']},
               {de:'das Auslandssemester',   pl:'die Auslandssemester',     en:['semester abroad']},
               {de:'der Rat',                pl:'die Räte',                 en:['advice','council']},
               {de:'die Unterstützung',      pl:'die Unterstützungen',      en:['support']},
@@ -2049,7 +2049,7 @@ const VOCAB = {
             key: 'buergerinitiative',
             title: 'Wir sind für …',
             nouns: [
-              {de:'die Bürgerinitiative', pl:'die Bürgerinitiativen', en:['citizens' initiative']},
+              {de:'die Bürgerinitiative', pl:'die Bürgerinitiativen', en:['citizens\' initiative']},
               {de:'die Fahrraddemo',      pl:'die Fahrraddemos',      en:['cycling demonstration']},
               {de:'der Stadtrand',        pl:'die Stadtränder',       en:['outskirts','edge of town']},
               {de:'das Neubaugebiet',     pl:'die Neubaugebiete',     en:['new development area']},
@@ -2149,7 +2149,6 @@ function setLevelColor(color) {
 // ══════════════════════════════════════════════════════════
 function goEinheiten(level) {
   currentSectionData = null;
-  currentSection = null;
   currentLevel = level;
   const meta   = VOCAB[level].meta;
   const titles = EINHEIT_TITLES[level] || {};
@@ -2187,6 +2186,28 @@ function goEinheiten(level) {
 // ══════════════════════════════════════════════════════════
 // EINHEITEN → WORD LIST
 // ══════════════════════════════════════════════════════════
+// ── SHARED WORD LIST RENDERER ────────────────────────────────────────────
+function renderWordList(data, meta) {
+  document.getElementById('wl-nomen-body').innerHTML = data.nouns.map(n =>
+    `<tr><td>${n.de}</td><td>${/^(nur|meist|Pl\.|-)/.test(n.pl) ? `<span class="note">${n.pl}</span>` : n.pl}</td><td><span class="pill">${n.en.join(' / ')}</span></td></tr>`
+  ).join('');
+  document.getElementById('wl-verben-body').innerHTML = data.verbs.map(v =>
+    `<tr><td>${v.de}</td><td>${v.praesens}</td><td>${v.perfekt}</td><td>${v.praeteritum}</td><td><span class="pill">${v.en.join(' / ')}</span></td></tr>`
+  ).join('');
+  document.getElementById('wl-andere-body').innerHTML = data.andere.map(a =>
+    `<tr><td>${a.de}</td><td><span class="pill">${a.en.join(' / ')}</span></td></tr>`
+  ).join('');
+  // Reset tabs
+  document.querySelectorAll('#page-wordlist .tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('#page-wordlist .tab-panel').forEach(p => p.classList.remove('on'));
+  document.querySelector('#page-wordlist .tabs-bar .tab').classList.add('on');
+  document.getElementById('wl-nomen').classList.add('on');
+  // Table header colors via CSS var
+  document.querySelectorAll('#page-wordlist thead tr').forEach(tr => {
+    tr.style.background = meta.color;
+  });
+}
+
 function goWordList(unit) {
   currentUnit = unit;
   const meta = VOCAB[currentLevel].meta;
@@ -2203,17 +2224,27 @@ function goWordList(unit) {
     document.getElementById('sec-title').textContent      = data.title;
     document.getElementById('sec-sub').textContent        = data.sections.length + ' Abschnitte';
     document.getElementById('sec-count').textContent      = data.sections.length + ' Abschnitte';
-    document.getElementById('sec-grid').innerHTML = data.sections.map(s => {
-      const total = s.nouns.length + s.verbs.length + s.andere.length;
-      return '<div class="e-card" onclick="goSection(\''+s.key+'\',\''+unit+'\')">'+
-        '<div class="e-card-top" style="background:'+meta.color+'">'+
-        '<div class="e-pill"><span class="e-pill-label">'+s.title+'</span></div>'+
-        '</div>'+
-        '<div class="e-card-bottom">'+
-        '<div class="e-card-name" style="color:'+meta.color+'">'+total+' Wörter</div>'+
-        '<div class="e-card-arrow" style="color:'+meta.color+'">→</div>'+
-        '</div></div>';
-    }).join('');
+    (function() {
+      const grid = document.getElementById('sec-grid');
+      grid.innerHTML = '';
+      data.sections.forEach(function(s) {
+        const total = s.nouns.length + s.verbs.length + s.andere.length;
+        const card = document.createElement('div');
+        card.className = 'e-card';
+        card.innerHTML =
+          '<div class="e-card-top" style="background:' + meta.color + '">' +
+            '<div class="e-pill"><span class="e-pill-label">' + s.title + '</span></div>' +
+          '</div>' +
+          '<div class="e-card-bottom">' +
+            '<div class="e-card-name" style="color:' + meta.color + '">' + total + ' Wörter</div>' +
+            '<div class="e-card-arrow" style="color:' + meta.color + '">→</div>' +
+          '</div>';
+        card.addEventListener('click', (function(sk, u) {
+          return function() { goSection(sk, u); };
+        })(s.key, unit));
+        grid.appendChild(card);
+      });
+    })()
     showPage('page-sections');
     return;
   }
@@ -2227,19 +2258,8 @@ function goWordList(unit) {
   const total = data.nouns.length + data.verbs.length + data.andere.length;
   document.getElementById('wl-count').textContent      = `${total} Wörter · Nomen · Verben · Andere`;
   document.getElementById('wl-ueben-btn').style.color  = meta.color;
-  document.getElementById('wl-nomen-body').innerHTML   = data.nouns.map(n =>
-    `<tr><td>${n.de}</td><td>${/^(nur|meist|Pl\.)/.test(n.pl)?`<span class="note">${n.pl}</span>`:n.pl}</td><td><span class="pill">${n.en.join(' / ')}</span></td></tr>`
-  ).join('');
-  document.getElementById('wl-verben-body').innerHTML  = data.verbs.map(v =>
-    `<tr><td>${v.de}</td><td>${v.praesens}</td><td>${v.perfekt}</td><td>${v.praeteritum}</td><td><span class="pill">${v.en.join(' / ')}</span></td></tr>`
-  ).join('');
-  document.getElementById('wl-andere-body').innerHTML  = data.andere.map(a =>
-    `<tr><td>${a.de}</td><td><span class="pill">${a.en.join(' / ')}</span></td></tr>`
-  ).join('');
-  document.querySelectorAll('#page-wordlist .tab').forEach(t => t.classList.remove('on'));
-  document.querySelectorAll('#page-wordlist .tab-panel').forEach(p => p.classList.remove('on'));
-  document.querySelector('#page-wordlist .tabs-bar .tab').classList.add('on');
-  document.getElementById('wl-nomen').classList.add('on');
+  renderWordList(data, meta);
+    document.getElementById('back-wordlist').onclick = function() { showPage('page-einheiten'); };
   showPage('page-wordlist');
 }
 
@@ -2255,7 +2275,6 @@ function switchWordTab(name, el) {
 // ══════════════════════════════════════════════════════════
 function goSection(sectionKey, unit) {
   currentUnit = unit;
-  currentSection = sectionKey;
   const meta = VOCAB[currentLevel].meta;
   const unitData = VOCAB[currentLevel].units[unit];
   const sData = unitData.sections.find(s => s.key === sectionKey);
@@ -2276,29 +2295,13 @@ function goSection(sectionKey, unit) {
   document.getElementById('wl-count').textContent      = total + ' Wörter · Nomen · Verben · Andere';
   document.getElementById('wl-ueben-btn').style.color  = meta.color;
 
-  document.getElementById('wl-nomen-body').innerHTML = sData.nouns.map(n =>
-    '<tr><td>'+n.de+'</td><td>'+(/^(nur|meist|Pl\.|-$)/.test(n.pl)?'<span class="note">'+n.pl+'</span>':n.pl)+'</td><td><span class="pill">'+n.en.join(' / ')+'</span></td></tr>'
-  ).join('');
-  document.getElementById('wl-verben-body').innerHTML = sData.verbs.map(v =>
-    '<tr><td>'+v.de+'</td><td>'+v.praesens+'</td><td>'+v.perfekt+'</td><td>'+v.praeteritum+'</td><td><span class="pill">'+v.en.join(' / ')+'</span></td></tr>'
-  ).join('');
-  document.getElementById('wl-andere-body').innerHTML = sData.andere.map(a =>
-    '<tr><td>'+a.de+'</td><td><span class="pill">'+a.en.join(' / ')+'</span></td></tr>'
-  ).join('');
-
-  document.querySelectorAll('#page-wordlist .tab').forEach(t => t.classList.remove('on'));
-  document.querySelectorAll('#page-wordlist .tab-panel').forEach(p => p.classList.remove('on'));
-  document.querySelector('#page-wordlist .tabs-bar .tab').classList.add('on');
-  document.getElementById('wl-nomen').classList.add('on');
-
-  // Back button from word list → sections page
-  document.querySelector('#page-wordlist .back-btn').onclick = function() { showPage('page-sections'); };
+    renderWordList(sData, meta);
+  document.getElementById('back-wordlist').onclick = function() { showPage('page-sections'); };
 
   showPage('page-wordlist');
 }
 
 // Track current section for quiz
-let currentSection = null;
 let currentSectionData = null;
 
 function goQuiz() {
@@ -2313,6 +2316,7 @@ function goQuiz() {
   document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('on'));
   document.querySelector('.mode-tab').classList.add('on');
   quizMode = 'de-en';
+  document.getElementById('back-quiz').onclick = function() { showPage('page-wordlist'); };
   showPage('page-quiz');
   quizRestart();
 }
