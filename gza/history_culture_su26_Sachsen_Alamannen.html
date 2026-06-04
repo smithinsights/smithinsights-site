@@ -703,6 +703,207 @@ footer{background:var(--s-oak);padding:30px 44px;}
       <div class="cg-cell cg-cell-a">Die Alamannen wurden früher als die Sachsen in das Frankenreich eingegliedert. Trotz vereinzelter Schlachten, zum Beispiel beim Blutgericht von Cannstatt (746), verlief die Christianisierung vergleichsweise friedlich.</div>
     </div>
 
+    <!-- ══ ZEITLEISTE ══ -->
+    <p style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--s-ochre);margin:40px 0 6px;">Als eine Zeitleiste</p>
+    <p style="font-size:1rem;color:var(--muted);font-style:italic;margin-bottom:22px;">Die Alamannen-Mission beginnt fast 200 Jahre früher. Beide Prozesse laufen lange parallel.</p>
+
+    <style>
+    .ztl-wrap{position:relative;padding:0 0 24px;}
+    .ztl-headers{display:grid;grid-template-columns:1fr 80px 1fr;gap:0;margin-bottom:14px;}
+    .ztl-h{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:white;padding:9px 14px;border-radius:5px;}
+    .ztl-h-s{background:var(--s-forest);text-align:right;}
+    .ztl-h-a{background:var(--a-burg);text-align:left;}
+    .ztl-spine{position:absolute;top:44px;bottom:0;left:calc(50%);width:2px;background:var(--border-p);z-index:0;}
+    .ztl-row{display:grid;grid-template-columns:1fr 80px 1fr;gap:0;margin-bottom:5px;position:relative;z-index:1;}
+    .ztl-left{padding-right:10px;display:flex;align-items:flex-start;justify-content:flex-end;}
+    .ztl-right{padding-left:10px;display:flex;align-items:flex-start;justify-content:flex-start;}
+    .ztl-mid{display:flex;align-items:flex-start;justify-content:center;padding-top:9px;}
+    .ztl-badge{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;padding:4px 7px;border-radius:4px;text-align:center;line-height:1.3;white-space:nowrap;border:1.5px solid var(--border-p);background:var(--cream);color:var(--muted);position:relative;z-index:2;flex-shrink:0;}
+    .ztl-badge.both{border-color:var(--s-ochre);color:var(--s-ochre);}
+    .ztl-card{border-radius:4px;padding:9px 12px;font-size:0.85rem;line-height:1.55;}
+    .ztl-card p{margin:0;color:var(--muted);font-size:0.85rem;}
+    .ztl-ch{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+    .ztl-s{background:#ECF2EE;border:0.5px solid rgba(46,74,58,0.22);border-right:3px solid var(--s-forest);border-radius:4px 0 0 4px;text-align:right;}
+    .ztl-s .ztl-ch{color:var(--s-forest);}
+    .ztl-a{background:#F5EDE8;border:0.5px solid rgba(122,58,50,0.18);border-left:3px solid var(--a-burg);border-radius:0 4px 4px 0;}
+    .ztl-a .ztl-ch{color:var(--a-burg);}
+    .ztl-era{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-align:center;padding:16px 0 6px;grid-column:1/-1;opacity:0.6;}
+    .ztl-era-row{display:grid;grid-template-columns:1fr 80px 1fr;}
+    @media(max-width:680px){
+      .ztl-headers,.ztl-row,.ztl-era-row{grid-template-columns:1fr;}
+      .ztl-spine{display:none;}
+      .ztl-s{text-align:left;border-right:0.5px solid rgba(46,74,58,0.22);border-left:3px solid var(--s-forest);border-radius:0 4px 4px 0;}
+      .ztl-left,.ztl-right{padding:0;justify-content:flex-start;}
+      .ztl-h-s{text-align:left;}
+    }
+    </style>
+
+    <div class="ztl-wrap">
+      <div class="ztl-headers">
+        <div class="ztl-h ztl-h-s">&#9876;&#65039; Die Sachsen</div>
+        <div></div>
+        <div class="ztl-h ztl-h-a">&#127963;&#65039; Die Alamannen</div>
+      </div>
+      <div class="ztl-spine"></div>
+
+      <div class="ztl-era-row"><div class="ztl-era">Alamannen: frühe Phase &mdash; Sachsen noch unberührt</div></div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"></div>
+        <div class="ztl-mid"><div class="ztl-badge">496</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">Zülpich</div>
+          <p>Franken besiegen die Alamannen. Chlodwig konvertiert danach zum Christentum. Die Alamannen kommen unter fränkischen Einfluss.</p>
+        </div></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"></div>
+        <div class="ztl-mid"><div class="ztl-badge">590</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">Kolumban kommt ins Frankenreich</div>
+          <p>Der irische Mönch gründet das Kloster Luxeuil. Neue Energie für die Mission Richtung Alamannen.</p>
+        </div></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"></div>
+        <div class="ztl-mid"><div class="ztl-badge">610</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">Gallus bleibt am Bodensee</div>
+          <p>Aus seiner Gemeinschaft entsteht das Kloster St. Gallen, ein zentrales religiöses Zentrum im alamannischen Raum.</p>
+        </div></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"></div>
+        <div class="ztl-mid"><div class="ztl-badge">724</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">Pirmin gründet Reichenau</div>
+          <p>Kloster Reichenau am Bodensee gegründet. Ein reifes Klosternetzwerk entsteht im alamannischen Gebiet.</p>
+        </div></div>
+      </div>
+
+      <div class="ztl-era-row"><div class="ztl-era">Beide parallel &mdash; Alamannen-Klöster reifen / Sachsen: erste Kontakte</div></div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"></div>
+        <div class="ztl-mid"><div class="ztl-badge both">719<br>bis<br>754</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">Bonifatius im alamannischen Sualafeld</div>
+          <p>Klöster Heidenheim, Eichstätt und Solnhofen entstehen. Das Christentum ist bei den Alamannen tief verankert.</p>
+        </div></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"><div class="ztl-card ztl-s">
+          <div class="ztl-ch">Sachsen wehren alle Franken ab</div>
+          <p>Im 8. Jh. schlagen die Sachsen alle Eroberungsversuche zurück. Missionare gelten als Vertreter des Feindes.</p>
+        </div></div>
+        <div class="ztl-mid"><div class="ztl-badge both">8. Jh.</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">Klöster als Bildungszentren</div>
+          <p>St. Gallen, Reichenau und Murbach sind über 30 Jahre alt und prägen Kultur und Bildung der Alamannen.</p>
+        </div></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"></div>
+        <div class="ztl-mid"><div class="ztl-badge">746</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">Blutgericht von Cannstatt</div>
+          <p>Fränkische Karolinger lassen alamannische Adlige hinrichten. Politischer Akt, kein Missionseinbruch.</p>
+        </div></div>
+      </div>
+
+      <div class="ztl-era-row"><div class="ztl-era">Sachsen: Beginn der Kriegs-Christianisierung &mdash; Alamannen: Mission längst abgeschlossen</div></div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"><div class="ztl-card ztl-s">
+          <div class="ztl-ch">Zerstörung der Irminsul</div>
+          <p>Karl zerstört das zentrale sächsische Heiligtum. Politisches Signal der Überlegenheit, Beginn der Sachsenkriege.</p>
+        </div></div>
+        <div class="ztl-mid"><div class="ztl-badge">772</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">St. Gallen: 160 Jahre alt</div>
+          <p>Zum Zeitpunkt der Irminsul-Zerstörung ist das alamannische Klosterwesen bereits seit Generationen etabliert.</p>
+        </div></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"><div class="ztl-card ztl-s">
+          <div class="ztl-ch">Massentaufen ohne Unterweisung</div>
+          <p>Besiegte Anführer müssen Unterwerfung durch Taufe beweisen. Treue zum König und Glaube an Christus sind dasselbe.</p>
+        </div></div>
+        <div class="ztl-mid"><div class="ztl-badge">776–777</div></div>
+        <div class="ztl-right"></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"><div class="ztl-card ztl-s">
+          <div class="ztl-ch">Aufstand unter Widukind</div>
+          <p>Sächsische Bauern erheben sich. Kampf gegen die Franken und gegen das Christentum ist für sie derselbe Kampf.</p>
+        </div></div>
+        <div class="ztl-mid"><div class="ztl-badge">778</div></div>
+        <div class="ztl-right"></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"><div class="ztl-card ztl-s">
+          <div class="ztl-ch">Acht Bistümer gegründet</div>
+          <p>Erst jetzt beginnt der Aufbau einer Kirchenorganisation in Sachsen, als Missionsstationen und Staatsinstrument.</p>
+        </div></div>
+        <div class="ztl-mid"><div class="ztl-badge">ab 780</div></div>
+        <div class="ztl-right"></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"><div class="ztl-card ztl-s">
+          <div class="ztl-ch">Verden an der Aller</div>
+          <p>Massenhinrichtung als Strafe für Abfall vom Christentum. Capitulatio droht mit Todesstrafe für Taufverweigerung.</p>
+        </div></div>
+        <div class="ztl-mid"><div class="ztl-badge">782</div></div>
+        <div class="ztl-right"></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"><div class="ztl-card ztl-s">
+          <div class="ztl-ch">Widukind lässt sich taufen</div>
+          <p>Unterwerfung und Taufe. Karl ist sein Taufpate. Kämpfe dauern noch weiter an.</p>
+        </div></div>
+        <div class="ztl-mid"><div class="ztl-badge">785</div></div>
+        <div class="ztl-right"></div>
+      </div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"><div class="ztl-card ztl-s">
+          <div class="ztl-ch">Ende der Sachsenkriege</div>
+          <p>Nach 32 Jahren Krieg unterworfen. Die innere Christianisierung dauert noch Jahrhunderte.</p>
+        </div></div>
+        <div class="ztl-mid"><div class="ztl-badge">804</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">St. Gallen: fast 200 Jahre alt</div>
+          <p>Als die Sachsenkriege enden, ist das Christentum bei den Alamannen seit fast zwei Jahrhunderten kulturell verankert.</p>
+        </div></div>
+      </div>
+
+      <div class="ztl-era-row"><div class="ztl-era">Ergebnis: zwei völlig verschiedene Ausgangspunkte für das Mittelalter</div></div>
+
+      <div class="ztl-row">
+        <div class="ztl-left"><div class="ztl-card ztl-s">
+          <div class="ztl-ch">Langsame innere Christianisierung</div>
+          <p>Heidnische Traditionen in Teilen der Landbevölkerung bis ins 11. Jh. Kirchenstruktur übernimmt schrittweise Kontrolle.</p>
+        </div></div>
+        <div class="ztl-mid"><div class="ztl-badge both">9.–11.<br>Jh.</div></div>
+        <div class="ztl-right"><div class="ztl-card ztl-a">
+          <div class="ztl-ch">Reife Klosterkultur</div>
+          <p>St. Gallen, Reichenau und andere Klöster sind Zentren von Wissenschaft, Kunst und Bildung in ganz Europa.</p>
+        </div></div>
+      </div>
+
+    </div>
+    <!-- ══ ENDE ZEITLEISTE ══ -->
+
     <div class="section-rule"><span class="rule-tag">Steckbrief</span></div>
     <div class="section-title">Die Franken</div>
     <div class="steckbrief">
