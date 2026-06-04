@@ -147,11 +147,11 @@
         <div class="lc-top"><div class="lc-pill"><span class="lv">A1</span><span class="sp"></span><span class="bk">Das Leben</span></div></div>
         <div class="lc-bottom"><span>16 Einheiten</span><span>→</span></div>
       </div>
-      <div class="level-card card-a2">
+      <div class="level-card card-a2" onclick="goEinheiten('a2')">
         <div class="lc-top"><div class="lc-pill"><span class="lv">A2</span><span class="sp"></span><span class="bk">Das Leben</span></div></div>
         <div class="lc-bottom"><span>16 Einheiten</span><span>→</span></div>
       </div>
-      <div class="level-card card-b1">
+      <div class="level-card card-b1" onclick="goEinheiten('b1')">
         <div class="lc-top"><div class="lc-pill"><span class="lv">B1</span><span class="sp"></span><span class="bk">Das Leben</span></div></div>
         <div class="lc-bottom"><span>12 Einheiten</span><span>→</span></div>
       </div>
@@ -177,6 +177,24 @@
   <div class="body-pad">
     <div class="section-label" id="einheiten-count"></div>
     <div class="einheit-grid" id="einheit-grid"></div>
+  </div>
+</div>
+
+
+<!-- SECTIONS PAGE (dynamic — for B1/B2 units with subsections) -->
+<div class="page" id="page-sections">
+  <div class="gza-header">
+    <button class="back-btn" onclick="showPage('page-einheiten')">← Zurück</button>
+    <div class="level-badge" id="sec-badge"><span class="lvl"></span><span class="sep"></span><span class="bk"></span></div>
+  </div>
+  <div class="hero-band" id="sec-hero">
+    <div class="hero-supra" id="sec-supra"></div>
+    <h1 id="sec-title"></h1>
+    <p id="sec-sub"></p>
+  </div>
+  <div class="body-pad">
+    <div class="section-label" id="sec-count"></div>
+    <div class="einheit-grid" id="sec-grid"></div>
   </div>
 </div>
 
@@ -1049,18 +1067,1009 @@ const VOCAB = {
         ],
       },
 
+
+      '13': {
+        title: 'Voll im Trend',
+        nouns: [
+          {de:'die Mode',            pl:'die Moden',           en:['fashion']},
+          {de:'die Kleidung',        pl:'nur Sg.',             en:['clothes','clothing']},
+          {de:'das Outfit',          pl:'die Outfits',         en:['outfit']},
+          {de:'das Lieblingsoutfit', pl:'die Lieblingsoutfits',en:['favourite outfit']},
+          {de:'der Anzug',           pl:'die Anzüge',          en:['suit']},
+          {de:'der Pullover',        pl:'die Pullover',        en:['jumper','pullover']},
+          {de:'die Jeans',           pl:'Pl.',                 en:['jeans']},
+          {de:'das Hemd',            pl:'die Hemden',          en:['shirt']},
+          {de:'die Krawatte',        pl:'die Krawatten',       en:['tie']},
+          {de:'das Kleid',           pl:'die Kleider',         en:['dress']},
+          {de:'der Rock',            pl:'die Röcke',           en:['skirt']},
+          {de:'die Bluse',           pl:'die Blusen',          en:['blouse']},
+          {de:'die Hose',            pl:'die Hosen',           en:['trousers']},
+          {de:'die Jacke',           pl:'die Jacken',          en:['jacket']},
+          {de:'das Jackett',         pl:'die Jacketts',        en:['blazer jacket']},
+          {de:'der Mantel',          pl:'die Mäntel',          en:['coat']},
+          {de:'der Schuh',           pl:'die Schuhe',          en:['shoe']},
+          {de:'der Turnschuh',       pl:'die Turnschuhe',      en:['trainer','sneaker']},
+          {de:'der Stiefel',         pl:'die Stiefel',         en:['boot']},
+          {de:'die Sandale',         pl:'die Sandalen',        en:['sandal']},
+          {de:'der Hut',             pl:'die Hüte',            en:['hat']},
+          {de:'die Shorts',          pl:'Pl.',                 en:['shorts']},
+          {de:'die Größe',           pl:'die Größen',          en:['size']},
+          {de:'die Farbe',           pl:'die Farben',          en:['colour']},
+          {de:'die Lieblingsfarbe',  pl:'die Lieblingsfarben', en:['favourite colour']},
+          {de:'der Dresscode',       pl:'die Dresscodes',      en:['dress code']},
+          {de:'die Regel',           pl:'die Regeln',          en:['rule']},
+          {de:'der Sale',            pl:'die Sales',           en:['sale']},
+        ],
+        verbs: [
+          {de:'anprobieren', praesens:'probiert an', perfekt:'hat anprobiert',  praeteritum:'probierte an', en:['to try on']},
+          {de:'gefallen',    praesens:'gefällt',     perfekt:'hat gefallen',    praeteritum:'gefiel',       en:['to like','to please']},
+          {de:'vergleichen', praesens:'vergleicht',  perfekt:'hat verglichen',  praeteritum:'verglich',     en:['to compare']},
+          {de:'interessieren',praesens:'interessiert',perfekt:'hat interessiert',praeteritum:'interessierte',en:['to interest']},
+          {de:'tragen',      praesens:'trägt',       perfekt:'hat getragen',    praeteritum:'trug',         en:['to wear','to carry']},
+          {de:'kaufen',      praesens:'kauft',       perfekt:'hat gekauft',     praeteritum:'kaufte',       en:['to buy']},
+        ],
+        andere: [
+          {de:'schick',      en:['smart','chic']},
+          {de:'sportlich',   en:['sporty','casual']},
+          {de:'farbig',      en:['colourful']},
+          {de:'bunt',        en:['bright','colourful']},
+          {de:'formell',     en:['formal']},
+          {de:'aktuell',     en:['current','up to date']},
+          {de:'altmodisch',  en:['old-fashioned']},
+          {de:'unmöglich',   en:['impossible']},
+          {de:'sicher',      en:['sure','certain']},
+          {de:'blau',        en:['blue']},
+          {de:'rot',         en:['red']},
+          {de:'grün',        en:['green']},
+          {de:'gelb',        en:['yellow']},
+          {de:'braun',       en:['brown']},
+          {de:'grau',        en:['grey']},
+          {de:'schwarz',     en:['black']},
+          {de:'weiß',        en:['white']},
+          {de:'orange',      en:['orange']},
+          {de:'rosa',        en:['pink']},
+          {de:'lila',        en:['lilac','purple']},
+          {de:'türkis',      en:['turquoise']},
+          {de:'beige',       en:['beige']},
+        ],
+      },
+
+      '14': {
+        title: 'Meine Stadt',
+        nouns: [
+          {de:'der Stadtpark',    pl:'die Stadtparks',    en:['public park','city park']},
+          {de:'das Theater',      pl:'die Theater',       en:['theatre']},
+          {de:'der Bahnhof',      pl:'die Bahnhöfe',      en:['train station']},
+          {de:'der Supermarkt',   pl:'die Supermärkte',   en:['supermarket']},
+          {de:'der Eingang',      pl:'die Eingänge',      en:['entrance']},
+          {de:'die Richtung',     pl:'die Richtungen',    en:['direction']},
+          {de:'die Straße',       pl:'die Straßen',       en:['street','road']},
+          {de:'der Schlüssel',    pl:'die Schlüssel',     en:['key']},
+          {de:'der Markt',        pl:'die Märkte',        en:['market']},
+          {de:'die Post',         pl:'meist Sg.',         en:['post office']},
+          {de:'die Apotheke',     pl:'die Apotheken',     en:['pharmacy']},
+          {de:'die Bank',         pl:'die Banken',        en:['bank']},
+          {de:'das Rathaus',      pl:'die Rathäuser',     en:['town hall']},
+          {de:'die Kirche',       pl:'die Kirchen',       en:['church']},
+          {de:'das Museum',       pl:'die Museen',        en:['museum']},
+          {de:'der Busbahnhof',   pl:'die Busbahnhöfe',   en:['bus station']},
+          {de:'die U-Bahn',       pl:'die U-Bahnen',      en:['underground','subway']},
+          {de:'die Straßenbahn',  pl:'die Straßenbahnen', en:['tram']},
+          {de:'das Taxi',         pl:'die Taxis',         en:['taxi']},
+          {de:'das Fahrrad',      pl:'die Fahrräder',     en:['bicycle','bike']},
+          {de:'der USB-Stick',    pl:'die USB-Sticks',    en:['USB stick']},
+        ],
+        verbs: [
+          {de:'abbiegen',  praesens:'biegt ab',   perfekt:'ist abgebogen',  praeteritum:'bog ab',    en:['to turn']},
+          {de:'gehören',   praesens:'gehört',     perfekt:'hat gehört',     praeteritum:'gehörte',   en:['to belong to']},
+          {de:'fahren',    praesens:'fährt',      perfekt:'ist gefahren',   praeteritum:'fuhr',      en:['to drive','to go by transport']},
+          {de:'suchen',    praesens:'sucht',      perfekt:'hat gesucht',    praeteritum:'suchte',    en:['to look for','to search']},
+          {de:'zeigen',    praesens:'zeigt',      perfekt:'hat gezeigt',    praeteritum:'zeigte',    en:['to show','to point']},
+          {de:'umsteigen', praesens:'steigt um',  perfekt:'ist umgestiegen',praeteritum:'stieg um',  en:['to change (transport)']},
+        ],
+        andere: [
+          {de:'rechts',      en:['right']},
+          {de:'links',       en:['left']},
+          {de:'geradeaus',   en:['straight ahead']},
+          {de:'weit',        en:['far']},
+          {de:'schön',       en:['beautiful','nice']},
+          {de:'dann',        en:['then']},
+        ],
+      },
+
+      '15': {
+        title: 'Der neue Job',
+        nouns: [
+          {de:'die Information',   pl:'die Informationen',  en:['information']},
+          {de:'das Intranet',      pl:'die Intranets',      en:['intranet']},
+          {de:'das Projekt',       pl:'die Projekte',       en:['project']},
+          {de:'das Dokument',      pl:'die Dokumente',      en:['document']},
+          {de:'die Präsentation',  pl:'die Präsentationen', en:['presentation']},
+          {de:'der/die Kollege/in',pl:'die Kollegen',       en:['colleague']},
+          {de:'die Hand',          pl:'die Hände',          en:['hand']},
+          {de:'der/die Entwickler/in',pl:'die Entwickler',  en:['developer']},
+          {de:'der/die Berater/in',pl:'die Berater',        en:['consultant','advisor']},
+          {de:'das Büro',          pl:'die Büros',          en:['office']},
+          {de:'die Besprechung',   pl:'die Besprechungen',  en:['meeting']},
+          {de:'der Termin',        pl:'die Termine',        en:['appointment']},
+          {de:'die E-Mail',        pl:'die E-Mails',        en:['email']},
+          {de:'das Passwort',      pl:'die Passwörter',     en:['password']},
+          {de:'der Drucker',       pl:'die Drucker',        en:['printer']},
+        ],
+        verbs: [
+          {de:'erklären',    praesens:'erklärt',    perfekt:'hat erklärt',     praeteritum:'erklärte',   en:['to explain']},
+          {de:'vorbereiten', praesens:'bereitet vor',perfekt:'hat vorbereitet',praeteritum:'bereitete vor',en:['to prepare']},
+          {de:'kopieren',    praesens:'kopiert',    perfekt:'hat kopiert',     praeteritum:'kopierte',   en:['to copy']},
+          {de:'beantworten', praesens:'beantwortet',perfekt:'hat beantwortet', praeteritum:'beantwortete',en:['to answer']},
+          {de:'drucken',     praesens:'druckt',     perfekt:'hat gedruckt',    praeteritum:'druckte',    en:['to print']},
+          {de:'schicken',    praesens:'schickt',    perfekt:'hat geschickt',   praeteritum:'schickte',   en:['to send']},
+          {de:'unterschreiben',praesens:'unterschreibt',perfekt:'hat unterschrieben',praeteritum:'unterschrieb',en:['to sign']},
+        ],
+        andere: [
+          {de:'formell',     en:['formal']},
+          {de:'informell',   en:['informal']},
+          {de:'bisher',      en:['up to now','so far']},
+        ],
+      },
+
+      '16': {
+        title: 'Essen und trinken',
+        nouns: [
+          {de:'der Online-Supermarkt',pl:'die Online-Supermärkte',en:['online supermarket']},
+          {de:'die Foodbox',      pl:'die Foodboxen',      en:['food box']},
+          {de:'die Zutat',        pl:'die Zutaten',        en:['ingredient']},
+          {de:'das Gericht',      pl:'die Gerichte',       en:['meal','dish']},
+          {de:'die Packung',      pl:'die Packungen',      en:['packet','pack']},
+          {de:'die Flasche',      pl:'die Flaschen',       en:['bottle']},
+          {de:'der Liter',        pl:'die Liter',          en:['litre']},
+          {de:'die Marmelade',    pl:'die Marmeladen',     en:['jam']},
+          {de:'der Honig',        pl:'die Honige',         en:['honey']},
+          {de:'der Snack',        pl:'die Snacks',         en:['snack']},
+          {de:'die Paprika',      pl:'die Paprikas',       en:['pepper','bell pepper']},
+          {de:'die Personenanzahl',pl:'nur Sg.',           en:['number of people']},
+          {de:'der Zeltplatz',    pl:'die Zeltplätze',     en:['campsite']},
+          {de:'der Campingplatz', pl:'die Campingplätze',  en:['camping ground']},
+          {de:'das Meer',         pl:'die Meere',          en:['sea']},
+          {de:'der Bauernhof',    pl:'die Bauernhöfe',     en:['farm']},
+          {de:'der Wald',         pl:'die Wälder',         en:['forest','wood']},
+          {de:'die Ferien',       pl:'Pl.',                en:['holidays']},
+          {de:'der Schlafsack',   pl:'die Schlafsäcke',    en:['sleeping bag']},
+          {de:'der Rucksack',     pl:'die Rucksäcke',      en:['rucksack','backpack']},
+          {de:'die Ziege',        pl:'die Ziegen',         en:['goat']},
+        ],
+        verbs: [
+          {de:'buchen',       praesens:'bucht',      perfekt:'hat gebucht',     praeteritum:'buchte',     en:['to book']},
+          {de:'zelten',       praesens:'zeltet',     perfekt:'hat gezeltet',    praeteritum:'zeltete',    en:['to camp']},
+          {de:'auswählen',    praesens:'wählt aus',  perfekt:'hat ausgewählt',  praeteritum:'wählte aus', en:['to choose','to select']},
+          {de:'angeben',      praesens:'gibt an',    perfekt:'hat angegeben',   praeteritum:'gab an',     en:['to give','to specify']},
+          {de:'müssen',       praesens:'muss',       perfekt:'hat gemusst',     praeteritum:'musste',     en:['must','to have to']},
+          {de:'packen',       praesens:'packt',      perfekt:'hat gepackt',     praeteritum:'packte',     en:['to pack']},
+          {de:'reisen',       praesens:'reist',      perfekt:'ist gereist',     praeteritum:'reiste',     en:['to travel']},
+        ],
+        andere: [
+          {de:'frisch',       en:['fresh']},
+          {de:'beliebt',      en:['popular']},
+          {de:'garantiert',   en:['guaranteed']},
+          {de:'drinnen',      en:['inside']},
+          {de:'nichts',       en:['nothing']},
+        ],
+      },
+
       // ── ADD NEW EINHEITEN BELOW THIS LINE ──
       // '7': { title: '...', nouns: [...], verbs: [...], andere: [...] },
     }
   },
 
   a2: {
-    meta: { label:'A2', book:'Das Leben', color:'#3AAA5C', einheiten:16 },
-    units: {}
+    meta: { label:'A2', book:'Das Leben', color:'#3AAA5C', einheiten:16, noStart:true },
+    units: {
+      '1': {
+        title: 'Klassentreffen',
+        nouns: [
+          {de:'das Abi',          pl:'die Abis',           en:['school leaving exam','A-levels']},
+          {de:'das Abitur',       pl:'die Abiture',        en:['school leaving certificate']},
+          {de:'das Klassentreffen',pl:'die Klassentreffen',en:['class reunion']},
+          {de:'die Klasse',       pl:'die Klassen',        en:['class']},
+          {de:'das Gymnasium',    pl:'die Gymnasien',      en:['academic high school']},
+          {de:'die Aula',         pl:'die Aulen',          en:['school hall']},
+          {de:'die Einladung',    pl:'die Einladungen',    en:['invitation']},
+          {de:'die Führung',      pl:'die Führungen',      en:['tour']},
+          {de:'die Hausaufgabe',  pl:'die Hausaufgaben',   en:['homework']},
+          {de:'die Laune',        pl:'die Launen',         en:['mood']},
+          {de:'der Ausflug',      pl:'die Ausflüge',       en:['excursion','trip']},
+          {de:'die Prüfung',      pl:'die Prüfungen',      en:['exam']},
+          {de:'der Spitzname',    pl:'die Spitznamen',     en:['nickname']},
+          {de:'das Treffen',      pl:'die Treffen',        en:['meeting']},
+          {de:'die Theatergruppe',pl:'die Theatergruppen', en:['theatre group']},
+          {de:'die Zukunft',      pl:'nur Sg.',            en:['future']},
+          {de:'der Platz',        pl:'die Plätze',         en:['place','space']},
+        ],
+        verbs: [
+          {de:'anmelden',     praesens:'meldet an',    perfekt:'hat angemeldet',    praeteritum:'meldete an',   en:['to sign up','to register']},
+          {de:'mitbringen',   praesens:'bringt mit',   perfekt:'hat mitgebracht',   praeteritum:'brachte mit',  en:['to bring']},
+          {de:'wiedersehen',  praesens:'sieht wieder', perfekt:'hat wiedergesehen', praeteritum:'sah wieder',   en:['to see again','to meet again']},
+          {de:'berichten',    praesens:'berichtet',    perfekt:'hat berichtet',     praeteritum:'berichtete',   en:['to report']},
+          {de:'recherchieren',praesens:'recherchiert', perfekt:'hat recherchiert',  praeteritum:'recherchierte',en:['to research']},
+          {de:'holen',        praesens:'holt',         perfekt:'hat geholt',        praeteritum:'holte',        en:['to fetch','to get']},
+          {de:'weitergeben',  praesens:'gibt weiter',  perfekt:'hat weitergegeben', praeteritum:'gab weiter',   en:['to pass on','to forward']},
+        ],
+        andere: [
+          {de:'schulfrei',  en:['day off school']},
+          {de:'endlich',    en:['finally']},
+          {de:'wirklich',   en:['really','actually']},
+          {de:'drinnen',    en:['inside']},
+          {de:'echt',       en:['really','very']},
+          {de:'damals',     en:['back then','at the time']},
+          {de:'plötzlich',  en:['suddenly']},
+          {de:'sofort',     en:['straight away','immediately']},
+        ],
+      },
+
+      '2': {
+        title: 'Wohnen und Zusammenleben',
+        nouns: [
+          {de:'das Mehrfamilienhaus',  pl:'die Mehrfamilienhäuser',  en:['multi-storey dwelling','apartment block']},
+          {de:'das Einfamilienhaus',   pl:'die Einfamilienhäuser',   en:['single-family house']},
+          {de:'der Wohnblock',         pl:'die Wohnblöcke',          en:['block of flats']},
+          {de:'die Mietwohnung',       pl:'die Mietwohnungen',       en:['rental flat']},
+          {de:'die Miete',             pl:'die Mieten',              en:['rent']},
+          {de:'der/die Mieter/in',     pl:'die Mieter',              en:['tenant']},
+          {de:'der Quadratmeter',      pl:'die Quadratmeter',        en:['square metre']},
+          {de:'das Einkommen',         pl:'die Einkommen',           en:['income']},
+          {de:'der Durchschnitt',      pl:'die Durchschnitte',       en:['average']},
+          {de:'der Balkon',            pl:'die Balkone',             en:['balcony']},
+          {de:'die Terrasse',          pl:'die Terrassen',           en:['terrace']},
+          {de:'das Viertel',           pl:'die Viertel',             en:['quarter','neighbourhood']},
+          {de:'die Kleinanzeige',      pl:'die Kleinanzeigen',       en:['classified ad']},
+          {de:'die Kaltmiete',         pl:'die Kaltmieten',          en:['base rent']},
+          {de:'die Nebenkosten',       pl:'Pl.',                     en:['additional costs','service charge']},
+          {de:'die Kaution',           pl:'die Kautionen',           en:['deposit']},
+          {de:'die Wohnfläche',        pl:'die Wohnflächen',         en:['living space']},
+          {de:'der/die Mitbewohner/in',pl:'die Mitbewohner',         en:['flatmate']},
+          {de:'die Besichtigung',      pl:'die Besichtigungen',      en:['viewing']},
+          {de:'die Dusche',            pl:'die Duschen',             en:['shower']},
+          {de:'die Garage',            pl:'die Garagen',             en:['garage']},
+          {de:'der Flohmarkt',         pl:'die Flohmärkte',          en:['flea market']},
+          {de:'der Mietvertrag',       pl:'die Mietverträge',        en:['rental agreement']},
+          {de:'das Mietshaus',         pl:'die Mietshäuser',         en:['block of flats']},
+          {de:'die Mittagsruhe',       pl:'nur Sg.',                 en:['afternoon quiet time']},
+          {de:'die Waschmaschine',     pl:'die Waschmaschinen',      en:['washing machine']},
+          {de:'die Ruhezeit',          pl:'die Ruhezeiten',          en:['quiet time']},
+          {de:'das Treppenhaus',       pl:'die Treppenhäuser',       en:['stairwell']},
+          {de:'das Haustier',          pl:'die Haustiere',           en:['pet']},
+          {de:'der Stau',              pl:'die Staus',               en:['traffic jam']},
+          {de:'der Umzug',             pl:'die Umzüge',              en:['move','moving house']},
+        ],
+        verbs: [
+          {de:'pendeln',     praesens:'pendelt',    perfekt:'ist gependelt',     praeteritum:'pendelte',    en:['to commute']},
+          {de:'ziehen',      praesens:'zieht',      perfekt:'ist gezogen',       praeteritum:'zog',         en:['to move']},
+          {de:'erlauben',    praesens:'erlaubt',    perfekt:'hat erlaubt',       praeteritum:'erlaubte',    en:['to allow','to permit']},
+          {de:'vereinbaren', praesens:'vereinbart', perfekt:'hat vereinbart',    praeteritum:'vereinbarte', en:['to arrange','to agree']},
+          {de:'kontaktieren',praesens:'kontaktiert',perfekt:'hat kontaktiert',   praeteritum:'kontaktierte',en:['to contact']},
+          {de:'wohlfühlen',  praesens:'fühlt sich wohl',perfekt:'hat sich wohlgefühlt',praeteritum:'fühlte sich wohl',en:['to feel at home','to feel happy']},
+          {de:'ärgern',      praesens:'ärgert sich',perfekt:'hat sich geärgert', praeteritum:'ärgerte sich',en:['to be annoyed','to get angry']},
+          {de:'verlieren',   praesens:'verliert',   perfekt:'hat verloren',      praeteritum:'verlor',      en:['to lose']},
+          {de:'aufbauen',    praesens:'baut auf',   perfekt:'hat aufgebaut',     praeteritum:'baute auf',   en:['to put up','to build']},
+        ],
+        andere: [
+          {de:'möbliert',    en:['furnished']},
+          {de:'gefährlich',  en:['dangerous']},
+          {de:'fröhlich',    en:['cheerful']},
+          {de:'ruhig',       en:['quiet']},
+          {de:'niedrig',     en:['low']},
+          {de:'täglich',     en:['daily']},
+          {de:'europäisch',  en:['European']},
+          {de:'verboten',    en:['forbidden']},
+          {de:'jung',        en:['young']},
+        ],
+      },
+
+      '3': {
+        title: 'So arbeiten wir heute',
+        nouns: [
+          {de:'der Tagesablauf',    pl:'die Tagesabläufe',    en:['daily routine']},
+          {de:'der Schichtdienst',  pl:'die Schichtdienste',  en:['shift duty']},
+          {de:'die Schicht',        pl:'die Schichten',       en:['shift']},
+          {de:'die Nachtschicht',   pl:'die Nachtschichten',  en:['night shift']},
+          {de:'die Krankenkasse',   pl:'die Krankenkassen',   en:['health insurance']},
+          {de:'der Kindergarten',   pl:'die Kindergärten',    en:['kindergarten']},
+          {de:'das Geschirr',       pl:'nur Sg.',             en:['crockery','dishes']},
+          {de:'der Teller',         pl:'die Teller',          en:['plate']},
+          {de:'der Geschirrspüler', pl:'die Geschirrspüler',  en:['dishwasher']},
+          {de:'die Kaffeemaschine', pl:'die Kaffeemaschinen', en:['coffee machine']},
+          {de:'die Kreuzung',       pl:'die Kreuzungen',      en:['junction','crossroads']},
+          {de:'das Klavier',        pl:'die Klaviere',        en:['piano']},
+          {de:'der/die Fahrer/in',  pl:'die Fahrer',          en:['driver']},
+          {de:'der/die Sekretär/in',pl:'die Sekretäre',       en:['secretary']},
+          {de:'die Apotheke',       pl:'die Apotheken',       en:['pharmacy']},
+          {de:'die Krankheit',      pl:'die Krankheiten',     en:['illness','disease']},
+          {de:'der/die Pfleger/in', pl:'die Pfleger',         en:['carer']},
+          {de:'die Notsituation',   pl:'die Notsituationen',  en:['emergency situation']},
+          {de:'der Briefkasten',    pl:'die Briefkästen',     en:['letterbox','mailbox']},
+        ],
+        verbs: [
+          {de:'bügeln',        praesens:'bügelt',      perfekt:'hat gebügelt',      praeteritum:'bügelte',     en:['to iron']},
+          {de:'decken',        praesens:'deckt',       perfekt:'hat gedeckt',       praeteritum:'deckte',      en:['to set the table']},
+          {de:'frühstücken',   praesens:'frühstückt',  perfekt:'hat gefrühstückt',  praeteritum:'frühstückte', en:['to have breakfast']},
+          {de:'zuhören',       praesens:'hört zu',     perfekt:'hat zugehört',      praeteritum:'hörte zu',    en:['to listen']},
+          {de:'sorgen',        praesens:'sorgt',       perfekt:'hat gesorgt',       praeteritum:'sorgte',      en:['to arrange','to see to']},
+          {de:'übernehmen',    praesens:'übernimmt',   perfekt:'hat übernommen',    praeteritum:'übernahm',    en:['to take on']},
+          {de:'konzentrieren', praesens:'konzentriert',perfekt:'hat konzentriert',  praeteritum:'konzentrierte',en:['to concentrate']},
+          {de:'bremsen',       praesens:'bremst',      perfekt:'hat gebremst',      praeteritum:'bremste',     en:['to brake']},
+        ],
+        andere: [
+          {de:'stressig',   en:['stressful']},
+          {de:'sauber',     en:['clean']},
+          {de:'schmutzig',  en:['dirty']},
+          {de:'komisch',    en:['funny','strange']},
+          {de:'froh',       en:['happy','glad']},
+          {de:'ständig',    en:['constantly','all the time']},
+          {de:'falsch',     en:['false','incorrect']},
+          {de:'fertig',     en:['finished','done']},
+          {de:'wieder',     en:['again']},
+          {de:'unten',      en:['below','downstairs']},
+        ],
+      },
+
+      '4': {
+        title: 'Glück und Lebensträume',
+        nouns: [
+          {de:'das Glück',           pl:'nur Sg.',            en:['luck','happiness']},
+          {de:'der Glücksmoment',    pl:'die Glücksmomente',  en:['moment of happiness']},
+          {de:'das Lebensglück',     pl:'nur Sg.',            en:['contentment','happiness in life']},
+          {de:'der Lebenstraum',     pl:'die Lebensträume',   en:['lifelong dream']},
+          {de:'der Lebensweg',       pl:'die Lebenswege',     en:['journey through life']},
+          {de:'die Zufriedenheit',   pl:'die Zufriedenheiten',en:['satisfaction','contentment']},
+          {de:'der Berufswunsch',    pl:'die Berufswünsche',  en:['career aspiration']},
+          {de:'der Berufsweg',       pl:'die Berufswege',     en:['career path']},
+          {de:'die Entscheidung',    pl:'die Entscheidungen', en:['decision']},
+          {de:'die Bucketliste',     pl:'die Bucketlisten',   en:['bucket list']},
+          {de:'der Glücksfaktor',    pl:'die Glücksfaktoren', en:['factor for happiness']},
+          {de:'der Lottogewinn',     pl:'die Lottogewinne',   en:['lottery win']},
+          {de:'das Pech',            pl:'nur Sg.',            en:['bad luck']},
+          {de:'der Schlüssel',       pl:'die Schlüssel',      en:['key']},
+          {de:'die Partnerschaft',   pl:'die Partnerschaften',en:['partnership']},
+          {de:'die Ausbildung',      pl:'die Ausbildungen',   en:['apprenticeship','training']},
+          {de:'der Ausbildungsplatz',pl:'die Ausbildungsplätze',en:['apprenticeship placement']},
+          {de:'die Karaokebar',      pl:'die Karaokebars',    en:['karaoke bar']},
+          {de:'das Schulfach',       pl:'die Schulfächer',    en:['school subject']},
+        ],
+        verbs: [
+          {de:'träumen',       praesens:'träumt',      perfekt:'hat geträumt',      praeteritum:'träumte',     en:['to dream']},
+          {de:'beweisen',      praesens:'beweist',     perfekt:'hat bewiesen',      praeteritum:'bewies',      en:['to prove','to show']},
+          {de:'bewerben',      praesens:'bewirbt sich',perfekt:'hat sich beworben', praeteritum:'bewarb sich', en:['to apply for']},
+          {de:'testen',        praesens:'testet',      perfekt:'hat getestet',      praeteritum:'testete',     en:['to test']},
+          {de:'lösen',         praesens:'löst',        perfekt:'hat gelöst',        praeteritum:'löste',       en:['to solve']},
+          {de:'erreichen',     praesens:'erreicht',    perfekt:'hat erreicht',      praeteritum:'erreichte',   en:['to achieve','to reach']},
+          {de:'zusammenarbeiten',praesens:'arbeitet zusammen',perfekt:'hat zusammengearbeitet',praeteritum:'arbeitete zusammen',en:['to work together']},
+        ],
+        andere: [
+          {de:'dauerhaft',      en:['lasting','permanent']},
+          {de:'unrealistisch',  en:['unrealistic']},
+          {de:'selbstständig',  en:['self-employed','independent']},
+          {de:'unzufrieden',    en:['dissatisfied']},
+          {de:'relativ',        en:['relatively']},
+          {de:'häufig',         en:['frequently','often']},
+          {de:'schlimm',        en:['bad']},
+          {de:'verantwortlich', en:['responsible']},
+          {de:'sondern',        en:['but (rather)']},
+        ],
+      },
+      '5': {
+        title: "Ohne Smartphone geht's nicht!",
+        nouns: [
+          {de:'das Gerät',         pl:'die Geräte',         en:['device']},
+          {de:'die Datei',         pl:'die Dateien',        en:['file']},
+          {de:'der Wecker',        pl:'die Wecker',         en:['alarm clock']},
+          {de:'der Unterricht',    pl:'die Unterrichte',    en:['class','lesson']},
+          {de:'die Tätigkeit',     pl:'die Tätigkeiten',    en:['activity','task']},
+          {de:'die Mediensprache', pl:'nur Sg.',            en:['media language']},
+          {de:'der Klick',         pl:'die Klicks',         en:['click']},
+        ],
+        verbs: [
+          {de:'herunterladen', praesens:'lädt herunter', perfekt:'hat heruntergeladen', praeteritum:'lud herunter', en:['to download']},
+          {de:'chatten',       praesens:'chattet',       perfekt:'hat gechattet',        praeteritum:'chattete',    en:['to chat']},
+          {de:'scannen',       praesens:'scannt',        perfekt:'hat gescannt',         praeteritum:'scannte',     en:['to scan']},
+          {de:'klingeln',      praesens:'klingelt',      perfekt:'hat geklingelt',       praeteritum:'klingelte',   en:['to ring']},
+        ],
+        andere: [
+          {de:'wozu',     en:['what for']},
+          {de:'digital',  en:['digital']},
+          {de:'kostenlos',en:['free']},
+          {de:'beliebt',  en:['popular']},
+        ],
+      },
+      '6': {
+        title: 'Hast du Netz?',
+        nouns: [
+          {de:'das Smartphone',      pl:'die Smartphones',      en:['smartphone']},
+          {de:'das Selfie',          pl:'die Selfies',           en:['selfie']},
+          {de:'die Kamera',          pl:'die Kameras',           en:['camera']},
+          {de:'der Akku',            pl:'die Akkus',             en:['battery']},
+          {de:'das Netz',            pl:'die Netze',             en:['network']},
+          {de:'das WLAN-Passwort',   pl:'die WLAN-Passwörter',   en:['WLAN password']},
+          {de:'das Ladekabel',       pl:'die Ladekabel',         en:['charging cable']},
+          {de:'die Sprachnachricht', pl:'die Sprachnachrichten', en:['voice message']},
+          {de:'die Textnachricht',   pl:'die Textnachrichten',   en:['text message']},
+          {de:'die Konsole',         pl:'die Konsolen',          en:['console']},
+          {de:'der Anhang',          pl:'die Anhänge',           en:['attachment']},
+          {de:'die Umarmung',        pl:'die Umarmungen',        en:['hug']},
+          {de:'das Videospiel',      pl:'die Videospiele',       en:['video game']},
+          {de:'das E-Book',          pl:'die E-Books',           en:['e-book']},
+          {de:'der Artikel',         pl:'die Artikel',           en:['article']},
+          {de:'das Experiment',      pl:'die Experimente',       en:['experiment']},
+        ],
+        verbs: [
+          {de:'liken',        praesens:'likt',       perfekt:'hat gelikt',       praeteritum:'likte',      en:['to like']},
+          {de:'aufladen',     praesens:'lädt auf',   perfekt:'hat aufgeladen',   praeteritum:'lud auf',    en:['to charge']},
+          {de:'tippen',       praesens:'tippt',      perfekt:'hat getippt',      praeteritum:'tippte',     en:['to type']},
+          {de:'reagieren',    praesens:'reagiert',   perfekt:'hat reagiert',     praeteritum:'reagierte',  en:['to react']},
+          {de:'kommunizieren',praesens:'kommuniziert',perfekt:'hat kommuniziert',praeteritum:'kommunizierte',en:['to communicate']},
+          {de:'checken',      praesens:'checkt',     perfekt:'hat gecheckt',     praeteritum:'checkte',    en:['to check']},
+          {de:'schenken',     praesens:'schenkt',    perfekt:'hat geschenkt',    praeteritum:'schenkte',   en:['to give as gift']},
+          {de:'leihen',       praesens:'leiht',      perfekt:'hat geliehen',     praeteritum:'lieh',       en:['to lend']},
+          {de:'erleben',      praesens:'erlebt',     perfekt:'hat erlebt',       praeteritum:'erlebte',    en:['to experience']},
+        ],
+        andere: [
+          {de:'online',    en:['online']},
+          {de:'leer',      en:['empty','flat']},
+          {de:'selten',    en:['seldom']},
+          {de:'unbedingt', en:['absolutely']},
+          {de:'gar nicht', en:['not at all']},
+          {de:'ob',        en:['whether']},
+        ],
+      },
+      '7': {
+        title: 'Alltagsleben',
+        nouns: [
+          {de:'die Kaffeemaschine', pl:'die Kaffeemaschinen', en:['coffee machine']},
+          {de:'die Kreuzung',       pl:'die Kreuzungen',      en:['crossroads']},
+          {de:'das Klavier',        pl:'die Klaviere',        en:['piano']},
+          {de:'der Geschirrspüler', pl:'die Geschirrspüler',  en:['dishwasher']},
+          {de:'der Teller',         pl:'die Teller',          en:['plate']},
+          {de:'der Briefkasten',    pl:'die Briefkästen',     en:['letterbox']},
+          {de:'der Kindergarten',   pl:'die Kindergärten',    en:['kindergarten']},
+          {de:'der Schichtdienst',  pl:'die Schichtdienste',  en:['shift duty']},
+          {de:'das Abendbrot',      pl:'die Abendbrote',      en:['supper']},
+        ],
+        verbs: [
+          {de:'bügeln',      praesens:'bügelt',     perfekt:'hat gebügelt',     praeteritum:'bügelte',    en:['to iron']},
+          {de:'decken',      praesens:'deckt',      perfekt:'hat gedeckt',      praeteritum:'deckte',     en:['to set the table']},
+          {de:'frühstücken', praesens:'frühstückt', perfekt:'hat gefrühstückt', praeteritum:'frühstückte',en:['to have breakfast']},
+          {de:'zuhören',     praesens:'hört zu',    perfekt:'hat zugehört',     praeteritum:'hörte zu',   en:['to listen']},
+          {de:'einschlafen', praesens:'schläft ein',perfekt:'ist eingeschlafen',praeteritum:'schlief ein',en:['to fall asleep']},
+          {de:'backen',      praesens:'bäckt',      perfekt:'hat gebacken',     praeteritum:'buk',        en:['to bake']},
+        ],
+        andere: [
+          {de:'ständig', en:['constantly']},
+          {de:'komisch', en:['funny','strange']},
+          {de:'froh',    en:['happy','glad']},
+          {de:'fertig',  en:['done','finished']},
+          {de:'wieder',  en:['again']},
+          {de:'falsch',  en:['wrong']},
+        ],
+      },
+      '8': {
+        title: 'Festival-Sommer',
+        nouns: [
+          {de:'das Festival',      pl:'die Festivals',       en:['festival']},
+          {de:'die Bühne',         pl:'die Bühnen',          en:['stage']},
+          {de:'der Schlafsack',    pl:'die Schlafsäcke',     en:['sleeping bag']},
+          {de:'die Isomatte',      pl:'die Isomatten',       en:['sleeping mat']},
+          {de:'das Gelände',       pl:'die Gelände',         en:['site','area']},
+          {de:'der Hashtag',       pl:'die Hashtags',        en:['hashtag']},
+          {de:'das Wohnmobil',     pl:'die Wohnmobile',      en:['motorhome']},
+          {de:'das Erlebnis',      pl:'die Erlebnisse',      en:['experience']},
+          {de:'die Karriere',      pl:'die Karrieren',       en:['career']},
+          {de:'der Mond',          pl:'die Monde',           en:['moon']},
+          {de:'der Stern',         pl:'die Sterne',          en:['star']},
+          {de:'die Regenjacke',    pl:'die Regenjacken',     en:['rain jacket']},
+          {de:'die Sonnencreme',   pl:'die Sonnencremes',    en:['suntan lotion']},
+          {de:'der Höhepunkt',     pl:'die Höhepunkte',      en:['highlight']},
+          {de:'die Gänsehaut',     pl:'nur Sg.',             en:['goosebumps']},
+        ],
+        verbs: [
+          {de:'zelten',    praesens:'zeltet',    perfekt:'hat gezeltet',    praeteritum:'zeltete',  en:['to camp']},
+          {de:'auftreten', praesens:'tritt auf', perfekt:'ist aufgetreten', praeteritum:'trat auf', en:['to perform']},
+          {de:'hochladen', praesens:'lädt hoch', perfekt:'hat hochgeladen', praeteritum:'lud hoch', en:['to upload']},
+          {de:'bearbeiten',praesens:'bearbeitet',perfekt:'hat bearbeitet',  praeteritum:'bearbeitete',en:['to edit']},
+          {de:'aufnehmen', praesens:'nimmt auf', perfekt:'hat aufgenommen', praeteritum:'nahm auf', en:['to record']},
+          {de:'starten',   praesens:'startet',   perfekt:'ist gestartet',   praeteritum:'startete', en:['to start']},
+          {de:'mitsingen', praesens:'singt mit', perfekt:'hat mitgesungen', praeteritum:'sang mit', en:['to sing along']},
+        ],
+        andere: [
+          {de:'legendär',  en:['legendary']},
+          {de:'großartig', en:['great']},
+          {de:'aufregend', en:['exciting']},
+          {de:'krass',     en:['wicked','cool']},
+          {de:'dreckig',   en:['dirty']},
+          {de:'schlammig', en:['muddy']},
+          {de:'jährlich',  en:['yearly']},
+          {de:'trotzdem',  en:['nevertheless']},
+        ],
+      },
+      '9': {
+        title: 'Mobileben',
+        nouns: [
+          {de:'die Mobilität',      pl:'die Mobilitäten',    en:['mobility']},
+          {de:'das Verkehrsmittel', pl:'die Verkehrsmittel', en:['mode of transport']},
+          {de:'die Fahrkarte',      pl:'die Fahrkarten',     en:['ticket']},
+          {de:'der Fahrplan',       pl:'die Fahrpläne',      en:['timetable']},
+          {de:'das Gleis',          pl:'die Gleise',         en:['platform']},
+          {de:'die Verspätung',     pl:'die Verspätungen',   en:['delay']},
+          {de:'die Verbindung',     pl:'die Verbindungen',   en:['connection']},
+          {de:'die Ankunft',        pl:'die Ankünfte',       en:['arrival']},
+          {de:'der Sparpreis',      pl:'die Sparpreise',     en:['budget price']},
+          {de:'die Vorlesung',      pl:'die Vorlesungen',    en:['lecture']},
+          {de:'die Fußgängerzone',  pl:'die Fußgängerzonen', en:['pedestrian zone']},
+          {de:'die Alternative',    pl:'die Alternativen',   en:['alternative']},
+          {de:'die Hauptstadt',     pl:'die Hauptstädte',    en:['capital city']},
+          {de:'die Kosten',         pl:'Pl.',                en:['costs']},
+          {de:'die Alpen',          pl:'Pl.',                en:['Alps']},
+        ],
+        verbs: [
+          {de:'umsteigen',    praesens:'steigt um',   perfekt:'ist umgestiegen',    praeteritum:'stieg um',   en:['to change transport']},
+          {de:'verpassen',    praesens:'verpasst',    perfekt:'hat verpasst',       praeteritum:'verpasste',  en:['to miss']},
+          {de:'zurückfahren', praesens:'fährt zurück',perfekt:'ist zurückgefahren', praeteritum:'fuhr zurück',en:['to travel back']},
+          {de:'pendeln',      praesens:'pendelt',     perfekt:'ist gependelt',      praeteritum:'pendelte',   en:['to commute']},
+          {de:'parken',       praesens:'parkt',       perfekt:'hat geparkt',        praeteritum:'parkte',     en:['to park']},
+        ],
+        andere: [
+          {de:'flexibel', en:['flexible']},
+          {de:'preiswert',en:['cheap','economical']},
+          {de:'bequem',   en:['comfortable']},
+          {de:'billig',   en:['cheap']},
+          {de:'schnell',  en:['fast']},
+          {de:'öffentlich',en:['public']},
+          {de:'schade',   en:['what a pity']},
+        ],
+      },
+      '10': {
+        title: 'Was liest du gerade?',
+        nouns: [
+          {de:'der Roman',         pl:'die Romane',         en:['novel']},
+          {de:'die Geschichte',    pl:'die Geschichten',    en:['story']},
+          {de:'die Bibliothek',    pl:'die Bibliotheken',   en:['library']},
+          {de:'der Krimi',         pl:'die Krimis',         en:['crime novel']},
+          {de:'das Sachbuch',      pl:'die Sachbücher',     en:['non-fiction book']},
+          {de:'die Zeitschrift',   pl:'die Zeitschriften',  en:['magazine']},
+          {de:'die Lesung',        pl:'die Lesungen',       en:['reading event']},
+          {de:'der Abschluss',     pl:'die Abschlüsse',     en:['qualification','degree']},
+          {de:'die Note',          pl:'die Noten',          en:['grade','mark']},
+          {de:'das Zertifikat',    pl:'die Zertifikate',    en:['certificate']},
+          {de:'die Kenntnis',      pl:'die Kenntnisse',     en:['knowledge']},
+          {de:'die Unterschrift',  pl:'die Unterschriften', en:['signature']},
+          {de:'die Überschrift',   pl:'die Überschriften',  en:['heading','title']},
+        ],
+        verbs: [
+          {de:'empfehlen',   praesens:'empfiehlt',  perfekt:'hat empfohlen',   praeteritum:'empfahl',   en:['to recommend']},
+          {de:'ausleihen',   praesens:'leiht aus',  perfekt:'hat ausgeliehen', praeteritum:'lieh aus',  en:['to borrow']},
+          {de:'vorlesen',    praesens:'liest vor',  perfekt:'hat vorgelesen',  praeteritum:'las vor',   en:['to read aloud']},
+          {de:'beschreiben', praesens:'beschreibt', perfekt:'hat beschrieben', praeteritum:'beschrieb', en:['to describe']},
+          {de:'bedeuten',    praesens:'bedeutet',   perfekt:'hat bedeutet',    praeteritum:'bedeutete', en:['to mean']},
+        ],
+        andere: [
+          {de:'persönlich',      en:['personal']},
+          {de:'spannend',        en:['exciting','gripping']},
+          {de:'wissenschaftlich',en:['scientific']},
+          {de:'professionell',   en:['professional']},
+        ],
+      },
+      '11': {
+        title: 'Reparieren und Selber machen',
+        nouns: [
+          {de:'die Palette',     pl:'die Paletten',       en:['pallet']},
+          {de:'das Kissen',      pl:'die Kissen',         en:['cushion']},
+          {de:'die SIM-Karte',   pl:'die SIM-Karten',     en:['SIM card']},
+          {de:'das Passwort',    pl:'die Passwörter',     en:['password']},
+          {de:'die Reklamation', pl:'die Reklamationen',  en:['complaint']},
+          {de:'die Rechnung',    pl:'die Rechnungen',     en:['bill','invoice']},
+          {de:'die Garantie',    pl:'die Garantien',      en:['guarantee','warranty']},
+          {de:'der Umtausch',    pl:'die Umtäusche',      en:['exchange']},
+          {de:'der Stecker',     pl:'die Stecker',        en:['plug']},
+          {de:'der Vorschlag',   pl:'die Vorschläge',     en:['suggestion']},
+          {de:'die Taste',       pl:'die Tasten',         en:['button','key']},
+          {de:'die Steckdose',   pl:'die Steckdosen',     en:['plug socket']},
+        ],
+        verbs: [
+          {de:'einschalten', praesens:'schaltet ein', perfekt:'hat eingeschaltet', praeteritum:'schaltete ein', en:['to switch on']},
+          {de:'laden',       praesens:'lädt',         perfekt:'hat geladen',       praeteritum:'lud',           en:['to charge']},
+          {de:'umtauschen',  praesens:'tauscht um',   perfekt:'hat umgetauscht',   praeteritum:'tauschte um',   en:['to exchange']},
+          {de:'anschließen', praesens:'schließt an',  perfekt:'hat angeschlossen', praeteritum:'schloss an',    en:['to connect']},
+          {de:'drücken',     praesens:'drückt',       perfekt:'hat gedrückt',      praeteritum:'drückte',       en:['to press']},
+          {de:'eingeben',    praesens:'gibt ein',     perfekt:'hat eingegeben',    praeteritum:'gab ein',       en:['to enter']},
+          {de:'prüfen',      praesens:'prüft',        perfekt:'hat geprüft',       praeteritum:'prüfte',        en:['to check']},
+          {de:'reparieren',  praesens:'repariert',    perfekt:'hat repariert',     praeteritum:'reparierte',    en:['to repair']},
+        ],
+        andere: [
+          {de:'defekt',  en:['defective','broken']},
+          {de:'circa',   en:['approximately']},
+          {de:'trocken', en:['dry']},
+          {de:'sogar',   en:['even']},
+        ],
+      },
+      '12': {
+        title: 'Gipfelstürmer',
+        nouns: [
+          {de:'die Hütte',         pl:'die Hütten',         en:['mountain hut']},
+          {de:'der Berggipfel',    pl:'die Berggipfel',     en:['mountain peak']},
+          {de:'der Gipfel',        pl:'die Gipfel',         en:['summit']},
+          {de:'der Wanderweg',     pl:'die Wanderwege',     en:['hiking path']},
+          {de:'das Bundesland',    pl:'die Bundesländer',   en:['federal state']},
+          {de:'das Abendessen',    pl:'die Abendessen',     en:['evening meal']},
+          {de:'der Sonnenaufgang', pl:'die Sonnenaufgänge', en:['sunrise']},
+          {de:'das Gebirge',       pl:'die Gebirge',        en:['mountain range']},
+          {de:'das Tal',           pl:'die Täler',          en:['valley']},
+          {de:'das Mountainbike',  pl:'die Mountainbikes',  en:['mountain bike']},
+          {de:'die Höhe',          pl:'die Höhen',          en:['height','altitude']},
+          {de:'die Wanderung',     pl:'die Wanderungen',    en:['hike']},
+          {de:'die Schwierigkeit', pl:'die Schwierigkeiten',en:['difficulty']},
+          {de:'der Parkplatz',     pl:'die Parkplätze',     en:['car park']},
+          {de:'der Hinweis',       pl:'die Hinweise',       en:['hint','note']},
+        ],
+        verbs: [
+          {de:'wandern',  praesens:'wandert',  perfekt:'ist gewandert', praeteritum:'wanderte', en:['to hike']},
+          {de:'steigen',  praesens:'steigt',   perfekt:'ist gestiegen', praeteritum:'stieg',    en:['to climb']},
+          {de:'boomen',   praesens:'boomt',    perfekt:'hat geboomt',   praeteritum:'boomte',   en:['to boom']},
+          {de:'beachten', praesens:'beachtet', perfekt:'hat beachtet',  praeteritum:'beachtete',en:['to observe']},
+          {de:'parken',   praesens:'parkt',    perfekt:'hat geparkt',   praeteritum:'parkte',   en:['to park']},
+        ],
+        andere: [
+          {de:'traumhaft',   en:['wonderful']},
+          {de:'anstrengend', en:['strenuous','exhausting']},
+          {de:'köstlich',    en:['delicious']},
+          {de:'bergauf',     en:['uphill']},
+          {de:'bergab',      en:['downhill']},
+          {de:'ungefähr',    en:['approximately']},
+        ],
+      },
+      '13': {
+        title: 'Freunde fürs Leben',
+        nouns: [
+          {de:'die Freundschaft',    pl:'die Freundschaften',  en:['friendship']},
+          {de:'der Charakter',       pl:'die Charaktere',      en:['character']},
+          {de:'der Humor',           pl:'nur Sg.',             en:['humour']},
+          {de:'die Überraschung',    pl:'die Überraschungen',  en:['surprise']},
+          {de:'der Gutschein',       pl:'die Gutscheine',      en:['voucher']},
+          {de:'das Parfüm',          pl:'die Parfüms',         en:['perfume']},
+          {de:'die Socke',           pl:'die Socken',          en:['sock']},
+          {de:'der Status',          pl:'die Status',          en:['status']},
+          {de:'die Plattform',       pl:'die Plattformen',     en:['platform']},
+          {de:'die Hälfte',          pl:'die Hälften',         en:['half']},
+          {de:'der Beziehungsstatus',pl:'nur Sg.',             en:['relationship status']},
+        ],
+        verbs: [
+          {de:'verabreden',      praesens:'verabredet sich',  perfekt:'hat sich verabredet',  praeteritum:'verabredete sich', en:['to arrange to meet']},
+          {de:'weiterempfehlen', praesens:'empfiehlt weiter', perfekt:'hat weiterempfohlen',  praeteritum:'empfahl weiter',   en:['to recommend']},
+          {de:'lächeln',         praesens:'lächelt',          perfekt:'hat gelächelt',         praeteritum:'lächelte',         en:['to smile']},
+          {de:'zusammenhalten',  praesens:'hält zusammen',    perfekt:'hat zusammengehalten', praeteritum:'hielt zusammen',   en:['to stick together']},
+          {de:'zurückkommen',    praesens:'kommt zurück',     perfekt:'ist zurückgekommen',   praeteritum:'kam zurück',       en:['to come back']},
+        ],
+        andere: [
+          {de:'sympathisch',   en:['nice','friendly']},
+          {de:'kritisch',      en:['critical']},
+          {de:'kompliziert',   en:['complicated']},
+          {de:'einziger',      en:['only','sole']},
+          {de:'vielfältig',    en:['varied','diverse']},
+          {de:'sauer',         en:['annoyed','angry']},
+          {de:'doof',          en:['silly','stupid']},
+        ],
+      },
+      '14': {
+        title: 'Leben auf dem Land',
+        nouns: [
+          {de:'das Dorf',            pl:'die Dörfer',           en:['village']},
+          {de:'die Gemeinde',        pl:'die Gemeinden',        en:['municipality','community']},
+          {de:'der Traktor',         pl:'die Traktoren',        en:['tractor']},
+          {de:'die Feuerwehr',       pl:'die Feuerwehren',      en:['fire brigade']},
+          {de:'der/die Landwirt/in', pl:'die Landwirte',        en:['farmer']},
+          {de:'der Stall',           pl:'die Ställe',           en:['barn','stable']},
+          {de:'die Ernte',           pl:'die Ernten',           en:['harvest']},
+          {de:'der Betrieb',         pl:'die Betriebe',         en:['business','farm']},
+          {de:'der Hofladen',        pl:'die Hofläden',         en:['farm shop']},
+          {de:'der Bauernmarkt',     pl:'die Bauernmärkte',     en:['farmers market']},
+          {de:'der Jugendclub',      pl:'die Jugendclubs',      en:['youth club']},
+          {de:'das Gemeindehaus',    pl:'die Gemeindehäuser',   en:['community hall']},
+          {de:'der/die Bürgermeister/in',pl:'die Bürgermeister',en:['mayor']},
+          {de:'die Nachbarschaft',   pl:'die Nachbarschaften',  en:['neighbourhood']},
+          {de:'der Notfall',         pl:'die Notfälle',         en:['emergency']},
+          {de:'der/die Bäcker/in',   pl:'die Bäcker',           en:['baker']},
+        ],
+        verbs: [
+          {de:'vorbeifahren',  praesens:'fährt vorbei',  perfekt:'ist vorbeigefahren',  praeteritum:'fuhr vorbei',   en:['to drive past']},
+          {de:'weitermachen',  praesens:'macht weiter',  perfekt:'hat weitergemacht',   praeteritum:'machte weiter', en:['to carry on']},
+          {de:'stehenbleiben', praesens:'bleibt stehen', perfekt:'ist stehengeblieben', praeteritum:'blieb stehen',  en:['to stop','to stand still']},
+          {de:'lächeln',       praesens:'lächelt',       perfekt:'hat gelächelt',        praeteritum:'lächelte',      en:['to smile']},
+        ],
+        andere: [
+          {de:'goldener',  en:['golden']},
+          {de:'ehrlich',   en:['honest']},
+          {de:'ländlich',  en:['rural']},
+        ],
+      },
+      '15': {
+        title: 'Natur und Umwelt',
+        nouns: [
+          {de:'die Umwelt',           pl:'die Umwelten',         en:['environment']},
+          {de:'der Schutz',           pl:'nur Sg.',              en:['protection']},
+          {de:'die Folge',            pl:'die Folgen',           en:['consequence']},
+          {de:'der Tausch',           pl:'die Tausche',          en:['exchange','swap']},
+          {de:'die Biene',            pl:'die Bienen',           en:['bee']},
+          {de:'das Insekt',           pl:'die Insekten',         en:['insect']},
+          {de:'die Erde',             pl:'nur Sg.',              en:['earth']},
+          {de:'die Luft',             pl:'nur Sg.',              en:['air']},
+          {de:'das Klima',            pl:'die Klimas',           en:['climate']},
+          {de:'der Planet',           pl:'die Planeten',         en:['planet']},
+          {de:'das Recycling',        pl:'nur Sg.',              en:['recycling']},
+          {de:'die Plastiktüte',      pl:'die Plastiktüten',     en:['plastic bag']},
+          {de:'der Stoffbeutel',      pl:'die Stoffbeutel',      en:['textile bag']},
+          {de:'das Metall',           pl:'die Metalle',          en:['metal']},
+          {de:'die Energiesparlampe', pl:'die Energiesparlampen',en:['energy saving bulb']},
+          {de:'das Flugzeug',         pl:'die Flugzeuge',        en:['aeroplane']},
+          {de:'die Botschaft',        pl:'die Botschaften',      en:['message']},
+          {de:'der Kleidertausch',    pl:'die Kleidertausche',   en:['clothes swap']},
+        ],
+        verbs: [
+          {de:'schützen',     praesens:'schützt',     perfekt:'hat geschützt',   praeteritum:'schützte',    en:['to protect']},
+          {de:'zerstören',    praesens:'zerstört',    perfekt:'hat zerstört',    praeteritum:'zerstörte',   en:['to destroy']},
+          {de:'verschmutzen', praesens:'verschmutzt', perfekt:'hat verschmutzt', praeteritum:'verschmutzte',en:['to pollute']},
+          {de:'bewahren',     praesens:'bewahrt',     perfekt:'hat bewahrt',     praeteritum:'bewahrte',    en:['to preserve']},
+          {de:'trennen',      praesens:'trennt',      perfekt:'hat getrennt',    praeteritum:'trennte',     en:['to separate']},
+          {de:'wegwerfen',    praesens:'wirft weg',   perfekt:'hat weggeworfen', praeteritum:'warf weg',    en:['to throw away']},
+          {de:'tauschen',     praesens:'tauscht',     perfekt:'hat getauscht',   praeteritum:'tauschte',    en:['to swap']},
+          {de:'atmen',        praesens:'atmet',       perfekt:'hat geatmet',     praeteritum:'atmete',      en:['to breathe']},
+          {de:'teilen',       praesens:'teilt',       perfekt:'hat geteilt',     praeteritum:'teilte',      en:['to share']},
+          {de:'anbieten',     praesens:'bietet an',   perfekt:'hat angeboten',   praeteritum:'bot an',      en:['to offer']},
+        ],
+        andere: [
+          {de:'sinnvoll',  en:['sensible','reasonable']},
+          {de:'bewohnbar', en:['habitable']},
+          {de:'irgendwo',  en:['somewhere']},
+          {de:'wenn',      en:['if','when']},
+        ],
+      },
+      '16': {
+        title: 'Berufe und Karriere',
+        nouns: [
+          {de:'der Lebenslauf',      pl:'die Lebensläufe',       en:['CV','curriculum vitae']},
+          {de:'die Berufserfahrung', pl:'die Berufserfahrungen', en:['work experience']},
+          {de:'die Abschlussnote',   pl:'die Abschlussnoten',    en:['final grade']},
+          {de:'die Anschrift',       pl:'die Anschriften',       en:['address']},
+          {de:'das Geburtsdatum',    pl:'die Geburtsdaten',      en:['date of birth']},
+          {de:'der Geburtsort',      pl:'die Geburtsorte',       en:['place of birth']},
+          {de:'die Schulbildung',    pl:'die Schulbildungen',    en:['school education']},
+          {de:'der Abschluss',       pl:'die Abschlüsse',        en:['qualification','degree']},
+          {de:'die Drohne',          pl:'die Drohnen',           en:['drone']},
+          {de:'die Dokumentation',   pl:'die Dokumentationen',   en:['documentation']},
+          {de:'der/die Gärtner/in',  pl:'die Gärtner',           en:['gardener']},
+          {de:'die Fachhochschule',  pl:'die Fachhochschulen',   en:['technical college']},
+          {de:'die EDV',             pl:'nur Sg.',               en:['IT','computing']},
+          {de:'die Unterschrift',    pl:'die Unterschriften',    en:['signature']},
+        ],
+        verbs: [
+          {de:'unterrichten',   praesens:'unterrichtet',   perfekt:'hat unterrichtet',    praeteritum:'unterrichtete',   en:['to teach']},
+          {de:'zusammenfassen', praesens:'fasst zusammen', perfekt:'hat zusammengefasst', praeteritum:'fasste zusammen', en:['to summarise']},
+          {de:'pflegen',        praesens:'pflegt',         perfekt:'hat gepflegt',         praeteritum:'pflegte',         en:['to care for']},
+          {de:'beraten',        praesens:'berät',          perfekt:'hat beraten',          praeteritum:'beriet',          en:['to advise']},
+          {de:'aufpassen',      praesens:'passt auf',      perfekt:'hat aufgepasst',       praeteritum:'passte auf',      en:['to pay attention']},
+          {de:'erwarten',       praesens:'erwartet',       perfekt:'hat erwartet',         praeteritum:'erwartete',       en:['to expect']},
+        ],
+        andere: [
+          {de:'tabellarisch', en:['tabular','in table form']},
+          {de:'elektronisch', en:['electronic']},
+          {de:'aktuell',      en:['current','up to date']},
+          {de:'dauernd',      en:['continually']},
+          {de:'egal',         en:["doesn't matter"]},
+          {de:'voll',         en:['totally','completely']},
+        ],
+      },
+
+    }
   },
   b1: {
-    meta: { label:'B1', book:'Das Leben', color:'#D42B2B', einheiten:12 },
-    units: {}
+    meta: { label:'B1', book:'Das Leben', color:'#D42B2B', einheiten:12, noStart:true },
+    units: {
+      '1': {
+        title: 'Bildung (er)leben',
+        sections: [
+          {
+            key: 'erasmus',
+            title: 'Erasmus+',
+            nouns: [
+              {de:'der Austausch',       pl:'die Austausche',         en:['exchange']},
+              {de:'die Kooperation',     pl:'die Kooperationen',      en:['cooperation']},
+              {de:'der Bereich',         pl:'die Bereiche',           en:['area','field']},
+              {de:'die Lehre',           pl:'die Lehren',             en:['teaching','apprenticeship']},
+              {de:'der/die Auszubildende',pl:'die Auszubildenden',   en:['trainee','apprentice']},
+              {de:'der/die Lehrende',    pl:'die Lehrenden',          en:['teacher','lecturer']},
+              {de:'die Hochschule',      pl:'die Hochschulen',        en:['university','college']},
+              {de:'die Förderung',       pl:'die Förderungen',        en:['funding','support']},
+              {de:'das Verhalten',       pl:'die Verhalten',          en:['behaviour']},
+              {de:'die Lehrkraft',       pl:'die Lehrkräfte',         en:['teacher','teaching staff']},
+              {de:'das Studienfach',     pl:'die Studienfächer',      en:['subject','course of study']},
+              {de:'das Abenteuer',       pl:'die Abenteuer',          en:['adventure']},
+              {de:'die Gastfamilie',     pl:'die Gastfamilien',       en:['host family']},
+              {de:'die Erwartung',       pl:'die Erwartungen',        en:['expectation']},
+              {de:'das Stipendium',      pl:'die Stipendien',         en:['scholarship','grant']},
+              {de:'die Mischung',        pl:'die Mischungen',         en:['mixture','mix']},
+              {de:'die Theorie',         pl:'die Theorien',           en:['theory']},
+              {de:'die Praxis',          pl:'nur Sg.',                en:['practice']},
+              {de:'der Studiengang',     pl:'die Studiengänge',       en:['degree programme','course']},
+              {de:'die Chance',          pl:'die Chancen',            en:['chance','opportunity']},
+            ],
+            verbs: [
+              {de:'fördern',      praesens:'fördert',     perfekt:'hat gefördert',     praeteritum:'förderte',    en:['to fund','to support','to promote']},
+              {de:'rechnen (mit)',praesens:'rechnet',     perfekt:'hat gerechnet',     praeteritum:'rechnete',    en:['to expect','to count on']},
+              {de:'überzeugen',   praesens:'überzeugt',   perfekt:'hat überzeugt',     praeteritum:'überzeugte',  en:['to convince']},
+              {de:'konstruieren', praesens:'konstruiert', perfekt:'hat konstruiert',   praeteritum:'konstruierte',en:['to construct','to design']},
+              {de:'treffen (auf)',praesens:'trifft',      perfekt:'ist getroffen',     praeteritum:'traf',        en:['to meet','to encounter']},
+              {de:'flirten',      praesens:'flirtet',     perfekt:'hat geflirtet',     praeteritum:'flirtete',    en:['to flirt']},
+            ],
+            andere: [
+              {de:'monatlich',      en:['monthly']},
+              {de:'weiblich',       en:['female']},
+              {de:'finanziell',     en:['financial','financially']},
+              {de:'selbstbewusst',  en:['self-confident']},
+              {de:'ökonomisch',     en:['economic','economically']},
+              {de:'ökologisch',     en:['ecological','ecologically']},
+              {de:'doppelt',        en:['double','twice']},
+              {de:'darum',          en:['therefore','that is why']},
+              {de:'solange',        en:['as long as']},
+              {de:'locker',         en:['relaxed','casual']},
+              {de:'faszinierend',   en:['fascinating']},
+            ],
+          },
+          {
+            key: 'studieren',
+            title: 'Studieren und Lernen',
+            nouns: [
+              {de:'die Vermutung',          pl:'die Vermutungen',          en:['assumption','guess']},
+              {de:'die Studienberatung',    pl:'die Studienberatungen',    en:['student advisory service']},
+              {de:'der Journalismus',       pl:'nur Sg.',                  en:['journalism']},
+              {de:'die Aufnahmeprüfung',    pl:'die Aufnahmeprüfungen',    en:['entrance exam']},
+              {de:'die Voraussetzung',      pl:'die Voraussetzungen',      en:['requirement','prerequisite']},
+              {de:'das Medienrecht',        pl:'die Medienrechte',         en:['media law']},
+              {de:'die Reportage',          pl:'die Reportagen',           en:['report','documentary']},
+              {de:'der Master',             pl:'die Master',               en:['master's degree']},
+              {de:'das Auslandssemester',   pl:'die Auslandssemester',     en:['semester abroad']},
+              {de:'der Rat',                pl:'die Räte',                 en:['advice','council']},
+              {de:'die Unterstützung',      pl:'die Unterstützungen',      en:['support']},
+              {de:'der Ton',                pl:'die Töne',                 en:['tone','sound']},
+              {de:'die Version',            pl:'die Versionen',            en:['version']},
+              {de:'die Architektur',        pl:'die Architekturen',        en:['architecture']},
+              {de:'die Körpersprache',      pl:'die Körpersprachen',       en:['body language']},
+              {de:'der Mittelpunkt',        pl:'die Mittelpunkte',         en:['centre','focus']},
+            ],
+            verbs: [
+              {de:'vorschlagen',   praesens:'schlägt vor',  perfekt:'hat vorgeschlagen',  praeteritum:'schlug vor',    en:['to suggest','to propose']},
+              {de:'auffordern',    praesens:'fordert auf',  perfekt:'hat aufgefordert',   praeteritum:'forderte auf',  en:['to call on','to ask']},
+              {de:'abbrechen',     praesens:'bricht ab',    perfekt:'hat abgebrochen',    praeteritum:'brach ab',      en:['to drop out','to break off']},
+              {de:'runterbringen', praesens:'bringt runter',perfekt:'hat runtergebracht', praeteritum:'brachte runter',en:['to take down','to bring down']},
+              {de:'zumachen',      praesens:'macht zu',     perfekt:'hat zugemacht',      praeteritum:'machte zu',     en:['to close','to shut']},
+            ],
+            andere: [
+              {de:'irgendwas',     en:['something','anything']},
+              {de:'automatisch',   en:['automatic','automatically']},
+              {de:'drüben',        en:['over there']},
+              {de:'irgendwer',     en:['someone','anyone']},
+              {de:'irgendwann',    en:['sometime','at some point']},
+              {de:'irgendwoher',   en:['from somewhere']},
+            ],
+          },
+          {
+            key: 'party',
+            title: 'Party ohne Ende!!!',
+            nouns: [
+              {de:'der/die Gastgeber/in', pl:'die Gastgeber',       en:['host']},
+              {de:'das Eis brechen',      pl:'-',                   en:['to break the ice']},
+            ],
+            verbs: [
+              {de:'in Gang halten', praesens:'hält in Gang', perfekt:'hat in Gang gehalten', praeteritum:'hielt in Gang', en:['to keep going']},
+            ],
+            andere: [
+              {de:'irgendwoher', en:['from somewhere']},
+            ],
+          },
+        ],
+      },
+
+      '2': {
+        title: 'Miteinander – Füreinander',
+        sections: [
+          {
+            key: 'ehrenamt',
+            title: 'Ehrenamt',
+            nouns: [
+              {de:'das Ehrenamt',       pl:'die Ehrenämter',      en:['voluntary work','honorary office']},
+              {de:'das Engagement',     pl:'die Engagements',     en:['commitment','involvement']},
+              {de:'die Kindheit',       pl:'nur Sg.',             en:['childhood']},
+              {de:'die Bezahlung',      pl:'die Bezahlungen',     en:['payment']},
+              {de:'der Einsatz',        pl:'die Einsätze',        en:['effort','deployment']},
+              {de:'die Gesellschaft',   pl:'die Gesellschaften',  en:['society']},
+              {de:'die Rede',           pl:'die Reden',           en:['speech']},
+              {de:'das Sprichwort',     pl:'die Sprichwörter',    en:['proverb']},
+              {de:'die Freude',         pl:'die Freuden',         en:['joy','pleasure']},
+              {de:'der Besuchsdienst',  pl:'die Besuchsdienste',  en:['visiting service']},
+              {de:'die Kita',           pl:'die Kitas',           en:['nursery','daycare']},
+              {de:'der/die Erzieher/in',pl:'die Erzieher',        en:['childcare worker','educator']},
+              {de:'der Nachhilfeunterricht',pl:'die Nachhilfeunterrichte',en:['tutoring','private lessons']},
+              {de:'die Verantwortung',  pl:'die Verantwortungen', en:['responsibility']},
+              {de:'der Tierschutz',     pl:'nur Sg.',             en:['animal welfare']},
+              {de:'der Naturschutz',    pl:'nur Sg.',             en:['nature conservation']},
+              {de:'der/die Preisträger/in',pl:'die Preisträger',  en:['prize winner']},
+              {de:'die Suppenküche',    pl:'die Suppenküchen',    en:['soup kitchen']},
+              {de:'das Ferienlager',    pl:'die Ferienlager',     en:['holiday camp']},
+              {de:'der/die Mentor/in',  pl:'die Mentoren',        en:['mentor']},
+            ],
+            verbs: [
+              {de:'ehren',         praesens:'ehrt',         perfekt:'hat geehrt',         praeteritum:'ehrte',        en:['to honour']},
+              {de:'erhalten',      praesens:'erhält',       perfekt:'hat erhalten',       praeteritum:'erhielt',      en:['to receive']},
+              {de:'behandeln',     praesens:'behandelt',    perfekt:'hat behandelt',      praeteritum:'behandelte',   en:['to treat']},
+              {de:'loben',         praesens:'lobt',         perfekt:'hat gelobt',         praeteritum:'lobte',        en:['to praise']},
+              {de:'einsetzen (sich)',praesens:'setzt sich ein',perfekt:'hat sich eingesetzt',praeteritum:'setzte sich ein',en:['to advocate','to stand up for']},
+              {de:'zitieren',      praesens:'zitiert',      perfekt:'hat zitiert',        praeteritum:'zitierte',     en:['to quote','to cite']},
+              {de:'engagieren (sich)',praesens:'engagiert sich',perfekt:'hat sich engagiert',praeteritum:'engagierte sich',en:['to get involved','to commit']},
+              {de:'integrieren',   praesens:'integriert',   perfekt:'hat integriert',     praeteritum:'integrierte',  en:['to integrate']},
+              {de:'retten',        praesens:'rettet',       perfekt:'hat gerettet',       praeteritum:'rettete',      en:['to rescue','to save']},
+            ],
+            andere: [
+              {de:'ehrenamtlich',  en:['voluntary','on a voluntary basis']},
+              {de:'füreinander',   en:['for each other']},
+              {de:'wohnungslos',   en:['homeless']},
+              {de:'wöchentlich',   en:['weekly']},
+              {de:'montags',       en:['on Mondays']},
+            ],
+          },
+          {
+            key: 'fussball',
+            title: 'Fußball ist unser Leben!',
+            nouns: [
+              {de:'das Stadion',        pl:'die Stadien',         en:['stadium']},
+              {de:'der Fußballclub',    pl:'die Fußballclubs',    en:['football club']},
+              {de:'die Meisterschaft',  pl:'die Meisterschaften', en:['championship']},
+              {de:'der Fußballplatz',   pl:'die Fußballplätze',   en:['football pitch']},
+              {de:'der/die Schiedsrichter/in',pl:'die Schiedsrichter',en:['referee']},
+              {de:'die Gemeinschaft',   pl:'die Gemeinschaften',  en:['community']},
+              {de:'die Lizenz',         pl:'die Lizenzen',        en:['licence']},
+              {de:'die Fortbildung',    pl:'die Fortbildungen',   en:['further training']},
+              {de:'der Daumen',         pl:'die Daumen',          en:['thumb']},
+              {de:'der Amateurfußball', pl:'nur Sg.',             en:['amateur football']},
+            ],
+            verbs: [
+              {de:'weiterentwickeln', praesens:'entwickelt sich weiter',perfekt:'hat sich weiterentwickelt',praeteritum:'entwickelte sich weiter',en:['to develop further']},
+              {de:'durchführen',      praesens:'führt durch',  perfekt:'hat durchgeführt',  praeteritum:'führte durch',  en:['to carry out','to conduct']},
+              {de:'mitspielen',       praesens:'spielt mit',   perfekt:'hat mitgespielt',   praeteritum:'spielte mit',   en:['to play along','to join in']},
+            ],
+            andere: [
+              {de:'menschlich',  en:['human','humane']},
+              {de:'wahr',        en:['true','real']},
+            ],
+          },
+          {
+            key: 'buergerinitiative',
+            title: 'Wir sind für …',
+            nouns: [
+              {de:'die Bürgerinitiative', pl:'die Bürgerinitiativen', en:['citizens' initiative']},
+              {de:'die Fahrraddemo',      pl:'die Fahrraddemos',      en:['cycling demonstration']},
+              {de:'der Stadtrand',        pl:'die Stadtränder',       en:['outskirts','edge of town']},
+              {de:'das Neubaugebiet',     pl:'die Neubaugebiete',     en:['new development area']},
+              {de:'das Erholungsgebiet',  pl:'die Erholungsgebiete',  en:['recreation area']},
+              {de:'die Auffassung',       pl:'die Auffassungen',      en:['view','opinion']},
+            ],
+            verbs: [
+              {de:'demonstrieren',  praesens:'demonstriert',  perfekt:'hat demonstriert',   praeteritum:'demonstrierte',  en:['to demonstrate','to protest']},
+              {de:'kämpfen (für)',   praesens:'kämpft',        perfekt:'hat gekämpft',       praeteritum:'kämpfte',        en:['to fight for','to campaign']},
+              {de:'protestieren',   praesens:'protestiert',   perfekt:'hat protestiert',    praeteritum:'protestierte',   en:['to protest']},
+              {de:'hinzufügen',     praesens:'fügt hinzu',    perfekt:'hat hinzugefügt',    praeteritum:'fügte hinzu',    en:['to add']},
+            ],
+            andere: [
+              {de:'gesellschaftlich', en:['social','of society']},
+            ],
+          },
+        ],
+      },
+
+    }
   },
   b2: {
     meta: { label:'B2', book:'Weitblick', color:'#2B6FA8', einheiten:12 },
@@ -1086,9 +2095,30 @@ const EINHEIT_TITLES = {
     10:'Fit und gesund',
     11:'Hast du Zeit?',
     12:'Familie Schuhmann',
+    13:'Voll im Trend',
+    14:'Meine Stadt',
+    15:'Der neue Job',
+    16:'Essen und trinken',
   },
-  a2: {},
-  b1: { 1:'Bildung (Er)leben', 2:'Miteinander – Füreinander', 3:'Talente gesucht!', 4:'Natur erleben', 5:'Hin und weg!', 6:'Worte und Orte', 7:'Gestern – heute – morgen' },
+  a2: {
+    1:'Klassentreffen',
+    2:'Wohnen und Zusammenleben',
+    3:'So arbeiten wir heute',
+    4:'Glück und Lebensträume',
+    5:'Ohne Smartphone geht\'s nicht!',
+    6:'Hast du Netz?',
+    7:'Alltagsleben',
+    8:'Festival-Sommer',
+    9:'Mobileben',
+    10:'Was liest du gerade?',
+    11:'Reparieren und Selber machen',
+    12:'Gipfelstürmer',
+    13:'Freunde fürs Leben',
+    14:'Leben auf dem Land',
+    15:'Natur und Umwelt',
+    16:'Berufe und Karriere',
+  },
+  b1: { 1:'Bildung (er)leben', 2:'Miteinander – Füreinander', 3:'Talente gesucht!', 4:'Natur erleben', 5:'Hin und weg!', 6:'Worte und Orte', 7:'Gestern – heute – morgen' },
   b2: { 1:'Den Horizont erweitern', 2:'Miteinander leben', 3:'Suchen und Finden', 5:'Einfach mal abschalten', 6:'In Erinnerungen schwelgen', 7:'Sich und die Welt verändern' },
 };
 
@@ -1118,6 +2148,8 @@ function setLevelColor(color) {
 // HOME → EINHEITEN
 // ══════════════════════════════════════════════════════════
 function goEinheiten(level) {
+  currentSectionData = null;
+  currentSection = null;
   currentLevel = level;
   const meta   = VOCAB[level].meta;
   const titles = EINHEIT_TITLES[level] || {};
@@ -1130,7 +2162,7 @@ function goEinheiten(level) {
   document.getElementById('einheiten-title').textContent      = 'Einheiten';
   document.getElementById('einheiten-sub').textContent        = 'Wähle eine Einheit, um mit dem Vokabeltraining zu beginnen.';
   document.getElementById('einheiten-count').textContent      = `${meta.einheiten} Einheiten`;
-  const keys = ['start', ...Array.from({length: meta.einheiten - 1}, (_,i) => String(i+1))];
+  const keys = meta.noStart ? Array.from({length: meta.einheiten}, (_,i) => String(i+1)) : ['start', ...Array.from({length: meta.einheiten}, (_,i) => String(i+1))];
   document.getElementById('einheit-grid').innerHTML = keys.map(key => {
     const title   = titles[key] || null;
     const hasData = !!units[key];
@@ -1159,6 +2191,32 @@ function goWordList(unit) {
   currentUnit = unit;
   const meta = VOCAB[currentLevel].meta;
   const data = VOCAB[currentLevel].units[unit];
+
+  // If unit has sections, go to sections page instead
+  if (data.sections) {
+    setLevelColor(meta.color);
+    const unitLabel = unit === 'start' ? 'Start' : 'Einheit ' + unit;
+    document.getElementById('sec-badge').querySelector('.lvl').textContent = meta.label;
+    document.getElementById('sec-badge').querySelector('.bk').textContent  = unitLabel;
+    document.getElementById('sec-hero').style.background  = meta.color;
+    document.getElementById('sec-supra').textContent      = meta.book + ' ' + meta.label + ' · ' + unitLabel;
+    document.getElementById('sec-title').textContent      = data.title;
+    document.getElementById('sec-sub').textContent        = data.sections.length + ' Abschnitte';
+    document.getElementById('sec-count').textContent      = data.sections.length + ' Abschnitte';
+    document.getElementById('sec-grid').innerHTML = data.sections.map(s => {
+      const total = s.nouns.length + s.verbs.length + s.andere.length;
+      return '<div class="e-card" onclick="goSection(\''+s.key+'\',\''+unit+'\')">'+
+        '<div class="e-card-top" style="background:'+meta.color+'">'+
+        '<div class="e-pill"><span class="e-pill-label">'+s.title+'</span></div>'+
+        '</div>'+
+        '<div class="e-card-bottom">'+
+        '<div class="e-card-name" style="color:'+meta.color+'">'+total+' Wörter</div>'+
+        '<div class="e-card-arrow" style="color:'+meta.color+'">→</div>'+
+        '</div></div>';
+    }).join('');
+    showPage('page-sections');
+    return;
+  }
   setLevelColor(meta.color);
   const unitLabel = unit === 'start' ? 'Start' : 'Einheit ' + unit;
   document.getElementById('wl-badge').querySelector('.lvl').textContent = meta.label;
@@ -1195,10 +2253,59 @@ function switchWordTab(name, el) {
 // ══════════════════════════════════════════════════════════
 // WORD LIST → QUIZ
 // ══════════════════════════════════════════════════════════
+function goSection(sectionKey, unit) {
+  currentUnit = unit;
+  currentSection = sectionKey;
+  const meta = VOCAB[currentLevel].meta;
+  const unitData = VOCAB[currentLevel].units[unit];
+  const sData = unitData.sections.find(s => s.key === sectionKey);
+
+  setLevelColor(meta.color);
+  const unitLabel = unit === 'start' ? 'Start' : 'Einheit ' + unit;
+
+  // Build a flat unit-like object from the section for the word list renderer
+  currentSectionData = sData;
+
+  const badge = document.getElementById('wl-badge');
+  badge.querySelector('.lvl').textContent = meta.label;
+  badge.querySelector('.bk').textContent  = unitLabel + ' · ' + sData.title;
+  document.getElementById('wl-hero').style.background  = meta.color;
+  document.getElementById('wl-supra').textContent      = meta.book + ' ' + meta.label + ' · ' + unitLabel;
+  document.getElementById('wl-title').textContent      = sData.title;
+  const total = sData.nouns.length + sData.verbs.length + sData.andere.length;
+  document.getElementById('wl-count').textContent      = total + ' Wörter · Nomen · Verben · Andere';
+  document.getElementById('wl-ueben-btn').style.color  = meta.color;
+
+  document.getElementById('wl-nomen-body').innerHTML = sData.nouns.map(n =>
+    '<tr><td>'+n.de+'</td><td>'+(/^(nur|meist|Pl\.|-$)/.test(n.pl)?'<span class="note">'+n.pl+'</span>':n.pl)+'</td><td><span class="pill">'+n.en.join(' / ')+'</span></td></tr>'
+  ).join('');
+  document.getElementById('wl-verben-body').innerHTML = sData.verbs.map(v =>
+    '<tr><td>'+v.de+'</td><td>'+v.praesens+'</td><td>'+v.perfekt+'</td><td>'+v.praeteritum+'</td><td><span class="pill">'+v.en.join(' / ')+'</span></td></tr>'
+  ).join('');
+  document.getElementById('wl-andere-body').innerHTML = sData.andere.map(a =>
+    '<tr><td>'+a.de+'</td><td><span class="pill">'+a.en.join(' / ')+'</span></td></tr>'
+  ).join('');
+
+  document.querySelectorAll('#page-wordlist .tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('#page-wordlist .tab-panel').forEach(p => p.classList.remove('on'));
+  document.querySelector('#page-wordlist .tabs-bar .tab').classList.add('on');
+  document.getElementById('wl-nomen').classList.add('on');
+
+  // Back button from word list → sections page
+  document.querySelector('#page-wordlist .back-btn').onclick = function() { showPage('page-sections'); };
+
+  showPage('page-wordlist');
+}
+
+// Track current section for quiz
+let currentSection = null;
+let currentSectionData = null;
+
 function goQuiz() {
   const meta = VOCAB[currentLevel].meta;
-  const data = VOCAB[currentLevel].units[currentUnit];
+  const data = currentSectionData || VOCAB[currentLevel].units[currentUnit];
   const unitLabel = currentUnit === 'start' ? 'Start' : 'Einheit ' + currentUnit;
+  const titleLabel = currentSectionData ? currentSectionData.title : data.title;
   document.getElementById('quiz-badge').querySelector('.lvl').textContent = meta.label;
   document.getElementById('quiz-badge').querySelector('.bk').textContent  = `${unitLabel} · ${data.title}`;
   document.getElementById('quiz-hero').style.background = meta.color;
@@ -1224,7 +2331,7 @@ function setMode(m, el) {
 }
 
 function buildDeck() {
-  const data = VOCAB[currentLevel].units[currentUnit];
+  const data = currentSectionData || VOCAB[currentLevel].units[currentUnit];
   if (quizMode === 'verb') {
     const cards = [];
     data.verbs.forEach(v => {
