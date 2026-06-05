@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPC Cluster Coaching Opportunities - Fall 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F6F6E9;
+  --surface: #fdfdf8;
+  --surface2: #eeeee0;
+  --ink: #1a1714;
+  --ink2: #5a554e;
+  --ink3: #7F7F7F;
+  --border: rgba(26,23,20,0.1);
+  --border2: rgba(26,23,20,0.06);
+  --blue: #005792;
+  --orange: #FD5F00;
+  --navy: #13344C;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Merriweather', serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.internal-banner {
+  background: #8b1a0e;
+  color: #fdf0ee;
+  text-align: center;
+  padding: 8px;
+  font-family: 'Merriweather', serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+header {
+  background: #13344C;
+  color: #fff;
+  padding: 4rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px);
+}
+.header-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+.eyebrow {
+  font-family: 'Merriweather', serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1rem;
+}
+h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  max-width: 760px;
+}
+.header-sub {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(0.95rem, 2vw, 1.4rem);
+  color: rgba(255,255,255,0.6);
+  margin-top: 0.25rem;
+}
+.header-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(255,255,255,0.3);
+}
+.header-stat {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+.header-stat-value {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.header-stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+section { margin-bottom: 4rem; }
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-number {
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink2);
+  letter-spacing: 0.06em;
+}
+h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.section-sub {
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 740px;
+}
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.chart-card-title {
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 12px;
+}
+.chart-header-row {
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2px;
+}
+.chart-header-row span {
+  font-family: 'Merriweather', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink2);
+}
+.chart-header-row .center { text-align: center; }
+.chart-header-row .right { text-align: right; }
+.outcome-header { grid-template-columns: 90px 1fr 72px 72px 72px 60px; }
+.outcome-row-grid { grid-template-columns: 90px 1fr 72px 72px 72px 60px; }
+.chart-row {
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border2);
+}
+.chart-row:hover { background: var(--surface2); border-radius: 3px; }
+.row-label {
+  font-family: 'Merriweather', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.row-sub {
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--ink3);
+  display: block;
+  margin-top: 2px;
+}
+.bar-wrap {
+  position: relative;
+  height: 18px;
+  display: flex;
+  align-items: center;
+}
+.bar-bg {
+  position: absolute;
+  inset: 4px 0;
+  background: rgba(26,23,20,0.04);
+  border-radius: 2px;
+}
+.bar-fill {
+  position: absolute;
+  height: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 1px;
+  left: 0;
+}
+.row-val {
+  font-family: 'Merriweather', serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+.val-blue { color: var(--blue); }
+.val-orange { color: var(--orange); }
+.val-mid { color: var(--ink3); }
+.row-n {
+  font-family: 'Merriweather', serif;
+  font-size: 11px;
+  color: var(--ink3);
+  text-align: right;
+}
+.chart-reasoning {
+  font-size: 13.5px;
+  color: var(--ink2);
+  line-height: 1.6;
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border2);
+}
+
+/* Cluster card grid */
+.cluster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 1.5rem;
+}
+.cluster-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+.cluster-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.cluster-badge {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  min-width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.badge-orange { background: var(--orange); }
+.badge-blue { background: var(--blue); }
+.badge-navy { background: var(--navy); }
+.badge-mid { background: var(--ink3); }
+.cluster-card-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.cluster-card-desc {
+  font-size: 11px;
+  color: var(--ink3);
+  margin-top: 3px;
+  font-style: italic;
+}
+.cluster-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.metric-pill {
+  background: var(--surface2);
+  border-radius: 3px;
+  padding: 5px 8px;
+  text-align: center;
+}
+.metric-pill-val {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.metric-pill-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink3);
+  display: block;
+  margin-top: 1px;
+}
+.val-good { color: var(--blue); }
+.val-bad { color: var(--orange); }
+.val-neutral { color: var(--ink2); }
+.focus-label {
+  font-family: 'Merriweather', serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink3);
+  margin-bottom: 4px;
+}
+.focus-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-family: 'Merriweather', serif;
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin: 2px 3px 2px 0;
+  border-left: 3px solid var(--orange);
+  background: rgba(253,95,0,0.06);
+  color: var(--ink2);
+}
+.focus-tag.blue {
+  border-left-color: var(--blue);
+  background: rgba(0,87,146,0.06);
+}
+.focus-tag.navy {
+  border-left-color: var(--navy);
+  background: rgba(19,52,76,0.06);
+}
+.coaching-text {
+  font-size: 12.5px;
+  color: var(--ink2);
+  line-height: 1.6;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border2);
+}
+
+/* Insight grid */
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+.insight {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+  border-left: 3px solid #13344C;
+}
+.insight.orange { border-left-color: #FD5F00; }
+.insight.blue { border-left-color: #005792; }
+.insight.navy { border-left-color: #13344C; }
+.insight-label {
+  font-family: 'Merriweather', serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 6px;
+}
+.insight-text { font-size: 13.5px; color: var(--ink); line-height: 1.55; }
+
+/* Phired Up mapping table */
+.mapping-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-family: 'Merriweather', serif;
+}
+.mapping-table th {
+  background: var(--navy);
+  color: #fff;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.mapping-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border2);
+  color: var(--ink2);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.mapping-table tr:hover td { background: var(--surface2); }
+.priority-high { color: var(--orange); font-weight: 700; }
+.priority-med { color: var(--ink2); font-weight: 700; }
+.priority-low { color: var(--ink3); }
+
+footer {
+  background: #13344C;
+  color: rgba(255,255,255,0.55);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+}
+</style>
+</head>
+<body>
+
+<div class="internal-banner">INTERNAL USE ONLY &middot; NPC / Smith Insights &middot; June 2026</div>
+
+<header>
+  <div class="header-inner">
+    <div class="eyebrow">NPC Primary Recruitment &middot; Coaching Opportunity Analysis</div>
+    <h1>Phired Up Coaching Priorities by Cluster</h1>
+    <div class="header-sub">Fall 2025 outcomes &middot; Withdrawal drivers &middot; Cluster-level focus areas &middot; 2026-28 cycle</div>
+    <div class="header-meta">
+      <div class="header-stat">
+        <div class="header-stat-value">558</div>
+        <div class="header-stat-label">College Panhellenics in 2026-28 framework</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">38%</div>
+        <div class="header-stat-label">PNM withdrawals attributed to schedule dissatisfaction (Phired Up, n = 7,130)</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">C4</div>
+        <div class="header-stat-label">Highest match rate cluster at 77.1% - best structural fit for retention</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">C8</div>
+        <div class="header-stat-label">Lowest match rate cluster at 56.8% - highest pre-OHP attrition concern</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- SECTION 01: Outcome snapshot -->
+<section>
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2>2025-26 Outcome Snapshot by Cluster</h2>
+  </div>
+  <p class="section-sub">Match rate, pre-OHP withdrawal, post-OHP withdrawal, and unmatched rate for all 10 clusters in the most recent cycle. Pre-OHP withdrawal reflects disengagement before PNMs see invitations; post-OHP withdrawal reflects reaction to schedule outcomes. Both are coaching leverage points, but they require different interventions.</p>
+
+  <div class="chart-card">
+    <div class="chart-card-title">Match Rate - 2025-26 (higher = better)</div>
+    <div class="chart-header-row outcome-header">
+      <span>Cluster</span>
+      <span class="center">56% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 77%</span>
+      <span class="right">Matched</span>
+      <span class="right">Pre-OHP W</span>
+      <span class="right">Post-OHP W</span>
+      <span class="right">Campuses</span>
+    </div>
+    <div id="matchChart"></div>
+    <p class="chart-reasoning">C4 leads at 77.1% - 7.4 points above the next cluster (C7 at 70.5%). C8 sits at 56.8%, the only cluster below 60%. C2, C3, C8, and C9 all fall below 63%, sharing a common profile: smaller chapter ecosystems where invitation density is low enough that schedule dissatisfaction becomes structurally inevitable.</p>
+  </div>
+</section>
+
+<!-- SECTION 02: Two-problem framework -->
+<section>
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2>Two Distinct Attrition Profiles</h2>
+  </div>
+  <p class="section-sub">The withdrawal data reveals two mechanically different problems. Clusters with high pre-OHP attrition are losing PNMs before any recruitment interaction happens - that is a communication and expectation-setting failure. Clusters with high post-OHP attrition are losing PNMs at schedule release - that is a schedule disappointment and RC coaching failure. Coaching interventions must be matched to the profile, not applied uniformly.</p>
+
+  <div class="insight-grid">
+    <div class="insight orange">
+      <div class="insight-label">Profile A: Pre-OHP Attrition (C2, C8, C9)</div>
+      <div class="insight-text">Campuses losing 20-29% of PNMs before open house. Phired Up attributes early-round withdrawal primarily to logistical conflicts, financial confusion, and process misunderstanding. These communities need pre-recruitment RC activation, financial transparency communication, and orientation redesign - all before Round 1 begins.</div>
+    </div>
+    <div class="insight blue">
+      <div class="insight-label">Profile B: Post-OHP Attrition (C4, C5, C7, C10)</div>
+      <div class="insight-text">Campuses holding PNMs through open house but losing them at schedule release. Phired Up identifies schedule dissatisfaction as 38% of all withdrawal rationale, peaking at Rounds 3-4. These communities need RC schedule-release coaching, pre-round expectation setting, and structured post-primary COB pathways.</div>
+    </div>
+    <div class="insight navy">
+      <div class="insight-label">Mixed Profile (C1, C3, C6)</div>
+      <div class="insight-text">These clusters show moderate attrition on both sides. C1 (PSR communities) has elevated pre-OHP withdrawal at 18.5% - closer to the Profile A clusters - despite having structured recruitment. C3 and C6 sit between both profiles and likely require campus-by-campus diagnosis rather than cluster-level programming.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03: Cluster-by-cluster coaching cards -->
+<section>
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2>Cluster-by-Cluster Coaching Focus</h2>
+  </div>
+  <p class="section-sub">Each cluster card shows the 2025-26 outcome metrics alongside the recommended Phired Up intervention priorities mapped to that cluster's structural profile. Priority tags are color-coded: orange = most urgent, blue = foundational, navy = secondary.</p>
+
+  <div class="cluster-grid" id="clusterCards"></div>
+</section>
+
+<!-- SECTION 04: Phired Up recommendation mapping -->
+<section>
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2>Phired Up Recommendation Mapping</h2>
+  </div>
+  <p class="section-sub">The eight Phired Up recommendations are not equally relevant across all cluster types. This table maps each recommendation to the clusters where it has the highest coaching leverage, based on the Fall 2025 withdrawal timing and rationale data.</p>
+
+  <div class="chart-card">
+    <table class="mapping-table">
+      <thead>
+        <tr>
+          <th style="width:34%">Phired Up Recommendation</th>
+          <th style="width:12%">Primary Clusters</th>
+          <th style="width:12%">Secondary Clusters</th>
+          <th style="width:42%">Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Begin retention at registration</strong><br>RC outreach within 48 hrs of registration; RC group assignment before Round 1</td>
+          <td><span class="priority-high">C2, C8, C9</span></td>
+          <td>C1, C3, C6</td>
+          <td>Pre-OHP attrition is the dominant problem in C2 (29%), C8 (27%), and C9 (20%). These PNMs are disengaging before any recruitment experience - early RC contact is the only available intervention point.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Reimagine orientation as confidence-building</strong><br>Address process confusion, financial concerns, belonging anxiety before events begin</td>
+          <td><span class="priority-high">C2, C3, C8, C9</span></td>
+          <td>C1, C6</td>
+          <td>Phired Up reports 9% of withdrawals cite process confusion and 5% cite financial concerns. These reasons are most common in smaller communities (C2, C8, C9) where PNMs have limited context for how matching works in a thin chapter ecosystem.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Prepare PNMs for schedule release</strong><br>RC visibility at schedule drop; normalize receiving fewer invitations than maximum</td>
+          <td><span class="priority-high">C4, C5, C7, C10</span></td>
+          <td>C1, C6</td>
+          <td>Post-OHP attrition is the primary problem in C4 (16%), C5 (19%), C7 (16%), and C10 (16%). These communities retain PNMs through open house but lose them at first schedule receipt - exactly the failure mode this recommendation targets. Phired Up reports 78% of all withdrawals follow first schedule release.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Build a post-primary placement system</strong><br>Structured COB timeline; identify unmatched PNMs before bid day; Snap Bidding policy review</td>
+          <td><span class="priority-high">C2, C3, C8, C9</span></td>
+          <td>C4, C5</td>
+          <td>Smaller chapter communities leave the most visible post-primary gaps. Phired Up notes some PNMs withdrew strategically to pursue COB - this behavior peaks in thin-invite ecosystems. C2 and C8 have the lowest chapter density and the highest structural need for post-primary pathways.</td>
+        </tr>
+        <tr>
+          <td><strong>5. Train RCs to coach real hesitations</strong><br>Scripts for finances, belonging, schedule disappointment; scenario-based training</td>
+          <td><span class="priority-high">C1, C6, C9, C10</span></td>
+          <td>C3, C5</td>
+          <td>Phired Up attributes 14% of withdrawals to emotional fatigue and fit concerns. These show up most in mid-size communities (C1, C6, C9, C10) where PNMs have enough choices to feel comparison pressure but not enough invitation density to feel protected from a disappointing schedule.</td>
+        </tr>
+        <tr>
+          <td><strong>6. Rebuild experience around belonging, not perfection</strong><br>Audit for judged/rushed moments; values-based conversation coaching for chapters</td>
+          <td><span class="priority-high">C4, C7</span></td>
+          <td>C5, C10</td>
+          <td>Larger, more competitive communities (C4, C7) are most likely to exhibit the high-pressure performance environment that Phired Up flags. C4's match rate is strong at 77%, but its post-OHP withdrawal of 16% suggests PNMs are being lost specifically to the emotional experience of mid-recruitment - not to logistics.</td>
+        </tr>
+        <tr>
+          <td><strong>7. Use data to improve strategy annually</strong><br>Review withdrawal trends, invite patterns, and unmatched PNMs each cycle</td>
+          <td><span class="priority-med">All clusters</span></td>
+          <td>-</td>
+          <td>Universally applicable. C8 and C9 show the most year-over-year deterioration and would benefit most from a structured annual review. C4 provides the strongest positive model for what retention looks like when structural conditions are right.</td>
+        </tr>
+        <tr>
+          <td><strong>8. Reimagine RC training as a continuous model</strong><br>Pre-recruitment modules, scenario practice, post-recruitment feedback loops</td>
+          <td><span class="priority-med">C1, C4, C5</span></td>
+          <td>All others</td>
+          <td>Continuous RC training has the highest payoff in communities with the volume and structure to support it. C1 (PSR communities), C4 (large FSR), and C5 (mid-size FSR) have the RC infrastructure where sustained training produces compounding returns on PNM retention.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 05: Synthesis -->
+<section>
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2>Coaching Prioritization for the 2026-28 Cycle</h2>
+  </div>
+  <p class="section-sub">Given finite coaching capacity, the Phired Up framework is most efficiently deployed by cluster profile rather than uniformly. The two attrition profiles point to two distinct coaching tracks, with a small group of clusters warranting individualized campus-level diagnosis.</p>
+
+  <div class="insight-grid">
+    <div class="insight orange">
+      <div class="insight-label">Track 1: Pre-Recruitment Intervention (C2, C8, C9)</div>
+      <div class="insight-text">Pre-OHP withdrawal of 20-29% indicates PNMs disengaging before any meaningful recruitment experience. Focus: RC activation before Round 1, orientation redesign, financial transparency, and post-primary COB pathway planning. These communities cannot solve a pre-round problem with mid-round coaching.</div>
+    </div>
+    <div class="insight blue">
+      <div class="insight-label">Track 2: Schedule-Release Coaching (C4, C5, C7, C10)</div>
+      <div class="insight-text">Post-OHP withdrawal of 16-19% with relatively low pre-OHP rates indicates PNMs are engaged but vulnerable at schedule receipt. Focus: RC pre-coaching before Round 2 schedules drop, expectation normalization, and belonging-centered chapter conversation training. C4's 77% match rate shows what is achievable at scale with structural support.</div>
+    </div>
+    <div class="insight navy">
+      <div class="insight-label">Track 3: Campus-Level Diagnosis (C1, C3, C6)</div>
+      <div class="insight-text">C1 (PSR communities) shows elevated pre-OHP withdrawal despite structured recruitment - suggesting execution variability across its 68 campuses. C3 (staffing/context) campuses need governance assessment before recruitment coaching applies. C6 (regional/directional) campuses vary too widely in chapter count and OHP to generalize. Area Advisor coaching briefs are the right vehicle here.</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  NPC Primary Recruitment &middot; Phired Up Coaching Opportunity Analysis &middot; Internal use only: NPC / Smith Insights &middot; June 2026
+</footer>
+
+<script>
+const clusterData = [
+  {
+    num: 'C1', label: 'Meets PSR Metrics',
+    desc: 'Quota 10-24, OHP <100 · 68 campuses',
+    matched: 65.4, preOHP: 18.5, postOHP: 11.4, unmatched: 2.2, n: 74,
+    badge: 'badge-mid',
+    profile: 'Mixed',
+    urgent: ['RC pre-round coaching', 'Orientation redesign'],
+    foundational: ['Schedule-release support', 'COB activation plan'],
+    secondary: ['Continuous RC training'],
+    coaching: 'Pre-OHP withdrawal at 18.5% is high for a structured-recruitment cluster - comparable to C8 and C9. The Phired Up data suggests process confusion is disproportionate in communities where PNMs understand they are in PSR but do not understand the matching mechanics. Orientation should explicitly address how RFM works and what schedule variation means.'
+  },
+  {
+    num: 'C2', label: 'Non-RFM Communities',
+    desc: 'CR or FSR without RFM · 76 campuses',
+    matched: 53.9, preOHP: 28.7, postOHP: 11.0, unmatched: 3.8, n: 8,
+    badge: 'badge-orange',
+    profile: 'Pre-OHP',
+    urgent: ['Registration-to-RC activation', 'Financial transparency', 'Post-primary COB pathway'],
+    foundational: ['Process education at orientation', 'COB intent identification'],
+    secondary: ['Values-based chapter outreach'],
+    coaching: 'Highest pre-OHP attrition at 28.7%. Without RFM, PNMs have no structured schedule mechanism to anchor expectations, so early disengagement is driven almost entirely by uncertainty and logistical barriers. The Phired Up finding that 9% of withdrawals cite process confusion is almost certainly understated in non-RFM communities. Coaching priority is pre-round engagement - registration to Round 1 is the entire window.'
+  },
+  {
+    num: 'C3', label: 'Independent / Limited FSA',
+    desc: 'Canadian, independent, new formations · 21 campuses',
+    matched: 59.3, preOHP: 22.5, postOHP: 14.1, unmatched: 1.6, n: 25,
+    badge: 'badge-mid',
+    profile: 'Mixed',
+    urgent: ['Governance and FSA support assessment', 'Basic recruitment infrastructure'],
+    foundational: ['Orientation and PNM education', 'RC identification and training'],
+    secondary: ['COB policy development'],
+    coaching: 'C3 campuses are clustered by governance context, not by recruitment profile. The 22.5% pre-OHP withdrawal likely reflects a mix of staffing gaps and structural immaturity rather than a single fixable behavior. Coaching begins with an infrastructure audit - does the campus have the FSA support and RC capacity to implement any Phired Up recommendations? For Canadian and independent institutions, international-context adaptations may also be needed.'
+  },
+  {
+    num: 'C4', label: 'Large FSR (Total >200 or OHP >500)',
+    desc: 'High-volume FSR · 62 campuses',
+    matched: 77.1, preOHP: 4.0, postOHP: 16.2, unmatched: 2.1, n: 57,
+    badge: 'badge-blue',
+    profile: 'Post-OHP',
+    urgent: ['Schedule-release RC coaching', 'Belonging-centered chapter training'],
+    foundational: ['Pre-round expectation setting', 'Continuous RC training model'],
+    secondary: ['Post-primary unmatched PNM pathway'],
+    coaching: 'Best match rate in the framework at 77.1%. The coaching opportunity here is refinement, not repair. Post-OHP withdrawal of 16.2% in a community this large represents meaningful absolute volume. Phired Up attributes mid-recruitment withdrawal in large communities to emotional fatigue and perceived fit failure, not logistics. Chapter training on values-based conversation and RC coaching at schedule release are the primary levers. C4 is also the strongest model campus candidate for showcasing what good looks like to other clusters.'
+  },
+  {
+    num: 'C5', label: 'Mid-Size FSR (Capacity Mismatch)',
+    desc: '>10 chapters, OHP <350 or <10 chapters, total 100-250 · 52 campuses',
+    matched: 69.1, preOHP: 8.9, postOHP: 18.6, unmatched: 2.4, n: 65,
+    badge: 'badge-navy',
+    profile: 'Post-OHP',
+    urgent: ['Schedule-release RC coaching', 'Expectation normalization for PNMs'],
+    foundational: ['RC scenario training', 'COB activation post-primary'],
+    secondary: ['Data review: invite patterns by chapter'],
+    coaching: 'Highest post-OHP withdrawal in the framework at 18.6%, a rate that has climbed steadily from 16.4% in 2018-19. C5 communities have enough chapters to generate competitive invitation dynamics but not always enough OHP volume to absorb the resulting disappointment. The Phired Up recommendation to train RCs specifically for the schedule-release window is the single highest-leverage intervention for this cluster. Annual review of which chapters are generating the most one-and-done invite patterns would help target chapter-level coaching.'
+  },
+  {
+    num: 'C6', label: 'Regional/Directional (4-7 Chapters)',
+    desc: 'Chapter count blocks PSR adaptation · 51 campuses',
+    matched: 65.4, preOHP: 15.6, postOHP: 14.5, unmatched: 3.0, n: 51,
+    badge: 'badge-mid',
+    profile: 'Mixed',
+    urgent: ['RC training on emotional hesitations', 'Orientation: belonging vs. ranking'],
+    foundational: ['Schedule-release pre-coaching', 'Financial transparency communication'],
+    secondary: ['COB pipeline development'],
+    coaching: 'C6 campuses are structurally positioned between the PSR world (enough chapters to have invite complexity) and the small-community world (not enough to buffer schedule disappointment). Pre-OHP withdrawal at 15.6% and post-OHP at 14.5% are nearly even, suggesting both problems are present. Phired Up\'s recommendation to rebuild orientation around belonging rather than the ranking dynamic is particularly relevant here, where PNMs may be visibly aware that they are choosing between a small number of options.'
+  },
+  {
+    num: 'C7', label: 'Academically Rigorous / Private (6-11 Chapters)',
+    desc: 'Selective or private institutions · 49 campuses',
+    matched: 70.5, preOHP: 8.5, postOHP: 16.4, unmatched: 2.7, n: 47,
+    badge: 'badge-navy',
+    profile: 'Post-OHP',
+    urgent: ['Belonging-centered chapter experience', 'Schedule-release RC support'],
+    foundational: ['Expectation-setting at orientation', 'Continuous RC training'],
+    secondary: ['Invite pattern analysis by chapter'],
+    coaching: 'C7 has a clean pre-OHP withdrawal rate at 8.5% but a post-OHP rate of 16.4% that has been persistent across the data history. The institutional profile matters here: PNMs at academically rigorous or private colleges may arrive with higher self-selection confidence and a stronger reaction to unexpected schedule outcomes. Phired Up\'s finding on emotional fatigue and fit language aligns well with this profile. Chapter-level training on authentic, values-based conversation is more actionable here than logistical RC coaching.'
+  },
+  {
+    num: 'C8', label: 'Small Communities (OHP <40)',
+    desc: '3-6 chapters, OHP below 40 · 73 campuses',
+    matched: 56.8, preOHP: 27.2, postOHP: 10.3, unmatched: 3.5, n: 67,
+    badge: 'badge-orange',
+    profile: 'Pre-OHP',
+    urgent: ['Registration-to-RC activation', 'Financial and logistical barrier removal', 'Post-primary COB planning'],
+    foundational: ['Process education: how CR/small-community recruitment works', 'PNM hesitation coaching for RCs'],
+    secondary: ['Snap Bidding policy review'],
+    coaching: 'Second-lowest match rate at 56.8% and pre-OHP withdrawal at 27.2%, a figure that has risen from 15.7% in 2018-19. PNMs in OHP <40 communities are making a decision to leave before they experience any formal recruitment event - the process confusion and financial concern drivers that Phired Up identifies are operating before Round 1. The recommendation to begin retention at registration is not optional for C8: it is the only window available before the attrition cascade starts. Staffing constraints in some C8 campuses may limit RC program capacity, making the AA coaching brief the most practical delivery vehicle.'
+  },
+  {
+    num: 'C9', label: 'Small Communities (OHP 41-100)',
+    desc: '3-6 chapters, OHP 41-100 · 54 campuses',
+    matched: 62.4, preOHP: 20.3, postOHP: 12.7, unmatched: 2.3, n: 42,
+    badge: 'badge-orange',
+    profile: 'Pre-OHP',
+    urgent: ['RC pre-recruitment activation', 'Orientation: managing expectations in small communities'],
+    foundational: ['COB intent identification and pathway planning', 'Schedule-release pre-coaching'],
+    secondary: ['Values-based chapter outreach training'],
+    coaching: 'C9 sits at the boundary between C8 and C10 - enough OHP to have real schedule variation, but not enough invitation density to protect PNMs from disappointment. Pre-OHP withdrawal at 20.3% is the defining problem. The Phired Up data shows COB intent begins appearing at Round 2 and peaks at Round 3: for C9 communities this means a meaningful share of PNMs are withdrawing strategically rather than out of disinterest. Orientation should explicitly educate PNMs on COB as a legitimate pathway - reducing the sense that withdrawal and re-entry is covert or stigmatized.'
+  },
+  {
+    num: 'C10', label: 'Small Communities (OHP 100-250)',
+    desc: '3-6 chapters, OHP 100-250 · 53 campuses',
+    matched: 68.5, preOHP: 10.8, postOHP: 15.7, unmatched: 2.4, n: 37,
+    badge: 'badge-navy',
+    profile: 'Post-OHP',
+    urgent: ['Schedule-release RC coaching', 'RC hesitation scripts for emotional support'],
+    foundational: ['Orientation expectation-setting', 'Post-primary COB pathway'],
+    secondary: ['Annual review of invite patterns'],
+    coaching: 'C10 has the most favorable small-community match rate at 68.5% and a pre-OHP withdrawal rate of only 10.8%, suggesting PNMs arrive and engage through open house. The 15.7% post-OHP withdrawal is the coaching target. With OHP in the 100-250 range and only 3-6 chapters, PNMs are likely receiving fewer invitations than in larger communities but still expecting a full slate. The gap between expectation and schedule reality is the trigger. RC training to pre-coach PNMs on what a smaller-community schedule looks like - and to frame fewer invitations as a different kind of process, not a rejection - is the most direct intervention.'
+  }
+];
+
+function buildClusterCards() {
+  const grid = document.getElementById('clusterCards');
+  clusterData.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'cluster-card';
+
+    const matchColor = c.matched >= 70 ? 'val-good' : c.matched >= 63 ? 'val-neutral' : 'val-bad';
+    const preColor = c.preOHP >= 22 ? 'val-bad' : c.preOHP >= 14 ? 'val-neutral' : 'val-good';
+    const postColor = c.postOHP >= 17 ? 'val-bad' : c.postOHP >= 13 ? 'val-neutral' : 'val-good';
+
+    const urgentTags = c.urgent.map(t => `<span class="focus-tag">${t}</span>`).join('');
+    const foundTags = c.foundational.map(t => `<span class="focus-tag blue">${t}</span>`).join('');
+    const secTags = c.secondary.map(t => `<span class="focus-tag navy">${t}</span>`).join('');
+
+    card.innerHTML = `
+      <div class="cluster-card-head">
+        <div class="cluster-badge ${c.badge}">${c.num}</div>
+        <div>
+          <div class="cluster-card-title">${c.label}</div>
+          <div class="cluster-card-desc">${c.desc}</div>
+        </div>
+      </div>
+      <div class="cluster-metrics">
+        <div class="metric-pill">
+          <div class="metric-pill-val ${matchColor}">${c.matched.toFixed(1)}%</div>
+          <span class="metric-pill-label">Matched</span>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-pill-val ${preColor}">${c.preOHP.toFixed(1)}%</div>
+          <span class="metric-pill-label">Pre-OHP W</span>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-pill-val ${postColor}">${c.postOHP.toFixed(1)}%</div>
+          <span class="metric-pill-label">Post-OHP W</span>
+        </div>
+      </div>
+      <div class="focus-label">Most Urgent</div>
+      ${urgentTags}
+      <div class="focus-label" style="margin-top:8px">Foundational</div>
+      ${foundTags}
+      <div class="focus-label" style="margin-top:8px">Secondary</div>
+      ${secTags}
+      <div class="coaching-text">${c.coaching}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function buildMatchChart() {
+  const container = document.getElementById('matchChart');
+  const sorted = [...clusterData].sort((a, b) => b.matched - a.matched);
+  const max = 80;
+
+  sorted.forEach(c => {
+    const row = document.createElement('div');
+    row.className = 'chart-row outcome-row-grid';
+
+    const lbl = document.createElement('div');
+    lbl.className = 'row-label';
+    lbl.innerHTML = `${c.num}<span class="row-sub">${c.label.split('(')[0].trim()}</span>`;
+
+    const bw = document.createElement('div');
+    bw.className = 'bar-wrap';
+
+    const bg = document.createElement('div');
+    bg.className = 'bar-bg';
+
+    const fill = document.createElement('div');
+    fill.className = 'bar-fill';
+    const pct = (c.matched / max) * 100;
+    const color = c.matched >= 70 ? '#005792' : c.matched >= 63 ? '#7F7F7F' : '#FD5F00';
+    fill.style.cssText = `width:${pct}%;background:${color};`;
+
+    bw.appendChild(bg);
+    bw.appendChild(fill);
+
+    const v1 = document.createElement('div');
+    v1.className = 'row-val';
+    v1.style.color = color;
+    v1.textContent = c.matched.toFixed(1) + '%';
+
+    const v2 = document.createElement('div');
+    v2.className = 'row-val';
+    v2.style.color = c.preOHP >= 22 ? '#FD5F00' : c.preOHP >= 14 ? '#7F7F7F' : '#005792';
+    v2.textContent = c.preOHP.toFixed(1) + '%';
+
+    const v3 = document.createElement('div');
+    v3.className = 'row-val';
+    v3.style.color = c.postOHP >= 17 ? '#FD5F00' : c.postOHP >= 13 ? '#7F7F7F' : '#005792';
+    v3.textContent = c.postOHP.toFixed(1) + '%';
+
+    const n = document.createElement('div');
+    n.className = 'row-n';
+    n.textContent = c.n;
+
+    row.appendChild(lbl);
+    row.appendChild(bw);
+    row.appendChild(v1);
+    row.appendChild(v2);
+    row.appendChild(v3);
+    row.appendChild(n);
+    container.appendChild(row);
+  });
+}
+
+buildMatchChart();
+buildClusterCards();
+</script>
+</body>
+</html>
