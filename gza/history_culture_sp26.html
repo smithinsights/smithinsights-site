@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>B1+ Deutsch mit Geschichte &amp; Kultur – Kursmodul </title>
+  <title>B1+ German with History &amp; Culture</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     /* ── TOKENS ────────────────────────────────────────────────── */
@@ -613,9 +613,9 @@
 
 <!-- ── HERO ─────────────────────────────────────────────────────── -->
 <header class="hero">
-  <div class="hero-kurs">Goethe-Zentrum Atlanta &nbsp;|&nbsp; B1+ Deutsch mit Geschichte &amp; Kultur &nbsp;|&nbsp; Frühjahr 2026</div>
+  <div class="hero-kurs">Goethe-Zentrum Atlanta &nbsp;|&nbsp; B1+ German with History &amp; Culture</div>
   <h1 class="hero-title">Von den Kelten bis zur Christianisierung</h1>
-  <p class="hero-sub">Kursmodul &nbsp;&mdash;&nbsp; Antike, Rom und das frühmittelalterliche Europa</p>
+  <p class="hero-sub">B1+ German with History &amp; Culture</p>
   <div class="hero-divider"></div>
 
   <div class="timeline-bar" style="max-width:720px;margin:0 auto;">
@@ -866,7 +866,7 @@
     <div class="book-header">Grammatik &amp; Sprachfokus &mdash; B1+ Niveau</div>
     <h1 class="book-h1">Kausalangaben: Gründe und Ursachen ausdrücken</h1>
 
-    <p class="book-p">Im Modul spielt die Angabe von Gründen und Ursachen eine zentrale Rolle. Die Texte über die Kelten, die Römer und die Christianisierung Europas sind reich an <strong>Kausalangaben</strong>. Es gibt verschiedene Möglichkeiten, einen Grund auszudrücken &mdash; und sie sind nicht alle gleich.</p>
+    <p class="book-p">Im Kurs spielt die Angabe von Gründen und Ursachen eine zentrale Rolle. Die Texte über die Kelten, die Römer und die Christianisierung Europas sind reich an <strong>Kausalangaben</strong>. Es gibt verschiedene Möglichkeiten, einen Grund auszudrücken &mdash; und sie sind nicht alle gleich.</p>
 
     <h2 class="book-h2">1. Überblick: Die wichtigsten Kausalkonnektoren</h2>
 
@@ -1191,12 +1191,12 @@
 
 <!-- ── FOOTER ────────────────────────────────────────────────────── -->
 <footer>
-  <p class="footer-name">Goethe-Zentrum Atlanta</p>
+  <p class="footer-name"><a href="https://german-institute.org" target="_blank" style="color:rgba(245,234,214,0.85);text-decoration:none;">Goethe-Zentrum Atlanta</a></p>
   <p style="margin-top:0.3rem;">
-    Stefan Bauer M.A. &nbsp;&mdash;&nbsp; Manager of Language &amp; Examination Programs<br>
-    <a href="mailto:stefan.bauer@goetheatlanta.org">stefan.bauer@goetheatlanta.org</a> &nbsp;|&nbsp; 404-892-6002
+    Stefan Bauer M.A. &nbsp;&mdash;&nbsp; Manager Language &amp; Examination Programs<br>
+    <a href="mailto:stefan.bauer@goetheatlanta.org">stefan.bauer@goetheatlanta.org</a> &nbsp;|&nbsp; <a href="tel:+14048926002">404-892-6002</a>
   </p>
-  <p style="margin-top:0.8rem;font-size:0.8rem;opacity:0.5;">B1+ Deutsch mit Geschichte &amp; Kultur &nbsp;&mdash;&nbsp; Kursmodul &nbsp;&mdash;&nbsp; Frühjahr 2026</p>
+  <p style="margin-top:0.8rem;font-size:0.8rem;opacity:0.5;">B1+ German with History &amp; Culture</p>
 </footer>
 
 <!-- ── SCRIPTS ───────────────────────────────────────────────────── -->
@@ -1298,8 +1298,8 @@
       rm.textContent = 'Ausgezeichnet! Du hast alle Aufgaben korrekt gelöst.';
       // mailto to Stefan
       const name = document.getElementById('studentName').value.trim() || 'Ein Kursteilnehmer';
-      const subject = encodeURIComponent('Quiz-Ergebnis B1.2: ' + name);
-      const body    = encodeURIComponent(name + ' hat den Quiz über Kausalangaben mit ' + correct + '/' + total + ' Punkten abgeschlossen.');
+      const subject = encodeURIComponent('Quiz-Ergebnis: ' + name);
+      const body    = encodeURIComponent(name + ' hat den Quiz über Kausalangaben mit ' + correct + '/' + total + ' Punkten abgeschlossen. (B1+ German with History & Culture)');
       window.location.href = 'mailto:stefan.bauer@goetheatlanta.org?subject=' + subject + '&body=' + body;
     } else if (correct >= total * 0.8) {
       rm.textContent = 'Sehr gut! Überprüfe noch die markierten Aufgaben.';
