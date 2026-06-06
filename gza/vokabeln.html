@@ -113,31 +113,6 @@
   .btn-drill:disabled { opacity: 0.35; cursor: default; }
   .btn-restart { padding: 10px 18px; background: #e8e8e8; color: var(--black); border: 2px solid #d0d0d0; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; border-radius: 8px; cursor: pointer; }
 
-.plateau-spacer {
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 8px 0 4px;
-}
-.plateau-spacer::before,
-.plateau-spacer::after {
-  content: '';
-  flex: 1;
-  height: 2px;
-  background: var(--level-color, #ccc);
-  opacity: 0.35;
-  border-radius: 1px;
-}
-.plateau-spacer span {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--level-color, #999);
-  opacity: 0.6;
-  white-space: nowrap;
-}
 
 </style>
 </head>
@@ -5430,11 +5405,7 @@ function goEinheiten(level) {
       </div>
     </div>`;
   }).join('');
-  // Plateau 4 spacer for B1
-  if (currentLevel === 'b1') {
-    document.getElementById('einheit-grid').innerHTML +=
-      '<div class="plateau-spacer"><span>Plateau 4</span></div>';
-  }
+
   showPage('page-einheiten');
 }
 
