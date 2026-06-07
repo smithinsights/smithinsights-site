@@ -128,6 +128,97 @@ p:last-child{margin-bottom:0;}
 .sol-fv{font-family:'DM Serif Display',serif;font-size:0.96rem;color:var(--night);}
 
 .footer{background:var(--night);padding:13px 48px;text-align:right;font-size:0.73rem;color:#4a6080;border-top:1px solid #1e3a5a;}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+
+/* Tablet: 641–900px */
+@media (max-width: 900px) {
+  .container { padding: 32px 20px 48px; }
+  .header-top { padding: 20px 24px 0; }
+  .header-tiles { padding: 16px 24px 22px; gap: 10px; }
+  .footer { padding: 13px 24px; }
+
+  /* influence chart label narrower */
+  .chart-label { width: 160px; font-size: 0.74rem; }
+
+  /* factor grid: 2 col stays OK at tablet */
+  /* sol grid: keep 3 col */
+}
+
+/* Mobile: ≤640px */
+@media (max-width: 640px) {
+  /* Header */
+  .header-top { padding: 16px 16px 0; gap: 14px; }
+  .header-top img { height: 38px; }
+  .header-text h1 { font-size: 1.15rem; }
+  .header-text .meta { font-size: 0.68rem; }
+
+  /* Stat tiles: 2×2 */
+  .header-tiles {
+    grid-template-columns: 1fr 1fr;
+    padding: 14px 16px 18px;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .htile { padding: 10px 12px; border-radius: 8px; }
+  .htile-num { font-size: 1.5rem; }
+  .htile-label { font-size: 0.66rem; }
+
+  /* Container */
+  .container { padding: 24px 16px 40px; }
+
+  /* Section headings */
+  .section-heading { font-size: 1.05rem; }
+
+  /* Top 3 boxes: stack vertically */
+  .top3-row { grid-template-columns: 1fr; gap: 10px; }
+
+  /* Influence chart: label on top, bar below */
+  .chart-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6px 0;
+    gap: 4px;
+  }
+  .chart-label {
+    width: 100%;
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--night);
+  }
+  .chart-bar-and-dot { width: 100%; }
+
+  /* Score dot: keep it, just slightly smaller */
+  .score-dot { width: 26px; height: 26px; font-size: 0.7rem; }
+
+  /* Legend: wrap tightly */
+  .chart-legend { gap: 8px 12px; }
+  .cleg { font-size: 0.68rem; }
+
+  /* Factor grid: single column */
+  .factor-grid { grid-template-columns: 1fr; }
+  .factor-card.full { grid-column: 1; }
+
+  /* SVG charts: allow horizontal scroll on small screens */
+  .longi-wrap { padding: 14px 12px; overflow-x: auto; }
+  .longi-wrap svg { min-width: 540px; }
+
+  /* Solutions: grid collapses */
+  .sol-grid { grid-template-columns: 1fr; gap: 8px; }
+  .sol-cmp { grid-template-columns: 1fr; gap: 8px; }
+
+  /* Footer */
+  .footer { padding: 12px 16px; text-align: center; font-size: 0.68rem; }
+}
+
+/* Very small: ≤380px */
+@media (max-width: 380px) {
+  .header-tiles { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .htile-num { font-size: 1.3rem; }
+  .top3-score { width: 34px; height: 34px; font-size: 0.85rem; }
+  .container { padding: 18px 12px 36px; }
+}
 </style>
 </head>
 <body>
