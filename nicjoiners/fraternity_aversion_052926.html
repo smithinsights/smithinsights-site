@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fraternity Aversion Analysis | NIC Joiners Survey</title>
+<title>The Aversion Problem | NIC Joiners Survey</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,11 +60,7 @@
       rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px
     );
   }
-  .header-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
-  }
+  .header-inner { max-width: 1100px; margin: 0 auto; position: relative; }
   .eyebrow {
     font-family: 'Merriweather', serif;
     font-size: 11px;
@@ -86,7 +83,7 @@
     font-family: 'Merriweather', serif;
     font-weight: 300;
     font-style: italic;
-    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-size: clamp(1rem, 2vw, 1.625rem);
     color: rgba(255,255,255,0.6);
     margin-top: 0.25rem;
   }
@@ -121,11 +118,7 @@
   }
 
   /* LAYOUT */
-  main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-  }
+  main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
   section { margin-bottom: 4rem; }
 
   .section-header {
@@ -186,11 +179,7 @@
     letter-spacing: 0.04em;
     line-height: 1.4;
   }
-  .stat-card-sub {
-    font-size: 12px;
-    color: var(--ink2);
-    margin-top: 6px;
-  }
+  .stat-card-sub { font-size: 12px; color: var(--ink2); margin-top: 6px; }
 
   /* GRID LAYOUTS */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -272,12 +261,7 @@
   .insight-text { font-size: 13.5px; color: var(--ink); line-height: 1.55; }
 
   /* TABS */
-  .tab-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 16px;
-  }
+  .tab-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
   .tab {
     font-family: 'Merriweather', serif;
     font-size: 11px;
@@ -296,11 +280,7 @@
   .tab-panel.active { display: block; }
 
   /* CONCERN TABLE */
-  .concern-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
+  .concern-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .concern-table th {
     font-family: 'Merriweather', serif;
     font-size: 10px;
@@ -324,19 +304,8 @@
   .concern-table td:not(:first-child) { text-align: right; font-size: 12px; }
   .concern-table tr:last-child td { border-bottom: none; }
   .concern-table tr:hover td { background: var(--surface2); }
-  .diff-bar-wrap {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    justify-content: flex-end;
-  }
-  .diff-bar {
-    height: 6px;
-    border-radius: 3px;
-    background: #FD5F00;
-    display: inline-block;
-  }
-  .diff-val { min-width: 36px; font-size: 12px; color: #FD5F00; }
+  .diff-bar-wrap { display: flex; align-items: center; gap: 6px; justify-content: flex-end; }
+  .diff-bar { height: 6px; border-radius: 3px; background: #FD5F00; display: inline-block; }
 
   /* FOOTER */
   footer {
@@ -359,7 +328,7 @@
   <div class="header-inner">
     <div class="eyebrow">NIC Joiners Survey &middot; PCA Deep Dive</div>
     <h1>The Aversion Problem</h1>
-    <div class="header-sub">Who Opposes Fraternities, How Strongly, and Why</div>
+    <div class="header-sub">Who opposes fraternities, how strongly, and why</div>
     <div class="header-meta">
       <div class="header-stat">
         <div class="header-stat-value">32,171</div>
@@ -380,7 +349,7 @@
     </div>
   </div>
 </header>
-  
+
 <main>
 
   <!-- SECTION 1: COMPOSITE -->
@@ -460,7 +429,7 @@
         <tbody id="concernTableBody"></tbody>
       </table>
       <p class="chart-note" style="margin-top:12px;">All items scored 1 (not at all concerned) to 4 (very concerned). Sorted by gap size descending.</p>
-      <p class="chart-reasoning" style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border2); font-style:italic;">The top four concern items by gap size are drug/alcohol use, hazing, living in a fraternity house, and not fitting the stereotype. These four show larger gaps than any cost or time-commitment item, both of which are elevated across groups. All 11 items load onto a single principal component, confirming they measure one underlying attitude rather than distinct concerns.</p>
+      <p class="chart-reasoning" style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border2); font-style:italic;">The top four concern items by gap size are drug/alcohol use, hazing, living in a fraternity house, and not fitting the stereotype. All four show larger gaps than any cost or time-commitment item. Both cost items are elevated across groups. All 11 items load onto a single principal component, confirming they measure one underlying attitude.</p>
     </div>
 
     <div class="insight-grid">
@@ -520,7 +489,7 @@
         <div class="chart-card-title">Mean aversion score by HS fraternity interest</div>
         <div class="chart-wrap" style="height:180px;"><canvas id="interestChart"></canvas></div>
         <p class="chart-note">Strong gradient. Those "not interested" in high school average +1.05; they arrived with both low intent and high concern. "Very interested" averages -0.85. Pre-college interest and concern level co-travel as a single orientation.</p>
-        <p class="chart-reasoning">Pre-college interest in fraternities and aversion co-move across the full range of the scale. The PCA confirmed these two variables load on the same component rather than operating independently.</p>
+        <p class="chart-reasoning">Pre-college interest in fraternities and aversion move together across the full range of the scale. The PCA confirmed these two variables load on the same component rather than operating independently.</p>
       </div>
       <div id="profile-sports" class="tab-panel">
         <div class="chart-card-title">Mean aversion score: HS sports vs. music participation</div>
@@ -534,8 +503,8 @@
             <div class="chart-wrap" style="height:180px;"><canvas id="sportsChartR"></canvas></div>
           </div>
         </div>
-        <p class="chart-note">Four-year athletes average -0.11; four-year music participants average +0.61. These two activities define contrasting social orientations toward Greek life, not simply different hobbies.</p>
-        <p class="chart-reasoning">Aversion scores move in opposite directions across years of athletic versus music participation. The gradient is consistent at every participation level for both activities.</p>
+        <p class="chart-note">Four-year athletes average -0.11; four-year music participants average +0.61. Aversion scores move in opposite directions across years of athletic versus music participation, and the gradient is consistent at every participation level for both activities.</p>
+        <p class="chart-reasoning">Athletic and music participation define contrasting orientations toward Greek life across all participation levels.</p>
       </div>
       <div id="profile-schoolchoice" class="tab-panel">
         <div class="chart-card-title">Mean aversion score by school choice motivation</div>
@@ -549,8 +518,8 @@
             <div class="chart-wrap" style="height:170px;"><canvas id="schoolChartAcad"></canvas></div>
           </div>
         </div>
-        <p class="chart-note">Choosing school for Greek life strongly predicts low aversion (-0.59 for "very important"). Academic reputation as primary driver predicts higher aversion (+0.25).</p>
-        <p class="chart-reasoning">School selection motivation and aversion scores move together consistently across all response categories. Students who rated Greek life as very important average -0.59; students who rated it as not at all important average +0.26.</p>
+        <p class="chart-note">Choosing school for Greek life strongly predicts low aversion (-0.59 for "very important"). Academic reputation as primary driver predicts higher aversion (+0.25). School selection motivation and aversion scores move consistently across all response categories.</p>
+        <p class="chart-reasoning">Students who rated Greek life as very important in their school selection average -0.59; students who rated it as not at all important average +0.26.</p>
       </div>
       <div id="profile-finance" class="tab-panel">
         <div class="chart-card-title">Mean aversion score: financial indicators</div>
@@ -718,11 +687,10 @@ function hBarSimple(id, labels, data, maxVal) {
   });
 }
 
-hBarSimple('sportsChartL', ['All 4 years','2-3 years','1 year','Never'], [-0.111, 0.119, 0.218, 0.461], 0.7);
-hBarSimple('sportsChartR', ['All 4 years','2-3 years','1 year','Never'], [0.606, 0.443, 0.194, -0.075], 0.7);
-
-hBarSimple('schoolChartGreek', ['Very imp.','Important','Slightly','Not at all'], [-0.592, -0.318, 0.089, 0.256], 0.7);
-hBarSimple('schoolChartAcad',  ['Very imp.','Important','Slightly','Not at all'], [0.250, 0.058, 0.055, -0.439], 0.7);
+hBarSimple('sportsChartL', ['All 4 years','2-3 years','1 year','Never'], [-0.111,0.119,0.218,0.461], 0.7);
+hBarSimple('sportsChartR', ['All 4 years','2-3 years','1 year','Never'], [0.606,0.443,0.194,-0.075], 0.7);
+hBarSimple('schoolChartGreek', ['Very imp.','Important','Slightly','Not at all'], [-0.592,-0.318,0.089,0.256], 0.7);
+hBarSimple('schoolChartAcad',  ['Very imp.','Important','Slightly','Not at all'], [0.250,0.058,0.055,-0.439], 0.7);
 
 hBar('finChart', ['Pell Grant user','Not Pell Grant','First-gen','Not first-gen'], [0.381,-0.006,0.171,0.019]);
 
@@ -741,7 +709,6 @@ new Chart(document.getElementById('loadingsChart'), {
   }
 });
 
-// Tab switching
 function switchTab(e, group, panel) {
   e.currentTarget.parentElement.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
   e.currentTarget.classList.add('active');
