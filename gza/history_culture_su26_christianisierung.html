@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1+ German with History &amp; Culture – Die Christianisierung im Herzen Europas</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════════════
+   TOKENS
+   ══════════════════════════════════════════════ */
+:root {
+  --parch:   #EDE3CE;
+  --parch-d: #E0D4B8;
+  --ink:     #1E1810;
+  --burg:    #7A1F3A;
+  --burg-d:  #5C1629;
+  --burg-l:  #F2E5EA;
+  --stone:   #9A8870;
+  --stone-l: #C8BAA4;
+  --gilt:    #B8902A;
+  --gilt-l:  #F5EDD4;
+  --nave:    #1A1218;
+  --nave-m:  #2A1E26;
+  --nave-l:  #3C2E38;
+  --bone:    #E8DECA;
+  --bone-d:  #C8BAA4;
+
+  /* Sicher! grammar palette — unchanged from Sachsen page */
+  --tb-coral:   #D9522A;
+  --tb-coral-l: #FAE8E2;
+  --tb-coral-m: #F2C4B4;
+  --tb-gray:    #F4F4F4;
+  --tb-gray-b:  #D8D8D8;
+
+  --font-display: 'IM Fell English', Georgia, serif;
+  --font-body:    'Crimson Pro', Georgia, serif;
+  --font-sans:    'Noto Sans', sans-serif;
+  --font-mono:    'Inconsolata', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 21px;
+  line-height: 1.72;
+  background: var(--ink);
+  color: var(--ink);
+}
+
+/* ══════════════════════════════════════════════
+   HERO — frontispiece feel
+   ══════════════════════════════════════════════ */
+.hero {
+  background: var(--nave);
+  border-bottom: 6px solid var(--gilt);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative ruling lines behind hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 48px,
+    rgba(184,144,42,0.06) 48px,
+    rgba(184,144,42,0.06) 49px
+  );
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 52px 40px 44px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.hero-kurs {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gilt);
+  margin-bottom: 24px;
+}
+
+/* decorative rule above title */
+.hero-ornament {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.hero-ornament span {
+  color: var(--gilt);
+  font-size: 1.1rem;
+  opacity: 0.7;
+  letter-spacing: 0.3em;
+}
+.hero-ornament::before,
+.hero-ornament::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gilt), transparent);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  color: var(--bone);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+}
+
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--stone-l);
+  font-style: normal;
+  letter-spacing: 0.06em;
+  margin-bottom: 32px;
+}
+
+/* century strip */
+.century-strip {
+  display: flex;
+  border-radius: 3px;
+  overflow: hidden;
+  max-width: 680px;
+  margin: 0 auto;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.cs-cell {
+  flex: 1;
+  padding: 10px 8px;
+  text-align: center;
+  color: var(--bone);
+  line-height: 1.4;
+  border-right: 1px solid rgba(232,222,202,0.15);
+}
+.cs-cell:last-child { border-right: none; }
+.cs-cell small { display: block; font-weight: 400; opacity: 0.65; font-size: 10px; margin-top: 2px; }
+.cs-1 { background: #2A1E26; }
+.cs-2 { background: #3C1E2C; }
+.cs-3 { background: #5C1629; }
+.cs-4 { background: #7A1F3A; }
+.cs-5 { background: #9A2848; }
+
+/* ══════════════════════════════════════════════
+   STICKY TAB NAV
+   ══════════════════════════════════════════════ */
+.tab-bar {
+  background: var(--nave);
+  border-bottom: 3px solid var(--gilt);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.tab-btn {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(184,144,42,0.3);
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  background: transparent;
+  color: rgba(232,222,202,0.55);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab-btn:hover { background: rgba(184,144,42,0.1); color: var(--gilt); }
+.tab-btn.active {
+  background: var(--parch);
+  color: var(--burg-d);
+  border-color: var(--gilt);
+  border-bottom-color: var(--parch);
+}
+
+/* ══════════════════════════════════════════════
+   PANELS
+   ══════════════════════════════════════════════ */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ══════════════════════════════════════════════
+   HISTORY ZONE — parchment + marginalia
+   ══════════════════════════════════════════════ */
+.zone-history {
+  background: var(--parch);
+}
+.zone-history::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background: repeating-linear-gradient(90deg, var(--burg) 0 10px, transparent 10px 20px);
+}
+
+.history-wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 48px 32px 60px;
+}
+
+/* section header with Carolingian ornament */
+.sect-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  margin-top: 48px;
+}
+.sect-head:first-of-type { margin-top: 0; }
+.sect-tag {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--parch);
+  background: var(--burg);
+  padding: 3px 10px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.sect-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--burg), transparent);
+  opacity: 0.3;
+}
+.sect-ornament {
+  color: var(--gilt);
+  font-size: 1rem;
+  opacity: 0.6;
+}
+
+.sect-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+  color: var(--burg-d);
+  font-weight: 400;
+  margin-bottom: 26px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--burg);
+  line-height: 1.3;
+}
+
+/* ── MARGINALIA LAYOUT ── */
+.margin-layout {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 0 32px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 740px) {
+  .margin-layout { grid-template-columns: 1fr; }
+  .marginalia { border-left: none; border-top: 2px solid var(--gilt); padding: 16px 0 0; margin-top: 20px; }
+}
+@media (max-width: 760px) {
+  body { font-size: 18px; }
+  .hero-inner { padding: 36px 20px 32px; }
+  .century-strip { flex-direction: column; max-width: 100%; }
+  .cs-cell { border-right: none; border-bottom: 1px solid rgba(232,222,202,0.15); }
+  .history-wrap, .bilder-wrap, .chalk-wrap { padding: 28px 16px 48px; }
+  .wrap { padding: 28px 16px; }
+  .tab-bar { gap: 0.25rem; padding: 0.6rem 0.5rem 0; }
+  .tab-btn { font-size: 10px; padding: 0.4rem 0.7rem; letter-spacing: 0.08em; }
+  .two-col, .vier-fragen { grid-template-columns: 1fr; }
+  .praep-zwei { grid-template-columns: 1fr; }
+  .bild-grid[style*="repeat(3"] { grid-template-columns: 1fr !important; }
+  .bild-feature { grid-template-columns: 1fr; }
+  .bild-grid.wide { grid-template-columns: 1fr; }
+  .sect-title { font-size: 1.2rem; }
+  .lesetext-intro::first-letter { font-size: 3.8em; }
+  .chalk-name-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .movement-grid { grid-template-columns: 1fr; }
+  .sicher-chapter-bar { flex-direction: column; gap: 8px; text-align: left; }
+  .sicher-chapter-info { text-align: left; }
+  .q-block { padding: 14px 14px; }
+  .blank-select { min-width: 100px; font-size: 0.9rem; }
+  footer { padding: 20px 16px; }
+  .score-banner { flex-direction: column; gap: 10px; }
+}
+
+.lesetext {
+  font-size: 1.05rem;
+  line-height: 1.82;
+  color: var(--ink);
+}
+
+/* drop cap on first paragraph of Stefan's article */
+.lesetext-intro::first-letter {
+  font-family: var(--font-display);
+  font-size: 5.2em;
+  font-style: italic;
+  float: left;
+  line-height: 0.72;
+  padding-right: 10px;
+  padding-top: 6px;
+  color: var(--burg);
+}
+
+.lesetext p { margin-bottom: 1em; }
+.lesetext p:last-child { margin-bottom: 0; }
+
+/* in-text bold for lokale Präpositionen */
+.lesetext strong { color: var(--burg); }
+
+/* section break ornament within lesetext */
+.text-ornament {
+  text-align: center;
+  color: var(--gilt);
+  font-size: 0.9rem;
+  letter-spacing: 0.4em;
+  margin: 24px 0;
+  opacity: 0.5;
+}
+
+/* marginalia column */
+.marginalia {
+  border-left: 2px solid var(--gilt);
+  padding-left: 18px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--stone);
+  align-self: start;
+}
+
+.marg-head {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gilt);
+  margin-bottom: 8px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(184,144,42,0.25);
+}
+.marginalia .marg-head:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+
+.marg-note {
+  margin-bottom: 12px;
+  font-style: italic;
+}
+.marg-note strong { font-style: normal; color: var(--burg); font-weight: 600; }
+
+.pull-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--burg);
+  line-height: 1.4;
+  border-left: 3px solid var(--gilt);
+  padding-left: 12px;
+  margin: 18px 0;
+}
+
+/* vocab box */
+.vocab-box {
+  background: var(--gilt-l);
+  border-left: 4px solid var(--gilt);
+  border-radius: 0 4px 4px 0;
+  padding: 18px 20px;
+  margin: 28px 0;
+}
+.vocab-box h3 {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--burg);
+  margin-bottom: 12px;
+}
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 4px 20px;
+  font-size: 0.88rem;
+}
+.vocab-item { display: flex; gap: 6px; }
+.vocab-de { font-weight: 600; color: var(--ink); }
+.vocab-en { color: var(--stone); font-style: italic; }
+
+/* grammar highlight box inside history */
+.gram-note {
+  background: rgba(122,31,58,0.06);
+  border: 1px solid rgba(122,31,58,0.2);
+  border-left: 4px solid var(--burg);
+  border-radius: 0 4px 4px 0;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 0.9rem;
+}
+.gram-note .gn-label {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--burg);
+  margin-bottom: 6px;
+}
+.gram-note p { margin: 2px 0; }
+.gram-note em { color: var(--burg); font-style: normal; font-weight: 700; }
+
+/* two-column content grid for sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+@media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+.col-card {
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(154,136,112,0.25);
+  border-top: 3px solid var(--burg);
+  border-radius: 0 0 4px 4px;
+  padding: 18px 20px;
+}
+.col-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--burg-d);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(154,136,112,0.3);
+}
+.col-card p { font-size: 0.95rem; margin-bottom: 0.6em; }
+
+/* callout quote */
+.callout {
+  border: 1.5px solid var(--gilt);
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin: 24px 0;
+  background: rgba(184,144,42,0.06);
+  font-style: italic;
+  color: var(--stone);
+  font-size: 0.92rem;
+}
+.callout .source {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
+  color: var(--burg);
+}
+
+/* vocab tabs */
+.vtabs { display: flex; gap: 4px; border-bottom: 2px solid rgba(154,136,112,0.3); }
+.vtab {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 8px 16px; cursor: pointer;
+  border: 1px solid rgba(154,136,112,0.3); border-bottom: none;
+  background: rgba(154,136,112,0.1); color: var(--stone);
+  border-radius: 3px 3px 0 0; transition: all 0.2s;
+}
+.vtab.active { background: var(--burg); color: var(--parch); border-color: var(--burg); }
+.vtab-content { display: none; border: 1px solid rgba(154,136,112,0.3); border-top: none; padding: 16px; background: rgba(255,255,255,0.35); border-radius: 0 0 4px 4px; }
+.vtab-content.active { display: block; }
+.vtable { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.vtable th { font-family: var(--font-sans); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); text-align: left; padding: 6px 10px; border-bottom: 1px solid rgba(154,136,112,0.3); }
+.vtable td { padding: 5px 10px; border-bottom: 1px solid rgba(154,136,112,0.12); vertical-align: top; }
+.vtable td:first-child { font-weight: 600; }
+.vtable td.c { color: var(--stone); font-style: italic; font-size: 0.83rem; }
+
+/* ══════════════════════════════════════════════
+   SICHER! GRAMMAR ZONE — exact match to Sachsen
+   ══════════════════════════════════════════════ */
+.zone-textbook {
+  background: #FFFFFF;
+  border-top: 8px solid var(--tb-coral);
+  border-bottom: 8px solid var(--tb-coral);
+}
+.zone-textbook .wrap { max-width: 1060px; margin: 0 auto; padding: 56px 32px; }
+
+.sicher-book-name {
+  background: var(--tb-coral);
+  padding: 9px 20px;
+  display: flex; align-items: center; gap: 14px;
+  border-radius: 4px 4px 0 0;
+}
+.sbn-label {
+  font-family: var(--font-sans); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.2);
+  padding: 2px 8px; border-radius: 2px; flex-shrink: 0;
+}
+.sbn-title { font-family: var(--font-sans); font-size: 14px; font-weight: 700; letter-spacing: 0.06em; color: white; }
+
+.sicher-chapter-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 2px solid var(--tb-coral);
+  padding-bottom: 10px; margin-bottom: 32px;
+  border-top: none; background: var(--tb-gray);
+  padding: 12px 20px; border-radius: 0 0 0 0;
+}
+.sicher-chapter-num {
+  font-family: var(--font-sans); font-size: 2.8rem;
+  font-weight: 700; color: var(--tb-coral); line-height: 1;
+}
+.sicher-chapter-info { text-align: right; }
+.sicher-chapter-title {
+  font-family: var(--font-sans); font-size: 1rem;
+  font-weight: 700; color: var(--tb-coral);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;
+}
+.sicher-chapter-sub { font-family: var(--font-sans); font-size: 0.82rem; color: #555; }
+.sicher-page-ref {
+  font-family: var(--font-sans); font-size: 0.78rem; color: #555;
+  background: var(--tb-gray); border: 1px solid var(--tb-gray-b);
+  border-radius: 3px; padding: 3px 8px;
+}
+
+.sicher-h2 {
+  font-family: var(--font-sans); font-size: 1.05rem; font-weight: 700;
+  color: #1A1A1A; margin: 28px 0 10px;
+  padding-bottom: 6px; border-bottom: 2px solid var(--tb-coral);
+}
+
+.sicher-erklaerung {
+  background: var(--tb-coral-l);
+  border-left: 5px solid var(--tb-coral);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px; margin: 16px 0;
+  max-width: 680px;
+}
+.sicher-erklaerung .erk-head {
+  font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--tb-coral); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.sicher-erklaerung .erk-head::before {
+  content: 'i'; display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--tb-coral); color: white; font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.sicher-erklaerung p { font-family: var(--font-sans); font-size: 0.93rem; color: #1A1A1A; margin-bottom: 6px; }
+.sicher-erklaerung p:last-child { margin-bottom: 0; }
+.sicher-erklaerung .erk-ex {
+  font-style: italic; border-top: 1px solid var(--tb-coral-m);
+  padding-top: 9px; margin-top: 10px;
+  font-size: 0.9rem; color: #6A2010;
+  font-family: 'Crimson Pro', Georgia, serif; line-height: 1.7;
+}
+
+.sicher-merke {
+  background: #FFFBEB; border: 2px solid var(--tb-coral);
+  border-radius: 6px; padding: 16px 20px; margin: 20px 0;
+  display: flex; gap: 14px;
+}
+.merke-icon {
+  font-family: var(--font-sans); font-size: 0.75rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: white; background: var(--tb-coral);
+  padding: 4px 8px; border-radius: 3px;
+  height: fit-content; flex-shrink: 0; margin-top: 2px;
+}
+.sicher-merke p { font-family: var(--font-sans); font-size: 0.93rem; color: #1A1A1A; margin-bottom: 4px; }
+.sicher-merke p:last-child { margin-bottom: 0; }
+
+/* big 4-question helper */
+.vier-fragen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+@media (max-width: 600px) { .vier-fragen { grid-template-columns: 1fr; } }
+
+.frage-card {
+  background: var(--tb-gray);
+  border: 1px solid var(--tb-gray-b);
+  border-top: 4px solid var(--tb-coral);
+  border-radius: 0 0 6px 6px;
+  padding: 16px 18px;
+}
+.frage-card .fc-q {
+  font-family: var(--font-sans); font-size: 0.88rem; font-weight: 700;
+  color: var(--tb-coral); margin-bottom: 8px; letter-spacing: 0.04em;
+}
+.frage-card .fc-prep {
+  font-family: var(--font-sans); font-size: 0.82rem; font-weight: 700;
+  color: white; background: var(--tb-coral);
+  padding: 2px 8px; border-radius: 3px; display: inline-block;
+  margin: 4px 0 6px;
+}
+.frage-card .fc-think {
+  font-size: 0.82rem; color: #666; font-style: italic;
+  font-family: var(--font-sans); margin-bottom: 6px;
+}
+.frage-card ul { padding-left: 1.1em; font-family: var(--font-sans); font-size: 0.85rem; color: #333; }
+.frage-card ul li { margin-bottom: 3px; }
+.frage-card .fc-rule {
+  background: #FFF8E1; border: 1px solid #F0C040; border-radius: 3px;
+  padding: 5px 9px; margin-top: 8px;
+  font-family: var(--font-sans); font-size: 0.8rem; color: #7A5800;
+}
+
+/* Grammar table */
+.sicher-tabelle { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.91rem; }
+.sicher-tabelle th {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--tb-coral); color: white;
+  text-align: left; padding: 8px 12px;
+}
+.sicher-tabelle td {
+  font-family: var(--font-sans); padding: 7px 12px;
+  border-bottom: 1px solid var(--tb-gray-b); background: #fff;
+}
+.sicher-tabelle tr:nth-child(even) td { background: var(--tb-gray); }
+.sicher-tabelle td:first-child { font-style: italic; }
+.sicher-tabelle td:nth-child(2) { font-weight: 700; color: var(--tb-coral); font-style: normal; }
+.sicher-tabelle td:nth-child(3) { color: #555; font-size: 0.84rem; font-style: italic; }
+
+/* Praepositions two-col layout */
+.praep-zwei {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border: 2px solid var(--tb-coral); border-radius: 6px; overflow: hidden; margin: 18px 0;
+  font-size: 0.91rem;
+}
+@media (max-width: 580px) { .praep-zwei { grid-template-columns: 1fr; } }
+.pz-head {
+  font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 14px; color: white;
+}
+.pz-head-a { background: var(--burg); }
+.pz-head-b { background: #2E5040; }
+.pz-body { padding: 14px; border-top: 2px solid var(--tb-coral); font-family: var(--font-sans); }
+.pz-body-a { background: #F5EDE8; }
+.pz-body-b { background: #EDF2EE; border-left: 2px solid var(--tb-coral); }
+.pz-body ul { list-style: none; padding: 0; }
+.pz-body li {
+  font-size: 0.88rem; padding: 5px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex; gap: 8px; align-items: baseline;
+}
+.pz-body li::before { content: '\2192'; color: var(--tb-coral); flex-shrink: 0; }
+.pz-body li:last-child { border-bottom: none; }
+
+/* movement special box */
+.movement-box {
+  background: var(--tb-gray); border: 1px solid var(--tb-gray-b);
+  border-top: 3px solid var(--tb-coral); border-radius: 0 0 6px 6px;
+  padding: 16px 20px; margin: 18px 0;
+}
+.movement-box .mb-head {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--tb-coral); margin-bottom: 10px;
+}
+.movement-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px;
+  font-family: var(--font-sans); font-size: 0.88rem;
+}
+@media (max-width: 500px) { .movement-grid { grid-template-columns: 1fr; } }
+.mg-row { padding: 5px 0; border-bottom: 1px solid var(--tb-gray-b); }
+.mg-row > span:not(.pill) { color: var(--tb-coral); font-weight: 700; }
+
+/* example box */
+.example-box {
+  background: #fff; border: 1px solid #c8d4e8;
+  border-left: 4px solid var(--burg);
+  border-radius: 0 4px 4px 0; padding: 10px 14px; margin: 10px 0; font-size: 0.93rem;
+}
+.example-box .ex-label {
+  font-family: var(--font-sans); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); margin-bottom: 4px;
+}
+.example-box p { margin: 3px 0; font-family: 'Crimson Pro', serif; }
+.example-box em { color: var(--burg); font-style: normal; font-weight: 700; }
+
+/* ══════════════════════════════════════════════
+   CHALK / QUIZ ZONE
+   ══════════════════════════════════════════════ */
+.zone-chalk { background: var(--nave); }
+.zone-chalk::before {
+  content: ''; display: block; height: 5px;
+  background: repeating-linear-gradient(90deg, var(--gilt) 0 10px, transparent 10px 20px);
+}
+
+.chalk-wrap { max-width: 960px; margin: 0 auto; padding: 52px 32px 64px; }
+
+.chalk-title-block { border-bottom: 2px solid var(--nave-l); padding-bottom: 16px; margin-bottom: 28px; }
+.chalk-kicker {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--gilt); margin-bottom: 6px;
+}
+.chalk-title {
+  font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--bone); font-style: italic;
+}
+.chalk-sub {
+  font-style: italic; color: rgba(232,222,202,0.55);
+  font-size: 0.92rem; margin-top: 4px;
+}
+
+.chalk-prog-lbl {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: rgba(232,222,202,0.5);
+  display: flex; justify-content: space-between; margin-bottom: 6px;
+}
+.chalk-prog-track {
+  height: 4px; background: var(--nave-l); border-radius: 2px; overflow: hidden; margin-bottom: 32px;
+}
+.chalk-prog-fill {
+  height: 100%; background: var(--gilt); border-radius: 2px; transition: width 0.35s; width: 0%;
+}
+
+.chalk-part {
+  font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gilt);
+  margin: 28px 0 12px; display: flex; align-items: center; gap: 10px;
+}
+.chalk-part::after { content: ''; flex: 1; height: 1px; background: var(--nave-l); }
+
+.q-block {
+  background: var(--nave-m); border: 1px solid var(--nave-l);
+  border-radius: 6px; padding: 18px 22px; margin-bottom: 14px;
+}
+.q-num {
+  font-family: var(--font-sans); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gilt); margin-bottom: 6px;
+}
+.q-text {
+  color: var(--bone); font-size: 1rem; margin-bottom: 10px; line-height: 1.65;
+  font-family: 'Crimson Pro', serif;
+}
+
+/* dropdown blanks */
+.blank-wrap {
+  display: inline-block; position: relative; margin: 0 3px; vertical-align: middle;
+}
+.blank-select {
+  font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; font-weight: 600;
+  color: var(--bone); background: rgba(255,255,255,0.07);
+  border: 2px solid var(--gilt); border-radius: 4px;
+  padding: 3px 26px 3px 10px; cursor: pointer;
+  appearance: none; -webkit-appearance: none;
+  min-width: 130px; outline: none; transition: border-color 0.2s, background 0.2s;
+}
+.blank-select option { color: var(--ink); background: white; }
+.blank-select:focus { border-color: white; background: rgba(255,255,255,0.12); }
+.blank-wrap::after {
+  content: '\25BE'; position: absolute; right: 8px; top: 50%;
+  transform: translateY(-50%); font-size: 11px; color: var(--gilt); pointer-events: none;
+}
+.blank-select.correct { background: rgba(100,180,120,0.2); border-color: #6EB87A; color: #6EB87A; }
+.blank-select.wrong   { background: rgba(200,80,80,0.18);  border-color: #C85050; color: #C85050; }
+
+/* name row */
+.chalk-name-row {
+  display: flex; align-items: center; gap: 14px;
+  margin: 28px 0 8px; padding: 16px 20px;
+  background: var(--nave-m); border: 1px solid var(--nave-l); border-radius: 6px;
+}
+.chalk-name-row label {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gilt); white-space: nowrap;
+}
+.chalk-name-input {
+  flex: 1; font-family: 'Crimson Pro', serif; font-size: 1rem;
+  padding: 7px 12px; border: 2px solid var(--nave-l); border-radius: 4px;
+  background: rgba(255,255,255,0.07); color: var(--bone); outline: none;
+}
+.chalk-name-input:focus { border-color: var(--gilt); }
+.chalk-name-input::placeholder { color: rgba(232,222,202,0.35); }
+.chalk-note { font-size: 0.82rem; color: rgba(232,222,202,0.4); font-style: italic; margin-bottom: 20px; }
+
+.btn-chalk {
+  font-family: var(--font-sans); font-size: 0.88rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--gilt); color: var(--nave); border: none;
+  padding: 14px 44px; border-radius: 4px; cursor: pointer;
+  transition: background 0.2s, transform 0.1s; display: block; margin: 24px auto 0;
+}
+.btn-chalk:hover { background: #CCA030; }
+.btn-chalk:active { transform: scale(0.98); }
+
+.btn-chalk-out {
+  font-family: var(--font-sans); font-size: 0.88rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: transparent; color: var(--bone); border: 2px solid var(--nave-l);
+  padding: 10px 28px; border-radius: 4px; cursor: pointer; margin-top: 16px;
+  transition: background 0.2s;
+}
+.btn-chalk-out:hover { background: var(--nave-l); }
+
+/* results */
+.chalk-results { display: none; margin-top: 32px; border-top: 2px solid var(--nave-l); padding-top: 28px; }
+.chalk-results.visible { display: block; }
+.score-banner {
+  border-radius: 6px; padding: 20px 26px;
+  display: flex; align-items: center; gap: 22px; margin-bottom: 22px;
+}
+.sb-perfect { background: rgba(110,184,122,0.18); border: 2px solid #6EB87A; }
+.sb-good    { background: rgba(184,144,42,0.14);  border: 2px solid var(--gilt); }
+.sb-ok      { background: rgba(255,255,255,0.05); border: 2px solid var(--nave-l); }
+.score-num {
+  font-family: var(--font-sans); font-size: 3.5rem;
+  font-weight: 900; color: var(--gilt); line-height: 1; flex-shrink: 0;
+}
+.score-msg { color: var(--bone); font-size: 0.95rem; }
+.score-msg strong { display: block; font-size: 1.1rem; margin-bottom: 3px; color: var(--gilt); }
+
+.fi {
+  border-radius: 6px; padding: 12px 16px; border: 1px solid;
+  font-size: 0.88rem; margin-bottom: 8px;
+}
+.fi.ok { background: #EAF3DE; border-color: #3B6D11; color: #27500A; }
+.fi.no { background: #FCEBEB; border-color: #A32D2D; color: #791F1F; }
+.fi-head { font-family: var(--font-sans); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 5px; }
+.fi-explain { font-size: 0.88rem; margin-bottom: 4px; line-height: 1.5; }
+.fi-hint { font-style: italic; font-size: 0.86rem; margin-top: 5px; padding-top: 5px; border-top: 1px solid rgba(0,0,0,0.1); line-height: 1.5; }
+
+.email-ok {
+  background: rgba(110,184,122,0.15); border: 2px solid #6EB87A;
+  border-radius: 6px; padding: 14px 18px; margin-top: 16px; display: none;
+}
+.email-ok.visible { display: block; }
+.email-ok .eo-head {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #6EB87A; margin-bottom: 5px;
+}
+.email-ok p { font-size: 0.88rem; color: var(--bone); }
+
+/* ══════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════ */
+footer {
+  background: var(--nave);
+  border-top: 4px solid var(--gilt);
+  padding: 28px 40px;
+  text-align: center;
+  color: rgba(232,222,202,0.5);
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+}
+footer a { color: var(--gilt); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-name { font-size: 0.95rem; color: rgba(232,222,202,0.85); margin-bottom: 4px; }
+
+/* misc */
+.section-divider {
+  width: 60px; height: 1.5px; margin: 28px auto;
+  background: linear-gradient(90deg, transparent, var(--gilt), transparent);
+}
+
+/* ── BILDER PANEL ── */
+.bilder-wrap { max-width: 1060px; margin: 0 auto; padding: 48px 32px 64px; }
+.bild-chapter { margin-bottom: 52px; }
+.bild-chapter-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.bild-chapter-tag {
+  font-family: var(--font-sans); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--parch); background: var(--burg);
+  padding: 3px 10px; border-radius: 2px; white-space: nowrap;
+}
+.bild-chapter-rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--burg), transparent); opacity: 0.3; }
+.bild-chapter-title {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.35rem; color: var(--burg-d); margin-bottom: 16px;
+}
+.bild-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.bild-grid.wide { grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) { .bild-grid, .bild-grid.wide { grid-template-columns: 1fr; } }
+.bild-card {
+  background: rgba(255,255,255,0.4);
+  border: 1px solid rgba(154,136,112,0.25);
+  border-radius: 4px; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.bild-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(30,24,16,0.15); }
+.bild-card img {
+  width: 100%; display: block;
+  aspect-ratio: 4/3; object-fit: cover;
+  border-bottom: 2px solid var(--burg);
+  filter: sepia(12%); transition: filter 0.3s;
+}
+.bild-card:hover img { filter: sepia(0%); }
+.bild-card-body { padding: 14px 16px; }
+.bild-card-title {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 0.98rem; color: var(--burg-d); margin-bottom: 5px;
+}
+.bild-card-desc {
+  font-family: var(--font-sans); font-size: 0.8rem;
+  color: var(--stone); line-height: 1.5;
+}
+.bild-card-desc em { font-style: normal; color: var(--burg); font-weight: 600; }
+.bild-feature {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  align-items: start; margin-bottom: 24px;
+}
+@media (max-width: 640px) { .bild-feature { grid-template-columns: 1fr; } }
+.bild-feature img {
+  width: 100%; border-radius: 3px;
+  border: 2px solid var(--burg); filter: sepia(10%);
+}
+.bild-feature-text h3 {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.1rem; color: var(--burg-d); margin-bottom: 8px;
+}
+.bild-feature-text p {
+  font-family: var(--font-sans); font-size: 0.85rem;
+  color: var(--stone); line-height: 1.6; margin-bottom: 6px;
+}
+.blank-select.revealed {
+  border-color: var(--gilt);
+  background: rgba(184,144,42,0.18);
+  color: var(--gilt); font-weight: 700;
+}
+
+/* ── CASE PILLS ── */
+.pill {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 3px 12px;
+  border-radius: 14px;
+  white-space: nowrap;
+  border: 2px solid rgba(255,255,255,0.25);
+}
+.pill-dat  { background: #2A6AAD; color: #fff; }
+.pill-akk  { background: #9A2848; color: #fff; }
+.pill-gen  { background: #3A6B52; color: #fff; }
+
+/* ── COLORED PREPOSITION SPANS IN EXAMPLES ── */
+.prep-dat { color: #1A4A7A; font-weight: 700; }
+.prep-akk { color: #7A1F3A; font-weight: 700; }
+.prep-gen { color: #2E5040; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-kurs">Goethe-Zentrum Atlanta &nbsp;|&nbsp; B1+ German with History &amp; Culture</div>
+    <div class="hero-ornament"><span>✦ ✦ ✦</span></div>
+    <h1>Die Christianisierung im Herzen Europas</h1>
+    <p class="hero-sub">B1+ German with History &amp; Culture &nbsp;&middot;&nbsp; Lokale Pr&auml;positionen</p>
+    <div class="century-strip">
+      <div class="cs-cell cs-1">5. Jh.<small>Chlodwig &amp; Franken</small></div>
+      <div class="cs-cell cs-2">6. Jh.<small>Alamannien</small></div>
+      <div class="cs-cell cs-3">7. Jh.<small>M&ouml;nche &amp; Kl&ouml;ster</small></div>
+      <div class="cs-cell cs-4">8. Jh.<small>Karl d. Gro&szlig;e</small></div>
+      <div class="cs-cell cs-5">9. Jh.<small>Sachsen</small></div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════
+     TABS
+     ════════════════════════════════════════════ -->
+<nav class="tab-bar" id="tabBar">
+  <button class="tab-btn active" data-panel="panel-lesetext">&#x2720;&nbsp; Lesetext</button>
+  <button class="tab-btn" data-panel="panel-bilder">&#x1F5BC;&nbsp; Bilder</button>
+  <button class="tab-btn" data-panel="panel-vokabeln">&#x1F4DC;&nbsp; Vokabeln</button>
+  <button class="tab-btn" data-panel="panel-grammatik">&#x1F56E;&nbsp; Grammatik</button>
+  <button class="tab-btn" data-panel="panel-quiz">&#x2711;&nbsp; Quiz</button>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     PANEL 1: LESETEXT
+     ════════════════════════════════════════════ -->
+<div class="panel zone-history active" id="panel-lesetext">
+  <div class="history-wrap">
+
+    <!-- byline -->
+    <div style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);border-top:1px solid rgba(154,136,112,0.35);border-bottom:1px solid rgba(154,136,112,0.35);padding:10px 0;margin-bottom:28px;display:flex;align-items:center;gap:12px;">
+      <span>Stefan Bauer M.A.</span>
+      <span style="width:1px;height:16px;background:rgba(154,136,112,0.4);display:inline-block;"></span>
+      <span>Manager Language &amp; Examination Programs &nbsp;&middot;&nbsp; Goethe-Zentrum Atlanta</span>
+    </div>
+
+    <!-- ARTICLE with marginalia -->
+    <div class="margin-layout">
+      <div class="lesetext">
+        <p class="lesetext-intro">Die Christianisierung Europas war ein langer Prozess, der sich <strong>vom 5. bis zum 8. Jahrhundert</strong> erstreckte. Fr&uuml;her glaubten viele Historiker, dass die Germanen das Christentum freiwillig und fast ohne Konflikte angenommen h&auml;tten. Heute sieht die Forschung das anders. Die fr&uuml;hmittelalterliche Gesellschaft war oft von Kriegen, Fehden und Gewalt gepr&auml;gt. Recht und Schutz galten meist nur <strong><span class="prep-gen">innerhalb der eigenen Familie oder Sippe</span></strong>. <strong><span class="prep-gen">Au&szlig;erhalb der Verwandtschaft</span></strong> hatten Menschen oft nur wenige Rechte.</p>
+
+        <p>Eine wichtige Rolle spielten die <strong>Franken</strong>. Ihr K&ouml;nig <strong>Chlodwig</strong> lie&szlig; sich nach einem Sieg &uuml;ber die Alamannen taufen. Viele Menschen glaubten damals, dass der st&auml;rkere Gott den Sieg im Krieg schenkte. Deshalb wurde der christliche Gott h&auml;ufig als m&auml;chtiger Helfer angesehen. Chlodwigs Entscheidung war jedoch riskant. Die merowingischen K&ouml;nige leiteten ihre Macht urspr&uuml;nglich <strong><span class="prep-dat">von einem legend&auml;ren Ahnen</span></strong> ab. Das Christentum stellte diese Vorstellung infrage und verlangte eine neue Grundlage f&uuml;r die Herrschaft.</p>
+
+        <p>Nicht alle germanischen V&ouml;lker waren sofort katholische Christen. Viele Goten waren zun&auml;chst <strong>Arianer</strong>. Der Arianismus war eine christliche Glaubensrichtung, die lehrte, dass Christus nicht vollkommen Gott gleich sei. Die katholische Kirche lehnte diese Lehre ab. Chlodwig entschied sich bewusst f&uuml;r den katholischen Glauben. Dadurch gewann er die Unterst&uuml;tzung vieler Bisch&ouml;fe und der gallo-r&ouml;mischen Bev&ouml;lkerung.</p>
+
+        <p>Besonders wichtig f&uuml;r S&uuml;ddeutschland waren die <strong>Alamannen</strong>. Nach ihrer Unterwerfung <strong><span class="prep-akk">durch die Franken</span></strong> wurde Alamannien schrittweise in das Frankenreich integriert. Im 7. Jahrhundert entstanden neue kirchliche Strukturen. Missionare kamen <strong><span class="prep-dat">aus Irland</span></strong> und Britannien <strong><span class="prep-dat">zu den Alamannen</span></strong>. M&ouml;nche wie Columban und Gallus gr&uuml;ndeten Kl&ouml;ster und verbreiteten den christlichen Glauben. Auch das Bistum Konstanz spielte eine wichtige Rolle. Viele Menschen gelangten <strong><span class="prep-akk">durch die Missionare</span></strong> und <strong><span class="prep-akk">durch die Kl&ouml;ster</span></strong> mit dem Christentum in Kontakt.</p>
+
+        <div class="text-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+        <p>Die <strong>Sachsen</strong> nahmen das Christentum dagegen deutlich sp&auml;ter an. W&auml;hrend die Alamannen meist <strong><span class="prep-akk">durch Predigt und Mission</span></strong> christianisiert wurden, verlief die Christianisierung der Sachsen oft gewaltsam. Karl der Gro&szlig;e f&uuml;hrte mehrere Kriege gegen sie. Nach ihrer Niederlage entstanden Kirchen und Kl&ouml;ster, und die neue Religion breitete sich allm&auml;hlich <strong>im Norden Deutschlands</strong> aus.</p>
+
+        <p>Die Christianisierung ver&auml;nderte auch den Alltag. Die germanischen Sprachen besa&szlig;en zun&auml;chst keine W&ouml;rter f&uuml;r wichtige christliche Begriffe wie &bdquo;S&uuml;nde&ldquo;, &bdquo;Vergebung&ldquo; oder &bdquo;Erl&ouml;sung&ldquo;. Erst nach und nach entstanden neue religi&ouml;se Ausdr&uuml;cke. Gleichzeitig entwickelte sich ein neues Sozialethos. Die Kirche k&uuml;mmerte sich st&auml;rker um Arme und Bed&uuml;rftige. Auch die Stellung der Frauen verbesserte sich langsam. Frauen gingen selbstst&auml;ndig <strong><span class="prep-dat">zur Kirche</span></strong> und nahmen aktiv am religi&ouml;sen Leben teil. Zudem wandelte sich die antike Sklaverei allm&auml;hlich <strong><span class="prep-dat">zu milderen Formen der H&ouml;rigkeit</span></strong>.</p>
+
+        <p>Besonders sichtbar wurde die Christianisierung <strong><span class="prep-dat">auf den Friedh&ouml;fen</span></strong>. Um 600 bestattete man die Toten meist <strong><span class="prep-gen">au&szlig;erhalb der Siedlungen</span></strong> auf gro&szlig;en Gr&auml;berfeldern. Um 800 lagen viele Gr&auml;ber bereits <strong><span class="prep-dat">bei den Kirchen</span></strong> und <strong><span class="prep-gen">innerhalb der D&ouml;rfer</span></strong>. Dieser Wandel erfolgte langsam und unterschiedlich von Ort zu Ort. Arch&auml;ologische Funde zeigen au&szlig;erdem, dass christliche Symbole oft neben &auml;lteren heidnischen Br&auml;uchen vorkamen. Diese Vermischung nennt man <strong>Synkretismus</strong>.</p>
+
+        <p>W&auml;hrend sich das Christentum in Europa ausbreitete, entstand im 7. Jahrhundert der Islam. Muslimische Herrscher eroberten gro&szlig;e Gebiete <strong><span class="prep-dat">von Arabien</span> <span class="prep-akk">bis nach Spanien</span></strong>. Dadurch gingen wichtige fr&uuml;he Zentren des Christentums im Nahen Osten und in Nordafrika verloren. Gleichzeitig entstanden neue Kontakte zwischen Christen und Muslimen. Wissen <strong>aus Mathematik, Medizin und Astronomie</strong> gelangte sp&auml;ter <strong><span class="prep-akk">durch die islamische Welt</span></strong> nach Europa.</p>
+
+        <p>Das Ende der politischen Selbstst&auml;ndigkeit Alamanniens kam 746 mit dem sogenannten Blutgericht <strong><span class="prep-dat">von Cannstatt</span></strong>. Danach wurde das Gebiet direkt in das Frankenreich integriert. Die Christianisierung setzte sich jedoch weiterhin <strong><span class="prep-akk">durch die Kirche</span></strong>, <strong><span class="prep-akk">durch Kl&ouml;ster</span></strong> und <strong><span class="prep-akk">durch Missionare</span></strong> fort. Sie ver&auml;nderte Europa nachhaltig und pr&auml;gte die Kultur des Mittelalters.</p>
+
+        <div class="gram-note" style="margin-top:28px;">
+          <div class="gn-label">Grammatikhinweis im Text</div>
+          <p>Die fettgedruckten Pr&auml;positionen im Text zeigen <em>lokale Pr&auml;positionen</em> in historischem Kontext. Mehr dazu im Grammatikteil.</p>
+          <p style="margin-top:6px;font-size:0.88rem;color:var(--stone);">Mit Dativ: <em><span class="prep-dat">aus</span></em>, <em><span class="prep-dat">von</span></em>, <em><span class="prep-dat">bei</span></em>, <em><span class="prep-dat">zu</span></em>, <em><span class="prep-dat">nach</span></em> &nbsp;|&nbsp; Mit Akkusativ: <em><span class="prep-akk">durch</span></em>, <em><span class="prep-akk">bis</span></em>, <em><span class="prep-akk">entlang</span></em>, <em><span class="prep-akk">um</span></em> &nbsp;|&nbsp; Mit Genitiv: <em><span class="prep-gen">innerhalb</span></em>, <em><span class="prep-gen">au&szlig;erhalb</span></em></p>
+        </div>
+      </div>
+
+      <!-- MARGINALIA -->
+      <aside class="marginalia">
+        <div class="marg-head">Zeitrahmen</div>
+        <p class="marg-note">5. bis 8. Jahrhundert &mdash; ein Prozess von <strong>300 Jahren</strong>, nicht ein einzelnes Ereignis.</p>
+
+        <div class="marg-head">Chlodwig (ca. 466&ndash;511)</div>
+        <p class="marg-note">Frankenkönig, Gründer des merowingischen Reiches. Ließ sich als erster germanischer König <strong>katholisch</strong> taufen &mdash; ein Wendepunkt.</p>
+
+        <div class="pull-quote">&bdquo;Der stärkere Gott schenkte den Sieg im Krieg.&ldquo;</div>
+        <p class="marg-note" style="font-size:0.82rem;">Denkweise der Zeit: Religionswechsel war oft Machtpolitik.</p>
+
+        <div class="marg-head">Arianismus</div>
+        <p class="marg-note">Viele Goten glaubten, Christus sei dem Vater nicht gleich. Die <strong>katholische Kirche</strong> lehnte das ab. Chlodwig wählte bewusst die Seite der Bischöfe.</p>
+
+        <div class="marg-head">Columban &amp; Gallus</div>
+        <p class="marg-note">Irische Mönche, kamen <strong><span class="prep-dat">aus Irland</span></strong> ins Frankenreich. Gallus blieb am Bodensee &mdash; das spätere Kloster St. Gallen entstand <strong><span class="prep-akk">durch seine Gemeinschaft</span></strong>.</p>
+
+        <div class="marg-head">Synkretismus</div>
+        <p class="marg-note">Christliche und heidnische Elemente existierten nebeneinander. Kein schneller Bruch, sondern langsame Vermischung.</p>
+
+        <div class="marg-head">Friedhöfe als Zeuge</div>
+        <p class="marg-note">Um 600: Tote <strong><span class="prep-gen">außerhalb der Siedlung</span></strong>. Um 800: Tote <strong><span class="prep-dat">bei der Kirche</span></strong>, <strong><span class="prep-gen">innerhalb des Dorfes</span></strong>. Archäologie macht Wandel sichtbar.</p>
+      </aside>
+    </div>
+
+    <!-- COMPARE CARDS -->
+    <div class="sect-head">
+      <span class="sect-tag">Vergleich</span>
+      <div class="sect-rule"></div>
+      <span class="sect-ornament">✦</span>
+    </div>
+    <h2 class="sect-title">Alamannen und Sachsen: Zwei Wege zum Christentum</h2>
+    <div class="two-col">
+      <div class="col-card">
+        <h4>&#x26EA;&nbsp; Die Alamannen</h4>
+        <p>Fr&uuml;here Christianisierung, meist friedlich. Irische M&ouml;nche kamen <strong><span class="prep-dat">zu den Alamannen</span></strong>. Kl&ouml;ster entstanden <strong>im</strong> S&uuml;dwesten. Das Bistum Konstanz spielte eine zentrale Rolle.</p>
+        <p>Chlodwig brachte das Christentum <strong><span class="prep-akk">durch die fränkische Machtausdehnung</span></strong>. Die Menschen gelangten <strong><span class="prep-akk">durch die Missionare</span></strong> zum neuen Glauben.</p>
+      </div>
+      <div class="col-card">
+        <h4>&#x2694;&#xFE0F;&nbsp; Die Sachsen</h4>
+        <p>Sp&auml;tere, oft gewaltsame Christianisierung unter Karl dem Gro&szlig;en. Karl marschierte <strong><span class="prep-akk">in ihr Gebiet</span></strong>, zerst&ouml;rte Heiligt&uuml;mer, errichtete Kl&ouml;ster <strong><span class="prep-dat">im Norden Deutschlands</span></strong>.</p>
+        <p>Die neue Religion verbreitete sich <strong><span class="prep-akk">durch Kirchen</span></strong>, <strong><span class="prep-akk">durch Kl&ouml;ster</span></strong> und <strong><span class="prep-akk">durch Missionare</span></strong> &mdash; aber auch <strong><span class="prep-akk">durch Zwang und Krieg</span></strong>.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      &bdquo;&hellip; Die Christianisierung setzte sich weiterhin <em><span class="prep-akk">durch die Kirche</span></em>, <em><span class="prep-akk">durch Kl&ouml;ster</span></em> und <em><span class="prep-akk">durch Missionare</span></em> fort. Sie ver&auml;nderte Europa nachhaltig und pr&auml;gte die Kultur des Mittelalters.&ldquo;
+      <span class="source">Stefan Bauer M.A. &mdash; B1+ German with History &amp; Culture</span>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PANEL: BILDER
+     ════════════════════════════════════════════ -->
+<div class="panel zone-history" id="panel-bilder">
+  <div class="bilder-wrap">
+
+    <!-- CHAPTER 1: CHLODWIG -->
+    <div class="bild-chapter">
+      <div class="bild-chapter-head">
+        <span class="bild-chapter-tag">5. Jahrhundert</span>
+        <div class="bild-chapter-rule"></div>
+      </div>
+      <div class="bild-chapter-title">Chlodwig und die Franken</div>
+      <div class="bild-feature">
+        <a href="https://cloudfront-eu-central-1.images.arcpublishing.com/lepoint/4JI2EY5W75MYVE666CRNASDPAM.jpg" target="_blank" rel="noopener" style="display:block;"><img src="https://cloudfront-eu-central-1.images.arcpublishing.com/lepoint/4JI2EY5W75MYVE666CRNASDPAM.jpg"
+             alt="Taufe Chlodwigs"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Baptism_clovis.jpg/800px-Baptism_clovis.jpg'"></a>
+        <div class="bild-feature-text">
+          <h3>Die Taufe Chlodwigs (ca. 498)</h3>
+          <p>Chlodwig, K&ouml;nig der Franken, lie&szlig; sich nach einem Sieg &uuml;ber die Alamannen taufen. Bischof Remigius von Reims vollzog die Taufe.</p>
+          <p>Dies war eine politische Entscheidung: Als erster germanischer K&ouml;nig wurde er <em>katholisch</em> &mdash; nicht arianisch wie viele andere Germanen.</p>
+          <p>Dadurch gewann er die Unterst&uuml;tzung der gallo-r&ouml;mischen Bev&ouml;lkerung und der Bisch&ouml;fe.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 2: ALAMANNEN & MÖNCHE -->
+    <div class="bild-chapter">
+      <div class="bild-chapter-head">
+        <span class="bild-chapter-tag">6.&ndash;7. Jahrhundert</span>
+        <div class="bild-chapter-rule"></div>
+      </div>
+      <div class="bild-chapter-title">Irische M&ouml;nche und die Alamannen</div>
+      <div class="bild-grid wide">
+        <div class="bild-card">
+          <a href="https://c8.alamy.com/comp/W32FD1/beautiful-aerial-view-of-st-gallen-cityscape-skyline-abbey-cathedral-of-saint-gall-in-switzerland-W32FD1.jpg" target="_blank" rel="noopener" style="display:block;"><img src="https://c8.alamy.com/comp/W32FD1/beautiful-aerial-view-of-st-gallen-cityscape-skyline-abbey-cathedral-of-saint-gall-in-switzerland-W32FD1.jpg"
+               alt="Kloster St. Gallen Handschrift"
+               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/2/28/Duerer_%E2%80%93_Karl_der_Grosse.jpg'"></a>
+          <div class="bild-card-body">
+            <div class="bild-card-title">Kloster St. Gallen</div>
+            <div class="bild-card-desc">Der irische M&ouml;nch <em>Gallus</em> blieb am Bodensee. <em>Aus seiner</em> Gemeinschaft entstand das Kloster St. Gallen &mdash; eines der wichtigsten Bildungszentren des Mittelalters.</div>
+          </div>
+        </div>
+        <div class="bild-card">
+          <a href="https://upload.wikimedia.org/wikipedia/commons/f/fe/San_Colombano.jpg" target="_blank" rel="noopener" style="display:block;"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/San_Colombano.jpg"
+               alt="Columban von Luxeuil"
+               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/2/28/Duerer_%E2%80%93_Karl_der_Grosse.jpg'"></a>
+          <div class="bild-card-body">
+            <div class="bild-card-title">Columban von Luxeuil (ca. 543&ndash;615)</div>
+            <div class="bild-card-desc">Der irische M&ouml;nch kam <em><span class="prep-dat">aus Irland</span></em> ins Frankenreich. Er gr&uuml;ndete das Kloster Luxeuil und brachte neue Energie <em><span class="prep-dat">zu den Alamannen</span></em>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 3: SACHSEN & KARL -->
+    <div class="bild-chapter">
+      <div class="bild-chapter-head">
+        <span class="bild-chapter-tag">8. Jahrhundert</span>
+        <div class="bild-chapter-rule"></div>
+      </div>
+      <div class="bild-chapter-title">Karl der Gro&szlig;e und die Sachsenkriege</div>
+      <div class="bild-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="bild-card">
+          <a href="https://upload.wikimedia.org/wikipedia/commons/2/28/Duerer_%E2%80%93_Karl_der_Grosse.jpg" target="_blank" rel="noopener" style="display:block;"><img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Duerer_%E2%80%93_Karl_der_Grosse.jpg"
+               alt="Karl der Große, Dürer"
+               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Zerst%C3%B6rung_der_Irminsaule_durch_Karl_den_Gro%C3%9Fen_by_Heinrich_Leutemann.jpg'"></a>
+          <div class="bild-card-body">
+            <div class="bild-card-title">Karl der Gro&szlig;e (748&ndash;814)</div>
+            <div class="bild-card-desc">Karl f&uuml;hrte <em><span class="prep-akk">gegen die Sachsen</span></em> mehrere Kriege (772&ndash;804). Kl&ouml;ster entstanden <em><span class="prep-gen">innerhalb der</span></em> neu kontrollierten Gebiete als Missionsstationen.</div>
+          </div>
+        </div>
+        <div class="bild-card">
+          <a href="https://upload.wikimedia.org/wikipedia/commons/0/0b/Zerst%C3%B6rung_der_Irminsaule_durch_Karl_den_Gro%C3%9Fen_by_Heinrich_Leutemann.jpg" target="_blank" rel="noopener" style="display:block;"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Zerst%C3%B6rung_der_Irminsaule_durch_Karl_den_Gro%C3%9Fen_by_Heinrich_Leutemann.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/2/28/Duerer_%E2%80%93_Karl_der_Grosse.jpg'"></a>
+          <div class="bild-card-body">
+            <div class="bild-card-title">Die Irminsul (772)</div>
+            <div class="bild-card-desc">Das zentrale Heiligt&uuml;m der Sachsen. Karl lie&szlig; es zerst&ouml;ren &mdash; ein Signal der &Uuml;berlegenheit <em><span class="prep-akk">durch milit&auml;rische Macht</span></em>.</div>
+          </div>
+        </div>
+        <div class="bild-card">
+          <a href="https://www.meisterdrucke.us/kunstwerke/1260px/Unknown_Artist_-_Conversion_of_Widukind_or_Witikind_before_Charlemagne_in_785_Chromolithography_o_-_%28MeisterDrucke-930353%29.jpg" target="_blank" rel="noopener" style="display:block;"><img src="https://www.meisterdrucke.us/kunstwerke/1260px/Unknown_Artist_-_Conversion_of_Widukind_or_Witikind_before_Charlemagne_in_785_Chromolithography_o_-_%28MeisterDrucke-930353%29.jpg"
+               alt="Taufe Widukinds vor Karl dem Großen, 785"
+               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Zerst%C3%B6rung_der_Irminsaule_durch_Karl_den_Gro%C3%9Fen_by_Heinrich_Leutemann.jpg'"></a>
+          <div class="bild-card-body">
+            <div class="bild-card-title">Widukind (ca. 730&ndash;807)</div>
+            <div class="bild-card-desc">Anf&uuml;hrer des Widerstands <em><span class="prep-akk">gegen Karl den Gro&szlig;en</span></em>. 785 lie&szlig; er sich taufen &mdash; Karl wurde sein Taufpate.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER 4: BESTATTUNGSKULTUR -->
+    <div class="bild-chapter">
+      <div class="bild-chapter-head">
+        <span class="bild-chapter-tag">Arch&auml;ologie</span>
+        <div class="bild-chapter-rule"></div>
+      </div>
+      <div class="bild-chapter-title">Bestattungskultur: Der sichtbare Wandel</div>
+      <div class="bild-grid wide">
+        <div class="bild-card">
+          <a href="https://upload.wikimedia.org/wikipedia/commons/c/c0/Luftbildarchiv_Erich_Merkler_-_Lauchheim_-_1984_-_N_1-96_T_1_Nr._588.jpg" target="_blank" rel="noopener" style="display:block;"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Luftbildarchiv_Erich_Merkler_-_Lauchheim_-_1984_-_N_1-96_T_1_Nr._588.jpg"
+               alt="Lauchheim Luftbild Alamannen Siedlung"
+               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Zerst%C3%B6rung_der_Irminsaule_durch_Karl_den_Gro%C3%9Fen_by_Heinrich_Leutemann.jpg'"></a>
+          <div class="bild-card-body">
+            <div class="bild-card-title">Reihengr&auml;berfeld (ca. 600 n. Chr.)</div>
+            <div class="bild-card-desc">Um 600 bestattete man die Toten <em><span class="prep-gen">au&szlig;erhalb der</span></em> Siedlungen auf gro&szlig;en Gr&auml;berfeldern. Sp&auml;ter lagen Gr&auml;ber <em><span class="prep-dat">bei den</span></em> Kirchen und <em><span class="prep-gen">innerhalb der</span></em> D&ouml;rfer.</div>
+          </div>
+        </div>
+        <div class="bild-card">
+          <a href="https://i.redd.it/the-pforzen-buckle-6th-century-runic-inscription-v0-c5y8efth449g1.png?width=1200&format=png&auto=webp&s=05f31d415a898079cd48ee7210d1a8cd63ad359f" target="_blank" rel="noopener" style="display:block;"><img src="https://i.redd.it/the-pforzen-buckle-6th-century-runic-inscription-v0-c5y8efth449g1.png?width=1200&format=png&auto=webp&s=05f31d415a898079cd48ee7210d1a8cd63ad359f"
+               alt="Runenschnalle von Pforzen — Runeninschrift 6. Jahrhundert"
+               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/f/f1/Pforzen_Inschrift.JPG'"></a>
+          <div class="bild-card-body">
+            <div class="bild-card-title">Runenschnalle von Pforzen (6. Jh.)</div>
+            <div class="bild-card-desc">Gefunden <em><span class="prep-dat">bei Pforzen</span></em> in Grab 239. Eine der wichtigsten althochdeutschen Runeninschriften &mdash; Zeugnis des &Uuml;bergangs zwischen heidnischer und christlicher Welt.</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:20px;">
+        <strong>Synkretismus: Alte und neue Welt</strong><br>
+        Die Runenschnalle von Pforzen (6. Jh.) steht f&uuml;r den &Uuml;bergang: <em><span class="prep-gen">innerhalb alamannischer Gräber</span></em> finden sich germanische Runen neben christlichen Symbolen. Heidnisches und Christliches vermischten sich &mdash; <em>Synkretismus</em> als gelebte Realit&auml;t.
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PANEL 2: VOKABELN
+     ════════════════════════════════════════════ -->
+<div class="panel zone-history" id="panel-vokabeln">
+  <div class="history-wrap">
+    <div class="sect-head">
+      <span class="sect-tag">Wortschatz</span>
+      <div class="sect-rule"></div>
+      <span class="sect-ornament">✦</span>
+    </div>
+    <h2 class="sect-title">Vokabeln zur Lektion</h2>
+
+    <div class="vtabs">
+      <span class="vtab active" onclick="switchVtab(event,'v-nomen')">Nomen</span>
+      <span class="vtab" onclick="switchVtab(event,'v-verben')">Verben</span>
+      <span class="vtab" onclick="switchVtab(event,'v-adj')">Adjektive &amp; Adverbien</span>
+    </div>
+
+    <div id="v-nomen" class="vtab-content active">
+      <table class="vtable">
+        <thead><tr><th>Nomen</th><th>Plural</th><th>Deutsch (Definition)</th></tr></thead>
+        <tbody>
+          <tr><td>die Christianisierung</td><td>kein Plural</td><td class="c">der Prozess, durch den ein Volk christlich wird</td></tr>
+          <tr><td>die Glaubensrichtung</td><td>-en</td><td class="c">eine bestimmte Form oder Variante einer Religion</td></tr>
+          <tr><td>die Herrschaft</td><td>-en</td><td class="c">die Macht und Kontrolle über ein Gebiet oder ein Volk</td></tr>
+          <tr><td>die Unterstützung</td><td>-en</td><td class="c">Hilfe, die man jemandem gibt</td></tr>
+          <tr><td>die Bevölkerung</td><td>-en</td><td class="c">alle Menschen, die in einem Gebiet leben</td></tr>
+          <tr><td>die Unterwerfung</td><td>-en</td><td class="c">wenn eine Gruppe besiegt wird und sich einem anderen unterwirft</td></tr>
+          <tr><td>der Missionar</td><td>-e</td><td class="c">jemand, der eine Religion in einem anderen Land verbreitet</td></tr>
+          <tr><td>das Kloster</td><td>die Klöster</td><td class="c">ein Ort, an dem Mönche oder Nonnen zusammen leben und beten</td></tr>
+          <tr><td>die Niederlage</td><td>-n</td><td class="c">wenn man einen Krieg oder Kampf verliert</td></tr>
+          <tr><td>die Vergebung</td><td>kein Plural</td><td class="c">jemandem seine Fehler verzeihen; nicht mehr böse sein</td></tr>
+          <tr><td>die Erlösung</td><td>-en</td><td class="c">Rettung oder Befreiung, besonders von Sünden (christlich)</td></tr>
+          <tr><td>die Siedlung</td><td>-en</td><td class="c">ein Ort, an dem Menschen dauerhaft wohnen; ein Dorf</td></tr>
+          <tr><td>das Gräberfeld</td><td>-er</td><td class="c">ein großer Bereich, auf dem viele Menschen begraben wurden</td></tr>
+          <tr><td>der Wandel</td><td>kein Plural</td><td class="c">eine langsame Veränderung</td></tr>
+          <tr><td>der Synkretismus</td><td>kein Plural</td><td class="c">die Vermischung von zwei verschiedenen Religionen oder Kulturen</td></tr>
+          <tr><td>die Grundlage</td><td>-n</td><td class="c">die Basis oder der Ursprung von etwas</td></tr>
+          <tr><td>die Selbstständigkeit</td><td>kein Plural</td><td class="c">die Unabhängigkeit; das eigene Entscheiden können</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="v-verben" class="vtab-content">
+      <table class="vtable">
+        <thead><tr><th>Infinitiv</th><th>Präteritum</th><th>Perfekt</th><th>Deutsch (Bedeutung)</th></tr></thead>
+        <tbody>
+          <tr><td>verbreiten</td><td>verbreitete</td><td class="c">hat verbreitet</td><td>eine Idee oder Nachricht an viele Menschen weitergeben</td></tr>
+          <tr><td>integrieren</td><td>integrierte</td><td class="c">hat integriert</td><td>jemanden oder etwas in eine größere Gruppe aufnehmen</td></tr>
+          <tr><td>gelangen</td><td>gelangte</td><td class="c">ist gelangt</td><td>einen Ort oder Zustand erreichen</td></tr>
+          <tr><td>gründen</td><td>gründete</td><td class="c">hat gegründet</td><td>etwas Neues erschaffen und beginnen (z.B. ein Kloster)</td></tr>
+          <tr><td>entstehen</td><td>entstand</td><td class="c">ist entstanden</td><td>neu erschaffen werden; beginnen zu existieren</td></tr>
+          <tr><td>sich ausbreiten</td><td>breitete sich aus</td><td class="c">hat sich ausgebreitet</td><td>sich über ein größeres Gebiet verteilen</td></tr>
+          <tr><td>bestatten</td><td>bestattete</td><td class="c">hat bestattet</td><td>einen Toten begraben</td></tr>
+          <tr><td>erobern</td><td>eroberte</td><td class="c">hat erobert</td><td>ein Gebiet durch Krieg in Besitz nehmen</td></tr>
+          <tr><td>prägen</td><td>prägte</td><td class="c">hat geprägt</td><td>etwas stark beeinflussen und formen</td></tr>
+          <tr><td>ablehnen</td><td>lehnte ab</td><td class="c">hat abgelehnt</td><td>etwas nicht akzeptieren; nein sagen</td></tr>
+          <tr><td>sich wandeln</td><td>wandelte sich</td><td class="c">hat sich gewandelt</td><td>sich langsam verändern</td></tr>
+          <tr><td>fortsetzen</td><td>setzte fort</td><td class="c">hat fortgesetzt</td><td>mit etwas weitermachen</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="v-adj" class="vtab-content">
+      <table class="vtable">
+        <thead><tr><th>Wort</th><th>Wortart</th><th>Deutsch (Bedeutung)</th></tr></thead>
+        <tbody>
+          <tr><td>gewaltsam</td><td class="c">Adj.</td><td>mit Gewalt; nicht friedlich</td></tr>
+          <tr><td>selbstständig</td><td class="c">Adj.</td><td>unabhängig; ohne fremde Hilfe</td></tr>
+          <tr><td>heidnisch</td><td class="c">Adj.</td><td>nicht christlich; zu einer alten Religion gehörend</td></tr>
+          <tr><td>nachhaltig</td><td class="c">Adj.</td><td>dauerhaft; mit langer Wirkung</td></tr>
+          <tr><td>riskant</td><td class="c">Adj.</td><td>gefährlich; mit Risiko verbunden</td></tr>
+          <tr><td>bewusst</td><td class="c">Adj./Adv.</td><td>mit Absicht; nicht zufällig</td></tr>
+          <tr><td>sichtbar</td><td class="c">Adj.</td><td>mit den Augen erkennbar; deutlich zu sehen</td></tr>
+          <tr><td>allmählich</td><td class="c">Adv.</td><td>langsam, Schritt für Schritt</td></tr>
+          <tr><td>innerhalb</td><td class="c">Präp. + Gen.</td><td>im Inneren von etwas; nicht außerhalb</td></tr>
+          <tr><td>außerhalb</td><td class="c">Präp. + Gen.</td><td>nicht im Inneren; draußen von einer Grenze</td></tr>
+          <tr><td>archäologisch</td><td class="c">Adj.</td><td>zur Archäologie gehörend; durch Ausgrabungen belegt</td></tr>
+          <tr><td>unterschiedlich</td><td class="c">Adj.</td><td>verschieden; nicht gleich</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="vocab-box" style="margin-top:32px;">
+      <h3>Schl&uuml;sselvokabular &mdash; Christliche Begriffe</h3>
+      <div class="vocab-grid">
+        <div class="vocab-item"><span class="vocab-de">die S&uuml;nde (-n)</span><span class="vocab-en">ein Fehler oder eine schlechte Tat gegen Gottes Regeln</span></div>
+        <div class="vocab-item"><span class="vocab-de">die Vergebung</span><span class="vocab-en">jemandem seine Fehler verzeihen; nicht mehr b&ouml;se sein</span></div>
+        <div class="vocab-item"><span class="vocab-de">die Erl&ouml;sung (-en)</span><span class="vocab-en">Rettung oder Befreiung, besonders im religi&ouml;sen Sinn</span></div>
+        <div class="vocab-item"><span class="vocab-de">die Taufe (-n)</span><span class="vocab-en">religi&ouml;ses Ritual der Aufnahme ins Christentum</span></div>
+        <div class="vocab-item"><span class="vocab-de">der Bischof (-&ouml;fe)</span><span class="vocab-en">ein hoher Geistlicher in der christlichen Kirche</span></div>
+        <div class="vocab-item"><span class="vocab-de">der M&ouml;nch (-e)</span><span class="vocab-en">ein Mann, der im Kloster lebt und sein Leben Gott widmet</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PANEL 3: GRAMMATIK
+     ════════════════════════════════════════════ -->
+<div class="panel zone-textbook" id="panel-grammatik">
+  <div class="wrap">
+
+    <div class="sicher-book-name">
+      <span class="sbn-label">Lehrbuch</span>
+      <span class="sbn-title">Sicher! &Uuml;bungsgrammatik &nbsp;&middot;&nbsp; Hueber Verlag</span>
+    </div>
+    <div class="sicher-chapter-bar">
+      <div class="sicher-chapter-num">5</div>
+      <div class="sicher-chapter-info">
+        <div class="sicher-chapter-title">Lokale Pr&auml;positionen</div>
+        <div class="sicher-chapter-sub">zu &ndash; bei &ndash; durch &ndash; um &nbsp;|&nbsp; Woher? Wohin? Wo? Wie?</div>
+      </div>
+      <div class="sicher-page-ref">5.4 &nbsp; Lokale Pr&auml;positionen (1)</div>
+    </div>
+
+    <!-- CASE COLOR KEY -->
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0 28px;font-family:var(--font-sans);font-size:0.82rem;">
+      <span style="font-weight:700;color:#333;letter-spacing:0.05em;">Kasus-Farben:</span>
+      <span class="pill pill-dat">Dativ</span>
+      <span class="pill pill-akk">Akkusativ</span>
+      <span class="pill pill-gen">Genitiv</span>
+      <span style="color:#666;font-style:italic;">— alle Pr&auml;positionen auf dieser Seite sind so markiert</span>
+    </div>
+
+    <!-- THE FOUR QUESTIONS -->
+    <h2 class="sicher-h2">Die vier Leitfragen</h2>
+    <p style="font-family:var(--font-sans);font-size:0.93rem;color:#333;margin-bottom:16px;">Lokale Pr&auml;positionen beantworten immer eine von vier Fragen. Wenn du wei&szlig;t, welche Frage gestellt wird, kannst du die richtige Pr&auml;position w&auml;hlen.</p>
+
+    <div class="vier-fragen">
+      <div class="frage-card">
+        <div class="fc-q">1. Woher? &mdash; Where from?</div>
+        <span class="pill pill-dat">aus &bull; Dativ</span>
+        <div class="fc-think" style="margin-top:8px;">Stell dir vor: Das Ding f&uuml;hlt sich geschlossen an.</div>
+        <ul>
+          <li>Die M&ouml;nche kamen <strong><span class="prep-dat">aus Irland</span></strong>.</li>
+          <li>Er nahm das Kreuz <strong><span class="prep-dat">aus dem Schrein</span></strong>.</li>
+          <li>Sie kommen <strong><span class="prep-dat">aus Deutschland</span></strong>.</li>
+          <li>Wissen gelangte <strong><span class="prep-dat">aus der islamischen Welt</span></strong>.</li>
+        </ul>
+        <div class="fc-rule">Test: Kann ich mir vorstellen, darin zu sein? &rarr; meist <strong><span class="prep-dat">aus</span></strong></div>
+        <div style="margin-top:12px;"></div>
+        <span class="pill pill-dat">von &bull; Dativ</span>
+        <div class="fc-think" style="margin-top:8px;">von einer Person, einem offenen Ort, einer aktuellen Position</div>
+        <ul>
+          <li>Er leitete Macht <strong><span class="prep-dat">von einem Ahnen</span></strong> ab.</li>
+          <li>Ich komme <strong><span class="prep-dat">von meinem Chef</span></strong>.</li>
+          <li>Die Flasche fiel <strong>vom Tisch</strong>.</li>
+          <li><strong>Von hier aus</strong> sieht man die Burg.</li>
+        </ul>
+        <div class="fc-rule">Merkregel: <strong>Personen = von</strong></div>
+      </div>
+
+      <div class="frage-card">
+        <div class="fc-q">2. Wohin? &mdash; Where to?</div>
+        <span class="pill pill-dat">nach &bull; Dativ</span>
+        <div class="fc-think" style="margin-top:8px;">St&auml;dte, L&auml;nder (ohne Artikel), Richtungen</div>
+        <ul>
+          <li>Er reiste <strong><span class="prep-dat">nach Paris</span></strong>.</li>
+          <li>Sie fahren <strong><span class="prep-dat">nach M&uuml;nchen</span></strong>.</li>
+          <li>Die Sachsen zogen <strong><span class="prep-dat">nach Norden</span></strong>.</li>
+          <li>Er ging <strong><span class="prep-dat">nach Hause</span></strong>.</li>
+        </ul>
+        <div style="margin-top:12px;"></div>
+        <span class="pill pill-dat">zu &bull; Dativ</span>
+        <div class="fc-think" style="margin-top:8px;">Personen, Arbeitspl&auml;tze, Institutionen</div>
+        <ul>
+          <li>Frauen gingen <strong><span class="prep-dat">zur Kirche</span></strong>.</li>
+          <li>M&ouml;nche kamen <strong><span class="prep-dat">zu den Alamannen</span></strong>.</li>
+          <li>Ich fahre <strong><span class="prep-dat">zur Arbeit</span></strong>.</li>
+          <li>Sie gehen <strong><span class="prep-dat">zum Arzt</span></strong>.</li>
+        </ul>
+        <div class="fc-rule">Merkregel: Englisch <em>&bdquo;to a person&ldquo;</em> &rarr; <strong><span class="prep-dat">zu</span></strong></div>
+      </div>
+
+      <div class="frage-card">
+        <div class="fc-q">3. Wo? &mdash; Where?</div>
+        <span class="pill pill-dat">bei &bull; Dativ</span>
+        <div class="fc-think" style="margin-top:8px;">bei = an / in der N&auml;he von / mit</div>
+        <ul>
+          <li>Gr&auml;ber lagen <strong><span class="prep-dat">bei den Kirchen</span></strong>.</li>
+          <li>Starnberg liegt <strong><span class="prep-dat">bei M&uuml;nchen</span></strong>.</li>
+          <li>Er arbeitet <strong><span class="prep-dat">bei Siemens</span></strong>.</li>
+          <li>Eva wohnt noch <strong><span class="prep-dat">bei ihren Eltern</span></strong>.</li>
+        </ul>
+        <div class="fc-rule">Drei Bedeutungen: Ort &bull; Person &bull; Firma</div>
+        <div style="margin-top:12px;"></div>
+        <span class="pill pill-gen">innerhalb / au&szlig;erhalb &bull; Genitiv</span>
+        <div class="fc-think" style="margin-top:8px;">innerhalb = im Inneren &nbsp;|&nbsp; au&szlig;erhalb = nicht innen</div>
+        <ul>
+          <li>Recht galt <strong><span class="prep-gen">innerhalb der</span></strong> Familie.</li>
+          <li>Tote lagen <strong>au&szlig;erhalb der</strong> Siedlung.</li>
+          <li><strong><span class="prep-gen">Innerhalb der</span></strong> Stadtgrenze.</li>
+          <li><strong>Au&szlig;erhalb des</strong> Klosters.</li>
+        </ul>
+        <div class="fc-rule">Immer mit <strong>Genitiv!</strong></div>
+      </div>
+
+      <div class="frage-card">
+        <div class="fc-q">4. Wie bewegt man sich?</div>
+        <span class="pill pill-akk">durch &bull; Akkusativ</span>
+        <div class="fc-think" style="margin-top:8px;">durch = hindurch / via / mittels</div>
+        <ul>
+          <li>Die Religion verbreitete sich <strong><span class="prep-akk">durch die Kl&ouml;ster</span></strong>.</li>
+          <li>Der M&ouml;nch ging <strong><span class="prep-akk">durch die T&uuml;r</span></strong>.</li>
+          <li>Wissen kam <strong><span class="prep-akk">durch die islamische Welt</span></strong>.</li>
+          <li>Viele gelangten <strong><span class="prep-akk">durch die Missionare</span></strong> zum Christentum.</li>
+        </ul>
+        <div style="margin-top:12px;"></div>
+        <span class="pill pill-akk">entlang / um &bull; Akkusativ</span>
+        <ul>
+          <li>Sie zogen den Rhein <strong><span class="prep-akk">entlang</span></strong>.</li>
+          <li>M&ouml;nche reisten den Fluss <strong><span class="prep-akk">entlang</span></strong>.</li>
+          <li><strong>Um</strong> den Park <strong>herum</strong> bauten sie eine Mauer.</li>
+          <li><strong>Um</strong> das Kloster <strong>herum</strong> lag ein Graben.</li>
+        </ul>
+        <div class="fc-rule"><strong><span class="prep-akk">entlang</span></strong> folgt dem Nomen im Akkusativ</div>
+      </div>
+    </div>
+
+    <!-- DATIV TABLE -->
+    <h2 class="sicher-h2">a &nbsp; Pr&auml;positionen mit <span class="pill pill-dat" style="font-size:0.85rem;vertical-align:middle;">Dativ</span></h2>
+
+    <table class="sicher-tabelle">
+      <thead><tr><th>Pr&auml;position</th><th>Bedeutung</th><th>Beispiele</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="pill pill-dat">aus</span></td>
+          <td>Bewegung aus einem Raum / Herkunft aus einem Land</td>
+          <td>
+            M&ouml;nche kamen <em><span class="prep-dat">aus Irland</span></em>.<br>
+            Er nahm das Buch <em><span class="prep-dat">aus dem Regal</span></em>.<br>
+            Sie kommt <em><span class="prep-dat">aus Finnland</span></em>.<br>
+            Wissen gelangte <em><span class="prep-dat">aus der islamischen Welt</span></em> nach Europa.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-dat">von</span></td>
+          <td>Herkunft von einer Person oder einem Ausgangspunkt</td>
+          <td>
+            Die Macht leitete sich <em><span class="prep-dat">von einem Ahnen</span></em> ab.<br>
+            Ich komme <em><span class="prep-dat">von meinem Bruder</span></em>.<br>
+            Die Flasche fiel <em>vom Tisch</em>.<br>
+            Er fliegt <em><span class="prep-dat">von Berlin</span></em> nach M&uuml;nchen.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-dat">von &hellip; aus</span></td>
+          <td>Perspektive / Ausgangspunkt einer Aussage</td>
+          <td>
+            <em><span class="prep-dat">Von hier aus</span></em> sieht man die Burg.<br>
+            <em><span class="prep-dat">Von Konstanz aus</span></em> verbreiteten Bisch&ouml;fe das Christentum.<br>
+            <em><span class="prep-dat">Von meinem Zimmer aus</span></em> hat man eine Aussicht.<br>
+            <em><span class="prep-dat">Von diesem Punkt aus</span></em> f&uuml;hren viele Wege.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-dat">bei</span></td>
+          <td>Ort in der N&auml;he / Person / Firma</td>
+          <td>
+            Gr&auml;ber lagen <em><span class="prep-dat">bei den Kirchen</span></em>.<br>
+            Starnberg liegt <em><span class="prep-dat">bei M&uuml;nchen</span></em>.<br>
+            Er arbeitet <em><span class="prep-dat">bei BMW</span></em>.<br>
+            Eva wohnt noch <em><span class="prep-dat">bei ihren Eltern</span></em>.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-dat">nach</span></td>
+          <td>Richtung zu St&auml;dten &amp; L&auml;ndern (ohne Artikel)</td>
+          <td>
+            Er reiste <em><span class="prep-dat">nach Paris</span></em>.<br>
+            Die Missionare zogen <em><span class="prep-dat">nach S&uuml;den</span></em>.<br>
+            Sie f&auml;hrt <em><span class="prep-dat">nach Hause</span></em>.<br>
+            Muslime drangen <em><span class="prep-dat">nach Spanien</span></em> vor.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-dat">zu</span></td>
+          <td>Ziel (Person oder Institution)</td>
+          <td>
+            Frauen gingen <em><span class="prep-dat">zur Kirche</span></em>.<br>
+            M&ouml;nche kamen <em><span class="prep-dat">zu den Alamannen</span></em>.<br>
+            Ich fahre <em><span class="prep-dat">zur Arbeit</span></em> / <em><span class="prep-dat">zum Arzt</span></em>.<br>
+            Er geht <em><span class="prep-dat">zu seiner Freundin</span></em>.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-dat">ab</span></td>
+          <td>Ausgangspunkt (zeitlich oder r&auml;umlich)</td>
+          <td>
+            <em><span class="prep-dat">Ab Frankfurt</span></em> f&auml;hrt der Zug schnell.<br>
+            <em><span class="prep-dat">Ab dem 5. Jahrhundert</span></em> verbreitete sich das Christentum.<br>
+            <em><span class="prep-dat">Ab der n&auml;chsten Ampel</span></em> geradeaus fahren.<br>
+            <em><span class="prep-dat">Ab Konstanz</span></em> war es Alamannien.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- DATIV Erklaerung -->
+    <div class="sicher-erklaerung">
+      <div class="erk-head">aus vs. von &mdash; der h&auml;ufigste Fehler</div>
+      <p><span class="pill pill-dat">aus</span> = man war <strong>drinnen</strong> (in einem geschlossenen Raum oder Land)</p>
+      <p><span class="pill pill-dat">von</span> = Ausgangspunkt oder <strong>Person</strong></p>
+      <div class="erk-ex">
+        Er kommt <strong><span class="prep-dat">aus dem Kino</span></strong>. (Er war drinnen.) &nbsp;&mdash;&nbsp;
+        Er kommt <strong><span class="prep-dat">von</span></strong> seiner Mutter. (Person) &nbsp;&mdash;&nbsp;
+        Er kommt <strong><span class="prep-dat">aus</span></strong> Irland. (Land) &nbsp;&mdash;&nbsp;
+        Er kommt <strong>vom</strong> Bahnhof. (offener Ort)
+      </div>
+    </div>
+
+    <!-- AKKUSATIV TABLE -->
+    <h2 class="sicher-h2">b &nbsp; Pr&auml;positionen mit <span class="pill pill-akk" style="font-size:0.85rem;vertical-align:middle;">Akkusativ</span></h2>
+
+    <table class="sicher-tabelle">
+      <thead><tr><th>Pr&auml;position</th><th>Bedeutung</th><th>Beispiele</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="pill pill-akk">durch</span></td>
+          <td>Bewegung hindurch / Mittel / Vermittler</td>
+          <td>
+            Die Religion verbreitete sich <em><span class="prep-akk">durch die Kl&ouml;ster</span></em>.<br>
+            Der M&ouml;nch ging <em><span class="prep-akk">durch die T&uuml;r</span></em>.<br>
+            Wissen gelangte <em><span class="prep-akk">durch die islamische Welt</span></em>.<br>
+            Viele Menschen gelangten <em><span class="prep-akk">durch die Missionare</span></em> zum Glauben.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-akk">bis</span></td>
+          <td>Endpunkt einer Bewegung oder Strecke</td>
+          <td>
+            Von Arabien <em><span class="prep-akk">bis nach Spanien</span></em>.<br>
+            Der Zug f&auml;hrt <em><span class="prep-akk">bis Frankfurt</span></em>.<br>
+            Ich bleibe <em><span class="prep-akk">bis zum Kloster</span></em>.<br>
+            Von hier <em><span class="prep-akk">bis zur n&auml;chsten Stadt</span></em> sind es 30 km.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-akk">entlang</span></td>
+          <td>Parallelit&auml;t: Bewegung neben etwas her (folgt dem Nomen)</td>
+          <td>
+            Sie zogen den Rhein <em><span class="prep-akk">entlang</span></em>.<br>
+            M&ouml;nche reisten den Fluss <em><span class="prep-akk">entlang</span></em>.<br>
+            Wir spazierten die Stadtmauer <em><span class="prep-akk">entlang</span></em>.<br>
+            Er joggelt den Weg <em><span class="prep-akk">entlang</span></em>.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-akk">gegen</span></td>
+          <td>Widerstand / Konfrontation / physischer Kontakt</td>
+          <td>
+            Karl k&auml;mpfte <em><span class="prep-akk">gegen die Sachsen</span></em>.<br>
+            Das Motorrad fuhr <em><span class="prep-akk">gegen einen Bus</span></em>.<br>
+            Sie wehrten sich <em><span class="prep-akk">gegen die Franken</span></em>.<br>
+            Der Ball flog <em><span class="prep-akk">gegen die Mauer</span></em>.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-akk">um &hellip; herum</span></td>
+          <td>kreisf&ouml;rmige Bewegung oder Umkreisung</td>
+          <td>
+            Die G&auml;ste standen <em><span class="prep-akk">um das Buffet herum</span></em>.<br>
+            Wir bauten einen Zaun <em><span class="prep-akk">um den Garten herum</span></em>.<br>
+            Kl&ouml;ster entstanden <em><span class="prep-akk">um den Bodensee herum</span></em>.<br>
+            Sie gingen <em><span class="prep-akk">um die Kirche herum</span></em>.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- GENITIV TABLE -->
+    <h2 class="sicher-h2">c &nbsp; Pr&auml;positionen mit <span class="pill pill-gen" style="font-size:0.85rem;vertical-align:middle;">Genitiv</span></h2>
+
+    <div class="sicher-erklaerung">
+      <div class="erk-head">Genitiv &mdash; Grenzen ausdr&uuml;cken</div>
+      <p><span class="pill pill-gen">innerhalb</span> und <span class="pill pill-gen">au&szlig;erhalb</span> zeigen, ob etwas sich <strong><span class="prep-gen">innerhalb</span></strong> oder <strong>au&szlig;erhalb</strong> einer Grenze befindet. Beide verlangen den <strong>Genitiv</strong>.</p>
+      <div class="erk-ex">
+        Recht galt nur <strong><span class="prep-gen">innerhalb der</span></strong> Familie (Genitiv: der Familie).<br>
+        Tote wurden <strong>au&szlig;erhalb der</strong> Siedlung begraben (Genitiv: der Siedlung).<br>
+        Kl&ouml;ster entstanden <strong><span class="prep-gen">innerhalb des</span></strong> Frankenreichs (Genitiv: des Reiches).<br>
+        Das Kloster lag <strong>au&szlig;erhalb des</strong> Dorfes (Genitiv: des Dorfes).
+      </div>
+    </div>
+
+    <table class="sicher-tabelle">
+      <thead><tr><th>Pr&auml;position</th><th>Bedeutung</th><th>Beispiele</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="pill pill-gen">innerhalb</span></td>
+          <td>Begrenzung &mdash; im Inneren einer Grenze</td>
+          <td>
+            <em><span class="prep-gen">Innerhalb der</span></em> Kirchenmauern war man sicher.<br>
+            <em><span class="prep-gen">Innerhalb des</span></em> Dorfes lagen die Gr&auml;ber.<br>
+            <em><span class="prep-gen">Innerhalb der</span></em> Stadtgrenze gilt das Gesetz.<br>
+            <em><span class="prep-gen">Innerhalb der</span></em> Familie hatte man Rechte.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-gen">au&szlig;erhalb</span></td>
+          <td>Begrenzung &mdash; au&szlig;en, nicht im Inneren</td>
+          <td>
+            <em>Au&szlig;erhalb der</em> Siedlung wurden die Toten begraben.<br>
+            <em>Au&szlig;erhalb der</em> Verwandtschaft hatte man kaum Rechte.<br>
+            <em>Au&szlig;erhalb des</em> Reiches lebten die Sachsen.<br>
+            <em>Au&szlig;erhalb der</em> Stadt ist die Luft besser.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-gen">oberhalb</span></td>
+          <td>r&auml;umlich &uuml;ber einer Grenze</td>
+          <td>
+            <em>Oberhalb der</em> Stadt lag die Burg.<br>
+            <em>Oberhalb des</em> Klosters waren die Berge.<br>
+            Die neuesten H&auml;user befinden sich <em><span class="prep-gen">oberhalb der</span></em> Stadt.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-gen">unterhalb</span></td>
+          <td>r&auml;umlich unter einer Grenze</td>
+          <td>
+            <em>Unterhalb der</em> K&uuml;stenstra&szlig;e ist ein sch&ouml;ner Strand.<br>
+            <em>Unterhalb des</em> Hügels floß ein Bach.<br>
+            Das Kloster liegt <em><span class="prep-gen">unterhalb des</span></em> Gipfels.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-gen">entlang</span> (statisch)</td>
+          <td>Parallelit&auml;t (statisch, mit Genitiv)</td>
+          <td>
+            <em><span class="prep-akk">Entlang des</span></em> Flusses standen viele Kl&ouml;ster.<br>
+            <em><span class="prep-akk">Entlang der</span></em> Stadtmauer standen Zuschauer.<br>
+            <em><span class="prep-akk">Entlang des</span></em> Weges wuchsen B&auml;ume.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- WO vs WOHIN -->
+    <h2 class="sicher-h2">Wo steht was? &mdash; <span class="pill pill-dat">Dativ (Zustand)</span> vs. <span class="pill pill-akk">Akkusativ (Bewegung)</span></h2>
+
+    <div class="praep-zwei">
+      <div>
+        <div class="pz-head pz-head-a">Wo? &mdash; Dativ (Zustand, Lage)</div>
+        <div class="pz-body pz-body-a">
+          <ul>
+            <li>Das Kloster liegt <em><span class="prep-dat">bei M&uuml;nchen</span></em>.</li>
+            <li>Eva wohnt <em><span class="prep-dat">bei ihren Eltern</span></em>.</li>
+            <li>Gr&auml;ber lagen <em><span class="prep-dat">bei den Kirchen</span></em>.</li>
+            <li>Missionare lebten <em>in den Kl&ouml;stern</em>.</li>
+            <li>Recht galt <em><span class="prep-gen">innerhalb der</span></em> Familie.</li>
+            <li>Tote wurden <em>au&szlig;erhalb der</em> Siedlung begraben.</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="pz-head pz-head-b">Wohin? &mdash; Akkusativ (Bewegung, Ziel)</div>
+        <div class="pz-body pz-body-b">
+          <ul>
+            <li>Sie f&auml;hrt <em><span class="prep-dat">nach Frankfurt</span></em>.</li>
+            <li>Frauen gingen <em><span class="prep-dat">zur Kirche</span></em>.</li>
+            <li>M&ouml;nche kamen <em><span class="prep-dat">zu den Alamannen</span></em>.</li>
+            <li>Karl marschierte <em>in ihr Gebiet</em>.</li>
+            <li>Die Religion verbreitete sich <em><span class="prep-akk">durch die Kl&ouml;ster</span></em>.</li>
+            <li>Von Arabien <em><span class="prep-akk">bis nach Spanien</span></em>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sicher-merke">
+      <div class="merke-icon">Merke</div>
+      <div>
+        <p><span class="pill pill-dat">aus</span> = man war drinnen (Raum/Land) &nbsp;&bull;&nbsp; <span class="pill pill-dat">von</span> = Ausgangspunkt oder Person</p>
+        <p><span class="pill pill-dat">nach</span> + Stadt/Land (ohne Artikel) &nbsp;&bull;&nbsp; <span class="pill pill-dat">zu</span> + Person/Institution</p>
+        <p><span class="pill pill-dat">bei</span> = in der N&auml;he &nbsp;&bull;&nbsp; <span class="pill pill-akk">in</span> + Akkusativ = Bewegung hinein</p>
+        <p><span class="pill pill-akk">durch</span> = mittels / hindurch &nbsp;&bull;&nbsp; <span class="pill pill-gen">innerhalb / au&szlig;erhalb</span> = immer Genitiv</p>
+        <p><span class="pill pill-akk">entlang</span> nach dem Nomen (Akkusativ) &nbsp;&bull;&nbsp; <span class="pill pill-gen">entlang</span> vor dem Nomen (Genitiv)</p>
+      </div>
+    </div>
+
+    <!-- SPECIAL CONSTRUCTIONS -->
+    <h2 class="sicher-h2">Sonderkonstruktionen: entlang und von &hellip; aus</h2>
+
+    <div class="movement-box">
+      <div class="mb-head">Diese Formen erscheinen oft im Mittelalter-Kontext</div>
+      <div class="movement-grid">
+        <div class="mg-row"><span>entlang</span> nach dem Nomen &rarr; <span class="pill pill-akk" style="font-size:0.82rem;">Akkusativ</span><br>
+          <em><span class="prep-akk">den Fluss entlang</span></em> &bull; <em><span class="prep-akk">den Rhein entlang</span></em><br>
+          <em><span class="prep-akk">die Stra&szlig;e entlang</span></em> &bull; <em><span class="prep-akk">den Weg entlang</span></em></div>
+        <div class="mg-row"><span>entlang</span> vor dem Nomen &rarr; <span class="pill pill-gen" style="font-size:0.82rem;">Genitiv</span><br>
+          <em><span class="prep-gen">entlang des Flusses</span></em> &bull; <em><span class="prep-gen">entlang der Stadtmauer</span></em><br>
+          <em><span class="prep-gen">entlang der K&uuml;ste</span></em> &bull; <em><span class="prep-gen">entlang des Weges</span></em></div>
+        <div class="mg-row"><span>von &hellip; aus</span> &rarr; <span class="pill pill-dat" style="font-size:0.82rem;">Dativ</span><br>
+          <em><span class="prep-dat">Von hier aus</span></em> sieht man die Burg.<br>
+          <em><span class="prep-dat">Von Konstanz aus</span></em> verbreiteten Bisch&ouml;fe das Christentum.<br>
+          <em><span class="prep-dat">Von meinem Zimmer aus</span></em> hat man Aussicht.</div>
+        <div class="mg-row"><span>um &hellip; herum</span> &rarr; <span class="pill pill-akk" style="font-size:0.82rem;">Akkusativ</span><br>
+          <em><span class="prep-akk">um den Park herum</span></em> &bull; <em><span class="prep-akk">um das Kloster herum</span></em><br>
+          <em><span class="prep-akk">um den Bodensee herum</span></em> entstanden viele Kl&ouml;ster.<br>
+          <em><span class="prep-akk">um die Kirche herum</span></em> lagen Gr&auml;ber.</div>
+      </div>
+    </div>
+
+    <!-- FROM TEXT -->
+    <h2 class="sicher-h2">Im Text entdecken</h2>
+    <p style="font-family:var(--font-sans);font-size:0.9rem;color:#555;margin-bottom:16px;">Alle diese Pr&auml;positionen kommen im Lesetext vor. Hier sind die wichtigsten Stellen:</p>
+
+    <div class="example-box">
+      <div class="ex-label"><span class="pill pill-gen" style="font-size:0.82rem;">Genitiv</span> &mdash; Grenzen</div>
+      <p>Recht galt meist nur <em><span class="prep-gen">innerhalb der</span></em> eigenen Familie.</p>
+      <p><em>Au&szlig;erhalb der</em> Verwandtschaft hatten Menschen oft wenige Rechte.</p>
+      <p>Tote wurden <em>au&szlig;erhalb der</em> Siedlungen begraben.</p>
+      <p>Gr&auml;ber lagen <em><span class="prep-gen">innerhalb der</span></em> D&ouml;rfer.</p>
+    </div>
+    <div class="example-box">
+      <div class="ex-label"><span class="pill pill-dat" style="font-size:0.82rem;">Dativ</span> &mdash; Herkunft &amp; Ort</div>
+      <p>Missionare kamen <em><span class="prep-dat">aus Irland</span></em> und Britannien.</p>
+      <p>Die Macht leitete sich <em><span class="prep-dat">von einem legend&auml;ren Ahnen</span></em> ab.</p>
+      <p>Frauen gingen selbstst&auml;ndig <em><span class="prep-dat">zur Kirche</span></em>.</p>
+      <p>Gr&auml;ber lagen <em><span class="prep-dat">bei den Kirchen</span></em>.</p>
+    </div>
+    <div class="example-box">
+      <div class="ex-label"><span class="pill pill-akk" style="font-size:0.82rem;">Akkusativ</span> &mdash; Bewegung &amp; Mittel</div>
+      <p>Die Religion verbreitete sich <em><span class="prep-akk">durch die Kl&ouml;ster</span></em>.</p>
+      <p>Viele gelangten <em><span class="prep-akk">durch die Missionare</span></em> mit dem Christentum in Kontakt.</p>
+      <p>Muslime eroberten Gebiete <em><span class="prep-akk">bis nach Spanien</span></em>.</p>
+      <p>Karl k&auml;mpfte <em><span class="prep-akk">gegen die Sachsen</span></em>.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PANEL 4: QUIZ
+     ════════════════════════════════════════════ -->
+<div class="panel zone-chalk" id="panel-quiz">
+  <div class="chalk-wrap">
+    <div class="chalk-title-block">
+      <div class="chalk-kicker">Grammatik&uuml;bung &nbsp;&middot;&nbsp; Drei Teile</div>
+      <div class="chalk-title">Quiz: Lokale Pr&auml;positionen</div>
+      <div class="chalk-sub">W&auml;hle die passende Pr&auml;position im Kontext der Christianisierung.</div>
+    </div>
+
+    <div class="chalk-prog-lbl"><span>Fortschritt</span><span id="prog-txt">0 / 18 beantwortet</span></div>
+    <div class="chalk-prog-track"><div class="chalk-prog-fill" id="prog-bar"></div></div>
+
+    <!-- TEIL 1 -->
+    <div class="chalk-part">Teil 1 &mdash; Woher? (aus oder von)</div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 1</div>
+      <div class="q-text">Die irischen M&ouml;nche kamen
+        <span class="blank-wrap"><select class="blank-select" data-id="q1" data-answer="aus" data-meaning="'aus' beschreibt Herkunft aus einem geschlossenen Raum oder Gebiet. Irland ist ein Inselland &mdash; man kommt 'aus' einem Land." data-hint="Frage dich: Irland ist ein Land &mdash; kommt man 'aus' einem Land oder 'von' einem Land?"><option value="">—</option><option>aus</option><option>von</option><option>nach</option><option>zu</option></select></span>
+        Irland ins Frankenreich.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 2</div>
+      <div class="q-text">Chlodwig leitete seine Macht
+        <span class="blank-wrap"><select class="blank-select" data-id="q2" data-answer="von" data-meaning="'von' verbindet sich mit Personen oder Ausgangspunkten. Ein legendärer Ahne ist eine Person." data-hint="Ein 'Ahne' ist eine Person. Welche Präposition benutzt man bei Personen als Quelle?"><option value="">—</option><option>aus</option><option>von</option><option>bei</option><option>durch</option></select></span>
+        einem legend&auml;ren Ahnen ab.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 3</div>
+      <div class="q-text">Viele M&ouml;nche kamen
+        <span class="blank-wrap"><select class="blank-select" data-id="q3" data-answer="aus" data-meaning="'aus' benutzt man bei Ländern und Städten als Herkunft." data-hint="Britannien ist ein Land. Welche Präposition benutzt man bei Ländern als Herkunft?"><option value="">—</option><option>nach</option><option>aus</option><option>zu</option><option>bei</option></select></span>
+        Britannien zu den Alamannen.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 4</div>
+      <div class="q-text">Wissen gelangte sp&auml;ter
+        <span class="blank-wrap"><select class="blank-select" data-id="q4" data-answer="durch" data-meaning="'durch' beschreibt ein Mittel oder einen Weg. Die islamische Welt war der Weg, durch den das Wissen nach Europa kam." data-hint="Das Wissen benutzte die islamische Welt als Kanal. Welche Präposition bedeutet 'mittels' oder 'via'?"><option value="">—</option><option>von</option><option>aus</option><option>durch</option><option>zu</option></select></span>
+        die islamische Welt nach Europa.</div>
+    </div>
+
+    <!-- TEIL 2 -->
+    <div class="chalk-part">Teil 2 &mdash; Wohin? (nach, zu, in)</div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 5</div>
+      <div class="q-text">Frauen gingen selbstst&auml;ndig
+        <span class="blank-wrap"><select class="blank-select" data-id="q5" data-answer="zur" data-meaning="'zu' benutzt man, wenn man zu einer Institution oder einem Ort geht. 'zur' = 'zu der'." data-hint="Die Kirche ist eine Institution. Welche Präposition benutzt man bei Institutionen als Ziel?"><option value="">—</option><option>nach</option><option>in die</option><option>zur</option><option>bei der</option></select></span>
+        Kirche.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 6</div>
+      <div class="q-text">Muslimische Herrscher eroberten Gebiete von Arabien
+        <span class="blank-wrap"><select class="blank-select" data-id="q6" data-answer="bis nach" data-meaning="'bis nach' beschreibt den Endpunkt einer Bewegung zu einer Stadt oder einem Land." data-hint="Spanien ist ein Land. Welche Kombination benutzt man für den Endpunkt bei Ländern?"><option value="">—</option><option>bis nach</option><option>nach bis</option><option>zu nach</option><option>aus nach</option></select></span>
+        Spanien.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 7</div>
+      <div class="q-text">Karl der Gro&szlig;e f&uuml;hrte sein Heer
+        <span class="blank-wrap"><select class="blank-select" data-id="q7" data-answer="in" data-meaning="'in' (mit Akkusativ) beschreibt eine Bewegung in ein Gebiet hinein. 'in ihr Gebiet' = sie bewegten sich dort hinein." data-hint="Das Heer bewegt sich in ein Gebiet hinein. Welche Präposition benutzt man für Bewegung in einen Raum?"><option value="">—</option><option>nach</option><option>in</option><option>bei</option><option>aus</option></select></span>
+        ihr Gebiet.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 8</div>
+      <div class="q-text">Missionare kamen aus Irland
+        <span class="blank-wrap"><select class="blank-select" data-id="q8" data-answer="zu" data-meaning="'zu' benutzt man, wenn man zu einer Gruppe von Menschen oder einer Gemeinschaft geht." data-hint="Die Alamannen sind eine Gruppe von Menschen. Welche Präposition benutzt man als Ziel bei Personengruppen?"><option value="">—</option><option>nach</option><option>bei</option><option>zu</option><option>aus</option></select></span>
+        den Alamannen.</div>
+    </div>
+
+    <!-- TEIL 3 -->
+    <div class="chalk-part">Teil 3 &mdash; Wo? / Wie? (bei, innerhalb, au&szlig;erhalb, durch)</div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 9</div>
+      <div class="q-text">Recht und Schutz galten meist nur
+        <span class="blank-wrap"><select class="blank-select" data-id="q9" data-answer="innerhalb" data-meaning="'innerhalb' + Genitiv beschreibt etwas, das sich im Inneren einer Grenze befindet." data-hint="Die Familie bildet eine Grenze. Was ist im Inneren dieser Grenze? 'inner-' zeigt das an."><option value="">—</option><option>außerhalb</option><option>innerhalb</option><option>durch</option><option>bei</option></select></span>
+        der eigenen Familie.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 10</div>
+      <div class="q-text">
+        <span class="blank-wrap"><select class="blank-select" data-id="q10" data-answer="außerhalb" data-meaning="'außerhalb' + Genitiv bedeutet: nicht im Inneren einer Gruppe oder Grenze." data-hint="Die Menschen hatten wenige Rechte. Sie standen nicht innerhalb, sondern _____ der Verwandtschaft."><option value="">—</option><option>innerhalb</option><option>außerhalb</option><option>durch</option><option>bei</option></select></span>
+        der Verwandtschaft hatten Menschen oft wenige Rechte.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 11</div>
+      <div class="q-text">Um 600 wurden die Toten
+        <span class="blank-wrap"><select class="blank-select" data-id="q11" data-answer="außerhalb" data-meaning="'außerhalb' + Genitiv = nicht innerhalb der Grenze. Die Siedlung bildet die Grenze." data-hint="Die Gr&auml;ber lagen NICHT in der Siedlung, sondern _____ der Siedlung."><option value="">—</option><option>innerhalb</option><option>außerhalb</option><option>bei</option><option>durch</option></select></span>
+        der Siedlungen begraben.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 12</div>
+      <div class="q-text">Um 800 lagen viele Gr&auml;ber bereits
+        <span class="blank-wrap"><select class="blank-select" data-id="q12" data-answer="bei" data-meaning="'bei' bedeutet 'in der Nähe von'. Die Gräber lagen in der Nähe der Kirchen, nicht unbedingt direkt darin." data-hint="Die Gr&auml;ber lagen in der N&auml;he der Kirchen. Welche Pr&auml;position bedeutet 'in der N&auml;he von'?"><option value="">—</option><option>von</option><option>bei</option><option>nach</option><option>aus</option></select></span>
+        den Kirchen.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 13</div>
+      <div class="q-text">Die neue Religion verbreitete sich
+        <span class="blank-wrap"><select class="blank-select" data-id="q13" data-answer="durch" data-meaning="'durch' beschreibt hier ein Mittel (means). Die Klöster waren das Mittel, durch das sich die Religion ausbreitete." data-hint="Die Kl&ouml;ster waren das Mittel (means). Welche Pr&auml;position bedeutet 'mittels' oder 'via'?"><option value="">—</option><option>von</option><option>aus</option><option>durch</option><option>zu</option></select></span>
+        die Kl&ouml;ster.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 14</div>
+      <div class="q-text">Viele Menschen gelangten
+        <span class="blank-wrap"><select class="blank-select" data-id="q14" data-answer="durch" data-meaning="'durch' + Akkusativ beschreibt hier das Mittel oder den Vermittler. Die Missionare waren der Vermittler." data-hint="Die Missionare waren der Kanal f&uuml;r das Christentum. Welche Pr&auml;position bedeutet 'via' oder 'durch den Vermittler'?"><option value="">—</option><option>bei</option><option>durch</option><option>von</option><option>nach</option></select></span>
+        die Missionare mit dem Christentum in Kontakt.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 15</div>
+      <div class="q-text">Die Sachsen wehrten sich
+        <span class="blank-wrap"><select class="blank-select" data-id="q15" data-answer="gegen" data-meaning="'gegen' + Akkusativ drückt Widerstand oder Konfrontation aus." data-hint="Die Sachsen hatten Widerstand. Sie k&auml;mpften _____ die Franken. Welche Pr&auml;position zeigt Konfrontation?"><option value="">—</option><option>aus</option><option>gegen</option><option>bei</option><option>von</option></select></span>
+        die Franken.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 16</div>
+      <div class="q-text">Kl&ouml;ster entstanden
+        <span class="blank-wrap"><select class="blank-select" data-id="q16" data-answer="innerhalb" data-meaning="'innerhalb' + Genitiv beschreibt etwas im Inneren eines Gebiets oder einer Grenze." data-hint="Die Kl&ouml;ster lagen im Inneren des Frankenreichs, nicht au&szlig;erhalb. Welche Pr&auml;position beschreibt das?"><option value="">—</option><option>außerhalb</option><option>innerhalb</option><option>entlang</option><option>durch</option></select></span>
+        des Frankenreichs.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 17</div>
+      <div class="q-text">M&ouml;nche zogen den Rhein
+        <span class="blank-wrap"><select class="blank-select" data-id="q17" data-answer="entlang" data-meaning="'entlang' folgt dem Nomen im Akkusativ und beschreibt Parallelität: eine Bewegung, die einem Fluss oder Weg folgt." data-hint="Die M&ouml;nche bewegten sich parallel zum Rhein. 'den Rhein _____ ' &mdash; welche Pr&auml;position steht nach dem Nomen?"><option value="">—</option><option>durch</option><option>entlang</option><option>um</option><option>gegen</option></select></span>
+        und gr&uuml;ndeten Kl&ouml;ster.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Aufgabe 18</div>
+      <div class="q-text">
+        <span class="blank-wrap"><select class="blank-select" data-id="q18" data-answer="von" data-meaning="'Von ... aus' beschreibt den Ausgangspunkt einer Perspektive oder Bewegung." data-hint="Man steht irgendwo und hat Aussicht. '_____ hier aus hat man eine tolle Aussicht.' Welche Pr&auml;position beginnt diese Konstruktion?"><option value="">—</option><option>Aus</option><option>Von</option><option>Bei</option><option>Nach</option></select></span>
+        Konstanz aus verbreiteten die Bisch&ouml;fe das Christentum in ganz Alamannien.</div>
+    </div>
+
+    <!-- Name + Submit -->
+    <div class="chalk-name-row">
+      <label for="student-name">Dein Name:</label>
+      <input class="chalk-name-input" type="text" id="student-name" placeholder="Vor- und Nachname eingeben&hellip;">
+    </div>
+    <p class="chalk-note">Bei 18/18 wird automatisch eine Best&auml;tigung an Stefan Bauer vorbereitet.</p>
+
+    <div style="text-align:center;">
+      <button class="btn-chalk" id="quiz-btn">Quiz auswerten &#8594;</button>
+    </div>
+
+    <div class="chalk-results" id="results-wrap">
+      <div class="score-banner" id="score-banner">
+        <div class="score-num" id="score-num">-</div>
+        <div class="score-msg" id="score-msg"></div>
+      </div>
+      <div style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gilt);margin-bottom:12px;">Detailliertes Feedback</div>
+      <div id="feedback-list"></div>
+      <div class="email-ok" id="email-ok">
+        <div class="eo-head">&#10003; Best&auml;tigung vorbereitet</div>
+        <p id="email-msg"></p>
+      </div>
+      <div style="text-align:center;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px;">
+        <button class="btn-chalk-out" id="reveal-btn" style="display:none;" onclick="revealAnswers()">Richtige Antworten zeigen &#10003;</button>
+        <button class="btn-chalk-out" id="retry-btn" style="display:none;border-color:var(--gilt);color:var(--gilt);" onclick="retryWrong()">Nur Fehler wiederholen &#8635;</button>
+        <button class="btn-chalk-out" id="reset-btn">Alles neu starten &#8635;</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════ -->
+<footer>
+  <p class="footer-name"><a href="https://german-institute.org" target="_blank">Goethe-Zentrum Atlanta</a></p>
+  <p style="margin-top:4px;">
+    Stefan Bauer M.A. &nbsp;&middot;&nbsp; Manager Language &amp; Examination Programs<br>
+    <a href="mailto:stefan.bauer@goetheatlanta.org">stefan.bauer@goetheatlanta.org</a>
+    &nbsp;|&nbsp;
+    <a href="tel:+14048926002">404-892-6002</a>
+  </p>
+  <p style="margin-top:10px;font-size:0.78rem;opacity:0.4;">B1+ German with History &amp; Culture</p>
+</footer>
+
+<!-- ════════════════════════════════════════════
+     SCRIPTS
+     ════════════════════════════════════════════ -->
+<script>
+var TOTAL = 18;
+
+/* ── TAB NAVIGATION ── */
+var tabs   = document.querySelectorAll('.tab-btn');
+var panels = document.querySelectorAll('.panel');
+tabs.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var target = btn.dataset.panel;
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+    panels.forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById(target).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+/* ── VOCAB TABS ── */
+function switchVtab(e, name) {
+  document.querySelectorAll('.vtab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.vtab-content').forEach(function(c) { c.classList.remove('active'); });
+  e.currentTarget.classList.add('active');
+  document.getElementById(name).classList.add('active');
+}
+
+/* ── QUIZ PROGRESS ── */
+function updateProg() {
+  var f = 0;
+  document.querySelectorAll('.blank-select').forEach(function(s) { if (s.value !== '') f++; });
+  document.getElementById('prog-bar').style.width = Math.round(f / TOTAL * 100) + '%';
+  document.getElementById('prog-txt').textContent = f + ' / ' + TOTAL + ' beantwortet';
+}
+document.querySelectorAll('.blank-select').forEach(function(s) {
+  s.addEventListener('change', updateProg);
+});
+
+/* ── QUIZ GRADE ── */
+var wrongIds = [];
+
+function gradeQuiz() {
+  var sels = document.querySelectorAll('.blank-select');
+  var correct = 0;
+  var items = [];
+  wrongIds = [];
+
+  sels.forEach(function(sel) {
+    var ok = sel.value.trim().toLowerCase() === sel.dataset.answer.trim().toLowerCase();
+    if (ok) {
+      correct++;
+      sel.classList.add('correct');
+      sel.classList.remove('wrong', 'revealed');
+    } else {
+      sel.classList.add('wrong');
+      sel.classList.remove('correct', 'revealed');
+      wrongIds.push(sel.dataset.id);
+    }
+    items.push({
+      num: sel.dataset.id.replace('q',''),
+      ok: ok,
+      chosen: sel.value || '(nichts)',
+      answer: sel.dataset.answer,
+      meaning: sel.dataset.meaning,
+      hint: sel.dataset.hint
+    });
+  });
+
+  var isPerfect = (correct === TOTAL);
+  document.getElementById('score-num').textContent = correct + '/' + TOTAL;
+
+  var banner = document.getElementById('score-banner');
+  banner.className = 'score-banner ' + (isPerfect ? 'sb-perfect' : correct >= 14 ? 'sb-good' : 'sb-ok');
+
+  var msg = isPerfect
+    ? '<strong>Perfekt! 18/18 &#10003;</strong> Alle Pr&auml;positionen korrekt.'
+    : correct >= 14
+      ? '<strong>Sehr gut!</strong> Fast perfekt &mdash; schau dir das Feedback an.'
+      : correct >= 10
+        ? '<strong>Gut gemacht.</strong> Die Pr&auml;positionen noch einmal &uuml;ben.'
+        : '<strong>Weiter &uuml;ben!</strong> Geh noch einmal zum Grammatikteil.';
+  document.getElementById('score-msg').innerHTML = msg;
+
+  var list = document.getElementById('feedback-list');
+  list.innerHTML = '';
+  items.forEach(function(item) {
+    var d = document.createElement('div');
+    d.className = 'fi ' + (item.ok ? 'ok' : 'no');
+    if (item.ok) {
+      d.innerHTML = '<div class="fi-head">&#10003; Aufgabe ' + item.num + ' &mdash; Richtig!</div>';
+    } else {
+      d.innerHTML =
+        '<div class="fi-head">&#10007; Aufgabe ' + item.num + ' &mdash; Deine Antwort: &bdquo;' + item.chosen + '&ldquo;</div>' +
+        '<div class="fi-explain">' + (item.chosen !== '(nichts)' ? '<strong>Erkl&auml;rung:</strong> ' + item.meaning : 'Du hast keine Antwort gew&auml;hlt.') + '</div>' +
+        '<div class="fi-hint"><strong>Denk mal nach:</strong> ' + item.hint + '</div>';
+    }
+    list.appendChild(d);
+  });
+
+  var wrap = document.getElementById('results-wrap');
+  wrap.classList.add('visible');
+  setTimeout(function() { wrap.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
+
+  document.getElementById('quiz-btn').disabled = true;
+
+  // Show/hide action buttons
+  if (!isPerfect) {
+    document.getElementById('reveal-btn').style.display = 'inline-block';
+    document.getElementById('retry-btn').style.display = 'inline-block';
+  }
+
+  if (isPerfect) {
+    document.getElementById('reveal-btn').style.display = 'none';
+    document.getElementById('retry-btn').style.display = 'none';
+    var nameVal = (document.getElementById('student-name').value || '').trim() || 'Ein Kursteilnehmer';
+    var sub = encodeURIComponent('B1+ Quiz: 18/18 - ' + nameVal);
+    var bod = encodeURIComponent(
+      'Hallo Stefan,\n\n' + nameVal +
+      ' hat das Quiz \u201eDie Christianisierung im Herzen Europas\u201c mit 18/18 abgeschlossen.\n\n' +
+      'Kurs: B1+ German with History & Culture\n' +
+      'Thema: Lokale Pr\u00e4positionen\n\nViele Gr\u00fc\u00dfe'
+    );
+    var eo = document.getElementById('email-ok');
+    eo.classList.add('visible');
+    document.getElementById('email-msg').textContent =
+      'Eine E-Mail an stefan.bauer@goetheatlanta.org wurde f\u00fcr ' + nameVal + ' vorbereitet. Bitte sende sie ab.';
+    setTimeout(function() {
+      window.open('mailto:stefan.bauer@goetheatlanta.org?subject=' + sub + '&body=' + bod, '_self');
+    }, 1500);
+  }
+}
+
+/* Reveal correct answers for wrong items */
+function revealAnswers() {
+  wrongIds.forEach(function(id) {
+    var sel = document.getElementById(id);
+    if (sel) {
+      // Find the matching option case-insensitively
+      var target = sel.dataset.answer.trim().toLowerCase();
+      var matched = false;
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value.trim().toLowerCase() === target) {
+          sel.value = sel.options[i].value;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched) sel.value = sel.dataset.answer;
+      sel.classList.remove('wrong');
+      sel.classList.add('revealed');
+      sel.disabled = true;
+    }
+  });
+  document.getElementById('reveal-btn').disabled = true;
+  document.getElementById('reveal-btn').textContent = 'Antworten angezeigt ✓';
+}
+
+/* Retry only wrong answers */
+function retryWrong() {
+  wrongIds.forEach(function(id) {
+    var sel = document.getElementById(id);
+    if (sel) {
+      sel.value = '';
+      sel.classList.remove('wrong', 'revealed', 'correct');
+      sel.disabled = false;
+    }
+  });
+  document.getElementById('results-wrap').classList.remove('visible');
+  document.getElementById('email-ok').classList.remove('visible');
+  document.getElementById('quiz-btn').disabled = false;
+  document.getElementById('reveal-btn').style.display = 'none';
+  document.getElementById('retry-btn').style.display = 'none';
+  document.getElementById('reveal-btn').disabled = false;
+  document.getElementById('reveal-btn').textContent = 'Richtige Antworten zeigen';
+  updateProg();
+  // Scroll to first wrong question
+  if (wrongIds.length > 0) {
+    var first = document.getElementById(wrongIds[0]);
+    if (first) first.closest('.q-block').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function resetQuiz() {
+  document.querySelectorAll('.blank-select').forEach(function(s) {
+    s.value = '';
+    s.classList.remove('correct', 'wrong', 'revealed');
+    s.disabled = false;
+  });
+  wrongIds = [];
+  document.getElementById('results-wrap').classList.remove('visible');
+  document.getElementById('email-ok').classList.remove('visible');
+  document.getElementById('quiz-btn').disabled = false;
+  document.getElementById('reveal-btn').style.display = 'none';
+  document.getElementById('retry-btn').style.display = 'none';
+  document.getElementById('reveal-btn').disabled = false;
+  document.getElementById('reveal-btn').textContent = 'Richtige Antworten zeigen';
+  document.getElementById('prog-bar').style.width = '0%';
+  document.getElementById('prog-txt').textContent = '0 / 18 beantwortet';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('quiz-btn').addEventListener('click', gradeQuiz);
+  document.getElementById('reset-btn').addEventListener('click', resetQuiz);
+});
+</script>
+</body>
+</html>
