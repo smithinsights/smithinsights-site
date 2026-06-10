@@ -17,446 +17,71 @@
   --white:     #FFFFFF;
   --bg:        #f4f7fb;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body {
-  width: 100%; height: 100%;
-  background: #111;
-  font-family: 'Raleway', sans-serif;
-  overflow: hidden;
-}
-
-/* ── Slide shell ── */
-.slide {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
-  position: relative;
-  background: var(--white);
-}
+html, body { width: 100%; height: 100%; background: #111; font-family: 'Raleway', sans-serif; overflow: hidden; }
+.slide { display: none; width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; position: relative; background: var(--white); }
 .slide.active { display: flex; flex-direction: column; }
-
-/* ── Gold footer bar ── */
-.slide::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: 0;
-  width: 100%;
-  height: clamp(8px, 1.2vh, 16px);
-  background: var(--gold);
-  z-index: 10;
-}
-
-/* ── Eyebrow label ── */
-.eyebrow {
-  font-size: clamp(0.65rem, 0.9vw, 0.85rem);
-  font-weight: 800;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
+.slide::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: clamp(8px, 1.2vh, 16px); background: var(--gold); z-index: 10; }
+.eyebrow { font-size: clamp(0.65rem, 0.9vw, 0.85rem); font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
 .eyebrow.on-dark { color: #b8d4f0; }
 .eyebrow.on-light { color: var(--azure); }
-
-/* ── HERO SLIDE ── */
-.hero-slide {
-  background: linear-gradient(145deg, #0f2035 0%, var(--darkblue) 55%, var(--azure) 100%);
-  padding: clamp(32px, 5vw, 72px) clamp(32px, 6vw, 88px);
-  justify-content: center;
-}
+.hero-slide { background: linear-gradient(145deg, #0f2035 0%, var(--darkblue) 55%, var(--azure) 100%); padding: clamp(32px, 5vw, 72px) clamp(32px, 6vw, 88px); justify-content: center; }
 .hero-slide::after { background: var(--gold); }
-
-.hero-kicker {
-  color: var(--gold);
-  font-size: clamp(0.7rem, 1vw, 0.9rem);
-  font-weight: 800;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-bottom: clamp(16px, 2.5vh, 32px);
-}
-
-.hero-title {
-  font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
-  font-size: clamp(3.8rem, 8.5vw, 9rem);
-  line-height: 0.9;
-  color: var(--white);
-  text-transform: uppercase;
-  letter-spacing: 0.015em;
-  max-width: 85vw;
-  margin-bottom: clamp(20px, 3vh, 40px);
-}
-
-.hero-sub {
-  font-size: clamp(1rem, 1.8vw, 1.6rem);
-  color: #c8dff5;
-  line-height: 1.45;
-  max-width: 55vw;
-  margin-bottom: clamp(24px, 4vh, 48px);
-}
-
-.hero-callout {
-  border-left: 6px solid var(--gold);
-  padding: clamp(12px, 1.5vh, 18px) clamp(16px, 2vw, 24px);
-  background: rgba(255,255,255,0.08);
-  max-width: 60vw;
-  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
-  color: #deeeff;
-  line-height: 1.5;
-}
-
-.hero-bg-mark {
-  position: absolute;
-  right: clamp(32px, 5vw, 80px);
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(12rem, 22vw, 24rem);
-  color: rgba(255,255,255,0.04);
-  letter-spacing: -0.05em;
-  user-select: none;
-  line-height: 1;
-}
-
-/* ── SECTION TITLE SLIDES ── */
-.section-slide {
-  background: linear-gradient(135deg, var(--night) 0%, #1e3a5a 100%);
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: clamp(32px, 5vw, 72px);
-}
-
-.section-slide .section-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4rem, 10vw, 10rem);
-  color: rgba(72,127,192,0.2);
-  line-height: 1;
-  margin-bottom: 0;
-}
-
-.section-slide .section-label {
-  font-size: clamp(0.7rem, 1vw, 0.85rem);
-  font-weight: 800;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: clamp(10px, 1.5vh, 16px);
-}
-
-.section-slide h2 {
-  font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
-  font-size: clamp(3rem, 6.5vw, 7rem);
-  color: var(--white);
-  text-transform: uppercase;
-  line-height: 0.92;
-  max-width: 80vw;
-  margin-bottom: clamp(16px, 2.5vh, 28px);
-}
-
-.section-slide .section-sub {
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
-  color: #9ab8d8;
-  max-width: 55vw;
-  line-height: 1.5;
-}
-
-/* ── CONTENT SLIDES ── */
-.content-slide {
-  padding: clamp(28px, 4vh, 52px) clamp(36px, 5vw, 80px) clamp(36px, 5vh, 64px);
-}
-
-.slide-header {
-  margin-bottom: clamp(16px, 2.5vh, 30px);
-}
-
-.slide-title {
-  font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
-  font-size: clamp(2.4rem, 4.5vw, 4.8rem);
-  color: var(--dark);
-  text-transform: uppercase;
-  line-height: 0.92;
-  letter-spacing: 0.01em;
-}
-
-.gold-rule {
-  height: 4px;
-  width: clamp(40px, 5vw, 60px);
-  background: var(--gold);
-  border-radius: 2px;
-  margin-top: 10px;
-}
-
-/* two-column layout */
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(24px, 3vw, 48px);
-  flex: 1;
-  align-items: start;
-  min-height: 0;
-}
-.three-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: clamp(16px, 2vw, 28px);
-  flex: 1;
-  align-items: start;
-  min-height: 0;
-}
-
-/* ── Bullet list ── */
-.bullet-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(8px, 1.2vh, 14px);
-}
-.bullet-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: clamp(0.9rem, 1.4vw, 1.25rem);
-  line-height: 1.45;
-  color: var(--dark);
-}
-.bullet-list li::before {
-  content: '';
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-  margin-top: 0.45em;
-}
-
-/* ── Callout block ── */
-.callout {
-  border-left: 6px solid var(--gold);
-  background: var(--night);
-  color: var(--white);
-  padding: clamp(14px, 2vh, 22px) clamp(16px, 2vw, 24px);
-  border-radius: 0 8px 8px 0;
-  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
-  line-height: 1.5;
-  margin-top: clamp(12px, 1.8vh, 20px);
-}
-
-/* ── Stat boxes ── */
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(14px, 2vw, 24px);
-  flex: 1;
-  align-items: stretch;
-}
-.stat-box {
-  border: 2px solid var(--soft-grey);
-  border-radius: 12px;
-  padding: clamp(18px, 2.5vh, 32px) clamp(14px, 2vw, 20px);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3.5rem, 7vw, 7.5rem);
-  color: var(--azure);
-  line-height: 1;
-}
-.stat-label {
-  font-size: clamp(0.8rem, 1.1vw, 1rem);
-  font-weight: 700;
-  color: var(--dark);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  text-align: center;
-}
-
-/* ── Timeline column ── */
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(8px, 1.2vh, 14px);
-}
-.timeline-year {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
-  font-weight: 700;
-  color: var(--dark);
-}
-.timeline-check {
-  width: clamp(24px, 2.5vw, 32px);
-  height: clamp(24px, 2.5vw, 32px);
-  border-radius: 50%;
-  background: var(--azure);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: clamp(0.75rem, 1vw, 1rem);
-  font-weight: 800;
-  flex-shrink: 0;
-}
-.timeline-check.future {
-  background: var(--gold);
-  color: var(--dark);
-}
-.timeline-gap {
-  height: 1px;
-  background: var(--soft-grey);
-  width: 100%;
-  margin: clamp(4px, 0.8vh, 8px) 0;
-}
-.timeline-future-label {
-  font-size: clamp(0.7rem, 0.9vw, 0.85rem);
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--darkgold);
-  margin-bottom: 4px;
-}
-
-/* ── Box card ── */
-.card {
-  border: 1.5px solid var(--soft-grey);
-  border-radius: 10px;
-  padding: clamp(14px, 2vh, 22px) clamp(14px, 1.8vw, 20px);
-  background: var(--bg);
-}
-.card-title {
-  font-size: clamp(0.75rem, 1vw, 0.9rem);
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--azure);
-  margin-bottom: 10px;
-}
-
-/* ── Gold banner callout ── */
-.gold-banner {
-  background: var(--gold);
-  color: var(--dark);
-  padding: clamp(14px, 2vh, 20px) clamp(18px, 2.5vw, 28px);
-  border-radius: 8px;
-  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
-  font-weight: 700;
-  line-height: 1.4;
-  margin-top: clamp(12px, 1.8vh, 20px);
-}
-
-/* ── Survey image slide ── */
-.survey-img-slide {
-  padding: clamp(24px, 3.5vh, 44px) clamp(36px, 5vw, 80px) clamp(36px, 5vh, 60px);
-}
-.survey-img-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 0;
-  margin-top: clamp(10px, 1.5vh, 18px);
-}
-.survey-img-container img {
-  max-height: min(58vh, 480px);
-  max-width: 100%;
-  object-fit: contain;
-  border-radius: 8px;
-}
-.takeaway-strip {
-  margin-top: clamp(10px, 1.5vh, 16px);
-  padding: clamp(10px, 1.4vh, 16px) clamp(14px, 2vw, 20px);
-  background: var(--night);
-  color: var(--white);
-  border-left: 5px solid var(--gold);
-  border-radius: 0 6px 6px 0;
-  font-size: clamp(0.8rem, 1.1vw, 1rem);
-  line-height: 1.45;
-}
-
-/* ── Section divider text ── */
-.col-head {
-  font-size: clamp(0.7rem, 0.95vw, 0.88rem);
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--azure);
-  margin-bottom: clamp(10px, 1.4vh, 16px);
-}
-
-/* ── Navigation ── */
-.nav {
-  position: fixed;
-  bottom: clamp(16px, 2.5vh, 28px);
-  right: clamp(20px, 2.5vw, 36px);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 50;
-}
-.nav button {
-  background: rgba(30,58,90,0.85);
-  border: 1.5px solid rgba(72,127,192,0.4);
-  color: var(--white);
-  width: clamp(32px, 3vw, 42px);
-  height: clamp(32px, 3vw, 42px);
-  border-radius: 50%;
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.15s;
-}
+.hero-kicker { color: var(--gold); font-size: clamp(0.7rem, 1vw, 0.9rem); font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: clamp(16px, 2.5vh, 32px); }
+.hero-title { font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif; font-size: clamp(3.8rem, 8.5vw, 9rem); line-height: 0.9; color: var(--white); text-transform: uppercase; letter-spacing: 0.015em; max-width: 85vw; margin-bottom: clamp(20px, 3vh, 40px); }
+.hero-sub { font-size: clamp(1rem, 1.8vw, 1.6rem); color: #c8dff5; line-height: 1.45; max-width: 55vw; margin-bottom: clamp(24px, 4vh, 48px); }
+.hero-callout { border-left: 6px solid var(--gold); padding: clamp(12px, 1.5vh, 18px) clamp(16px, 2vw, 24px); background: rgba(255,255,255,0.08); max-width: 60vw; font-size: clamp(0.9rem, 1.3vw, 1.1rem); color: #deeeff; line-height: 1.5; }
+.hero-bg-mark { position: absolute; right: clamp(32px, 5vw, 80px); top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: clamp(12rem, 22vw, 24rem); color: rgba(255,255,255,0.04); letter-spacing: -0.05em; user-select: none; line-height: 1; }
+.section-slide { background: linear-gradient(135deg, var(--night) 0%, #1e3a5a 100%); align-items: center; justify-content: center; text-align: center; padding: clamp(32px, 5vw, 72px); }
+.section-slide .section-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 10vw, 10rem); color: rgba(72,127,192,0.2); line-height: 1; margin-bottom: 0; }
+.section-slide .section-label { font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: clamp(10px, 1.5vh, 16px); }
+.section-slide h2 { font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif; font-size: clamp(3rem, 6.5vw, 7rem); color: var(--white); text-transform: uppercase; line-height: 0.92; max-width: 80vw; margin-bottom: clamp(16px, 2.5vh, 28px); }
+.section-slide .section-sub { font-size: clamp(1rem, 1.5vw, 1.3rem); color: #9ab8d8; max-width: 55vw; line-height: 1.5; }
+.content-slide { padding: clamp(28px, 4vh, 52px) clamp(36px, 5vw, 80px) clamp(36px, 5vh, 64px); }
+.slide-header { margin-bottom: clamp(16px, 2.5vh, 30px); }
+.slide-title { font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif; font-size: clamp(2.4rem, 4.5vw, 4.8rem); color: var(--dark); text-transform: uppercase; line-height: 0.92; letter-spacing: 0.01em; }
+.gold-rule { height: 4px; width: clamp(40px, 5vw, 60px); background: var(--gold); border-radius: 2px; margin-top: 10px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 48px); flex: 1; align-items: start; min-height: 0; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(16px, 2vw, 28px); flex: 1; align-items: start; min-height: 0; }
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 14px); }
+.bullet-list li { display: flex; align-items: flex-start; gap: 12px; font-size: clamp(0.9rem, 1.4vw, 1.25rem); line-height: 1.45; color: var(--dark); }
+.bullet-list li::before { content: ''; display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 0.45em; }
+.callout { border-left: 6px solid var(--gold); background: var(--night); color: var(--white); padding: clamp(14px, 2vh, 22px) clamp(16px, 2vw, 24px); border-radius: 0 8px 8px 0; font-size: clamp(0.9rem, 1.3vw, 1.15rem); line-height: 1.5; margin-top: clamp(12px, 1.8vh, 20px); }
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2vw, 24px); flex: 1; align-items: stretch; }
+.stat-box { border: 2px solid var(--soft-grey); border-radius: 12px; padding: clamp(18px, 2.5vh, 32px) clamp(14px, 2vw, 20px); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 7vw, 7.5rem); color: var(--azure); line-height: 1; }
+.stat-label { font-size: clamp(0.8rem, 1.1vw, 1rem); font-weight: 700; color: var(--dark); text-transform: uppercase; letter-spacing: 0.06em; text-align: center; }
+.timeline { display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 14px); }
+.timeline-year { display: flex; align-items: center; gap: 14px; font-size: clamp(1rem, 1.5vw, 1.3rem); font-weight: 700; color: var(--dark); }
+.timeline-check { width: clamp(24px, 2.5vw, 32px); height: clamp(24px, 2.5vw, 32px); border-radius: 50%; background: var(--azure); color: white; display: flex; align-items: center; justify-content: center; font-size: clamp(0.75rem, 1vw, 1rem); font-weight: 800; flex-shrink: 0; }
+.timeline-check.future { background: var(--gold); color: var(--dark); }
+.timeline-gap { height: 1px; background: var(--soft-grey); width: 100%; margin: clamp(4px, 0.8vh, 8px) 0; }
+.timeline-future-label { font-size: clamp(0.7rem, 0.9vw, 0.85rem); font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--darkgold); margin-bottom: 4px; }
+.card { border: 1.5px solid var(--soft-grey); border-radius: 10px; padding: clamp(14px, 2vh, 22px) clamp(14px, 1.8vw, 20px); background: var(--bg); }
+.card-title { font-size: clamp(0.75rem, 1vw, 0.9rem); font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--azure); margin-bottom: 10px; }
+.gold-banner { background: var(--gold); color: var(--dark); padding: clamp(14px, 2vh, 20px) clamp(18px, 2.5vw, 28px); border-radius: 8px; font-size: clamp(0.9rem, 1.3vw, 1.15rem); font-weight: 700; line-height: 1.4; margin-top: clamp(12px, 1.8vh, 20px); }
+.survey-img-slide { padding: clamp(24px, 3.5vh, 44px) clamp(36px, 5vw, 80px) clamp(36px, 5vh, 60px); }
+.survey-img-container { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; margin-top: clamp(10px, 1.5vh, 18px); }
+.survey-img-container img { max-height: min(58vh, 480px); max-width: 100%; object-fit: contain; border-radius: 8px; }
+.takeaway-strip { margin-top: clamp(10px, 1.5vh, 16px); padding: clamp(10px, 1.4vh, 16px) clamp(14px, 2vw, 20px); background: var(--night); color: var(--white); border-left: 5px solid var(--gold); border-radius: 0 6px 6px 0; font-size: clamp(0.8rem, 1.1vw, 1rem); line-height: 1.45; }
+.col-head { font-size: clamp(0.7rem, 0.95vw, 0.88rem); font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azure); margin-bottom: clamp(10px, 1.4vh, 16px); }
+.nav { position: fixed; bottom: clamp(16px, 2.5vh, 28px); right: clamp(20px, 2.5vw, 36px); display: flex; align-items: center; gap: 10px; z-index: 50; }
+.nav button { background: rgba(30,58,90,0.85); border: 1.5px solid rgba(72,127,192,0.4); color: var(--white); width: clamp(32px, 3vw, 42px); height: clamp(32px, 3vw, 42px); border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
 .nav button:hover { background: var(--azure); }
-.nav-counter {
-  font-size: clamp(0.65rem, 0.85vw, 0.8rem);
-  font-weight: 700;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0.08em;
-  background: rgba(20,40,60,0.7);
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-
-/* ── Progress bar ── */
-.progress {
-  position: fixed;
-  bottom: 0; left: 0;
-  height: clamp(3px, 0.5vh, 5px);
-  background: var(--azure);
-  transition: width 0.3s;
-  z-index: 100;
-}
-
-/* ── Slide-in animation ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.slide.active > * {
-  animation: fadeUp 0.4s ease both;
-}
+.nav-counter { font-size: clamp(0.65rem, 0.85vw, 0.8rem); font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; background: rgba(20,40,60,0.7); padding: 4px 10px; border-radius: 20px; }
+.progress { position: fixed; bottom: 0; left: 0; height: clamp(3px, 0.5vh, 5px); background: var(--azure); transition: width 0.3s; z-index: 100; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.slide.active > * { animation: fadeUp 0.4s ease both; }
 .slide.active > *:nth-child(2) { animation-delay: 0.06s; }
 .slide.active > *:nth-child(3) { animation-delay: 0.12s; }
 .slide.active > *:nth-child(4) { animation-delay: 0.18s; }
 .slide.active > *:nth-child(5) { animation-delay: 0.24s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .slide.active > * { animation: none; }
-}
+@media (prefers-reduced-motion: reduce) { .slide.active > * { animation: none; } }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════
-     SLIDE 1 ,  HERO / TITLE
-═══════════════════════════════════════════ -->
+<!-- SLIDE 1: HERO -->
 <section class="slide hero-slide active">
   <div class="hero-kicker">New Staff Training &nbsp;·&nbsp; Alpha Tau Omega</div>
   <div class="hero-title">How ATO Uses<br>Data</div>
@@ -465,18 +90,13 @@ html, body {
   <div class="hero-bg-mark">ATO</div>
 </section>
 
-
-<!-- ═══════════════════════════════════════════
-     SLIDE 2 ,  WHY DATA MATTERS
-═══════════════════════════════════════════ -->
+<!-- SLIDE 2: ORIENTATION -->
 <section class="slide content-slide" id="slide-orientation">
   <div class="slide-header">
     <div class="eyebrow on-light">New Staff Training &nbsp;&middot;&nbsp; Alpha Tau Omega</div>
     <div class="slide-title">What This Session Is About</div>
     <div class="gold-rule"></div>
   </div>
-
-  <!-- TOP: horizontal arc, arrows cross box boundaries seamlessly -->
   <div style="flex:none;display:flex;align-items:stretch;gap:0;border-radius:6px;overflow:hidden;margin-bottom:clamp(16px,2.4vh,24px);">
 <div style="flex:1;padding:clamp(14px,1.8vh,20px) clamp(14px,1.6vw,18px);background:#4a5568;display:flex;flex-direction:column;gap:6px;">
       <div style="font-size:clamp(0.9rem,1.15vw,1.05rem);font-weight:800;color:rgba(255,255,255,0.85);letter-spacing:0.06em;text-transform:uppercase;">Common &ldquo;Assumptions&rdquo;</div>
@@ -504,13 +124,8 @@ html, body {
       <div style="font-size:clamp(0.84rem,1.06vw,0.98rem);color:#fff;line-height:1.55;">Through summer training you will retain what you know, learn a lot new, and possibly unlearn a few things.</div>
     </div>
   </div>
-
-    <!-- Label with space -->
   <div style="text-align:center;font-size:clamp(0.82rem,1.05vw,0.96rem);font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#487FC0;flex:none;margin-bottom:clamp(10px,1.5vh,16px);">Today&rsquo;s Three Segments</div>
-
-  <!-- BOTTOM: 3 segment rows centered at ~33% width each -->
   <div style="flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(6px,1vh,12px);align-items:center;">
-
     <div style="width:100%;max-width:72%;display:flex;align-items:center;gap:clamp(12px,1.8vw,20px);padding:clamp(10px,1.4vh,16px) clamp(16px,2.2vw,24px);background:#f8fafd;border:1.5px solid #dde4ef;border-left:6px solid #487FC0;border-radius:0 8px 8px 0;">
       <div style="font-size:clamp(2.6rem,4.2vw,4rem);font-weight:900;color:#487FC0;line-height:1;flex-shrink:0;font-family:'Arial Black',sans-serif;">01</div>
       <div style="flex:1;min-width:0;">
@@ -524,7 +139,6 @@ html, body {
         </div>
       </div>
     </div>
-
     <div style="width:100%;max-width:72%;display:flex;align-items:center;gap:clamp(12px,1.8vw,20px);padding:clamp(10px,1.4vh,16px) clamp(16px,2.2vw,24px);background:#f8fafd;border:1.5px solid #dde4ef;border-left:6px solid #2F6BA4;border-radius:0 8px 8px 0;">
       <div style="font-size:clamp(2.6rem,4.2vw,4rem);font-weight:900;color:#2F6BA4;line-height:1;flex-shrink:0;font-family:'Arial Black',sans-serif;">02</div>
       <div style="flex:1;min-width:0;">
@@ -537,7 +151,6 @@ html, body {
         </div>
       </div>
     </div>
-
     <div style="width:100%;max-width:72%;display:flex;align-items:center;gap:clamp(12px,1.8vw,20px);padding:clamp(10px,1.4vh,16px) clamp(16px,2.2vw,24px);background:#f8fafd;border:1.5px solid #dde4ef;border-left:6px solid #1a2a3a;border-radius:0 8px 8px 0;">
       <div style="font-size:clamp(2.6rem,4.2vw,4rem);font-weight:900;color:#1a2a3a;line-height:1;flex-shrink:0;font-family:'Arial Black',sans-serif;">03</div>
       <div style="flex:1;min-width:0;">
@@ -548,102 +161,71 @@ html, body {
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════════
-     SLIDE 3 ,  THE ENVIRONMENT
-═══════════════════════════════════════════ -->
+<!-- SLIDE 3: SEG1 INTRO -->
 <section class="slide section-slide" id="slide-seg1-intro">
   <div class="section-label">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
   <h2>What We Know<br>About Our<br>Members</h2>
   <div class="section-sub">ATO has maintained member records since 1865. That record tells us not just who joined, but when they left, why they left, and how those patterns have changed across every cohort since tracking began. No single chapter can hold this view, the National Fraternity can.</div>
 </section>
+
 <section class="slide content-slide" id="slide-membership-story">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
     <div class="slide-title">What&rsquo;s Going On With Greek Life?</div>
     <div class="gold-rule"></div>
   </div>
-
   <div style="padding:8px 14px;background:#fff8e6;border-left:4px solid #FFAE3B;border-radius:0 4px 4px 0;font-size:clamp(0.72rem,0.9vw,0.84rem);color:#555;line-height:1.45;flex:none;margin-bottom:8px;"><strong style="color:#2D2C2C;">The claim:</strong> Greek organizations are shrinking and will continue to decline. <strong style="color:#2D2C2C;">The data:</strong> Both ATO and NPC membership have rebounded since 2020-21. The challenges are real but the trajectory is not terminal.</div>
   <div style="display:flex;gap:20px;font-size:clamp(0.78rem,1vw,0.92rem);font-weight:700;font-family:Raleway,sans-serif;margin-bottom:8px;flex:none;">
     <span style="display:flex;align-items:center;gap:6px;"><span style="width:22px;height:3px;background:#487FC0;display:inline-block;border-radius:2px;"></span>ATO</span>
     <span style="display:flex;align-items:center;gap:6px;"><span style="width:22px;height:3px;background:#ed2384;display:inline-block;border-radius:2px;"></span>NPC</span>
     <span style="font-size:clamp(0.68rem,0.82vw,0.76rem);color:#aaa;font-weight:500;margin-left:6px;">NPC on right axis for membership &amp; chapter count</span>
   </div>
-
   <div style="flex:1;min-height:0;display:flex;gap:clamp(10px,1.5vw,18px);">
     <div style="flex:1;display:flex;flex-direction:column;gap:0;background:#eef4fb;border-radius:8px;padding:10px;">
       <div style="font-size:clamp(0.78rem,1vw,0.92rem);font-weight:800;color:#2F6BA4;margin-bottom:6px;text-align:center;letter-spacing:0.04em;">Undergraduate Membership</div>
-      <div style="position:relative;flex:1;min-height:0;">
-        <canvas id="chartMembership" role="img" style="width:100%;height:100%;"></canvas>
-      </div>
+      <div style="position:relative;flex:1;min-height:0;"><canvas id="chartMembership" role="img" style="width:100%;height:100%;"></canvas></div>
     </div>
     <div style="flex:1;display:flex;flex-direction:column;gap:0;background:#eef4fb;border-radius:8px;padding:10px;">
       <div style="font-size:clamp(0.78rem,1vw,0.92rem);font-weight:800;color:#2F6BA4;margin-bottom:6px;text-align:center;letter-spacing:0.04em;">Chapter Count</div>
-      <div style="position:relative;flex:1;min-height:0;">
-        <canvas id="chartChapters" role="img" style="width:100%;height:100%;"></canvas>
-      </div>
+      <div style="position:relative;flex:1;min-height:0;"><canvas id="chartChapters" role="img" style="width:100%;height:100%;"></canvas></div>
     </div>
     <div style="flex:1;display:flex;flex-direction:column;gap:0;background:#eef4fb;border-radius:8px;padding:10px;">
       <div style="font-size:clamp(0.78rem,1vw,0.92rem);font-weight:800;color:#2F6BA4;margin-bottom:6px;text-align:center;letter-spacing:0.04em;">Average Chapter Size</div>
-      <div style="position:relative;flex:1;min-height:0;">
-        <canvas id="chartAvgSize" role="img" style="width:100%;height:100%;"></canvas>
-      </div>
+      <div style="position:relative;flex:1;min-height:0;"><canvas id="chartAvgSize" role="img" style="width:100%;height:100%;"></canvas></div>
     </div>
   </div>
-
   <div style="padding:clamp(10px,1.4vh,16px) clamp(14px,1.8vw,20px);background:#1a2a3a;border-left:4px solid #FFAE3B;border-radius:0 6px 6px 0;font-size:clamp(0.76rem,0.96vw,0.9rem);color:#ddd;line-height:1.55;flex:none;margin-top:8px;">
     Since 2021-22, ATO membership and average chapter size have both recovered. Chapter count has continued to decline, from 143 to 125. The organization is serving more members per chapter than at any point since 2017-18, but through fewer chapters. <strong style="color:#fff;">Growth now depends almost entirely on what happens inside existing chapters.</strong>
   </div>
 </section>
+
 <section class="slide content-slide" id="cohort-outcomes">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
     <div class="slide-title">What&rsquo;s Going On With ATO Members?</div>
     <div class="gold-rule"></div>
   </div>
-
   <div style="flex:1;min-height:0;display:flex;gap:clamp(12px,1.8vw,20px);">
-
-    <!-- LEFT: explanation with color coding -->
     <div style="flex:none;width:clamp(180px,22vw,240px);display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,1.4vh,16px);">
       <div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#4a5a72;line-height:1.6;">This chart shows <strong>100% of the men who joined in each academic year</strong>. At the end of their ATO membership, they either became:</div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div style="width:16px;height:16px;border-radius:3px;background:#487FC0;flex-shrink:0;"></div>
-        <div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#0d2137;font-weight:600;line-height:1.3;">an <strong>Alumnus</strong></div>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div style="width:16px;height:16px;border-radius:3px;background:#b0ada6;flex-shrink:0;"></div>
-        <div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#0d2137;font-weight:600;line-height:1.3;">a <strong>Depledge</strong> (left before initiation)</div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:8px;">
-        <div style="width:16px;height:16px;border-radius:3px;flex-shrink:0;overflow:hidden;position:relative;margin-top:2px;">
-          <svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#E07B30"/><line x1="0" y1="4" x2="16" y2="4" stroke="#b54a10" stroke-width="2.5"/><line x1="0" y1="10" x2="16" y2="10" stroke="#b54a10" stroke-width="2.5"/></svg>
-        </div>
-        <div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#0d2137;font-weight:600;line-height:1.3;">a <strong>Former Member</strong> (resigned or expelled after initiation)</div>
-      </div>
+      <div style="display:flex;align-items:center;gap:8px;"><div style="width:16px;height:16px;border-radius:3px;background:#487FC0;flex-shrink:0;"></div><div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#0d2137;font-weight:600;line-height:1.3;">an <strong>Alumnus</strong></div></div>
+      <div style="display:flex;align-items:center;gap:8px;"><div style="width:16px;height:16px;border-radius:3px;background:#b0ada6;flex-shrink:0;"></div><div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#0d2137;font-weight:600;line-height:1.3;">a <strong>Depledge</strong> (left before initiation)</div></div>
+      <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:16px;height:16px;border-radius:3px;flex-shrink:0;overflow:hidden;position:relative;margin-top:2px;"><svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#E07B30"/><line x1="0" y1="4" x2="16" y2="4" stroke="#b54a10" stroke-width="2.5"/><line x1="0" y1="10" x2="16" y2="10" stroke="#b54a10" stroke-width="2.5"/></svg></div><div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#0d2137;font-weight:600;line-height:1.3;">a <strong>Former Member</strong> (resigned or expelled after initiation)</div></div>
       <div style="padding:8px 10px;background:#f8fafd;border-left:3px solid #FFAE3B;border-radius:0 4px 4px 0;font-size:clamp(0.68rem,0.84vw,0.78rem);color:#4a5a72;line-height:1.5;">Cohorts from 2022-23 onward are still resolving. The faint blue segment shows men still enrolled as undergraduates who have not yet reached their final status.</div>
     </div>
-
-    <!-- RIGHT: chart -->
-    <div style="flex:1;position:relative;min-height:0;">
-      <canvas id="cCohortOutcomes" style="width:100%;height:100%;"></canvas>
-    </div>
-
+    <div style="flex:1;position:relative;min-height:0;"><canvas id="cCohortOutcomes" style="width:100%;height:100%;"></canvas></div>
   </div>
 </section>
+
 <section class="slide content-slide" id="slide-lifecycle-outcomes">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
     <div class="slide-title">The Member Lifecycle &amp; What We Know</div>
     <div class="gold-rule"></div>
   </div>
-
-  <!-- TOP: lifecycle flow bar (bigger fonts) -->
   <div style="flex:none;display:flex;align-items:stretch;gap:0;border-radius:8px;overflow:hidden;margin-bottom:clamp(4px,0.7vh,8px);">
     <div style="background:#7aabdb;color:white;padding:clamp(10px,1.5vh,18px) clamp(8px,1.1vw,12px);font-size:clamp(0.88rem,1.2vw,1.1rem);font-weight:700;text-align:center;flex:1;display:flex;align-items:center;justify-content:center;">Not Yet<br>a Member</div>
     <div style="background:#487FC0;color:white;padding:clamp(10px,1.5vh,18px) clamp(8px,1.1vw,12px);font-size:clamp(0.88rem,1.2vw,1.1rem);font-weight:700;text-align:center;flex:1;border-left:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;">Pledge</div>
@@ -651,39 +233,19 @@ html, body {
     <div style="background:#1a2a3a;color:white;padding:clamp(10px,1.5vh,18px) clamp(8px,1.1vw,12px);font-size:clamp(0.88rem,1.2vw,1.1rem);font-weight:700;text-align:center;flex:1;border-left:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;">Alumnus</div>
     <div style="background:#D08735;color:white;padding:clamp(10px,1.5vh,18px) clamp(8px,1.1vw,12px);font-size:clamp(0.88rem,1.2vw,1.1rem);font-weight:700;text-align:center;flex:1;border-left:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;">Volunteer<br>&amp; Donor</div>
   </div>
-
-  <!-- Explanation boxes under each stage -->
   <div style="flex:none;display:flex;gap:clamp(5px,0.7vw,8px);margin-bottom:clamp(8px,1.2vh,14px);">
-    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #7aabdb;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;">
-      <div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;">Every man ATO recruits. Recruitment quality shapes every outcome downstream.</div>
-    </div>
-    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #487FC0;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;">
-      <div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;"><strong>~1 in 5 leave here.</strong> Depledge rates have held at 19&ndash;24% for over a decade.</div>
-    </div>
-    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #2F6BA4;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;">
-      <div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;"><strong>Additional attrition here.</strong> Post-initiation departure rose from 6% to 22% over a decade before stabilizing.</div>
-    </div>
-    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #1a2a3a;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;">
-      <div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;"><strong>~68% reach here.</strong> Alumni are the organization&rsquo;s long-term constituency.</div>
-    </div>
-    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #D08735;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;">
-      <div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;">Membership quality predicts alumni engagement. It compounds over time.</div>
-    </div>
+    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #7aabdb;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;"><div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;">Every man ATO recruits. Recruitment quality shapes every outcome downstream.</div></div>
+    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #487FC0;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;"><div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;"><strong>~1 in 5 leave here.</strong> Depledge rates have held at 19&ndash;24% for over a decade.</div></div>
+    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #2F6BA4;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;"><div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;"><strong>Additional attrition here.</strong> Post-initiation departure rose from 6% to 22% over a decade before stabilizing.</div></div>
+    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #1a2a3a;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;"><div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;"><strong>~68% reach here.</strong> Alumni are the organization&rsquo;s long-term constituency.</div></div>
+    <div style="flex:1;border:1.5px solid #dde4ef;border-top:3px solid #D08735;border-radius:0 0 5px 5px;padding:clamp(6px,0.9vh,10px) clamp(6px,0.9vw,10px);background:#f8fafd;"><div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#4a5a72;line-height:1.45;">Membership quality predicts alumni engagement. It compounds over time.</div></div>
   </div>
-
-  <!-- BOTTOM 66%: two charts side by side -->
   <div style="height:clamp(8px,1.2vh,14px);flex:none;"></div>
   <div style="flex:1.8;min-height:0;display:flex;gap:clamp(10px,1.5vw,18px);">
-
-    <!-- Chart 1: alumni conversion rate -->
     <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:4px;">
       <div style="font-size:clamp(0.9rem,1.15vw,1.05rem);font-weight:800;color:#1a2a3a;flex:none;letter-spacing:-0.01em;">How many men who pledge ATO become an Alumnus?</div>
-      <div style="position:relative;flex:1;min-height:0;">
-        <canvas id="cAlumRate" style="width:100%;height:100%;"></canvas>
-      </div>
+      <div style="position:relative;flex:1;min-height:0;"><canvas id="cAlumRate" style="width:100%;height:100%;"></canvas></div>
     </div>
-
-    <!-- Chart 2: departure composition -->
     <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:baseline;gap:10px;flex:none;flex-wrap:wrap;">
         <div style="font-size:clamp(0.9rem,1.15vw,1.05rem);font-weight:800;color:#1a2a3a;letter-spacing:-0.01em;">How the men who left departed</div>
@@ -693,23 +255,18 @@ html, body {
           <span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#c0291a;flex-shrink:0;"></span>Expelled</span>
         </div>
       </div>
-      <div style="position:relative;flex:1;min-height:0;">
-        <canvas id="cWhyLeft" style="width:100%;height:100%;"></canvas>
-      </div>
+      <div style="position:relative;flex:1;min-height:0;"><canvas id="cWhyLeft" style="width:100%;height:100%;"></canvas></div>
     </div>
-
   </div>
 </section>
+
 <section class="slide content-slide" id="depledge-combined">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
     <div class="slide-title">Why Men Leave Before Initiation</div>
     <div class="gold-rule"></div>
   </div>
-
   <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:0;">
-
-    <!-- TOP 50%: 3 reasons with padding above/below -->
     <div style="flex:1;display:flex;align-items:center;padding:clamp(4px,0.6vh,8px) 0;">
       <div style="width:100%;display:flex;gap:clamp(10px,1.5vw,18px);">
         <div style="flex:1;border:2.5px solid #E07B30;border-radius:8px;padding:clamp(12px,1.8vh,22px) clamp(14px,1.8vw,20px);background:#fff;display:flex;flex-direction:column;gap:7px;">
@@ -738,56 +295,51 @@ html, body {
         </div>
       </div>
     </div>
-
-    <!-- BOTTOM 50%: 5 factors -->
     <div style="flex:1;display:flex;flex-direction:column;gap:5px;min-height:0;">
       <div style="font-size:clamp(0.9rem,1.15vw,1.05rem);font-weight:800;color:#1a2a3a;letter-spacing:-0.01em;flex:none;">Five Underlying Factors</div>
       <div style="flex:1;min-height:0;display:flex;gap:clamp(6px,0.9vw,10px);">
         <div style="flex:1;border:1.5px solid #dde4ef;border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(9px,1.2vw,13px);background:#f8fafd;display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#487FC0;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F1 · 28.3%</div>
-          <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Organizational Fit & Culture</div>
+          <div style="background:#487FC0;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F1 &middot; 28.3%</div>
+          <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Organizational Fit &amp; Culture</div>
           <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fff;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Experience gap</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fff;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Belonging</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fff;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Perceived worth</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fff;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Conflict</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fff;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Values</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fff;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Org change</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fff;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Rules</span></div>
           <div style="font-size:clamp(0.8rem,1vw,0.92rem);color:#4a5a72;line-height:1.5;flex:1;">The dominant factor, more variance than the other four combined. The chapter was not what the man signed up for. The only factor with a statistically significant downward trend over time. Chapters offering a genuine solution have F1 scores 62% lower than those that do not.</div>
         </div>
         <div style="flex:1;border:1.5px solid #dde4ef;border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(9px,1.2vw,13px);background:#f8fafd;display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#2a7a4a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F2 · 8.8%</div>
-          <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Academic & Time Demands</div>
+          <div style="background:#2a7a4a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F2 &middot; 8.8%</div>
+          <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Academic &amp; Time Demands</div>
           <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef8f3;color:#2a7a4a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #b8dfc8;">Time commitment</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef8f3;color:#2a7a4a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #b8dfc8;">Academics</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef8f3;color:#2a7a4a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #b8dfc8;">Own-pocket finances</span></div>
           <div style="font-size:clamp(0.8rem,1vw,0.92rem);color:#4a5a72;line-height:1.5;flex:1;">External pressures competing for time and money. Chapters intervene most often here because it is concrete and external.</div>
         </div>
         <div style="flex:1;border:1.5px solid #dde4ef;border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(9px,1.2vw,13px);background:#f8fafd;display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#b03020;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F3 · 7.7%</div>
+          <div style="background:#b03020;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F3 &middot; 7.7%</div>
           <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Toxic Environment</div>
           <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf0ee;color:#b03020;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #f0c0b8;">Hazing</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf0ee;color:#b03020;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #f0c0b8;">Bullying</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf0ee;color:#b03020;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #f0c0b8;">Alcohol/substance</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf0ee;color:#b03020;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #f0c0b8;">Mental health</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf0ee;color:#b03020;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #f0c0b8;">Grades suffering</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf0ee;color:#b03020;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #f0c0b8;">Mentorship</span></div>
           <div style="font-size:clamp(0.8rem,1vw,0.92rem);color:#4a5a72;line-height:1.5;flex:1;">Safety and climate items. Academic decline here is a downstream effect of a harmful environment, not a separate problem.</div>
         </div>
         <div style="flex:1;border:1.5px solid #dde4ef;border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(9px,1.2vw,13px);background:#f8fafd;display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#7a5a2a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F4 · 6.3%</div>
+          <div style="background:#7a5a2a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F4 &middot; 6.3%</div>
           <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Financial Burden</div>
           <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf8ee;color:#7a5a2a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #dfc898;">Parent-dependent</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf8ee;color:#7a5a2a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #dfc898;">Accumulated bill</span></div>
           <div style="font-size:clamp(0.8rem,1vw,0.92rem);color:#4a5a72;line-height:1.5;flex:1;">A household financial failure, not a personal budget choice. Distinct from the self-funded pressure in F2.</div>
         </div>
         <div style="flex:1;border:1.5px solid #dde4ef;border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(9px,1.2vw,13px);background:#f8fafd;display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#5a2a7a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F5 · 5.1%</div>
+          <div style="background:#5a2a7a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F5 &middot; 5.1%</div>
           <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Logistical Mismatch</div>
           <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#f5eef8;color:#5a2a7a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #d0b8e0;">Housing</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#f5eef8;color:#5a2a7a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #d0b8e0;">Religious</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#f5eef8;color:#5a2a7a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #d0b8e0;">Found what I needed early</span></div>
           <div style="font-size:clamp(0.8rem,1vw,0.92rem);color:#4a5a72;line-height:1.5;flex:1;">Weak factor with low reliability. Circumstantial barriers tied to specific requirements. Treat each item independently.</div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
+
 <section class="slide content-slide" id="slide-resignation-insights">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
     <div class="slide-title">Why Men Leave After Initiation</div>
     <div class="gold-rule"></div>
   </div>
-
   <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:0;">
-
-    <!-- TOP 50%: 3 reasons with padding above/below -->
     <div style="flex:1;display:flex;align-items:center;padding:clamp(4px,0.6vh,8px) 0;">
       <div style="width:100%;display:flex;gap:clamp(10px,1.5vw,18px);">
         <div style="flex:1;border:2.5px solid #888;border-radius:8px;padding:clamp(12px,1.8vh,22px) clamp(14px,1.8vw,20px);background:#fff;display:flex;flex-direction:column;gap:7px;">
@@ -816,40 +368,38 @@ html, body {
         </div>
       </div>
     </div>
-
-    <!-- BOTTOM 50%: 4 factors equal 25% each -->
     <div style="flex:1;display:flex;flex-direction:column;gap:5px;min-height:0;">
       <div style="font-size:clamp(0.9rem,1.15vw,1.05rem);font-weight:800;color:#1a2a3a;letter-spacing:-0.01em;flex:none;">Four Underlying Factors <span style="font-size:clamp(0.72rem,0.9vw,0.82rem);font-weight:500;color:#7a8aa0;margin-left:8px;">Resignation has two distinct failure modes: Year 1 leavers (22% regret) vs. Year 2 leavers (5% regret).</span></div>
       <div style="flex:1;min-height:0;display:flex;gap:clamp(6px,0.9vw,10px);">
         <div style="flex:1;border:1.5px solid #dde4ef;border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(9px,1.2vw,13px);background:#f8fafd;display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#487FC0;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F1 · 19.7%</div>
+          <div style="background:#487FC0;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F1 &middot; 19.7%</div>
           <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Culture and Fit</div>
           <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef4fb;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Belonging</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef4fb;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Values</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef4fb;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Experience gap</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef4fb;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Worth</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef4fb;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Alcohol/partying</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef4fb;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Bullying</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef4fb;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Hazing</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef4fb;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Mental health</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef4fb;color:#487FC0;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #c8daf0;">Conflict</span></div>
           <div style="font-size:clamp(0.8rem,1vw,0.92rem);color:#4a5a72;line-height:1.5;flex:1;">The dominant factor. Unlike depledge data where toxic behavior formed its own cluster, initiated resigners combine hazing, bullying, and mental health with belonging and values into one unified experience. Safety failures and social failures are felt as the same thing after initiation.</div>
         </div>
         <div style="flex:1;border:1.5px solid #dde4ef;border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(9px,1.2vw,13px);background:#f8fafd;display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#2a7a4a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F2 · 9.6%</div>
+          <div style="background:#2a7a4a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F2 &middot; 9.6%</div>
           <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Academic and Departure</div>
           <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef8f3;color:#2a7a4a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #b8dfc8;">Academics (grades)</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef8f3;color:#2a7a4a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #b8dfc8;">Academics (major/time)</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#eef8f3;color:#2a7a4a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #b8dfc8;">Left school</span></div>
           <div style="font-size:clamp(0.8rem,1vw,0.92rem);color:#4a5a72;line-height:1.5;flex:1;">External academic forces competing with membership. Slightly elevated in Year 1 when members are establishing their academic footing alongside new chapter obligations.</div>
         </div>
         <div style="flex:1;border:1.5px solid #dde4ef;border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(9px,1.2vw,13px);background:#f8fafd;display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#7a5a2a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F3 · 7.7%</div>
+          <div style="background:#7a5a2a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F3 &middot; 7.7%</div>
           <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Dependent Financial</div>
           <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf8ee;color:#7a5a2a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #dfc898;">Financial (parents)</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#fdf8ee;color:#7a5a2a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #dfc898;">Financial (debt)</span></div>
           <div style="font-size:clamp(0.8rem,1vw,0.92rem);color:#4a5a72;line-height:1.5;flex:1;">Parent-funded dues and accumulated debt burdens form a clean cluster. A household-level failure rather than a personal budget decision, harder for a chapter to address with standard retention tools.</div>
         </div>
         <div style="flex:1;border:1.5px solid #dde4ef;border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(9px,1.2vw,13px);background:#f8fafd;display:flex;flex-direction:column;gap:5px;">
-          <div style="background:#5a2a7a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F4 · 6.3%</div>
+          <div style="background:#5a2a7a;color:#fff;font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;display:inline-flex;flex-shrink:0;">F4 &middot; 6.3%</div>
           <div style="font-size:clamp(0.88rem,1.1vw,1rem);font-weight:700;color:#0d2137;line-height:1.2;">Organizational Dysfunction</div>
           <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#f5eef8;color:#5a2a7a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #d0b8e0;">Coach program</span><span style="font-size:clamp(0.6rem,0.72vw,0.66rem);background:#f5eef8;color:#5a2a7a;border-radius:3px;padding:2px 6px;font-weight:600;border:1px solid #d0b8e0;">Change in org</span></div>
           <div style="font-size:clamp(0.8rem,1vw,0.92rem);color:#4a5a72;line-height:1.5;flex:1;">Weak factor with low reliability (alpha = 0.392). Coach program dissatisfaction and significant organizational change cluster weakly. Treat each item independently rather than as a unified construct.</div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
+
 <section class="slide content-slide" id="cs-climate-combined1">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
@@ -883,10 +433,6 @@ html, body {
   <div class="takeaway-strip" style="flex:none;margin-top:8px;">ATO members support the single-gender model and that support is growing. They see risky behavior as something the whole chapter owns, not just the person doing it. And they increasingly feel free to speak openly on campus.</div>
 </section>
 
-
-
-
-
 <section class="slide content-slide" id="cs-climate-combined2">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
@@ -919,46 +465,24 @@ html, body {
   <div class="takeaway-strip" style="flex:none;margin-top:8px;">Members feel more free to speak inside their chapter than anywhere else on campus. Men who pledged during the COVID period experienced something genuinely different, and the data shows it. What a member goes through during their pledge class shapes how they experience the organization long after.</div>
 </section>
 
-
-
-
-
-
-
-
-
 <section class="slide content-slide" id="cs-perceptions-combined">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
     <div class="slide-title">How Do Our Members Believe Others Perceive Their Chapter?</div>
     <div class="gold-rule"></div>
   </div>
-
   <div style="display:flex;gap:14px;font-size:clamp(0.62rem,0.8vw,0.74rem);font-weight:700;font-family:Raleway,sans-serif;margin-bottom:6px;flex:none;">
     <span style="display:flex;align-items:center;gap:5px;"><span style="width:11px;height:11px;border-radius:2px;background:#487FC0;flex-shrink:0;"></span>Positive</span>
     <span style="display:flex;align-items:center;gap:5px;"><span style="width:11px;height:11px;border-radius:2px;background:#B0B8C4;flex-shrink:0;"></span>Neutral</span>
     <span style="display:flex;align-items:center;gap:5px;"><span style="width:11px;height:11px;border-radius:2px;background:#E07B30;flex-shrink:0;"></span>Negative</span>
     <span style="display:flex;align-items:center;gap:5px;margin-left:10px;"><span style="width:11px;height:11px;border-radius:2px;background:#4BA3A3;flex-shrink:0;"></span>No awareness of how this group views them</span>
   </div>
-
-  <!-- Outer flex row: left 75% | right 25%, both stretch to same height -->
   <div style="flex:1;min-height:0;display:flex;gap:0;">
-    <div style="flex:3;position:relative;min-height:0;">
-      <canvas id="cPerceptions" style="width:100%;height:100%;display:block;"></canvas>
-    </div>
-    <div style="flex:1;position:relative;min-height:0;">
-      <canvas id="cUnknown" style="width:100%;height:100%;display:block;"></canvas>
-    </div>
+    <div style="flex:3;position:relative;min-height:0;"><canvas id="cPerceptions" style="width:100%;height:100%;display:block;"></canvas></div>
+    <div style="flex:1;position:relative;min-height:0;"><canvas id="cUnknown" style="width:100%;height:100%;display:block;"></canvas></div>
   </div>
-
-  <div class="takeaway-strip" style="flex:none;margin-top:8px;">
-    Our members believe that non-Greek men view their chapter negatively. That belief colors how they carry themselves on campus and how they interact with men outside the fraternity. The groups members know least are also the groups they trust least to see them favorably.
-  </div>
+  <div class="takeaway-strip" style="flex:none;margin-top:8px;">Our members believe that non-Greek men view their chapter negatively. That belief colors how they carry themselves on campus and how they interact with men outside the fraternity. The groups members know least are also the groups they trust least to see them favorably.</div>
 </section>
-
-
-
-
 
 <section class="slide content-slide" id="cs-sports-analysis">
   <div class="slide-header">
@@ -966,107 +490,55 @@ html, body {
     <div class="slide-title">Sports Betting: What the Data Shows</div>
     <div class="gold-rule"></div>
   </div>
-
   <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(8px,1.2vh,14px);">
-
-    <!-- TOP 20%: 3 boxes large fonts -->
     <div style="flex:1;display:flex;gap:clamp(8px,1.2vw,14px);">
       <div style="flex:1;border:1.5px solid #dde4ef;border-radius:8px;padding:clamp(8px,1.2vh,14px) clamp(12px,1.6vw,18px);background:#f8fafd;display:flex;flex-direction:column;justify-content:center;gap:4px;">
         <div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#666;font-weight:600;text-align:center;">I personally engage in sports betting</div>
-        <div style="display:flex;align-items:baseline;gap:10px;justify-content:center;">
-          <span style="font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:#B0B8C4;">23%</span>
-          <span style="font-size:1.2rem;color:#aaa;">&rarr;</span>
-          <span style="font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:#1a5c96;">28%</span>
-        </div>
-        <div style="display:flex;align-items:baseline;gap:10px;justify-content:center;">
-          <span style="font-size:clamp(0.6rem,0.74vw,0.68rem);color:#B0B8C4;font-weight:600;">2023-24</span>
-          <span style="font-size:0.7rem;color:#ddd;">&rarr;</span>
-          <span style="font-size:clamp(0.6rem,0.74vw,0.68rem);color:#1a5c96;font-weight:600;">2024-25</span>
-        </div>
+        <div style="display:flex;align-items:baseline;gap:10px;justify-content:center;"><span style="font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:#B0B8C4;">23%</span><span style="font-size:1.2rem;color:#aaa;">&rarr;</span><span style="font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:#1a5c96;">28%</span></div>
+        <div style="display:flex;align-items:baseline;gap:10px;justify-content:center;"><span style="font-size:clamp(0.6rem,0.74vw,0.68rem);color:#B0B8C4;font-weight:600;">2023-24</span><span style="font-size:0.7rem;color:#ddd;">&rarr;</span><span style="font-size:clamp(0.6rem,0.74vw,0.68rem);color:#1a5c96;font-weight:600;">2024-25</span></div>
       </div>
       <div style="flex:1;border:1.5px solid #dde4ef;border-radius:8px;padding:clamp(8px,1.2vh,14px) clamp(12px,1.6vw,18px);background:#f8fafd;display:flex;flex-direction:column;justify-content:center;gap:4px;">
         <div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#666;font-weight:600;text-align:center;">My closest brother engages in sports betting</div>
-        <div style="display:flex;align-items:baseline;gap:10px;justify-content:center;">
-          <span style="font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:#B0B8C4;">47%</span>
-          <span style="font-size:1.2rem;color:#aaa;">&rarr;</span>
-          <span style="font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:#1a5c96;">48%</span>
-        </div>
-        <div style="display:flex;align-items:baseline;gap:10px;justify-content:center;">
-          <span style="font-size:clamp(0.6rem,0.74vw,0.68rem);color:#B0B8C4;font-weight:600;">2023-24</span>
-          <span style="font-size:0.7rem;color:#ddd;">&rarr;</span>
-          <span style="font-size:clamp(0.6rem,0.74vw,0.68rem);color:#1a5c96;font-weight:600;">2024-25</span>
-        </div>
+        <div style="display:flex;align-items:baseline;gap:10px;justify-content:center;"><span style="font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:#B0B8C4;">47%</span><span style="font-size:1.2rem;color:#aaa;">&rarr;</span><span style="font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:#1a5c96;">48%</span></div>
+        <div style="display:flex;align-items:baseline;gap:10px;justify-content:center;"><span style="font-size:clamp(0.6rem,0.74vw,0.68rem);color:#B0B8C4;font-weight:600;">2023-24</span><span style="font-size:0.7rem;color:#ddd;">&rarr;</span><span style="font-size:clamp(0.6rem,0.74vw,0.68rem);color:#1a5c96;font-weight:600;">2024-25</span></div>
       </div>
       <div style="flex:1;border:1.5px solid #FFAE3B;border-radius:8px;padding:clamp(8px,1.2vh,14px) clamp(12px,1.6vw,18px);background:#fffbf2;display:flex;flex-direction:column;justify-content:center;gap:4px;">
         <div style="font-size:clamp(0.76rem,0.96vw,0.9rem);color:#a07010;font-weight:600;text-align:center;">Combined picture</div>
         <div style="font-size:clamp(1rem,1.4vw,1.2rem);font-weight:700;color:#2D2C2C;line-height:1.35;text-align:center;">A quarter to one half of survey respondents admit to sports betting.</div>
       </div>
     </div>
-
-    <!-- MIDDLE 40%: frequency bars, thicker, wider left margin -->
     <div style="flex:2;display:flex;flex-direction:column;justify-content:center;gap:8px;">
       <div style="font-size:clamp(0.76rem,0.96vw,0.9rem);font-weight:700;color:#555;">Of those who bet, how often?</div>
       <svg width="100%" viewBox="0 0 920 100" style="display:block;overflow:visible;">
-        <!-- 2024 row -->
         <text x="0" y="22" font-size="11" fill="#888" font-family="Raleway,sans-serif" font-weight="700">2023-24</text>
-        <rect x="64" y="4" width="158" height="32" rx="3" fill="#487FC0"/>
-        <text x="143" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">18%</text>
-        <rect x="222" y="4" width="211" height="32" rx="3" fill="#B0B8C4"/>
-        <text x="327" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="#555" font-family="Raleway,sans-serif">24%</text>
-        <rect x="433" y="4" width="334" height="32" rx="3" fill="#E07B30"/>
-        <text x="600" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">38%</text>
-        <rect x="767" y="4" width="152" height="32" rx="3" fill="#b54a10"/>
-        <text x="843" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">20%</text>
-        <!-- 2025 row -->
+        <rect x="64" y="4" width="158" height="32" rx="3" fill="#487FC0"/><text x="143" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">18%</text>
+        <rect x="222" y="4" width="211" height="32" rx="3" fill="#B0B8C4"/><text x="327" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="#555" font-family="Raleway,sans-serif">24%</text>
+        <rect x="433" y="4" width="334" height="32" rx="3" fill="#E07B30"/><text x="600" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">38%</text>
+        <rect x="767" y="4" width="152" height="32" rx="3" fill="#b54a10"/><text x="843" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">20%</text>
         <text x="0" y="62" font-size="11" fill="#888" font-family="Raleway,sans-serif" font-weight="700">2024-25</text>
-        <rect x="64" y="44" width="140" height="32" rx="3" fill="#487FC0"/>
-        <text x="134" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">16%</text>
-        <rect x="204" y="44" width="193" height="32" rx="3" fill="#B0B8C4"/>
-        <text x="300" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="#555" font-family="Raleway,sans-serif">22%</text>
-        <rect x="397" y="44" width="352" height="32" rx="3" fill="#E07B30"/>
-        <text x="573" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">40%</text>
-        <rect x="749" y="44" width="170" height="32" rx="3" fill="#b54a10"/>
-        <text x="834" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">22%</text>
-        <!-- Connector shading -->
+        <rect x="64" y="44" width="140" height="32" rx="3" fill="#487FC0"/><text x="134" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">16%</text>
+        <rect x="204" y="44" width="193" height="32" rx="3" fill="#B0B8C4"/><text x="300" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="#555" font-family="Raleway,sans-serif">22%</text>
+        <rect x="397" y="44" width="352" height="32" rx="3" fill="#E07B30"/><text x="573" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">40%</text>
+        <rect x="749" y="44" width="170" height="32" rx="3" fill="#b54a10"/><text x="834" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="Raleway,sans-serif">22%</text>
         <polygon points="433,36 767,36 749,44 397,44" fill="#E07B30" opacity="0.15"/>
         <polygon points="767,36 919,36 919,44 749,44" fill="#b54a10" opacity="0.15"/>
         <line x1="433" y1="36" x2="397" y2="44" stroke="#E07B30" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.85"/>
         <line x1="767" y1="36" x2="749" y2="44" stroke="#b54a10" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.85"/>
-        <line x1="919" y1="36" x2="919" y2="44" stroke="#b54a10" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
-        <!-- Legend -->
-        <rect x="64" y="84" width="12" height="10" rx="2" fill="#487FC0"/>
-        <text x="80" y="93" font-size="11" fill="#555" font-family="Raleway,sans-serif">Few/year</text>
-        <rect x="162" y="84" width="12" height="10" rx="2" fill="#B0B8C4"/>
-        <text x="178" y="93" font-size="11" fill="#555" font-family="Raleway,sans-serif">Monthly</text>
-        <rect x="248" y="84" width="12" height="10" rx="2" fill="#E07B30"/>
-        <text x="264" y="93" font-size="11" fill="#555" font-family="Raleway,sans-serif">Weekly</text>
-        <rect x="330" y="84" width="12" height="10" rx="2" fill="#b54a10"/>
-        <text x="346" y="93" font-size="11" fill="#555" font-family="Raleway,sans-serif">Multiple/week</text>
+        <rect x="64" y="84" width="12" height="10" rx="2" fill="#487FC0"/><text x="80" y="93" font-size="11" fill="#555" font-family="Raleway,sans-serif">Few/year</text>
+        <rect x="162" y="84" width="12" height="10" rx="2" fill="#B0B8C4"/><text x="178" y="93" font-size="11" fill="#555" font-family="Raleway,sans-serif">Monthly</text>
+        <rect x="248" y="84" width="12" height="10" rx="2" fill="#E07B30"/><text x="264" y="93" font-size="11" fill="#555" font-family="Raleway,sans-serif">Weekly</text>
+        <rect x="330" y="84" width="12" height="10" rx="2" fill="#b54a10"/><text x="346" y="93" font-size="11" fill="#555" font-family="Raleway,sans-serif">Multiple/week</text>
         <text x="480" y="93" font-size="12" fill="#FFAE3B" font-weight="700" font-family="Raleway,sans-serif">Weekly+ bettors grew from 58% to 62% of all bettors. The behavior is intensifying.</text>
       </svg>
     </div>
-
-    <!-- BOTTOM 40%: perception + harm - wider left label space -->
     <div style="flex:2;display:flex;gap:clamp(10px,1.5vw,18px);">
       <div style="flex:2.2;display:flex;flex-direction:column;justify-content:center;gap:7px;">
         <div style="font-size:clamp(0.8rem,1vw,0.92rem);font-weight:800;color:#487FC0;">Perception follows behavior</div>
         <div style="font-size:clamp(0.78rem,0.96vw,0.9rem);color:#555;margin-bottom:2px;">The more a member bets, the more he believes his chapter bets.</div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div style="font-size:clamp(0.78rem,0.96vw,0.9rem);font-weight:600;color:#555;width:120px;flex-shrink:0;">Few times/year</div>
-          <div style="flex:1;height:26px;background:#eef2f7;border-radius:4px;overflow:hidden;"><div style="width:30%;height:100%;background:#7aabdb;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;box-sizing:border-box;"><span style="font-size:11px;font-weight:700;color:#fff;">Low</span></div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div style="font-size:clamp(0.78rem,0.96vw,0.9rem);font-weight:600;color:#555;width:120px;flex-shrink:0;">Once/month</div>
-          <div style="flex:1;height:26px;background:#eef2f7;border-radius:4px;overflow:hidden;"><div style="width:50%;height:100%;background:#4d85c4;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;box-sizing:border-box;"><span style="font-size:11px;font-weight:700;color:#fff;">Medium</span></div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div style="font-size:clamp(0.78rem,0.96vw,0.9rem);font-weight:600;color:#555;width:120px;flex-shrink:0;">Once/week</div>
-          <div style="flex:1;height:26px;background:#eef2f7;border-radius:4px;overflow:hidden;"><div style="width:68%;height:100%;background:#2F6BA4;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;box-sizing:border-box;"><span style="font-size:11px;font-weight:700;color:#fff;">High</span></div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div style="font-size:clamp(0.78rem,0.96vw,0.9rem);font-weight:600;color:#555;width:120px;flex-shrink:0;">Multiple/week</div>
-          <div style="flex:1;height:26px;background:#eef2f7;border-radius:4px;overflow:hidden;"><div style="width:86%;height:100%;background:#1a5c96;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;box-sizing:border-box;"><span style="font-size:11px;font-weight:700;color:#fff;">Highest</span></div></div>
-        </div>
+        <div style="display:flex;align-items:center;gap:8px;"><div style="font-size:clamp(0.78rem,0.96vw,0.9rem);font-weight:600;color:#555;width:120px;flex-shrink:0;">Few times/year</div><div style="flex:1;height:26px;background:#eef2f7;border-radius:4px;overflow:hidden;"><div style="width:30%;height:100%;background:#7aabdb;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;box-sizing:border-box;"><span style="font-size:11px;font-weight:700;color:#fff;">Low</span></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div style="font-size:clamp(0.78rem,0.96vw,0.9rem);font-weight:600;color:#555;width:120px;flex-shrink:0;">Once/month</div><div style="flex:1;height:26px;background:#eef2f7;border-radius:4px;overflow:hidden;"><div style="width:50%;height:100%;background:#4d85c4;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;box-sizing:border-box;"><span style="font-size:11px;font-weight:700;color:#fff;">Medium</span></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div style="font-size:clamp(0.78rem,0.96vw,0.9rem);font-weight:600;color:#555;width:120px;flex-shrink:0;">Once/week</div><div style="flex:1;height:26px;background:#eef2f7;border-radius:4px;overflow:hidden;"><div style="width:68%;height:100%;background:#2F6BA4;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;box-sizing:border-box;"><span style="font-size:11px;font-weight:700;color:#fff;">High</span></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div style="font-size:clamp(0.78rem,0.96vw,0.9rem);font-weight:600;color:#555;width:120px;flex-shrink:0;">Multiple/week</div><div style="flex:1;height:26px;background:#eef2f7;border-radius:4px;overflow:hidden;"><div style="width:86%;height:100%;background:#1a5c96;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;box-sizing:border-box;"><span style="font-size:11px;font-weight:700;color:#fff;">Highest</span></div></div></div>
       </div>
       <div style="flex:1.5;display:flex;flex-direction:column;justify-content:center;gap:9px;">
         <div style="font-size:clamp(0.8rem,1vw,0.92rem);font-weight:800;color:#487FC0;">And it is causing harm</div>
@@ -1081,24 +553,153 @@ html, body {
         <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);color:#fff;line-height:1.5;font-weight:700;">The heaviest bettors increasingly believe betting is universal inside their chapter.</div>
       </div>
     </div>
-
   </div>
 </section>
+
 <section class="slide section-slide" id="slide-seg2-intro">
   <div class="section-label">Segment 2 &nbsp;&middot;&nbsp; Chapter Data</div>
   <h2>What We Know<br>About Our<br>Chapters</h2>
   <div class="section-sub">Chapter data is the operational record of ATO in action, what chapters are doing, how they are being led, and how they measure against the standards the National Fraternity holds. No individual chapter sees the full picture. The data tells us where to focus and where to intervene before a problem becomes a crisis.</div>
 </section>
 <section class="slide content-slide" id="slide-chapter-visit">
-  <div class="slide-header">
+  <div class="slide-header" style="margin-bottom:clamp(8px,1.2vh,14px);">
     <div class="eyebrow on-light">Segment 2 &nbsp;&middot;&nbsp; Chapter Data</div>
-    <div class="slide-title">Chapter Visit Report Information</div>
+    <div class="slide-title">The Chapter Visit</div>
     <div class="gold-rule"></div>
   </div>
-  <div style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center;">
-    <div style="text-align:center;color:var(--color-text-tertiary,#aaa);font-size:clamp(0.9rem,1.2vw,1.1rem);">Content coming soon.</div>
+
+  <!- Subheader callout ->
+  <div style="flex:none;background:#0d2137;border-left:4px solid #FFAE3B;border-radius:0 6px 6px 0;padding:clamp(10px,1.3vh,15px) clamp(14px,1.8vw,20px);margin-bottom:clamp(10px,1.4vh,16px);">
+    <div style="font-size:clamp(0.96rem,1.22vw,1.12rem);color:#fff;line-height:1.55;">Every visit has a paperwork component and your organization depends on you completing it accurately. But the paperwork captures what was true on one day. <strong style="color:#FFAE3B;">What you observe on a visit is a data point no form can collect</strong> - and over time, your observations become some of the most valuable intelligence the National Fraternity has about chapter health.</div>
+  </div>
+
+  <!- Three columns ->
+  <div style="flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(10px,1.3vw,16px);">
+
+    <!- COLUMN 1: HARD DATA ->
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,9px);min-height:0;">
+      <div style="font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#487FC0;flex:none;">Hard Data Collected</div>
+
+      <div style="flex:1;background:#f4f8fd;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #c8daf0;padding:clamp(10px,1.3vh,16px) clamp(12px,1.4vw,16px);display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Membership roster accuracy</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Member account status (Portal / billhighway)</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Recruitment &amp; new member numbers</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Attendance records</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Officer roster &amp; contact information</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Compliance certifications</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Risk management documentation</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Ritual inventory &amp; condition</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Governing documents</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Initiation &amp; education records</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Academic performance data</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#487FC0;flex-shrink:0;margin-top:5px;"></div>
+          <div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#1a2a3a;line-height:1.4;">Advisor &amp; BOT engagement</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!- COLUMN 2: OBSERVATIONAL - Member Experience & Leadership ->
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,9px);min-height:0;">
+      <div style="font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#FFAE3B;flex:none;">What You Will Observe</div>
+
+      <!- Member Experience plane window ->
+      <div style="flex:1;background:#fffbf2;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #f0d890;padding:clamp(9px,1.2vh,14px) clamp(11px,1.3vw,15px);display:flex;flex-direction:column;gap:0;min-height:0;">
+        <div style="font-size:clamp(0.8rem,1.0vw,0.94rem);font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#c68a00;flex:none;margin-bottom:clamp(7px,0.9vh,11px);">Member Experience &amp; Culture</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Do new members seem excited to be there?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Do brothers actually spend time together?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">What is the overall vibe of the chapter?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Do members talk to you or only the President?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Do answers sound authentic or scripted?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Are members proud of the chapter?</div></div>
+        </div>
+      </div>
+
+      <!- Leadership plane window ->
+      <div style="flex:1;background:#fffbf2;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #f0d890;padding:clamp(9px,1.2vh,14px) clamp(11px,1.3vw,15px);display:flex;flex-direction:column;gap:0;min-height:0;">
+        <div style="font-size:clamp(0.8rem,1.0vw,0.94rem);font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#c68a00;flex:none;margin-bottom:clamp(7px,0.9vh,11px);">Leadership &amp; Accountability</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">How responsive are officers?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Do officers understand their roles?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Can the Executive Board function?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Can the Judicial Board function?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Are members held accountable?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Is attendance at meetings strong?</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!- COLUMN 3: OBSERVATIONAL - Risk & Campus ->
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,9px);min-height:0;">
+      <div style="font-size:clamp(0.62rem,0.76vw,0.7rem);font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#FFAE3B;flex:none;visibility:hidden;">placeholder</div>
+
+      <!- Risk plane window ->
+      <div style="flex:1;background:#fffbf2;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #f0d890;padding:clamp(9px,1.2vh,14px) clamp(11px,1.3vw,15px);display:flex;flex-direction:column;gap:0;min-height:0;">
+        <div style="font-size:clamp(0.8rem,1.0vw,0.94rem);font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#c68a00;flex:none;margin-bottom:clamp(7px,0.9vh,11px);">Risk Management &amp; Safety</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">What is the new member culture on campus?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">What is the alcohol and drug culture?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Does the house feel safe and well-managed?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">How does leadership handle allegations?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Do leaders investigate or become defensive?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Are there warning signs being ignored?</div></div>
+        </div>
+      </div>
+
+      <!- Campus Reputation plane window ->
+      <div style="flex:1;background:#fffbf2;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #f0d890;padding:clamp(9px,1.2vh,14px) clamp(11px,1.3vw,15px);display:flex;flex-direction:column;gap:0;min-height:0;">
+        <div style="font-size:clamp(0.8rem,1.0vw,0.94rem);font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#c68a00;flex:none;margin-bottom:clamp(7px,0.9vh,11px);">Campus Reputation &amp; Relationships</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Does the university know the chapter?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">What does the Greek advisor think?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">How engaged is the BOT?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">Do sororities interact with them?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">What is their reputation among fraternities?</div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:#FFAE3B;flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(1.05rem,1.38vw,1.28rem);color:#2D2C2C;line-height:1.4;">What would a prospective member hear about ATO?</div></div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
+
 <section class="slide content-slide" id="slide-cos">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 2 &nbsp;&middot;&nbsp; Chapter Data</div>
@@ -1109,83 +710,88 @@ html, body {
     <div style="text-align:center;color:var(--color-text-tertiary,#aaa);font-size:clamp(0.9rem,1.2vw,1.1rem);">Content coming soon.</div>
   </div>
 </section>
+
 <section class="slide content-slide" id="slide-chapter-models">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 2 &nbsp;&middot;&nbsp; Chapter Data</div>
     <div class="slide-title">Models for Chapter Success &amp; Support</div>
     <div class="gold-rule"></div>
   </div>
-
-  <div style="font-size:clamp(0.84rem,1.06vw,0.98rem);color:#4a5a72;line-height:1.6;flex:none;margin-bottom:clamp(8px,1.2vh,14px);">
-    ATO understands its chapters better than most National Fraternities. By tying together historical chapter data and known outcomes, we can predict what operationally separates a chapter on track for True Merit from one at risk of closing. <span style="color:#999;font-size:0.9em;">Bold indicators appear in both models.</span>
-  </div>
-
-  <div style="flex:1;min-height:0;display:flex;gap:clamp(20px,3vw,40px);align-items:stretch;justify-content:center;">
-
-    <div style="flex:1;max-width:46%;background:#f4f8fd;border:2px solid #185FA5;border-radius:14px;padding:clamp(18px,2.4vh,28px) clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:0;">
-      <div style="flex:none;margin-bottom:clamp(10px,1.4vh,16px);">
-        <div style="font-size:clamp(2.2rem,3.6vw,3.2rem);font-weight:800;color:#185FA5;line-height:1;font-family:'Bebas Neue',sans-serif;letter-spacing:0.02em;">True Merit</div>
-        <div style="font-size:clamp(0.68rem,0.84vw,0.78rem);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#185FA5;opacity:0.65;margin-top:2px;">84% accurate &nbsp;&middot;&nbsp; Major areas that feed the model</div>
+  <div style="flex:1;min-height:0;display:flex;gap:clamp(14px,2vw,22px);align-items:stretch;">
+    <div style="flex:1;background:#185FA5;border:2.5px solid #0C447C;border-radius:14px;padding:clamp(16px,2.2vh,26px) clamp(18px,2.4vw,26px);display:flex;flex-direction:column;gap:0;">
+      <div style="font-size:clamp(2rem,3.2vw,2.8rem);font-weight:800;color:#fff;line-height:1;font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em;margin-bottom:clamp(10px,1.4vh,16px);padding-bottom:clamp(8px,1.1vh,12px);border-bottom:1.5px solid rgba(255,255,255,0.25);">True Merit</div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly;">
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Active BOT with direct NHQ relationship</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Ritual practiced and taken seriously</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Structured scholarship programming</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Consistent parent and alumni communication</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Officers running real committees</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Visible and connected on campus</div></div>
       </div>
-      <div style="height:1px;background:#185FA5;opacity:0.2;flex:none;margin-bottom:4px;"></div>
-      <div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly;"><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#185FA5;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;font-weight:700;line-height:1.4;">Recruitment activity and new member intake</div></div><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#185FA5;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;line-height:1.4;">BOT engagement and relationship with NHQ</div></div><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#185FA5;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;line-height:1.4;">Ritual utilization</div></div><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#185FA5;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;font-weight:700;line-height:1.4;">Financial standing</div></div><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#185FA5;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;line-height:1.4;">Campus and Greek life engagement</div></div><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#185FA5;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;line-height:1.4;">Award application history</div></div></div>
     </div>
-
-    <div style="flex:1;max-width:46%;background:#fdf4f4;border:2px solid #b03020;border-radius:14px;padding:clamp(18px,2.4vh,28px) clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:0;">
-      <div style="flex:none;margin-bottom:clamp(10px,1.4vh,16px);">
-        <div style="font-size:clamp(2.2rem,3.6vw,3.2rem);font-weight:800;color:#b03020;line-height:1;font-family:'Bebas Neue',sans-serif;letter-spacing:0.02em;">Closure Risk</div>
-        <div style="font-size:clamp(0.68rem,0.84vw,0.78rem);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#b03020;opacity:0.65;margin-top:2px;">85% accurate &nbsp;&middot;&nbsp; Major areas that feed the model</div>
+    <div style="flex:1;background:#C8871A;border:2.5px solid #8a5a00;border-radius:14px;padding:clamp(16px,2.2vh,26px) clamp(18px,2.4vw,26px);display:flex;flex-direction:column;gap:0;">
+      <div style="font-size:clamp(2rem,3.2vw,2.8rem);font-weight:800;color:#fff;line-height:1;font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em;margin-bottom:clamp(10px,1.4vh,16px);padding-bottom:clamp(8px,1.1vh,12px);border-bottom:1.5px solid rgba(255,255,255,0.25);">Baseline</div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly;">
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Men initiating, bills being paid</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">BOT exists but engagement is inconsistent</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Programming happens without pattern</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Survivable with the right intervention</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Drift sets in without attention</div></div>
       </div>
-      <div style="height:1px;background:#b03020;opacity:0.2;flex:none;margin-bottom:4px;"></div>
-      <div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly;"><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#b03020;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;line-height:1.4;">Membership size and trend over time</div></div><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#b03020;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;font-weight:700;line-height:1.4;">Financial delinquency with the National Fraternity</div></div><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#b03020;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;line-height:1.4;">Health and safety incident rate</div></div><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#b03020;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;font-weight:700;line-height:1.4;">Recruitment trajectory</div></div><div style="display:flex;align-items:flex-start;gap:12px;padding:clamp(8px,1.1vh,14px) 0;border-bottom:0.5px solid rgba(0,0,0,0.08);"><div style="width:9px;height:9px;border-radius:50%;background:#b03020;flex-shrink:0;margin-top:7px;"></div><div style="font-size:clamp(1rem,1.32vw,1.22rem);color:#0d2137;line-height:1.4;">Chapter visit report findings</div></div></div>
     </div>
-
+    <div style="flex:1;background:#b54a10;border:2.5px solid #7a2a00;border-radius:14px;padding:clamp(16px,2.2vh,26px) clamp(18px,2.4vw,26px);display:flex;flex-direction:column;gap:0;">
+      <div style="font-size:clamp(2rem,3.2vw,2.8rem);font-weight:800;color:#fff;line-height:1;font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em;margin-bottom:clamp(10px,1.4vh,16px);padding-bottom:clamp(8px,1.1vh,12px);border-bottom:1.5px solid rgba(255,255,255,0.25);">Chapter Failure</div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly;">
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Ritual breaking down or absent</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Financial controls ignored</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Brotherhood programming stopped</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Disconnected from alumni, campus, and NHQ</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Membership declining, recruitment eroded</div></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(5px,0.7vh,9px) 0;border-bottom:0.5px solid rgba(255,255,255,0.15);"><div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);flex-shrink:0;margin-top:6px;"></div><div style="font-size:clamp(0.88rem,1.1vw,1rem);color:rgba(255,255,255,0.92);line-height:1.4;">Drift is visible before collapse arrives</div></div>
+      </div>
+    </div>
   </div>
 </section>
+
 <section class="slide content-slide" id="slide-conf-evals">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 2 &nbsp;&middot;&nbsp; Chapter Data</div>
     <div class="slide-title">Conference Evaluation</div>
     <div class="gold-rule"></div>
   </div>
-
   <div style="font-size:clamp(0.82rem,1.04vw,0.96rem);color:#4a5a72;line-height:1.5;flex:none;margin-bottom:clamp(10px,1.4vh,16px);">
     Four years of pre/post learning data from chapter presidents at the Presidents Retreat. Scores on a 1-5 scale. Post scores show what presidents leave knowing. Gains show what they learned at the retreat.
   </div>
-
   <div style="flex:1;min-height:0;display:flex;gap:clamp(16px,2.2vw,26px);align-items:center;justify-content:center;">
-
     <div style="flex:1;max-width:47%;background:#f4f8fd;border:1.5px solid #185FA5;border-radius:12px;padding:clamp(16px,2.2vh,24px) clamp(18px,2.2vw,24px);display:flex;flex-direction:column;gap:0;">
       <div style="font-size:clamp(1rem,1.3vw,1.2rem);font-weight:800;color:#0d2137;flex:none;margin-bottom:8px;">Presidents leave knowing</div>
-      <div style="display:grid;grid-template-columns:1fr repeat(5,44px);gap:3px;font-size:clamp(0.68rem,0.84vw,0.78rem);font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.07em;padding-bottom:6px;border-bottom:1.5px solid #dde4ef;flex:none;">
-        <span></span><span style="text-align:center;">23</span><span style="text-align:center;">24</span><span style="text-align:center;">25</span><span style="text-align:center;">26</span><span style="text-align:center;">Avg</span>
+      <div style="display:grid;grid-template-columns:1fr repeat(5,52px);gap:4px;font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.07em;padding-bottom:6px;border-bottom:1.5px solid #dde4ef;flex:none;">
+        <span></span><span style="text-align:center;">23</span><span style="text-align:center;">24</span><span style="text-align:center;">25</span><span style="text-align:center;">26</span><span style="text-align:center;border-left:2px solid #dde4ef;padding-left:4px;">Avg</span>
       </div>
       <div id="post-rows-slide" style="flex:1;"></div>
     </div>
-
     <div style="flex:1;max-width:47%;background:#f4f8fd;border:1.5px solid #185FA5;border-radius:12px;padding:clamp(16px,2.2vh,24px) clamp(18px,2.2vw,24px);display:flex;flex-direction:column;gap:0;">
       <div style="font-size:clamp(1rem,1.3vw,1.2rem);font-weight:800;color:#0d2137;flex:none;margin-bottom:8px;">Presidents learned the most</div>
-      <div style="display:grid;grid-template-columns:1fr repeat(5,44px);gap:3px;font-size:clamp(0.68rem,0.84vw,0.78rem);font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.07em;padding-bottom:6px;border-bottom:1.5px solid #dde4ef;flex:none;">
-        <span></span><span style="text-align:center;">23</span><span style="text-align:center;">24</span><span style="text-align:center;">25</span><span style="text-align:center;">26</span><span style="text-align:center;">Avg</span>
+      <div style="display:grid;grid-template-columns:1fr repeat(5,52px);gap:4px;font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.07em;padding-bottom:6px;border-bottom:1.5px solid #dde4ef;flex:none;">
+        <span></span><span style="text-align:center;">23</span><span style="text-align:center;">24</span><span style="text-align:center;">25</span><span style="text-align:center;">26</span><span style="text-align:center;border-left:2px solid #dde4ef;padding-left:4px;">Avg</span>
       </div>
       <div id="gain-rows-slide" style="flex:1;"></div>
     </div>
-
   </div>
 </section>
+
 <section class="slide section-slide" id="slide-seg3-intro">
   <div class="section-label">Segment 3 &nbsp;&middot;&nbsp; Higher Education</div>
   <h2>The World Our<br>Members Are<br>Coming From</h2>
   <div class="section-sub">Higher education is changing around us. Understanding enrollment trends, demographic shifts, and the competitive landscape for young men is not background context. It is the operating environment for everything ATO does.</div>
 </section>
+
 <section class="slide content-slide" id="slide-higher-ed-enrollment">
   <div class="slide-header">
     <div class="eyebrow on-light">Segment 3 &nbsp;&middot;&nbsp; Higher Education</div>
     <div class="slide-title">Higher Education Enrollment Trends</div>
     <div class="gold-rule"></div>
   </div>
-
-  <!-- Split legend: left axis left, right axis right -->
   <div style="flex:none;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:16px;">
     <div style="display:flex;flex-direction:column;gap:5px;">
       <div style="font-size:clamp(0.72rem,0.9vw,0.84rem);font-weight:700;color:#888;letter-spacing:0.06em;text-transform:uppercase;">Left axis: Total enrollment</div>
@@ -1202,29 +808,381 @@ html, body {
       </div>
     </div>
   </div>
-
-  <!-- Chart -->
-  <div style="position:relative;flex:1;min-height:0;">
-    <canvas id="cIPEDS" role="img" aria-label="Bar and line chart showing undergraduate enrollment 2018-19 through 2035-36 with male and female degree completer projections.">Enrollment peaks at 2.47M in 2025-26 then declines. Female completers overtake male around 2029-30.</canvas>
-  </div>
-
-  <!-- Summary strip -->
+  <div style="position:relative;flex:1;min-height:0;"><canvas id="cIPEDS" role="img" aria-label="Bar and line chart showing undergraduate enrollment 2018-19 through 2035-36 with male and female degree completer projections.">Enrollment peaks at 2.47M in 2025-26 then declines. Female completers overtake male around 2029-30.</canvas></div>
   <div style="flex:none;margin-top:clamp(6px,0.9vh,10px);padding:clamp(8px,1.1vh,12px) clamp(12px,1.6vw,16px);background:#1a2a3a;border-radius:6px;font-size:clamp(0.8rem,1.02vw,0.94rem);color:#ddd;line-height:1.5;">
     Enrollment is near its peak. The 2008-2010 birth cohort cliff will cut the student population by roughly 180,000 between 2025-26 and 2028-29. Men graduate at lower rates than women in every year on record. Female degree completers are projected to overtake male completers in absolute numbers by 2029-30, despite women being the smaller enrolled group. Fewer men will be earning degrees in the years ahead.
   </div>
-
   <div style="font-size:10px;color:#aaa;flex:none;margin-top:4px;">n=805 institutions, 4-year public &amp; private nonprofit. Degree completers = enrolled &times; 6-year graduation rate (men 62.0%, women 68.7%). Sources: IPEDS EF-C; CDC National Vital Statistics.</div>
 </section>
 <section class="slide content-slide" id="slide-industry">
-  <div class="slide-header">
-    <div class="eyebrow on-light">Segment 3 &nbsp;&middot;&nbsp; Higher Education</div>
-    <div class="slide-title">Industry Datapoints</div>
+  <div class="slide-header" style="margin-bottom:clamp(20px,3.2vh,40px);">
+    <div class="eyebrow on-light">Segment 1 &nbsp;&middot;&nbsp; Membership Data</div>
+    <div class="slide-title">Who Are The Men Who Join ATO?</div>
     <div class="gold-rule"></div>
   </div>
-  <div style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center;">
-    <div style="text-align:center;color:var(--color-text-tertiary,#aaa);font-size:clamp(0.9rem,1.2vw,1.1rem);">Content coming soon.</div>
+
+  <div style="font-size:clamp(0.6rem,0.72vw,0.67rem);color:#9aabca;flex:none;margin-bottom:clamp(5px,0.7vh,8px);">NIC Joiners Survey &nbsp;&middot;&nbsp; ATO n=3,427 &nbsp;&middot;&nbsp; Non-Joiners n=123 &nbsp;&middot;&nbsp; Comparison pool: 26 fraternities &ge;40 respondents</div>
+
+  <div style="flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:clamp(10px,1.3vw,16px);">
+
+    <!-- ══════════════════════════════════
+         LEFT: WHY THEY JOIN
+    ══════════════════════════════════ -->
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,9px);min-height:0;">
+      <div style="font-size:clamp(0.6rem,0.74vw,0.68rem);font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#487FC0;flex:none;">Why Men Join ATO</div>
+
+      <!-- Belonging - plane window style: floating, no top border tie -->
+      <div style="flex:none;background:#0d2137;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #2a4a6a;padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,18px);display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:clamp(0.6rem,0.72vw,0.66rem);font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#FFAE3B;">#1 Reason</div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:nowrap;min-width:0;">
+          <div style="font-size:clamp(2.2rem,3.8vw,3.4rem);font-family:'Bebas Neue',sans-serif;color:#FFAE3B;line-height:1;flex-shrink:0;">29%</div>
+          <div style="font-size:clamp(0.9rem,1.15vw,1.06rem);font-weight:700;color:#fff;line-height:1.2;white-space:nowrap;">Finding a Place to Belong</div>
+        </div>
+        <div style="font-size:clamp(0.74rem,0.92vw,0.86rem);color:#9ab8d8;line-height:1.45;">More ATO joiners name belonging as their single most important reason than any other motivation.</div>
+      </div>
+
+      <!-- All reasons ranked - plane window -->
+      <div style="flex:1;background:#f4f8fd;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #dde4ef;padding:clamp(9px,1.2vh,14px) clamp(11px,1.3vw,16px);display:flex;flex-direction:column;gap:0;min-height:0;">
+        <div style="font-size:clamp(0.6rem,0.72vw,0.66rem);font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#487FC0;flex:none;margin-bottom:clamp(6px,0.8vh,10px);">All Reasons Ranked by ATO Members</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#487FC0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">1</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Finding a Place to Belong</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">29%</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#5a8fc8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">2</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Professional Networking</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">24%</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#6e9fd0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">3</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Making Friends</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">17%</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#87afda;color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">4</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Fun</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">8%</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#9bbfe2;color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">5</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Academic Support</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">6%</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#aecfeb;color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">6</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Campus Leadership</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">6%</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#c2ddf3;color:#888;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">7</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Encouraged by Friend</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">5%</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#dde8f5;color:#aaa;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">8</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Community Service</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">2%</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#eef3fa;color:#bbb;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">9</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Family Encouraged</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">1%</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:clamp(22px,2.2vw,28px);height:clamp(22px,2.2vw,28px);border-radius:50%;background:#f5f8fc;color:#ccc;display:flex;align-items:center;justify-content:center;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:800;flex-shrink:0;">10</div>
+            <div style="flex:1;font-size:clamp(0.86rem,1.08vw,1rem);font-weight:600;color:#0d2137;">Family Legacy</div>
+            <div style="font-size:clamp(0.9rem,1.12vw,1.03rem);font-weight:800;color:#487FC0;">&lt;1%</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         MIDDLE: CONCERN COMPARISON CHART
+         Sorted by biggest gap (Non-Joiner - ATO)
+    ══════════════════════════════════ -->
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,9px);min-height:0;">
+      <div style="font-size:clamp(0.6rem,0.74vw,0.68rem);font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#487FC0;flex:none;">Concerns: ATO Joiners vs. Non-Joiners</div>
+
+      <!-- plane window -->
+      <div style="flex:1;background:#f4f8fd;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #dde4ef;padding:clamp(9px,1.1vh,13px) clamp(12px,1.5vw,16px);display:flex;flex-direction:column;min-height:0;">
+
+        <!-- Legend -->
+        <div style="display:flex;gap:clamp(12px,1.6vw,20px);flex:none;margin-bottom:clamp(7px,0.9vh,11px);align-items:center;">
+          <div style="display:flex;align-items:center;gap:6px;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:700;color:#2D2C2C;">
+            <div style="width:14px;height:14px;border-radius:3px;background:#487FC0;"></div>ATO Joiners
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:clamp(0.7rem,0.86vw,0.8rem);font-weight:700;color:#2D2C2C;">
+            <div style="width:14px;height:14px;border-radius:3px;background:#c04040;"></div>Non-Joiners
+          </div>
+          <div style="font-size:clamp(0.62rem,0.74vw,0.68rem);color:#888;margin-left:auto;">% Concerned or Very Concerned &nbsp;&middot;&nbsp; Ranked by biggest gap</div>
+        </div>
+
+        <!-- Bars: sorted by (NonJoin - ATO) descending = Drug Use first -->
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+
+          <!-- Drug Use: ATO 11.0%, NJ 52.2%, gap 41.2 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Drug Use</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 41.2 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">11%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:11%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">52%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:52.2%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hazing: ATO 19.6%, NJ 52.2%, gap 32.5 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Hazing</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 32.5 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">20%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:19.6%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">52%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:52.2%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fraternity House: ATO 8.1%, NJ 39.1%, gap 31.0 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Fraternity House</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 31.0 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">8%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:8.1%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">39%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:39.1%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Too Many Commitments: ATO 13.7%, NJ 41.2%, gap 27.6 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Too Many Commitments</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 27.6 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">14%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:13.7%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">41%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:41.2%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Not Fitting Stereotype: ATO 16.7%, NJ 42.6%, gap 25.9 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Not Fitting Stereotype</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 25.9 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">17%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:16.7%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">43%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:42.6%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Stigma: ATO 16.9%, NJ 42.6%, gap 25.7 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Social Stigma</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 25.7 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">17%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:16.9%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">43%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:42.6%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ongoing Cost: ATO 20.3%, NJ 43.5%, gap 23.2 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Ongoing Cost</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 23.2 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">20%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:20.3%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">44%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:43.5%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic Impact: ATO 27.0%, NJ 43.9%, gap 16.8 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Academic Impact</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 16.8 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">27%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:27%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">44%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:43.9%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Time Commitment: ATO 38.8%, NJ 49.1%, gap 10.3 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Time Commitment</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 10.3 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">39%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:38.8%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">49%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:49.1%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cost to Join: ATO 38.7%, NJ 47.0%, gap 8.3 -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div style="font-size:clamp(0.86rem,1.08vw,1rem);font-weight:700;color:#1a2a3a;">Cost to Join</div>
+              <div style="font-size:clamp(0.78rem,0.96vw,0.88rem);font-weight:800;color:#c04040;">Gap: 8.3 pts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#487FC0;min-width:40px;">39%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#e0eaf6;border-radius:3px;overflow:hidden;">
+                <div style="width:38.7%;height:100%;background:#487FC0;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);font-weight:700;color:#c04040;min-width:40px;">47%</div>
+              <div style="flex:1;height:clamp(16px,2.1vh,24px);background:#fdecea;border-radius:3px;overflow:hidden;">
+                <div style="width:47%;height:100%;background:#c04040;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         RIGHT: ATO vs OTHER FRATERNITIES
+         Top box spans full width, then 2x2
+    ══════════════════════════════════ -->
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,9px);min-height:0;">
+      <div style="font-size:clamp(0.6rem,0.74vw,0.68rem);font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#487FC0;flex:none;">ATO vs. Other Fraternities</div>
+
+      <!-- Top: spans full width - plane window dark -->
+      <div style="flex:none;background:#0d2137;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #2a4a6a;padding:clamp(10px,1.3vh,15px) clamp(12px,1.5vw,18px);">
+        <div style="font-size:clamp(0.6rem,0.72vw,0.66rem);font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#FFAE3B;margin-bottom:5px;">Key Differentiator</div>
+        <div style="font-size:clamp(0.92rem,1.16vw,1.07rem);font-weight:700;color:#fff;line-height:1.45;">ATO joiners report higher concern than peer fraternity joiners on <span style="color:#FFAE3B;">every single concern measured.</span> They join anyway. Chapters that proactively address cost and time convert better.</div>
+      </div>
+
+      <!-- Row 2: Belonging + Community/Faith - 2 plane windows side by side -->
+      <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,0.8vw,9px);min-height:0;">
+        <div style="background:#eef4fb;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #c8daf0;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:clamp(0.6rem,0.72vw,0.66rem);font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#487FC0;">Belonging</div>
+          <div style="font-size:clamp(1.7rem,2.9vw,2.6rem);font-family:'Bebas Neue',sans-serif;color:#1a2a3a;line-height:1;">29% <span style="font-size:clamp(0.86rem,1.06vw,0.98rem);font-family:'Raleway',sans-serif;font-weight:700;color:#2e7d32;">vs 27%</span></div>
+          <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);color:#4a5a72;line-height:1.45;">ATO joiners name belonging as their single top reason more often than any peer fraternity.</div>
+        </div>
+        <div style="background:#eef4fb;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #c8daf0;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:clamp(0.6rem,0.72vw,0.66rem);font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#c68a00;">Community & Faith</div>
+          <div style="font-size:clamp(1.7rem,2.9vw,2.6rem);font-family:'Bebas Neue',sans-serif;color:#1a2a3a;line-height:1;">36% <span style="font-size:clamp(0.86rem,1.06vw,0.98rem);font-family:'Raleway',sans-serif;font-weight:700;color:#2e7d32;">vs 30%</span></div>
+          <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);color:#4a5a72;line-height:1.45;">More likely to have been in religious youth groups (+6 pts) and community service (+4 pts) in high school.</div>
+        </div>
+      </div>
+
+      <!-- Row 3: Legacy + Party - 2 plane windows side by side -->
+      <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,0.8vw,9px);min-height:0;">
+        <div style="background:#fdf2f2;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #f0c8c8;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:clamp(0.6rem,0.72vw,0.66rem);font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#c04040;">Weaker Legacy Pipeline</div>
+          <div style="font-size:clamp(1.7rem,2.9vw,2.6rem);font-family:'Bebas Neue',sans-serif;color:#1a2a3a;line-height:1;">17% <span style="font-size:clamp(0.86rem,1.06vw,0.98rem);font-family:'Raleway',sans-serif;font-weight:700;color:#c04040;">vs 21%</span></div>
+          <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);color:#4a5a72;line-height:1.45;">Family legacy and family encouragement both lower for ATO. BOT relationships carry more weight here.</div>
+        </div>
+        <div style="background:#fdf2f2;border-radius:clamp(10px,1.4vw,18px) clamp(10px,1.4vw,18px) 8px 8px;border:2px solid #f0c8c8;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:clamp(0.6rem,0.72vw,0.66rem);font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#c04040;">Not Party-Driven</div>
+          <div style="font-size:clamp(1.7rem,2.9vw,2.6rem);font-family:'Bebas Neue',sans-serif;color:#1a2a3a;line-height:1;">10% <span style="font-size:clamp(0.86rem,1.06vw,0.98rem);font-family:'Raleway',sans-serif;font-weight:700;color:#c04040;">vs 13%</span></div>
+          <div style="font-size:clamp(0.82rem,1.02vw,0.94rem);color:#4a5a72;line-height:1.45;">ATO joiners less likely to have chosen their college based on party reputation. Consistent with who selects ATO.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
+
 <section class="slide section-slide" id="slide-closing-intro">
   <div class="section-label">In Closing</div>
   <h2>Your Role in<br>the System</h2>
@@ -1352,8 +1310,8 @@ function sbc(labels,rawDS,avgs){
   var ds=rawDS.map(function(d,i){return{label:d.label,data:d.data,backgroundColor:SC[i],borderWidth:0};});
   return{type:'bar',data:{labels:labels,datasets:ds},options:{
     responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{label:function(c){return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}})},
-    scales:{
+    plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{label:function(c){return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}})}
+    ,scales:{
       x:{stacked:true,ticks:tk(TICK,11),grid:gr()},
       y:{stacked:true,min:0,max:100,ticks:Object.assign(tk(TICK,10),{callback:function(v){return v+'%';}}),grid:gr()},
       y2:{type:'linear',position:'right',min:1,max:5,display:false}
@@ -1422,44 +1380,34 @@ function initCohort(){
     data:{labels:["Fall 2018", "Spring 2019", "Fall 2019", "Spring 2020", "Fall 2020", "Spring 2021", "Fall 2021", "Spring 2022", "Fall 2022", "Spring 2023", "Fall 2023"],datasets:[{data:[4.47, 4.45, 4.3, 4.24, 4.36, 4.35, 4.4, 4.35, 4.34, 4.33, 4.34],backgroundColor:["#3a7abf", "#88b8e0", "#3a7abf", "#88b8e0", "#3a7abf", "#88b8e0", "#3a7abf", "#88b8e0", "#3a7abf", "#88b8e0", "#3a7abf"],borderWidth:0,borderRadius:3}]},
     options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{label:function(c){return' '+c.parsed.x.toFixed(2);}}})},
-      scales:{
-        x:{min:4.20,max:4.52,ticks:Object.assign(tk(TICK,10),{callback:function(v){return v.toFixed(2);}}),grid:gr()},
-        y:{ticks:tk(TICK,10),grid:{display:false}}
-      }
+      scales:{x:{min:4.20,max:4.52,ticks:Object.assign(tk(TICK,10),{callback:function(v){return v.toFixed(2);}}),grid:gr()},y:{ticks:tk(TICK,10),grid:{display:false}}}
     }
   });
 }
 
 function initPerceptions(){
-  var highlightPlugin={
-    id:'ngrHL',
-    afterDraw:function(chart){
-      if(chart.canvas.id!=='cPerceptions')return;
-      var ctx=chart.ctx,y=chart.scales.y,ca=chart.chartArea;
-      var yp=y.getPixelForValue(9),bh=y.height/chart.data.labels.length;
-      var top=yp-bh/2,ht=bh;
-      // Box covers only the chart/bar area - y-axis label left as Chart.js renders it
-      var l=ca.left,rr=ca.right+4;
-      ctx.save();
-      ctx.fillStyle='rgba(255,174,59,0.22)';
-      ctx.fillRect(l,top,rr-l,ht);
-      ctx.strokeStyle='#FFAE3B';ctx.lineWidth=2;
-      ctx.strokeRect(l,top,rr-l,ht);
-      ctx.restore();
-      drawUnknown(chart);
-    }
-  };
+  var highlightPlugin={id:'ngrHL',afterDraw:function(chart){
+    if(chart.canvas.id!=='cPerceptions')return;
+    var ctx=chart.ctx,y=chart.scales.y,ca=chart.chartArea;
+    var yp=y.getPixelForValue(9),bh=y.height/chart.data.labels.length;
+    var top=yp-bh/2,ht=bh;
+    var l=ca.left,rr=ca.right+4;
+    ctx.save();
+    ctx.fillStyle='rgba(255,174,59,0.22)';ctx.fillRect(l,top,rr-l,ht);
+    ctx.strokeStyle='#FFAE3B';ctx.lineWidth=2;ctx.strokeRect(l,top,rr-l,ht);
+    ctx.restore();
+    drawUnknown(chart);
+  }};
   Chart.register(highlightPlugin);
-
   new Chart(document.getElementById('cPerceptions'),{type:'bar',
     data:{labels:["Signature Event", "Your Chapter's Alumni", "Greek Woman", "Fraternity/Sorority Advisor", "The National Fraternity", "Local Community", "University President", "Dean of Students", "Non-Greek Woman", "Non-Greek Man"],datasets:[
       {label:'Negative',data:[1.2, 2.9, 3.5, 5.6, 6.8, 4.7, 6.6, 10.2, 9.4, 11.0],backgroundColor:ORANGE,borderWidth:0},
-      {label:'Neutral', data:[11.1, 10.0, 15.8, 15.1, 13.1, 26.4, 24.7, 33.2, 38.8, 50.8],backgroundColor:GREY,  borderWidth:0},
-      {label:'Positive',data:[87.7, 87.1, 80.6, 79.3, 80.2, 69.0, 68.7, 56.6, 51.8, 38.2],backgroundColor:AZURE, borderWidth:0}
+      {label:'Neutral', data:[11.1, 10.0, 15.8, 15.1, 13.1, 26.4, 24.7, 33.2, 38.8, 50.8],backgroundColor:GREY,borderWidth:0},
+      {label:'Positive',data:[87.7, 87.1, 80.6, 79.3, 80.2, 69.0, 68.7, 56.6, 51.8, 38.2],backgroundColor:AZURE,borderWidth:0}
     ]},
     options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{label:function(c){return' '+c.dataset.label+': '+c.parsed.x.toFixed(1)+'%';}}})},
-      scales:{
+      plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{label:function(c){return' '+c.dataset.label+': '+c.parsed.x.toFixed(1)+'%';}}})}
+      ,scales:{
         x:{stacked:true,min:0,max:100,ticks:Object.assign(tk(TICK,10),{callback:function(v){return v+'%';}}),grid:gr()},
         y:{stacked:true,ticks:tk(TICK,10),grid:{display:false}},
         x2:{type:'linear',position:'bottom',min:1,max:5,display:false}
@@ -1473,127 +1421,55 @@ var _uvData=[36.2, 8.7, 4.4, 17.8, 12.3, 15.9, 37.5, 41.3, 17.6, 19.9];
 var _uvMax=50;
 
 function drawUnknown(percChart){
-  var uc=document.getElementById('cUnknown');
-  if(!uc)return;
+  var uc=document.getElementById('cUnknown');if(!uc)return;
   var y=percChart.scales.y;
   var n=percChart.data.labels.length;
-
-  // Get exact pixel centers and bar half-height directly from Chart.js y scale
-  // y.getPixelForValue(i) gives the CENTER of bar at index i
-  // Actual drawn bar height = barThickness - we can measure it from two adjacent bars
-  var y0=y.getPixelForValue(0);
-  var y1=y.getPixelForValue(1);
-  var rowH=Math.abs(y1-y0); // pixels per row
-  var barH=rowH*0.7; // Chart.js default bar thickness ~70% of row
-
-  var W=uc.offsetWidth, H=uc.offsetHeight;
+  var y0=y.getPixelForValue(0),y1=y.getPixelForValue(1);
+  var rowH=Math.abs(y1-y0),barH=rowH*0.7;
+  var W=uc.offsetWidth,H=uc.offsetHeight;
   if(!W||!H)return;
-  uc.width=Math.round(W*devicePixelRatio);
-  uc.height=Math.round(H*devicePixelRatio);
-  var ctx=uc.getContext('2d');
-  ctx.scale(devicePixelRatio,devicePixelRatio);
-
-  var lp=6, rp=4;
-  var chartW=W-lp-rp;
-
-  // Draw teal bars using EXACT same y-centers from percChart's scale
+  uc.width=Math.round(W*devicePixelRatio);uc.height=Math.round(H*devicePixelRatio);
+  var ctx=uc.getContext('2d');ctx.scale(devicePixelRatio,devicePixelRatio);
+  var lp=6,rp=4,chartW=W-lp-rp;
   _uvData.forEach(function(val,i){
     var barW=(val/_uvMax)*chartW;
-    var cy=y.getPixelForValue(i); // exact center from Chart.js
+    var cy=y.getPixelForValue(i);
     ctx.fillStyle='#4BA3A3';
-    var bx=lp, by=cy-barH/2, bw=barW, bht=barH;
-    var r2=Math.min(3,barH/2);
-    ctx.beginPath();
-    ctx.moveTo(bx,by);ctx.lineTo(bx+bw-r2,by);
-    ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+r2);
-    ctx.lineTo(bx+bw,by+bht-r2);ctx.quadraticCurveTo(bx+bw,by+bht,bx+bw-r2,by+bht);
-    ctx.lineTo(bx,by+bht);ctx.closePath();
-    ctx.fill();
+    var bx=lp,by=cy-barH/2,bw=barW,bht=barH,r2=Math.min(3,barH/2);
+    ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(bx+bw-r2,by);ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+r2);ctx.lineTo(bx+bw,by+bht-r2);ctx.quadraticCurveTo(bx+bw,by+bht,bx+bw-r2,by+bht);ctx.lineTo(bx,by+bht);ctx.closePath();ctx.fill();
   });
-
-  // X axis ticks - draw at the same y position as the left chart's x-axis
-  var ca=percChart.chartArea;
-  var tickTop=ca.bottom+4;
-  ctx.fillStyle='#888';
-  ctx.font='11px Raleway,sans-serif';
-  ctx.textAlign='center';
+  var ca=percChart.chartArea,tickTop=ca.bottom+4;
+  ctx.fillStyle='#888';ctx.font='11px Raleway,sans-serif';ctx.textAlign='center';
   [0,10,20,30,40,50].forEach(function(v){
     var tx=lp+(v/_uvMax)*chartW;
     ctx.fillText(v+'%',tx,tickTop+10);
-    ctx.fillStyle='rgba(180,180,180,0.22)';
-    ctx.fillRect(tx,ca.top,1,ca.bottom-ca.top);
-    ctx.fillStyle='#888';
-  });
-}
-
-function initUnknown(){/* drawn by drawUnknown() inside initPerceptions */}
-function initSportsNeg(){
-  new Chart(document.getElementById('cSportsNeg'),{type:'bar',
-    data:{labels:["Lost more than wagered", "Frequently think about betting", "Peer pressure to continue", "Unable to prepare for classes", "Unable to pay bills", "Sought counseling"],datasets:[{data:[23.6, 22.9, 12.7, 7.6, 2.5, 1.9],backgroundColor:GOLD,borderWidth:0,borderRadius:3}]},
-    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{label:function(c){return' '+c.parsed.x.toFixed(1)+'% reported this';}}})},
-      scales:{x:{min:0,max:29,ticks:Object.assign(tk(TICK,10),{callback:function(v){return v+'%';}}),grid:gr()},
-              y:{ticks:tk(TICK,10),grid:{display:false}}}
-    }
+    ctx.fillStyle='rgba(180,180,180,0.22)';ctx.fillRect(tx,ca.top,1,ca.bottom-ca.top);ctx.fillStyle='#888';
   });
 }
 
 function initCohortOutcomes(){
-  var el=document.getElementById('cCohortOutcomes');
-  if(!el)return;
-
-  // Create diagonal stripe pattern for former member
+  var el=document.getElementById('cCohortOutcomes');if(!el)return;
   var pc=el.getContext('2d');
-  var pat=document.createElement('canvas');
-  pat.width=10;pat.height=10;
-  var pc2=pat.getContext('2d');
-  pc2.fillStyle='#E07B30';
-  pc2.fillRect(0,0,10,10);
-  pc2.strokeStyle='#b54a10';
-  pc2.lineWidth=2.5;
-  pc2.beginPath();pc2.moveTo(0,5);pc2.lineTo(10,5);pc2.stroke();
+  var pat=document.createElement('canvas');pat.width=10;pat.height=10;
+  var pc2=pat.getContext('2d');pc2.fillStyle='#E07B30';pc2.fillRect(0,0,10,10);
+  pc2.strokeStyle='#b54a10';pc2.lineWidth=2.5;pc2.beginPath();pc2.moveTo(0,5);pc2.lineTo(10,5);pc2.stroke();
   var stripe=pc.createPattern(pat,'repeat');
-
-  var years=["2007-08", "2008-09", "2009-10", "2010-11", "2011-12", "2012-13", "2013-14", "2014-15", "2015-16", "2016-17", "2017-18", "2018-19", "2019-20", "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26"];
-  var partial=[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true];
-
+  var years=["2007-08","2008-09","2009-10","2010-11","2011-12","2012-13","2013-14","2014-15","2015-16","2016-17","2017-18","2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25","2025-26"];
+  var partial=[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,true,true];
   new Chart(el,{type:'bar',
     data:{labels:years,datasets:[
-      {label:'Depledged',
-        data:[15.5, 20.9, 21.9, 21.8, 19.4, 19.8, 19.8, 20.3, 20.3, 23.3, 24.2, 20.7, 21.9, 18.3, 19.3, 19.2, 17.8, 17.3, 16.8],
-        backgroundColor:years.map(function(_,i){return partial[i]?'rgba(176,173,166,0.45)':'#b0ada6';}),
-        borderWidth:0,stack:'s'},
-      {label:'Former Member',
-        data:[5.8, 7.0, 7.5, 9.3, 10.2, 11.7, 15.9, 18.8, 18.8, 21.0, 22.0, 19.8, 18.4, 19.6, 20.0, 20.8, 15.0, 8.5, 1.5],
-        backgroundColor:years.map(function(_,i){return partial[i]?'rgba(224,123,48,0.4)':stripe;}),
-        borderWidth:0,stack:'s'},
-      {label:'Alumnus',
-        data:[78.7, 72.0, 70.7, 68.9, 70.3, 68.5, 64.2, 60.9, 60.9, 55.6, 53.8, 59.6, 59.7, 62.1, 60.3, 39.6, 13.0, 5.4, 1.2],
-        backgroundColor:years.map(function(_,i){return partial[i]?'rgba(72,127,192,0.35)':'#487FC0';}),
-        borderWidth:0,stack:'s'},
-      {label:'Active UG',
-        data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 20.5, 54.1, 68.8, 80.5],
-        backgroundColor:'rgba(72,127,192,0.12)',
-        borderWidth:0,stack:'s'}
+      {label:'Depledged',data:[15.5,20.9,21.9,21.8,19.4,19.8,19.8,20.3,20.3,23.3,24.2,20.7,21.9,18.3,19.3,19.2,17.8,17.3,16.8],backgroundColor:years.map(function(_,i){return partial[i]?'rgba(176,173,166,0.45)':'#b0ada6';}),borderWidth:0,stack:'s'},
+      {label:'Former Member',data:[5.8,7.0,7.5,9.3,10.2,11.7,15.9,18.8,18.8,21.0,22.0,19.8,18.4,19.6,20.0,20.8,15.0,8.5,1.5],backgroundColor:years.map(function(_,i){return partial[i]?'rgba(224,123,48,0.4)':stripe;}),borderWidth:0,stack:'s'},
+      {label:'Alumnus',data:[78.7,72.0,70.7,68.9,70.3,68.5,64.2,60.9,60.9,55.6,53.8,59.6,59.7,62.1,60.3,39.6,13.0,5.4,1.2],backgroundColor:years.map(function(_,i){return partial[i]?'rgba(72,127,192,0.35)':'#487FC0';}),borderWidth:0,stack:'s'},
+      {label:'Active UG',data:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.4,20.5,54.1,68.8,80.5],backgroundColor:'rgba(72,127,192,0.12)',borderWidth:0,stack:'s'}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},
-        tooltip:{backgroundColor:NIGHT,titleColor:GOLD,bodyColor:'#fff',padding:10,
-          callbacks:{label:function(c){
-            if(c.parsed.y===0)return null;
-            return ' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';
-          }}
-        }
-      },
-      scales:{
-        x:{stacked:true,ticks:tk(TICK,10),grid:gr()},
-        y:{stacked:true,min:0,max:100,
-          ticks:Object.assign(tk(TICK,10),{callback:function(v){return v+'%';}}),
-          grid:gr()}
-      }
+      plugins:{legend:{display:false},tooltip:{backgroundColor:NIGHT,titleColor:GOLD,bodyColor:'#fff',padding:10,callbacks:{label:function(c){if(c.parsed.y===0)return null;return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}}},
+      scales:{x:{stacked:true,ticks:tk(TICK,10),grid:gr()},y:{stacked:true,min:0,max:100,ticks:Object.assign(tk(TICK,10),{callback:function(v){return v+'%';}}),grid:gr()}}
     }
   });
 }
+
 function initCohortAnalysis(){
   var years=['2011-12','2012-13','2013-14','2014-15','2015-16','2016-17','2017-18','2018-19','2019-20','2020-21','2021-22'];
   var alumRate=[73.7,70.3,72.1,69.1,68.4,67.9,62.6,64.6,68.8,65.0,67.1];
@@ -1603,174 +1479,92 @@ function initCohortAnalysis(){
   var resPct=[11,7,12,12,23,22,28,34,33,21,25];
   var expPct=[18,23,21,31,26,25,20,12,19,20,13];
   var AVG=68.3;
-
   var avgPlugin={id:'avgLine',afterDraw:function(chart){
     var ctx=chart.ctx,x=chart.scales.x,y=chart.scales.y;
     var yPx=y.getPixelForValue(AVG);
     ctx.save();ctx.setLineDash([5,4]);ctx.strokeStyle='#bbb';ctx.lineWidth=1.5;
-    ctx.beginPath();ctx.moveTo(x.left,yPx);ctx.lineTo(x.right,yPx);ctx.stroke();
-    ctx.restore();
-    ctx.save();ctx.font='600 11px Raleway,sans-serif';ctx.fillStyle='#999';
-    ctx.textAlign='right';ctx.fillText('Avg '+AVG+'%',x.right-4,yPx-5);ctx.restore();
+    ctx.beginPath();ctx.moveTo(x.left,yPx);ctx.lineTo(x.right,yPx);ctx.stroke();ctx.restore();
+    ctx.save();ctx.font='600 11px Raleway,sans-serif';ctx.fillStyle='#999';ctx.textAlign='right';ctx.fillText('Avg '+AVG+'%',x.right-4,yPx-5);ctx.restore();
   }};
-
-  // Chart 1: alumni conversion rate
   var el1=document.getElementById('cAlumRate');
-  if(el1){
-    new Chart(el1,{type:'line',plugins:[avgPlugin],
-      data:{labels:years,datasets:[{data:alumRate,borderColor:'#2F6BA4',
-        backgroundColor:'rgba(47,107,164,0.07)',borderWidth:2.5,
-        pointRadius:4.5,pointBackgroundColor:'#2F6BA4',fill:true,tension:0.2}]},
-      options:{responsive:true,maintainAspectRatio:false,
-        plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{label:function(c){
-          return' '+c.parsed.y.toFixed(1)+'% ('+alumN[c.dataIndex].toLocaleString()+' of '+totalN[c.dataIndex].toLocaleString()+' pledged)';
-        }}})},
-        scales:{
-          x:{ticks:tk(TICK,10),grid:{display:false}},
-          y:{min:60,max:80,ticks:Object.assign(tk(TICK,10),{callback:function(v){return v+'%';}}),grid:gr(),
-             title:{display:true,text:'Alumni conversion rate',color:TICK,font:{size:10}}}
-        }
-      }
-    });
-  }
-
-  // Chart 2: departure composition
+  if(el1){new Chart(el1,{type:'line',plugins:[avgPlugin],data:{labels:years,datasets:[{data:alumRate,borderColor:'#2F6BA4',backgroundColor:'rgba(47,107,164,0.07)',borderWidth:2.5,pointRadius:4.5,pointBackgroundColor:'#2F6BA4',fill:true,tension:0.2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{label:function(c){return' '+c.parsed.y.toFixed(1)+'% ('+alumN[c.dataIndex].toLocaleString()+' of '+totalN[c.dataIndex].toLocaleString()+' pledged)';}}})}
+    ,scales:{x:{ticks:tk(TICK,10),grid:{display:false}},y:{min:60,max:80,ticks:Object.assign(tk(TICK,10),{callback:function(v){return v+'%';}}),grid:gr(),title:{display:true,text:'Alumni conversion rate',color:TICK,font:{size:10}}}}
+  }});}
   var dlPlugin={id:'dlabels',afterDatasetsDraw:function(chart){
     var ctx=chart.ctx;
     chart.data.datasets.forEach(function(ds,di){
-      var meta=chart.getDatasetMeta(di);
-      meta.data.forEach(function(bar,i){
+      var meta=chart.getDatasetMeta(di);meta.data.forEach(function(bar,i){
         var val=ds.data[i];if(val<8)return;
-        var props=bar.getProps(['x','y','height'],true);
-        var segH=Math.abs(props.height);if(segH<16)return;
-        ctx.save();ctx.font='500 10px Raleway,sans-serif';ctx.fillStyle='#fff';
-        ctx.textAlign='center';ctx.textBaseline='middle';
-        ctx.fillText(val+'%',props.x,props.y+segH/2);ctx.restore();
+        var props=bar.getProps(['x','y','height'],true);var segH=Math.abs(props.height);if(segH<16)return;
+        ctx.save();ctx.font='500 10px Raleway,sans-serif';ctx.fillStyle='#fff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(val+'%',props.x,props.y+segH/2);ctx.restore();
       });
     });
   }};
-
   var el2=document.getElementById('cWhyLeft');
-  if(el2){
-    new Chart(el2,{type:'bar',plugins:[dlPlugin],
-      data:{labels:years,datasets:[
-        {label:'Depledged',data:depPct,backgroundColor:'#b0ada6',stack:'s'},
-        {label:'Resigned', data:resPct,backgroundColor:'#E07B30',stack:'s'},
-        {label:'Expelled', data:expPct,backgroundColor:'#b54a10',stack:'s'}
-      ]},
-      options:{responsive:true,maintainAspectRatio:false,
-        plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{
-          label:function(c){return' '+c.dataset.label+': '+c.parsed.y+'%';}
-        }})},
-        scales:{
-          x:{stacked:true,ticks:tk(TICK,10),grid:{display:false}},
-          y:{stacked:true,min:0,max:100,
-             ticks:Object.assign(tk(TICK,10),{callback:function(v){return v+'%';}}),
-             grid:gr(),
-             title:{display:true,text:'% of all departures',color:TICK,font:{size:10}}}
-        }
-      }
-    });
-  }
+  if(el2){new Chart(el2,{type:'bar',plugins:[dlPlugin],data:{labels:years,datasets:[{label:'Depledged',data:depPct,backgroundColor:'#b0ada6',stack:'s'},{label:'Resigned',data:resPct,backgroundColor:'#E07B30',stack:'s'},{label:'Expelled',data:expPct,backgroundColor:'#b54a10',stack:'s'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:Object.assign(tp(),{callbacks:{label:function(c){return' '+c.dataset.label+': '+c.parsed.y+'%';}}})}
+  ,scales:{x:{stacked:true,ticks:tk(TICK,10),grid:{display:false}},y:{stacked:true,min:0,max:100,ticks:Object.assign(tk(TICK,10),{callback:function(v){return v+'%';}}),grid:gr(),title:{display:true,text:'% of all departures',color:TICK,font:{size:10}}}}
+  }});}
 }
 
 var inited={};
 function obs(id,fn){
   var el=document.getElementById(id);if(!el)return;
-  new MutationObserver(function(){
-    if(el.classList.contains('active')&&!inited[id]){inited[id]=true;fn();}
-  }).observe(el,{attributes:true,attributeFilter:['class']});
+  new MutationObserver(function(){if(el.classList.contains('active')&&!inited[id]){inited[id]=true;fn();}}).observe(el,{attributes:true,attributeFilter:['class']});
   if(el.classList.contains('active')&&!inited[id]){inited[id]=true;fn();}
 }
 
 function initIPEDS(){
-  var el=document.getElementById('cIPEDS');
-  if(!el)return;
-  var labels=["2018-19", "2019-20", "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26", "2026-27", "2027-28", "2028-29", "2029-30", "2030-31", "2031-32", "2032-33", "2033-34", "2034-35", "2035-36"];
-  var totalAll=[2345128, 2324990, 2200398, 2268928, 2342076, 2399445, 2442777, 2471799, 2432548, 2365528, 2290348, 2264122, 2263693, 2251862, 2283871, 2278386, 2259704, 2207948];
-  var barColors=["#FFAE3B", "#FFAE3B", "#FFAE3B", "#FFAE3B", "#FFAE3B", "#FFAE3B", "#FFAE3B", "#ffe0a0", "#ffe0a0", "#ffe0a0", "#ffe0a0", "#ffe0a0", "#ffe0a0", "#ffe0a0", "#ffe0a0", "#ffe0a0", "#ffe0a0", "#ffe0a0"];
-  var lineMActual=[762455, 756313, 714300, 743965, 765436, 784542, 799401, null, null, null, null, null, null, null, null, null, null, null];
-  var lineMProj=[null, null, null, null, null, null, 799401, 806600, 791529, 767522, 740999, 730408, 728164, 722264, 730407, 726534, 718475, 699966];
-  var lineFActual=[766254, 759224, 720183, 734392, 760853, 779096, 792400, null, null, null, null, null, null, null, null, null, null, null];
-  var lineFProj=[null, null, null, null, null, null, 792400, 804361, 794094, 774654, 752394, 746112, 748304, 746713, 759680, 760204, 756299, 741252];
-  new Chart(el,{type:'bar',
-    data:{labels:labels,datasets:[
-      {label:'Total enrollment',data:totalAll,backgroundColor:barColors,borderWidth:0,yAxisID:'y',order:3,barPercentage:0.85,categoryPercentage:0.9},
-      {label:'Male completers (actual)',data:lineMActual,type:'line',borderColor:'#487FC0',backgroundColor:'transparent',borderWidth:2.5,pointRadius:2,pointBackgroundColor:'#487FC0',tension:0.3,yAxisID:'y2',order:1,spanGaps:false},
-      {label:'Male completers (proj)',data:lineMProj,type:'line',borderColor:'#487FC0',backgroundColor:'transparent',borderWidth:2.5,borderDash:[5,4],pointRadius:2,pointBackgroundColor:'#487FC0',tension:0.3,yAxisID:'y2',order:1,spanGaps:false},
-      {label:'Female completers (actual)',data:lineFActual,type:'line',borderColor:'#ed2384',backgroundColor:'transparent',borderWidth:2.5,pointRadius:2,pointBackgroundColor:'#ed2384',tension:0.3,yAxisID:'y2',order:1,spanGaps:false},
-      {label:'Female completers (proj)',data:lineFProj,type:'line',borderColor:'#ed2384',backgroundColor:'transparent',borderWidth:2.5,borderDash:[5,4],pointRadius:2,pointBackgroundColor:'#ed2384',tension:0.3,yAxisID:'y2',order:1,spanGaps:false}
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,
-      interaction:{mode:'index',intersect:false},
-      plugins:{legend:{display:false},
-        tooltip:{backgroundColor:NIGHT,titleColor:GOLD,bodyColor:'#fff',padding:10,
-          callbacks:{label:function(ctx){
-            if(ctx.parsed.y===null)return null;
-            var v=ctx.parsed.y;
-            if(ctx.datasetIndex===0)return ' Total enrollment: '+(v/1000000).toFixed(2)+'M';
-            return ' '+ctx.dataset.label+': '+Math.round(v/1000)+'K';
-          }}
-        }
-      },
-      scales:{
-        x:{ticks:Object.assign(tk(TICK,9),{maxRotation:45,autoSkip:false}),grid:gr()},
-        y:{position:'left',min:1800000,
-          ticks:Object.assign(tk(TICK,10),{callback:function(v){return (v/1000000).toFixed(1)+'M';}}),
-          grid:gr()},
-        y2:{position:'right',min:600000,max:900000,
-          ticks:Object.assign(tk(TICK,10),{callback:function(v){return Math.round(v/1000)+'K';}}),
-          grid:{display:false}}
-      }
-    }
-  });
+  var el=document.getElementById('cIPEDS');if(!el)return;
+  var labels=["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25","2025-26","2026-27","2027-28","2028-29","2029-30","2030-31","2031-32","2032-33","2033-34","2034-35","2035-36"];
+  var totalAll=[2345128,2324990,2200398,2268928,2342076,2399445,2442777,2471799,2432548,2365528,2290348,2264122,2263693,2251862,2283871,2278386,2259704,2207948];
+  var barColors=["#FFAE3B","#FFAE3B","#FFAE3B","#FFAE3B","#FFAE3B","#FFAE3B","#FFAE3B","#ffe0a0","#ffe0a0","#ffe0a0","#ffe0a0","#ffe0a0","#ffe0a0","#ffe0a0","#ffe0a0","#ffe0a0","#ffe0a0","#ffe0a0"];
+  var lineMActual=[762455,756313,714300,743965,765436,784542,799401,null,null,null,null,null,null,null,null,null,null,null];
+  var lineMProj=[null,null,null,null,null,null,799401,806600,791529,767522,740999,730408,728164,722264,730407,726534,718475,699966];
+  var lineFActual=[766254,759224,720183,734392,760853,779096,792400,null,null,null,null,null,null,null,null,null,null,null];
+  var lineFProj=[null,null,null,null,null,null,792400,804361,794094,774654,752394,746112,748304,746713,759680,760204,756299,741252];
+  new Chart(el,{type:'bar',data:{labels:labels,datasets:[
+    {label:'Total enrollment',data:totalAll,backgroundColor:barColors,borderWidth:0,yAxisID:'y',order:3,barPercentage:0.85,categoryPercentage:0.9},
+    {label:'Male completers (actual)',data:lineMActual,type:'line',borderColor:'#487FC0',backgroundColor:'transparent',borderWidth:2.5,pointRadius:2,pointBackgroundColor:'#487FC0',tension:0.3,yAxisID:'y2',order:1,spanGaps:false},
+    {label:'Male completers (proj)',data:lineMProj,type:'line',borderColor:'#487FC0',backgroundColor:'transparent',borderWidth:2.5,borderDash:[5,4],pointRadius:2,pointBackgroundColor:'#487FC0',tension:0.3,yAxisID:'y2',order:1,spanGaps:false},
+    {label:'Female completers (actual)',data:lineFActual,type:'line',borderColor:'#ed2384',backgroundColor:'transparent',borderWidth:2.5,pointRadius:2,pointBackgroundColor:'#ed2384',tension:0.3,yAxisID:'y2',order:1,spanGaps:false},
+    {label:'Female completers (proj)',data:lineFProj,type:'line',borderColor:'#ed2384',backgroundColor:'transparent',borderWidth:2.5,borderDash:[5,4],pointRadius:2,pointBackgroundColor:'#ed2384',tension:0.3,yAxisID:'y2',order:1,spanGaps:false}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},tooltip:{backgroundColor:NIGHT,titleColor:GOLD,bodyColor:'#fff',padding:10,callbacks:{label:function(ctx){if(ctx.parsed.y===null)return null;var v=ctx.parsed.y;if(ctx.datasetIndex===0)return' Total enrollment: '+(v/1000000).toFixed(2)+'M';return' '+ctx.dataset.label+': '+Math.round(v/1000)+'K';}}}},
+    scales:{x:{ticks:Object.assign(tk(TICK,9),{maxRotation:45,autoSkip:false}),grid:gr()},y:{position:'left',min:1800000,ticks:Object.assign(tk(TICK,10),{callback:function(v){return(v/1000000).toFixed(1)+'M';}}),grid:gr()},y2:{position:'right',min:600000,max:900000,ticks:Object.assign(tk(TICK,10),{callback:function(v){return Math.round(v/1000)+'K';}}),grid:{display:false}}}
+  }});
 }
-
 
 function initConfEval(){
   var postData=[
-    {label:'Benefits of a Judicial Board hearing',        v:[4.87,4.96,4.89,4.91], avg:4.91},
-    {label:'Will be a stronger leader after my term',     v:[4.81,4.96,4.84,4.89], avg:4.88},
-    {label:'Confident in ability to serve effectively',   v:[4.81,4.92,4.86,4.87], avg:4.86},
-    {label:'Know what it takes to be effective',          v:[4.80,4.91,4.89,4.86], avg:4.86},
-    {label:'Benefits of a Signature Event',               v:[4.78,4.87,4.89,4.85], avg:4.85},
-    {label:'Chapter will be stronger after my term',      v:[4.77,4.92,4.83,4.83], avg:4.84},
-    {label:'Crisis and health & safety response',         v:[4.83,4.87,4.86,4.82], avg:4.84},
+    {label:'Benefits of a Judicial Board hearing',v:[4.87,4.96,4.89,4.91],avg:4.91},
+    {label:'Will be a stronger leader after my term',v:[4.81,4.96,4.84,4.89],avg:4.88},
+    {label:'Confident in ability to serve effectively',v:[4.81,4.92,4.86,4.87],avg:4.86},
+    {label:'Know what it takes to be effective',v:[4.80,4.91,4.89,4.86],avg:4.86},
+    {label:'Benefits of a Signature Event',v:[4.78,4.87,4.89,4.85],avg:4.85},
+    {label:'Chapter will be stronger after my term',v:[4.77,4.92,4.83,4.83],avg:4.84},
+    {label:'Crisis and health & safety response',v:[4.83,4.87,4.86,4.82],avg:4.84}
   ];
   var gainData=[
-    {label:'Roster management through the ATO Portal',    v:[0.87,1.04,1.25,1.12], avg:1.07},
-    {label:'Know the 5 Vitals of ATO',                    v:[1.00,1.25,1.19,0.81], avg:1.06},
-    {label:'Aware of my own ineffective meeting tactics',  v:[1.07,1.19,1.06,0.92], avg:1.06},
-    {label:'Understand my chapter office policies',        v:[1.00,0.98,1.23,0.88], avg:1.02},
-    {label:'Resources from the National Fraternity',       v:[1.00,1.03,0.98,0.96], avg:0.99},
-    {label:'ChapterBuilder as a recruitment tool',         v:[0.94,1.39,0.85,0.60], avg:0.94},
-    {label:'The award application process',                v:[0.87,0.85,0.99,0.95], avg:0.92},
+    {label:'Roster management through the ATO Portal',v:[0.87,1.04,1.25,1.12],avg:1.07},
+    {label:'Know the 5 Vitals of ATO',v:[1.00,1.25,1.19,0.81],avg:1.06},
+    {label:'Aware of my own ineffective meeting tactics',v:[1.07,1.19,1.06,0.92],avg:1.06},
+    {label:'Understand my chapter office policies',v:[1.00,0.98,1.23,0.88],avg:1.02},
+    {label:'Resources from the National Fraternity',v:[1.00,1.03,0.98,0.96],avg:0.99},
+    {label:'ChapterBuilder as a recruitment tool',v:[0.94,1.39,0.85,0.60],avg:0.94},
+    {label:'The award application process',v:[0.87,0.85,0.99,0.95],avg:0.92}
   ];
-  function heatPost(v){
-    var t=Math.max(0,Math.min(1,(v-4.75)/(5.00-4.75)));
-    return 'rgb('+Math.round(180-t*140)+','+Math.round(210-t*80)+','+Math.round(255-t*50)+')';
-  }
-  function heatGain(v){
-    var t=Math.max(0,Math.min(1,(v-0.50)/(1.45-0.50)));
-    return 'rgb('+Math.round(180-t*140)+','+Math.round(210-t*80)+','+Math.round(255-t*50)+')';
-  }
-  function textColor(v,lo,hi){
-    var t=Math.max(0,Math.min(1,(v-lo)/(hi-lo)));
-    return 'rgb('+Math.round(5+t*30)+','+Math.round(50+t*50)+','+Math.round(100+t*60)+')';
-  }
+  function heatPost(v){var t=Math.max(0,Math.min(1,(v-4.75)/(5.00-4.75)));return'rgb('+Math.round(180-t*140)+','+Math.round(210-t*80)+','+Math.round(255-t*50)+')';}
+  function heatGain(v){var t=Math.max(0,Math.min(1,(v-0.50)/(1.45-0.50)));return'rgb('+Math.round(180-t*140)+','+Math.round(210-t*80)+','+Math.round(255-t*50)+')';}
+  function textColor(v,lo,hi){var t=Math.max(0,Math.min(1,(v-lo)/(hi-lo)));return'rgb('+Math.round(5+t*30)+','+Math.round(50+t*50)+','+Math.round(100+t*60)+')';}
   function buildRows(data,containerId,heatFn,lo,hi){
-    var el=document.getElementById(containerId);
-    if(!el)return;
+    var el=document.getElementById(containerId);if(!el)return;
     var h='';
     data.forEach(function(row){
-      h+='<div style="display:grid;grid-template-columns:1fr repeat(5,44px);gap:3px;align-items:center;padding:clamp(6px,0.9vh,10px) 0;border-bottom:0.5px solid #e8edf4;">';
-      h+='<div style="font-size:clamp(0.84rem,1.06vw,0.96rem);color:#2d3a4a;line-height:1.3;">'+row.label+'</div>';
-      row.v.forEach(function(v){
-        var bg=heatFn(v), fg=textColor(v,lo,hi);
-        h+='<div style="text-align:center;font-size:clamp(0.64rem,0.78vw,0.72rem);font-weight:600;background:'+bg+';color:'+fg+';border-radius:3px;padding:2px 0;">'+v.toFixed(2)+'</div>';
-      });
-      var bg=heatFn(row.avg), fg=textColor(row.avg,lo,hi);
-      h+='<div style="text-align:center;font-size:clamp(0.64rem,0.78vw,0.72rem);font-weight:700;background:'+bg+';color:'+fg+';border-radius:3px;padding:2px 0;">'+row.avg.toFixed(2)+'</div>';
+      h+='<div style="display:grid;grid-template-columns:1fr repeat(5,52px);gap:4px;align-items:center;padding:clamp(9px,1.2vh,15px) 0;border-bottom:0.5px solid #e8edf4;">';
+      h+='<div style="font-size:clamp(0.96rem,1.22vw,1.12rem);color:#1a2a3a;line-height:1.3;font-weight:500;">'+row.label+'</div>';
+      row.v.forEach(function(v){var bg=heatFn(v),fg=textColor(v,lo,hi);h+='<div style="text-align:center;font-size:clamp(0.9rem,1.14vw,1.04rem);font-weight:700;background:'+bg+';color:'+fg+';border-radius:4px;padding:4px 2px;">'+v.toFixed(2)+'</div>';});
+      var bg=heatFn(row.avg),fg=textColor(row.avg,lo,hi);
+      h+='<div style="text-align:center;font-size:clamp(0.9rem,1.14vw,1.04rem);font-weight:800;background:'+bg+';color:'+fg+';border-radius:4px;padding:4px 2px;border-left:2px solid #dde4ef;margin-left:2px;">'+row.avg.toFixed(2)+'</div>';
       h+='</div>';
     });
     el.innerHTML=h;
@@ -1779,54 +1573,25 @@ function initConfEval(){
   buildRows(gainData,'gain-rows-slide',heatGain,0.50,1.45);
 }
 
-
 var slides=document.querySelectorAll('.slide');
 var counter=document.getElementById('counter');
 var progress=document.getElementById('progress');
 var current=0;
-
-function goTo(n){
-  slides[current].classList.remove('active');
-  current=Math.max(0,Math.min(slides.length-1,n));
-  slides[current].classList.add('active');
-  if(counter) counter.textContent=(current+1)+' / '+slides.length;
-  if(progress) progress.style.width=((current+1)/slides.length*100)+'%';
-}
-
-document.getElementById('prev').addEventListener('click',function(){ goTo(current-1); });
-document.getElementById('next').addEventListener('click',function(){ goTo(current+1); });
-
-document.addEventListener('keydown',function(e){
-  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown') goTo(current+1);
-  if(e.key==='ArrowLeft'||e.key==='PageUp') goTo(current-1);
-});
-
-(function(){
-  var startX=0;
-  document.addEventListener('touchstart',function(e){ startX=e.touches[0].clientX; },{passive:true});
-  document.addEventListener('touchend',function(e){
-    var dx=e.changedTouches[0].clientX-startX;
-    if(Math.abs(dx)>50){ dx<0?goTo(current+1):goTo(current-1); }
-  },{passive:true});
-})();
-
+function goTo(n){slides[current].classList.remove('active');current=Math.max(0,Math.min(slides.length-1,n));slides[current].classList.add('active');if(counter)counter.textContent=(current+1)+' / '+slides.length;if(progress)progress.style.width=((current+1)/slides.length*100)+'%';}
+document.getElementById('prev').addEventListener('click',function(){goTo(current-1);});
+document.getElementById('next').addEventListener('click',function(){goTo(current+1);});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown')goTo(current+1);if(e.key==='ArrowLeft'||e.key==='PageUp')goTo(current-1);});
+(function(){var startX=0;document.addEventListener('touchstart',function(e){startX=e.touches[0].clientX;},{passive:true});document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>50){dx<0?goTo(current+1):goTo(current-1);}},{passive:true});})();
 goTo(0);
-
 document.addEventListener('DOMContentLoaded',function(){
-  obs('slide-membership-story',  function(){ initMembership(); initChapters(); initAvgSize(); });
-  obs('slide-lifecycle-outcomes', initCohortAnalysis);
-  // cs-single-gender now in cs-climate-combined1
-  // cs-risky-behavior now in cs-climate-combined1
-  // cs-campus now in cs-climate-combined1
-  // cs-chapter now in cs-climate-combined2
-  // cs-cohort now in cs-climate-combined2
-  obs('cs-climate-combined1',    function(){ initSG(); initRisky(); initCampus(); });
-  obs('cs-climate-combined2',    function(){ initChapter(); initCohort(); });
-  obs('cs-perceptions-combined', initPerceptions);
-  obs('cohort-outcomes',           initCohortOutcomes);
-  obs('slide-conf-evals',           initConfEval);
-  obs('slide-higher-ed-enrollment', initIPEDS);
-  // cs-ranks removed; cs-unknown handled inside initPerceptions
+  obs('slide-membership-story',function(){initMembership();initChapters();initAvgSize();});
+  obs('slide-lifecycle-outcomes',initCohortAnalysis);
+  obs('cs-climate-combined1',function(){initSG();initRisky();initCampus();});
+  obs('cs-climate-combined2',function(){initChapter();initCohort();});
+  obs('cs-perceptions-combined',initPerceptions);
+  obs('cohort-outcomes',initCohortOutcomes);
+  obs('slide-conf-evals',initConfEval);
+  obs('slide-higher-ed-enrollment',initIPEDS);
 });
 })();
 </script>
