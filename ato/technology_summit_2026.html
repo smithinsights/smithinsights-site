@@ -10,8 +10,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden;font-family:'Raleway',sans-serif;background:#111}
 
-/* DECK: full-screen container */
-#deck{position:fixed;inset:0 0 48px 0;overflow:hidden}
+/* DECK: full-screen container — extends behind nav so nav is truly translucent */
+#deck{position:fixed;inset:0;overflow:hidden}
 
 /* Slides stack inside deck; only .active is visible */
 .slide{
@@ -19,13 +19,14 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Raleway',sans-seri
   display:flex;flex-direction:column;
   visibility:hidden;
   pointer-events:none;
+  padding-bottom:48px;
 }
 .slide.active{visibility:visible;pointer-events:auto}
 
 /* NAV */
 #nav{
   position:fixed;bottom:0;left:0;right:0;height:48px;
-  background:rgba(0,0,0,0.65);
+  background:rgba(20,20,20,0.7);
   display:flex;align-items:center;justify-content:center;gap:28px;
   z-index:9999;
 }
@@ -37,7 +38,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Raleway',sans-seri
 }
 #nav button:hover{background:rgba(255,255,255,0.15);color:#fff}
 #counter{font-size:12px;letter-spacing:.15em;color:rgba(255,255,255,0.45);min-width:44px;text-align:center}
-#prog{position:fixed;bottom:48px;left:0;height:3px;background:var(--go);transition:width .3s;z-index:9999}
+#prog{position:fixed;bottom:0;left:0;height:3px;background:var(--go);transition:width .3s;z-index:10000}
 
 /* ── SLIDE 1: TITLE ── */
 #s1{background:var(--nv);align-items:center;justify-content:center;text-align:center;padding:40px 60px}
@@ -139,7 +140,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Raleway',sans-seri
   <div class="t-h1">Technology Summit</div>
   <div class="t-div"></div>
   <div class="t-sub">June 11, 2026 &nbsp;|&nbsp; 10:00 am &ndash; 12:00 pm</div>
-  <div class="t-tag">Applications &middot; Pain Points &middot; Opportunities</div>
+  <div class="t-tag" style="display:none">Applications &middot; Pain Points &middot; Opportunities</div>
 </div>
 
 <!-- S2: ALL APPS -->
