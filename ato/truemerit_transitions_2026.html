@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ATO Award State Markov Analysis: 2013-14 to 2024-25</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azure:  #487FC0;
+    --gold:   #FFAE3B;
+    --night:  #0d2137;
+    --dark:   #2D2C2C;
+    --white:  #ffffff;
+    --bg:     #f4f7fb;
+    --border: #dde4ef;
+    --surface:#ffffff;
+    --ink2:   #4a5a72;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--dark); font-size: 15px; line-height: 1.65; }
+
+  .header {
+    background: var(--night);
+    padding: 32px 48px 28px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    border-bottom: 4px solid var(--gold);
+  }
+  .header-text h1 {
+    font-family: 'DM Serif Display', serif;
+    color: var(--white);
+    font-size: 1.6rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .header-text .meta {
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 32px 64px; }
+
+  .intro { font-size: 0.97rem; color: var(--ink2); line-height: 1.75; margin-bottom: 44px; }
+  .intro strong { color: var(--dark); }
+
+  .section { margin-bottom: 44px; }
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--night);
+    margin-bottom: 5px;
+  }
+  .section-divider {
+    height: 3px; width: 36px;
+    background: var(--gold);
+    margin-bottom: 16px;
+    border-radius: 2px;
+  }
+  .section p { font-size: 0.94rem; color: var(--ink2); line-height: 1.72; margin-bottom: 14px; }
+  .section p:last-child { margin-bottom: 0; }
+  .section p strong { color: var(--dark); }
+
+  /* Stat row */
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--azure);
+    border-radius: 3px;
+    padding: 18px 20px;
+    text-align: center;
+  }
+  .stat-card.gold-top { border-top-color: var(--gold); }
+  .stat-card.night-top { border-top-color: var(--night); }
+  .stat-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--azure); margin-bottom: 6px; }
+  .stat-card.gold-top .stat-label { color: #c47f00; }
+  .stat-card.night-top .stat-label { color: var(--night); }
+  .stat-number { font-family: 'DM Serif Display', serif; font-size: 2.1rem; color: var(--night); line-height: 1; margin-bottom: 4px; }
+  .stat-sub { font-size: 0.78rem; color: var(--ink2); }
+
+  /* Transition matrix */
+  .matrix-wrap { margin: 20px 0; overflow-x: auto; }
+  .matrix-table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+  .matrix-table th, .matrix-table td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: center;
+  }
+  .matrix-table thead th {
+    background: var(--night);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+  .matrix-table thead th.from-header {
+    background: var(--night);
+    font-size: 0.72rem;
+    font-style: italic;
+    color: #7a9ab8;
+    text-align: left;
+  }
+  .matrix-table tbody td.row-label {
+    background: var(--night);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-align: left;
+    padding-left: 14px;
+  }
+  .cell-high { background: #fff3d6; font-weight: 700; color: var(--night); }
+  .cell-highest { background: #FFAE3B; font-weight: 700; color: var(--night); }
+  .cell-med { background: #f0f5fb; color: var(--dark); }
+  .cell-low { color: #9aabca; }
+  .matrix-caption { font-size: 0.78rem; color: var(--ink2); margin-top: 6px; font-style: italic; }
+
+  /* Count row under matrix */
+  .count-note { font-size: 0.82rem; color: var(--ink2); margin-top: 8px; }
+  .count-note strong { color: var(--dark); }
+
+  /* State pill */
+  .pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 2px;
+  }
+  .pill-tm { background: var(--gold); color: var(--night); }
+  .pill-hm { background: var(--azure); color: var(--white); }
+  .pill-nc { background: #e2e8f0; color: #4a5a72; }
+  .pill-cl { background: #fce4e4; color: #9c0006; }
+
+  /* Callout */
+  .callout {
+    background: var(--night);
+    color: var(--white);
+    border-radius: 3px;
+    padding: 20px 24px;
+    margin: 18px 0;
+    border-left: 4px solid var(--gold);
+  }
+  .callout-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 7px;
+  }
+  .callout p { font-size: 0.95rem; color: #cdd8ea; line-height: 1.7; margin: 0; }
+  .callout p strong { color: var(--white); }
+
+  /* Multi-step table */
+  .multistep-table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 16px 0; }
+  .multistep-table th {
+    background: var(--azure);
+    color: var(--white);
+    padding: 9px 14px;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .multistep-table th.group-header {
+    background: var(--night);
+    color: #7a9ab8;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .multistep-table td {
+    border: 1px solid var(--border);
+    padding: 9px 14px;
+    text-align: center;
+  }
+  .multistep-table td.row-label {
+    background: #f8fafd;
+    font-weight: 600;
+    font-size: 0.84rem;
+    text-align: left;
+  }
+  .highlight-max { background: #fff3d6; font-weight: 700; }
+
+  /* Bullet list */
+  .bullet-list { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 7px; }
+  .bullet-list li { display: flex; gap: 11px; align-items: flex-start; font-size: 0.94rem; color: #2c3a50; }
+  .bullet-list li::before { content: ''; flex-shrink: 0; width: 7px; height: 7px; background: var(--gold); border-radius: 50%; margin-top: 8px; }
+
+  /* 2-col */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .mini-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 18px 20px;
+  }
+  .mini-card-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--azure); margin-bottom: 8px; }
+  .mini-card-title { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--night); margin-bottom: 6px; }
+  .mini-card p { font-size: 0.85rem; color: var(--ink2); line-height: 1.55; }
+
+  /* Pre-close bar */
+  .closure-bars { margin: 16px 0; display: flex; flex-direction: column; gap: 10px; }
+  .cbar-row { display: flex; align-items: center; gap: 12px; }
+  .cbar-label { font-size: 0.82rem; font-weight: 600; width: 36px; text-align: right; color: var(--dark); }
+  .cbar-track { flex: 1; background: #eaeef5; border-radius: 2px; height: 22px; position: relative; }
+  .cbar-fill { height: 100%; border-radius: 2px; display: flex; align-items: center; padding-left: 10px; }
+  .cbar-fill span { font-size: 0.78rem; font-weight: 700; color: var(--white); }
+  .cbar-count { font-size: 0.8rem; color: var(--ink2); width: 60px; }
+
+  /* Action items */
+  .action-items {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 24px 28px;
+    margin-top: 44px;
+  }
+  .action-items h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--night);
+    margin-bottom: 18px;
+  }
+  .action-item { display: flex; gap: 13px; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .action-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .action-number {
+    flex-shrink: 0; width: 24px; height: 24px;
+    background: var(--azure); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 700; margin-top: 2px;
+  }
+  .action-text { font-size: 0.91rem; color: #2c3a50; line-height: 1.6; }
+  .action-text strong { display: block; font-weight: 600; color: var(--night); margin-bottom: 2px; }
+
+  .footer {
+    background: var(--night);
+    padding: 16px 48px;
+    text-align: right;
+    font-size: 0.76rem;
+    color: #4a6080;
+    border-top: 1px solid #1e3a5a;
+  }
+
+  @media (max-width: 600px) {
+    .stat-row, .two-col { grid-template-columns: 1fr; }
+    .header { padding: 20px 20px; flex-direction: column; align-items: flex-start; }
+    .container { padding: 28px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-text">
+    <h1>Award State Transitions: True Merit, Honorable Mention, and Not Considered</h1>
+    <div class="meta">June 2026 &nbsp;&middot;&nbsp; Director of Systems &nbsp;&middot;&nbsp; 2013-14 through 2024-25</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <p class="intro">
+    This analysis applies a Markov chain model to ATO chapter award outcomes across twelve academic years, from 2013-14 through 2024-25. Each chapter is assigned one of three active states each year - <strong>True Merit</strong>, <strong>Honorable Mention</strong>, or <strong>Not Considered</strong> - with a fourth absorbing state for chapters that closed. Year-over-year transitions between those states form the core of the model. Active year eligibility is determined by chapter status records and award history. The chain is estimated from observed transitions, not simulated. All percentages reflect pooled behavior across all chapters and years in the window.
+  </p>
+
+  <!-- SECTION 1: THE TRANSITION MATRIX -->
+  <div class="section">
+    <div class="section-heading">One-Year Transition Matrix</div>
+    <div class="section-divider"></div>
+    <p>The table below shows the probability that a chapter in a given state in year Y will be in each state in year Y+1. Each row sums to 100%. The diagonal represents persistence - chapters staying in the same state from one year to the next.</p>
+
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th class="from-header">From &darr; &nbsp; To &rarr;</th>
+            <th><span class="pill pill-tm">TM</span></th>
+            <th><span class="pill pill-hm">HM</span></th>
+            <th><span class="pill pill-nc">NC</span></th>
+            <th><span class="pill pill-cl">Closed</span></th>
+            <th style="background:#1a3050;color:#7a9ab8;font-size:0.72rem;">n</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label"><span class="pill pill-tm">True Merit</span></td>
+            <td class="cell-highest">63.5%</td>
+            <td class="cell-med">19.9%</td>
+            <td class="cell-low">16.2%</td>
+            <td class="cell-low">0.3%</td>
+            <td style="color:#9aabca;font-size:0.82rem;">351</td>
+          </tr>
+          <tr>
+            <td class="row-label"><span class="pill pill-hm">Honorable Mention</span></td>
+            <td class="cell-med">30.0%</td>
+            <td class="cell-high">31.4%</td>
+            <td class="cell-med">36.0%</td>
+            <td class="cell-low">2.5%</td>
+            <td style="color:#9aabca;font-size:0.82rem;">283</td>
+          </tr>
+          <tr>
+            <td class="row-label"><span class="pill pill-nc">Not Considered</span></td>
+            <td class="cell-low">5.0%</td>
+            <td class="cell-med">15.6%</td>
+            <td class="cell-highest">73.9%</td>
+            <td class="cell-med">5.5%</td>
+            <td style="color:#9aabca;font-size:0.82rem;">636</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="matrix-caption">Closed is an absorbing state and excluded from the row-set above. Totals based on 1,270 active-chapter transitions from 2013-14 through 2023-24.</p>
+
+    <p>The most striking feature is the contrast in state persistence. True Merit chapters retain their status nearly two-thirds of the time, while Not Considered chapters stay Not Considered almost three-quarters of the time. Both states have strong inertia, but in opposite directions. Honorable Mention is the most volatile state: the three active outcomes are nearly balanced, and HM functions less as a stable position than as a transition zone - chapters in it are about as likely to move up as stay put as move down.</p>
+
+    <div class="callout">
+      <div class="callout-label">Key Finding</div>
+      <p>The probability of moving from <strong>Not Considered directly to True Merit</strong> in a single year is 5.0%. The probability of moving from <strong>Honorable Mention to True Merit</strong> is 30.0%. HM is not merely a recognition tier - it is a leading indicator. A chapter reaching HM is six times more likely to reach TM the following year than a chapter that did not reach HM.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2: MULTI-YEAR PROJECTIONS -->
+  <div class="section">
+    <div class="section-heading">Two- and Three-Year Projections</div>
+    <div class="section-divider"></div>
+    <p>Applying the transition matrix repeatedly generates probability distributions for any future horizon. The tables below show where chapters are likely to be two and three years out from their current state. Diffusion is visible: probabilities spread across states as the horizon extends, and the influence of starting position fades gradually.</p>
+
+    <table class="multistep-table">
+      <thead>
+        <tr>
+          <th class="group-header" colspan="2">Starting State</th>
+          <th class="group-header" colspan="4">Year +2 Probabilities</th>
+          <th class="group-header" colspan="4">Year +3 Probabilities</th>
+        </tr>
+        <tr>
+          <th style="text-align:left;padding-left:14px;">State</th>
+          <th></th>
+          <th>TM</th><th>HM</th><th>NC</th><th>Closed</th>
+          <th>TM</th><th>HM</th><th>NC</th><th>Closed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label"><span class="pill pill-tm">True Merit</span></td>
+          <td></td>
+          <td class="highlight-max">47.2%</td><td>21.5%</td><td>29.5%</td><td>1.8%</td>
+          <td class="highlight-max">37.9%</td><td>20.8%</td><td>37.2%</td><td>4.1%</td>
+        </tr>
+        <tr>
+          <td class="row-label"><span class="pill pill-hm">Honorable Mention</span></td>
+          <td></td>
+          <td class="highlight-max">30.3%</td><td>21.5%</td><td>42.9%</td><td>5.3%</td>
+          <td class="highlight-max">27.9%</td><td>19.5%</td><td>44.4%</td><td>8.2%</td>
+        </tr>
+        <tr>
+          <td class="row-label"><span class="pill pill-nc">Not Considered</span></td>
+          <td></td>
+          <td>11.6%</td><td>17.4%</td><td class="highlight-max">61.1%</td><td>9.9%</td>
+          <td>15.7%</td><td>17.3%</td><td class="highlight-max">53.5%</td><td>13.5%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Three years out, a chapter that started in True Merit still has a 37.9% chance of holding TM - well above the base rate for any random active chapter. A chapter that started in Not Considered has only a 15.7% chance of reaching TM in three years. The gap between starting states narrows over time but does not close quickly. History of award performance carries forward.</p>
+
+    <p>The three-year closure risk for Not Considered chapters (13.5%) is more than three times the rate for True Merit chapters (4.1%). This gap is relevant to how the National Fraternity frames chapter health conversations: persistent NC status is not a neutral outcome.</p>
+  </div>
+
+  <!-- SECTION 3: HONORABLE MENTION AS LEADING INDICATOR -->
+  <div class="section">
+    <div class="section-heading">The Honorable Mention Transition Problem</div>
+    <div class="section-divider"></div>
+    <p>Honorable Mention produces three roughly equal outcomes in the following year: 30.0% advance to True Merit, 31.4% remain at HM, and 36.0% fall to Not Considered. When closure is included, slightly more HM chapters move down or stay than move up. The implication is that HM does not represent momentum - it represents a decision point.</p>
+
+    <div class="two-col">
+      <div class="mini-card">
+        <div class="mini-card-label">Upward path</div>
+        <div class="mini-card-title">HM to True Merit</div>
+        <p>30.0% of HM chapters reach TM the next year. For context, only 5.0% of NC chapters do the same. The HM-to-TM path accounts for roughly one-third of all TM entrants in any given year.</p>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-label">Downward path</div>
+        <div class="mini-card-title">HM to Not Considered</div>
+        <p>36.0% of HM chapters fall to NC the following year. These chapters are more likely to be in NC two years later than in TM or HM. The downward path from HM is faster than the upward path.</p>
+      </div>
+    </div>
+
+    <p>The HM pool in any year contains two distinct chapter types: chapters on an upward trajectory that will reach TM, and chapters declining from TM that will continue to NC. The model cannot distinguish these from the state label alone. Chapter Services staff working with HM chapters should treat them as materially different situations depending on whether the chapter arrived at HM from above or below.</p>
+  </div>
+
+  <!-- SECTION 4: CLOSURE -->
+  <div class="section">
+    <div class="section-heading">Award State and Closure Risk</div>
+    <div class="section-divider"></div>
+    <p>Forty-three chapter closures occurred in this window with a recoverable prior-year award state. The distribution across states in the year before closure is not uniform.</p>
+
+    <div class="closure-bars">
+      <div class="cbar-row">
+        <div class="cbar-label">NC</div>
+        <div class="cbar-track">
+          <div class="cbar-fill" style="width:81.4%;background:#487FC0;">
+            <span>81.4%</span>
+          </div>
+        </div>
+        <div class="cbar-count">35 chapters</div>
+      </div>
+      <div class="cbar-row">
+        <div class="cbar-label">HM</div>
+        <div class="cbar-track">
+          <div class="cbar-fill" style="width:16.3%;background:#FFAE3B;">
+            <span>16.3%</span>
+          </div>
+        </div>
+        <div class="cbar-count">7 chapters</div>
+      </div>
+      <div class="cbar-row">
+        <div class="cbar-label">TM</div>
+        <div class="cbar-track">
+          <div class="cbar-fill" style="width:2.3%;background:#c8d8ec;min-width:28px;">
+            <span style="color:#4a5a72;">2.3%</span>
+          </div>
+        </div>
+        <div class="cbar-count">1 chapter</div>
+      </div>
+    </div>
+
+    <p>The annual closure rate for Not Considered chapters (5.5% per year) is 18 times the rate for True Merit chapters (0.3%). Honorable Mention chapters close at 2.5% annually - elevated relative to TM but well below NC. A chapter spending multiple consecutive years in NC is accumulating closure risk in a way that is not visible from a single-year observation.</p>
+
+    <div class="callout">
+      <div class="callout-label">Compounding Risk</div>
+      <p>A chapter in NC this year has a 5.5% chance of closing before next year. A chapter that has been in NC for three consecutive years faces an estimated cumulative closure probability of roughly <strong>15%</strong>, based on the three-year projection. Sustained NC is not a stable state - it is a slow departure trajectory for a meaningful fraction of chapters that enter it.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5: WHAT THE MODEL DOES NOT CAPTURE -->
+  <div class="section">
+    <div class="section-heading">Limitations and Analytical Caveats</div>
+    <div class="section-divider"></div>
+    <p>The Markov assumption is that next-year state depends only on current-year state, not on the sequence of states before it. This is a simplification. A chapter that has been TM for eight consecutive years is not equivalent to a chapter that just reached TM for the first time, even if the model treats them identically. In practice, tenure at a given state likely predicts persistence more reliably than a single observation does.</p>
+
+    <p>The model is also estimated from a population of heterogeneous chapters. A chapter at a large flagship university is not facing the same institutional conditions as a chapter at a small liberal arts school. Transition rates reported here are averages across that full population. Interpreting them at the individual chapter level requires caution.</p>
+
+    <ul class="bullet-list">
+      <li><strong>Chapter size:</strong> Larger chapters may be more stable at TM independent of program quality, simply due to more members available for programming and reporting.</li>
+      <li><strong>COS completion rate:</strong> The award process requires survey submission. Chapters that fail to submit are effectively Not Considered regardless of program quality. Non-submission is not distinguished from low performance in this model.</li>
+      <li><strong>Nexus group contamination:</strong> Several chapters that appear in the early years of the window were operating as Nexus groups and may face structurally different transition dynamics than established chapters.</li>
+      <li><strong>Era effects:</strong> The window covers twelve years. Standards, weights, and award criteria have not been static. Transitions estimated from 2013-14 conditions may not reflect current award dynamics precisely.</li>
+    </ul>
+  </div>
+
+  <!-- ACTION ITEMS -->
+  <div class="action-items">
+    <h2>Analytical Implications</h2>
+    <div class="action-item">
+      <div class="action-number">1</div>
+      <div class="action-text">
+        <strong>Treat HM as a routing signal, not a destination</strong>
+        The near-equal split of HM outcomes (up, stay, down) means the award label provides limited diagnostic information on its own. The more useful question is whether the chapter arrived at HM from above or below. Tracking direction of movement, not just current state, improves the predictive value of the award data.
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-number">2</div>
+      <div class="action-text">
+        <strong>NC duration matters more than a single NC observation</strong>
+        A one-year NC result carries a 5.5% closure probability. Three consecutive NC years compound that risk substantially. Chapters with multi-year NC streaks warrant a different intervention posture than first-year NC chapters, even though the model currently assigns them identical forward probabilities.
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-number">3</div>
+      <div class="action-text">
+        <strong>The NC-to-TM direct path is narrow but real</strong>
+        Five percent of NC chapters reach TM in a single year. Those 32 transitions over the twelve-year window are worth examining as a case library. Understanding what enabled a direct NC-to-TM jump is more actionable than the average transition probabilities.
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-number">4</div>
+      <div class="action-text">
+        <strong>Add a persistence dimension to the BOT coaching report stack</strong>
+        The current chapter scoring and coaching framework treats current state as the primary input. Appending a simple count of consecutive years at each state would allow coaches to distinguish a stable TM chapter, a declining TM chapter, an ascending HM chapter, and a stagnant NC chapter - each of which calls for a different conversation.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Alpha Tau Omega &nbsp;&middot;&nbsp; Award State Markov Analysis (2013-14 to 2024-25) &nbsp;&middot;&nbsp; Prepared by Chris Smith
+</div>
+
+</body>
+</html>
