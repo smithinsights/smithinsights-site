@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ATO True Merit: A Half-Century of Chapter Award Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azure:  #487FC0;
+    --gold:   #FFAE3B;
+    --night:  #0d2137;
+    --dark:   #2D2C2C;
+    --white:  #ffffff;
+    --bg:     #f4f7fb;
+    --border: #dde4ef;
+    --surface:#ffffff;
+    --ink2:   #4a5a72;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--dark); font-size: 15px; line-height: 1.65; }
+
+  .header {
+    background: var(--night);
+    padding: 32px 48px 28px;
+    display: flex; align-items: center; gap: 28px;
+    border-bottom: 4px solid var(--gold);
+  }
+  .header-text h1 {
+    font-family: 'DM Serif Display', serif;
+    color: var(--white); font-size: 1.6rem; line-height: 1.2; letter-spacing: -0.02em;
+  }
+  .header-text .meta {
+    color: var(--gold); font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 5px;
+  }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 32px 64px; }
+
+  .intro { font-size: 0.97rem; color: var(--ink2); line-height: 1.75; margin-bottom: 44px; }
+  .intro strong { color: var(--dark); }
+
+  .section { margin-bottom: 44px; }
+  .section-heading { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--night); margin-bottom: 5px; }
+  .section-divider { height: 3px; width: 36px; background: var(--gold); margin-bottom: 16px; border-radius: 2px; }
+  .section p { font-size: 0.94rem; color: var(--ink2); line-height: 1.72; margin-bottom: 14px; }
+  .section p:last-child { margin-bottom: 0; }
+  .section p strong { color: var(--dark); }
+
+  /* Era cards */
+  .era-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 20px 0; }
+  .era-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 3px; padding: 14px 12px;
+  }
+  .era-card.current { border: 2px solid var(--gold); background: #fffbf2; }
+  .era-name { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--azure); margin-bottom: 3px; }
+  .era-card.current .era-name { color: #c47f00; }
+  .era-desc { font-size: 0.75rem; color: var(--ink2); margin-bottom: 10px; line-height: 1.35; }
+  .era-stat-row { display: flex; flex-direction: column; gap: 5px; }
+  .era-stat { font-size: 0.78rem; color: var(--ink2); }
+  .era-stat strong { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: var(--night); display: block; }
+
+  /* Timeline chart - CSS-only horizontal bars */
+  .timeline { margin: 20px 0; }
+  .tl-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .tl-label { font-size: 0.78rem; color: var(--ink2); width: 72px; text-align: right; flex-shrink: 0; }
+  .tl-track { flex: 1; background: #eaeef5; border-radius: 2px; height: 18px; position: relative; }
+  .tl-bar { height: 100%; border-radius: 2px; display: flex; align-items: center; padding-left: 8px; }
+  .tl-bar span { font-size: 0.72rem; font-weight: 700; color: var(--white); white-space: nowrap; }
+  .tl-val { font-size: 0.78rem; color: var(--ink2); width: 44px; text-align: left; flex-shrink: 0; }
+
+  /* Matrix */
+  .matrix-wrap { margin: 20px 0; overflow-x: auto; }
+  .matrix-table { border-collapse: collapse; font-size: 0.88rem; }
+  .matrix-table th, .matrix-table td { border: 1px solid var(--border); padding: 10px 16px; text-align: center; }
+  .matrix-table thead th { background: var(--night); color: var(--white); font-size: 0.8rem; font-weight: 600; }
+  .matrix-table thead th.from-header { font-size: 0.72rem; font-style: italic; color: #7a9ab8; text-align: left; }
+  .matrix-table tbody td.row-label { background: var(--night); color: var(--white); font-weight: 600; font-size: 0.84rem; text-align: left; padding-left: 16px; }
+  .cell-highest { background: #FFAE3B; font-weight: 700; color: var(--night); }
+  .cell-high { background: #fff3d6; font-weight: 700; color: var(--night); }
+  .cell-med { background: #f0f5fb; color: var(--dark); }
+  .cell-low { color: #9aabca; }
+
+  /* Era comparison table */
+  .era-compare { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 16px 0; }
+  .era-compare th { background: var(--night); color: var(--white); padding: 10px 14px; text-align: center; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; }
+  .era-compare th.left { text-align: left; padding-left: 14px; }
+  .era-compare td { border: 1px solid var(--border); padding: 9px 14px; text-align: center; font-size: 0.88rem; }
+  .era-compare td.era-label { text-align: left; font-weight: 600; font-size: 0.84rem; color: var(--night); }
+  .era-compare tr.current-era td { background: #fffbf2; font-weight: 600; }
+  .era-compare tr.current-era td.era-label { border-left: 3px solid var(--gold); }
+  .sig-p { color: #2a7a3a; font-weight: 700; }
+  .insig-p { color: #9aabca; }
+
+  /* Callout */
+  .callout { background: var(--night); color: var(--white); border-radius: 3px; padding: 20px 24px; margin: 18px 0; border-left: 4px solid var(--gold); }
+  .callout-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 7px; }
+  .callout p { font-size: 0.95rem; color: #cdd8ea; line-height: 1.7; margin: 0 0 8px; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout p strong { color: var(--white); }
+
+  /* Bullet list */
+  .bullet-list { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 7px; }
+  .bullet-list li { display: flex; gap: 11px; align-items: flex-start; font-size: 0.94rem; color: #2c3a50; }
+  .bullet-list li::before { content: ''; flex-shrink: 0; width: 7px; height: 7px; background: var(--gold); border-radius: 50%; margin-top: 8px; }
+
+  /* Stat row */
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--azure); border-radius: 3px; padding: 18px 20px; text-align: center; }
+  .stat-card.gold { border-top-color: var(--gold); }
+  .stat-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--azure); margin-bottom: 6px; }
+  .stat-card.gold .stat-label { color: #c47f00; }
+  .stat-number { font-family: 'DM Serif Display', serif; font-size: 2.1rem; color: var(--night); line-height: 1; margin-bottom: 4px; }
+  .stat-sub { font-size: 0.78rem; color: var(--ink2); }
+
+  /* Action items */
+  .action-items { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 24px 28px; margin-top: 44px; }
+  .action-items h2 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--night); margin-bottom: 18px; }
+  .action-item { display: flex; gap: 13px; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .action-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .action-number { flex-shrink: 0; width: 24px; height: 24px; background: var(--azure); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; margin-top: 2px; }
+  .action-text { font-size: 0.91rem; color: #2c3a50; line-height: 1.6; }
+  .action-text strong { display: block; font-weight: 600; color: var(--night); margin-bottom: 2px; }
+
+  .footer { background: var(--night); padding: 16px 48px; text-align: right; font-size: 0.76rem; color: #4a6080; border-top: 1px solid #1e3a5a; }
+
+  @media (max-width: 700px) {
+    .era-grid { grid-template-columns: 1fr 1fr; }
+    .stat-row { grid-template-columns: 1fr; }
+    .header { padding: 20px 20px; flex-direction: column; align-items: flex-start; }
+    .container { padding: 28px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-text">
+    <h1>True Merit Award: A Half-Century of Chapter Transition Dynamics</h1>
+    <div class="meta">June 2026 &nbsp;&middot;&nbsp; Director of Systems &nbsp;&middot;&nbsp; 1968-69 through 2024-25</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <p class="intro">
+    This report applies a binary Markov chain to ATO chapter award outcomes from 1968-69 through 2024-25 - 57 academic years of True Merit history. Each chapter is assigned one of two active states each year: <strong>True Merit</strong> (TM) or <strong>Not True Merit</strong> (NTM). A third absorbing state captures chapter closure. The model estimates year-over-year transition probabilities from observed outcomes, covering more than 7,000 individual chapter-year transitions. Chapters are coded as active based on both award history and status records from the membership system. The analysis identifies five statistically distinct eras and characterizes where the current period sits in that long-run context.
+  </p>
+
+  <!-- SECTION 1: OVERALL MODEL -->
+  <div class="section">
+    <div class="section-heading">Overall Transition Probabilities: Full History</div>
+    <div class="section-divider"></div>
+    <p>Pooled across all 57 years, the model produces the following one-year transition rates. These represent the baseline against which each era is measured.</p>
+
+    <div class="stat-row">
+      <div class="stat-card gold">
+        <div class="stat-label">TM Retention</div>
+        <div class="stat-number">63.8%</div>
+        <div class="stat-sub">of TM chapters stay TM the next year</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">NTM Gain Rate</div>
+        <div class="stat-number">10.3%</div>
+        <div class="stat-sub">of NTM chapters reach TM the next year</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">NTM Closure Rate</div>
+        <div class="stat-number">3.4%</div>
+        <div class="stat-sub">of NTM chapters close per year</div>
+      </div>
+    </div>
+
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th class="from-header">From &darr; &nbsp; To &rarr;</th>
+            <th>True Merit</th>
+            <th>Not True Merit</th>
+            <th>Closed</th>
+            <th style="background:#1a3050;color:#7a9ab8;font-size:0.72rem;">n</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">True Merit</td>
+            <td class="cell-highest">63.8%</td>
+            <td class="cell-med">36.0%</td>
+            <td class="cell-low">0.1%</td>
+            <td style="color:#9aabca;font-size:0.82rem;">1,158</td>
+          </tr>
+          <tr>
+            <td class="row-label">Not True Merit</td>
+            <td class="cell-med">10.3%</td>
+            <td class="cell-highest">86.3%</td>
+            <td class="cell-med">3.4%</td>
+            <td style="color:#9aabca;font-size:0.82rem;">3,537</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The asymmetry between the two states is fundamental. TM chapters retain their status at more than six times the rate that NTM chapters gain it. Reaching True Merit is difficult; holding it is comparatively easier. That gap between gain rate and retention rate is the defining structural feature of the award system across the full history.</p>
+  </div>
+
+  <!-- SECTION 2: FIVE ERAS -->
+  <div class="section">
+    <div class="section-heading">Five Statistically Distinct Eras</div>
+    <div class="section-divider"></div>
+    <p>Transition rates are not stable across 57 years. Two-sample t-tests on annual NTM gain rates identify four significant breaks in the series, producing five eras with meaningfully different chapter mobility patterns. The 2010-19 to 2020-25 boundary is the one exception - those two periods are statistically indistinguishable on both metrics, which is itself an important finding about where the system currently sits.</p>
+
+    <div class="era-grid">
+      <div class="era-card">
+        <div class="era-name">1969-83</div>
+        <div class="era-desc">Early Era</div>
+        <div class="era-stat-row">
+          <div class="era-stat"><strong>59.0%</strong> TM retention</div>
+          <div class="era-stat"><strong>11.9%</strong> NTM gain</div>
+          <div class="era-stat"><strong>14.4</strong> avg TM chapters</div>
+          <div class="era-stat"><strong>21.5</strong> avg NTM chapters</div>
+        </div>
+      </div>
+      <div class="era-card">
+        <div class="era-name">1984-98</div>
+        <div class="era-desc">Contraction Era</div>
+        <div class="era-stat-row">
+          <div class="era-stat"><strong>52.3%</strong> TM retention</div>
+          <div class="era-stat"><strong>6.4%</strong> NTM gain</div>
+          <div class="era-stat"><strong>11.6</strong> avg TM chapters</div>
+          <div class="era-stat"><strong>73.5</strong> avg NTM chapters</div>
+        </div>
+      </div>
+      <div class="era-card">
+        <div class="era-name">1999-09</div>
+        <div class="era-desc">Recovery Era</div>
+        <div class="era-stat-row">
+          <div class="era-stat"><strong>67.3%</strong> TM retention</div>
+          <div class="era-stat"><strong>10.7%</strong> NTM gain</div>
+          <div class="era-stat"><strong>22.4</strong> avg TM chapters</div>
+          <div class="era-stat"><strong>74.3</strong> avg NTM chapters</div>
+        </div>
+      </div>
+      <div class="era-card">
+        <div class="era-name">2010-19</div>
+        <div class="era-desc">Modern Era</div>
+        <div class="era-stat-row">
+          <div class="era-stat"><strong>67.0%</strong> TM retention</div>
+          <div class="era-stat"><strong>15.0%</strong> NTM gain</div>
+          <div class="era-stat"><strong>35.6</strong> avg TM chapters</div>
+          <div class="era-stat"><strong>79.6</strong> avg NTM chapters</div>
+        </div>
+      </div>
+      <div class="era-card current">
+        <div class="era-name">2020-25</div>
+        <div class="era-desc">Current Era</div>
+        <div class="era-stat-row">
+          <div class="era-stat"><strong>69.7%</strong> TM retention</div>
+          <div class="era-stat"><strong>12.1%</strong> NTM gain</div>
+          <div class="era-stat"><strong>27.7</strong> avg TM chapters</div>
+          <div class="era-stat"><strong>83.0</strong> avg NTM chapters</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="era-compare">
+      <thead>
+        <tr>
+          <th class="left">Era</th>
+          <th>TM Retention</th>
+          <th>NTM Gain Rate</th>
+          <th>NTM Closure Rate</th>
+          <th>Avg # TM</th>
+          <th>Avg # NTM</th>
+          <th>p (NTM gain vs prev)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="era-label">1969-83 (Early)</td>
+          <td>59.0%</td><td>11.9%</td><td>0.0%</td><td>14.4</td><td>21.5</td>
+          <td class="insig-p">baseline</td>
+        </tr>
+        <tr>
+          <td class="era-label">1984-98 (Contraction)</td>
+          <td>52.3%</td><td>6.4%</td><td>2.2%</td><td>11.6</td><td>73.5</td>
+          <td class="sig-p">p = 0.022</td>
+        </tr>
+        <tr>
+          <td class="era-label">1999-09 (Recovery)</td>
+          <td>67.3%</td><td>10.7%</td><td>4.6%</td><td>22.4</td><td>74.3</td>
+          <td class="sig-p">p = 0.012</td>
+        </tr>
+        <tr>
+          <td class="era-label">2010-19 (Modern)</td>
+          <td>67.0%</td><td>15.0%</td><td>3.7%</td><td>35.6</td><td>79.6</td>
+          <td class="sig-p">p = 0.036</td>
+        </tr>
+        <tr class="current-era">
+          <td class="era-label">2020-25 (Current)</td>
+          <td>69.7%</td><td>12.1%</td><td>5.2%</td><td>27.7</td><td>83.0</td>
+          <td class="insig-p">p = 0.212</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.78rem;color:var(--ink2);margin-top:6px;">p-values from two-sample t-tests comparing annual NTM gain rates between adjacent eras. Significant at p &lt; 0.05 shown in green.</p>
+  </div>
+
+  <!-- SECTION 3: THE CONTRACTION ERA -->
+  <div class="section">
+    <div class="section-heading">The Contraction Era: 1984-98</div>
+    <div class="section-divider"></div>
+    <p>The 1984-98 period stands apart from every other era in the history. The NTM gain rate collapsed to 6.4% - roughly half the rate of any other era. TM retention fell to 52.3%, its historical low. The average number of True Merit chapters dropped from 14.4 in the Early Era to 11.6, even as the total chapter pool grew from roughly 36 to more than 85 active chapters. The share of chapters earning TM in any given year fell from approximately 40% to under 15%.</p>
+
+    <p>The contraction is visible in the chapter count data as well. NTM chapters nearly tripled (21.5 to 73.5 average), while TM chapters shrank slightly. The combination of a larger NTM pool and a lower gain rate meant far fewer TM outcomes system-wide, even as the number of eligible chapters grew substantially.</p>
+
+    <div class="callout">
+      <div class="callout-label">Structural Interpretation</div>
+      <p>The 1984-98 contraction era coincides with the period of large-scale chapter expansion and then significant chapter attrition that characterized Greek life broadly in that period. The NTM closure rate also appeared for the first time as a measurable phenomenon (2.2% annually) - closures in the Early Era were negligible. <strong>This era is the historical baseline for what a struggling award system looks like.</strong> Every subsequent era has outperformed it on both metrics.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 4: RECOVERY AND MODERN ERAS -->
+  <div class="section">
+    <div class="section-heading">Recovery and Modern Eras: 1999-2019</div>
+    <div class="section-divider"></div>
+    <p>The transition from contraction to recovery is statistically sharp (p = 0.012 on NTM gain rate). From 1999 forward, the NTM gain rate returned to levels last seen in the Early Era, and TM retention climbed to the highest sustained level in the full history. The 2010-19 Modern Era extended this improvement, with the NTM gain rate reaching 15.0% - the highest of any era - while retention held at 67.0%.</p>
+
+    <p>The Modern Era also saw the largest absolute number of TM chapters (35.6 on average per year). This reflects both improved chapter quality and growth in the active chapter pool. The system produced more TM chapters in absolute terms during 2010-19 than in any prior period, even as the NTM pool was also growing.</p>
+
+    <div class="timeline">
+      <div style="font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:10px;">NTM Gain Rate by Era</div>
+      <div class="tl-row">
+        <div class="tl-label">1969-83</div>
+        <div class="tl-track"><div class="tl-bar" style="width:79.3%;background:#c8d8ec;"><span>11.9%</span></div></div>
+        <div class="tl-val">11.9%</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">1984-98</div>
+        <div class="tl-track"><div class="tl-bar" style="width:42.7%;background:#e8b8a0;"><span>6.4%</span></div></div>
+        <div class="tl-val">6.4%</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">1999-09</div>
+        <div class="tl-track"><div class="tl-bar" style="width:71.3%;background:#87add6;"><span>10.7%</span></div></div>
+        <div class="tl-val">10.7%</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">2010-19</div>
+        <div class="tl-track"><div class="tl-bar" style="width:100%;background:#487FC0;"><span>15.0%</span></div></div>
+        <div class="tl-val">15.0%</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">2020-25</div>
+        <div class="tl-track"><div class="tl-bar" style="width:80.7%;background:#FFAE3B;"><span>12.1%</span></div></div>
+        <div class="tl-val">12.1%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: CURRENT ERA -->
+  <div class="section">
+    <div class="section-heading">The Current Era: 2020-25</div>
+    <div class="section-divider"></div>
+    <p>The 2020-25 period is statistically continuous with 2010-19 on both key metrics. The NTM gain rate (12.1%) is below the Modern Era high of 15.0%, but the difference does not clear statistical significance (p = 0.212). TM retention (69.7%) is the highest of any era. The NTM closure rate (5.2%) is the highest in the full history, though the absolute number of closures per year remains modest.</p>
+
+    <div class="callout">
+      <div class="callout-label">Where We Are</div>
+      <p>The current era is a strong period by historical standards. TM retention is at its highest point ever, and the NTM gain rate - while below the 2010-19 peak - remains well above the contraction era floor. <strong>The open question is whether the NTM gain rate decline from 15.0% to 12.1% represents a genuine regression or normal year-to-year variation.</strong> With only six years in the current era, the confidence interval around that estimate is wide. More years of data will determine whether 2010-19 was a high-water mark or whether the current era can return to that level.</p>
+    </div>
+
+    <p>One structural shift is worth noting. The average number of TM chapters per year has declined from 35.6 in the Modern Era to 27.7 in the current era, while the NTM pool has grown to its largest recorded size (83.0 average). This means a smaller fraction of active chapters are earning TM annually, even with retention holding strong. If the NTM pool continues to grow while TM chapter count stays flat or declines, the system-level TM rate will compress further regardless of what individual chapter behavior looks like.</p>
+
+    <ul class="bullet-list">
+      <li><strong>TM retention (69.7%):</strong> The highest sustained retention rate in the full 57-year history. Chapters that reach TM are holding it at an unprecedented rate in the current era.</li>
+      <li><strong>NTM gain rate (12.1%):</strong> Above the long-run average and well above the contraction-era floor. The pipeline from NTM to TM remains healthy by historical standards.</li>
+      <li><strong>NTM closure rate (5.2%):</strong> The highest closure rate in recorded history for NTM chapters. A larger and older NTM pool may be driving this - chapters that have been NTM for extended periods are more likely to close.</li>
+      <li><strong>TM chapter count (avg 27.7):</strong> Down from the Modern Era peak. The total TM output per year has declined even as retention improved, because the inflow from NTM has not fully compensated for chapter closures and departures from the TM pool.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 6: STRUCTURAL INTERPRETATION -->
+  <div class="section">
+    <div class="section-heading">What Drives Era-Level Change</div>
+    <div class="section-divider"></div>
+    <p>The Markov model measures transitions but does not explain them. Three classes of factors can shift an era's transition rates without changing the award criteria themselves.</p>
+
+    <p><strong>Chapter pool composition.</strong> The Early Era operated with a smaller, older system where most active chapters had been established for decades. The contraction era saw rapid expansion followed by attrition. A younger or less stable chapter population produces a lower NTM gain rate simply because new chapters need time to build the programs the award recognizes.</p>
+
+    <p><strong>Award administration and criteria.</strong> Changes to COS content, weighting, or scoring thresholds directly affect who reaches TM. A stricter standard reduces both the gain rate and the retention rate. A more accessible standard raises both. Without controlling for criteria changes over time, era-level shifts in transition rates are a composite of behavioral change and measurement change.</p>
+
+    <p><strong>Macro conditions affecting Greek life.</strong> The contraction era (1984-98) coincides with a period of significant external pressure on fraternities nationally - insurance crises, health and safety incidents, and broad enrollment disruptions. The recovery era (1999-09) coincides with stabilization and renewed interest in Greek life. These macro conditions are likely to have influenced chapter behavior and award outcomes independent of anything the National Fraternity did programmatically.</p>
+
+    <div class="callout">
+      <div class="callout-label">Analytical Limit</div>
+      <p>The model cannot separate program quality improvement from favorable environmental conditions. A rising NTM gain rate in the 2010s is consistent with better chapter programs, with a more favorable chapter pool, with award criteria evolution, or with all three simultaneously. <strong>The transition rates measure outcomes, not causes.</strong> Causal claims require additional data not captured in the award history alone.</p>
+    </div>
+  </div>
+
+  <!-- ACTION ITEMS -->
+  <div class="action-items">
+    <h2>Analytical Implications</h2>
+    <div class="action-item">
+      <div class="action-number">1</div>
+      <div class="action-text">
+        <strong>Monitor the NTM gain rate as a leading system health indicator</strong>
+        Retention is a lagging measure - it tells you whether strong chapters stayed strong. The NTM gain rate is a leading measure - it tells you whether the system is producing new TM chapters from the broader pool. A sustained decline in the NTM gain rate below 10% would signal a return toward contraction-era conditions and should prompt a diagnostic review of what is blocking the pathway to TM.
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-number">2</div>
+      <div class="action-text">
+        <strong>The growing NTM pool warrants strategic attention</strong>
+        At 83 average NTM chapters per year and a 5.2% annual closure rate, the current era is producing the most chapter closures in recorded history - in absolute terms, roughly four to five closures per year originating from the NTM pool. This is not a crisis, but it is a structural condition that compounds if the NTM pool continues to grow without a corresponding increase in the TM gain rate.
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-number">3</div>
+      <div class="action-text">
+        <strong>Use the contraction era as a calibration reference</strong>
+        The 1984-98 period provides a documented floor for what poor system performance looks like: 6.4% NTM gain, 52.3% TM retention, and a shrinking absolute TM count despite a growing chapter pool. Every planning or evaluation conversation about chapter health metrics should reference that floor explicitly. The current era is well above it, but the distance is not infinite.
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-number">4</div>
+      <div class="action-text">
+        <strong>Revisit whether the 2010-19 gain rate was structurally achievable or a high-water mark</strong>
+        The Modern Era's 15.0% NTM gain rate is a full 3 percentage points above the current era. If that gap persists over several more years, it suggests a structural shift - possibly the aging of the NTM pool, possibly changes in chapter programming depth, possibly award criteria effects. Understanding the mechanism behind the gap is more useful than simply tracking whether the number goes up or down.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Alpha Tau Omega &nbsp;&middot;&nbsp; True Merit Binary Markov Analysis (1968-69 to 2024-25) &nbsp;&middot;&nbsp; Prepared by Chris Smith
+</div>
+
+</body>
+</html>
