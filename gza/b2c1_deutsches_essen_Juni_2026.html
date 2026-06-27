@@ -12,7 +12,6 @@
     --red: #C8102E;
     --mustard: #E9B44C;
     --warm-gray: #D4CFC5;
-    --dark-surface: #252525;
     --font-header: 'Bebas Neue', sans-serif;
     --font-sub: 'Roboto Condensed', sans-serif;
     --font-body: 'Lato', sans-serif;
@@ -287,27 +286,7 @@
     z-index: 1;
   }
 
-  /* ===================== SLIDE PLACEHOLDER STYLES ===================== */
-  .slide-placeholder {
-    text-align: center;
-    color: var(--warm-gray);
-  }
 
-  .slide-placeholder h2 {
-    font-family: var(--font-header);
-    font-size: 48px;
-    color: var(--cream);
-    margin-bottom: 1rem;
-  }
-
-  .slide-placeholder p {
-    font-family: var(--font-sub);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--red);
-    text-transform: uppercase;
-  }
 </style>
 </head>
 <body>
@@ -1621,8 +1600,6 @@
   document.querySelectorAll('.cw-node').forEach(node => {
     node.addEventListener('click', e => { e.stopPropagation(); cwShow(parseInt(node.dataset.beat)); });
   });
-
-  // Slide 5 content click: advance beat if not done; if done let click fall through to nav
 
 
   document.addEventListener('keydown', e => {
