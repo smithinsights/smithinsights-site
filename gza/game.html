@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verben-Jeopardy – B2/C1</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #0a0a2e; color: #fff; min-height: 100vh; }
+
+  .screen { display: none; padding: 20px; min-height: 100vh; }
+  .screen.active { display: flex; flex-direction: column; }
+
+  /* TITLE SCREEN */
+  #title-screen { align-items: center; justify-content: center; text-align: center; gap: 24px; }
+  #title-screen h1 { font-size: 3rem; color: #ffd700; text-shadow: 0 0 20px rgba(255,215,0,0.4); }
+  #title-screen p { font-size: 1.1rem; color: #b5d4f4; }
+  .big-btn { background: #ffd700; color: #0a0a2e; border: none; border-radius: 10px; padding: 14px 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: transform 0.1s, background 0.15s; }
+  .big-btn:hover { background: #ffe84d; transform: scale(1.03); }
+  .big-btn.secondary { background: transparent; color: #ffd700; border: 2px solid #ffd700; margin-top: 4px; }
+  .big-btn.secondary:hover { background: rgba(255,215,0,0.1); }
+
+  /* BOARD SCREEN */
+  #board-screen { flex-direction: column; gap: 16px; }
+  .board-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .board-label { font-size: 1.4rem; font-weight: bold; color: #ffd700; }
+  .scores { display: flex; gap: 16px; }
+  .score-box { background: #185FA5; border-radius: 8px; padding: 8px 20px; text-align: center; min-width: 120px; }
+  .score-box .team-name { font-size: 0.8rem; color: #b5d4f4; }
+  .score-box .score-val { font-size: 1.6rem; font-weight: bold; color: #ffd700; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; flex: 1; }
+  .cat-header { background: #0C447C; color: #ffd700; font-size: 1rem; font-weight: bold; text-align: center; padding: 12px 6px; border-radius: 8px; display: flex; align-items: center; justify-content: center; min-height: 60px; }
+  .cell { background: #185FA5; color: #ffd700; font-size: 1.8rem; font-weight: bold; text-align: center; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: background 0.15s, transform 0.1s; border: 2px solid transparent; }
+  .cell:hover { background: #378ADD; transform: scale(1.02); border-color: #ffd700; }
+  .cell.revealed { background: #0a0a2e; border: 2px solid #1a1a4e; cursor: default; color: transparent; }
+  .cell.revealed:hover { transform: none; }
+  .board-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .nav-btn { background: transparent; color: #ffd700; border: 2px solid #ffd700; border-radius: 8px; padding: 8px 20px; font-size: 0.95rem; cursor: pointer; }
+  .nav-btn:hover { background: rgba(255,215,0,0.1); }
+  .nav-btn.gold { background: #ffd700; color: #0a0a2e; }
+  .nav-btn.gold:hover { background: #ffe84d; }
+
+  /* OVERLAY */
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); align-items: center; justify-content: center; z-index: 200; padding: 20px; }
+  .overlay.open { display: flex; }
+  .q-box { background: #0C1B4D; border: 2px solid #ffd700; border-radius: 16px; padding: 2rem 2.5rem; max-width: 680px; width: 100%; }
+  .q-meta { display: flex; gap: 12px; align-items: baseline; margin-bottom: 1rem; }
+  .q-cat-tag { background: #185FA5; color: #b5d4f4; font-size: 0.85rem; padding: 4px 12px; border-radius: 6px; }
+  .q-pts-tag { color: #ffd700; font-size: 1.5rem; font-weight: bold; }
+  .q-text { font-size: 1.3rem; line-height: 1.6; color: #fff; margin-bottom: 1.5rem; }
+  .q-answer { background: #0a0a2e; border: 1px solid #378ADD; border-radius: 8px; padding: 1rem 1.25rem; font-size: 1.1rem; color: #b5d4f4; margin-bottom: 1.5rem; display: none; line-height: 1.6; }
+  .q-answer.show { display: block; }
+  .q-answer strong { color: #ffd700; }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .q-btn { border: 2px solid #378ADD; background: transparent; color: #fff; border-radius: 8px; padding: 9px 18px; font-size: 0.95rem; cursor: pointer; transition: background 0.15s; }
+  .q-btn:hover { background: rgba(55,138,221,0.2); }
+  .q-btn.award-a { border-color: #ffd700; color: #ffd700; }
+  .q-btn.award-a:hover { background: rgba(255,215,0,0.1); }
+  .q-btn.award-b { border-color: #ff9966; color: #ff9966; }
+  .q-btn.award-b:hover { background: rgba(255,153,102,0.1); }
+  .q-btn.close-btn { background: #185FA5; border-color: #185FA5; }
+  .q-btn.close-btn:hover { background: #378ADD; }
+
+  /* SUPER SCREEN */
+  #super-screen { align-items: center; justify-content: center; text-align: center; gap: 20px; }
+  #super-screen h2 { font-size: 2.5rem; color: #ffd700; }
+  #super-screen .sub { color: #b5d4f4; font-size: 1rem; margin-bottom: 8px; }
+  .super-q { background: #0C1B4D; border: 2px solid #ffd700; border-radius: 12px; padding: 1.5rem 2rem; max-width: 660px; font-size: 1.25rem; line-height: 1.7; color: #fff; text-align: left; }
+  .super-a { background: #0a0a2e; border: 1px solid #378ADD; border-radius: 10px; padding: 1.25rem 1.5rem; max-width: 660px; font-size: 1rem; line-height: 1.7; color: #b5d4f4; text-align: left; display: none; }
+  .super-a.show { display: block; }
+  .super-a strong { color: #ffd700; }
+
+  /* FINAL SCREEN */
+  #final-screen { align-items: center; justify-content: center; text-align: center; gap: 24px; }
+  #final-screen h2 { font-size: 2.5rem; color: #ffd700; }
+  .final-scores { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .final-score-box { background: #0C1B4D; border: 2px solid #378ADD; border-radius: 12px; padding: 1.5rem 2.5rem; text-align: center; }
+  .final-score-box .fn { font-size: 1.1rem; color: #b5d4f4; margin-bottom: 4px; }
+  .final-score-box .fv { font-size: 3rem; font-weight: bold; color: #ffd700; }
+  .winner-label { font-size: 1.3rem; color: #ffd700; font-weight: bold; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<!-- TITLE SCREEN -->
+<div class="screen active" id="title-screen">
+  <h1>⚡ Verben-Jeopardy</h1>
+  <p>Deutsch B2/C1 · Goethe-Zentrum Atlanta</p>
+  <p style="color:#b5d4f4; font-size:0.95rem;">Präsens · Präteritum · Perfekt · Futur I · Futur II</p>
+  <div style="display:flex; flex-direction:column; gap:12px; align-items:center; margin-top:16px;">
+    <button class="big-btn" onclick="startGame(1)">▶ Board 1 starten</button>
+    <button class="big-btn secondary" onclick="startGame(2)">▶ Board 2 starten</button>
+    <button class="big-btn secondary" onclick="showSuper()">⭐ Superrunde</button>
+  </div>
+</div>
+
+<!-- BOARD SCREEN -->
+<div class="screen" id="board-screen">
+  <div class="board-header">
+    <div class="board-label" id="board-label">Board 1</div>
+    <div class="scores">
+      <div class="score-box">
+        <div class="team-name">Team A</div>
+        <div class="score-val" id="score-a">0</div>
+      </div>
+      <div class="score-box" style="background:#7a2a00;">
+        <div class="team-name">Team B</div>
+        <div class="score-val" id="score-b">0</div>
+      </div>
+    </div>
+    <div class="board-btns">
+      <button class="nav-btn" onclick="showScreen('title-screen')">← Menü</button>
+      <button class="nav-btn gold" onclick="showSuper()">⭐ Superrunde</button>
+      <button class="nav-btn gold" onclick="showFinal()">Ergebnis</button>
+    </div>
+  </div>
+  <div class="grid" id="board-grid"></div>
+</div>
+
+<!-- QUESTION OVERLAY -->
+<div class="overlay" id="q-overlay">
+  <div class="q-box">
+    <div class="q-meta">
+      <span class="q-cat-tag" id="ov-cat"></span>
+      <span class="q-pts-tag" id="ov-pts"></span>
+    </div>
+    <div class="q-text" id="ov-q"></div>
+    <div class="q-answer" id="ov-a"></div>
+    <div class="btn-row">
+      <button class="q-btn" onclick="toggleAnswer('ov-a')">Antwort zeigen</button>
+      <button class="q-btn award-a" onclick="award('a')">✓ Team A</button>
+      <button class="q-btn award-b" onclick="award('b')">✓ Team B</button>
+      <button class="q-btn close-btn" onclick="closeQ()">Weiter →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUPER SCREEN -->
+<div class="screen" id="super-screen">
+  <h2>⭐ Superrunde</h2>
+  <p class="sub">Alle Teams setzen verdeckt – dann wird aufgedeckt!</p>
+  <div class="super-q" id="super-q-text"></div>
+  <div class="super-a" id="super-a-text"></div>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+    <button class="nav-btn gold" onclick="toggleAnswer('super-a-text')">Antwort zeigen</button>
+    <button class="nav-btn" onclick="showFinal()">Ergebnis</button>
+    <button class="nav-btn" onclick="showScreen('title-screen')">← Menü</button>
+  </div>
+</div>
+
+<!-- FINAL SCREEN -->
+<div class="screen" id="final-screen">
+  <h2>🏆 Ergebnis</h2>
+  <div class="final-scores">
+    <div class="final-score-box">
+      <div class="fn">Team A</div>
+      <div class="fv" id="final-a">0</div>
+    </div>
+    <div class="final-score-box" style="border-color:#ff9966;">
+      <div class="fn">Team B</div>
+      <div class="fv" id="final-b">0</div>
+    </div>
+  </div>
+  <div class="winner-label" id="winner-label"></div>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:8px;">
+    <button class="nav-btn" onclick="showScreen('title-screen')">← Menü</button>
+  </div>
+</div>
+
+<script>
+const cats = ["Präsens","Präteritum","Perfekt","Futur I","Futur II"];
+
+const boards = {
+  1: {
+    "Präsens": [
+      { pts:200, q:"Diese Form von 'sein' passt: 'Wir ___ heute in der Schule.'", a:"<strong>sind</strong> — wir sind" },
+      { pts:400, q:"'haben' – konjugiere vollständig im Präsens (alle 6 Personen).", a:"<strong>ich habe, du hast, er/sie/es hat, wir haben, ihr habt, sie/Sie haben</strong>" },
+      { pts:600, q:"'werden' – 3. Person Singular und Plural.", a:"<strong>er/sie/es wird – sie werden</strong>" },
+      { pts:800, q:"'wissen' im Präsens – warum ist es unregelmäßig? Alle Formen nennen.", a:"<strong>ich weiß, du weißt, er weiß, wir wissen, ihr wisst, sie wissen</strong> – Stammvokal wechselt im Singular." },
+      { pts:1000, q:"Bilde einen vollständigen Satz mit 'lassen' (Präsens) + Infinitiv eines anderen Verbs.", a:"Beispiel: <strong>Er lässt das Kind spielen.</strong> / <strong>Wir lassen es offen.</strong>" },
+    ],
+    "Präteritum": [
+      { pts:200, q:"'sein' im Präteritum – 1. Person Singular.", a:"<strong>ich war</strong>" },
+      { pts:400, q:"'gehen' – Präteritum, 3. Person Plural.", a:"<strong>sie gingen</strong>" },
+      { pts:600, q:"'sehen, schreiben, bleiben' – alle im Präteritum (3. Pers. Sg.).", a:"<strong>er sah – er schrieb – er blieb</strong>" },
+      { pts:800, q:"Was ist der Unterschied zwischen 'er sagte' und 'er hat gesagt'? Wann benutzt man welches?", a:"<strong>Präteritum</strong> = Schriftsprache, Erzählung. <strong>Perfekt</strong> = gesprochene Sprache. Ausnahme: sein/haben/Modalverben → oft Präteritum auch mündlich." },
+      { pts:1000, q:"Konjugiere 'dürfen' vollständig im Präteritum.", a:"<strong>ich durfte, du durftest, er durfte, wir durften, ihr durftet, sie durften</strong>" },
+    ],
+    "Perfekt": [
+      { pts:200, q:"'kaufen' im Perfekt – 1. Person Singular.", a:"<strong>ich habe gekauft</strong>" },
+      { pts:400, q:"Welches Hilfsverb braucht 'fahren'? Bilde einen Satz im Perfekt.", a:"<strong>sein</strong> – Ich bin nach Berlin gefahren." },
+      { pts:600, q:"'schlafen, lesen, schreiben' – Partizip II aller drei Verben.", a:"<strong>geschlafen – gelesen – geschrieben</strong>" },
+      { pts:800, q:"Warum braucht 'passieren' das Hilfsverb 'sein'? Erkläre die Regel.", a:"Verben der <strong>Bewegung oder Zustandsveränderung</strong> + intransitive Verben nehmen 'sein'. 'Es ist passiert' – kein Objekt, Zustandsveränderung." },
+      { pts:1000, q:"Wie lautet das Partizip II von 'aufstehen' und 'verstehen'? Was ist der Unterschied?", a:"<strong>aufgestanden</strong> (trennbar: -ge- in der Mitte) vs. <strong>verstanden</strong> (untrennbar: kein -ge-)." },
+    ],
+    "Futur I": [
+      { pts:200, q:"Wie bildet man Futur I? Nenne die Formel.", a:"<strong>werden + Infinitiv</strong>: Ich werde morgen lernen." },
+      { pts:400, q:"Konjugiere 'werden' im Futur I mit dem Verb 'kommen' – alle 6 Personen.", a:"<strong>ich werde kommen, du wirst kommen, er wird kommen, wir werden kommen, ihr werdet kommen, sie werden kommen</strong>" },
+      { pts:600, q:"Was ist der Unterschied zwischen 'Ich lerne morgen' und 'Ich werde morgen lernen'?", a:"Beide drücken Zukunft aus. <strong>Präsens + Zeitangabe</strong> = geplante Zukunft, alltagssprachlich. <strong>Futur I</strong> = betonte Absicht, Versprechen, Vorhersage." },
+      { pts:800, q:"Bilde eine Vorhersage mit Futur I und der Modalpartikel 'wohl'.", a:"Beispiel: <strong>Das wird wohl nicht klappen.</strong> / <strong>Sie wird wohl zu spät kommen.</strong>" },
+      { pts:1000, q:"Futur I mit Passiv: Erkläre die Struktur von 'Das Gesetz wird geändert werden'.", a:"<strong>werden (konj.) + Partizip II + werden (Inf.)</strong> – Doppeltes 'werden' ist korrekt im Passiv Futur I." },
+    ],
+    "Futur II": [
+      { pts:200, q:"Nenne die Formel für Futur II.", a:"<strong>werden + Partizip II + haben/sein</strong>: Ich werde geschlafen haben." },
+      { pts:400, q:"Bilde einen Satz im Futur II mit dem Verb 'essen'.", a:"Beispiel: <strong>Um 18 Uhr werde ich gegessen haben.</strong>" },
+      { pts:600, q:"Futur II mit 'sein' als Hilfsverb – Beispielsatz mit 'ankommen'.", a:"<strong>Wenn der Zug kommt, werde ich schon angekommen sein.</strong>" },
+      { pts:800, q:"Wann benutzt man Futur II für eine Vermutung über die Vergangenheit? Gib ein Beispiel.", a:"<strong>Er wird das vergessen haben.</strong> = Ich vermute, dass er es vergessen hat. Futur II + 'wohl/sicher/wahrscheinlich' = Spekulation über Vergangenes." },
+      { pts:1000, q:"Kombiniere Futur II und Passiv in einem Satz. Was ist die Struktur?", a:"<strong>worden sein + werden</strong>: Das wird erledigt worden sein. = Ich vermute, dass das bereits erledigt wurde." },
+    ],
+  },
+  2: {
+    "Präsens": [
+      { pts:200, q:"'gehen' – 2. Person Singular Präsens.", a:"<strong>du gehst</strong>" },
+      { pts:400, q:"'sprechen' – konjugiere vollständig im Präsens.", a:"<strong>ich spreche, du sprichst, er spricht, wir sprechen, ihr sprecht, sie sprechen</strong>" },
+      { pts:600, q:"'mögen' im Präsens – alle Formen. Warum ist es unregelmäßig?", a:"<strong>ich mag, du magst, er mag, wir mögen, ihr mögt, sie mögen</strong> – Modalverb: Singular ohne -e/-st." },
+      { pts:800, q:"Was ist der Unterschied zwischen 'kennen' und 'wissen'? Je ein Beispielsatz im Präsens.", a:"<strong>kennen</strong> = mit Personen/Orten vertraut sein: Ich kenne Berlin. <strong>wissen</strong> = Fakten wissen: Ich weiß, wo Berlin liegt." },
+      { pts:1000, q:"Bilde einen Relativsatz im Präsens mit 'der/die/das', der ein starkes Verb enthält.", a:"Beispiel: <strong>Das Buch, das ich lese, ist interessant.</strong> / <strong>Der Mann, der spricht, ist mein Lehrer.</strong>" },
+    ],
+    "Präteritum": [
+      { pts:200, q:"'haben' im Präteritum – 3. Person Singular.", a:"<strong>er/sie/es hatte</strong>" },
+      { pts:400, q:"'kommen, nehmen, geben' – alle im Präteritum (1. Pers. Sg.).", a:"<strong>ich kam – ich nahm – ich gab</strong>" },
+      { pts:600, q:"'werden' im Präteritum – vollständige Konjugation.", a:"<strong>ich wurde, du wurdest, er wurde, wir wurden, ihr wurdet, sie wurden</strong>" },
+      { pts:800, q:"Konjugiere 'müssen' vollständig im Präteritum.", a:"<strong>ich musste, du musstest, er musste, wir mussten, ihr musstet, sie mussten</strong>" },
+      { pts:1000, q:"Bilde einen Satz im Präteritum mit Passiv (z.B. 'bauen').", a:"Beispiel: <strong>Die Mauer wurde 1961 gebaut.</strong> – Struktur: <strong>wurden/wurde + Partizip II</strong>" },
+    ],
+    "Perfekt": [
+      { pts:200, q:"'trinken' im Perfekt – 1. Person Singular.", a:"<strong>ich habe getrunken</strong>" },
+      { pts:400, q:"'aufstehen' im Perfekt – 3. Person Singular.", a:"<strong>er/sie ist aufgestanden</strong>" },
+      { pts:600, q:"'denken, bringen, kennen' – Partizip II aller drei. Was ist besonders?", a:"<strong>gedacht – gebracht – gekannt</strong> – Mischverben: schwaches Partizip (ge- + -t) aber Stammvokalwechsel." },
+      { pts:800, q:"Erkläre den Unterschied zwischen 'ich habe gelegen' und 'ich habe gelegt'.", a:"<strong>liegen – gelegen</strong> (intransitiv, kein Objekt) vs. <strong>legen – gelegt</strong> (transitiv, mit Objekt). Beide mit 'haben'." },
+      { pts:1000, q:"Perfekt mit Modalverb: Wie sagt man 'Ich habe das nicht sagen können'? Erkläre die Struktur.", a:"<strong>haben + Infinitiv + Modalverb im Infinitiv</strong>: 'Ich habe das nicht sagen können.' Kein Partizip II beim Modalverb!" },
+    ],
+    "Futur I": [
+      { pts:200, q:"'schlafen' im Futur I – 2. Person Singular.", a:"<strong>du wirst schlafen</strong>" },
+      { pts:400, q:"Bilde eine Absicht mit Futur I: Du planst, nächste Woche nach Wien zu fahren.", a:"Beispiel: <strong>Ich werde nächste Woche nach Wien fahren.</strong>" },
+      { pts:600, q:"Futur I als Versprechen: Formuliere ein Versprechen mit 'immer' und einem starken Verb.", a:"Beispiel: <strong>Ich werde immer ehrlich sprechen.</strong> / <strong>Ich werde dir immer helfen.</strong>" },
+      { pts:800, q:"Was bedeutet: 'Das wird wohl stimmen.' – Welche Funktion hat das Futur I hier?", a:"Futur I + 'wohl' = <strong>Vermutung über die Gegenwart</strong>. Nicht Zukunft, sondern Spekulation über etwas Aktuelles." },
+      { pts:1000, q:"Bilde einen Satz mit Futur I + Nebensatz mit 'wenn'.", a:"Beispiel: <strong>Wenn es morgen regnet, werde ich zu Hause bleiben.</strong>" },
+    ],
+    "Futur II": [
+      { pts:200, q:"'schreiben' im Futur II – 3. Person Singular.",  a:"<strong>er/sie wird geschrieben haben</strong>" },
+      { pts:400, q:"Bilde einen Futur-II-Satz mit einer Zeitangabe ('bis morgen', 'bis 18 Uhr' o.ä.).", a:"Beispiel: <strong>Bis morgen werde ich den Text gelesen haben.</strong>" },
+      { pts:600, q:"Futur II mit 'sein' – Beispielsatz mit 'einschlafen'.", a:"<strong>Um 22 Uhr wird er eingeschlafen sein.</strong>" },
+      { pts:800, q:"Was ist der Unterschied zwischen 'Sie wird krank sein' (Futur I) und 'Sie wird krank gewesen sein' (Futur II)?", a:"<strong>Futur I</strong> = Vermutung über die Gegenwart: Sie ist jetzt wahrscheinlich krank. <strong>Futur II</strong> = Vermutung über die Vergangenheit: Sie war damals wahrscheinlich krank." },
+      { pts:1000, q:"Übersetze ins Deutsche: 'By the time you arrive, I will have already left.' Welche Struktur verwendest du?", a:"<strong>Bis du ankommst, werde ich schon gegangen sein.</strong> – Futur II mit 'bis'-Nebensatz und 'schon'." },
+    ],
+  }
+};
+
+const superQ = {
+  q: "Schreibe in 60 Sekunden einen zusammenhängenden Text (4–5 Sätze) mit mindestens einer Verbform aus jeder Zeitebene: Präsens, Präteritum, Perfekt, Futur I und Futur II.",
+  a: "Beispiel: <strong>Ich lerne</strong> (Präsens) gerne Deutsch. Als Kind <strong>sprach</strong> (Präteritum) ich kein Wort davon. Inzwischen <strong>habe</strong> ich viel <strong>gelernt</strong> (Perfekt). Nächstes Jahr <strong>werde</strong> ich nach Deutschland <strong>reisen</strong> (Futur I). Bis dahin <strong>werde</strong> ich das B2-Zertifikat <strong>gemacht haben</strong> (Futur II)."
+};
+
+let scores = { a: 0, b: 0 };
+let currentPts = 0;
+let currentCellEl = null;
+let currentBoard = 1;
+let revealed = { 1: {}, 2: {} };
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function startGame(boardNum) {
+  currentBoard = boardNum;
+  document.getElementById('board-label').textContent = 'Board ' + boardNum;
+  renderBoard(boardNum);
+  showScreen('board-screen');
+}
+
+function renderBoard(boardNum) {
+  const grid = document.getElementById('board-grid');
+  grid.innerHTML = '';
+  const data = boards[boardNum];
+  cats.forEach(cat => {
+    const h = document.createElement('div');
+    h.className = 'cat-header';
+    h.textContent = cat;
+    grid.appendChild(h);
+  });
+  [0,1,2,3,4].forEach(row => {
+    cats.forEach(cat => {
+      const q = data[cat][row];
+      const key = cat + '-' + row;
+      const cell = document.createElement('div');
+      cell.className = 'cell' + (revealed[boardNum][key] ? ' revealed' : '');
+      cell.id = 'cell-' + boardNum + '-' + key;
+      if (!revealed[boardNum][key]) cell.textContent = q.pts;
+      cell.onclick = () => openQ(cat, row, cell, key);
+      grid.appendChild(cell);
+    });
+  });
+}
+
+function openQ(cat, row, cell, key) {
+  if (cell.classList.contains('revealed')) return;
+  const q = boards[currentBoard][cat][row];
+  currentPts = q.pts;
+  currentCellEl = cell;
+  document.getElementById('ov-cat').textContent = cat;
+  document.getElementById('ov-pts').textContent = q.pts + ' Punkte';
+  document.getElementById('ov-q').textContent = q.q;
+  document.getElementById('ov-a').innerHTML = q.a;
+  document.getElementById('ov-a').classList.remove('show');
+  document.getElementById('q-overlay').classList.add('open');
+}
+
+function toggleAnswer(id) {
+  document.getElementById(id).classList.toggle('show');
+}
+
+function award(team) {
+  scores[team] += currentPts;
+  document.getElementById('score-' + team).textContent = scores[team];
+}
+
+function closeQ() {
+  document.getElementById('q-overlay').classList.remove('open');
+  if (currentCellEl) {
+    const key = currentCellEl.id.replace('cell-' + currentBoard + '-', '');
+    revealed[currentBoard][key] = true;
+    currentCellEl.classList.add('revealed');
+    currentCellEl.textContent = '';
+    currentCellEl.onclick = null;
+  }
+}
+
+function showSuper() {
+  document.getElementById('super-q-text').textContent = superQ.q;
+  document.getElementById('super-a-text').innerHTML = superQ.a;
+  document.getElementById('super-a-text').classList.remove('show');
+  showScreen('super-screen');
+}
+
+function showFinal() {
+  document.getElementById('final-a').textContent = scores.a;
+  document.getElementById('final-b').textContent = scores.b;
+  let w = '';
+  if (scores.a > scores.b) w = '🏆 Team A gewinnt!';
+  else if (scores.b > scores.a) w = '🏆 Team B gewinnt!';
+  else w = '🤝 Unentschieden!';
+  document.getElementById('winner-label').textContent = w;
+  showScreen('final-screen');
+}
+</script>
+</body>
+</html>
