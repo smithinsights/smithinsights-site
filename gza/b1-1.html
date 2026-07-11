@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Das Leben B1.1 · Einheit 1–3 · Wortschatz &amp; Grammatik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F4F0; --panel:#FFFFFF; --ink:#181A1D; --muted:#6A6F73;
+  --line:#E5E3DA; --line-strong:#D6D3C8;
+  --teal:#C4202D; --teal-2:#D8434E; --teal-ink:#8B1620;
+  --masc:#2D5FAA; --fem:#B23A48; --neut:#2E7D5B; --plural:#B26A00;
+  --masc-bg:#EAF0FA; --fem-bg:#F9ECEE; --neut-bg:#E9F4EE; --plural-bg:#FBF1E2;
+  --sans:"Fira Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --disp:"Fira Sans",var(--sans);
+  --mono:"Fira Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --radius:14px; --shadow:0 1px 2px rgba(20,24,20,.04),0 8px 28px rgba(18,59,60,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--teal-2)}
+
+/* ---------- Header ---------- */
+.masthead{position:relative;overflow:hidden;background:var(--teal);color:#EAF1EF;
+  border-bottom:3px solid var(--teal-ink)}
+.arcs{position:absolute;inset:0;pointer-events:none;opacity:.5}
+.mast-inner{position:relative;max-width:1080px;margin:0 auto;padding:26px 24px 22px;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.brand .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:#F0AEB4;margin:0 0 6px}
+.brand h1{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4.4vw,40px);
+  line-height:1.02;margin:0;letter-spacing:-.01em}
+.brand h1 em{font-style:normal;color:#F8D7DA}
+.brand .place{margin:8px 0 0;font-size:13.5px;color:#F0AEB4}
+.goethe{flex:0 0 auto;text-align:right}
+.goethe img{height:40px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.92}
+.goethe .fallback{font-family:var(--disp);font-weight:700;font-size:15px;color:#EAF1EF;letter-spacing:.02em}
+.goethe .cap{font-family:var(--mono);font-size:10.5px;color:#E796A0;margin-top:6px;letter-spacing:.08em}
+
+/* ---------- Tabs ---------- */
+.tabwrap{position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(0,0,0,.01)}
+.tabs{max-width:1080px;margin:0 auto;padding:0 16px;display:flex;gap:2px;overflow-x:auto}
+.tab{appearance:none;border:0;background:transparent;cursor:pointer;
+  font-family:var(--sans);color:var(--muted);padding:14px 16px 12px;
+  border-bottom:3px solid transparent;white-space:nowrap;display:flex;
+  flex-direction:column;gap:2px;align-items:flex-start;transition:color .15s}
+.tab .num{font-family:var(--mono);font-size:11px;letter-spacing:.14em}
+.tab .lbl{font-family:var(--disp);font-weight:600;font-size:15px;line-height:1}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--teal-ink);border-bottom-color:var(--teal)}
+.tab:focus-visible{outline:2px solid var(--teal-2);outline-offset:-2px;border-radius:4px}
+
+/* ---------- Toolbar ---------- */
+.toolbar{max-width:1080px;margin:0 auto;padding:18px 24px 4px;
+  display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 260px;position:relative;min-width:200px}
+.search input{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);
+  padding:11px 14px 11px 38px;border:1px solid var(--line-strong);border-radius:10px;
+  background:var(--panel)}
+.search input:focus{outline:none;border-color:var(--teal-2);box-shadow:0 0 0 3px rgba(28,85,87,.12)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.modeswitch{display:inline-flex;background:var(--panel);border:1px solid var(--line-strong);
+  border-radius:10px;padding:3px}
+.modeswitch button{appearance:none;border:0;background:transparent;cursor:pointer;
+  font-family:var(--sans);font-weight:500;font-size:13.5px;color:var(--muted);
+  padding:8px 14px;border-radius:7px;transition:all .15s}
+.modeswitch button[aria-pressed="true"]{background:var(--teal);color:#fff}
+.modeswitch button:focus-visible{outline:2px solid var(--teal-2);outline-offset:2px}
+
+/* ---------- Layout ---------- */
+main{max-width:1080px;margin:0 auto;padding:20px 24px 80px}
+.unit-head{padding:6px 0 22px}
+.unit-head .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--teal-2)}
+.unit-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(24px,3.5vw,32px);
+  margin:6px 0 2px;letter-spacing:-.01em}
+.unit-head p{margin:0;color:var(--muted);font-size:15px}
+
+.section{margin:0 0 30px;scroll-margin-top:120px}
+.section-label{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.section-label h3{font-family:var(--disp);font-weight:600;font-size:19px;margin:0}
+.section-label .count{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.section-label .rule{flex:1;height:1px;background:var(--line);align-self:center}
+
+/* Grammar */
+.gram{display:grid;gap:14px}
+.gram-topic{background:var(--panel);border:1px solid var(--line);
+  border-left:3px solid var(--teal);border-radius:12px;padding:14px 16px 12px;box-shadow:var(--shadow)}
+.gram-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.gram-head h4{font-family:var(--disp);font-weight:600;font-size:16px;margin:0;color:var(--teal-ink)}
+.gram-desc{font-size:13.5px;color:var(--muted)}
+.gram-ex{margin:0;padding:0;display:grid;gap:9px}
+.gram-ex li{list-style:none;display:grid;gap:2px;padding:9px 12px;background:#FAFAF7;
+  border:1px solid var(--line);border-radius:9px}
+.gram-ex .gde{font-size:14.5px;line-height:1.45}
+.gram-ex .gde b{color:var(--teal-ink);font-weight:600}
+.gram-ex .gen{font-size:12.5px;color:var(--muted);font-style:italic}
+
+/* Audio button */
+.say{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+  color:var(--muted);border:0;background:transparent;padding:2px;margin-left:2px;border-radius:6px;
+  vertical-align:middle;flex-shrink:0;transition:color .12s,background .12s}
+.say:hover{color:var(--teal-2);background:#FBE7E8}
+.say.speaking{color:var(--teal);background:#F8DBDD}
+.say:focus-visible{outline:2px solid var(--teal-2);outline-offset:1px}
+.say svg{width:14px;height:14px;display:block}
+
+/* Word families */
+.families{display:grid;gap:10px}
+.family{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;padding:11px 13px;box-shadow:var(--shadow)}
+.fam-word{display:flex;flex-direction:column;gap:3px;background:#F5F4F0;
+  border:1px solid var(--line);border-radius:10px;padding:8px 11px}
+.fam-word.root{background:var(--teal);border-color:var(--teal)}
+.fw-top{display:flex;align-items:center;gap:5px}
+.fw-de{font-weight:600;font-size:14px}
+.fam-word.root .fw-de{color:#fff}
+.fam-word.root .say{color:#F2C4C8}
+.fam-word.root .say:hover{color:#fff;background:rgba(255,255,255,.15)}
+.fw-meta{font-size:11.5px;color:var(--muted);display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.fw-pos{font-family:var(--mono);font-size:10px;color:var(--teal-2);white-space:nowrap}
+.fam-word.root .fw-pos{color:#F8D7DA}
+.fw-en{color:#3C4145}
+.fam-word.root .fw-en{color:#FBE9EA}
+.fam-arrow{align-self:center;color:var(--line-strong);font-family:var(--mono);font-size:15px}
+
+/* Noun table */
+.table{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow)}
+.trow{display:grid;grid-template-columns:minmax(150px,1.5fr) minmax(120px,1.2fr) 1.4fr;
+  gap:8px;padding:10px 16px;border-top:1px solid var(--line);align-items:center}
+.trow:first-child{border-top:0}
+.trow.head{background:#FBFBF8;padding:9px 16px}
+.trow.head span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.noun{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.art{font-family:var(--mono);font-size:12px;font-weight:500;padding:2px 7px;border-radius:6px;line-height:1.4}
+.art.der{color:var(--masc);background:var(--masc-bg)}
+.art.die{color:var(--fem);background:var(--fem-bg)}
+.art.das{color:var(--neut);background:var(--neut-bg)}
+.art.pl{color:var(--plural);background:var(--plural-bg)}
+.art.dual{color:#6A5A66;background:#EEE9EC}
+.verb-forms{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:11px}
+.verb-forms .vf{background:#FAF6F4;border:1px solid var(--line);border-radius:8px;padding:7px 11px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.verb-forms .vlabel{font-family:var(--sans);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.verb-forms .vval{font-family:var(--mono);font-size:13.5px;color:var(--ink);word-break:break-word}
+@media(max-width:640px){.verb-forms{grid-template-columns:1fr}}
+.noun .word{font-weight:500}
+.plural{font-family:var(--mono);font-size:13.5px;color:var(--muted)}
+.en{color:#3C4145;font-size:14.5px}
+
+/* Chips row (adjectives / prep-verbs) */
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:9px 13px;font-size:14px;display:flex;gap:8px;align-items:baseline}
+.chip .de{font-weight:500}
+.chip .en{color:var(--muted);font-size:13px}
+.chip .k{font-family:var(--mono);font-size:11px;color:var(--teal-2);
+  border:1px solid var(--line-strong);border-radius:5px;padding:0 5px}
+
+/* Verbs */
+.verbs{display:grid;gap:10px}
+.verb{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);overflow:hidden}
+.verb-main{padding:13px 16px}
+.verb-inf{font-family:var(--disp);font-weight:600;font-size:16px;
+  display:flex;align-items:center;flex-wrap:wrap;gap:5px;cursor:pointer;user-select:none}
+.verb-inf .en{font-family:var(--sans);font-weight:400;color:var(--muted);font-size:14px}
+.verb-inf:focus-visible{outline:2px solid var(--teal-2);outline-offset:3px;border-radius:6px}
+.vflags{display:flex;gap:5px;flex-shrink:0}
+.vflag{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;padding:2px 6px;
+  border-radius:5px;background:#F0EFEA;color:var(--muted)}
+.vflag.sep{background:#EAF0FA;color:var(--masc)}
+.vflag.refl{background:#F9ECEE;color:var(--fem)}
+.chev{flex-shrink:0;margin-left:auto;color:var(--muted);transition:transform .2s}
+.verb.open .chev{transform:rotate(90deg)}
+.conj{display:none;padding:0 16px 15px;border-top:1px solid var(--line)}
+.verb.open .conj{display:block}
+.vc-grid{display:grid;grid-template-columns:minmax(70px,auto) repeat(3,minmax(82px,1fr));
+  gap:5px 14px;margin-top:12px;align-items:baseline}
+.vc-h{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--line)}
+.vc-p{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.vc-c{font-family:var(--mono);font-size:12.5px;color:var(--ink);word-break:break-word}
+
+/* Redemittel + sentences */
+.rede{display:grid;gap:12px}
+.rede-group{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+.rede-group h4{font-family:var(--disp);font-size:13px;font-weight:600;margin:0 0 8px;
+  color:var(--teal-ink);text-transform:uppercase;letter-spacing:.06em}
+.rede-group ul{margin:0;padding:0;display:grid;gap:6px}
+.rede-group li{list-style:none;font-size:14.5px;padding-left:16px;position:relative}
+.rede-group li::before{content:"›";position:absolute;left:0;color:var(--teal-2)}
+
+.empty{padding:34px 16px;text-align:center;color:var(--muted);font-size:14.5px;
+  border:1px dashed var(--line-strong);border-radius:12px}
+
+/* ---------- Flashcards ---------- */
+.deck{max-width:560px;margin:8px auto 0}
+.deck-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.deck-scope{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.deck-scope select{font-family:var(--sans);font-size:13px;margin-left:8px;padding:5px 8px;
+  border:1px solid var(--line-strong);border-radius:8px;background:var(--panel)}
+.counter{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.card{position:relative;height:280px;perspective:1400px;cursor:pointer;margin-bottom:16px}
+.card-inner{position:absolute;inset:0;transition:transform .5s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;
+  border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:28px}
+.face .tagline{position:absolute;top:16px;left:0;right:0;font-family:var(--mono);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.face .big{font-family:var(--disp);font-weight:700;font-size:clamp(26px,5vw,38px);line-height:1.1}
+.face .sub{font-family:var(--mono);font-size:14px;color:var(--muted);margin-top:12px}
+.face.back{transform:rotateY(180deg);background:var(--teal);border-color:var(--teal-ink)}
+.face.back .big{color:#fff}.face.back .tagline{color:#F0AEB4}.face.back .sub{color:#F2C4C8}
+.deck-controls{display:flex;gap:10px;justify-content:center}
+.dbtn{appearance:none;border:1px solid var(--line-strong);background:var(--panel);
+  cursor:pointer;font-family:var(--sans);font-weight:500;font-size:14px;color:var(--ink);
+  padding:10px 18px;border-radius:10px;transition:all .15s}
+.dbtn:hover{border-color:var(--teal-2);color:var(--teal-ink)}
+.dbtn:focus-visible{outline:2px solid var(--teal-2);outline-offset:2px}
+.dbtn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+.hint{text-align:center;font-size:12.5px;color:var(--muted);margin-top:14px}
+
+/* colophon */
+footer{border-top:1px solid var(--line);background:#FBFBF8}
+.colophon{max-width:1080px;margin:0 auto;padding:22px 24px 40px;display:flex;
+  gap:18px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
+.colophon .note{font-size:13px;color:var(--muted);max-width:640px}
+.colophon .note b{color:var(--ink);font-family:var(--disp)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:12px}
+.legend span{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+@media(max-width:640px){
+  .trow{grid-template-columns:1fr 1fr;gap:4px 8px}
+  .trow .en{grid-column:1/-1;padding-top:2px}
+  .trow.head span:nth-child(3){display:none}
+  .conj{overflow-x:auto}
+  .vc-grid{min-width:430px}
+  .mast-inner{flex-direction:column}
+  .goethe{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto}
+  .card-inner{transition:none}
+}
+.fade{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <svg class="arcs" viewBox="0 0 1080 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g fill="none" stroke="#D96A72" stroke-width="1.4">
+      <path d="M-40,190 A320,320 0 0 1 600,190"/>
+      <path d="M-40,190 A360,360 0 0 1 640,190"/>
+      <path d="M-40,190 A400,400 0 0 1 680,190"/>
+      <path d="M-40,190 A440,440 0 0 1 720,190"/>
+      <path d="M-40,190 A480,480 0 0 1 760,190"/>
+    </g>
+  </svg>
+  <div class="mast-inner">
+    <div class="brand">
+      <p class="eyebrow">Das Leben · Deutsch als Fremdsprache</p>
+      <h1>B1.1 Wortschatz &amp; Grammatik<br><em>Einheit 1–3</em></h1>
+      <p class="place">Cornelsen · B1 Teilband 1 (Funk / Kuhn)</p>
+    </div>
+    <div class="goethe">
+      <span class="fallback" style="display:block">DAS&nbsp;LEBEN</span>
+      <div class="cap">Inoffizielle Lernhilfe</div>
+    </div>
+  </div>
+</header>
+
+<div class="tabwrap">
+  <div class="tabs" id="tabs" role="tablist" aria-label="Einheiten"></div>
+</div>
+
+<div class="toolbar">
+  <label class="search" id="searchWrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <input type="search" id="search" placeholder="Wortschatz filtern (Deutsch oder Englisch)…" autocomplete="off">
+  </label>
+  <div class="modeswitch" role="group" aria-label="Ansicht">
+    <button id="modeRef" aria-pressed="true">Nachschlagen</button>
+    <button id="modeCards" aria-pressed="false">Karteikarten</button>
+  </div>
+</div>
+
+<main id="main"></main>
+
+<footer>
+  <div class="colophon">
+    <p class="note"><b>Zu diesem Material.</b> Selbst erstellte Lernhilfe zu <i>Das Leben B1</i> (Cornelsen; Hrsg. Hermann Funk / Christina Kuhn), Teilband 1, Einheit 1–3. Grammatikthemen sind der übliche Stoff dieser Einheiten und sollten gegen das Inhaltsverzeichnis des Kursbuchs geprüft werden. Keine offizielle Verbindung zu Cornelsen. Audio nutzt die Sprachausgabe deines Browsers (Web Speech API); die Stimmqualität hängt vom Betriebssystem ab.</p>
+    <div class="legend" aria-label="Artikel-Farben">
+      <span><i style="background:var(--masc)"></i>der</span>
+      <span><i style="background:var(--fem)"></i>die</span>
+      <span><i style="background:var(--neut)"></i>das</span>
+      <span><i style="background:var(--plural)"></i>nur Plural</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ DATA ============ */
+const DATA = [
+ {
+  "id": 1,
+  "title": "Bildung (er)leben",
+  "subtitle": "Lernen, Ausbildung & lebenslanges Lernen",
+  "grammatik": [
+   {
+    "t": "Nebensätze",
+    "d": "Kausal- und Objektsätze: <i>weil, da, dass</i>",
+    "ex": [
+     ["Ich besuche einen Abendkurs, <b>weil</b> ich mich beruflich weiterbilden möchte.", "I'm taking an evening course because I want to develop professionally."],
+     ["<b>Da</b> ich tagsüber arbeite, lerne ich meistens am Wochenende.", "Since I work during the day, I usually study at the weekend."],
+     ["Ich glaube, <b>dass</b> lebenslanges Lernen immer wichtiger wird.", "I believe that lifelong learning is becoming ever more important."],
+     ["Sie hat die Prüfung bestanden, <b>weil</b> sie sich gut vorbereitet hat.", "She passed the exam because she prepared well."],
+     ["Es ist bekannt, <b>dass</b> man Sprachen am besten im Alltag lernt.", "It's known that you learn languages best in everyday life."]
+    ]
+   },
+   {
+    "t": "Konjunktiv II",
+    "d": "Ratschläge & Wünsche (<i>an deiner Stelle würde ich …</i>)",
+    "ex": [
+     ["<b>An deiner Stelle würde</b> ich einen Sprachkurs belegen.", "In your place, I'd take a language course."],
+     ["Du <b>solltest</b> dich früher auf die Prüfung vorbereiten.", "You should prepare for the exam earlier."],
+     ["Ich <b>wünschte</b>, ich <b>hätte</b> mehr Zeit zum Lernen.", "I wish I had more time to study."],
+     ["Es <b>wäre</b> gut, wenn du regelmäßig wiederholen <b>würdest</b>.", "It would be good if you revised regularly."],
+     ["<b>Könntest</b> du mir bei den Hausaufgaben helfen?", "Could you help me with the homework?"]
+    ]
+   },
+   {
+    "t": "Verben mit Präposition",
+    "d": "Fragewörter <i>wofür, worauf</i> und Pronominaladverbien <i>dafür, darauf</i>",
+    "ex": [
+     ["<b>Wofür</b> interessierst du dich? — Ich interessiere mich <b>für</b> Geschichte.", "What are you interested in? — I'm interested in history."],
+     ["<b>Worauf</b> konzentrierst du dich gerade? — <b>Darauf</b>, mein Deutsch zu verbessern.", "What are you focusing on? — On improving my German."],
+     ["Ich nehme <b>an</b> einem Onlinekurs teil.", "I'm taking part in an online course."],
+     ["Sie freut sich <b>auf</b> den Studienbeginn.", "She's looking forward to the start of her studies."],
+     ["Wir denken oft <b>an</b> unsere Schulzeit zurück.", "We often think back on our school days."]
+    ]
+   }
+  ],
+  "nomen": [
+   ["die", "Europäische Union", "–", "European Union"],
+   ["der", "Austausch", "die Austausche", "exchange"],
+   ["die", "Kooperation", "die Kooperationen", "cooperation"],
+   ["der", "Bereich", "die Bereiche", "area, field"],
+   ["die", "Lehre", "die Lehren", "teaching, apprenticeship"],
+   ["der/die", "Auszubildende", "die Auszubildenden", "trainee, apprentice"],
+   ["der/die", "Lehrende", "die Lehrenden", "teacher, lecturer"],
+   ["die", "Hochschule", "die Hochschulen", "university, college"],
+   ["die", "Förderung", "die Förderungen", "funding, support"],
+   ["das", "Verhalten", "die Verhalten", "behaviour"],
+   ["die", "Lehrkraft", "die Lehrkräfte", "teaching staff"],
+   ["der/die", "Bäckereifachverkäufer/in", "die Bäckereifachverkäufer", "bakery sales assistant"],
+   ["das", "Studentenwohnheim", "die Studentenwohnheime", "student dormitory"],
+   ["das", "Studienfach", "die Studienfächer", "subject, course of study"],
+   ["die", "Chance", "die Chancen", "chance, opportunity"],
+   ["das", "Abenteuer", "die Abenteuer", "adventure"],
+   ["der/die", "Berufsschullehrer/in", "die Berufsschullehrer", "vocational school teacher"],
+   ["die", "Gastfamilie", "die Gastfamilien", "host family"],
+   ["die", "Menge", "die Mengen", "a lot, quantity"],
+   ["die", "Erwartung", "die Erwartungen", "expectation"],
+   ["das", "Stipendium", "die Stipendien", "scholarship, grant"],
+   ["die", "Mischung", "die Mischungen", "mixture, mix"],
+   ["die", "Theorie", "die Theorien", "theory"],
+   ["die", "Praxis", "–", "practice"],
+   ["der", "Studiengang", "die Studiengänge", "degree programme, course"],
+   ["die", "Vermutung", "die Vermutungen", "assumption, guess"],
+   ["die", "Studienberatung", "die Studienberatungen", "student advisory service"],
+   ["der", "Journalismus", "–", "journalism"],
+   ["die", "Aufnahmeprüfung", "die Aufnahmeprüfungen", "entrance exam"],
+   ["die", "Voraussetzung", "die Voraussetzungen", "requirement, prerequisite"],
+   ["das", "Medienrecht", "–", "media law"],
+   ["die", "Mediengeschichte", "–", "history of media"],
+   ["die", "Reportage", "die Reportagen", "report, documentary"],
+   ["der", "Master", "die Master", "master's degree"],
+   ["der", "Hochschulinformationstag", "die Hochschulinformationstage", "university open day"],
+   ["das", "Auslandssemester", "die Auslandssemester", "semester abroad"],
+   ["der", "Rat", "die Räte", "advice"],
+   ["die", "Unterstützung", "die Unterstützungen", "support"],
+   ["der", "Ton", "die Töne", "tone, sound"],
+   ["der/die", "Gastgeber/in", "die Gastgeber", "host"],
+   ["die", "Version", "die Versionen", "version"],
+   ["die", "Architektur", "die Architekturen", "architecture"],
+   ["die", "Körpersprache", "die Körpersprachen", "body language"],
+   ["der", "Mittelpunkt", "die Mittelpunkte", "centre, focus"]
+  ],
+  "adjektive": [
+   ["monatlich", "monthly"],
+   ["weiblich", "female"],
+   ["finanziell", "financial"],
+   ["selbstbewusst", "self-confident"],
+   ["ökonomisch", "economically"],
+   ["ökologisch", "ecologically"],
+   ["doppelt", "double, twice"],
+   ["darum", "therefore, that is why"],
+   ["solange", "as long as"],
+   ["locker", "relaxed, casual"],
+   ["faszinierend", "fascinating"],
+   ["irgendwas", "something, anything"],
+   ["automatisch", "automatic, automatically"],
+   ["drüben", "over there"],
+   ["irgendwer", "someone, anyone"],
+   ["irgendwann", "sometime, at some point"],
+   ["irgendwoher", "from somewhere"]
+  ],
+  "verben": [
+   {"inf": "fördern", "en": "to fund, to promote", "praes": "fördert", "perf": "hat gefördert", "praet": "förderte",
+    "conj": {"praes": ["fördere","förderst","fördert","fördern","fördert","fördern"], "perf": ["habe gefördert","hast gefördert","hat gefördert","haben gefördert","habt gefördert","haben gefördert"], "praet": ["förderte","fördertest","förderte","förderten","fördertet","förderten"]}},
+   {"inf": "rechnen (mit)", "en": "to expect, to count on", "praes": "rechnet", "perf": "hat gerechnet", "praet": "rechnete",
+    "conj": {"praes": ["rechne","rechnest","rechnet","rechnen","rechnet","rechnen"], "perf": ["habe gerechnet","hast gerechnet","hat gerechnet","haben gerechnet","habt gerechnet","haben gerechnet"], "praet": ["rechnete","rechnetest","rechnete","rechneten","rechnetet","rechneten"]}},
+   {"inf": "überzeugen", "en": "to convince", "praes": "überzeugt", "perf": "hat überzeugt", "praet": "überzeugte",
+    "conj": {"praes": ["überzeuge","überzeugst","überzeugt","überzeugen","überzeugt","überzeugen"], "perf": ["habe überzeugt","hast überzeugt","hat überzeugt","haben überzeugt","habt überzeugt","haben überzeugt"], "praet": ["überzeugte","überzeugtest","überzeugte","überzeugten","überzeugtet","überzeugten"]}},
+   {"inf": "konstruieren", "en": "to construct, to design", "praes": "konstruiert", "perf": "hat konstruiert", "praet": "konstruierte",
+    "conj": {"praes": ["konstruiere","konstruierst","konstruiert","konstruieren","konstruiert","konstruieren"], "perf": ["habe konstruiert","hast konstruiert","hat konstruiert","haben konstruiert","habt konstruiert","haben konstruiert"], "praet": ["konstruierte","konstruiertest","konstruierte","konstruierten","konstruiertet","konstruierten"]}},
+   {"inf": "treffen (auf)", "en": "to meet, to encounter", "praes": "trifft", "perf": "ist getroffen", "praet": "traf",
+    "conj": {"praes": ["treffe","triffst","trifft","treffen","trefft","treffen"], "perf": ["bin getroffen","bist getroffen","ist getroffen","sind getroffen","seid getroffen","sind getroffen"], "praet": ["traf","trafst","traf","trafen","traft","trafen"]}},
+   {"inf": "flirten", "en": "to flirt", "praes": "flirtet", "perf": "hat geflirtet", "praet": "flirtete",
+    "conj": {"praes": ["flirte","flirtest","flirtet","flirten","flirtet","flirten"], "perf": ["habe geflirtet","hast geflirtet","hat geflirtet","haben geflirtet","habt geflirtet","haben geflirtet"], "praet": ["flirtete","flirtetest","flirtete","flirteten","flirtetet","flirteten"]}},
+   {"inf": "vorschlagen", "en": "to suggest", "praes": "schlägt vor", "perf": "hat vorgeschlagen", "praet": "schlug vor",
+    "conj": {"praes": ["schlage vor","schlägst vor","schlägt vor","schlagen vor","schlagt vor","schlagen vor"], "perf": ["habe vorgeschlagen","hast vorgeschlagen","hat vorgeschlagen","haben vorgeschlagen","habt vorgeschlagen","haben vorgeschlagen"], "praet": ["schlug vor","schlugst vor","schlug vor","schlugen vor","schlugt vor","schlugen vor"]}},
+   {"inf": "runterbringen", "en": "to take down", "praes": "bringt runter", "perf": "hat runtergebracht", "praet": "brachte runter",
+    "conj": {"praes": ["bringe runter","bringst runter","bringt runter","bringen runter","bringt runter","bringen runter"], "perf": ["habe runtergebracht","hast runtergebracht","hat runtergebracht","haben runtergebracht","habt runtergebracht","haben runtergebracht"], "praet": ["brachte runter","brachtest runter","brachte runter","brachten runter","brachtet runter","brachten runter"]}},
+   {"inf": "zumachen", "en": "to close, to shut", "praes": "macht zu", "perf": "hat zugemacht", "praet": "machte zu",
+    "conj": {"praes": ["mache zu","machst zu","macht zu","machen zu","macht zu","machen zu"], "perf": ["habe zugemacht","hast zugemacht","hat zugemacht","haben zugemacht","habt zugemacht","haben zugemacht"], "praet": ["machte zu","machtest zu","machte zu","machten zu","machtet zu","machten zu"]}},
+   {"inf": "abbrechen", "en": "to drop out, to break off", "praes": "bricht ab", "perf": "hat abgebrochen", "praet": "brach ab",
+    "conj": {"praes": ["breche ab","brichst ab","bricht ab","brechen ab","brecht ab","brechen ab"], "perf": ["habe abgebrochen","hast abgebrochen","hat abgebrochen","haben abgebrochen","habt abgebrochen","haben abgebrochen"], "praet": ["brach ab","brachst ab","brach ab","brachen ab","bracht ab","brachen ab"]}},
+   {"inf": "auffordern", "en": "to call on, to ask", "praes": "fordert auf", "perf": "hat aufgefordert", "praet": "forderte auf",
+    "conj": {"praes": ["fordere auf","forderst auf","fordert auf","fordern auf","fordert auf","fordern auf"], "perf": ["habe aufgefordert","hast aufgefordert","hat aufgefordert","haben aufgefordert","habt aufgefordert","haben aufgefordert"], "praet": ["forderte auf","fordertest auf","forderte auf","forderten auf","fordertet auf","forderten auf"]}},
+   {"inf": "anmachen", "en": "to switch on, to turn on", "praes": "macht an", "perf": "hat angemacht", "praet": "machte an",
+    "conj": {"praes": ["mache an","machst an","macht an","machen an","macht an","machen an"], "perf": ["habe angemacht","hast angemacht","hat angemacht","haben angemacht","habt angemacht","haben angemacht"], "praet": ["machte an","machtest an","machte an","machten an","machtet an","machten an"]}}
+  ],
+  "rede": [
+   ["Über das Lernen sprechen", ["Ich interessiere mich (nicht) für …","Mir fällt … leicht / schwer.","Ich möchte mich auf … vorbereiten.","Das Wichtigste beim Lernen ist für mich …"]]
+  ]
+ },
+ {
+  "id": 2,
+  "title": "Vorhang auf!",
+  "subtitle": "Theater, Kultur & Ausgehen",
+  "grammatik": [
+   {
+    "t": "Perfekt & Präteritum",
+    "d": "über Erlebnisse berichten",
+    "ex": [
+     ["Gestern <b>bin</b> ich ins Theater <b>gegangen</b> und <b>habe</b> ein tolles Stück <b>gesehen</b>.", "Yesterday I went to the theatre and saw a great play."],
+     ["Die Vorstellung <b>war</b> ausverkauft und das Publikum <b>applaudierte</b> lange.", "The performance was sold out and the audience applauded for a long time."],
+     ["Wir <b>haben</b> die Karten schon vor einem Monat <b>gekauft</b>.", "We bought the tickets a month ago."],
+     ["Als Kind <b>spielte</b> ich selbst Theater.", "As a child I acted in the theatre myself."],
+     ["Nach dem Konzert <b>sind</b> wir noch etwas essen <b>gegangen</b>.", "After the concert we went to get something to eat."]
+    ]
+   },
+   {
+    "t": "Adjektivdeklination",
+    "d": "nach bestimmtem & unbestimmtem Artikel",
+    "ex": [
+     ["Das <b>war</b> ein <b>beeindruckendes</b> Konzert.", "That was an impressive concert."],
+     ["Die <b>berühmte</b> Schauspielerin bekam großen Applaus.", "The famous actress got big applause."],
+     ["Wir haben gute <b>Plätze</b> in der <b>ersten</b> Reihe.", "We have good seats in the first row."],
+     ["Ein <b>gelungener</b> Abend beginnt mit einem guten Stück.", "A successful evening starts with a good play."],
+     ["Ich mag moderne <b>Kunst</b> lieber als klassische.", "I like modern art more than classical."]
+    ]
+   },
+   {
+    "t": "Verben mit Präposition",
+    "d": "<i>wo(r)-</i> und <i>da(r)-</i> Formen",
+    "ex": [
+     ["Ich freue mich schon <b>auf</b> die Premiere. — <b>Worauf</b> freust du dich?", "I'm looking forward to the premiere. — What are you looking forward to?"],
+     ["Er begeistert sich <b>für</b> klassische Musik.", "He's enthusiastic about classical music."],
+     ["<b>Darüber</b> habe ich mich sehr gefreut.", "I was very pleased about that."],
+     ["Wir warten <b>auf</b> den Beginn der Vorstellung.", "We're waiting for the performance to start."],
+     ["Diese Oper gehört <b>zu</b> den bekanntesten der Welt.", "This opera is one of the best known in the world."]
+    ]
+   }
+  ],
+  "nomen": [
+   ["die", "Kulisse", "die Kulissen", "scenery, backdrop"],
+   ["die", "Spielzeit", "die Spielzeiten", "season"],
+   ["die", "Maske", "die Masken", "make-up department"],
+   ["der/die", "Maskenbildner/in", "die Maskenbildner", "make-up artist"],
+   ["das", "Kostüm", "die Kostüme", "costume"],
+   ["der/die", "Kostümbildner/in", "die Kostümbildner", "costume designer"],
+   ["die", "Hauptrolle", "die Hauptrollen", "main role"],
+   ["das", "Bühnenbild", "die Bühnenbilder", "stage set"],
+   ["der/die", "Bühnenhandwerker/in", "die Bühnenhandwerker", "stage technician"],
+   ["der/die", "Bühnenmaler/in", "die Bühnenmaler", "scenic painter"],
+   ["das", "Lampenfieber", "–", "stage fright"],
+   ["der", "Auftritt", "die Auftritte", "performance, appearance"],
+   ["die", "Bretter", "Pl.", "the stage (lit. the boards)"],
+   ["die", "Phantasie", "die Phantasien", "imagination, fantasy"],
+   ["der", "Blick", "die Blicke", "glance, view"],
+   ["der", "Saal", "die Säle", "hall, auditorium"],
+   ["das", "Publikum", "die Publika", "audience"],
+   ["der", "Vorhang", "die Vorhänge", "curtain"],
+   ["die", "Produktion", "die Produktionen", "production"],
+   ["die", "Eröffnung", "die Eröffnungen", "opening"],
+   ["der/die", "Beleuchter/in", "die Beleuchter", "lighting technician"],
+   ["der/die", "Regisseur/in", "die Regisseure", "director"],
+   ["die", "Beleuchtung", "die Beleuchtungen", "lighting"],
+   ["der", "Scheinwerfer", "die Scheinwerfer", "spotlight"],
+   ["der/die", "Veranstaltungstechniker/in", "die Veranstaltungstechniker", "events technician"],
+   ["die", "Frisur", "die Frisuren", "hairstyle"],
+   ["das", "Stadttheater", "die Stadttheater", "municipal theatre"],
+   ["das", "Gesicht", "die Gesichter", "face"],
+   ["der", "Sinn", "die Sinne", "sense, meaning"],
+   ["der/die", "Tänzer/in", "die Tänzer", "dancer"],
+   ["der/die", "Chefdramaturg/in", "die Chefdramaturge", "chief dramaturg"],
+   ["die", "Theaterwissenschaften", "Pl.", "theatre studies"],
+   ["die", "Öffentlichkeitsarbeit", "–", "public relations"],
+   ["die", "Spielplanung", "die Spielplanungen", "programme planning"],
+   ["das", "Schauspiel", "–", "drama, acting"],
+   ["die", "Teamarbeit", "die Teamarbeiten", "teamwork"],
+   ["die", "Besprechung", "die Besprechungen", "meeting"],
+   ["das", "Schlusswort", "die Schlussworte", "closing words"],
+   ["der", "Applaus", "die Applause", "applause"],
+   ["die", "Nationalität", "die Nationalitäten", "nationality"],
+   ["die", "Verwandtschaft", "die Verwandtschaften", "relatives, family"],
+   ["die", "Walachei", "–", "back of beyond"],
+   ["die", "Großtante", "die Großtanten", "great aunt"],
+   ["der", "Urgroßvater", "die Urgroßväter", "great grandfather"],
+   ["die", "Pampa", "–", "the middle of nowhere"],
+   ["die", "Regieanweisung", "die Regieanweisungen", "stage direction"],
+   ["die", "Handlung", "die Handlungen", "plot, action"],
+   ["der", "Schluck", "die Schlucke", "sip, gulp"],
+   ["die", "Fahrtdauer", "die Fahrtdauern", "journey time"],
+   ["die", "Klarheit", "die Klarheiten", "clarity"],
+   ["der", "Irrtum", "die Irrtümer", "error, mistake"],
+   ["das", "Fünkchen", "die Fünkchen", "tiny bit, spark"],
+   ["die", "Wahrheit", "die Wahrheiten", "truth"],
+   ["der", "Trank", "die Tränke", "potion, drink"]
+  ],
+  "adjektive": [
+   ["nervös", "nervous"],
+   ["gespannt", "excited, tense"],
+   ["fleißig", "hardworking, diligent"],
+   ["beteiligt", "involved"],
+   ["riesig", "huge, enormous"],
+   ["veraltet", "outdated"],
+   ["nirgends", "nowhere"],
+   ["technisch", "technical"],
+   ["inhaltlich", "in terms of content"],
+   ["abenteuerlich", "adventurous"],
+   ["unglaublich", "incredible, unbelievable"],
+   ["irgendwie", "somehow"],
+   ["umgangssprachlich", "colloquial"],
+   ["menschenleer", "deserted"],
+   ["entfernt", "remote, distant"],
+   ["berlinerisch", "Berlin dialect"],
+   ["gleichzeitig", "simultaneously, at the same time"],
+   ["während", "while, during"]
+  ],
+  "verben": [
+   {"inf": "frisieren", "en": "to style (hair)", "praes": "frisiert", "perf": "hat frisiert", "praet": "frisierte",
+    "conj": {"praes": ["frisiere","frisierst","frisiert","frisieren","frisiert","frisieren"], "perf": ["habe frisiert","hast frisiert","hat frisiert","haben frisiert","habt frisiert","haben frisiert"], "praet": ["frisierte","frisiertest","frisierte","frisierten","frisiertet","frisierten"]}},
+   {"inf": "entwerfen", "en": "to design, to draft", "praes": "entwirft", "perf": "hat entworfen", "praet": "entwarf",
+    "conj": {"praes": ["entwerfe","entwirfst","entwirft","entwerfen","entwerft","entwerfen"], "perf": ["habe entworfen","hast entworfen","hat entworfen","haben entworfen","habt entworfen","haben entworfen"], "praet": ["entwarf","entwarfst","entwarf","entwarfen","entwarft","entwarfen"]}},
+   {"inf": "vorübergehen", "en": "to pass by", "praes": "geht vorüber", "perf": "ist vorübergegangen", "praet": "ging vorüber",
+    "conj": {"praes": ["gehe vorüber","gehst vorüber","geht vorüber","gehen vorüber","geht vorüber","gehen vorüber"], "perf": ["bin vorübergegangen","bist vorübergegangen","ist vorübergegangen","sind vorübergegangen","seid vorübergegangen","sind vorübergegangen"], "praet": ["ging vorüber","gingst vorüber","ging vorüber","gingen vorüber","gingt vorüber","gingen vorüber"]}},
+   {"inf": "begeben (sich)", "en": "to make one's way", "praes": "begibt sich", "perf": "hat sich begeben", "praet": "begab sich",
+    "conj": {"praes": ["begebe mich","begibst dich","begibt sich","begeben uns","begebt euch","begeben sich"], "perf": ["habe mich begeben","hast dich begeben","hat sich begeben","haben uns begeben","habt euch begeben","haben sich begeben"], "praet": ["begab mich","begabst dich","begab sich","begaben uns","begabt euch","begaben sich"]}},
+   {"inf": "proben", "en": "to rehearse", "praes": "probt", "perf": "hat geprobt", "praet": "probte",
+    "conj": {"praes": ["probe","probst","probt","proben","probt","proben"], "perf": ["habe geprobt","hast geprobt","hat geprobt","haben geprobt","habt geprobt","haben geprobt"], "praet": ["probte","probtest","probte","probten","probtet","probten"]}},
+   {"inf": "umsehen (sich)", "en": "to look around", "praes": "sieht sich um", "perf": "hat sich umgesehen", "praet": "sah sich um",
+    "conj": {"praes": ["sehe mich um","siehst dich um","sieht sich um","sehen uns um","seht euch um","sehen sich um"], "perf": ["habe mich umgesehen","hast dich umgesehen","hat sich umgesehen","haben uns umgesehen","habt euch umgesehen","haben sich umgesehen"], "praet": ["sah mich um","sahst dich um","sah sich um","sahen uns um","saht euch um","sahen sich um"]}},
+   {"inf": "bedienen", "en": "to operate, to serve", "praes": "bedient", "perf": "hat bedient", "praet": "bediente",
+    "conj": {"praes": ["bediene","bedienst","bedient","bedienen","bedient","bedienen"], "perf": ["habe bedient","hast bedient","hat bedient","haben bedient","habt bedient","haben bedient"], "praet": ["bediente","bedientest","bediente","bedienten","bedientet","bedienten"]}},
+   {"inf": "schminken", "en": "to put on make-up", "praes": "schminkt", "perf": "hat geschminkt", "praet": "schminkte",
+    "conj": {"praes": ["schminke","schminkst","schminkt","schminken","schminkt","schminken"], "perf": ["habe geschminkt","hast geschminkt","hat geschminkt","haben geschminkt","habt geschminkt","haben geschminkt"], "praet": ["schminkte","schminktest","schminkte","schminkten","schminktet","schminkten"]}},
+   {"inf": "hereinkommen", "en": "to come in", "praes": "kommt herein", "perf": "ist hereingekommen", "praet": "kam herein",
+    "conj": {"praes": ["komme herein","kommst herein","kommt herein","kommen herein","kommt herein","kommen herein"], "perf": ["bin hereingekommen","bist hereingekommen","ist hereingekommen","sind hereingekommen","seid hereingekommen","sind hereingekommen"], "praet": ["kam herein","kamst herein","kam herein","kamen herein","kamt herein","kamen herein"]}},
+   {"inf": "vorbeigehen", "en": "to walk past", "praes": "geht vorbei", "perf": "ist vorbeigegangen", "praet": "ging vorbei",
+    "conj": {"praes": ["gehe vorbei","gehst vorbei","geht vorbei","gehen vorbei","geht vorbei","gehen vorbei"], "perf": ["bin vorbeigegangen","bist vorbeigegangen","ist vorbeigegangen","sind vorbeigegangen","seid vorbeigegangen","sind vorbeigegangen"], "praet": ["ging vorbei","gingst vorbei","ging vorbei","gingen vorbei","gingt vorbei","gingen vorbei"]}},
+   {"inf": "applaudieren", "en": "to applaud", "praes": "applaudiert", "perf": "hat applaudiert", "praet": "applaudierte",
+    "conj": {"praes": ["applaudiere","applaudierst","applaudiert","applaudieren","applaudiert","applaudieren"], "perf": ["habe applaudiert","hast applaudiert","hat applaudiert","haben applaudiert","habt applaudiert","haben applaudiert"], "praet": ["applaudierte","applaudiertest","applaudierte","applaudierten","applaudiertet","applaudierten"]}},
+   {"inf": "husten", "en": "to cough", "praes": "hustet", "perf": "hat gehustet", "praet": "hustete",
+    "conj": {"praes": ["huste","hustest","hustet","husten","hustet","husten"], "perf": ["habe gehustet","hast gehustet","hat gehustet","haben gehustet","habt gehustet","haben gehustet"], "praet": ["hustete","hustetest","hustete","husteten","hustetet","husteten"]}},
+   {"inf": "enden", "en": "to end", "praes": "endet", "perf": "hat geendet", "praet": "endete",
+    "conj": {"praes": ["ende","endest","endet","enden","endet","enden"], "perf": ["habe geendet","hast geendet","hat geendet","haben geendet","habt geendet","haben geendet"], "praet": ["endete","endetest","endete","endeten","endetet","endeten"]}},
+   {"inf": "mitarbeiten", "en": "to work together", "praes": "arbeitet mit", "perf": "hat mitgearbeitet", "praet": "arbeitete mit",
+    "conj": {"praes": ["arbeite mit","arbeitest mit","arbeitet mit","arbeiten mit","arbeitet mit","arbeiten mit"], "perf": ["habe mitgearbeitet","hast mitgearbeitet","hat mitgearbeitet","haben mitgearbeitet","habt mitgearbeitet","haben mitgearbeitet"], "praet": ["arbeitete mit","arbeitetest mit","arbeitete mit","arbeiteten mit","arbeitetet mit","arbeiteten mit"]}},
+   {"inf": "verraten", "en": "to reveal, to betray", "praes": "verrät", "perf": "hat verraten", "praet": "verriet",
+    "conj": {"praes": ["verrate","verrätst","verrät","verraten","verratet","verraten"], "perf": ["habe verraten","hast verraten","hat verraten","haben verraten","habt verraten","haben verraten"], "praet": ["verriet","verrietest","verriet","verrieten","verrietet","verrieten"]}},
+   {"inf": "zusammenpassen", "en": "to go together", "praes": "passt zusammen", "perf": "hat zusammengepasst", "praet": "passte zusammen",
+    "conj": {"praes": ["passe zusammen","passt zusammen","passt zusammen","passen zusammen","passt zusammen","passen zusammen"], "perf": ["habe zusammengepasst","hast zusammengepasst","hat zusammengepasst","haben zusammengepasst","habt zusammengepasst","haben zusammengepasst"], "praet": ["passte zusammen","passtest zusammen","passte zusammen","passten zusammen","passtet zusammen","passten zusammen"]}},
+   {"inf": "wegfahren", "en": "to drive away, to leave", "praes": "fährt weg", "perf": "ist weggefahren", "praet": "fuhr weg",
+    "conj": {"praes": ["fahre weg","fährst weg","fährt weg","fahren weg","fahrt weg","fahren weg"], "perf": ["bin weggefahren","bist weggefahren","ist weggefahren","sind weggefahren","seid weggefahren","sind weggefahren"], "praet": ["fuhr weg","fuhrst weg","fuhr weg","fuhren weg","fuhrt weg","fuhren weg"]}},
+   {"inf": "greifen", "en": "to grasp, to reach for", "praes": "greift", "perf": "hat gegriffen", "praet": "griff",
+    "conj": {"praes": ["greife","greifst","greift","greifen","greift","greifen"], "perf": ["habe gegriffen","hast gegriffen","hat gegriffen","haben gegriffen","habt gegriffen","haben gegriffen"], "praet": ["griff","griffst","griff","griffen","grifft","griffen"]}},
+   {"inf": "brauen", "en": "to brew", "praes": "braut", "perf": "hat gebraut", "praet": "braute",
+    "conj": {"praes": ["braue","braust","braut","brauen","braut","brauen"], "perf": ["habe gebraut","hast gebraut","hat gebraut","haben gebraut","habt gebraut","haben gebraut"], "praet": ["braute","brautest","braute","brauten","brautet","brauten"]}}
+  ],
+  "rede": [
+   ["Eine Meinung äußern", ["Mir hat … (nicht) gefallen.","Besonders beeindruckt hat mich …","Ich kann … (nur) empfehlen.","Der Höhepunkt war für mich …"]]
+  ]
+ },
+ {
+  "id": 3,
+  "title": "Miteinander – füreinander",
+  "subtitle": "Gemeinschaft, Ehrenamt & Beziehungen",
+  "grammatik": [
+   {
+    "t": "Reflexive Verben",
+    "d": "im Akkusativ & Dativ",
+    "ex": [
+     ["Ich <b>engagiere mich</b> ehrenamtlich im Tierheim.", "I volunteer at the animal shelter."],
+     ["Kannst du <b>dir</b> das <b>vorstellen</b>?", "Can you imagine that?"],
+     ["Wir <b>kümmern uns</b> um unsere älteren Nachbarn.", "We take care of our elderly neighbours."],
+     ["<b>Merk dir</b> bitte den Termin für das Vereinstreffen.", "Please note down the date of the club meeting."],
+     ["Nach dem Streit haben sie <b>sich</b> wieder <b>vertragen</b>.", "After the argument they made up again."]
+    ]
+   },
+   {
+    "t": "Konnektoren",
+    "d": "<i>deshalb, trotzdem, sonst</i> (Hauptsatz + Hauptsatz)",
+    "ex": [
+     ["Er hat wenig Zeit, <b>trotzdem</b> hilft er im Verein mit.", "He has little time; nevertheless he helps out at the club."],
+     ["Viele fühlen sich allein, <b>deshalb</b> ist Nachbarschaftshilfe wichtig.", "Many feel alone, so neighbourly help is important."],
+     ["Wir müssen zusammenhalten, <b>sonst</b> schaffen wir das nicht.", "We have to stick together, otherwise we won't manage it."],
+     ["Sie ist neu hier, <b>deshalb</b> zeigen wir ihr die Stadt.", "She's new here, so we're showing her the town."],
+     ["Das Projekt war schwierig, <b>trotzdem</b> haben wir es geschafft.", "The project was difficult; nevertheless we managed it."]
+    ]
+   },
+   {
+    "t": "Finalsätze",
+    "d": "<i>damit</i> & <i>um … zu</i>",
+    "ex": [
+     ["Wir sammeln Spenden, <b>damit</b> die Familie Hilfe bekommt.", "We're collecting donations so that the family gets help."],
+     ["Er engagiert sich, <b>um</b> anderen zu <b>helfen</b>.", "He gets involved in order to help others."],
+     ["Ich lerne Deutsch, <b>damit</b> ich mich besser integrieren kann.", "I'm learning German so that I can integrate better."],
+     ["<b>Um</b> Vertrauen aufzubauen, muss man zuverlässig sein.", "To build trust, you have to be reliable."],
+     ["Sie gründen einen Verein, <b>um</b> das Viertel zu <b>verschönern</b>.", "They're founding a club to beautify the neighbourhood."]
+    ]
+   }
+  ],
+  "nomen": [
+   ["das", "Ehrenamt", "die Ehrenämter", "voluntary work, honorary office"],
+   ["das", "Engagement", "die Engagements", "commitment, involvement"],
+   ["die", "Kindheit", "–", "childhood"],
+   ["der", "Naturschutzbund", "–", "nature conservation association"],
+   ["die", "Bezahlung", "die Bezahlungen", "payment"],
+   ["der", "Einsatz", "die Einsätze", "effort, deployment"],
+   ["die", "Gesellschaft", "die Gesellschaften", "society"],
+   ["die", "Rede", "die Reden", "speech"],
+   ["das", "Sprichwort", "die Sprichwörter", "proverb"],
+   ["die", "Freude", "die Freuden", "joy, pleasure"],
+   ["der", "Besuchsdienst", "die Besuchsdienste", "visiting service"],
+   ["die", "Kita", "die Kitas", "nursery, daycare"],
+   ["der/die", "Erzieher/in", "die Erzieher", "childcare worker, educator"],
+   ["der", "Nachhilfeunterricht", "die Nachhilfeunterrichte", "tutoring, private lessons"],
+   ["die", "Verantwortung", "die Verantwortungen", "responsibility"],
+   ["der", "Tierschutz", "–", "animal welfare"],
+   ["der", "Naturschutz", "–", "nature conservation"],
+   ["der/die", "Preisträger/in", "die Preisträger", "prize winner"],
+   ["die", "Suppenküche", "die Suppenküchen", "soup kitchen"],
+   ["das", "Ferienlager", "die Ferienlager", "holiday camp"],
+   ["der/die", "Mentor/in", "die Mentoren", "mentor"],
+   ["der/die", "Mitbürger/in", "die Mitbürger", "fellow citizen"],
+   ["die", "Feierstunde", "die Feierstunden", "ceremony"],
+   ["das", "Judo", "–", "judo"],
+   ["das", "Fitnessstudio", "die Fitnessstudios", "gym"],
+   ["das", "Stadion", "die Stadien", "stadium"],
+   ["der", "Fußballclub", "die Fußballclubs", "football club"],
+   ["die", "Meisterschaft", "die Meisterschaften", "championship"],
+   ["der", "Amateurfußball", "–", "amateur football"],
+   ["der", "Fußballplatz", "die Fußballplätze", "football pitch"],
+   ["der/die", "Schiedsrichter/in", "die Schiedsrichter", "referee"],
+   ["der/die", "Junior/in", "die Junioren", "junior player"],
+   ["die", "Gemeinschaft", "die Gemeinschaften", "community"],
+   ["die", "Lizenz", "die Lizenzen", "licence"],
+   ["die", "Fortbildung", "die Fortbildungen", "further training"],
+   ["der", "Daumen", "die Daumen", "thumb"],
+   ["der", "Cup", "die Cups", "cup, trophy"],
+   ["das", "Mädel", "die Mädels", "girl (colloquial)"],
+   ["die", "Trainerlizenz", "die Trainerlizenzen", "coaching licence"],
+   ["der/die", "Meister/in", "die Meister", "champion"],
+   ["die", "Bürgerinitiative", "die Bürgerinitiativen", "citizens' initiative"],
+   ["die", "Fahrraddemo", "die Fahrraddemos", "cycling demonstration"],
+   ["der", "Stadtrand", "die Stadtränder", "outskirts, edge of town"],
+   ["das", "Neubaugebiet", "die Neubaugebiete", "new development area"],
+   ["der", "Neubau", "die Neubauten", "new building"],
+   ["das", "Erholungsgebiet", "die Erholungsgebiete", "recreation area"],
+   ["die", "Auffassung", "die Auffassungen", "view, opinion"],
+   ["der", "Infoabend", "die Infoabende", "information evening"],
+   ["die", "Diskussionsrunde", "die Diskussionsrunden", "discussion round"],
+   ["der/die", "Redner/in", "die Redner", "speaker"],
+   ["die", "Teilnahme", "–", "participation"],
+   ["die", "Vorstellung", "die Vorstellungen", "presentation, idea"],
+   ["die", "Nachfrage", "die Nachfragen", "follow-up question"]
+  ],
+  "adjektive": [
+   ["ehrenamtlich", "voluntary, on a voluntary basis"],
+   ["füreinander", "for each other"],
+   ["wohnungslos", "homeless"],
+   ["wöchentlich", "weekly"],
+   ["montags", "on Mondays"],
+   ["vermüllt", "full of litter, littered"],
+   ["menschlich", "human, humane"],
+   ["wahr", "true, real"],
+   ["gesellschaftlich", "social, of society"],
+   ["kommend", "upcoming, coming"],
+   ["deswegen", "therefore, that's why"]
+  ],
+  "verben": [
+   {"inf": "ehren", "en": "to honour", "praes": "ehrt", "perf": "hat geehrt", "praet": "ehrte",
+    "conj": {"praes": ["ehre","ehrst","ehrt","ehren","ehrt","ehren"], "perf": ["habe geehrt","hast geehrt","hat geehrt","haben geehrt","habt geehrt","haben geehrt"], "praet": ["ehrte","ehrtest","ehrte","ehrten","ehrtet","ehrten"]}},
+   {"inf": "erhalten", "en": "to receive", "praes": "erhält", "perf": "hat erhalten", "praet": "erhielt",
+    "conj": {"praes": ["erhalte","erhältst","erhält","erhalten","erhaltet","erhalten"], "perf": ["habe erhalten","hast erhalten","hat erhalten","haben erhalten","habt erhalten","haben erhalten"], "praet": ["erhielt","erhieltest","erhielt","erhielten","erhieltet","erhielten"]}},
+   {"inf": "behandeln", "en": "to treat", "praes": "behandelt", "perf": "hat behandelt", "praet": "behandelte",
+    "conj": {"praes": ["behandle","behandelst","behandelt","behandeln","behandelt","behandeln"], "perf": ["habe behandelt","hast behandelt","hat behandelt","haben behandelt","habt behandelt","haben behandelt"], "praet": ["behandelte","behandeltest","behandelte","behandelten","behandeltet","behandelten"]}},
+   {"inf": "loben", "en": "to praise", "praes": "lobt", "perf": "hat gelobt", "praet": "lobte",
+    "conj": {"praes": ["lobe","lobst","lobt","loben","lobt","loben"], "perf": ["habe gelobt","hast gelobt","hat gelobt","haben gelobt","habt gelobt","haben gelobt"], "praet": ["lobte","lobtest","lobte","lobten","lobtet","lobten"]}},
+   {"inf": "einsetzen (sich)", "en": "to stand up for", "praes": "setzt sich ein", "perf": "hat sich eingesetzt", "praet": "setzte sich ein",
+    "conj": {"praes": ["setze mich ein","setzt dich ein","setzt sich ein","setzen uns ein","setzt euch ein","setzen sich ein"], "perf": ["habe mich eingesetzt","hast dich eingesetzt","hat sich eingesetzt","haben uns eingesetzt","habt euch eingesetzt","haben sich eingesetzt"], "praet": ["setzte mich ein","setztest dich ein","setzte sich ein","setzten uns ein","setztet euch ein","setzten sich ein"]}},
+   {"inf": "zitieren", "en": "to quote", "praes": "zitiert", "perf": "hat zitiert", "praet": "zitierte",
+    "conj": {"praes": ["zitiere","zitierst","zitiert","zitieren","zitiert","zitieren"], "perf": ["habe zitiert","hast zitiert","hat zitiert","haben zitiert","habt zitiert","haben zitiert"], "praet": ["zitierte","zitiertest","zitierte","zitierten","zitiertet","zitierten"]}},
+   {"inf": "engagieren (sich)", "en": "to get involved", "praes": "engagiert sich", "perf": "hat sich engagiert", "praet": "engagierte sich",
+    "conj": {"praes": ["engagiere mich","engagierst dich","engagiert sich","engagieren uns","engagiert euch","engagieren sich"], "perf": ["habe mich engagiert","hast dich engagiert","hat sich engagiert","haben uns engagiert","habt euch engagiert","haben sich engagiert"], "praet": ["engagierte mich","engagiertest dich","engagierte sich","engagierten uns","engagiertet euch","engagierten sich"]}},
+   {"inf": "integrieren", "en": "to integrate", "praes": "integriert", "perf": "hat integriert", "praet": "integrierte",
+    "conj": {"praes": ["integriere","integrierst","integriert","integrieren","integriert","integrieren"], "perf": ["habe integriert","hast integriert","hat integriert","haben integriert","habt integriert","haben integriert"], "praet": ["integrierte","integriertest","integrierte","integrierten","integriertet","integrierten"]}},
+   {"inf": "retten", "en": "to rescue, to save", "praes": "rettet", "perf": "hat gerettet", "praet": "rettete",
+    "conj": {"praes": ["rette","rettest","rettet","retten","rettet","retten"], "perf": ["habe gerettet","hast gerettet","hat gerettet","haben gerettet","habt gerettet","haben gerettet"], "praet": ["rettete","rettetest","rettete","retteten","rettetet","retteten"]}},
+   {"inf": "tätig sein", "en": "to be active, to work", "praes": "ist tätig", "perf": "ist tätig gewesen", "praet": "war tätig",
+    "conj": {"praes": ["bin tätig","bist tätig","ist tätig","sind tätig","seid tätig","sind tätig"], "perf": ["bin tätig gewesen","bist tätig gewesen","ist tätig gewesen","sind tätig gewesen","seid tätig gewesen","sind tätig gewesen"], "praet": ["war tätig","warst tätig","war tätig","waren tätig","wart tätig","waren tätig"]}},
+   {"inf": "weiterentwickeln", "en": "to develop further", "praes": "entwickelt weiter", "perf": "hat weiterentwickelt", "praet": "entwickelte weiter",
+    "conj": {"praes": ["entwickle weiter","entwickelst weiter","entwickelt weiter","entwickeln weiter","entwickelt weiter","entwickeln weiter"], "perf": ["habe weiterentwickelt","hast weiterentwickelt","hat weiterentwickelt","haben weiterentwickelt","habt weiterentwickelt","haben weiterentwickelt"], "praet": ["entwickelte weiter","entwickeltest weiter","entwickelte weiter","entwickelten weiter","entwickeltet weiter","entwickelten weiter"]}},
+   {"inf": "durchführen", "en": "to carry out, to conduct", "praes": "führt durch", "perf": "hat durchgeführt", "praet": "führte durch",
+    "conj": {"praes": ["führe durch","führst durch","führt durch","führen durch","führt durch","führen durch"], "perf": ["habe durchgeführt","hast durchgeführt","hat durchgeführt","haben durchgeführt","habt durchgeführt","haben durchgeführt"], "praet": ["führte durch","führtest durch","führte durch","führten durch","führtet durch","führten durch"]}},
+   {"inf": "mitspielen", "en": "to play along, to join in", "praes": "spielt mit", "perf": "hat mitgespielt", "praet": "spielte mit",
+    "conj": {"praes": ["spiele mit","spielst mit","spielt mit","spielen mit","spielt mit","spielen mit"], "perf": ["habe mitgespielt","hast mitgespielt","hat mitgespielt","haben mitgespielt","habt mitgespielt","haben mitgespielt"], "praet": ["spielte mit","spieltest mit","spielte mit","spielten mit","spieltet mit","spielten mit"]}},
+   {"inf": "demonstrieren", "en": "to demonstrate, to protest", "praes": "demonstriert", "perf": "hat demonstriert", "praet": "demonstrierte",
+    "conj": {"praes": ["demonstriere","demonstrierst","demonstriert","demonstrieren","demonstriert","demonstrieren"], "perf": ["habe demonstriert","hast demonstriert","hat demonstriert","haben demonstriert","habt demonstriert","haben demonstriert"], "praet": ["demonstrierte","demonstriertest","demonstrierte","demonstrierten","demonstriertet","demonstrierten"]}},
+   {"inf": "kämpfen (für)", "en": "to fight for", "praes": "kämpft", "perf": "hat gekämpft", "praet": "kämpfte",
+    "conj": {"praes": ["kämpfe","kämpfst","kämpft","kämpfen","kämpft","kämpfen"], "perf": ["habe gekämpft","hast gekämpft","hat gekämpft","haben gekämpft","habt gekämpft","haben gekämpft"], "praet": ["kämpfte","kämpftest","kämpfte","kämpften","kämpftet","kämpften"]}},
+   {"inf": "protestieren", "en": "to protest", "praes": "protestiert", "perf": "hat protestiert", "praet": "protestierte",
+    "conj": {"praes": ["protestiere","protestierst","protestiert","protestieren","protestiert","protestieren"], "perf": ["habe protestiert","hast protestiert","hat protestiert","haben protestiert","habt protestiert","haben protestiert"], "praet": ["protestierte","protestiertest","protestierte","protestierten","protestiertet","protestierten"]}},
+   {"inf": "hinzufügen", "en": "to add", "praes": "fügt hinzu", "perf": "hat hinzugefügt", "praet": "fügte hinzu",
+    "conj": {"praes": ["füge hinzu","fügst hinzu","fügt hinzu","fügen hinzu","fügt hinzu","fügen hinzu"], "perf": ["habe hinzugefügt","hast hinzugefügt","hat hinzugefügt","haben hinzugefügt","habt hinzugefügt","haben hinzugefügt"], "praet": ["fügte hinzu","fügtest hinzu","fügte hinzu","fügten hinzu","fügtet hinzu","fügten hinzu"]}}
+  ],
+  "rede": [
+   ["Hilfe anbieten & darum bitten", ["Kann ich dir/Ihnen (irgendwie) helfen?","Könntest du mir bei … helfen?","Würde es dir etwas ausmachen, … zu …?","Vielen Dank, das ist sehr nett von dir."]]
+  ]
+ }
+];
+
+const EXTRA = {
+ "1": {
+  "koll": [
+   ["einen Kurs belegen","to take a course"],
+   ["eine Prüfung ablegen","to sit an exam"],
+   ["eine Prüfung bestehen ↔ durchfallen","to pass ↔ fail an exam"],
+   ["Kenntnisse erwerben","to acquire knowledge"],
+   ["eine Ausbildung machen","to do a training/apprenticeship"],
+   ["einen Abschluss machen","to graduate"],
+   ["Wissen vermitteln","to impart knowledge"],
+   ["sich Wissen aneignen","to acquire knowledge"],
+   ["Fortschritte machen","to make progress"],
+   ["Fehler korrigieren","to correct mistakes"]
+  ],
+  "fam": [
+   [["bilden","schwaches Verb","to form, educate"],["die Bildung","Substantiv, feminin","education"],["die Ausbildung","Substantiv, feminin","training"],["die Weiterbildung","Substantiv, feminin","further education"],["gebildet","Adjektiv","educated"]],
+   [["lernen","schwaches Verb","to learn"],["das Lernen","Substantiv, Neutrum","learning"],["der Lernende","Substantiv, m./f.","learner"],["lernbar","Adjektiv","learnable"]],
+   [["wissen","unregelmäßiges Verb","to know"],["das Wissen","Substantiv, Neutrum","knowledge"],["die Wissenschaft","Substantiv, feminin","science, scholarship"],["wissenschaftlich","Adjektiv","scientific"]],
+   [["studieren","schwaches Verb","to study"],["das Studium","Substantiv, Neutrum","studies"],["der Student","Substantiv, maskulin","student"],["die Studentin","Substantiv, feminin","student (f.)"]],
+   [["prüfen","schwaches Verb","to test, check"],["die Prüfung","Substantiv, feminin","exam"],["der Prüfer","Substantiv, maskulin","examiner"],["die Überprüfung","Substantiv, feminin","review, check"]],
+   [["fähig","Adjektiv","capable"],["die Fähigkeit","Substantiv, feminin","ability"],["unfähig","Adjektiv","incapable"]]
+  ]
+ },
+ "2": {
+  "koll": [
+   ["eine Karte reservieren","to reserve a ticket"],
+   ["ins Theater gehen","to go to the theatre"],
+   ["eine Rolle spielen","to play a role"],
+   ["Applaus bekommen","to get applause"],
+   ["auf die Bühne gehen","to go on stage"],
+   ["ein Stück aufführen","to perform a play"],
+   ["eine Vorstellung besuchen","to attend a performance"],
+   ["großen Eindruck machen","to make a big impression"],
+   ["Karten im Vorverkauf kaufen","to buy tickets in advance"],
+   ["Kultur genießen","to enjoy culture"]
+  ],
+  "fam": [
+   [["spielen","schwaches Verb","to play, act"],["das Spiel","Substantiv, Neutrum","game, play"],["der Schauspieler","Substantiv, maskulin","actor"],["das Schauspiel","Substantiv, Neutrum","drama"]],
+   [["führen","schwaches Verb","to lead"],["aufführen","schwaches Verb","to perform"],["die Aufführung","Substantiv, feminin","performance"],["die Führung","Substantiv, feminin","guided tour; leadership"]],
+   [["die Kunst","Substantiv, feminin","art"],["der Künstler","Substantiv, maskulin","artist"],["künstlerisch","Adjektiv","artistic"],["künstlich","Adjektiv","artificial"]],
+   [["treten","starkes Verb","to step"],["auftreten","starkes Verb","to perform, appear"],["der Auftritt","Substantiv, maskulin","appearance"]],
+   [["unterhalten","starkes Verb","to entertain"],["die Unterhaltung","Substantiv, feminin","entertainment; conversation"],["unterhaltsam","Adjektiv","entertaining"]],
+   [["kritisieren","schwaches Verb","to criticise"],["die Kritik","Substantiv, feminin","review, criticism"],["der Kritiker","Substantiv, maskulin","critic"],["kritisch","Adjektiv","critical"]]
+  ]
+ },
+ "3": {
+  "koll": [
+   ["sich ehrenamtlich engagieren","to volunteer"],
+   ["Verantwortung übernehmen","to take responsibility"],
+   ["um Hilfe bitten","to ask for help"],
+   ["Rücksicht nehmen (auf)","to be considerate (of)"],
+   ["einen Verein gründen","to found a club"],
+   ["Geld spenden","to donate money"],
+   ["einen Streit schlichten","to settle an argument"],
+   ["sich für andere einsetzen","to stand up for others"],
+   ["in Kontakt bleiben","to stay in touch"],
+   ["eine Lösung finden","to find a solution"]
+  ],
+  "fam": [
+   [["helfen","starkes Verb","to help"],["die Hilfe","Substantiv, feminin","help"],["der Helfer","Substantiv, maskulin","helper"],["hilfsbereit","Adjektiv","helpful"]],
+   [["stützen","schwaches Verb","to support"],["unterstützen","schwaches Verb","to support"],["die Unterstützung","Substantiv, feminin","support"]],
+   [["das Ehrenamt","Substantiv, Neutrum","voluntary work"],["ehrenamtlich","Adjektiv","voluntary, honorary"],["der/die Ehrenamtliche","Substantiv, m./f.","volunteer"]],
+   [["vertrauen","schwaches Verb","to trust"],["das Vertrauen","Substantiv, Neutrum","trust"],["vertraut","Adjektiv","familiar"],["vertraulich","Adjektiv","confidential"]],
+   [["die Gemeinschaft","Substantiv, feminin","community"],["gemeinsam","Adjektiv","joint, together"],["die Gemeinde","Substantiv, feminin","community, municipality"]],
+   [["verantworten","schwaches Verb","to answer for"],["die Verantwortung","Substantiv, feminin","responsibility"],["verantwortlich","Adjektiv","responsible"],["verantwortungsvoll","Adjektiv","responsible"]]
+  ]
+ }
+};
+const PRON=["ich","du","er/sie/es","wir","ihr","sie/Sie"];
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const norm=s=>s.toLowerCase();
+const kasus=k=>k==="A"?"AKK":k==="D"?"DAT":k;
+const prepLbl=s=>s.replace(/\(A\)/,"(AKK)").replace(/\(D\)/,"(DAT)");
+const plain=s=>s.replace(/<[^>]+>/g,"").replace(/\s+/g," ").trim();
+const attr=s=>plain(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const sayBtn=t=>`<span class="say" role="button" tabindex="0" data-say="${attr(t)}" aria-label="Vorlesen" title="Vorlesen">${SPK}</span>`;
+
+/* speech synthesis */
+let deVoice=null;
+function pickVoice(){
+  if(!("speechSynthesis" in window))return;
+  const vs=speechSynthesis.getVoices();
+  deVoice=vs.find(v=>/^de[-_]/i.test(v.lang))||vs.find(v=>/german|deutsch/i.test(v.name))||null;
+}
+if("speechSynthesis" in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
+let sayingEl=null;
+function speak(text,el){
+  if(!("speechSynthesis" in window)||!text)return;
+  speechSynthesis.cancel();
+  if(sayingEl)sayingEl.classList.remove("speaking");
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang="de-DE";if(deVoice)u.voice=deVoice;u.rate=.94;
+  if(el){sayingEl=el;el.classList.add("speaking");
+    u.onend=u.onerror=()=>{el.classList.remove("speaking");if(sayingEl===el)sayingEl=null;};}
+  speechSynthesis.speak(u);
+}
+function attachSay(root){
+  root.querySelectorAll(".say").forEach(b=>{
+    b.onclick=ev=>{ev.stopPropagation();speak(b.dataset.say,b);};
+    b.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();ev.stopPropagation();speak(b.dataset.say,b);}};
+  });
+}
+
+let active=0, mode="ref", filter="", deckScope="nomen";
+let deck=[], deckIdx=0, deckFlipped=false;
+
+/* ---- tabs ---- */
+const tabsEl=document.getElementById("tabs");
+const searchEl=document.getElementById("search");
+DATA.forEach((u,i)=>{
+  const b=document.createElement("button");
+  b.className="tab"; b.setAttribute("role","tab");
+  b.setAttribute("aria-selected", i===0?"true":"false");
+  b.innerHTML=`<span class="num">EINHEIT ${u.id}</span><span class="lbl">${esc(u.title)}</span>`;
+  b.onclick=()=>{active=i;searchEl.value="";filter="";syncTabs();render();};
+  tabsEl.appendChild(b);
+});
+function syncTabs(){[...tabsEl.children].forEach((t,i)=>t.setAttribute("aria-selected",i===active?"true":"false"));}
+
+/* ---- mode ---- */
+const mRef=document.getElementById("modeRef"), mCards=document.getElementById("modeCards");
+mRef.onclick=()=>{mode="ref";mRef.setAttribute("aria-pressed","true");mCards.setAttribute("aria-pressed","false");document.getElementById("searchWrap").style.visibility="visible";render();};
+mCards.onclick=()=>{mode="cards";mCards.setAttribute("aria-pressed","true");mRef.setAttribute("aria-pressed","false");document.getElementById("searchWrap").style.visibility="hidden";buildDeck();render();};
+searchEl.addEventListener("input",e=>{filter=norm(e.target.value.trim());render();});
+
+/* ---- helpers ---- */
+function artClass(a){return a==="pl"?"pl":a&&a.includes("/")?"dual":a;}
+const mk=f=>x=>!filter||norm(f(x)).includes(filter);
+const matchN=mk(n=>n[1]+" "+n[3]);
+const matchA=mk(a=>a[0]+" "+a[1]);
+const matchP=mk(p=>p[0]+" "+p[2]);
+const matchC=mk(c=>c[0]+" "+c[1]);
+const matchF=mk(f=>f.flat().join(" "));
+const matchV=mk(v=>v.inf+" "+v.en);
+const chip=(de,en,say,k)=>`<span class="chip"><span class="de">${esc(de)}</span>${k||""}${sayBtn(say)}<span class="en">${esc(en)}</span></span>`;
+const firstTok=s=>s.split(/[\/↔]/)[0].trim();
+
+/* ---- render reference ---- */
+function render(){
+  const u=DATA[active];
+  const m=document.getElementById("main");
+  if(mode==="cards"){renderCards(u,m);return;}
+
+  const nouns=u.nomen.filter(matchN);
+  const adjs=u.adjektive.filter(matchA);
+  const verbs=u.verben.filter(matchV);
+  const ex=EXTRA[u.id]||{koll:[],fam:[]};
+  const colls=ex.koll.filter(matchC);
+  const fams=ex.fam.filter(matchF);
+  const gramShown=!filter;
+
+  let h=`<div class="unit-head fade">
+    <div class="kicker">Einheit ${u.id}</div>
+    <h2>${esc(u.title)}</h2><p>${esc(u.subtitle)}</p></div>`;
+
+  h+=section("Nomen",nouns.length, nouns.length?`
+    <div class="table">
+      <div class="trow head"><span>Nomen</span><span>Plural</span><span>English</span></div>
+      ${nouns.map(n=>`<div class="trow">
+        <div class="noun"><span class="art ${artClass(n[0])}">${n[0]==="pl"?"pl.":n[0]}</span><span class="word">${esc(n[1])}</span>${sayBtn((n[0]==="pl"?"die ":n[0].replace("der/die","die")+" ")+n[1])}</div>
+        <div class="plural">${esc(n[2])}</div>
+        <div class="en">${esc(n[3])}</div></div>`).join("")}
+    </div>`:emptyMsg());
+
+  h+=section("Adjektive &amp; Adverbien",adjs.length, adjs.length?`
+    <div class="chips">${adjs.map(a=>chip(a[0],a[1],firstTok(a[0]))).join("")}</div>`:emptyMsg());
+
+  h+=section("Verben",verbs.length, verbs.length?`
+    <div class="verbs">${verbs.map(verbCard).join("")}</div>`:emptyMsg());
+
+  h+=section("Wortverbindungen",colls.length, colls.length?`
+    <div class="chips">${colls.map(c=>chip(c[0],c[1],c[0])).join("")}</div>`:emptyMsg());
+
+  h+=section("Wortfamilien",fams.length, fams.length?`
+    <div class="families">${fams.map(f=>`<div class="family">${f.map((m,i)=>`${i?'<span class="fam-arrow">→</span>':''}<div class="fam-word${i===0?' root':''}"><div class="fw-top"><span class="fw-de">${esc(m[0])}</span>${sayBtn(m[0])}</div><div class="fw-meta"><span class="fw-pos">${esc(m[1])}</span><span class="fw-en">${esc(m[2])}</span></div></div>`).join("")}</div>`).join("")}</div>`:emptyMsg());
+
+  if(gramShown && u.rede.length){
+    h+=section("Redemittel",u.rede.length,`
+      <div class="rede">${u.rede.map(r=>`<div class="rede-group"><h4>${esc(r[0])}</h4><ul>${r[1].map(x=>`<li>${esc(x)}${sayBtn(x)}</li>`).join("")}</ul></div>`).join("")}</div>`);
+  }
+  if(gramShown){
+    h+=section("Grammatik",u.grammatik.length,`
+      <div class="gram">${u.grammatik.map(g=>`
+        <div class="gram-topic">
+          <div class="gram-head"><h4>${g.t}</h4><span class="gram-desc">${g.d}</span></div>
+          <ul class="gram-ex">${g.ex.map(e=>`<li><span class="gde">${e[0]} ${sayBtn(e[0])}</span><span class="gen">${esc(e[1])}</span></li>`).join("")}</ul>
+        </div>`).join("")}</div>`);
+  }
+
+  m.innerHTML=h;
+  attachSay(m);
+  m.querySelectorAll(".verb").forEach(card=>{
+    const head=card.querySelector(".verb-inf");
+    if(!head)return;
+    head.setAttribute("role","button");
+    head.setAttribute("tabindex","0");
+    head.setAttribute("aria-expanded","false");
+    const toggle=()=>{const o=card.classList.toggle("open");head.setAttribute("aria-expanded",o?"true":"false");};
+    head.addEventListener("click",ev=>{if(ev.target.closest(".say"))return;toggle();});
+    head.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();toggle();}});
+  });
+}
+function section(label,count,body){
+  return `<section class="section fade"><div class="section-label"><h3>${label}</h3><span class="count">${count}</span><span class="rule"></span></div>${body}</section>`;
+}
+function emptyMsg(){return `<div class="empty">Keine Treffer in dieser Kategorie.</div>`;}
+function verbCard(v){
+  const say=v.inf.replace(/\s*\(.*?\)\s*/," ").trim();
+  const c=v.conj||{praes:[],perf:[],praet:[]};
+  const rows=PRON.map((p,i)=>`<div class="vc-p">${p}</div><div class="vc-c">${esc(c.praes[i]||"")}</div><div class="vc-c">${esc(c.perf[i]||"")}</div><div class="vc-c">${esc(c.praet[i]||"")}</div>`).join("");
+  return `<div class="verb">
+    <div class="verb-main">
+      <div class="verb-inf">${esc(v.inf)} <span class="en">— ${esc(v.en)}</span> ${sayBtn(say)}<svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
+      <div class="verb-forms">
+        <div class="vf"><span class="vlabel">Präsens</span><span class="vval">${esc(v.praes)}</span></div>
+        <div class="vf"><span class="vlabel">Perfekt</span><span class="vval">${esc(v.perf)}</span></div>
+        <div class="vf"><span class="vlabel">Präteritum</span><span class="vval">${esc(v.praet)}</span></div>
+      </div>
+    </div>
+    <div class="conj"><div class="vc-grid">
+      <div class="vc-h"></div><div class="vc-h">Präsens</div><div class="vc-h">Perfekt</div><div class="vc-h">Präteritum</div>
+      ${rows}
+    </div></div>
+  </div>`;
+}
+
+/* ---- flashcards ---- */
+function buildDeck(){
+  const u=DATA[active];
+  if(deckScope==="nomen"){
+    deck=u.nomen.map(n=>({front:(n[0]==="pl"?"":n[0]+" ")+n[1],back:n[3],sub:n[0]==="pl"?"nur Plural":"Plural: "+n[2],say:(n[0]==="pl"?"die ":n[0].replace("der/die","die")+" ")+n[1]}));
+  }else if(deckScope==="verben"){
+    deck=u.verben.map(v=>({front:v.inf,back:v.en,sub:v.praes+" · "+v.perf+" · "+v.praet,say:v.inf.replace(/\s*\(.*?\)\s*/," ").trim()}));
+  }else{
+    deck=u.adjektive.map(a=>({front:a[0],back:a[1],sub:"",say:a[0].split(/[\/↔]/)[0].trim()}));
+  }
+  deckIdx=0;deckFlipped=false;
+}
+function renderCards(u,m){
+  if(!deck.length)buildDeck();
+  const c=deck[deckIdx]||{front:"",back:"",sub:""};
+  m.innerHTML=`<div class="unit-head fade"><div class="kicker">Einheit ${u.id} · Karteikarten</div>
+     <h2>${esc(u.title)}</h2><p>${esc(u.subtitle)}</p></div>
+   <div class="deck fade">
+     <div class="deck-bar">
+       <div class="deck-scope">Stapel:
+         <select id="scope">
+           <option value="nomen"${deckScope==="nomen"?" selected":""}>Nomen (${u.nomen.length})</option>
+           <option value="verben"${deckScope==="verben"?" selected":""}>Verben (${u.verben.length})</option>
+           <option value="adjektive"${deckScope==="adjektive"?" selected":""}>Adjektive (${u.adjektive.length})</option>
+         </select></div>
+       <div class="counter">${deckIdx+1} / ${deck.length}</div>
+     </div>
+     <div class="card${deckFlipped?" flipped":""}" id="card">
+       <div class="card-inner">
+         <div class="face front"><div class="tagline">Deutsch</div><div class="big">${esc(c.front)} ${c.say?sayBtn(c.say):""}</div>${c.sub?`<div class="sub">${esc(c.sub)}</div>`:""}</div>
+         <div class="face back"><div class="tagline">English</div><div class="big">${esc(c.back)}</div></div>
+       </div>
+     </div>
+     <div class="deck-controls">
+       <button class="dbtn" id="prev">← Zurück</button>
+       <button class="dbtn primary" id="flip">Umdrehen</button>
+       <button class="dbtn" id="next">Weiter →</button>
+       <button class="dbtn" id="shuffle">Mischen</button>
+     </div>
+     <div class="hint">Karte klicken oder Leertaste zum Umdrehen · Pfeiltasten zum Blättern · Lautsprecher zum Hören</div>
+   </div>`;
+  document.getElementById("scope").onchange=e=>{deckScope=e.target.value;buildDeck();render();};
+  document.getElementById("card").onclick=flip;
+  document.getElementById("flip").onclick=flip;
+  document.getElementById("prev").onclick=()=>step(-1);
+  document.getElementById("next").onclick=()=>step(1);
+  document.getElementById("shuffle").onclick=()=>{for(let i=deck.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[deck[i],deck[j]]=[deck[j],deck[i]];}deckIdx=0;deckFlipped=false;render();};
+  attachSay(m);
+}
+function flip(){deckFlipped=!deckFlipped;document.getElementById("card").classList.toggle("flipped");}
+function step(d){deckIdx=(deckIdx+d+deck.length)%deck.length;deckFlipped=false;render();}
+document.addEventListener("keydown",e=>{
+  if(mode!=="cards")return;
+  if(e.code==="Space"){e.preventDefault();flip();}
+  else if(e.code==="ArrowRight")step(1);
+  else if(e.code==="ArrowLeft")step(-1);
+});
+
+render();
+</script>
+</body>
+</html>
