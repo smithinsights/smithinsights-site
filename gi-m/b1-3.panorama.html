@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panorama B1.3 · Einheit 9–12 · Goethe-Institut München</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F4F0; --panel:#FFFFFF; --ink:#181A1D; --muted:#6A6F73;
+  --line:#E5E3DA; --line-strong:#D6D3C8;
+  --teal:#123B3C; --teal-2:#1C5557; --teal-ink:#0C2A2B;
+  --masc:#2D5FAA; --fem:#B23A48; --neut:#2E7D5B; --plural:#B26A00;
+  --masc-bg:#EAF0FA; --fem-bg:#F9ECEE; --neut-bg:#E9F4EE; --plural-bg:#FBF1E2;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --disp:"Space Grotesk",var(--sans);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --radius:14px; --shadow:0 1px 2px rgba(20,24,20,.04),0 8px 28px rgba(18,59,60,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--teal-2)}
+
+/* ---------- Header ---------- */
+.masthead{position:relative;overflow:hidden;background:var(--teal);color:#EAF1EF;
+  border-bottom:3px solid var(--teal-ink)}
+.arcs{position:absolute;inset:0;pointer-events:none;opacity:.5}
+.mast-inner{position:relative;max-width:1080px;margin:0 auto;padding:26px 24px 22px;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.brand .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:#8FB7B2;margin:0 0 6px}
+.brand h1{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4.4vw,40px);
+  line-height:1.02;margin:0;letter-spacing:-.01em}
+.brand h1 em{font-style:normal;color:#C9E3DD}
+.brand .place{margin:8px 0 0;font-size:13.5px;color:#9DC3BD}
+.goethe{flex:0 0 auto;text-align:right}
+.goethe img{height:40px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.92}
+.goethe .fallback{font-family:var(--disp);font-weight:700;font-size:15px;color:#EAF1EF;letter-spacing:.02em}
+.goethe .cap{font-family:var(--mono);font-size:10.5px;color:#7FA8A3;margin-top:6px;letter-spacing:.08em}
+
+/* ---------- Tabs ---------- */
+.tabwrap{position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(0,0,0,.01)}
+.tabs{max-width:1080px;margin:0 auto;padding:0 16px;display:flex;gap:2px;overflow-x:auto}
+.tab{appearance:none;border:0;background:transparent;cursor:pointer;
+  font-family:var(--sans);color:var(--muted);padding:14px 16px 12px;
+  border-bottom:3px solid transparent;white-space:nowrap;display:flex;
+  flex-direction:column;gap:2px;align-items:flex-start;transition:color .15s}
+.tab .num{font-family:var(--mono);font-size:11px;letter-spacing:.14em}
+.tab .lbl{font-family:var(--disp);font-weight:600;font-size:15px;line-height:1}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--teal-ink);border-bottom-color:var(--teal)}
+.tab:focus-visible{outline:2px solid var(--teal-2);outline-offset:-2px;border-radius:4px}
+
+/* ---------- Toolbar ---------- */
+.toolbar{max-width:1080px;margin:0 auto;padding:18px 24px 4px;
+  display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 260px;position:relative;min-width:200px}
+.search input{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);
+  padding:11px 14px 11px 38px;border:1px solid var(--line-strong);border-radius:10px;
+  background:var(--panel)}
+.search input:focus{outline:none;border-color:var(--teal-2);box-shadow:0 0 0 3px rgba(28,85,87,.12)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.modeswitch{display:inline-flex;background:var(--panel);border:1px solid var(--line-strong);
+  border-radius:10px;padding:3px}
+.modeswitch button{appearance:none;border:0;background:transparent;cursor:pointer;
+  font-family:var(--sans);font-weight:500;font-size:13.5px;color:var(--muted);
+  padding:8px 14px;border-radius:7px;transition:all .15s}
+.modeswitch button[aria-pressed="true"]{background:var(--teal);color:#fff}
+.modeswitch button:focus-visible{outline:2px solid var(--teal-2);outline-offset:2px}
+
+/* ---------- Layout ---------- */
+main{max-width:1080px;margin:0 auto;padding:20px 24px 80px}
+.unit-head{padding:6px 0 22px}
+.unit-head .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--teal-2)}
+.unit-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(24px,3.5vw,32px);
+  margin:6px 0 2px;letter-spacing:-.01em}
+.unit-head p{margin:0;color:var(--muted);font-size:15px}
+
+.section{margin:0 0 30px;scroll-margin-top:120px}
+.section-label{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.section-label h3{font-family:var(--disp);font-weight:600;font-size:19px;margin:0}
+.section-label .count{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.section-label .rule{flex:1;height:1px;background:var(--line);align-self:center}
+
+/* Grammar */
+.gram{display:grid;gap:14px}
+.gram-topic{background:var(--panel);border:1px solid var(--line);
+  border-left:3px solid var(--teal);border-radius:12px;padding:14px 16px 12px;box-shadow:var(--shadow)}
+.gram-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.gram-head h4{font-family:var(--disp);font-weight:600;font-size:16px;margin:0;color:var(--teal-ink)}
+.gram-desc{font-size:13.5px;color:var(--muted)}
+.gram-ex{margin:0;padding:0;display:grid;gap:9px}
+.gram-ex li{list-style:none;display:grid;gap:2px;padding:9px 12px;background:#FAFAF7;
+  border:1px solid var(--line);border-radius:9px}
+.gram-ex .gde{font-size:14.5px;line-height:1.45}
+.gram-ex .gde b{color:var(--teal-ink);font-weight:600}
+.gram-ex .gen{font-size:12.5px;color:var(--muted);font-style:italic}
+
+/* Audio button */
+.say{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+  color:var(--muted);border:0;background:transparent;padding:2px;margin-left:2px;border-radius:6px;
+  vertical-align:middle;flex-shrink:0;transition:color .12s,background .12s}
+.say:hover{color:var(--teal-2);background:#EAF2F0}
+.say.speaking{color:var(--teal);background:#DDEEEA}
+.say:focus-visible{outline:2px solid var(--teal-2);outline-offset:1px}
+.say svg{width:14px;height:14px;display:block}
+
+/* Word families */
+.families{display:grid;gap:10px}
+.family{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;padding:11px 13px;box-shadow:var(--shadow)}
+.fam-word{display:flex;flex-direction:column;gap:3px;background:#F5F4F0;
+  border:1px solid var(--line);border-radius:10px;padding:8px 11px}
+.fam-word.root{background:var(--teal);border-color:var(--teal)}
+.fw-top{display:flex;align-items:center;gap:5px}
+.fw-de{font-weight:600;font-size:14px}
+.fam-word.root .fw-de{color:#fff}
+.fam-word.root .say{color:#A9CCC7}
+.fam-word.root .say:hover{color:#fff;background:rgba(255,255,255,.15)}
+.fw-meta{font-size:11.5px;color:var(--muted);display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.fw-pos{font-family:var(--mono);font-size:10px;color:var(--teal-2);white-space:nowrap}
+.fam-word.root .fw-pos{color:#C9E3DD}
+.fw-en{color:#3C4145}
+.fam-word.root .fw-en{color:#E4F0ED}
+.fam-arrow{align-self:center;color:var(--line-strong);font-family:var(--mono);font-size:15px}
+
+/* Noun table */
+.table{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow)}
+.trow{display:grid;grid-template-columns:minmax(150px,1.5fr) minmax(120px,1.2fr) 1.4fr;
+  gap:8px;padding:10px 16px;border-top:1px solid var(--line);align-items:center}
+.trow:first-child{border-top:0}
+.trow.head{background:#FBFBF8;padding:9px 16px}
+.trow.head span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.noun{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.art{font-family:var(--mono);font-size:12px;font-weight:500;padding:2px 7px;border-radius:6px;line-height:1.4}
+.art.der{color:var(--masc);background:var(--masc-bg)}
+.art.die{color:var(--fem);background:var(--fem-bg)}
+.art.das{color:var(--neut);background:var(--neut-bg)}
+.art.pl{color:var(--plural);background:var(--plural-bg)}
+.noun .word{font-weight:500}
+.plural{font-family:var(--mono);font-size:13.5px;color:var(--muted)}
+.en{color:#3C4145;font-size:14.5px}
+
+/* Chips row (adjectives / prep-verbs) */
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:9px 13px;font-size:14px;display:flex;gap:8px;align-items:baseline}
+.chip .de{font-weight:500}
+.chip .en{color:var(--muted);font-size:13px}
+.chip .k{font-family:var(--mono);font-size:11px;color:var(--teal-2);
+  border:1px solid var(--line-strong);border-radius:5px;padding:0 5px}
+
+/* Verbs */
+.verbs{display:grid;gap:10px}
+.verb{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);overflow:hidden}
+.verb-head{width:100%;text-align:left;appearance:none;border:0;background:transparent;
+  cursor:pointer;padding:13px 16px;display:flex;gap:12px;align-items:center;
+  font-family:var(--sans)}
+.verb-head:focus-visible{outline:2px solid var(--teal-2);outline-offset:-2px}
+.verb-main{flex:1;min-width:0}
+.verb-inf{font-family:var(--disp);font-weight:600;font-size:16px}
+.verb-inf .en{font-family:var(--sans);font-weight:400;color:var(--muted);font-size:14px}
+.verb-parts{font-family:var(--mono);font-size:12.5px;color:#454A4E;margin-top:3px}
+.verb-parts .aux{color:var(--teal-2)}
+.vflags{display:flex;gap:5px;flex-shrink:0}
+.vflag{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;padding:2px 6px;
+  border-radius:5px;background:#F0EFEA;color:var(--muted)}
+.vflag.sep{background:#EAF0FA;color:var(--masc)}
+.vflag.refl{background:#F9ECEE;color:var(--fem)}
+.chev{flex-shrink:0;color:var(--muted);transition:transform .2s}
+.verb.open .chev{transform:rotate(90deg)}
+.conj{display:none;padding:0 16px 15px;border-top:1px solid var(--line);margin-top:0}
+.verb.open .conj{display:block}
+.conj-title{font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin:13px 0 9px}
+.para{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 22px;max-width:520px}
+.pcell{font-family:var(--mono);font-size:13.5px;display:flex;gap:8px}
+.pcell .pron{color:var(--muted);min-width:66px}
+.pcell .form{color:var(--ink)}
+
+/* Redemittel + sentences */
+.rede{display:grid;gap:12px}
+.rede-group{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+.rede-group h4{font-family:var(--disp);font-size:13px;font-weight:600;margin:0 0 8px;
+  color:var(--teal-ink);text-transform:uppercase;letter-spacing:.06em}
+.rede-group ul{margin:0;padding:0;display:grid;gap:6px}
+.rede-group li{list-style:none;font-size:14.5px;padding-left:16px;position:relative}
+.rede-group li::before{content:"›";position:absolute;left:0;color:var(--teal-2)}
+
+.empty{padding:34px 16px;text-align:center;color:var(--muted);font-size:14.5px;
+  border:1px dashed var(--line-strong);border-radius:12px}
+
+/* ---------- Flashcards ---------- */
+.deck{max-width:560px;margin:8px auto 0}
+.deck-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.deck-scope{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.deck-scope select{font-family:var(--sans);font-size:13px;margin-left:8px;padding:5px 8px;
+  border:1px solid var(--line-strong);border-radius:8px;background:var(--panel)}
+.counter{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.card{position:relative;height:280px;perspective:1400px;cursor:pointer;margin-bottom:16px}
+.card-inner{position:absolute;inset:0;transition:transform .5s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;
+  border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:28px}
+.face .tagline{position:absolute;top:16px;left:0;right:0;font-family:var(--mono);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.face .big{font-family:var(--disp);font-weight:700;font-size:clamp(26px,5vw,38px);line-height:1.1}
+.face .sub{font-family:var(--mono);font-size:14px;color:var(--muted);margin-top:12px}
+.face.back{transform:rotateY(180deg);background:var(--teal);border-color:var(--teal-ink)}
+.face.back .big{color:#fff}.face.back .tagline{color:#8FB7B2}.face.back .sub{color:#A9CCC7}
+.deck-controls{display:flex;gap:10px;justify-content:center}
+.dbtn{appearance:none;border:1px solid var(--line-strong);background:var(--panel);
+  cursor:pointer;font-family:var(--sans);font-weight:500;font-size:14px;color:var(--ink);
+  padding:10px 18px;border-radius:10px;transition:all .15s}
+.dbtn:hover{border-color:var(--teal-2);color:var(--teal-ink)}
+.dbtn:focus-visible{outline:2px solid var(--teal-2);outline-offset:2px}
+.dbtn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+.hint{text-align:center;font-size:12.5px;color:var(--muted);margin-top:14px}
+
+/* colophon */
+footer{border-top:1px solid var(--line);background:#FBFBF8}
+.colophon{max-width:1080px;margin:0 auto;padding:22px 24px 40px;display:flex;
+  gap:18px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
+.colophon .note{font-size:13px;color:var(--muted);max-width:640px}
+.colophon .note b{color:var(--ink);font-family:var(--disp)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:12px}
+.legend span{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+@media(max-width:640px){
+  .trow{grid-template-columns:1fr 1fr;gap:4px 8px}
+  .trow .en{grid-column:1/-1;padding-top:2px}
+  .trow.head span:nth-child(3){display:none}
+  .para{grid-template-columns:1fr}
+  .mast-inner{flex-direction:column}
+  .goethe{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto}
+  .card-inner{transition:none}
+}
+.fade{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <svg class="arcs" viewBox="0 0 1080 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g fill="none" stroke="#2C6B6A" stroke-width="1.4">
+      <path d="M-40,190 A320,320 0 0 1 600,190"/>
+      <path d="M-40,190 A360,360 0 0 1 640,190"/>
+      <path d="M-40,190 A400,400 0 0 1 680,190"/>
+      <path d="M-40,190 A440,440 0 0 1 720,190"/>
+      <path d="M-40,190 A480,480 0 0 1 760,190"/>
+    </g>
+  </svg>
+  <div class="mast-inner">
+    <div class="brand">
+      <p class="eyebrow">Panorama · Deutsch als Fremdsprache</p>
+      <h1>B1.3 Wortschatz &amp; Grammatik<br><em>Einheit 9–12</em></h1>
+      <p class="place">Goethe-Institut München · Teilband 2 (Cornelsen)</p>
+    </div>
+    <div class="goethe">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Logo_Goethe-Institut.png"
+           alt="Goethe-Institut" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="fallback" style="display:none">GOETHE&nbsp;INSTITUT</span>
+      <div class="cap">Inoffizielle Lernhilfe</div>
+    </div>
+  </div>
+</header>
+
+<div class="tabwrap">
+  <div class="tabs" id="tabs" role="tablist" aria-label="Einheiten"></div>
+</div>
+
+<div class="toolbar">
+  <label class="search" id="searchWrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <input type="search" id="search" placeholder="Wortschatz filtern (Deutsch oder Englisch)…" autocomplete="off">
+  </label>
+  <div class="modeswitch" role="group" aria-label="Ansicht">
+    <button id="modeRef" aria-pressed="true">Nachschlagen</button>
+    <button id="modeCards" aria-pressed="false">Karteikarten</button>
+  </div>
+</div>
+
+<main id="main"></main>
+
+<footer>
+  <div class="colophon">
+    <p class="note"><b>Zu diesem Material.</b> Selbst erstellte Lernhilfe zu <i>Panorama B1</i> (Cornelsen, Steve Williams u.&nbsp;a.). Grammatikthemen sind der übliche Stoff dieser Einheiten und sollten gegen das Inhaltsverzeichnis des Kursbuchs geprüft werden. Logo: Goethe-Institut, CC&nbsp;BY-SA&nbsp;4.0 via Wikimedia Commons; keine offizielle Verbindung zum Goethe-Institut. Audio nutzt die Sprachausgabe deines Browsers (Web Speech API); die Stimmqualität hängt vom Betriebssystem ab.</p>
+    <div class="legend" aria-label="Artikel-Farben">
+      <span><i style="background:var(--masc)"></i>der</span>
+      <span><i style="background:var(--fem)"></i>die</span>
+      <span><i style="background:var(--neut)"></i>das</span>
+      <span><i style="background:var(--plural)"></i>nur Plural</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ DATA ============ */
+const DATA = [
+{
+ id:9, title:"Über Grenzen hinweg", subtitle:"EU & Migration",
+ grammatik:[
+  {t:"Konjunktiv II",d:"irreale Bedingungssätze & Wünsche",ex:[
+   ["Wenn die Anerkennung ausländischer Abschlüsse einfacher <b>wäre</b>, <b>würden</b> mehr Fachkräfte einwandern.","If recognition of foreign qualifications were easier, more skilled workers would immigrate."],
+   ["Wenn ich in einem anderen Land leben <b>könnte</b>, <b>würde</b> ich nach Österreich ziehen.","If I could live in another country, I'd move to Austria."],
+   ["<b>Hätte</b> ich früher Deutsch gelernt, <b>wäre</b> die Integration leichter gewesen.","Had I learned German earlier, integration would have been easier."],
+   ["Ich <b>wünschte</b>, ich <b>hätte</b> weniger Heimweh.","I wish I were less homesick."],
+   ["An deiner Stelle <b>würde</b> ich sofort einen Antrag stellen.","In your place, I'd file an application right away."],
+   ["Es <b>wäre</b> schön, wenn wir die Staatsangehörigkeit schneller bekommen <b>könnten</b>.","It would be nice if we could get citizenship faster."]
+  ]},
+  {t:"Indirekte Fragen",d:"Nebensätze mit <i>ob</i> und W-Wort",ex:[
+   ["Ich weiß nicht, <b>ob</b> ich die Aufenthaltsgenehmigung schon bekommen habe.","I don't know whether I've already got the residence permit."],
+   ["Können Sie mir sagen, <b>wo</b> ich den Antrag abgeben muss?","Can you tell me where I have to hand in the application?"],
+   ["Er fragt, <b>wie lange</b> das Anerkennungsverfahren dauert.","He's asking how long the recognition process takes."],
+   ["Mich interessiert, <b>warum</b> so viele Menschen auswandern.","I'm interested in why so many people emigrate."],
+   ["Weißt du, <b>ob</b> das Amt heute geöffnet ist?","Do you know whether the office is open today?"]
+  ]},
+  {t:"Verb <i>lassen</i>",d:"lassen + Infinitiv",ex:[
+   ["Ich <b>lasse</b> meine Zeugnisse offiziell <b>übersetzen</b>.","I'm having my certificates officially translated."],
+   ["Sie <b>lässt</b> ihren Abschluss in Deutschland <b>anerkennen</b>.","She's having her degree recognised in Germany."],
+   ["Wir <b>lassen</b> die Dokumente beim Amt <b>beglaubigen</b>.","We're having the documents certified at the office."],
+   ["<b>Lass</b> mich dir mit dem Formular <b>helfen</b>.","Let me help you with the form."],
+   ["Er hat sich einen neuen Pass <b>ausstellen lassen</b>.","He had a new passport issued. (Perfekt)"]
+  ]},
+  {t:"Genitiv-Präpositionen",d:"wegen · trotz · während · aufgrund",ex:[
+   ["<b>Wegen</b> des Fachkräftemangels sucht die Firma Personal im Ausland.","Because of the skilled-labour shortage, the company recruits abroad."],
+   ["<b>Trotz</b> der Sprachbarriere hat sie sich schnell eingelebt.","Despite the language barrier, she settled in quickly."],
+   ["<b>Während</b> des Integrationskurses lernt man auch viel über die Kultur.","During the integration course you also learn a lot about the culture."],
+   ["<b>Aufgrund</b> seiner Herkunft musste er viele Vorurteile ertragen.","Because of his origin, he had to endure many prejudices."],
+   ["<b>Trotz</b> guter Qualifikationen fand er zunächst keine Arbeit.","Despite good qualifications, he initially found no work."]
+  ]}
+ ],
+ nomen:[
+  ["die","Europäische Union / EU","–","European Union"],
+  ["der","Mitgliedstaat","die Mitgliedstaaten","member state"],
+  ["die","Freizügigkeit","–","freedom of movement"],
+  ["der","Binnenmarkt","die Binnenmärkte","single/internal market"],
+  ["die","Währung","die Währungen","currency"],
+  ["das","Grundrecht","die Grundrechte","fundamental right"],
+  ["die","Amtssprache","die Amtssprachen","official language"],
+  ["die","Auswanderung","die Auswanderungen","emigration"],
+  ["die","Einwanderung","die Einwanderungen","immigration"],
+  ["die","Zuwanderung","die Zuwanderungen","in-migration, influx"],
+  ["der","Migrant","die Migranten","migrant (n-decl.)"],
+  ["der","Flüchtling","die Flüchtlinge","refugee"],
+  ["der","Asylbewerber","die Asylbewerber","asylum seeker"],
+  ["das","Asyl","–","asylum"],
+  ["die","Abschiebung","die Abschiebungen","deportation"],
+  ["die","Staatsangehörigkeit","die Staatsangehörigkeiten","citizenship"],
+  ["der","Aufenthalt","die Aufenthalte","stay, residence"],
+  ["die","Aufenthaltsgenehmigung","die Aufenthaltsgenehmigungen","residence permit"],
+  ["die","Ausländerbehörde","die Ausländerbehörden","immigration office"],
+  ["das","Amt","die Ämter","office, authority"],
+  ["der","Antrag","die Anträge","application (form)"],
+  ["das","Formular","die Formulare","form"],
+  ["pl","Unterlagen","die Unterlagen","documents"],
+  ["der","Pass","die Pässe","passport"],
+  ["der","Personalausweis","die Personalausweise","ID card"],
+  ["die","Anerkennung","die Anerkennungen","recognition"],
+  ["der","Abschluss","die Abschlüsse","qualification, degree"],
+  ["der","Fachkräftemangel","–","skilled-labour shortage"],
+  ["die","Fachkraft","die Fachkräfte","skilled worker"],
+  ["die","Herkunft","die Herkünfte","origin, background"],
+  ["die","Heimat","–","homeland"],
+  ["das","Heimweh","–","homesickness"],
+  ["die","Sehnsucht","die Sehnsüchte","longing"],
+  ["die","Muttersprache","die Muttersprachen","native language"],
+  ["die","Mehrsprachigkeit","–","multilingualism"],
+  ["der","Kulturschock","die Kulturschocks","culture shock"],
+  ["die","Vielfalt","–","diversity"],
+  ["das","Vorurteil","die Vorurteile","prejudice"],
+  ["die","Voraussetzung","die Voraussetzungen","prerequisite"],
+  ["die","Grenze","die Grenzen","border"],
+  ["der","Grund","die Gründe","reason"],
+  ["die","Perspektive","die Perspektiven","prospect, perspective"]
+ ],
+ adjektive:[
+  ["fremd","foreign, strange"],["heimisch","native, local"],["ausländisch","foreign"],
+  ["vertraut","familiar"],["offen","open"],["tolerant ↔ intolerant","tolerant"],
+  ["vielfältig","diverse"],["mehrsprachig","multilingual"],
+  ["freiwillig ↔ unfreiwillig","voluntary"],["legal ↔ illegal","legal"],["integriert","integrated"]
+ ],
+ prep:[
+  ["fliehen vor","D","to flee from"],["sich sehnen nach","D","to long for"],
+  ["sich gewöhnen an","A","to get used to"],["teilnehmen an","D","to take part in"],
+  ["kämpfen um / für","A","to fight for"],["bestehen aus","D","to consist of"],
+  ["sich bewerben um","A","to apply for"]
+ ],
+ verben:[
+  {inf:"auswandern",en:"to emigrate",prat:"wanderte aus",pp:"ausgewandert",aux:"ist",fl:["sep"],
+   pr:["wandere aus","wanderst aus","wandert aus","wandern aus","wandert aus","wandern aus"]},
+  {inf:"einwandern",en:"to immigrate",prat:"wanderte ein",pp:"eingewandert",aux:"ist",fl:["sep"],
+   pr:["wandere ein","wanderst ein","wandert ein","wandern ein","wandert ein","wandern ein"]},
+  {inf:"fliehen",en:"to flee",prat:"floh",pp:"geflohen",aux:"ist",fl:[],
+   pr:["fliehe","fliehst","flieht","fliehen","flieht","fliehen"]},
+  {inf:"flüchten",en:"to flee, escape",prat:"flüchtete",pp:"geflüchtet",aux:"ist",fl:["reg"],
+   pr:["flüchte","flüchtest","flüchtet","flüchten","flüchtet","flüchten"]},
+  {inf:"vermissen",en:"to miss",prat:"vermisste",pp:"vermisst",aux:"hat",fl:["reg"],
+   pr:["vermisse","vermisst","vermisst","vermissen","vermisst","vermissen"]},
+  {inf:"beantragen",en:"to apply for (formally)",prat:"beantragte",pp:"beantragt",aux:"hat",fl:["reg"],
+   pr:["beantrage","beantragst","beantragt","beantragen","beantragt","beantragen"]},
+  {inf:"anerkennen",en:"to recognise (a qualification)",prat:"erkannte an",pp:"anerkannt",aux:"hat",fl:["sep"],
+   pr:["erkenne an","erkennst an","erkennt an","erkennen an","erkennt an","erkennen an"]},
+  {inf:"sich gewöhnen",en:"to get used to",prat:"gewöhnte sich",pp:"gewöhnt",aux:"hat",fl:["refl"],prep:"an (A)",
+   pr:["gewöhne mich","gewöhnst dich","gewöhnt sich","gewöhnen uns","gewöhnt euch","gewöhnen sich"]},
+  {inf:"sich einleben",en:"to settle in",prat:"lebte sich ein",pp:"eingelebt",aux:"hat",fl:["sep","refl"],
+   pr:["lebe mich ein","lebst dich ein","lebt sich ein","leben uns ein","lebt euch ein","leben sich ein"]},
+  {inf:"teilnehmen",en:"to take part",prat:"nahm teil",pp:"teilgenommen",aux:"hat",fl:["sep"],prep:"an (D)",
+   pr:["nehme teil","nimmst teil","nimmt teil","nehmen teil","nehmt teil","nehmen teil"]},
+  {inf:"verlassen",en:"to leave",prat:"verließ",pp:"verlassen",aux:"hat",fl:[],
+   pr:["verlasse","verlässt","verlässt","verlassen","verlasst","verlassen"]},
+  {inf:"lassen",en:"to let / have done",prat:"ließ",pp:"gelassen",aux:"hat",fl:[],
+   pr:["lasse","lässt","lässt","lassen","lasst","lassen"]}
+ ],
+ rede:[]
+},
+{
+ id:10, title:"Der neue Job", subtitle:"Bewerbung · Werdegang · Vorstellungsgespräch",
+ grammatik:[
+  {t:"Konjunktiv II",d:"höfliche Bitten & Wünsche",ex:[
+   ["<b>Könnten</b> Sie mir bitte mehr über die Stelle erzählen?","Could you tell me more about the position?"],
+   ["Ich <b>hätte</b> gern eine unbefristete Stelle.","I'd like a permanent position."],
+   ["<b>Würden</b> Sie mir den Arbeitsvertrag zuschicken?","Would you send me the employment contract?"],
+   ["Ich <b>würde</b> mich über eine Einladung zum Vorstellungsgespräch sehr freuen.","I'd be very glad of an invitation to interview."],
+   ["<b>Dürfte</b> ich noch eine Frage zur Probezeit stellen?","Might I ask another question about the probation period?"],
+   ["Es <b>wäre</b> toll, wenn ich mich weiterbilden <b>könnte</b>.","It would be great if I could pursue further training."]
+  ]},
+  {t:"Finalsätze",d:"<i>damit</i> und <i>um … zu</i> — same subject → um…zu, different → damit",ex:[
+   ["Ich schreibe ein gutes Anschreiben, <b>um</b> die Personalabteilung zu <b>überzeugen</b>.","I write a good cover letter in order to convince HR."],
+   ["Sie besucht einen Kurs, <b>damit</b> ihre Bewerbung besser wird.","She takes a course so that her application improves."],
+   ["<b>Um</b> befördert zu <b>werden</b>, übernimmt er zusätzliche Aufgaben.","To get promoted, he takes on extra tasks."],
+   ["Wir bereiten uns gut vor, <b>damit</b> das Gespräch erfolgreich verläuft.","We prepare well so the interview goes well."],
+   ["Er bildet sich weiter, <b>um</b> konkurrenzfähig zu <b>bleiben</b>.","He upskills in order to stay competitive."]
+  ]},
+  {t:"Genitiv-Präpositionen",d:"trotz · (an)statt · während",ex:[
+   ["<b>Trotz</b> seiner geringen Berufserfahrung wurde er eingestellt.","Despite his limited experience, he was hired."],
+   ["<b>Statt</b> einer Kündigung bot man ihr eine neue Position an.","Instead of a dismissal, she was offered a new position."],
+   ["<b>Während</b> der Probezeit gilt eine kürzere Kündigungsfrist.","During probation, a shorter notice period applies."],
+   ["<b>Trotz</b> des hohen Gehalts nahm sie die Stelle nicht an.","Despite the high salary, she didn't take the job."],
+   ["<b>Anstatt</b> eines Lebenslaufs verlangt die Firma ein Video.","Instead of a CV, the company asks for a video."]
+  ]}
+ ],
+ nomen:[
+  ["die","Stellenanzeige","die Stellenanzeigen","job advertisement"],
+  ["das","Stellenangebot","die Stellenangebote","vacancy, job offer"],
+  ["die","Bewerbung","die Bewerbungen","application"],
+  ["pl","Bewerbungsunterlagen","die Bewerbungsunterlagen","application documents"],
+  ["das","Anschreiben","die Anschreiben","cover letter"],
+  ["der","Lebenslauf","die Lebensläufe","CV, résumé"],
+  ["der","Werdegang","die Werdegänge","career path"],
+  ["das","Vorstellungsgespräch","die Vorstellungsgespräche","job interview"],
+  ["der","Beruf","die Berufe","profession"],
+  ["die","Branche","die Branchen","sector, industry"],
+  ["das","Unternehmen","die Unternehmen","company"],
+  ["die","Firma","die Firmen","firm"],
+  ["die","Abteilung","die Abteilungen","department"],
+  ["der","Kollege","die Kollegen","colleague (n-decl.)"],
+  ["der","Vorgesetzte","die Vorgesetzten","superior"],
+  ["der","Arbeitgeber","die Arbeitgeber","employer"],
+  ["der","Arbeitnehmer","die Arbeitnehmer","employee"],
+  ["der","Arbeitsvertrag","die Arbeitsverträge","employment contract"],
+  ["die","Arbeitszeit","die Arbeitszeiten","working hours"],
+  ["die","Überstunde","die Überstunden","overtime hour"],
+  ["das","Gehalt","die Gehälter","salary"],
+  ["die","Gehaltsvorstellung","die Gehaltsvorstellungen","salary expectation"],
+  ["der","Lohn","die Löhne","wage"],
+  ["die","Beförderung","die Beförderungen","promotion"],
+  ["die","Stärke","die Stärken","strength"],
+  ["die","Schwäche","die Schwächen","weakness"],
+  ["die","Fähigkeit","die Fähigkeiten","ability, skill"],
+  ["die","Kenntnis","die Kenntnisse","knowledge, skill"],
+  ["die","Berufserfahrung","die Berufserfahrungen","professional experience"],
+  ["die","Ausbildung","die Ausbildungen","vocational training"],
+  ["das","Praktikum","die Praktika","internship"],
+  ["die","Weiterbildung","die Weiterbildungen","further training"],
+  ["die","Probezeit","die Probezeiten","probationary period"],
+  ["die","Kündigung","die Kündigungen","termination, resignation"],
+  ["das","Arbeitszeugnis","die Arbeitszeugnisse","employer's reference"],
+  ["die","Herausforderung","die Herausforderungen","challenge"],
+  ["die","Qualifikation","die Qualifikationen","qualification"]
+ ],
+ adjektive:[
+  ["selbstständig","independent, self-employed"],["zuverlässig","reliable"],["flexibel","flexible"],
+  ["motiviert","motivated"],["teamfähig","team player"],["belastbar","resilient"],
+  ["ehrgeizig","ambitious"],["pünktlich","punctual"],
+  ["qualifiziert ↔ unqualifiziert","qualified"],["befristet ↔ unbefristet","fixed-term ↔ permanent"],
+  ["berufstätig","employed"],["arbeitslos","unemployed"]
+ ],
+ prep:[
+  ["sich bewerben um","A","to apply for"],["sich vorbereiten auf","A","to prepare for"],
+  ["sich freuen auf","A","to look forward to"],["sich eignen für","A","to be suited for"],
+  ["verfügen über","A","to have at one's disposal"],["rechnen mit","D","to count on"],
+  ["teilnehmen an","D","to take part in"]
+ ],
+ verben:[
+  {inf:"sich bewerben",en:"to apply",prat:"bewarb sich",pp:"beworben",aux:"hat",fl:["refl"],prep:"um (A)",
+   pr:["bewerbe mich","bewirbst dich","bewirbt sich","bewerben uns","bewerbt euch","bewerben sich"]},
+  {inf:"sich vorstellen",en:"to introduce oneself",prat:"stellte sich vor",pp:"vorgestellt",aux:"hat",fl:["sep","refl"],
+   pr:["stelle mich vor","stellst dich vor","stellt sich vor","stellen uns vor","stellt euch vor","stellen sich vor"]},
+  {inf:"einstellen",en:"to hire",prat:"stellte ein",pp:"eingestellt",aux:"hat",fl:["sep"],
+   pr:["stelle ein","stellst ein","stellt ein","stellen ein","stellt ein","stellen ein"]},
+  {inf:"kündigen",en:"to give notice, resign",prat:"kündigte",pp:"gekündigt",aux:"hat",fl:["reg"],
+   pr:["kündige","kündigst","kündigt","kündigen","kündigt","kündigen"]},
+  {inf:"verdienen",en:"to earn",prat:"verdiente",pp:"verdient",aux:"hat",fl:["reg"],
+   pr:["verdiene","verdienst","verdient","verdienen","verdient","verdienen"]},
+  {inf:"leiten",en:"to lead, manage",prat:"leitete",pp:"geleitet",aux:"hat",fl:["reg"],
+   pr:["leite","leitest","leitet","leiten","leitet","leiten"]},
+  {inf:"verfügen",en:"to have at one's disposal",prat:"verfügte",pp:"verfügt",aux:"hat",fl:["reg"],prep:"über (A)",
+   pr:["verfüge","verfügst","verfügt","verfügen","verfügt","verfügen"]},
+  {inf:"bestehen",en:"to pass / to exist",prat:"bestand",pp:"bestanden",aux:"hat",fl:[],
+   pr:["bestehe","bestehst","besteht","bestehen","besteht","bestehen"]},
+  {inf:"übernehmen",en:"to take on",prat:"übernahm",pp:"übernommen",aux:"hat",fl:[],
+   pr:["übernehme","übernimmst","übernimmt","übernehmen","übernehmt","übernehmen"]},
+  {inf:"sich vorbereiten",en:"to prepare",prat:"bereitete sich vor",pp:"vorbereitet",aux:"hat",fl:["sep","refl"],prep:"auf (A)",
+   pr:["bereite mich vor","bereitest dich vor","bereitet sich vor","bereiten uns vor","bereitet euch vor","bereiten sich vor"]},
+  {inf:"sich weiterbilden",en:"to undergo further training",prat:"bildete sich weiter",pp:"weitergebildet",aux:"hat",fl:["sep","refl"],
+   pr:["bilde mich weiter","bildest dich weiter","bildet sich weiter","bilden uns weiter","bildet euch weiter","bilden sich weiter"]},
+  {inf:"sich weiterentwickeln",en:"to develop, grow",prat:"entwickelte sich weiter",pp:"weiterentwickelt",aux:"hat",fl:["sep","refl"],
+   pr:["entwickle mich weiter","entwickelst dich weiter","entwickelt sich weiter","entwickeln uns weiter","entwickelt euch weiter","entwickeln sich weiter"]}
+ ],
+ rede:[
+  ["Im Vorstellungsgespräch",["Zu meinen Stärken zählt, dass …","Ich bringe mehrjährige Erfahrung in … mit.","Ich würde mich als … beschreiben.","Was mich an dieser Stelle besonders reizt, ist …"]]
+ ]
+},
+{
+ id:11, title:"Dienstleistungen", subtitle:"Services & Bibliothek",
+ grammatik:[
+  {t:"Passiv",d:"Vorgangspassiv Präsens/Präteritum (<i>wird/wurde … + P.II</i>)",ex:[
+   ["Die Bücher <b>werden</b> an der Theke <b>zurückgegeben</b>.","The books are returned at the counter."],
+   ["Der Vertrag <b>wurde</b> letzte Woche <b>abgeschlossen</b>.","The contract was concluded last week."],
+   ["Neue Mitglieder <b>werden</b> am Empfang <b>angemeldet</b>.","New members are registered at reception."],
+   ["Die Reklamation <b>wurde</b> sofort <b>bearbeitet</b>.","The complaint was processed immediately."],
+   ["Die Gebühren <b>werden</b> jährlich <b>erhoben</b>.","The fees are charged annually."]
+  ]},
+  {t:"Passiv mit Modalverben",d:"Modalverb + P.II + <i>werden</i>",ex:[
+   ["Die Leihfrist <b>kann</b> online <b>verlängert werden</b>.","The loan period can be extended online."],
+   ["Der Ausweis <b>muss</b> an der Kasse <b>vorgezeigt werden</b>.","The card must be shown at the till."],
+   ["Defekte Geräte <b>können</b> kostenlos <b>repariert werden</b>.","Faulty devices can be repaired free of charge."],
+   ["Der Vertrag <b>darf</b> jederzeit <b>gekündigt werden</b>.","The contract may be cancelled at any time."],
+   ["Die Rechnung <b>sollte</b> bis Freitag <b>bezahlt werden</b>.","The invoice should be paid by Friday."]
+  ]},
+  {t:"Passiversatz",d:"<i>lassen sich + Infinitiv</i> · <i>sein + zu + Infinitiv</i>",ex:[
+   ["Die Leihfrist <b>lässt sich</b> problemlos <b>verlängern</b>.","The loan period can easily be extended."],
+   ["Dieses Problem <b>lässt sich</b> schnell <b>lösen</b>.","This problem can be solved quickly."],
+   ["Die Gebühr <b>ist</b> online <b>zu bezahlen</b>.","The fee is to be paid online."],
+   ["Der Antrag <b>ist</b> bis Montag <b>einzureichen</b>.","The application is to be submitted by Monday."],
+   ["Solche Verträge <b>lassen sich</b> nur schwer <b>kündigen</b>.","Such contracts are hard to cancel."]
+  ]},
+  {t:"Relativsätze",d:"auch mit Präposition",ex:[
+   ["Das ist der Dienstleister, <b>der</b> meinen Computer repariert hat.","That's the provider who repaired my computer."],
+   ["Die Bibliothek, <b>in der</b> ich lerne, hat lange Öffnungszeiten.","The library in which I study has long opening hours."],
+   ["Der Anbieter, <b>bei dem</b> ich den Vertrag abgeschlossen habe, ist zuverlässig.","The provider with whom I signed is reliable."],
+   ["Das Medium, <b>das</b> ich ausgeliehen habe, ist beschädigt.","The item I borrowed is damaged."],
+   ["Der Kundendienst, <b>an den</b> ich mich gewandt habe, war hilfreich.","The customer service I turned to was helpful."]
+  ]}
+ ],
+ nomen:[
+  ["die","Dienstleistung","die Dienstleistungen","service"],
+  ["der","Dienstleister","die Dienstleister","service provider"],
+  ["der","Anbieter","die Anbieter","provider"],
+  ["der","Kunde","die Kunden","customer (n-decl.)"],
+  ["der","Kundendienst","die Kundendienste","customer service"],
+  ["die","Bibliothek","die Bibliotheken","library"],
+  ["die","Bücherei","die Büchereien","(public) library"],
+  ["das","Medium","die Medien","medium, media item"],
+  ["pl","Öffnungszeiten","die Öffnungszeiten","opening hours"],
+  ["der","Benutzerausweis","die Benutzerausweise","user/library card"],
+  ["die","Ausleihe","die Ausleihen","lending, checkout"],
+  ["die","Leihfrist","die Leihfristen","loan period"],
+  ["die","Frist","die Fristen","deadline"],
+  ["die","Verlängerung","die Verlängerungen","extension"],
+  ["die","Rückgabe","die Rückgaben","return"],
+  ["die","Mahnung","die Mahnungen","reminder"],
+  ["die","Gebühr","die Gebühren","fee"],
+  ["die","Mahngebühr","die Mahngebühren","late fee"],
+  ["der","Zuschlag","die Zuschläge","surcharge"],
+  ["die","Beratung","die Beratungen","consultation, advice"],
+  ["die","Auskunft","die Auskünfte","information"],
+  ["die","Anmeldung","die Anmeldungen","registration"],
+  ["die","Mitgliedschaft","die Mitgliedschaften","membership"],
+  ["der","Vertrag","die Verträge","contract"],
+  ["die","Vertragslaufzeit","die Vertragslaufzeiten","contract term"],
+  ["die","Kündigungsfrist","die Kündigungsfristen","notice period"],
+  ["der","Tarif","die Tarife","tariff, plan"],
+  ["die","Bestellung","die Bestellungen","order"],
+  ["die","Lieferung","die Lieferungen","delivery"],
+  ["die","Reklamation","die Reklamationen","complaint (goods)"],
+  ["die","Reparatur","die Reparaturen","repair"],
+  ["die","Wartung","die Wartungen","maintenance"],
+  ["der","Handwerker","die Handwerker","tradesperson"],
+  ["die","Versicherung","die Versicherungen","insurance"],
+  ["die","Rechnung","die Rechnungen","invoice, bill"],
+  ["der","Termin","die Termine","appointment"]
+ ],
+ adjektive:[
+  ["kostenlos / gratis ↔ kostenpflichtig","free ↔ chargeable"],
+  ["gebührenfrei ↔ gebührenpflichtig","fee-free ↔ subject to fees"],
+  ["verfügbar","available"],["zuverlässig","reliable"],
+  ["gültig ↔ ungültig","valid ↔ invalid"],["inklusive / inbegriffen","included"],
+  ["fällig","due"],["kündbar","cancellable"],["monatlich / jährlich","monthly / yearly"]
+ ],
+ prep:[
+  ["sich beschweren über","A","to complain about"],["sich kümmern um","A","to take care of"],
+  ["sich wenden an","A","to turn to"],["bestehen auf","D","to insist on"],
+  ["verzichten auf","A","to do without"],["sorgen für","A","to provide for"]
+ ],
+ verben:[
+  {inf:"ausleihen",en:"to borrow / lend out",prat:"lieh aus",pp:"ausgeliehen",aux:"hat",fl:["sep"],
+   pr:["leihe aus","leihst aus","leiht aus","leihen aus","leiht aus","leihen aus"]},
+  {inf:"zurückgeben",en:"to return (an item)",prat:"gab zurück",pp:"zurückgegeben",aux:"hat",fl:["sep"],
+   pr:["gebe zurück","gibst zurück","gibt zurück","geben zurück","gebt zurück","geben zurück"]},
+  {inf:"verlängern",en:"to extend",prat:"verlängerte",pp:"verlängert",aux:"hat",fl:["reg"],
+   pr:["verlängere","verlängerst","verlängert","verlängern","verlängert","verlängern"]},
+  {inf:"reklamieren",en:"to complain (goods)",prat:"reklamierte",pp:"reklamiert",aux:"hat",fl:["reg"],
+   pr:["reklamiere","reklamierst","reklamiert","reklamieren","reklamiert","reklamieren"]},
+  {inf:"bearbeiten",en:"to process",prat:"bearbeitete",pp:"bearbeitet",aux:"hat",fl:["reg"],
+   pr:["bearbeite","bearbeitest","bearbeitet","bearbeiten","bearbeitet","bearbeiten"]},
+  {inf:"beraten",en:"to advise",prat:"beriet",pp:"beraten",aux:"hat",fl:[],
+   pr:["berate","berätst","berät","beraten","beratet","beraten"]},
+  {inf:"nehmen",en:"to take (in Anspruch nehmen)",prat:"nahm",pp:"genommen",aux:"hat",fl:[],
+   pr:["nehme","nimmst","nimmt","nehmen","nehmt","nehmen"]},
+  {inf:"anbieten",en:"to offer",prat:"bot an",pp:"angeboten",aux:"hat",fl:["sep"],
+   pr:["biete an","bietest an","bietet an","bieten an","bietet an","bieten an"]},
+  {inf:"abschließen",en:"to conclude (a contract)",prat:"schloss ab",pp:"abgeschlossen",aux:"hat",fl:["sep"],
+   pr:["schließe ab","schließt ab","schließt ab","schließen ab","schließt ab","schließen ab"]},
+  {inf:"sich anmelden",en:"to register",prat:"meldete sich an",pp:"angemeldet",aux:"hat",fl:["sep","refl"],
+   pr:["melde mich an","meldest dich an","meldet sich an","melden uns an","meldet euch an","melden sich an"]},
+  {inf:"sich beschweren",en:"to complain",prat:"beschwerte sich",pp:"beschwert",aux:"hat",fl:["refl"],prep:"über (A)",
+   pr:["beschwere mich","beschwerst dich","beschwert sich","beschweren uns","beschwert euch","beschweren sich"]},
+  {inf:"sich kümmern",en:"to take care of",prat:"kümmerte sich",pp:"gekümmert",aux:"hat",fl:["refl"],prep:"um (A)",
+   pr:["kümmere mich","kümmerst dich","kümmert sich","kümmern uns","kümmert euch","kümmern sich"]}
+ ],
+ rede:[]
+},
+{
+ id:12, title:"Das ist aber ein gutes Angebot!", subtitle:"Angebote · Verhandeln · Missverständnisse · Überraschung",
+ grammatik:[
+  {t:"Komparativ & Superlativ",d:"Steigerung · <i>je … desto/umso</i>",ex:[
+   ["Dieses Angebot ist <b>günstiger</b> als das andere.","This offer is cheaper than the other."],
+   ["Das ist der <b>beste</b> Preis, den ich finden konnte.","That's the best price I could find."],
+   ["<b>Je</b> größer die Menge, <b>desto</b> höher der Rabatt.","The larger the quantity, the higher the discount."],
+   ["Online ist die Ware oft <b>billiger</b> als im Geschäft.","Online the goods are often cheaper than in the shop."],
+   ["<b>Je</b> länger die Vertragslaufzeit, <b>umso</b> niedriger die monatliche Rate.","The longer the term, the lower the monthly instalment."],
+   ["Die Qualität ist <b>am wichtigsten</b>, nicht der Preis.","Quality matters most, not the price."]
+  ]},
+  {t:"Konjunktiv II",d:"beim Verhandeln",ex:[
+   ["<b>Könnten</b> Sie mir beim Preis ein wenig entgegenkommen?","Could you meet me a little on the price?"],
+   ["<b>Wäre</b> ein Rabatt bei Barzahlung möglich?","Would a discount be possible for cash payment?"],
+   ["Ich <b>würde</b> die Ware nehmen, wenn Sie den Preis senken <b>würden</b>.","I'd take it if you lowered the price."],
+   ["<b>Hätten</b> Sie das Modell auch in einer anderen Farbe?","Would you have the model in another colour too?"],
+   ["An Ihrer Stelle <b>würde</b> ich das Sonderangebot nutzen.","In your place, I'd use the special offer."]
+  ]},
+  {t:"Indirekte Fragen",d:"beim Nachfragen & Klären",ex:[
+   ["Können Sie mir sagen, <b>ob</b> die Lieferung inklusive ist?","Can you tell me whether delivery is included?"],
+   ["Ich verstehe nicht ganz, <b>was</b> Sie mit „Gewährleistung“ meinen.","I don't quite understand what you mean by \"warranty\"."],
+   ["Darf ich fragen, <b>wie hoch</b> die Anzahlung ist?","May I ask how high the down payment is?"],
+   ["Mich würde interessieren, <b>warum</b> der Preis so stark gesunken ist.","I'd be interested why the price dropped so sharply."],
+   ["<b>Könnten</b> Sie erklären, <b>wie</b> der Umtausch funktioniert?","Could you explain how the exchange works?"]
+  ]}
+ ],
+ nomen:[
+  ["das","Angebot","die Angebote","offer, deal"],
+  ["das","Sonderangebot","die Sonderangebote","special offer"],
+  ["das","Schnäppchen","die Schnäppchen","bargain"],
+  ["der","Ausverkauf","die Ausverkäufe","clearance sale"],
+  ["der","Rabatt","die Rabatte","discount"],
+  ["der","Nachlass","die Nachlässe","(price) reduction"],
+  ["der","Preis","die Preise","price"],
+  ["der","Preisvergleich","die Preisvergleiche","price comparison"],
+  ["die","Ersparnis","die Ersparnisse","saving"],
+  ["die","Bedingung","die Bedingungen","condition, term"],
+  ["die","Anzahlung","die Anzahlungen","down payment"],
+  ["die","Rate","die Raten","instalment"],
+  ["die","Ratenzahlung","die Ratenzahlungen","instalment plan"],
+  ["die","Garantie","die Garantien","guarantee"],
+  ["die","Gewährleistung","die Gewährleistungen","statutory warranty"],
+  ["die","Ware","die Waren","goods"],
+  ["die","Qualität","die Qualitäten","quality"],
+  ["die","Lieferung","die Lieferungen","delivery"],
+  ["die","Bestellung","die Bestellungen","order"],
+  ["der","Umtausch","–","exchange"],
+  ["die","Verhandlung","die Verhandlungen","negotiation"],
+  ["die","Menge","die Mengen","quantity, amount"],
+  ["der","Verkäufer","die Verkäufer","seller"],
+  ["der","Käufer","die Käufer","buyer"],
+  ["das","Missverständnis","die Missverständnisse","misunderstanding"],
+  ["die","Beschwerde","die Beschwerden","complaint"],
+  ["die","Assoziation","die Assoziationen","association"],
+  ["die","Überraschung","die Überraschungen","surprise"],
+  ["die","Enttäuschung","die Enttäuschungen","disappointment"],
+  ["die","Erwartung","die Erwartungen","expectation"],
+  ["der","Zufall","die Zufälle","coincidence"]
+ ],
+ adjektive:[
+  ["günstig / preiswert ↔ teuer","cheap / good value ↔ expensive"],
+  ["reduziert","reduced"],["kostenlos / gratis","free"],
+  ["hochwertig ↔ minderwertig","high- ↔ low-quality"],
+  ["gebraucht ↔ neu","used ↔ new"],["verhandelbar","negotiable"],
+  ["unerwartet","unexpected"],["erstaunlich","astonishing"],
+  ["verwirrend","confusing"],["enttäuscht","disappointed"]
+ ],
+ prep:[
+  ["sich erkundigen nach","D","to enquire about"],["sich einigen auf","A","to agree on"],
+  ["erinnern an","A","to remind of"],["denken an","A","to think of"],
+  ["achten auf","A","to pay attention to"],["bestehen auf","D","to insist on"],
+  ["verzichten auf","A","to do without"],["sich beschweren über","A","to complain about"]
+ ],
+ verben:[
+  {inf:"verhandeln",en:"to negotiate",prat:"verhandelte",pp:"verhandelt",aux:"hat",fl:["reg"],
+   pr:["verhandle","verhandelst","verhandelt","verhandeln","verhandelt","verhandeln"]},
+  {inf:"handeln",en:"to haggle / to act",prat:"handelte",pp:"gehandelt",aux:"hat",fl:["reg"],
+   pr:["handle","handelst","handelt","handeln","handelt","handeln"]},
+  {inf:"liefern",en:"to deliver",prat:"lieferte",pp:"geliefert",aux:"hat",fl:["reg"],
+   pr:["liefere","lieferst","liefert","liefern","liefert","liefern"]},
+  {inf:"überraschen",en:"to surprise",prat:"überraschte",pp:"überrascht",aux:"hat",fl:["reg"],
+   pr:["überrasche","überraschst","überrascht","überraschen","überrascht","überraschen"]},
+  {inf:"erinnern",en:"to remind",prat:"erinnerte",pp:"erinnert",aux:"hat",fl:["reg"],prep:"an (A)",
+   pr:["erinnere","erinnerst","erinnert","erinnern","erinnert","erinnern"]},
+  {inf:"sich lohnen",en:"to be worth it",prat:"lohnte sich",pp:"gelohnt",aux:"hat",fl:["refl","reg"],
+   pr:["lohne mich","lohnst dich","lohnt sich","lohnen uns","lohnt euch","lohnen sich"]},
+  {inf:"sich erkundigen",en:"to enquire",prat:"erkundigte sich",pp:"erkundigt",aux:"hat",fl:["refl"],prep:"nach (D)",
+   pr:["erkundige mich","erkundigst dich","erkundigt sich","erkundigen uns","erkundigt euch","erkundigen sich"]},
+  {inf:"sich einigen",en:"to agree",prat:"einigte sich",pp:"geeinigt",aux:"hat",fl:["refl"],prep:"auf (A)",
+   pr:["einige mich","einigst dich","einigt sich","einigen uns","einigt euch","einigen sich"]},
+  {inf:"missverstehen",en:"to misunderstand",prat:"missverstand",pp:"missverstanden",aux:"hat",fl:[],
+   pr:["missverstehe","missverstehst","missversteht","missverstehen","missversteht","missverstehen"]},
+  {inf:"nachfragen",en:"to ask for clarification",prat:"fragte nach",pp:"nachgefragt",aux:"hat",fl:["sep"],
+   pr:["frage nach","fragst nach","fragt nach","fragen nach","fragt nach","fragen nach"]},
+  {inf:"klarstellen",en:"to clarify",prat:"stellte klar",pp:"klargestellt",aux:"hat",fl:["sep"],
+   pr:["stelle klar","stellst klar","stellt klar","stellen klar","stellt klar","stellen klar"]},
+  {inf:"umtauschen",en:"to exchange",prat:"tauschte um",pp:"umgetauscht",aux:"hat",fl:["sep"],
+   pr:["tausche um","tauschst um","tauscht um","tauschen um","tauscht um","tauschen um"]}
+ ],
+ rede:[
+  ["Verhandeln",["Könnten Sie mir beim Preis entgegenkommen?","Wäre ein Nachlass möglich?","Unter welchen Bedingungen …?"]],
+  ["Missverständnisse klären",["Ich glaube, da liegt ein Missverständnis vor.","Wie meinen Sie das genau?","Da haben wir wohl aneinander vorbeigeredet."]],
+  ["Assoziation & Überraschung",["Das erinnert mich an … · Dabei denke ich sofort an …","Das hätte ich nicht gedacht! · Da bin ich aber überrascht."]]
+ ]
+}
+];
+
+const EXTRA={
+ 9:{
+  koll:[
+   ["einen Antrag stellen","to file an application"],
+   ["einen Antrag genehmigen / ablehnen","to approve / reject an application"],
+   ["die Staatsangehörigkeit beantragen","to apply for citizenship"],
+   ["eine Aufenthaltsgenehmigung erhalten","to receive a residence permit"],
+   ["einen Abschluss anerkennen lassen","to have a degree recognised"],
+   ["die Grenze überschreiten","to cross the border"],
+   ["Vorurteile abbauen","to break down prejudices"],
+   ["Fuß fassen","to gain a foothold, settle in"],
+   ["kulturelle Vielfalt fördern","to promote cultural diversity"],
+   ["Heimweh haben","to be homesick"]
+  ],
+  fam:[
+   [["auswandern","schwaches Verb","to emigrate"],["die Auswanderung","Substantiv, feminin","emigration"],["der Auswanderer","Substantiv, maskulin","emigrant"]],
+   [["einwandern","schwaches Verb","to immigrate"],["die Einwanderung","Substantiv, feminin","immigration"],["der Einwanderer","Substantiv, maskulin","immigrant"]],
+   [["fliehen","starkes Verb","to flee"],["die Flucht","Substantiv, feminin","flight, escape"],["der Flüchtling","Substantiv, maskulin","refugee"],["geflüchtet","Partizip II","fled"]],
+   [["fremd","Adjektiv","foreign, strange"],["der/die Fremde","Substantiv, m./f.","stranger"],["die Fremdheit","Substantiv, feminin","strangeness"],["sich entfremden","schwaches Verb","to become estranged"]],
+   [["die Heimat","Substantiv, feminin","homeland"],["heimisch","Adjektiv","native, local"],["einheimisch","Adjektiv","indigenous, local"],["das Heimweh","Substantiv, Neutrum","homesickness"]],
+   [["anerkennen","unregelmäßiges Verb","to recognise"],["die Anerkennung","Substantiv, feminin","recognition"],["anerkannt","Adjektiv","recognised"]],
+   [["integrieren","schwaches Verb","to integrate"],["die Integration","Substantiv, feminin","integration"],["integriert","Adjektiv","integrated"]]
+  ]
+ },
+ 10:{
+  koll:[
+   ["eine Bewerbung einreichen","to submit an application"],
+   ["eine Stelle ausschreiben","to advertise a position"],
+   ["sich auf eine Stelle bewerben","to apply for a position"],
+   ["zu einem Vorstellungsgespräch einladen","to invite to an interview"],
+   ["Berufserfahrung sammeln","to gain professional experience"],
+   ["die Probezeit bestehen","to pass the probation period"],
+   ["eine Kündigung einreichen","to hand in one's notice"],
+   ["Überstunden machen","to work overtime"],
+   ["eine Gehaltserhöhung aushandeln","to negotiate a pay rise"],
+   ["Verantwortung übernehmen","to take on responsibility"],
+   ["einen Vertrag unterschreiben","to sign a contract"]
+  ],
+  fam:[
+   [["sich bewerben","starkes Verb","to apply"],["die Bewerbung","Substantiv, feminin","application"],["der Bewerber","Substantiv, maskulin","applicant"],["das Bewerbungsgespräch","Substantiv, Neutrum","job interview"]],
+   [["arbeiten","schwaches Verb","to work"],["die Arbeit","Substantiv, feminin","work"],["der Arbeitgeber","Substantiv, maskulin","employer"],["der Arbeitnehmer","Substantiv, maskulin","employee"],["arbeitslos","Adjektiv","unemployed"]],
+   [["der Beruf","Substantiv, maskulin","profession"],["beruflich","Adjektiv","professional, occupational"],["berufstätig","Adjektiv","in employment"],["die Berufserfahrung","Substantiv, feminin","professional experience"]],
+   [["kündigen","schwaches Verb","to give notice, resign"],["die Kündigung","Substantiv, feminin","termination, notice"],["die Kündigungsfrist","Substantiv, feminin","notice period"],["kündbar","Adjektiv","terminable"]],
+   [["bilden","schwaches Verb","to form, educate"],["die Bildung","Substantiv, feminin","education"],["die Ausbildung","Substantiv, feminin","vocational training"],["die Weiterbildung","Substantiv, feminin","further training"],["sich weiterbilden","schwaches Verb","to undergo further training"]],
+   [["leiten","schwaches Verb","to lead, manage"],["die Leitung","Substantiv, feminin","management; line"],["der Leiter","Substantiv, maskulin","manager, head"]]
+  ]
+ },
+ 11:{
+  koll:[
+   ["eine Dienstleistung in Anspruch nehmen","to make use of a service"],
+   ["einen Vertrag abschließen","to conclude a contract"],
+   ["einen Vertrag kündigen","to cancel a contract"],
+   ["die Leihfrist verlängern","to extend the loan period"],
+   ["eine Gebühr erheben / bezahlen","to charge / pay a fee"],
+   ["eine Reklamation einreichen","to file a complaint"],
+   ["einen Termin vereinbaren","to arrange an appointment"],
+   ["die Rechnung begleichen","to settle the invoice"],
+   ["sich an den Kundendienst wenden","to turn to customer service"],
+   ["eine Mahnung erhalten","to receive a reminder"]
+  ],
+  fam:[
+   [["dienen","schwaches Verb","to serve"],["der Dienst","Substantiv, maskulin","service, duty"],["die Dienstleistung","Substantiv, feminin","service"],["der Dienstleister","Substantiv, maskulin","service provider"]],
+   [["leihen","starkes Verb","to lend, borrow"],["ausleihen","starkes Verb","to borrow / lend out"],["die Ausleihe","Substantiv, feminin","lending, checkout"],["die Leihfrist","Substantiv, feminin","loan period"],["verleihen","starkes Verb","to lend out; to award"]],
+   [["der Vertrag","Substantiv, maskulin","contract"],["vertraglich","Adjektiv","contractual"],["die Vertragslaufzeit","Substantiv, feminin","contract term"]],
+   [["beraten","starkes Verb","to advise"],["die Beratung","Substantiv, feminin","consultation, advice"],["der Berater","Substantiv, maskulin","adviser, consultant"]],
+   [["melden","schwaches Verb","to report, notify"],["anmelden","schwaches Verb","to register (sth)"],["die Anmeldung","Substantiv, feminin","registration"],["sich anmelden","schwaches Verb","to register (oneself)"],["die Abmeldung","Substantiv, feminin","deregistration"]],
+   [["mahnen","schwaches Verb","to remind, admonish"],["die Mahnung","Substantiv, feminin","reminder"],["die Mahngebühr","Substantiv, feminin","late fee"]]
+  ]
+ },
+ 12:{
+  koll:[
+   ["Rabatt gewähren / bekommen","to grant / get a discount"],
+   ["einen Preis aushandeln","to negotiate a price"],
+   ["in Raten zahlen","to pay in instalments"],
+   ["eine Anzahlung leisten","to make a down payment"],
+   ["Ware umtauschen","to exchange goods"],
+   ["Garantie geben / übernehmen","to give a guarantee"],
+   ["ein Angebot einholen","to obtain a quote"],
+   ["ein Schnäppchen machen","to get a bargain"],
+   ["Preise vergleichen","to compare prices"],
+   ["Erwartungen erfüllen","to meet expectations"]
+  ],
+  fam:[
+   [["kaufen","schwaches Verb","to buy"],["der Kauf","Substantiv, maskulin","purchase"],["der Käufer","Substantiv, maskulin","buyer"],["verkaufen","schwaches Verb","to sell"],["der Verkäufer","Substantiv, maskulin","seller"],["der Ausverkauf","Substantiv, maskulin","clearance sale"]],
+   [["der Preis","Substantiv, maskulin","price"],["preiswert","Adjektiv","good value, inexpensive"],["der Preisnachlass","Substantiv, maskulin","price reduction"],["der Preisvergleich","Substantiv, maskulin","price comparison"]],
+   [["verhandeln","schwaches Verb","to negotiate"],["die Verhandlung","Substantiv, feminin","negotiation"],["verhandelbar","Adjektiv","negotiable"]],
+   [["sich einigen","schwaches Verb","to reach agreement"],["die Einigung","Substantiv, feminin","agreement, settlement"],["einig","Adjektiv","in agreement, united"]],
+   [["verstehen","unregelmäßiges Verb","to understand"],["das Verständnis","Substantiv, Neutrum","understanding"],["missverstehen","unregelmäßiges Verb","to misunderstand"],["das Missverständnis","Substantiv, Neutrum","misunderstanding"]],
+   [["überraschen","schwaches Verb","to surprise"],["die Überraschung","Substantiv, feminin","surprise"],["überraschend","Adjektiv","surprising"],["überraschenderweise","Adverb","surprisingly"]]
+  ]
+ }
+};
+const PRON=["ich","du","er/sie/es","wir","ihr","sie/Sie"];
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const norm=s=>s.toLowerCase();
+const kasus=k=>k==="A"?"AKK":k==="D"?"DAT":k;
+const prepLbl=s=>s.replace(/\(A\)/,"(AKK)").replace(/\(D\)/,"(DAT)");
+const plain=s=>s.replace(/<[^>]+>/g,"").replace(/\s+/g," ").trim();
+const attr=s=>plain(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const sayBtn=t=>`<span class="say" role="button" tabindex="0" data-say="${attr(t)}" aria-label="Vorlesen" title="Vorlesen">${SPK}</span>`;
+
+/* speech synthesis */
+let deVoice=null;
+function pickVoice(){
+  if(!("speechSynthesis" in window))return;
+  const vs=speechSynthesis.getVoices();
+  deVoice=vs.find(v=>/^de[-_]/i.test(v.lang))||vs.find(v=>/german|deutsch/i.test(v.name))||null;
+}
+if("speechSynthesis" in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
+let sayingEl=null;
+function speak(text,el){
+  if(!("speechSynthesis" in window)||!text)return;
+  speechSynthesis.cancel();
+  if(sayingEl)sayingEl.classList.remove("speaking");
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang="de-DE";if(deVoice)u.voice=deVoice;u.rate=.94;
+  if(el){sayingEl=el;el.classList.add("speaking");
+    u.onend=u.onerror=()=>{el.classList.remove("speaking");if(sayingEl===el)sayingEl=null;};}
+  speechSynthesis.speak(u);
+}
+function attachSay(root){
+  root.querySelectorAll(".say").forEach(b=>{
+    b.onclick=ev=>{ev.stopPropagation();speak(b.dataset.say,b);};
+    b.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();ev.stopPropagation();speak(b.dataset.say,b);}};
+  });
+}
+
+let active=0, mode="ref", filter="", deckScope="nomen";
+let deck=[], deckIdx=0, deckFlipped=false;
+
+/* ---- tabs ---- */
+const tabsEl=document.getElementById("tabs");
+const searchEl=document.getElementById("search");
+DATA.forEach((u,i)=>{
+  const b=document.createElement("button");
+  b.className="tab"; b.setAttribute("role","tab");
+  b.setAttribute("aria-selected", i===0?"true":"false");
+  b.innerHTML=`<span class="num">EINHEIT ${u.id}</span><span class="lbl">${esc(u.title)}</span>`;
+  b.onclick=()=>{active=i;searchEl.value="";filter="";syncTabs();render();};
+  tabsEl.appendChild(b);
+});
+function syncTabs(){[...tabsEl.children].forEach((t,i)=>t.setAttribute("aria-selected",i===active?"true":"false"));}
+
+/* ---- mode ---- */
+const mRef=document.getElementById("modeRef"), mCards=document.getElementById("modeCards");
+mRef.onclick=()=>{mode="ref";mRef.setAttribute("aria-pressed","true");mCards.setAttribute("aria-pressed","false");document.getElementById("searchWrap").style.visibility="visible";render();};
+mCards.onclick=()=>{mode="cards";mCards.setAttribute("aria-pressed","true");mRef.setAttribute("aria-pressed","false");document.getElementById("searchWrap").style.visibility="hidden";buildDeck();render();};
+searchEl.addEventListener("input",e=>{filter=norm(e.target.value.trim());render();});
+
+/* ---- helpers ---- */
+function artClass(a){return a==="pl"?"pl":a;}
+const mk=f=>x=>!filter||norm(f(x)).includes(filter);
+const matchN=mk(n=>n[1]+" "+n[3]);
+const matchA=mk(a=>a[0]+" "+a[1]);
+const matchP=mk(p=>p[0]+" "+p[2]);
+const matchC=mk(c=>c[0]+" "+c[1]);
+const matchF=mk(f=>f.flat().join(" "));
+const matchV=mk(v=>v.inf+" "+v.en);
+const chip=(de,en,say,k)=>`<span class="chip"><span class="de">${esc(de)}</span>${k||""}${sayBtn(say)}<span class="en">${esc(en)}</span></span>`;
+const firstTok=s=>s.split(/[\/↔]/)[0].trim();
+
+/* ---- render reference ---- */
+function render(){
+  const u=DATA[active];
+  const m=document.getElementById("main");
+  if(mode==="cards"){renderCards(u,m);return;}
+
+  const nouns=u.nomen.filter(matchN);
+  const adjs=u.adjektive.filter(matchA);
+  const preps=u.prep.filter(matchP);
+  const verbs=u.verben.filter(matchV);
+  const ex=EXTRA[u.id]||{koll:[],fam:[]};
+  const colls=ex.koll.filter(matchC);
+  const fams=ex.fam.filter(matchF);
+  const gramShown=!filter;
+
+  let h=`<div class="unit-head fade">
+    <div class="kicker">Einheit ${u.id}</div>
+    <h2>${esc(u.title)}</h2><p>${esc(u.subtitle)}</p></div>`;
+
+  h+=section("Nomen",nouns.length, nouns.length?`
+    <div class="table">
+      <div class="trow head"><span>Nomen</span><span>Plural</span><span>English</span></div>
+      ${nouns.map(n=>`<div class="trow">
+        <div class="noun"><span class="art ${artClass(n[0])}">${n[0]==="pl"?"pl.":n[0]}</span><span class="word">${esc(n[1])}</span>${sayBtn((n[0]==="pl"?"die ":n[0]+" ")+n[1])}</div>
+        <div class="plural">${esc(n[2])}</div>
+        <div class="en">${esc(n[3])}</div></div>`).join("")}
+    </div>`:emptyMsg());
+
+  h+=section("Adjektive",adjs.length, adjs.length?`
+    <div class="chips">${adjs.map(a=>chip(a[0],a[1],firstTok(a[0]))).join("")}</div>`:emptyMsg());
+
+  h+=section("Verben mit Präposition",preps.length, preps.length?`
+    <div class="chips">${preps.map(p=>chip(p[0],p[2],p[0],`<span class="k">+ ${kasus(p[1])}</span>`)).join("")}</div>`:emptyMsg());
+
+  h+=section("Verben",verbs.length, verbs.length?`
+    <div class="verbs">${verbs.map(verbCard).join("")}</div>`:emptyMsg());
+
+  h+=section("Wortverbindungen",colls.length, colls.length?`
+    <div class="chips">${colls.map(c=>chip(c[0],c[1],c[0])).join("")}</div>`:emptyMsg());
+
+  h+=section("Wortfamilien",fams.length, fams.length?`
+    <div class="families">${fams.map(f=>`<div class="family">${f.map((m,i)=>`${i?'<span class="fam-arrow">→</span>':''}<div class="fam-word${i===0?' root':''}"><div class="fw-top"><span class="fw-de">${esc(m[0])}</span>${sayBtn(m[0])}</div><div class="fw-meta"><span class="fw-pos">${esc(m[1])}</span><span class="fw-en">${esc(m[2])}</span></div></div>`).join("")}</div>`).join("")}</div>`:emptyMsg());
+
+  if(gramShown && u.rede.length){
+    h+=section("Redemittel",u.rede.length,`
+      <div class="rede">${u.rede.map(r=>`<div class="rede-group"><h4>${esc(r[0])}</h4><ul>${r[1].map(x=>`<li>${esc(x)}${sayBtn(x)}</li>`).join("")}</ul></div>`).join("")}</div>`);
+  }
+  if(gramShown){
+    h+=section("Grammatik",u.grammatik.length,`
+      <div class="gram">${u.grammatik.map(g=>`
+        <div class="gram-topic">
+          <div class="gram-head"><h4>${g.t}</h4><span class="gram-desc">${g.d}</span></div>
+          <ul class="gram-ex">${g.ex.map(e=>`<li><span class="gde">${e[0]} ${sayBtn(e[0])}</span><span class="gen">${esc(e[1])}</span></li>`).join("")}</ul>
+        </div>`).join("")}</div>`);
+  }
+
+  m.innerHTML=h;
+  m.querySelectorAll(".verb-head").forEach(btn=>btn.onclick=()=>btn.closest(".verb").classList.toggle("open"));
+  attachSay(m);
+}
+function section(label,count,body){
+  return `<section class="section fade"><div class="section-label"><h3>${label}</h3><span class="count">${count}</span><span class="rule"></span></div>${body}</section>`;
+}
+function emptyMsg(){return `<div class="empty">Keine Treffer in dieser Kategorie.</div>`;}
+function verbCard(v){
+  const flags=(v.fl||[]).map(f=>{
+    const t={sep:"trennbar",refl:"reflexiv",reg:"regelmäßig"}[f];
+    return `<span class="vflag ${f}">${t}</span>`;}).join("");
+  const prep=v.prep?` <span class="k" style="font-family:var(--mono);font-size:11px;color:var(--teal-2)">+ ${esc(prepLbl(v.prep))}</span>`:"";
+  const para=v.pr.map((f,j)=>`<div class="pcell"><span class="pron">${PRON[j]}</span><span class="form">${esc(f)}</span></div>`).join("");
+  return `<div class="verb">
+    <button class="verb-head" aria-expanded="false">
+      <div class="verb-main">
+        <div class="verb-inf">${esc(v.inf)}${prep} <span class="en">— ${esc(v.en)}</span> ${sayBtn(v.inf)}</div>
+        <div class="verb-parts">Prät. ${esc(v.prat)} · P.II <span class="aux">${v.aux}</span> ${esc(v.pp)}</div>
+      </div>
+      <div class="vflags">${flags}</div>
+      <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <div class="conj"><div class="conj-title">Präsens</div><div class="para">${para}</div></div>
+  </div>`;
+}
+
+/* ---- flashcards ---- */
+function buildDeck(){
+  const u=DATA[active];
+  if(deckScope==="nomen"){
+    deck=u.nomen.map(n=>({front:(n[0]==="pl"?"":n[0]+" ")+n[1],back:n[3],sub:n[0]==="pl"?"nur Plural":"Plural: "+n[2],say:(n[0]==="pl"?"die ":n[0]+" ")+n[1]}));
+  }else if(deckScope==="verben"){
+    deck=u.verben.map(v=>({front:v.inf,back:v.en,sub:"Prät. "+v.prat+" · P.II "+v.aux+" "+v.pp,say:v.inf}));
+  }else{
+    deck=u.adjektive.map(a=>({front:a[0],back:a[1],sub:"",say:a[0].split(/[\/↔]/)[0].trim()}));
+  }
+  deckIdx=0;deckFlipped=false;
+}
+function renderCards(u,m){
+  if(!deck.length)buildDeck();
+  const c=deck[deckIdx]||{front:"",back:"",sub:""};
+  m.innerHTML=`<div class="unit-head fade"><div class="kicker">Einheit ${u.id} · Karteikarten</div>
+     <h2>${esc(u.title)}</h2><p>${esc(u.subtitle)}</p></div>
+   <div class="deck fade">
+     <div class="deck-bar">
+       <div class="deck-scope">Stapel:
+         <select id="scope">
+           <option value="nomen"${deckScope==="nomen"?" selected":""}>Nomen (${u.nomen.length})</option>
+           <option value="verben"${deckScope==="verben"?" selected":""}>Verben (${u.verben.length})</option>
+           <option value="adjektive"${deckScope==="adjektive"?" selected":""}>Adjektive (${u.adjektive.length})</option>
+         </select></div>
+       <div class="counter">${deckIdx+1} / ${deck.length}</div>
+     </div>
+     <div class="card${deckFlipped?" flipped":""}" id="card">
+       <div class="card-inner">
+         <div class="face front"><div class="tagline">Deutsch</div><div class="big">${esc(c.front)} ${c.say?sayBtn(c.say):""}</div>${c.sub?`<div class="sub">${esc(c.sub)}</div>`:""}</div>
+         <div class="face back"><div class="tagline">English</div><div class="big">${esc(c.back)}</div></div>
+       </div>
+     </div>
+     <div class="deck-controls">
+       <button class="dbtn" id="prev">← Zurück</button>
+       <button class="dbtn primary" id="flip">Umdrehen</button>
+       <button class="dbtn" id="next">Weiter →</button>
+       <button class="dbtn" id="shuffle">Mischen</button>
+     </div>
+     <div class="hint">Karte klicken oder Leertaste zum Umdrehen · Pfeiltasten zum Blättern · Lautsprecher zum Hören</div>
+   </div>`;
+  document.getElementById("scope").onchange=e=>{deckScope=e.target.value;buildDeck();render();};
+  document.getElementById("card").onclick=flip;
+  document.getElementById("flip").onclick=flip;
+  document.getElementById("prev").onclick=()=>step(-1);
+  document.getElementById("next").onclick=()=>step(1);
+  document.getElementById("shuffle").onclick=()=>{for(let i=deck.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[deck[i],deck[j]]=[deck[j],deck[i]];}deckIdx=0;deckFlipped=false;render();};
+  attachSay(m);
+}
+function flip(){deckFlipped=!deckFlipped;document.getElementById("card").classList.toggle("flipped");}
+function step(d){deckIdx=(deckIdx+d+deck.length)%deck.length;deckFlipped=false;render();}
+document.addEventListener("keydown",e=>{
+  if(mode!=="cards")return;
+  if(e.code==="Space"){e.preventDefault();flip();}
+  else if(e.code==="ArrowRight")step(1);
+  else if(e.code==="ArrowLeft")step(-1);
+});
+
+render();
+</script>
+</body>
+</html>
