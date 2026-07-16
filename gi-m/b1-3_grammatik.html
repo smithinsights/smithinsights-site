@@ -320,7 +320,8 @@ const exList=a=>`<ul class="gram-ex">${a.map(e=>
 const TAGE=[
  {n:1, wt:"Montag",   datum:"13. Juli 2026", thema:"Beziehungen, Freundschaft & Wohnformen"},
  {n:2, wt:"Dienstag", datum:"14. Juli 2026", thema:"E-Mail & Anrede, Uhrzeit, temporale Nebensätze"},
- {n:3, wt:"Mittwoch", datum:"15. Juli 2026", thema:"Musik und Emotionen"}
+ {n:3, wt:"Mittwoch", datum:"15. Juli 2026", thema:"Musik und Emotionen"},
+ {n:4, wt:"Donnerstag", datum:"16. Juli 2026", thema:"Ernährung, Missverständnisse & Märchen"}
 ];
 
 /* Einheiten aus Netzwerk neu B1.2 — ohne Abschnitte, die Einheit genügt. */
@@ -1000,7 +1001,10 @@ const G=[
   ["<b>Weil</b> ich krank <b>bin</b>, <b>bleibe</b> ich zu Hause.","Nebensatz zuerst → Hauptsatz beginnt mit dem Verb."],
   ["Er lernt viel, <b>damit</b> er die Prüfung <b>besteht</b>.","Ziel — siehe auch Finalsätze."],
   ["<b>Obwohl</b> es <b>regnete</b>, sind wir spazieren gegangen.","Gegensatz, Nebensatz vorn."],
-  ["Ich weiß nicht, <b>ob</b> er <b>kommt</b>.","<i>ob</i> für indirekte Ja/Nein-Fragen."]
+  ["Ich weiß nicht, <b>ob</b> er <b>kommt</b>.","<i>ob</i> für indirekte Ja/Nein-Fragen."],
+  ["Ich komme später, <b>weil</b> ich noch <b>einkaufe</b>.","Trennbares Verb im Nebensatz: <i>einkaufe</i> bleibt <b>ein Wort</b>."],
+  ["Sie fragt, <b>wann</b> der Zug <b>abfährt</b>.","<i>abfährt</i>, nicht <i>ab fährt</i>."],
+  ["Sag mir, <b>was</b> du <b>isst</b>, und ich sage dir, <b>wer</b> du <b>bist</b>.","Zwei indirekte Fragen — beide mit dem Verb am Ende."]
  ])}</div>
 
  <div class="callout warn"><div class="callout-h">Fallen</div>
@@ -1010,6 +1014,8 @@ const G=[
   <li>Nach <b>deshalb &amp; Co.</b> kommt <b>nie</b> das Subjekt direkt: <i>deshalb ich gehe</i> ✗ → <i>deshalb <b>gehe ich</b></i> ✓.</li>
   <li>Vor <b>und</b> / <b>oder</b> steht meist <b>kein Komma</b>, wenn sie zwei Hauptsätze verbinden — vor <b>denn</b>, <b>aber</b>, <b>sondern</b> schon. Vor jedem Nebensatz immer.</li>
   <li>Nur <b>ein</b> Konnektor pro Verbindung: <i>Obwohl es regnete, trotzdem gingen wir</i> ✗.</li>
+  <li><b>Im Nebensatz werden trennbare Verben nicht getrennt.</b> Die Vorsilbe bleibt am Verb, und das ganze Wort geht ans Ende:
+      <i>Ich rufe dich <b>an</b>.</i> → <i>…, weil ich dich <b>anrufe</b>.</i> Nicht <i>weil ich dich an rufe</i> ✗.</li>
   <li><b>ADUSO</b> merkt nur die fünf aus Gruppe 1 — <i>deshalb</i>, <i>trotzdem</i> und <i>dann</i> gehören <b>nicht</b> dazu, auch wenn sie ähnlich klingen.</li>
  </ul></div>`
 },
@@ -1237,6 +1243,232 @@ const G=[
   <li>Für die Vergangenheit nimmt man das <b>Präteritum</b> des Modalverbs (<i>musste … werden</i>). Das Perfekt (<i>hat … werden müssen</i>) ist B2 und im Alltag selten.</li>
   <li><b>Unpersönliches Passiv</b> braucht kein Subjekt: <i>Hier darf nicht geraucht werden.</i> — die höfliche Art, ein Verbot zu sagen.</li>
   <li>Im Nebensatz rückt das Modalverb ans Ende: <i>…, dass das Formular ausgefüllt werden <b>muss</b>.</i></li>
+ </ul></div>`
+},
+{
+ id:"infinitiv-mit-zu", tag:4, kap:null, t:"Infinitiv mit <i>zu</i>",
+ src:[["kurs"]],
+ kurz:"Nach vielen Verben und nach <i>es ist …</i> folgt ein zweites Verb mit <b>zu</b> — am Satzende.",
+ body:`
+ <div class="callout"><div class="callout-h">Wann steht <i>zu</i>?</div>
+ <p>Manche Ausdrücke ziehen ein zweites Verb nach sich. Das steht dann im <b>Infinitiv mit zu</b>, ganz am Ende.
+ Es gibt drei Auslöser:</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">bestimmte Verben</span><span class="htp">Verb + zu</span><span class="hte">versuchen · anfangen · aufhören · vergessen · vorhaben · hoffen · empfehlen · erlauben</span></div>
+  <div class="htr"><span class="htq">Nomen + haben</span><span class="htp">Nomen + zu</span><span class="hte">Lust haben · Zeit haben · Angst haben · Spaß machen</span></div>
+  <div class="htr"><span class="htq">es ist + Adjektiv</span><span class="htp">Adjektiv + zu</span><span class="hte">Es ist wichtig / schön / schwer / gesund …</span></div>
+ </div>
+ <p class="fine">Bei <b>trennbaren Verben</b> rutscht das <i>zu</i> in die Mitte und alles wird <b>ein Wort</b>:
+ <i>ein<b>zu</b>kaufen</i>, <i>auf<b>zu</b>stehen</i>, <i>mit<b>zu</b>kommen</i>.</p></div>
+
+ <div class="callout"><div class="callout-h">Wann steht <i>zu</i> nicht?</div>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">mit zu</div><div class="mxh">ohne zu</div>
+  <div class="mxr">zweites Verb</div>
+  <div class="mxc hi">Ich versuche, früh <b>zu</b> kommen.</div>
+  <div class="mxc">Ich will früh kommen.</div>
+ </div>
+ <p class="fine">Kein <i>zu</i> nach <b>Modalverben</b> (können, müssen, wollen, dürfen, sollen, mögen),
+ nach <b>werden</b> und nach <b>sehen · hören · lassen · bleiben · gehen · fahren</b>.</p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich versuche, jeden Tag Deutsch <b>zu sprechen</b>.","Nach <i>versuchen</i> — Komma und <i>zu</i>."],
+  ["Er hat vergessen, die Milch <b>zu kaufen</b>.","Nach <i>vergessen</i>."],
+  ["Wir haben vor, im Sommer nach Italien <b>zu fahren</b>.","<i>vorhaben</i> ist trennbar — das betrifft aber nur das erste Verb."],
+  ["Es ist wichtig, gesund <b>zu essen</b>.","<i>es ist</i> + Adjektiv."],
+  ["Sie hat angefangen, vegetarisch <b>zu leben</b>.","Nach <i>anfangen</i>."],
+  ["Hast du Lust, ins Kino <b>zu gehen</b>?","<i>Lust haben</i> — Nomen + <i>zu</i>."],
+  ["Es macht Spaß, Märchen <b>zu lesen</b>.","<i>Spaß machen</i>."],
+  ["Der Arzt empfiehlt mir, weniger Zucker <b>zu essen</b>.","Nach <i>empfehlen</i>, mit Dativ dazwischen."],
+  ["Ich habe heute keine Zeit, <b>einzukaufen</b>.","Trennbar → <i>ein<b>zu</b>kaufen</i>, ein Wort."],
+  ["Ich freue mich, dich <b>zu sehen</b>.","Nach <i>sich freuen</i>."],
+  ["Ich <b>kann</b> gut <b>kochen</b>.","Modalverb → <b>kein</b> <i>zu</i>."],
+  ["Ich <b>höre</b> ihn <b>singen</b>.","Nach <i>hören</i> → kein <i>zu</i>."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Kein <i>zu</i> nach Modalverben</b>: <i>Ich muss zu arbeiten</i> ✗ → <i>Ich muss arbeiten</i> ✓.</li>
+  <li><b>Trennbar = ein Wort</b>: <i>ein zu kaufen</i> ✗ → <i>einzukaufen</i> ✓.</li>
+  <li>Das <b>Subjekt</b> wird nicht wiederholt: <i>Ich versuche, dass ich früh komme</i> ist zwar möglich, klingt aber schwerfällig — mit <i>zu</i> ist es kürzer.</li>
+  <li><b>Komma</b>: Nach neuer Rechtschreibung darf es bei ganz kurzen Sätzen fehlen — nach <i>um … zu</i>, <i>ohne … zu</i>, <i>statt … zu</i> steht es aber immer. Setz es im Zweifel.</li>
+  <li>Nicht mit <b>um … zu</b> verwechseln: das drückt eine <b>Absicht</b> aus (<i>Wozu?</i>). Hier geht es nur um ein zweites Verb.</li>
+ </ul></div>`
+},
+{
+ id:"relativpronomen", tag:4, kap:11, t:"Relativpronomen",
+ src:[["buch","K11"],["kurs"]], beleg:"Übungsbuch K11, 9a · Kurs-Arbeitsblatt „Relativpronomen“",
+ kurz:"Zwei Sätze, ein Nomen: <b>Genus</b> kommt von oben, <b>Kasus</b> kommt von unten.",
+ body:`
+ <div class="callout"><div class="callout-h">Die eine Regel, die alles erklärt</div>
+ <p>Ein Relativpronomen hat zwei Chefs — und das ist der ganze Trick:</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">kommt von …</div><div class="mxh">Beispiel</div>
+  <div class="mxr">Genus + Numerus</div>
+  <div class="mxc hi">Bezugswort im Hauptsatz</div>
+  <div class="mxc"><i>der Mann</i> → maskulin Singular</div>
+  <div class="mxr">Kasus</div>
+  <div class="mxc hi">Funktion im Nebensatz</div>
+  <div class="mxc"><i>… den ich kenne</i> → Akkusativ</div>
+ </div>
+ <p class="fine">Also: <i>Der Mann, <b>den</b> ich kenne …</i> — <b>maskulin</b>, weil oben <i>der Mann</i> steht;
+ <b>Akkusativ</b>, weil <i>kennen</i> unten einen Akkusativ braucht. Und: <b>Verb ans Ende</b>, <b>Komma</b> immer.</p></div>
+
+ <div class="callout"><div class="callout-h">Die Tabelle</div>
+ <table class="ptab">
+  <tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr>
+  <tr><td>Nominativ</td><td><b>der</b></td><td><b>die</b></td><td><b>das</b></td><td><b>die</b></td></tr>
+  <tr><td>Akkusativ</td><td><b>den</b></td><td><b>die</b></td><td><b>das</b></td><td><b>die</b></td></tr>
+  <tr><td>Dativ</td><td><b>dem</b></td><td><b>der</b></td><td><b>dem</b></td><td><b>denen</b></td></tr>
+ </table>
+ <p class="fine">Fast alles ist der bestimmte Artikel. <b>Eine</b> Form fällt aus der Reihe:
+ der <b>Dativ Plural</b> heißt <b>denen</b>, nicht <i>den</i>.</p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele — jede Zelle der Tabelle</div>
+ ${exList([
+  ["Das ist der Bäcker, <b>der</b> das Brot <b>backt</b>.","maskulin · Nominativ — er backt."],
+  ["Der Mann, <b>den</b> ich gestern <b>traf</b>, ist Bäcker.","maskulin · Akkusativ — ich traf ihn."],
+  ["Der Nachbar, <b>dem</b> ich <b>geholfen habe</b>, ist nett.","maskulin · Dativ — <i>helfen</i> + Dativ."],
+  ["Die Frau, <b>die</b> dort <b>steht</b>, ist meine Lehrerin.","feminin · Nominativ."],
+  ["Die Kollegin, <b>die</b> ich <b>kenne</b>, kommt aus Polen.","feminin · Akkusativ — gleiche Form wie Nominativ."],
+  ["Die Frau, <b>der</b> ich das Buch <b>gab</b>, heißt Anna.","feminin · Dativ → <i>der</i>, nicht <i>die</i>."],
+  ["Das Kind, <b>das</b> dort <b>spielt</b>, ist mein Neffe.","neutral · Nominativ."],
+  ["Das Märchen, <b>das</b> wir <b>gelesen haben</b>, war spannend.","neutral · Akkusativ."],
+  ["Die Leute, <b>die</b> hier <b>wohnen</b>, sind freundlich.","Plural · Nominativ."],
+  ["Die Freunde, <b>denen</b> ich <b>geschrieben habe</b>, antworten nicht.","Plural · Dativ → <b>denen</b>. Die einzige Sonderform."],
+  ["Das ist der Kollege, <b>mit dem</b> ich <b>arbeite</b>.","Präposition steht <b>vor</b> dem Pronomen und bestimmt den Kasus."],
+  ["Die Firma, <b>für die</b> ich <b>arbeite</b>, ist klein.","<i>für</i> + Akkusativ → <i>die</i>."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Dativ Plural = denen.</b> Der häufigste Fehler: <i>Die Freunde, <span style="color:var(--fem)">die</span> ich geschrieben habe</i> ✗.</li>
+  <li><b>Genus und Kasus nicht verwechseln.</b> Das Bezugswort bestimmt <b>nur</b> das Genus — welchen Kasus du brauchst, entscheidet das Verb im Relativsatz.</li>
+  <li>Die <b>Präposition steht vorn</b>: <i>der Kollege, <b>mit dem</b> ich arbeite</i> — nicht <i>der Kollege, den ich mit arbeite</i>.</li>
+  <li><b>Verb ans Ende</b>, wie in jedem Nebensatz — und <b>immer ein Komma</b>.</li>
+  <li><b>das</b> oder <b>dass</b>? <i>das</i> = Relativpronomen (man kann <i>welches</i> einsetzen), <i>dass</i> = Konjunktion.
+      <i>Das Märchen, <b>das</b> wir lasen …</i> gegen <i>Ich glaube, <b>dass</b> es gut war.</i></li>
+ </ul></div>`
+},
+{
+ id:"befinden", tag:4, kap:null, t:"„Wie geht’s dir?“ — <i>mir geht es gut</i>",
+ src:[["kurs"]],
+ kurz:"<b>Nicht</b> <i>ich bin gut</i>. Das Befinden steht im <b>Dativ</b>: <i>mir geht es gut</i>.",
+ body:`
+ <div class="callout"><div class="callout-h">Zwei Wege, zwei Kasus</div>
+ <p>Für „wie es dir geht“ gibt es im Deutschen <b>zwei</b> Muster — und sie verlangen verschiedene Kasus.
+ Die Frage <i>Wie geht es dir?</i> beantwortet nur das erste.</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">Befinden</div><div class="mxh">Eigenschaft / Zustand</div>
+  <div class="mxr">Muster</div>
+  <div class="mxc hi">es geht + <b>Dativ</b> + Adverb</div>
+  <div class="mxc">sein + <b>Nominativ</b> + Adjektiv</div>
+  <div class="mxr">Beispiel</div>
+  <div class="mxc"><b>Mir</b> geht es gut.</div>
+  <div class="mxc"><b>Ich</b> bin müde.</div>
+ </div>
+ <p class="fine">Das Subjekt ist bei Muster 1 immer <b>es</b> — nicht die Person. Die Person steht im <b>Dativ</b>:
+ <i>mir · dir · ihm · ihr · uns · euch · ihnen · Ihnen</i>.</p></div>
+
+ <div class="callout"><div class="callout-h">Die Skala</div>
+ <table class="ptab">
+  <tr><th>Frage</th><th>Antwort</th></tr>
+  <tr><td>Wie geht es <b>dir</b>?<br>Wie geht’s?</td>
+      <td><b>Mir</b> geht es <b>sehr gut</b> · <b>gut</b> · <b>ganz gut</b> · <b>es geht</b> ·
+          <b>nicht so gut</b> · <b>schlecht</b></td></tr>
+  <tr><td>Wie geht es <b>Ihnen</b>? <span class="htq">(formell)</span></td>
+      <td>Danke, gut. Und <b>Ihnen</b>?</td></tr>
+ </table>
+ <p class="fine">Nach <i>es geht</i> steht ein <b>Adverb</b> (gut, schlecht) — kein Adjektiv mit Endung.
+ <i>Mir geht es guter</i> ✗.</p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Wie geht es <b>dir</b>? — <b>Mir</b> geht es gut, danke.","Frage und Antwort beide im Dativ."],
+  ["Wie geht’s? — Danke, sehr gut. Und <b>dir</b>?","<i>geht’s</i> = <i>geht es</i>, im Alltag fast immer verkürzt."],
+  ["<b>Mir</b> geht es heute nicht so gut.","Die höfliche Art, „nicht gut“ zu sagen."],
+  ["<b>Ihm</b> geht es nach der Operation schon besser.","Dativ <i>ihm</i>, nicht <i>er</i>."],
+  ["Wie geht es <b>Ihnen</b>, Frau Moser?","Formell — <i>Ihnen</i> großgeschrieben."],
+  ["<b>Uns</b> geht es gut in München.","Plural: <i>uns</i>."],
+  ["<b>Ihr</b> geht es schlecht, sie hat Fieber.","<i>ihr</i> = Dativ von <i>sie</i>."],
+  ["Wie geht es deiner Mutter? — <b>Ihr</b> geht es gut.","Auch Personen außerhalb des Gesprächs: Dativ."],
+  ["<b>Ich bin</b> müde.","Adjektiv → <i>sein</i> + Nominativ. Das andere Muster."],
+  ["<b>Ich bin</b> erkältet und <b>mir</b> geht es schlecht.","Beide Muster in einem Satz — jedes mit seinem Kasus."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b><i>Ich bin gut</i> ✗.</b> Das heißt „ich bin (in etwas) gut“ oder „ich bin ein guter Mensch“ —
+      nicht, wie es dir geht. Richtig: <i><b>Mir</b> geht es gut.</i></li>
+  <li><b>Dativ, nicht Nominativ</b>: <i>Ich geht es gut</i> ✗ → <i>Mir geht es gut</i> ✓.</li>
+  <li><b>es</b> darf nicht weg: <i>Mir geht gut</i> ✗ → <i>Mir geht <b>es</b> gut</i> ✓ (oder verkürzt <i>Mir geht’s gut</i>).</li>
+  <li>Welche Adjektive nehmen <b>sein</b>? Alle, die einen Zustand beschreiben: <i>müde · krank · glücklich · traurig ·
+      nervös · erschöpft · erkältet</i>. Bei <i>gut</i> und <i>schlecht</i> geht das <b>nicht</b> — die brauchen <i>es geht</i>.</li>
+  <li>Die Antwort wiederholt den Dativ: <i>Wie geht es dir? — <b>Mir</b> …</i>, nicht <i>Ich …</i></li>
+ </ul></div>`
+},
+{
+ id:"verben-mit-praeposition", tag:4, kap:null, t:"Verben mit Präposition",
+ src:[["kurs"]], beleg:"vgl. Wortschatz-Site: „Verben mit Präposition“ je Kapitel",
+ kurz:"Die Präposition gehört zum Verb — und sie <b>bestimmt den Kasus</b>. Beides zusammen lernen.",
+ body:`
+ <div class="callout"><div class="callout-h">Warum das keine Logik hat</div>
+ <p>Viele Verben haben eine <b>feste</b> Präposition, und die legt den <b>Kasus</b> fest.
+ Man kann ihn <b>nicht</b> erschließen — er gehört zum Verb wie der Artikel zum Nomen.
+ Deshalb: <i>warten <b>auf</b> + Akkusativ</i> immer als <b>eine Einheit</b> lernen.</p>
+ <p class="fine">Besonders wichtig bei <b>an · auf · in · über · vor</b>: Das sind Wechselpräpositionen.
+ Sonst entscheidet die Bewegung über den Kasus — <b>hier nicht</b>. Hier entscheidet das Verb.
+ <i>Ich warte <b>auf den</b> Bus</i> ist Akkusativ, obwohl sich niemand bewegt.</p></div>
+
+ <div class="callout"><div class="callout-h">Nach Kasus sortiert</div>
+ <div class="suffixtab">
+  <div class="sg kakk"><span class="sgh">+ Akkusativ</span><span class="sgs">warten <b>auf</b> · sich freuen <b>auf/über</b> · denken <b>an</b> ·
+    sich erinnern <b>an</b> · sich interessieren <b>für</b> · sich ärgern <b>über</b> · sprechen <b>über</b> ·
+    sich kümmern <b>um</b> · sich einigen <b>auf</b> · achten <b>auf</b> · sich wundern <b>über</b></span></div>
+  <div class="sg kdat"><span class="sgh">+ Dativ</span><span class="sgs">teilnehmen <b>an</b> · leiden <b>an</b> · helfen <b>bei</b> ·
+    sprechen <b>mit</b> · Angst haben <b>vor</b> · warnen <b>vor</b> · gehören <b>zu</b> · bestehen <b>aus</b> ·
+    raten <b>zu</b> · abhängen <b>von</b> · profitieren <b>von</b> · stammen <b>aus</b></span></div>
+ </div></div>
+
+ <div class="callout"><div class="callout-h">Fragen und Antworten: Person oder Sache?</div>
+ <p>Danach fragt man <b>unterschiedlich</b> — je nachdem, ob eine <b>Person</b> oder eine <b>Sache</b> gemeint ist.</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">Person</div><div class="mxh">Sache</div>
+  <div class="mxr">Frage</div>
+  <div class="mxc">Präposition + wen/wem<br><i>Auf wen wartest du?</i></div>
+  <div class="mxc hi">wo(r) + Präposition<br><i>Worauf wartest du?</i></div>
+  <div class="mxr">Antwort</div>
+  <div class="mxc">auf ihn · mit ihr</div>
+  <div class="mxc hi">da(r) + Präposition<br><i>darauf · damit</i></div>
+ </div>
+ <p class="fine">Das <b>-r-</b> kommt nur vor Vokal: <i>wo<b>r</b>auf</i>, <i>da<b>r</b>über</i> — aber <i>womit</i>, <i>damit</i>.</p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich warte <b>auf den Bus</b>.","<i>auf</i> + Akkusativ — obwohl keine Bewegung stattfindet."],
+  ["Ich freue mich <b>auf das Wochenende</b>.","<i>auf</i> = Vorfreude, etwas kommt noch."],
+  ["Ich freue mich <b>über dein Geschenk</b>.","<i>über</i> = jetzt oder vorbei. Gleiche Verben, andere Präposition."],
+  ["Sie denkt oft <b>an ihre Familie</b>.","<i>an</i> + Akkusativ."],
+  ["Er leidet <b>an einer Allergie</b>.","<i>an</i> + <b>Dativ</b> — dieselbe Präposition, anderer Kasus."],
+  ["Wir nehmen <b>an dem Kurs</b> teil.","<i>teilnehmen an</i> + Dativ; das Verb ist trennbar."],
+  ["Ich interessiere mich <b>für Kunst</b>.","<i>für</i> ist immer Akkusativ."],
+  ["Der Arzt rät <b>zu mehr Bewegung</b>.","<i>zu</i> ist immer Dativ."],
+  ["Ich habe Angst <b>vor Spinnen</b>.","<i>vor</i> + Dativ."],
+  ["<b>Worauf</b> wartest du? — <b>Darauf</b>, dass der Bus kommt.","Sache → <i>worauf/darauf</i>."],
+  ["<b>Auf wen</b> wartest du? — Auf meinen Bruder.","Person → <i>auf wen</i> + Akkusativ."],
+  ["<b>Woran</b> denkst du? — <b>Daran</b>, dass morgen Prüfung ist.","<i>-r-</i> vor Vokal: wo<b>r</b>an, da<b>r</b>an."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Bei Wechselpräpositionen gilt die Bewegungsregel nicht.</b> <i>warten auf</i> ist Akkusativ, <i>leiden an</i> ist Dativ —
+      das muss man wissen, nicht denken.</li>
+  <li><b>sich freuen auf</b> (Zukunft) gegen <b>sich freuen über</b> (jetzt / vorbei). Dasselbe Verb, zwei Bedeutungen.</li>
+  <li><b>wo(r)-</b> nur für <b>Sachen</b>. Bei Personen: <i>Auf wen? Mit wem? An wen?</i> — nie <i>worauf</i> für einen Menschen.</li>
+  <li>Das <b>-r-</b> steht nur vor Vokal: <i>worauf · woran · worüber</i> — aber <i>womit · wovon · wofür</i>.</li>
+  <li>Nicht mit der <b>Ortsangabe</b> verwechseln: <i>Ich warte <b>an der Haltestelle</b></i> (wo? → Dativ) gegen
+      <i>Ich warte <b>auf den Bus</b></i> (Verb + Präposition → Akkusativ). Beides in einem Satz möglich.</li>
  </ul></div>`
 }
 ];
