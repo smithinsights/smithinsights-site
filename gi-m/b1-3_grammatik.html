@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kursstufe B1.3 · Grammatik · Kapitel 7–12 · Goethe-Institut München</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F5F2; --panel:#FFFFFF; --ink:#16191F; --muted:#666D77;
+  --line:#E5E5DE; --line-strong:#D4D4CA;
+  --teal:#377DA0; --teal-2:#2C6E90; --teal-ink:#245972;
+  --accent:#E48347; --accent-soft:#FBEDE3;
+  --light-blue:#78B5CB; --lb-tint:rgba(120,181,203,.16);
+  --masc:#2D5FAA; --fem:#B23A48; --neut:#2E7D5B; --plural:#B26A00;
+  --head-bg:#123A5A; --head-hi:#AEDCEE; --head-fg:#8FC3DC; --head-dim:#84B2CD;
+  --sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --disp:"Sora",var(--sans);
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 1px 2px rgba(20,24,20,.04),0 8px 28px rgba(18,59,60,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--teal-2)}
+
+/* Header */
+.masthead{position:relative;overflow:hidden;background:var(--head-bg);color:var(--head-fg);
+  border-bottom:3px solid #0C2740}
+.arcs{position:absolute;inset:0;pointer-events:none;opacity:.5}
+.mast-inner{position:relative;max-width:1080px;margin:0 auto;padding:26px 24px 22px;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.brand .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--head-dim);margin:0 0 6px}
+.brand h1{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4.4vw,40px);
+  line-height:1.02;margin:0;letter-spacing:-.01em;color:var(--head-hi)}
+.brand h1 em{font-style:normal;color:var(--head-fg)}
+.brand .place{margin:8px 0 0;font-size:13.5px;color:var(--head-dim)}
+
+/* Zwei-Zeilen-Navigation — wie im Wortschatz-Site */
+.tabwrap{position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(0,0,0,.01)}
+.navwrap{max-width:1080px;margin:0 auto;padding:9px 16px 12px}
+.navbar{display:flex;width:100%;background:var(--panel);border:1px solid var(--line-strong);overflow:hidden}
+.navbar.kap{border-radius:12px;box-shadow:var(--shadow)}
+
+.tab{flex:1 1 0;min-width:0;text-align:center;background:none;border:0;cursor:pointer;
+  color:var(--muted);font-family:var(--disp);line-height:1.2;position:relative;
+  transition:color .15s,background .15s}
+.tab + .tab{box-shadow:inset 1px 0 0 var(--line)}
+.tab .num{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;opacity:.75;margin-bottom:3px}
+.tab .lbl{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px}
+.kap .tab{font-size:15px;font-weight:600;padding:13px 6px 12px}
+.kap .tab:hover{color:var(--teal);background:var(--lb-tint)}
+.kap .tab[aria-selected="true"]{color:var(--teal)}
+.kap .tab[aria-selected="true"]::after{content:"";position:absolute;left:16%;right:16%;bottom:0;
+  height:3px;border-radius:3px 3px 0 0;background:var(--teal)}
+
+.tab:focus-visible{outline:2px solid var(--teal-2);outline-offset:-2px}
+@media(max-width:560px){.kap .tab{font-size:12.5px;padding:11px 3px}.tab .num{font-size:8.5px}}
+
+/* Toolbar */
+.toolbar{max-width:1080px;margin:0 auto;padding:18px 24px 4px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 240px;position:relative;min-width:190px}
+.search input{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);
+  padding:11px 14px 11px 38px;border:1px solid var(--line-strong);border-radius:10px;background:var(--panel)}
+.search input:focus{outline:none;border-color:var(--teal-2);box-shadow:0 0 0 3px rgba(55,125,160,.16)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
+
+/* Layout */
+main{max-width:1080px;margin:0 auto;padding:20px 24px 80px}
+.ctx{margin:4px 0 22px;padding-left:16px;border-left:4px solid var(--accent)}
+.ctx-crumb{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.ctx-crumb b{color:var(--muted);font-weight:500}
+.ctx-title{font-family:var(--disp);font-weight:700;font-size:clamp(23px,3.3vw,29px);margin:7px 0 6px;line-height:1.1}
+.ctx-desc{margin:0;font-size:15.5px;line-height:1.55;color:var(--muted);max-width:640px}
+.ctx-count{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.08em;color:var(--teal);background:var(--lb-tint);padding:4px 10px;border-radius:20px}
+
+/* Akkordeon — dieselbe Mechanik wie die Verbkarten im Wortschatz-Site */
+.topics{display:grid;gap:10px}
+.topic{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--teal);
+  border-radius:12px;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:130px}
+.topic.kurs{border-left-color:var(--accent)}
+
+.t-head{cursor:pointer;padding:13px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-family:var(--sans);list-style:none}
+.t-head::-webkit-details-marker{display:none}
+.t-head::marker{content:""}
+.t-head:focus-visible{outline:2px solid var(--teal-2);outline-offset:-2px}
+.t-main{flex:1;min-width:0}
+.t-t{font-family:var(--disp);font-weight:600;font-size:16.5px;color:var(--teal-ink);line-height:1.25}
+.t-k{font-size:13.5px;color:var(--muted);line-height:1.5;margin-top:4px}
+.t-f{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.badge{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+  padding:3px 8px;border-radius:5px;white-space:nowrap}
+.badge.buch{background:var(--lb-tint);color:var(--teal-ink)}
+.badge.kurs{background:var(--accent-soft);color:#9C4E1B}
+
+.t-beleg{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.chev{flex-shrink:0;color:var(--muted);transition:transform .2s;margin-top:4px}
+.topic[open] .chev{transform:rotate(90deg)}
+.t-body{padding:2px 16px 16px;border-top:1px solid var(--line)}
+.t-body .callout:last-child{margin-bottom:0}
+
+.empty{padding:34px 16px;text-align:center;color:var(--muted);font-size:14.5px;
+  border:1px dashed var(--line-strong);border-radius:12px}
+/* ---------- Rule blocks ---------- */
+.callout{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;margin-bottom:14px;box-shadow:var(--shadow)}
+.callout-h{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--teal-ink);margin-bottom:8px}
+.callout p{font-size:14.5px;line-height:1.6;margin:0 0 6px}
+.callout .mini{list-style:none;margin:8px 0 0;padding:0;font-size:14px}
+.callout .mini li{padding:5px 0;color:var(--muted);line-height:1.55}
+.callout .mini b{color:var(--ink)}
+.callout .fine{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.55}
+.callout.warn{border-left:3px solid var(--accent)}
+.callout.warn .callout-h{color:#9C4E1B}
+
+.gram-ex{margin:0;padding:0;display:grid;gap:9px}
+.gram-ex li{list-style:none;display:grid;gap:3px;padding:10px 12px;background:#FAFAF7;
+  border:1px solid var(--line);border-radius:9px}
+.gde{font-size:14.5px;line-height:1.5}
+.gde b{color:var(--teal-ink);font-weight:600}
+.gen{font-size:12.5px;color:var(--muted);font-style:italic;line-height:1.5}
+
+.mx{display:grid;grid-template-columns:minmax(96px,auto) 1fr 1fr;gap:6px;margin-top:10px}
+.mxh{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;
+  color:var(--muted);text-align:center;padding-bottom:2px}
+.mxr{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;
+  color:var(--muted);display:flex;align-items:center}
+.mxc{text-align:center;padding:10px 8px;border-radius:8px;font-weight:600;font-size:14.5px;
+  border:1px solid var(--line);background:var(--paper);color:var(--muted)}
+.mxc.hi{background:var(--teal);border-color:var(--teal);color:#fff}
+
+.suffixtab{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.sg{border-left:3px solid var(--line-strong);padding:9px 12px;background:var(--paper);border-radius:8px}
+.sg.fem{border-left-color:var(--fem)} .sg.masc{border-left-color:var(--masc)} .sg.neut{border-left-color:var(--neut)}
+.sg.kdat{border-left-color:var(--teal)} .sg.kakk{border-left-color:var(--accent)} .sg.kgen{border-left-color:var(--plural)}
+.sgh{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--muted);margin-bottom:5px}
+.sgs{font-size:13.5px;color:var(--ink);line-height:1.6}
+
+.howto{display:grid;gap:6px;margin-top:8px}
+.htr{display:grid;grid-template-columns:160px 84px 1fr;gap:10px;align-items:baseline;
+  padding:8px 11px;background:var(--paper);border-radius:8px}
+.htq{color:var(--muted);font-size:12.5px}
+.htp{font-family:var(--mono);font-weight:600;color:var(--teal-ink);font-size:13px}
+.hte{color:var(--ink);font-size:13.5px}
+
+.ptab{width:100%;border-collapse:collapse;margin-top:8px;font-size:13.5px}
+.ptab th{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);text-align:left;padding:6px 10px;border-bottom:1px solid var(--line-strong);font-weight:400}
+.ptab td{padding:7px 10px;border-bottom:1px solid var(--line)}
+.ptab tr:last-child td{border-bottom:0}
+.ptab td:first-child{font-family:var(--mono);color:var(--muted);white-space:nowrap}
+.ptab b{color:var(--teal-ink)}
+
+/* Audio */
+.say{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+  color:var(--muted);border:0;background:transparent;padding:2px;margin-left:3px;border-radius:6px;
+  vertical-align:middle;flex-shrink:0;transition:color .12s,background .12s}
+.say:hover{color:var(--teal-2);background:#EAF2F0}
+.say.speaking{color:var(--teal);background:#DDEEEA}
+.say:focus-visible{outline:2px solid var(--teal-2);outline-offset:1px}
+.say svg{width:14px;height:14px;display:block}
+
+/* Kurstag-Kopf */
+.tagkopf{margin:30px 0 12px;padding-left:14px;border-left:3px solid var(--accent)}
+.tagkopf:first-of-type{margin-top:6px}
+.tagkopf .tk-d{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal)}
+.tagkopf h3{font-family:var(--disp);font-weight:600;font-size:19px;margin:5px 0 0;color:var(--ink)}
+.tagkopf .tk-t{font-size:14px;color:var(--muted);margin-top:2px}
+.einkopf{display:flex;align-items:baseline;gap:12px;margin:30px 0 12px}
+.einkopf:first-of-type{margin-top:6px}
+.einkopf h3{font-family:var(--disp);font-weight:600;font-size:18px;margin:0;color:var(--teal-ink)}
+.einkopf .en{font-size:14px;color:var(--muted)}
+.einkopf .count{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.einkopf .rule{flex:1;height:1px;background:var(--line);align-self:center}
+
+/* colophon */
+footer{border-top:1px solid var(--line);background:#FBFBF8}
+.colophon{max-width:1080px;margin:0 auto;padding:22px 24px 40px;display:flex;
+  gap:18px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
+.colophon .note{font-size:13px;color:var(--muted);max-width:640px;line-height:1.6}
+.colophon .note b{color:var(--ink);font-family:var(--disp)}
+.col-main{display:flex;flex-direction:column;gap:16px;max-width:640px}
+.inst{flex:0 0 auto;display:flex;flex-direction:column;gap:12px;align-items:flex-start;max-width:290px}
+.inst-logo{height:50px;width:auto;display:block}
+.inst-addr{font-style:normal;font-size:12.5px;line-height:1.55;color:var(--muted)}
+.inst-addr b{color:var(--ink);font-family:var(--disp);font-size:13.5px}
+.inst-addr a{color:var(--teal-ink);text-decoration:none;border-bottom:1px solid var(--teal-2)}
+.inst-addr a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:12px}
+.legend span{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+@media(max-width:640px){
+  .suffixtab{grid-template-columns:1fr}
+  .htr{grid-template-columns:1fr;gap:2px}
+  .mx{grid-template-columns:1fr 1fr}
+  .mxr{grid-column:1/-1;margin-top:6px}
+  .mast-inner{flex-direction:column}
+  .ptab{font-size:12.5px}
+  .ptab th,.ptab td{padding:6px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+.fade{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <svg class="arcs" viewBox="0 0 1080 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="#2E6C93" stroke-width="1.1" fill="none" opacity="0.9">
+      <line x1="90" y1="35" x2="240" y2="95"/><line x1="240" y1="95" x2="410" y2="45"/>
+      <line x1="410" y1="45" x2="560" y2="110"/><line x1="560" y1="110" x2="720" y2="55"/>
+      <line x1="720" y1="55" x2="880" y2="120"/><line x1="880" y1="120" x2="1010" y2="60"/>
+      <line x1="240" y1="95" x2="300" y2="150"/><line x1="560" y1="110" x2="470" y2="150"/>
+      <line x1="720" y1="55" x2="640" y2="10"/><line x1="410" y1="45" x2="360" y2="0"/>
+      <line x1="880" y1="120" x2="960" y2="150"/><line x1="90" y1="35" x2="30" y2="95"/>
+    </g>
+    <g fill="#EAF1F6">
+      <circle cx="90" cy="35" r="3.4"/><circle cx="240" cy="95" r="4"/><circle cx="410" cy="45" r="3.2"/>
+      <circle cx="560" cy="110" r="4.2"/><circle cx="720" cy="55" r="3.4"/><circle cx="880" cy="120" r="3.8"/>
+      <circle cx="1010" cy="60" r="3.2"/>
+    </g>
+    <g fill="#E4663A">
+      <circle cx="410" cy="45" r="2"/><circle cx="720" cy="55" r="2.2"/><circle cx="240" cy="95" r="2"/>
+    </g>
+  </svg>
+  <div class="mast-inner">
+    <div class="brand">
+      <p class="eyebrow">Goethe-Institut München · Deutsch Intensiv Kompakt</p>
+      <h1>Kursstufe B1.3<br><em>Grammatik · Kapitel 7–12</em></h1>
+      <p class="place">Lehrwerk: Netzwerk neu B1.2 · Klett — ergänzt um Themen aus dem Kurs</p>
+    </div>
+  </div>
+</header>
+
+<div class="tabwrap">
+  <div class="navwrap">
+    <div class="navbar kap" id="tabs" role="tablist" aria-label="Ansicht"></div>
+  </div>
+</div>
+
+<div class="toolbar">
+  <label class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <input type="search" id="search" placeholder="Grammatik durchsuchen …" autocomplete="off">
+  </label>
+</div>
+
+<main id="main" role="tabpanel" tabindex="-1"></main>
+<footer>
+  <div class="colophon">
+    <div class="col-main">
+    <p class="note"><b>Zu diesem Material.</b> Private Lernhilfe — <b>Erklärungen und Beispiele sind selbst formuliert</b> und im Zweifel gegen Kursbuch und Unterricht zu prüfen. Die Quelle steht auf jeder Karte. Logo: Goethe-Institut; keine offizielle Verbindung zum Institut oder zum Klett-Verlag.</p>
+    <div class="legend" aria-label="Quellen">
+      <span><i style="background:var(--light-blue)"></i>Netzwerk neu (Lehrwerk)</span>
+      <span><i style="background:var(--accent)"></i>Goethe-Kurs</span>
+    </div>
+    </div>
+    <div class="inst">
+      <img class="inst-logo" src="data:image/png;base64,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" alt="Goethe-Institut">
+      <address class="inst-addr">
+        <b>Goethe-Institut München</b><br>
+        Rablstraße 24, 81669 München-Au-Haidhausen<br>
+        Tel. +49 89 1222 3 1222<br>
+        <a href="https://www.goethe.de/deutschland">www.goethe.de/deutschland</a>
+      </address>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ Helfer ============ */
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+/* <br> ist ein Zeilenumbruch, kein Nichts: erst in ein Leerzeichen wandeln,
+   sonst liest die Sprachausgabe "GrüßenChris" und die Suche findet nichts. */
+const plain=s=>String(s).replace(/<br\s*\/?>/gi," ").replace(/<[^>]+>/g,"").replace(/\s+/g," ").trim();
+const attr=s=>plain(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const sayBtn=t=>`<span class="say" role="button" tabindex="0" data-say="${attr(t)}" aria-label="Vorlesen" title="Vorlesen">${SPK}</span>`;
+
+let deVoice=null;
+function pickVoice(){
+  if(!("speechSynthesis" in window))return;
+  const vs=speechSynthesis.getVoices();
+  deVoice=vs.find(v=>/^de[-_]/i.test(v.lang))||vs.find(v=>/german|deutsch/i.test(v.name))||null;
+}
+if("speechSynthesis" in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
+let sayingEl=null;
+function speak(text,el){
+  if(!("speechSynthesis" in window)||!text)return;
+  speechSynthesis.cancel();
+  if(sayingEl)sayingEl.classList.remove("speaking");
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang="de-DE";if(deVoice)u.voice=deVoice;u.rate=.94;
+  if(el){sayingEl=el;el.classList.add("speaking");
+    u.onend=u.onerror=()=>{el.classList.remove("speaking");if(sayingEl===el)sayingEl=null;};}
+  speechSynthesis.speak(u);
+}
+function attachSay(root){
+  root.querySelectorAll(".say").forEach(b=>{
+    b.onclick=ev=>{ev.stopPropagation();speak(b.dataset.say,b);};
+    b.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();ev.stopPropagation();speak(b.dataset.say,b);}};
+  });
+}
+/* Beide Teile sind Markup: e[0] ist der Satz (mit <b> auf der Zielstruktur),
+   e[1] die Erläuterung (mit <i> auf den besprochenen Wörtern). Nicht escapen —
+   sonst steht "<i>denn</i>" wörtlich auf der Seite. */
+const exList=a=>`<ul class="gram-ex">${a.map(e=>
+  `<li><span class="gde">${e[0]} ${sayBtn(e[0])}</span><span class="gen">${e[1]}</span></li>`).join("")}</ul>`;
+
+
+/* Kurstage. Die Grammatik hängt über `tag` daran. */
+const TAGE=[
+ {n:1, wt:"Montag",   datum:"13. Juli 2026", thema:"Beziehungen, Freundschaft & Wohnformen"},
+ {n:2, wt:"Dienstag", datum:"14. Juli 2026", thema:"E-Mail & Anrede, Uhrzeit, temporale Nebensätze"},
+ {n:3, wt:"Mittwoch", datum:"15. Juli 2026", thema:"Musik und Emotionen"}
+];
+
+/* Einheiten aus Netzwerk neu B1.2 — ohne Abschnitte, die Einheit genügt. */
+const EINHEITEN=[
+ [7,"Zwischenmenschliches"],
+ [8,"Rund um Körper und Geist"],
+ [9,"Kunststücke"],
+ [10,"Miteinander"],
+ [11,"Stadt, Land, Fluss"],
+ [12,"Geld regiert die Welt"]
+];
+/* ============ GRAMMATIK ============ */
+/* src: ["buch","K7"]  = Netzwerk neu, Kapitel 7   ·  ["kurs"] = Goethe-Kurs
+   beleg: wo die Übung im Lehrwerk steht (nur bei src=buch)         */
+const G=[
+{
+ id:"plusquamperfekt", kap:7, t:"Plusquamperfekt",
+ src:[["buch","K7"]], beleg:"Übungsbuch K7, 3b–3d",
+ kurz:"Die Vorvergangenheit: Was <b>vor</b> einem anderen Ereignis in der Vergangenheit passiert ist.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Regel</div>
+ <p>Das Plusquamperfekt ist die <b>Vorvergangenheit</b>. Du brauchst es, wenn du in einer Erzählung
+ <b>noch weiter zurück</b> gehst: Etwas war schon vorbei, <i>bevor</i> das andere passierte.</p>
+ <p><b>Bildung:</b> <i>hatte</i> oder <i>war</i> im <b>Präteritum</b> + <b>Partizip II</b>.
+ Welches Hilfsverb? Genau dasselbe wie im Perfekt.</p>
+ <table class="ptab">
+  <tr><th>Perfekt</th><th>Präteritum</th><th>Plusquamperfekt</th></tr>
+  <tr><td>hat gekocht</td><td>kochte</td><td><b>hatte gekocht</b></td></tr>
+  <tr><td>hat verbracht</td><td>verbrachte</td><td><b>hatte verbracht</b></td></tr>
+  <tr><td>ist gefahren</td><td>fuhr</td><td><b>war gefahren</b></td></tr>
+  <tr><td>ist gegangen</td><td>ging</td><td><b>war gegangen</b></td></tr>
+  <tr><td>ist gewesen</td><td>war</td><td><b>war gewesen</b></td></tr>
+ </table>
+ <p class="fine">Merke: <i>haben</i> → <b>hatte</b> + Partizip II · <i>sein</i> → <b>war</b> + Partizip II.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich <b>hatte</b> den Zug <b>verpasst</b>, deshalb kam ich zu spät.","Erst verpasst, dann zu spät — das Verpassen liegt davor."],
+  ["Sie war müde, weil sie den ganzen Tag <b>gearbeitet hatte</b>.","Im Nebensatz steht das Hilfsverb ganz am Ende."],
+  ["Wir <b>waren</b> schon nach Hause <b>gegangen</b>, als der Film begann.","Bewegung → <i>war</i> + Partizip II."],
+  ["Er hatte Hunger, weil er nichts <b>gegessen hatte</b>.","Zwei Vergangenheiten: Hunger (Präteritum) — nichts gegessen (davor)."],
+  ["Als wir ankamen, <b>war</b> der Zug schon <b>abgefahren</b>.","<i>abfahren</i> → Bewegung → <i>war</i>. Trennbar: <i>ab-ge-fahren</i>."],
+  ["Ich <b>hatte</b> die Tabletten schon <b>eingenommen</b>, als der Arzt kam.","Trennbares Verb: Partizip mit <i>-ge-</i> in der Mitte."],
+  ["Nachdem sie sich <b>entschuldigt hatte</b>, war der Streit vorbei.","Reflexiv: <i>sich</i> bleibt vorne, das Hilfsverb geht ans Ende."],
+  ["Er wusste nicht, dass sie ihn <b>belogen hatte</b>.","Im Nebensatz steht <i>hatte</i> ganz am Schluss."],
+  ["Wir <b>waren</b> vorher noch nie in Zürich <b>gewesen</b>, deshalb war alles neu.","<i>sein</i> → <i>war gewesen</i>, nie <i>hatte gewesen</i>. Das zweite Ereignis gehört dazu."],
+  ["Sie <b>hatte</b> lange <b>überlegt</b>, bevor sie zusagte.","Untrennbar: <i>überlegt</i> ohne <i>ge-</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Das Plusquamperfekt steht <b>nie allein</b>. Es braucht immer ein zweites Ereignis in der Vergangenheit — sonst nimm Perfekt oder Präteritum.</li>
+  <li>Nicht <i>habe gekocht</i> → das ist Perfekt. Das Hilfsverb muss ins <b>Präteritum</b>: <i>hatte gekocht</i>.</li>
+  <li>Das Hilfsverb wechselt nicht: Wer <i>ist gefahren</i> sagt, sagt <i>war gefahren</i> — niemals <i>hatte gefahren</i>.</li>
+ </ul></div>`
+},
+{
+ id:"nachdem", kap:7, t:"Nebensätze mit <i>nachdem</i>",
+ src:[["buch","K7"]], beleg:"Übungsbuch K7, 5a–5b · Kursbuch K7",
+ kurz:"Zwei Ereignisse, klare Reihenfolge — und der <b>Zeitensprung</b> zwischen Neben- und Hauptsatz.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Regel</div>
+ <p><i>nachdem</i> leitet einen <b>Nebensatz</b> ein: konjugiertes Verb ans <b>Satzende</b>.
+ Der <i>nachdem</i>-Satz beschreibt, was <b>zuerst</b> passiert ist.</p>
+ <p>Das Besondere: Die beiden Sätze stehen in <b>verschiedenen Zeiten</b> — immer einen Schritt versetzt.</p>
+ <table class="ptab">
+  <tr><th>Nebensatz (zuerst)</th><th>Hauptsatz (danach)</th></tr>
+  <tr><td><b>Plusquamperfekt</b></td><td>Präteritum / Perfekt</td></tr>
+  <tr><td><b>Perfekt</b></td><td>Präsens</td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["<b>Nachdem</b> Peer die Ausbildung <b>beendet hatte</b>, arbeitete er als Krankenpfleger.","Plusquamperfekt → Präteritum. Das Standardmuster."],
+  ["<b>Nachdem</b> ich meine beste Freundin <b>kennengelernt habe</b>, bin ich nicht mehr einsam.","Perfekt → Präsens: die Folge gilt bis heute."],
+  ["Ich fand eine neue Stelle, <b>nachdem</b> ich lange <b>gesucht hatte</b>.","Der Nebensatz kann auch hinten stehen."],
+  ["<b>Nachdem</b> meine beste Freundin <b>weggezogen war</b>, hatte ich kaum noch Kontakt.","<i>wegziehen</i> → <i>war</i> + Partizip II."],
+  ["<b>Nachdem</b> ich mich <b>geduscht hatte</b>, machte ich Frühstück.","Plusquamperfekt → Präteritum."],
+  ["<b>Nachdem</b> wir <b>gegessen hatten</b>, räumten wir die Küche auf.","Beide Ereignisse Vergangenheit, aber versetzt."],
+  ["Er fühlte sich besser, <b>nachdem</b> er die Tabletten <b>genommen hatte</b>.","Nebensatz hinten — der Zeitensprung bleibt gleich."],
+  ["<b>Nachdem</b> sie <b>umgezogen war</b>, hatte sie neue Nachbarn.","<i>umziehen</i> → Bewegung → <i>war</i>."],
+  ["<b>Nachdem</b> ich den Text <b>gelesen habe</b>, verstehe ich das Problem.","Perfekt → Präsens: die Folge gilt jetzt."],
+  ["<b>Nachdem</b> man sich <b>entschuldigt hat</b>, ist der Streit meistens vorbei.","Perfekt → Präsens, allgemeine Aussage mit <i>man</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Nicht dieselbe Zeit</b> in beiden Sätzen. <i>Nachdem ich gegessen habe, ging ich</i> ✗ — der Zeitensprung muss stimmen.</li>
+  <li><i>nachdem</i> ist <b>nicht</b> <i>danach</i>. <i>nachdem</i> = Nebensatz (Verb am Ende), <i>danach</i> = Adverb im Hauptsatz: <i>Danach <b>ging</b> ich nach Hause.</i></li>
+  <li>Steht der Nebensatz zuerst, beginnt der Hauptsatz mit dem <b>Verb</b>: <i>Nachdem ich gegessen hatte, <b>ging</b> ich.</i></li>
+ </ul></div>`
+},
+{
+ id:"als-wenn", tag:2, kap:null, t:"<i>als</i> oder <i>wenn</i>?",
+ src:[["kurs"]],
+ kurz:"Beide heißen <i>when</i>. <b>als</b> ist der Sonderfall — nur Vergangenheit <b>und</b> einmalig.",
+ body:`
+ <div class="callout"><div class="callout-h">Die ganze Regel in einer Tabelle</div>
+ <p>Beide leiten einen <b>Nebensatz</b> ein: konjugiertes Verb ans <b>Satzende</b>.
+ Entscheide mit zwei Fragen — <b>Wann?</b> (Vergangenheit oder nicht) und <b>Wie oft?</b> (einmal oder wiederholt).</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">einmal</div><div class="mxh">wiederholt</div>
+  <div class="mxr">Gegenwart / Zukunft</div><div class="mxc">wenn</div><div class="mxc">wenn</div>
+  <div class="mxr">Vergangenheit</div><div class="mxc hi">als</div><div class="mxc">wenn</div>
+ </div>
+ <p class="fine">Drei von vier Feldern gehören <i>wenn</i>. Nur <b>Vergangenheit + einmal</b> ist <i>als</i>.</p>
+ <p class="fine">Nicht mit <b>wann</b> verwechseln — das ist das <b>Fragewort</b>:
+ <i>Wann kommst du?</i> · <i>Ich weiß nicht, wann er kommt.</i></p></div>
+ <div class="callout"><div class="callout-h">Beispiele — jedes Feld der Tabelle</div>
+ ${exList([
+  ["<b>Wenn</b> du dich <b>entschuldigst</b>, verzeihe ich dir.","Gegenwart · einmal → wenn"],
+  ["<b>Immer wenn</b> wir Rollenspiele <b>machen</b>, ist es lustig.","Gegenwart · wiederholt → wenn"],
+  ["<b>Als</b> der Streit gestern <b>eskalierte</b>, verließ sie den Raum.","Vergangenheit · einmal → als"],
+  ["<b>Immer wenn</b> wir uns <b>stritten</b>, gab mein Bruder nach.","Vergangenheit · wiederholt → wenn, nicht als!"],
+  ["<b>Als</b> ich ein Kind <b>war</b>, haben wir uns oft gestritten.","Der Nebensatz ist ein einmaliger Zeitraum → als. Die Wiederholung steht im Hauptsatz."],
+  ["<b>Als</b> sie mir das <b>vorwarf</b>, <b>gab</b> ich nach.","Nebensatz zuerst → Hauptsatz beginnt mit dem Verb."],
+  ["<b>Als</b> ich gestern nach Hause <b>kam</b>, war niemand da.","<i>gestern</i> = einmal, Vergangenheit → als."],
+  ["<b>Wenn</b> ich Zeit <b>habe</b>, rufe ich dich an.","Gegenwart/Zukunft → immer wenn."],
+  ["<b>Als</b> wir uns zum ersten Mal <b>trafen</b>, war ich sehr nervös.","<i>zum ersten Mal</i> — deutlicher geht einmalig nicht."],
+  ["<b>Wenn</b> ich Musik <b>höre</b>, kann ich besser lernen.","Wiederholung in der Gegenwart → wenn."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Wiederholung in der Vergangenheit</b> ist die häufigste Falle: <i>Immer wenn wir stritten</i> — <b>nicht</b> <i>immer als</i>.</li>
+  <li><i>als</i> steht meist mit <b>Präteritum</b>, nicht mit Perfekt: <i>Als ich klein <b>war</b></i>, nicht <i>Als ich klein gewesen bin</i>.</li>
+  <li><i>wenn</i> heißt auch <b>if</b>. Aus dem Kontext wird klar, ob Zeit oder Bedingung gemeint ist.</li>
+ </ul></div>`
+},
+{
+ id:"temporale-konnektoren", kap:7, t:"<i>bevor · bis · während · seit/seitdem</i>",
+ src:[["buch","K7"]], beleg:"Übungsbuch K7, 6c–6d · Kursbuch K7",
+ kurz:"Vier Nebensätze für Zeit: davor, bis dahin, gleichzeitig, seit einem Startpunkt.",
+ body:`
+ <div class="callout"><div class="callout-h">Welcher Konnektor wann?</div>
+ <p>Alle vier leiten <b>Nebensätze</b> ein — konjugiertes Verb ans <b>Satzende</b>.</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">Was passiert davor?</span><span class="htp">bevor</span><span class="hte">Mark spricht mit Jenny, <b>bevor</b> er seine Freunde trifft.</span></div>
+  <div class="htr"><span class="htq">Bis zu welchem Punkt?</span><span class="htp">bis</span><span class="hte">Jenny wartet nicht, <b>bis</b> Mark nach Hause kommt.</span></div>
+  <div class="htr"><span class="htq">Gleichzeitig?</span><span class="htp">während</span><span class="hte">Jenny entspannt sich, <b>während</b> sie eine Serie sieht.</span></div>
+  <div class="htr"><span class="htq">Seit wann? (dauert an)</span><span class="htp">seit / seitdem</span><span class="hte"><b>Seitdem</b> Florian einen Schülerjob hat, verdient er selbst Geld.</span></div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["<b>Seit</b> Lucie und Julia zusammen in einer WG <b>wohnen</b>, streiten sie sich manchmal.","seit + Präsens: hat angefangen und dauert an."],
+  ["Julia soll öfter putzen, <b>während</b> sie <b>telefoniert</b>.","während = zur gleichen Zeit."],
+  ["<b>Bevor</b> ich zur Arbeit <b>gehe</b>, trinke ich einen Kaffee.","bevor = der Nebensatz passiert später!"],
+  ["Wir warten, <b>bis</b> der Regen <b>aufhört</b>.","bis = Endpunkt."],
+  ["<b>Bevor</b> du <b>gehst</b>, mach bitte das Licht aus.","Der Hauptsatz passiert zuerst — <i>bevor</i> ist die Umkehrung von <i>nachdem</i>."],
+  ["<b>Während</b> ich <b>koche</b>, hört mein Mann Radio.","Zwei Dinge zur gleichen Zeit."],
+  ["<b>Seitdem</b> ich in München <b>wohne</b>, spreche ich viel mehr Deutsch.","<i>seitdem</i> ist nur Konnektor — damit kann man nichts verwechseln."],
+  ["Wir bleiben, <b>bis</b> der Kurs zu Ende <b>ist</b>.","<i>bis</i> = Endpunkt."],
+  ["<b>Bevor</b> ich nach Deutschland <b>kam</b>, hatte ich nie Schnee gesehen.","Kein Zeitensprung im <i>bevor</i>-Satz — das Plusquamperfekt steht im Hauptsatz."],
+  ["<b>Seit</b> sie den neuen Job <b>hat</b>, ist sie viel entspannter.","<i>seit</i> + Präsens, weil es andauert."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>bevor</b> ist die Umkehrung von <b>nachdem</b>: Bei <i>bevor</i> passiert der <b>Hauptsatz</b> zuerst. Beide Sätze stehen aber in derselben Zeit — kein Zeitensprung.</li>
+  <li><b>seit</b> + Nebensatz braucht <b>Präsens</b>, wenn es noch andauert — im Deutschen nicht Perfekt wie im Englischen (<i>since I have been living…</i>).</li>
+  <li><b>seit</b> ist auch Präposition (<i>seit drei Monaten</i>). <b>seitdem</b> ist nur Konnektor — damit kann man nichts falsch machen.</li>
+  <li><b>während</b> ist auch Präposition + <b>Genitiv</b> (<i>während der Busfahrt</i>). Als Konnektor: Verb am Ende.</li>
+ </ul></div>`
+},
+{
+ id:"temporale-praepositionen", tag:3, kap:7, t:"Temporale Präpositionen",
+ src:[["buch","K7"],["kurs"]], beleg:"Übungsbuch K7, 6b · Kurs-Arbeitsblatt 30",
+ kurz:"<i>am · im · um · vor · nach · seit · bis · von…bis · während</i> — und ihr Kasus.",
+ body:`
+ <div class="callout"><div class="callout-h">Zuerst der Kasus</div>
+ <p>Die Präposition bestimmt den <b>Kasus</b>. Wer den Kasus mitlernt, macht bei Artikeln und Endungen keine Fehler.</p>
+ <div class="suffixtab">
+  <div class="sg kdat"><span class="sgh">+ Dativ</span><span class="sgs">an (<b>am</b>) · in (<b>im</b>) · <b>vor</b> · <b>nach</b> · <b>seit</b> · ab · von · zwischen · bei</span></div>
+  <div class="sg kakk"><span class="sgh">+ Akkusativ</span><span class="sgs"><b>um</b> · <b>bis</b> · für · gegen · über</span></div>
+  <div class="sg kgen"><span class="sgh">+ Genitiv</span><span class="sgs"><b>während</b> · innerhalb · außerhalb</span></div>
+ </div>
+ <p class="fine">Verschmelzungen: <b>am</b> = an dem · <b>im</b> = in dem · <b>vom</b> = von dem · <b>zum</b> = zu dem.
+ Nach <i>um</i> und <i>bis</i> steht meist kein Artikel — dann ist der Kasus unsichtbar: <i>um 19 Uhr</i> · <i>bis Montag</i>.</p></div>
+ <div class="callout"><div class="callout-h">Welche Präposition nehme ich?</div>
+ <div class="howto">
+  <div class="htr"><span class="htq">Jahreszahl?</span><span class="htp">— (keine)</span><span class="hte">Ich bin <b>1992</b> geboren. · <b>Im Jahr</b> 1992.</span></div>
+  <div class="htr"><span class="htq">Jahreszeit · Monat?</span><span class="htp">im + D</span><span class="hte"><b>im</b> Sommer · <b>im</b> Januar</span></div>
+  <div class="htr"><span class="htq">Tag · Datum · Tageszeit?</span><span class="htp">am + D</span><span class="hte"><b>am</b> Montag · <b>am</b> 12. Mai · <b>am</b> Morgen</span></div>
+  <div class="htr"><span class="htq">Uhrzeit?</span><span class="htp">um + A</span><span class="hte"><b>um</b> 9.15 Uhr · <b>um</b> Mitternacht</span></div>
+  <div class="htr"><span class="htq">Beginn?</span><span class="htp">ab / von + D</span><span class="hte"><b>Ab</b> morgen rauche ich nicht mehr.</span></div>
+  <div class="htr"><span class="htq">Ende?</span><span class="htp">bis</span><span class="hte">Ich bleibe <b>bis</b> morgen.</span></div>
+  <div class="htr"><span class="htq">Zeitraum, zwei Punkte?</span><span class="htp">von … bis</span><span class="hte"><b>Von</b> Montag <b>bis</b> Freitag habe ich Deutschkurs.</span></div>
+  <div class="htr"><span class="htq">… mit Artikel?</span><span class="htp">vom … bis zum</span><span class="hte">Ich habe <b>vom</b> 3.4. <b>bis zum</b> 15.4. Urlaub.</span></div>
+  <div class="htr"><span class="htq">Dazwischen?</span><span class="htp">zwischen + D</span><span class="hte"><b>Zwischen</b> 5 und 7 bin ich nicht zu Hause.</span></div>
+  <div class="htr"><span class="htq">Davor / danach?</span><span class="htp">vor / nach + D</span><span class="hte"><b>Vor</b> meiner Party muss ich einkaufen. <b>Nach</b> der Party räume ich auf.</span></div>
+  <div class="htr"><span class="htq">Seit wann? (dauert an)</span><span class="htp">seit + D</span><span class="hte">Ich bin <b>seit</b> drei Monaten in Deutschland.</span></div>
+  <div class="htr"><span class="htq">Zeitraum: worin?</span><span class="htp">während + G</span><span class="hte">Ich habe <b>während</b> der Busfahrt gegessen.</span></div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Der Unterricht beginnt <b>um</b> 7.00 Uhr.","Uhrzeit → um."],
+  ["<b>Am</b> Montag gehe ich <b>um</b> 13.20 Uhr nach Hause.","Tag → am · Uhrzeit → um."],
+  ["Meine Hausaufgaben mache ich <b>am</b> Abend.","Tageszeit → am."],
+  ["<b>In</b> der Nacht schlafe ich oder ich lese heimlich.","Die Ausnahme: <i>in</i> der Nacht, nicht <i>am</i>."],
+  ["<b>Nach</b> dem Mittagessen treffe ich meine Freunde.","nach + Dativ."],
+  ["Meistens fahren wir <b>im</b> Juli in Urlaub.","Monat → im."],
+  ["Ich bin <b>seit</b> drei Monaten in Deutschland.","Beginn in der Vergangenheit, dauert an → seit + Dativ."],
+  ["Ich habe <b>vom</b> 3.4. <b>bis zum</b> 15.4. Urlaub.","Daten mit Artikel → vom … bis zum."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>in der Nacht</b> — nicht <i>am</i>. Die einzige Tageszeit mit <i>in</i>.</li>
+  <li><b>seit</b> gegen <b>vor</b>: <i>seit einer Stunde</i> = angefangen und <b>immer noch</b> · <i>vor einer Stunde</i> = <b>abgeschlossen</b> (<i>ago</i>).</li>
+  <li><b>in</b> gegen <b>vor</b>: <i>in zehn Minuten</i> = Zukunft · <i>vor zehn Minuten</i> = Vergangenheit.</li>
+  <li><b>bis</b> gegen <b>bis zu</b>: ohne Artikel <i>bis Montag</i>, mit Artikel <i>bis <b>zum</b> Montag</i>.</li>
+  <li><b>während</b> verlangt <b>Genitiv</b>. Umgangssprachlich hört man Dativ (<i>während dem Essen</i>) — in der Prüfung besser Genitiv.</li>
+  <li><b>seit</b> gibt es nicht für die Zukunft. Dafür <b>ab</b>: <i>ab Montag</i>.</li>
+ </ul></div>`
+},
+{
+ id:"modalpartikeln", kap:7, t:"Modalpartikeln",
+ src:[["buch","K7"]], beleg:"Kursbuch K7 (Lösung: 1 mal, 2 ja, 3 denn, 4 wohl, 5 aber)",
+ kurz:"<i>aber · denn · ja · mal · wohl</i> — kleine Wörter, die die <b>Haltung</b> zeigen, nicht den Inhalt.",
+ body:`
+ <div class="callout"><div class="callout-h">Was sie tun</div>
+ <p>Modalpartikeln ändern die <b>Bedeutung</b> des Satzes kaum — sie zeigen, <b>wie</b> du etwas meinst:
+ überrascht, freundlich, ungeduldig, vermutend. Ohne sie klingt Deutsch korrekt, aber steif.</p>
+ <p>Sie stehen fast immer im <b>Mittelfeld</b> (nach dem Verb und den Pronomen), <b>nie am Satzanfang</b>,
+ und sie sind <b>unbetont</b>.</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">Überraschung</span><span class="htp">aber</span><span class="hte">Das ist <b>aber</b> schön hier!</span></div>
+  <div class="htr"><span class="htq">Frage freundlicher</span><span class="htp">denn</span><span class="hte">Was machst du <b>denn</b> da?</span></div>
+  <div class="htr"><span class="htq">Wir wissen es beide</span><span class="htp">ja</span><span class="hte">Du kennst ihn <b>ja</b> schon.</span></div>
+  <div class="htr"><span class="htq">Bitte lockerer</span><span class="htp">mal</span><span class="hte">Komm <b>mal</b> her! · Warte <b>mal</b>.</span></div>
+  <div class="htr"><span class="htq">Vermutung</span><span class="htp">wohl</span><span class="hte">Er ist <b>wohl</b> krank.</span></div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Warte <b>mal</b>, ich komme sofort.","<i>mal</i> macht aus einem Befehl eine Bitte."],
+  ["Du weißt <b>ja</b>, dass ich das nicht mag.","<i>ja</i>: Das ist keine neue Information für dich."],
+  ["Warum hast du das <b>denn</b> nicht gesagt?","<i>denn</i> nimmt der Frage die Schärfe."],
+  ["Er hat es <b>wohl</b> vergessen.","<i>wohl</i>: Ich vermute es, ich weiß es nicht."],
+  ["Das war <b>aber</b> ein langer Tag!","<i>aber</i> als Partikel = Überraschung, nicht Gegensatz."],
+  ["Wo warst du <b>denn</b> so lange?","<i>denn</i> — Interesse statt Vorwurf."],
+  ["Das ist <b>ja</b> unglaublich!","<i>ja</i> in einem Ausruf = Überraschung."],
+  ["Kannst du mir <b>mal</b> helfen?","<i>mal</i> macht die Bitte kleiner und freundlicher."],
+  ["Sie ist <b>wohl</b> schon gegangen.","<i>wohl</i> = Vermutung, kein Wissen."],
+  ["Der Film war <b>aber</b> spannend!","<i>aber</i> im Ausruf — nichts mit Gegensatz zu tun."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>aber</b> und <b>denn</b> sind auch <b>Konjunktionen</b> (<i>Ich wollte, <b>aber</b> ich konnte nicht</i>). Als Partikel stehen sie <b>im Satz</b>, nicht dazwischen.</li>
+  <li>Nie am Satzanfang. <i>Denn was machst du?</i> ✗ → <i>Was machst du <b>denn</b>?</i> ✓</li>
+  <li>Nicht übersetzen wollen — im Englischen gibt es meist kein Wort dafür, nur einen Tonfall.</li>
+  <li>Sparsam bleiben: zwei Partikeln in einem Satz sind für B1 zu viel.</li>
+ </ul></div>`
+},
+{
+ id:"finalsaetze", tag:3, kap:null, t:"Finalsätze: <i>um … zu</i> oder <i>damit</i>",
+ src:[["kurs"]],
+ kurz:"Wozu? Die Absicht ausdrücken — und die eine Frage, die über <i>um…zu</i> oder <i>damit</i> entscheidet.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Regel: eine Frage entscheidet</div>
+ <p>Beide antworten auf <b>Wozu?</b> / <b>Warum?</b>. Die Wahl hängt nur an einer Sache:</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">gleiches Subjekt</div><div class="mxh">anderes Subjekt</div>
+  <div class="mxr">Absicht</div><div class="mxc hi">um … zu</div><div class="mxc">damit</div>
+ </div>
+ <p class="fine"><b>Gleiches Subjekt?</b> → <i>um … zu</i> + Infinitiv am Ende (das Subjekt wird nicht wiederholt).<br>
+ <b>Zwei verschiedene Subjekte?</b> → <i>damit</i> + Nebensatz mit eigenem Subjekt und Verb am Ende.</p>
+ <p class="fine"><i>damit</i> geht immer — auch bei gleichem Subjekt. <i>um … zu</i> geht <b>nur</b> bei gleichem Subjekt.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich lerne Deutsch, <b>um</b> in München <b>zu</b> studieren.","<i>ich</i> lerne, <i>ich</i> studiere → gleiches Subjekt → um…zu"],
+  ["Ich erkläre es langsam, <b>damit</b> du mich <b>verstehst</b>.","<i>ich</i> erkläre, <i>du</i> verstehst → anders → damit"],
+  ["Sie spart Geld, <b>um</b> sich ein Auto <b>zu kaufen</b>.","Gleiches Subjekt. Der Infinitiv steht ganz am Ende."],
+  ["Ich schreibe es auf, <b>damit</b> ich es nicht <b>vergesse</b>.","Gleiches Subjekt — <i>damit</i> ist trotzdem erlaubt."],
+  ["Er steht früh auf, <b>um</b> den Zug <b>zu erreichen</b>.","Trennbares Verb: <i>zu</i> kommt in die Mitte → <i>zu erreichen</i>, aber <i>auf<b>zu</b>stehen</i>."],
+  ["Ich stehe früh auf, <b>damit</b> ich den Bus nicht <b>verpasse</b>.","Gleiches Subjekt — <i>damit</i> ist trotzdem korrekt."],
+  ["Wir sprechen langsam, <b>damit</b> die Kinder uns <b>verstehen</b>.","<i>wir</i> ≠ <i>die Kinder</i> → nur <i>damit</i> möglich."],
+  ["Sie geht ins Fitnessstudio, <b>um</b> fit <b>zu bleiben</b>.","Gleiches Subjekt, kein zweites <i>sie</i>."],
+  ["Ich brauche eine Brille, <b>um</b> besser <b>zu sehen</b>.","Infinitiv ganz am Ende."],
+  ["<b>Damit</b> du pünktlich <b>bist</b>, wecke ich dich um sechs.","Nebensatz zuerst → Hauptsatz beginnt mit dem Verb."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Bei <i>um … zu</i> <b>kein Subjekt</b> im Nebensatz: <i>um ich zu studieren</i> ✗.</li>
+  <li>Bei <b>trennbaren Verben</b> rutscht das <i>zu</i> zwischen Vorsilbe und Stamm: <i>um früh auf<b>zu</b>stehen</i>.</li>
+  <li>Mit <b>Modalverb</b> geht <i>um…zu</i> nicht: <i>damit ich schlafen kann</i> ✓ — nicht <i>um schlafen zu können</i> (formal möglich, aber im Kurs meiden).</li>
+  <li><i>damit</i> ist nicht das Pronominaladverb <i>damit</i> (<i>Womit? — Damit.</i>). Konnektor = Verb am Ende.</li>
+ </ul></div>`
+},
+{
+ id:"komposita", tag:1, kap:null, t:"Komposita",
+ src:[["kurs"]],
+ kurz:"Zusammengesetzte Nomen: Das <b>letzte</b> Wort bestimmt Artikel und Plural.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Regel</div>
+ <p>Das <b>Grundwort</b> (das letzte Glied) bestimmt <b>Artikel</b> und <b>Plural</b>.
+ Die Wörter davor beschreiben es genauer. Gelesen wird von <b>hinten</b>.</p>
+ <ul class="mini">
+  <li>die Freundschaft + der Tag → <b>der</b> Freundschaft<b>s</b>tag</li>
+  <li>das Haus + die Tür → <b>die</b> Haustür</li>
+  <li>die Wohnung + die Form → <b>die</b> Wohnform</li>
+  <li>der Krankenwagen = der Wagen für Kranke → <b>der</b>, Plural: die Krankenwagen</li>
+ </ul>
+ <p class="fine">Oft verbindet ein <b>Fugenelement</b> die Teile: <b>-s-</b> (Freundschaft<b>s</b>tag),
+ <b>-n-</b> (Krank<b>en</b>wagen), <b>-e-</b> (Tag<b>e</b>szeit). Dafür gibt es keine sichere Regel — mitlernen.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele aus Kapitel 7–12</div>
+ ${exList([
+  ["<b>die</b> Krankenkasse","Kasse → die. <i>Kranken-</i> beschreibt nur."],
+  ["<b>das</b> Lagerfeuer","Feuer → das."],
+  ["<b>der</b> Schweinebraten","Braten → der."],
+  ["<b>die</b> Gedächtnisleistung","Leistung → die. Endung -ung ist ohnehin feminin."],
+  ["<b>der</b> Zeitungskasten","Kasten → der, Plural: die Zeitungskästen."],
+  ["<b>die</b> Zahnbürste","Bürste → die. <i>Zahn-</i> sagt nur, wofür."],
+  ["<b>der</b> Schlafanzug","Anzug → der, Plural: die Schlafanz<b>ü</b>ge."],
+  ["<b>das</b> Schmerzmittel","Mittel → das."],
+  ["<b>die</b> Notaufnahme","Aufnahme → die. Endung -e und Grundwort ziehen am selben Strang."],
+  ["<b>der</b> Kontoauszug","Auszug → der, Plural: die Kontoausz<b>ü</b>ge."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Nie das <b>erste</b> Wort für den Artikel nehmen — <i>die Wohnung</i> + <i>die Form</i> ist Zufall; entscheidend ist <i>Form</i>.</li>
+  <li>Der Plural kommt ebenfalls vom Grundwort — mit <b>Umlaut</b>, wenn das Grundwort ihn hat: der Kasten → die K<b>ä</b>sten.</li>
+  <li>Komposita werden im Deutschen <b>zusammengeschrieben</b>, nicht getrennt wie im Englischen.</li>
+ </ul></div>`
+},
+{
+ id:"genus-suffixe", tag:1, kap:null, t:"Genus an der Endung erkennen",
+ src:[["kurs"]],
+ kurz:"Die Endung verrät den Artikel — bei <i>-ung, -heit, -keit</i> und vielen anderen fast immer.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Endungen</div>
+ <div class="suffixtab">
+  <div class="sg fem"><span class="sgh">meist feminin</span><span class="sgs">-ung · -heit · -keit · -schaft · -ei · -ion · -tät · -ur · -ik</span></div>
+  <div class="sg masc"><span class="sgh">meist maskulin</span><span class="sgs">-er · -ling · -ismus · -ant · -or · -ig</span></div>
+  <div class="sg neut"><span class="sgh">meist neutral</span><span class="sgs">-chen · -lein · -ment · -um · -tum · Ge-…-e</span></div>
+ </div>
+ <p class="fine">Faustregeln mit Ausnahmen — im Zweifel den Artikel gleich mitlernen.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele aus dem Wortschatz K7–12</div>
+ ${exList([
+  ["<b>die</b> Erhöhung · <b>die</b> Forderung · <b>die</b> Heilung","-ung → immer feminin. Diese Regel hat keine Ausnahme."],
+  ["<b>die</b> Ehrlichkeit · <b>die</b> Gerechtigkeit · <b>die</b> Schönheit","-keit und -heit → feminin."],
+  ["<b>die</b> Freundschaft · <b>die</b> Gemeinschaft","-schaft → feminin."],
+  ["<b>der</b> Pfleger · <b>der</b> Käufer · <b>der</b> Moderator","-er, -or → maskulin (Personen und Geräte)."],
+  ["<b>der</b> Flüchtling","-ling → maskulin."],
+  ["<b>das</b> Hörnchen · <b>das</b> Hühnchen","-chen → neutral. Auch bei femininen Grundwörtern!"],
+  ["<b>die</b> Information · <b>die</b> Situation · <b>die</b> Tradition","-ion → feminin."],
+  ["<b>das</b> Dokument · <b>das</b> Instrument","-ment → neutral."],
+  ["<b>der</b> Kapitalismus · <b>der</b> Tourismus","-ismus → maskulin, immer."],
+  ["<b>die</b> Bäckerei · <b>die</b> Metzgerei","-ei → feminin."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>-chen</b> schlägt alles: <i>das Mädchen</i>, <i>das Hühnchen</i> — auch wenn das Grundwort feminin ist.</li>
+  <li><b>-er</b> ist nur eine Tendenz: <i>die Mutter</i>, <i>das Fenster</i>, <i>das Wasser</i> sind Ausnahmen.</li>
+  <li>Bei <b>Komposita</b> zählt die Endung des <b>letzten</b> Glieds — die beiden Regeln arbeiten zusammen.</li>
+ </ul></div>`
+},
+{
+ id:"derselbe", kap:7, t:"<i>derselbe · dasselbe · dieselbe</i>",
+ src:[["buch","K7"]], beleg:"Übungsbuch K7, 8b",
+ kurz:"Identität ausdrücken: <b>genau der gleiche</b> — ein Wort, zwei Teile, beide werden dekliniert.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Regel</div>
+ <p><i>derselbe</i> besteht aus <b>Artikel + selb-</b> und wird <b>zusammengeschrieben</b>.
+ Beide Teile verändern sich: der Artikel wie immer, <i>selb-</i> bekommt die <b>Adjektivendung</b>.</p>
+ <table class="ptab">
+  <tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr>
+  <tr><td>Nominativ</td><td><b>derselbe</b></td><td><b>dieselbe</b></td><td><b>dasselbe</b></td><td><b>dieselben</b></td></tr>
+  <tr><td>Akkusativ</td><td><b>denselben</b></td><td><b>dieselbe</b></td><td><b>dasselbe</b></td><td><b>dieselben</b></td></tr>
+  <tr><td>Dativ</td><td><b>demselben</b></td><td><b>derselben</b></td><td><b>demselben</b></td><td><b>denselben</b></td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Wir haben <b>dasselbe</b> Problem.","neutral, Nominativ/Akkusativ."],
+  ["Ich nehme <b>denselben</b> Zug wie du.","maskulin, Akkusativ → -en."],
+  ["Wir wohnen in <b>derselben</b> Straße.","feminin, Dativ nach <i>in</i>."],
+  ["Sie tragen <b>dieselben</b> Schuhe.","Plural."],
+  ["Wir haben <b>denselben</b> Lehrer.","maskulin, Akkusativ → -en."],
+  ["Sie hat <b>dieselben</b> Probleme wie ich.","Plural, Akkusativ."],
+  ["Das ist <b>derselbe</b> Mann, den wir gestern gesehen haben.","maskulin, Nominativ."],
+  ["Ich habe mit <b>demselben</b> Kollegen gesprochen.","Dativ nach <i>mit</i>. <i>Kollege</i> ist n-Deklination → Kollege<b>n</b>."],
+  ["Wir sind am <b>selben</b> Tag geboren.","Mit Präposition getrennt geschrieben: <i>am selben</i>, nicht <i>amselben</i>."],
+  ["Sie trägt <b>dasselbe</b> Kleid wie letzte Woche.","neutral, Akkusativ."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>derselbe</b> = identisch (ein einziges Ding). <b>der gleiche</b> = gleich aussehend, aber ein anderes. <i>Wir haben dasselbe Auto</i> = wir teilen eins.</li>
+  <li>Mit Präposition wird getrennt geschrieben: <i>am selben Tag</i>, <i>im selben Haus</i> — nicht <i>amselben</i>.</li>
+  <li>Der erste Teil ist ein <b>Artikel</b>, also kommt danach kein zweiter: <i>der derselbe Mann</i> ✗.</li>
+ </ul></div>`
+},
+{
+ id:"anrede", tag:2, kap:null, t:"Anrede &amp; Schlussformel in der E-Mail",
+ src:[["kurs"]],
+ kurz:"Wie nah stehst du der Person? Danach richtet sich alles — <b>Anrede</b>, <b>Schlussformel</b> und <i>du</i> oder <i>Sie</i>.",
+ body:`
+ <div class="callout"><div class="callout-h">Die eine Frage: Wie nah?</div>
+ <p>Im Deutschen entscheidet nicht der Anlass, sondern die <b>Nähe</b> zur Person. Wähle die Stufe —
+ dann passen Anrede und Schlussformel automatisch zusammen. <b>Nie mischen:</b> keine formelle
+ Anrede mit einer lockeren Schlussformel.</p>
+ <table class="ptab">
+  <tr><th>Stufe</th><th>Anrede</th><th>Schlussformel</th><th>du / Sie</th></tr>
+  <tr><td><b>1 · Name unbekannt</b><br><span class="htq">Behörde, Firma, Bewerbung</span></td>
+      <td><b>Sehr geehrte Damen und Herren,</b></td>
+      <td>Mit freundlichen Grüßen</td><td>Sie</td></tr>
+  <tr><td><b>2 · formell, Name bekannt</b><br><span class="htq">Amt, Vermieter, Professorin</span></td>
+      <td><b>Sehr geehrte Frau Moser,</b><br><b>Sehr geehrter Herr Dr. Weber,</b></td>
+      <td>Mit freundlichen Grüßen</td><td>Sie</td></tr>
+  <tr><td><b>3 · formell, aber bekannt</b><br><span class="htq">Kollegin, Kursleiterin</span></td>
+      <td><b>Guten Tag Frau Moser,</b><br><b>Hallo Frau Moser,</b></td>
+      <td>Freundliche Grüße<br>Viele Grüße<br>Beste Grüße</td><td>Sie</td></tr>
+  <tr><td><b>4 · locker, per du</b><br><span class="htq">Kollegen, Mitlernende</span></td>
+      <td><b>Hallo Chris,</b><br><b>Hi Anna,</b></td>
+      <td>Viele Grüße<br>Liebe Grüße<br>Bis bald</td><td>du</td></tr>
+  <tr><td><b>5 · vertraut</b><br><span class="htq">Freunde, Familie</span></td>
+      <td><b>Liebe Anna,</b><br><b>Lieber Tom,</b></td>
+      <td>Liebe Grüße<br>Herzliche Grüße<br>Alles Liebe</td><td>du</td></tr>
+ </table>
+ <p class="fine">Im Zweifel <b>eine Stufe formeller</b>. Zu förmlich wirkt distanziert, zu locker wirkt respektlos —
+ und das zweite ist schlimmer.</p></div>
+
+ <div class="callout"><div class="callout-h">Die Form: Komma und Kleinschreibung</div>
+ <p>Nach der Anrede steht ein <b>Komma</b>. Danach kommt eine <b>Leerzeile</b>, und der Text
+ beginnt <b>klein</b> — außer das erste Wort ist ein Nomen oder <i>Ich</i>.</p>
+ ${exList([
+  ["Sehr geehrte Frau Moser,<br><br><b>v</b>ielen Dank für Ihre Nachricht.","Komma → Leerzeile → klein weiter. Der häufigste Formfehler im Kurs."],
+  ["Liebe Anna,<br><br><b>i</b>ch komme morgen später.","Auch hier klein — <i>ich</i> steht klein."],
+  ["Hallo Chris,<br><br><b>d</b>anke für deine E-Mail!","<i>danke</i> ist kein Nomen → klein."],
+  ["Sehr geehrter Herr Dr. Weber,<br><br><b>m</b>ein Name ist Chris Smith.","<i>Sehr geehrter</i> — mit -r für Herr."],
+  ["Sehr geehrte Damen und Herren,<br><br><b>h</b>iermit bewerbe ich mich um die Stelle.","Stufe 1 — Name unbekannt, Bewerbung."],
+  ["Hallo Frau Moser,<br><br><b>v</b>ielen Dank für die schnelle Antwort.","Stufe 3 — bekannt, aber weiter per Sie."],
+  ["Liebe Kolleginnen und Kollegen,<br><br><b>m</b>orgen fällt der Kurs leider aus.","Gruppe: beide Formen nennen."],
+  ["Sehr geehrte Frau Dr. Weber,<br><br><b>i</b>ch schreibe Ihnen wegen meines Termins.","Titel <b>vor</b> dem Namen, <i>Frau</i> bleibt stehen."],
+  ["Mit freundlichen Grüßen<br>Chris Smith","Schlussformel <b>ohne</b> Komma, Name in der nächsten Zeile."],
+  ["Hi Tom,<br><br><b>k</b>ommst du morgen mit ins Konzert?","Stufe 4–5 — nur bei Freunden."]
+ ])}
+ <p class="fine">Die Schlussformel bekommt <b>kein Komma</b>: <i>Mit freundlichen Grüßen</i> —
+ dann direkt der Name in der nächsten Zeile.</p></div>
+
+ <div class="callout"><div class="callout-h">Sie oder du — und Ihr/dein</div>
+ <div class="howto">
+  <div class="htr"><span class="htq">Sie-Form</span><span class="htp">Sie · Ihnen · Ihr</span><span class="hte">Danke für <b>Ihre</b> Nachricht. Ich schicke <b>Ihnen</b> den Text.</span></div>
+  <div class="htr"><span class="htq">du-Form</span><span class="htp">du · dir · dein</span><span class="hte">Danke für <b>deine</b> Nachricht. Ich schicke <b>dir</b> den Text.</span></div>
+ </div>
+ <p class="fine"><b>Sie</b>, <b>Ihnen</b> und <b>Ihr</b> schreibt man <b>immer groß</b>.
+ <i>du</i>, <i>dir</i>, <i>dein</i> stehen heute <b>klein</b> — in E-Mails ist die Großschreibung erlaubt, aber nicht nötig.</p>
+ <p class="fine">Wer einmal <i>Sie</i> gesagt hat, bleibt bei <i>Sie</i>, bis die andere Person das <b>du</b> anbietet.</p></div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Sehr geehrte<span style="color:var(--fem)">r</span> Herr</b> Weber — maskulin bekommt <i>-r</i>. <i>Sehr geehrte Herr</i> ✗.</li>
+  <li><b>Liebe Grüße</b> gehen nicht an eine Behörde. Stufe 4–5 nur, wenn du die Person wirklich kennst.</li>
+  <li><b>MfG</b> nie ausschreiben-lassen: In formellen E-Mails gilt die Abkürzung als unhöflich.</li>
+  <li><b>Kein Ausrufezeichen</b> nach der Anrede: <i>Sehr geehrte Frau Moser!</i> ist veraltet.</li>
+  <li>Bei Titeln: <b>Herr</b> bleibt stehen — <i>Sehr geehrter Herr Prof. Dr. Müller,</i>. Nicht <i>Sehr geehrter Prof. Müller</i>.</li>
+  <li><b>Hallo</b> ist die Grauzone: mit Nachname (Stufe 3) höflich-neutral, mit Vorname (Stufe 4) locker. <i>Hallo</i> allein wirkt schnell knapp.</li>
+ </ul></div>`
+},
+{
+ id:"brauchen-zu", kap:8, t:"<i>brauchen … zu</i> + Infinitiv",
+ src:[["buch","K8"]], beleg:"Übungsbuch K8, 3",
+ kurz:"<i>nicht/kein</i> oder <i>nur</i> + <b>brauchen … zu</b> — die höfliche Alternative zu <i>müssen</i>.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Regel</div>
+ <p><b>brauchen</b> ersetzt <b>müssen</b> — aber <b>nur in der Verneinung</b> oder mit <i>nur</i>.
+ Der Infinitiv am Ende bekommt ein <b>zu</b>.</p>
+ <table class="ptab">
+  <tr><th>statt</th><th>sagt man</th></tr>
+  <tr><td>Sie müssen <b>nicht</b> lange bleiben.</td><td>Sie <b>brauchen nicht</b> lange <b>zu</b> bleiben.</td></tr>
+  <tr><td>Sie müssen <b>nur</b> etwas sagen.</td><td>Sie <b>brauchen nur</b> etwas <b>zu</b> sagen.</td></tr>
+  <tr><td>Sie müssen <b>keine</b> Angst haben.</td><td>Sie <b>brauchen keine</b> Angst <b>zu</b> haben.</td></tr>
+ </table>
+ <p class="fine">Die drei Auslöser: <b>nicht</b> · <b>kein</b> · <b>nur</b>. Ohne einen davon geht <i>brauchen … zu</i> nicht.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Sie <b>brauchen nur</b> mit dem Rezept in die Apotheke <b>zu</b> gehen.","<i>nur</i> → brauchen … zu. Klingt freundlicher als <i>Sie müssen</i>."],
+  ["Sie <b>brauchen nicht</b> mehr lange im Krankenhaus <b>zu</b> bleiben.","Verneinung mit <i>nicht</i>."],
+  ["Wenn Sie einen Tee möchten, <b>brauchen</b> Sie <b>nur</b> etwas <b>zu</b> sagen.","Typisch im Krankenhaus: höfliches Angebot."],
+  ["Sie <b>brauchen keine</b> Angst <b>zu</b> haben, die Untersuchung tut nicht weh.","Verneinung mit <i>kein</i>."],
+  ["Wenn die Schmerzen vorbei sind, <b>brauchen</b> Sie <b>keine</b> Tabletten mehr <b>zu</b> nehmen.","<i>kein</i> + Komparativ <i>mehr</i>."],
+  ["Du <b>brauchst</b> dir <b>keine</b> Sorgen <b>zu</b> machen.","<i>kein</i> + festes Nomen-Verb-Gefüge."],
+  ["Ihr <b>braucht nicht</b> auf mich <b>zu</b> warten.","<i>brauchen</i> wird normal konjugiert: <i>ihr braucht</i>."],
+  ["Sie <b>brauchen nur</b> das Formular <b>auszufüllen</b>.","Trennbares Verb: <i>zu</i> rutscht in die Mitte → <i>aus<b>zu</b>füllen</i>."],
+  ["Wir <b>brauchen</b> morgen <b>nicht</b> früh <b>aufzustehen</b>.","Auch hier: <i>auf<b>zu</b>stehen</i>, ein Wort."],
+  ["Du <b>brauchst</b> es mir <b>nur zu</b> sagen.","<i>nur</i> + Pronomen im Mittelfeld."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Kein <i>zu</i> vergessen.</b> <i>Sie brauchen nicht kommen</i> ✗ → <i>Sie brauchen nicht <b>zu</b> kommen</i> ✓. (Umgangssprachlich hört man es ohne — im Kurs falsch.)</li>
+  <li><b>Nicht im positiven Satz.</b> <i>Sie brauchen zu kommen</i> ✗ → dafür <i>Sie müssen kommen</i>.</li>
+  <li><i>brauchen</i> ist hier <b>kein Modalverb</b>: Es wird normal konjugiert — <i>du brauch<b>st</b> nicht zu warten</i>.</li>
+  <li>Nicht mit dem normalen <i>brauchen</i> (= benötigen) verwechseln: <i>Ich brauche einen Stift.</i></li>
+ </ul></div>`
+},
+{
+ id:"reflexivpronomen", kap:8, t:"Reflexivpronomen: Akkusativ oder Dativ",
+ src:[["buch","K8"]], beleg:"Übungsbuch K8, 4a–4c",
+ kurz:"<i>mich</i> oder <i>mir</i>? Nur <b>ich</b> und <b>du</b> unterscheiden sich — der Rest ist immer <i>sich</i>.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Tabelle — sie ist kleiner, als sie aussieht</div>
+ <p>Nur in der <b>1. und 2. Person Singular</b> gibt es einen Unterschied. Alles andere ist identisch.</p>
+ <table class="ptab">
+  <tr><th></th><th>ich</th><th>du</th><th>er/es/sie</th><th>wir</th><th>ihr</th><th>sie/Sie</th></tr>
+  <tr><td>Akkusativ</td><td><b>mich</b></td><td><b>dich</b></td><td>sich</td><td>uns</td><td>euch</td><td>sich</td></tr>
+  <tr><td>Dativ</td><td><b>mir</b></td><td><b>dir</b></td><td>sich</td><td>uns</td><td>euch</td><td>sich</td></tr>
+ </table>
+ <p class="fine">Also: Wenn du nicht über <i>ich</i> oder <i>du</i> sprichst, musst du gar nicht entscheiden.</p></div>
+ <div class="callout"><div class="callout-h">Wann Dativ?</div>
+ <p>Die Regel ist mechanisch: <b>Gibt es schon ein Akkusativobjekt im Satz?</b>
+ Dann muss das Reflexivpronomen in den <b>Dativ</b> ausweichen — es kann ja nicht zwei Akkusative geben.</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">kein anderes Objekt</span><span class="htp">Akkusativ</span><span class="hte">Ich wasche <b>mich</b>.</span></div>
+  <div class="htr"><span class="htq">+ Akkusativobjekt</span><span class="htp">Dativ</span><span class="hte">Ich wasche <b>mir</b> die Hände.</span></div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich muss <b>mich</b> anmelden.","Kein weiteres Objekt → Akkusativ."],
+  ["Ich kann <b>mich</b> nicht entscheiden.","<i>sich entscheiden</i> ist immer Akkusativ."],
+  ["Wir müssen <b>uns</b> beeilen.","<i>uns</i> — Akkusativ und Dativ sind gleich."],
+  ["Kannst du <b>dich</b> ausruhen?","Akkusativ."],
+  ["Ich creme <b>mir</b> den Rücken ein.","<i>den Rücken</i> ist schon Akkusativ → <i>mir</i>."],
+  ["Putz <b>dir</b> die Zähne!","<i>die Zähne</i> = Akkusativ → <i>dir</i>."],
+  ["Setz <b>dich</b> bitte!","Imperativ, kein weiteres Objekt → Akkusativ."],
+  ["Ich habe <b>mir</b> das anders vorgestellt.","<i>das</i> ist Akkusativ → <i>mir</i> weicht in den Dativ aus."],
+  ["Wir treffen <b>uns</b> um acht.","<i>uns</i> — Akkusativ und Dativ sind identisch."],
+  ["Zieh <b>dir</b> eine Jacke an!","<i>eine Jacke</i> = Akkusativ → <i>dir</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Bei <b>Körperteilen</b> steht fast immer der Dativ, weil der Körperteil das Akkusativobjekt ist: <i>Ich wasche <b>mir</b> die Haare</i> — nicht <i>meine Haare</i>. Das Possessiv braucht man im Deutschen nicht.</li>
+  <li><b>sich</b> wird nie großgeschrieben — auch nicht in der Höflichkeitsform: <i>Setzen Sie <b>sich</b>, bitte.</i></li>
+  <li>Das Reflexivpronomen steht im Hauptsatz <b>direkt nach dem Verb</b>: <i>Ich fühle <b>mich</b> gut.</i> — bei Inversion nach dem Subjekt: <i>Heute fühle ich <b>mich</b> gut.</i></li>
+ </ul></div>`
+},
+{
+ id:"zweiteilige-konnektoren", kap:8, t:"Zweiteilige Konnektoren",
+ src:[["buch","K8"]], beleg:"Übungsbuch K8 · Kapitelwortschatz K8, Abschnitt „Musik und Emotionen“",
+ kurz:"<i>sowohl … als auch</i> · <i>entweder … oder</i> · <i>weder … noch</i> · <i>zwar … aber</i> · <i>nicht nur … sondern auch</i> · <i>einerseits … andererseits</i>",
+ body:`
+ <div class="callout"><div class="callout-h">Sechs Paare — was sie bedeuten</div>
+ <p>Zweiteilige Konnektoren verbinden zwei gleichwertige Teile. Der erste Teil kündigt an, der zweite löst ein.</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">beides (+ und +)</span><span class="htp">sowohl … als auch</span><span class="hte">Ich mag <b>sowohl</b> Jazz <b>als auch</b> Klassik.</span></div>
+  <div class="htr"><span class="htq">beides, mit Steigerung</span><span class="htp">nicht nur … sondern auch</span><span class="hte">Musik ist <b>nicht nur</b> schön, <b>sondern auch</b> gesund.</span></div>
+  <div class="htr"><span class="htq">eins von zwei</span><span class="htp">entweder … oder</span><span class="hte"><b>Entweder</b> wir gehen ins Konzert <b>oder</b> wir bleiben zu Hause.</span></div>
+  <div class="htr"><span class="htq">keins von beiden</span><span class="htp">weder … noch</span><span class="hte">Ich mag <b>weder</b> Metal <b>noch</b> Techno.</span></div>
+  <div class="htr"><span class="htq">Einschränkung</span><span class="htp">zwar … aber</span><span class="hte">Das Stück ist <b>zwar</b> traurig, <b>aber</b> sehr schön.</span></div>
+  <div class="htr"><span class="htq">zwei Seiten</span><span class="htp">einerseits … andererseits</span><span class="hte"><b>Einerseits</b> entspannt Musik, <b>andererseits</b> kann sie stören.</span></div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Sie spielt <b>sowohl</b> Klavier <b>als auch</b> Gitarre.","Beides. <i>als auch</i> — nicht <i>wie auch</i>."],
+  ["Musik hilft <b>nicht nur</b> beim Lernen, <b>sondern auch</b> beim Einschlafen.","Steigerung: das Zweite ist die Überraschung."],
+  ["<b>Entweder</b> du kommst mit, <b>oder</b> du bleibst hier.","Eine Wahl zwischen zwei Möglichkeiten."],
+  ["Er hat <b>weder</b> Zeit <b>noch</b> Lust.","<b>Schon verneint!</b> Kein zusätzliches <i>nicht</i>."],
+  ["Der Film war <b>zwar</b> lang, <b>aber</b> nie langweilig.","Zugeständnis, dann Gegensatz."],
+  ["<b>Einerseits</b> möchte ich mehr üben, <b>andererseits</b> fehlt mir die Zeit.","Zwei Seiten derselben Sache."],
+  ["<b>Entweder</b> <b>rufst</b> du an <b>oder</b> du schreibst eine E-Mail.","<i>entweder</i> auf Position 1 → Verb sofort danach."],
+  ["Ich habe <b>weder</b> ihn <b>noch</b> seine Frau gesehen.","Schon verneint — kein zusätzliches <i>nicht</i>."],
+  ["<b>Sowohl</b> meine Schwester <b>als auch</b> ich lernen Deutsch.","Zwei Subjekte → Verb im Plural: <i>lernen</i>."],
+  ["Das Konzert war <b>zwar</b> teuer, <b>aber</b> es hat sich gelohnt.","Zugeständnis, dann Gegensatz."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>weder … noch</b> ist <b>schon negativ</b>: <i>Ich mag weder Metal noch <span style="color:var(--fem)">nicht</span> Techno</i> ✗.</li>
+  <li>Nach <b>entweder</b> am Satzanfang sind <b>beide</b> Stellungen richtig: <i>Entweder <b>gehen wir</b> …</i> (Position 1) und <i>Entweder <b>wir gehen</b> …</i> (Position 0). Nach <b>einerseits</b> folgt dagegen immer das Verb.</li>
+  <li><b>sondern</b>, nicht <i>aber</i>: <i>nicht nur … <b>sondern</b> auch</i> — <i>sondern</i> steht nur nach einer Verneinung.</li>
+  <li>Beide Teile müssen <b>dieselbe Wortart</b> verbinden: <i>sowohl <b>Jazz</b> als auch <b>Klassik</b></i> (2 Nomen), nicht Nomen + Nebensatz.</li>
+ </ul></div>`
+},
+{
+ id:"uhrzeit", tag:2, kap:null, t:"Uhrzeit: offiziell &amp; inoffiziell",
+ src:[["kurs"]],
+ kurz:"<b>halb neun</b> ist <b>8:30</b>, nicht 9:30 — Deutsch denkt zur <b>nächsten</b> Stunde vorwärts.",
+ body:`
+ <div class="callout"><div class="callout-h">Zwei Systeme</div>
+ <p><b>Offiziell</b> (24 Stunden) steht in Fahrplänen, Radio, Terminen, Ansagen: Stunde + <i>Uhr</i> + Minute.
+ <b>Inoffiziell</b> (12 Stunden) spricht man im Alltag: mit <i>nach</i>, <i>vor</i>, <i>halb</i> und <i>Viertel</i>.</p>
+ <table class="ptab">
+  <tr><th></th><th>offiziell</th><th>inoffiziell</th></tr>
+  <tr><td>8:00</td><td>acht Uhr</td><td><b>acht</b></td></tr>
+  <tr><td>8:05</td><td>acht Uhr fünf</td><td><b>fünf nach acht</b></td></tr>
+  <tr><td>8:15</td><td>acht Uhr fünfzehn</td><td><b>Viertel nach acht</b></td></tr>
+  <tr><td>8:25</td><td>acht Uhr fünfundzwanzig</td><td><b>fünf vor halb neun</b></td></tr>
+  <tr><td>8:30</td><td>acht Uhr dreißig</td><td><b>halb neun</b></td></tr>
+  <tr><td>8:35</td><td>acht Uhr fünfunddreißig</td><td><b>fünf nach halb neun</b></td></tr>
+  <tr><td>8:45</td><td>acht Uhr fünfundvierzig</td><td><b>Viertel vor neun</b></td></tr>
+  <tr><td>8:50</td><td>acht Uhr fünfzig</td><td><b>zehn vor neun</b></td></tr>
+  <tr><td>20:30</td><td>zwanzig Uhr dreißig</td><td><b>halb neun</b> (abends)</td></tr>
+ </table>
+ <p class="fine">Bis 30 Minuten zählt man <b>nach</b> der vollen Stunde, ab 30 zählt man <b>vor</b> der nächsten.
+ Um <i>halb</i> herum rechnet man von der halben Stunde aus.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Der Zug fährt <b>um 14 Uhr 32</b>.","Offiziell — Fahrplan. <i>um</i> + Uhrzeit."],
+  ["Wir treffen uns <b>um halb drei</b>.","Inoffiziell: 14:30."],
+  ["Es ist <b>Viertel vor acht</b>, ich muss los!","19:45 oder 7:45 — der Kontext sagt, welche."],
+  ["Der Unterricht beginnt <b>um 8.30 Uhr</b> und endet <b>um 12.45 Uhr</b>.","Offiziell, wie im Kursplan."],
+  ["<b>Um wie viel Uhr</b> kommst du? — <b>Gegen</b> acht.","<i>gegen</i> = ungefähr, ohne <i>um</i>."],
+  ["Es ist <b>fünf vor halb sieben</b>.","6:25 — um <i>halb</i> herum wird von der halben Stunde gerechnet."],
+  ["Der Film beginnt <b>um 20.15 Uhr</b>.","Offiziell — Kinoprogramm."],
+  ["Wir frühstücken <b>um Viertel nach sieben</b>.","7:15, inoffiziell."],
+  ["<b>Um wie viel Uhr</b> fängt der Kurs an? — <b>Um Viertel vor neun</b>.","8:45. Die Frage lautet <i>um wie viel Uhr</i>, nicht <i>wann Uhr</i>."],
+  ["In München sagt man <b>dreiviertel acht</b> — das ist <b>7:45</b>.","Süddeutsch: drei Viertel der Stunde bis acht sind vorbei."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>halb neun = 8:30</b>, nicht 9:30. Deutsch schaut <b>vorwärts</b> zur nächsten Stunde — Englisch (<i>half past eight</i>) schaut zurück. Das ist der häufigste Fehler überhaupt.</li>
+  <li><b>In München und Österreich</b> hörst du <i>viertel neun</i> = 8:15 und <i>dreiviertel neun</i> = 8:45.
+      Dasselbe Prinzip: gezählt wird zur nächsten Stunde. Im Norden sagt man <i>Viertel nach acht</i>.</li>
+  <li>Offiziell steht <b>Uhr zwischen</b> Stunde und Minute: <i>acht Uhr fünf</i> — nicht <i>acht fünf Uhr</i>.</li>
+  <li>Beide Systeme <b>nicht mischen</b>: <i>um halb fünfzehn</i> ✗.</li>
+  <li>Frage: <b>Wie spät ist es?</b> / <b>Um wie viel Uhr …?</b> — nicht <i>Was ist die Zeit?</i></li>
+ </ul></div>`
+},
+{
+ id:"satzverbindungen", tag:3, kap:null, t:"Satzverbindungen: Wo steht das Verb?",
+ src:[["kurs"]],
+ kurz:"Drei Sorten Konnektoren — jede stellt das Verb woanders hin: <b>ADUSO</b> (Position 0), <b>Inversion</b> (Position 1) oder ans <b>Ende</b>.",
+ body:`
+ <div class="callout"><div class="callout-h">Die ganze Systematik</div>
+ <p>Deutsche Konnektoren sehen alle gleich aus, tun aber Verschiedenes: Sie entscheiden, <b>wo das konjugierte Verb landet</b>.
+ Es gibt genau drei Gruppen. Wenn du weißt, zu welcher ein Wort gehört, weißt du den Satzbau.</p>
+ <table class="ptab">
+  <tr><th>Gruppe</th><th>Verb steht …</th><th>Beispiel</th></tr>
+  <tr><td><b>Position 0</b> · ADUSO<br><span class="htq">Hauptsatz + Hauptsatz</span></td>
+      <td>auf <b>Position 2</b>, ganz normal</td>
+      <td>Ich bin müde, <b>denn</b> ich <b>habe</b> schlecht geschlafen.</td></tr>
+  <tr><td><b>Position 1</b><br><span class="htq">Hauptsatz + Hauptsatz</span></td>
+      <td>direkt <b>danach</b> — Inversion</td>
+      <td>Ich bin müde, <b>deshalb gehe</b> ich früh ins Bett.</td></tr>
+  <tr><td><b>Nebensatz</b><br><span class="htq">Hauptsatz + Nebensatz</span></td>
+      <td>ganz am <b>Ende</b></td>
+      <td>Ich gehe früh ins Bett, <b>weil</b> ich müde <b>bin</b>.</td></tr>
+ </table></div>
+
+ <div class="callout"><div class="callout-h">Gruppe 1 · Position 0 — <b>ADUSO</b></div>
+ <p>Es sind genau fünf, und sie ergeben ein Merkwort: <b>ADUSO</b>. Sie stehen <b>vor</b> Position 1 und
+ verändern gar nichts — der zweite Satz läuft, als stünde er allein.</p>
+ <table class="ptab">
+  <tr><th>A</th><th>D</th><th>U</th><th>S</th><th>O</th></tr>
+  <tr><td><b>aber</b></td><td><b>denn</b></td><td><b>und</b></td><td><b>sondern</b></td><td><b>oder</b></td></tr>
+  <tr><td>Gegensatz</td><td>Grund</td><td>Addition</td><td>Korrektur</td><td>Alternative</td></tr>
+ </table>
+ ${exList([
+  ["Ich bleibe zu Hause, <b>denn</b> ich <b>bin</b> krank.","<i>denn</i> = weil, aber Hauptsatz! Verb auf Position 2."],
+  ["Sie wollte kommen, <b>aber</b> sie <b>hatte</b> keine Zeit.","Normale Wortstellung nach <i>aber</i>."],
+  ["Wir fahren nicht mit dem Auto, <b>sondern</b> wir <b>nehmen</b> den Zug.","<i>sondern</i> nur nach einer Verneinung — und beide Teile parallel gebaut."]
+ ])}
+ <p class="fine"><b>denn</b> und <b>weil</b> heißen dasselbe, bauen aber verschieden:
+ <i>…, <b>denn</b> ich <b>bin</b> müde</i> gegen <i>…, <b>weil</b> ich müde <b>bin</b></i>.</p></div>
+
+ <div class="callout"><div class="callout-h">Gruppe 2 · Position 1 oder 3 — Verbindungsadverbien</div>
+ <p>Das sind <b>Adverbien</b>, keine Konjunktionen. Sie besetzen Position 1, also rückt das Verb dahinter (Inversion).
+ Dieselben Wörter dürfen auch <b>im Mittelfeld</b> stehen (Position 3) — dann bleibt die Wortstellung normal.</p>
+ <div class="suffixtab">
+  <div class="sg kakk"><span class="sgh">Grund / Folge</span><span class="sgs">deshalb · deswegen · darum · daher · also · folglich</span></div>
+  <div class="sg kakk"><span class="sgh">Gegensatz</span><span class="sgs">trotzdem · dennoch · sonst</span></div>
+  <div class="sg kakk"><span class="sgh">Zeit / Reihenfolge</span><span class="sgs">dann · danach · zuerst · später · schließlich</span></div>
+  <div class="sg kakk"><span class="sgh">Hinzufügen</span><span class="sgs">außerdem · zusätzlich · ebenfalls</span></div>
+ </div>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">Position 1</div><div class="mxh">Position 3 (Mittelfeld)</div>
+  <div class="mxr">Wortstellung</div>
+  <div class="mxc hi">Konnektor + <b>Verb</b> + Subjekt</div>
+  <div class="mxc">Subjekt + <b>Verb</b> + Konnektor</div>
+ </div>
+ ${exList([
+  ["Es regnet, <b>deshalb bleiben</b> wir zu Hause.","Position 1 → Verb sofort danach."],
+  ["Es regnet, wir <b>bleiben deshalb</b> zu Hause.","Dasselbe Wort, Position 3 → normale Stellung."],
+  ["Ich war krank, <b>trotzdem bin</b> ich gekommen.","<i>trotzdem</i> = obwohl, aber Hauptsatz + Inversion."],
+  ["Zuerst essen wir, <b>danach gehen</b> wir ins Kino.","Reihenfolge."]
+ ])}</div>
+
+ <div class="callout"><div class="callout-h">Gruppe 3 · Nebensatz — Verb ans Ende</div>
+ <p>Subjunktionen schicken das konjugierte Verb ganz nach hinten. Steht der Nebensatz <b>zuerst</b>,
+ beginnt der Hauptsatz mit dem <b>Verb</b> — der ganze Nebensatz ist dann Position 1.</p>
+ <div class="suffixtab">
+  <div class="sg kgen"><span class="sgh">Grund / Ziel</span><span class="sgs">weil · da · damit · sodass</span></div>
+  <div class="sg kgen"><span class="sgh">Zeit</span><span class="sgs">wenn · als · nachdem · bevor · während · seit(dem) · bis · sobald</span></div>
+  <div class="sg kgen"><span class="sgh">Gegensatz / Bedingung</span><span class="sgs">obwohl · wenn · falls · ob</span></div>
+ </div>
+ ${exList([
+  ["Ich bleibe zu Hause, <b>weil</b> ich krank <b>bin</b>.","Verb ans Ende."],
+  ["<b>Weil</b> ich krank <b>bin</b>, <b>bleibe</b> ich zu Hause.","Nebensatz zuerst → Hauptsatz beginnt mit dem Verb."],
+  ["Er lernt viel, <b>damit</b> er die Prüfung <b>besteht</b>.","Ziel — siehe auch Finalsätze."],
+  ["<b>Obwohl</b> es <b>regnete</b>, sind wir spazieren gegangen.","Gegensatz, Nebensatz vorn."],
+  ["Ich weiß nicht, <b>ob</b> er <b>kommt</b>.","<i>ob</i> für indirekte Ja/Nein-Fragen."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>denn</b> (Position 0) und <b>weil</b> (Nebensatz) bedeuten dasselbe, bauen aber gegensätzlich. Der Klassiker: <i>…, denn ich müde bin</i> ✗.</li>
+  <li><b>trotzdem</b> ist Position 1, <b>obwohl</b> ist Nebensatz: <i>…, trotzdem <b>bin</b> ich gekommen</i> gegen <i><b>obwohl</b> ich krank <b>war</b></i>.</li>
+  <li>Nach <b>deshalb &amp; Co.</b> kommt <b>nie</b> das Subjekt direkt: <i>deshalb ich gehe</i> ✗ → <i>deshalb <b>gehe ich</b></i> ✓.</li>
+  <li>Vor <b>und</b> / <b>oder</b> steht meist <b>kein Komma</b>, wenn sie zwei Hauptsätze verbinden — vor <b>denn</b>, <b>aber</b>, <b>sondern</b> schon. Vor jedem Nebensatz immer.</li>
+  <li>Nur <b>ein</b> Konnektor pro Verbindung: <i>Obwohl es regnete, trotzdem gingen wir</i> ✗.</li>
+  <li><b>ADUSO</b> merkt nur die fünf aus Gruppe 1 — <i>deshalb</i>, <i>trotzdem</i> und <i>dann</i> gehören <b>nicht</b> dazu, auch wenn sie ähnlich klingen.</li>
+ </ul></div>`
+},
+{
+ id:"adjektive-ohne-artikel", kap:9, t:"Adjektive ohne Artikel",
+ src:[["buch","K9"]], beleg:"Übungsbuch K9, 8b",
+ kurz:"Kein Artikel da? Dann trägt das <b>Adjektiv</b> die Endung, die sonst der Artikel zeigt.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Idee dahinter</div>
+ <p>Deutsch will das Genus und den Kasus <b>einmal</b> sehen. Normalerweise zeigt das der Artikel:
+ <i>d<b>er</b> Wein</i>, <i>d<b>em</b> Wein</i>. Fehlt der Artikel, muss das <b>Adjektiv einspringen</b> —
+ es bekommt genau die Endung, die der Artikel gehabt hätte.</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">mit Artikel</div><div class="mxh">ohne Artikel</div>
+  <div class="mxr">Signal</div>
+  <div class="mxc">d<b>er</b> gut<b>e</b> Wein</div>
+  <div class="mxc hi">gut<b>er</b> Wein</div>
+ </div>
+ <p class="fine">Die Endung wandert vom Artikel aufs Adjektiv. Wer <i>der/die/das</i> im Kasus kann, kann das auch.</p></div>
+
+ <div class="callout"><div class="callout-h">Die Tabelle</div>
+ <table class="ptab">
+  <tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr>
+  <tr><td>Nominativ</td><td>gut<b>er</b> Wein</td><td>frisch<b>e</b> Milch</td><td>kalt<b>es</b> Bier</td><td>modern<b>e</b> Bilder</td></tr>
+  <tr><td>Akkusativ</td><td>gut<b>en</b> Wein</td><td>frisch<b>e</b> Milch</td><td>kalt<b>es</b> Bier</td><td>modern<b>e</b> Bilder</td></tr>
+  <tr><td>Dativ</td><td>gut<b>em</b> Wein</td><td>frisch<b>er</b> Milch</td><td>kalt<b>em</b> Bier</td><td>modern<b>en</b> Bildern</td></tr>
+ </table>
+ <p class="fine">Vergleiche: <i>d<b>er</b> · d<b>en</b> · d<b>em</b></i> — <i>di<b>e</b> · di<b>e</b> · d<b>er</b></i> —
+ <i>d<b>as</b> · d<b>as</b> · d<b>em</b></i>. Dieselben Signale, nur am Adjektiv.</p>
+ <p class="fine">Wann kommt das vor? Bei <b>Stoffnamen</b> und <b>Abstrakta</b> (<i>guter Wein</i>, <i>echte Kunst</i>),
+ im <b>Plural ohne Artikel</b> (<i>moderne Bilder</i>) und nach <i>viel</i>, <i>wenig</i>, <i>etwas</i>, <i>nichts</i>.</p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["<b>Guter</b> Wein ist teuer.","maskulin Nominativ → <i>der</i> wird zu <i>-er</i>."],
+  ["<b>Frische</b> Milch schmeckt besser.","feminin Nominativ → <i>die</i> wird zu <i>-e</i>."],
+  ["<b>Kaltes</b> Bier ist erfrischend.","neutral Nominativ → <i>das</i> wird zu <i>-es</i>."],
+  ["<b>Moderne</b> Bilder gefallen mir.","Plural Nominativ → <i>die</i> wird zu <i>-e</i>."],
+  ["Ich trinke <b>schwarzen</b> Kaffee.","maskulin Akkusativ → <i>den</i> wird zu <i>-en</i>."],
+  ["Sie malt <b>abstrakte</b> Bilder.","Plural Akkusativ, wie der Nominativ."],
+  ["Wir kaufen <b>frisches</b> Brot.","neutral Akkusativ = Nominativ."],
+  ["Mit <b>rotem</b> Wein schmeckt es besser.","maskulin Dativ → <i>dem</i> wird zu <i>-em</i>."],
+  ["Bei <b>schöner</b> Musik entspanne ich mich.","feminin Dativ → <i>der</i> wird zu <i>-er</i>."],
+  ["Er malt mit <b>bunten</b> Farben.","Plural Dativ → <i>den</i> wird zu <i>-en</i>."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Plural Dativ</b> ist doppelt gemoppelt: Adjektiv <b>-en</b> <i>und</i> Nomen <b>-n</b> — <i>mit bunt<b>en</b> Farb<b>en</b></i>.</li>
+  <li>Nach <b>etwas</b>, <b>nichts</b>, <b>viel</b>, <b>wenig</b> wird das Adjektiv großgeschrieben und ist neutral:
+      <i>etwas <b>Aktuelles</b></i>, <i>nichts <b>Neues</b></i>.</li>
+  <li>Nach <b>ein</b>/<b>kein</b>/<b>mein</b> gilt das <b>nicht</b>: dort steht <i>ein gut<b>er</b> Wein</i>, aber <i>ein kalt<b>es</b> Bier</i> —
+      das ist die gemischte Deklination, ein eigenes Thema.</li>
+  <li><b>Nie ohne Endung.</b> <i>Ich trinke schwarz Kaffee</i> ✗ — im Deutschen trägt hier immer jemand das Signal.</li>
+  <li>Der <b>Genitiv</b> ist die Ausnahme: dort steht <i>-en</i>, obwohl der Artikel <i>-es</i> zeigt — <i>der Geschmack gut<b>en</b> Wein<b>es</b></i>. Kommt auf B1 selten vor.</li>
+ </ul></div>`
+},
+{
+ id:"stellung-nicht", kap:9, t:"Stellung von <i>nicht</i>",
+ src:[["buch","K9"]], beleg:"Übungsbuch K9, 4a–4d",
+ kurz:"<i>nicht</i> steht so weit <b>hinten</b> wie möglich — aber immer <b>vor</b> dem, was den Satz trägt.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Grundregel</div>
+ <p>Bei der <b>Satznegation</b> rutscht <i>nicht</i> so weit nach hinten wie es geht.
+ Es gibt aber Dinge, vor denen es stehen bleiben <b>muss</b> — sie gehören zum Prädikat und sind unverzichtbar.</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">zweiter Verbteil</span><span class="htp">davor</span><span class="hte">Ich habe den Film <b>nicht</b> <b>gesehen</b>.</span></div>
+  <div class="htr"><span class="htq">trennbare Vorsilbe</span><span class="htp">davor</span><span class="hte">Er ruft mich <b>nicht</b> <b>an</b>.</span></div>
+  <div class="htr"><span class="htq">Adjektiv / Adverb</span><span class="htp">davor</span><span class="hte">Die Ausstellung ist <b>nicht</b> <b>interessant</b>.</span></div>
+  <div class="htr"><span class="htq">Wo? (Ortsangabe)</span><span class="htp">davor</span><span class="hte">Ich wohne <b>nicht</b> <b>in München</b>.</span></div>
+  <div class="htr"><span class="htq">Präposition + Objekt</span><span class="htp">davor</span><span class="hte">Wir warten <b>nicht</b> <b>auf den Bus</b>.</span></div>
+ </div>
+ <p class="fine">Alles andere — Subjekt, Verb, Pronomen, bestimmte Objekte, Zeitangaben — steht <b>vor</b> <i>nicht</i>.</p></div>
+
+ <div class="callout"><div class="callout-h">Satznegation oder Teilnegation?</div>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">Satznegation</div><div class="mxh">Teilnegation</div>
+  <div class="mxr">nicht steht</div>
+  <div class="mxc hi">möglichst weit hinten</div>
+  <div class="mxc">direkt <b>vor</b> dem Teil</div>
+ </div>
+ <p class="fine">Bei der Teilnegation folgt fast immer <b>sondern</b>: <i><b>Nicht</b> ich gehe ins Museum, <b>sondern</b> meine Schwester.</i></p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich kenne den Künstler <b>nicht</b>.","Nichts muss geschützt werden → ganz nach hinten."],
+  ["Wir sehen uns die modernen Bilder <b>nicht</b> <b>an</b>.","Trennbar: <i>nicht</i> vor der Vorsilbe <i>an</i>."],
+  ["Die Ausstellung ist <b>nicht</b> <b>interessant</b>.","Vor dem Adjektiv."],
+  ["Die meisten Leute finden dieses Kunstwerk <b>nicht</b> <b>schön</b>.","Auch hier: vor dem Adjektiv."],
+  ["Ich habe den Film <b>nicht</b> <b>gesehen</b>.","Vor dem Partizip."],
+  ["Er kann heute <b>nicht</b> <b>kommen</b>.","Vor dem Infinitiv."],
+  ["Das Bild gefällt mir <b>nicht</b>.","Dativpronomen steht vor <i>nicht</i>."],
+  ["Wir warten <b>nicht</b> <b>auf den Bus</b>.","Vor der Präpositionalergänzung."],
+  ["<b>Nicht</b> ich gehe heute ins Museum, <b>sondern</b> meine Schwester.","Teilnegation → <i>nicht</i> vorn, dann <i>sondern</i>."],
+  ["Ich gehe <b>nicht</b> <b>heute</b> ins Museum, <b>sondern</b> morgen.","Teilnegation auf der Zeitangabe."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>nicht</b> oder <b>kein</b>? <i>kein</i> steht bei Nomen mit <b>unbestimmtem</b> oder <b>ohne</b> Artikel: <i>Ich habe <b>kein</b> Auto.</i>
+      <i>nicht</i> steht bei <b>bestimmtem</b> Artikel, Possessiv oder Namen: <i>Ich kenne <b>den</b> Mann <b>nicht</b>.</i></li>
+  <li><b>Nie vor dem konjugierten Verb</b>: <i>Ich nicht kenne ihn</i> ✗.</li>
+  <li>Zeitangaben stehen <b>vor</b> <i>nicht</i> (<i>Ich komme heute nicht</i>) — es sei denn, du verneinst genau sie (<i>Ich komme nicht heute, sondern morgen</i>).</li>
+  <li>Im <b>Nebensatz</b> ändert sich nichts an der Logik: <i>…, weil ich den Film <b>nicht</b> <b>gesehen habe</b>.</i></li>
+ </ul></div>`
+},
+{
+ id:"passiv-praesens", kap:10, t:"Aktiv und Passiv",
+ src:[["buch","K10"]], beleg:"Übungsbuch K10, 4c–4d",
+ kurz:"<b>werden + Partizip II</b>. Wichtig ist, <b>was passiert</b> — nicht, wer es tut.",
+ body:`
+ <div class="callout"><div class="callout-h">Der Unterschied</div>
+ <p>Im <b>Aktiv</b> steht die handelnde Person vorn. Im <b>Passiv</b> steht die <b>Handlung</b> im Mittelpunkt —
+ wer sie tut, ist unwichtig oder unbekannt. Deshalb ist Passiv typisch für Regeln, Abläufe und Berichte.</p>
+ <table class="ptab">
+  <tr><th>Aktiv</th><td><b>Der Arzt</b> untersucht <b>den Patienten</b>.</td></tr>
+  <tr><th>Passiv</th><td><b>Der Patient</b> <b>wird</b> (vom Arzt) <b>untersucht</b>.</td></tr>
+ </table>
+ <p class="fine">Das <b>Akkusativobjekt</b> wird zum <b>Subjekt</b>. Die handelnde Person kommt — wenn überhaupt — mit
+ <b>von + Dativ</b> zurück. Meistens lässt man sie weg.</p></div>
+
+ <div class="callout"><div class="callout-h">Die Form</div>
+ <p><b>werden</b> wird konjugiert, das <b>Partizip II</b> steht am Satzende.</p>
+ <table class="ptab">
+  <tr><td>ich <b>werde</b> gefragt</td><td>wir <b>werden</b> gefragt</td></tr>
+  <tr><td>du <b>wirst</b> gefragt</td><td>ihr <b>werdet</b> gefragt</td></tr>
+  <tr><td>er/sie/es <b>wird</b> gefragt</td><td>sie/Sie <b>werden</b> gefragt</td></tr>
+ </table></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Die Feuerwehr <b>wird</b> <b>alarmiert</b>.","Wer alarmiert? Egal — die Handlung zählt."],
+  ["Die Lebensmittel <b>werden</b> <b>verteilt</b>.","Plural → <i>werden</i>."],
+  ["Das Formular <b>wird</b> <b>ausgefüllt</b>.","Trennbar: Partizip <i>aus-ge-füllt</i>."],
+  ["Die Straßen <b>werden</b> <b>gereinigt</b>.","Typischer Ablauf, keine Person nötig."],
+  ["Anschließend <b>werden</b> Spiele für die Kinder <b>organisiert</b>.","Position 1 ist besetzt → <i>werden</i> auf Position 2."],
+  ["Hier <b>wird</b> Deutsch <b>gesprochen</b>.","Ohne Handelnden — ganz normal im Passiv."],
+  ["Das Fest <b>wird</b> <b>von den Eltern</b> <b>organisiert</b>.","Handelnde Person mit <i>von</i> + Dativ."],
+  ["Die Kinder <b>werden</b> in Mini-München <b>ausgebildet</b>.","Untrennbar: <i>ausgebildet</i>."],
+  ["Jedes Jahr <b>wird</b> ein neuer Bürgermeister <b>gewählt</b>.","Zeitangabe vorn, Verb bleibt Position 2."],
+  ["Die Spenden <b>werden</b> <b>gesammelt</b> und <b>verteilt</b>.","Zwei Partizipien, ein <i>werden</i>."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>werden</b> heißt hier nicht <i>to become</i>. <i>Er wird Arzt</i> = Beruf. <i>Er wird gefragt</i> = Passiv. Der Unterschied ist das Partizip.</li>
+  <li>Nur Verben mit <b>Akkusativobjekt</b> bilden ein normales Passiv. <i>Ich schlafe</i> → kein Passiv.</li>
+  <li>Das <b>Dativobjekt bleibt Dativ</b>: <i>Mir wird geholfen</i> — nicht <i>Ich werde geholfen</i>.</li>
+  <li><b>von</b> = die handelnde Person, <b>durch</b> = das Mittel: <i>von den Eltern</i> gegen <i>durch einen Sturm</i>.</li>
+ </ul></div>`
+},
+{
+ id:"passiv-vergangenheit", kap:10, t:"Passiv in der Vergangenheit",
+ src:[["buch","K10"]], beleg:"Übungsbuch K10, 4e",
+ kurz:"<b>wurde</b> + Partizip II — und im Perfekt heißt es <b>worden</b>, nie <i>geworden</i>.",
+ body:`
+ <div class="callout"><div class="callout-h">Zwei Formen</div>
+ <p><b>Präteritum Passiv</b> ist die normale Erzählform: <i>wurde</i> + Partizip II.
+ <b>Perfekt Passiv</b> hört man beim Sprechen: <i>ist</i> + Partizip II + <b>worden</b>.</p>
+ <table class="ptab">
+  <tr><th></th><th>Form</th><th>Beispiel</th></tr>
+  <tr><td>Präsens</td><td>wird + P II</td><td>Das Haus <b>wird</b> gebaut.</td></tr>
+  <tr><td>Präteritum</td><td><b>wurde</b> + P II</td><td>Das Haus <b>wurde</b> gebaut.</td></tr>
+  <tr><td>Perfekt</td><td>ist + P II + <b>worden</b></td><td>Das Haus <b>ist</b> gebaut <b>worden</b>.</td></tr>
+ </table>
+ <p class="fine">Beide Vergangenheiten bedeuten dasselbe. In Texten steht meist das <b>Präteritum</b>,
+ im Gespräch eher das <b>Perfekt</b>.</p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Der Computer <b>wurde</b> <b>ausgeschaltet</b>.","Präteritum Passiv, trennbar."],
+  ["Die Pflanze <b>wurde</b> <b>gegossen</b>.","Wer? Steht nicht da — genau das ist der Punkt."],
+  ["Das benutzte Geschirr <b>wurde</b> <b>abgespült</b>.","<i>benutzte</i> = Partizip als Adjektiv davor."],
+  ["Die Bücher <b>wurden</b> ins Regal <b>gestellt</b>.","Plural → <i>wurden</i>."],
+  ["Die Stifte <b>wurden</b> <b>weggeräumt</b>.","Trennbar: <i>weg-ge-räumt</i>."],
+  ["Der Vertrag <b>wurde</b> 1957 <b>unterzeichnet</b>.","Untrennbar → kein <i>ge-</i>."],
+  ["Mini-München <b>ist</b> 1979 <b>gegründet</b> <b>worden</b>.","Perfekt Passiv: <i>ist … worden</i>."],
+  ["Die Spenden <b>sind</b> <b>gesammelt</b> <b>worden</b>.","Plural → <i>sind … worden</i>."],
+  ["Das Fenster <b>wurde</b> <b>geschlossen</b>.","Präteritum, regelmäßig."],
+  ["Die Blumen <b>wurden</b> in die Vase <b>gestellt</b>.","Wohin? → Akkusativ bleibt Akkusativ."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>worden</b>, nicht <b>geworden</b>. Im Passiv verliert <i>werden</i> sein <i>ge-</i>:
+      <i>ist gebaut <b>worden</b></i> ✓ — <i>ist gebaut geworden</i> ✗. <i>geworden</i> gibt es nur beim echten <i>werden</i>: <i>Er ist Arzt geworden.</i></li>
+  <li>Perfekt Passiv nimmt <b>sein</b>, nicht <i>haben</i>: <i>Das Haus <b>ist</b> gebaut worden</i> — nie <i>hat gebaut worden</i>.</li>
+  <li><b>Reihenfolge im Perfekt</b>: erst Partizip, dann <i>worden</i> — <i>gesammelt worden</i>, nicht <i>worden gesammelt</i>.</li>
+  <li>Im Nebensatz wandert das Hilfsverb nach hinten: <i>…, weil das Haus gebaut <b>worden ist</b>.</i></li>
+ </ul></div>`
+},
+{
+ id:"passiv-modalverb", kap:10, t:"Passiv mit Modalverb",
+ src:[["buch","K10"]], beleg:"Übungsbuch K10, 8a–8b",
+ kurz:"<b>muss … werden</b> — das Modalverb wird konjugiert, <i>werden</i> steht als <b>Infinitiv</b> am Ende.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Form</div>
+ <p>Modalverb + <b>Partizip II</b> + <b>werden</b>. Das <i>werden</i> bleibt im <b>Infinitiv</b> und geht ganz ans Ende —
+ es wird <b>nicht</b> konjugiert. Konjugiert wird nur das Modalverb.</p>
+ <table class="ptab">
+  <tr><th></th><th>Aktiv</th><th>Passiv</th></tr>
+  <tr><td>Präsens</td><td>Man <b>muss</b> das Formular ausfüllen.</td><td>Das Formular <b>muss</b> ausgefüllt <b>werden</b>.</td></tr>
+  <tr><td>Präteritum</td><td>Man <b>musste</b> das Formular ausfüllen.</td><td>Das Formular <b>musste</b> ausgefüllt <b>werden</b>.</td></tr>
+ </table>
+ <p class="fine">Zwei Verben am Ende, feste Reihenfolge: <b>Partizip II + werden</b>.</p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ein Bürgermeister <b>muss</b> <b>gewählt</b> <b>werden</b>.","Muss sein, egal wer es tut."],
+  ["Es <b>müssen</b> Steuern <b>gezahlt</b> <b>werden</b>.","Plural → <i>müssen</i>; <i>es</i> ist nur Platzhalter."],
+  ["Der Müll <b>muss</b> <b>entsorgt</b> <b>werden</b>.","<i>werden</i> im Infinitiv am Ende."],
+  ["Die Straßen <b>müssen</b> <b>kontrolliert</b> <b>werden</b>.","Untrennbar → kein <i>ge-</i>."],
+  ["Der Computer <b>muss</b> <b>hochgefahren</b> <b>werden</b>.","Trennbar: <i>hoch-ge-fahren</i>."],
+  ["Die Anträge <b>müssen</b> <b>unterschrieben</b> <b>werden</b>.","Plural."],
+  ["Das Problem <b>kann</b> <b>gelöst</b> <b>werden</b>.","Auch mit <i>können</i>."],
+  ["Hier <b>darf</b> nicht <b>geraucht</b> <b>werden</b>.","Ohne Subjekt — unpersönliches Passiv, typisch für Verbote."],
+  ["Das <b>sollte</b> noch einmal <b>geprüft</b> <b>werden</b>.","Auch mit <i>sollen</i>."],
+  ["Die Bücher <b>konnten</b> nicht <b>verteilt</b> <b>werden</b>.","Präteritum: nur das Modalverb ändert sich."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>werden</b> bleibt Infinitiv: <i>Das Formular muss ausgefüllt <b>werden</b></i> — nicht <i>… ausgefüllt wird</i>.</li>
+  <li><b>Kein <i>worden</i></b> hier: das gehört ins Perfekt Passiv ohne Modalverb.</li>
+  <li>Für die Vergangenheit nimmt man das <b>Präteritum</b> des Modalverbs (<i>musste … werden</i>). Das Perfekt (<i>hat … werden müssen</i>) ist B2 und im Alltag selten.</li>
+  <li><b>Unpersönliches Passiv</b> braucht kein Subjekt: <i>Hier darf nicht geraucht werden.</i> — die höfliche Art, ein Verbot zu sagen.</li>
+  <li>Im Nebensatz rückt das Modalverb ans Ende: <i>…, dass das Formular ausgefüllt werden <b>muss</b>.</i></li>
+ </ul></div>`
+}
+];
+
+
+
+/* ============ Zustand ============ */
+let view="kurs";      // "kurs" | "buch"
+let filter="", openIds=new Set();
+
+const tabsEl=document.getElementById("tabs");
+const searchEl=document.getElementById("search");
+const mainEl=document.getElementById("main");
+
+const badges=g=>g.src.map(s=>s[0]==="buch"
+    ? `<span class="badge buch">Netzwerk neu · ${esc(s[1])}</span>`
+    : `<span class="badge kurs">Goethe-Kurs</span>`).join("")
+  + (g.beleg?`<span class="t-beleg">${esc(g.beleg)}</span>`:"");
+
+/* <details> statt div: Der Browser klappt beim Suchen (Strg+F) selbst auf
+   und liefert Tastaturbedienung gratis. */
+function topicCard(g){
+  const kurs=g.src.every(s=>s[0]==="kurs")?" kurs":"";
+  const open=openIds.has(g.id)?" open":"";
+  return `<details class="topic${kurs}" id="${g.id}"${open}>
+    <summary class="t-head">
+      <div class="t-main">
+        <div class="t-t">${g.t}</div>
+        <div class="t-k">${g.kurz}</div>
+        <div class="t-f">${badges(g)}</div>
+      </div>
+      <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </summary>
+    <div class="t-body">${g.body}</div>
+  </details>`;
+}
+
+/* ---- Navigation: nur zwei Ansichten ---- */
+const VIEWS={
+  kurs:{kicker:"Unterricht",   label:"Goethe-Kurs",
+        crumb:'Goethe-Institut München <b>· Deutsch Intensiv Kompakt</b>', titel:"Unterricht",
+        desc:"Die Grammatik aus dem Unterricht, nach Kurstagen geordnet."},
+  buch:{kicker:"Netzwerk neu", label:"Lehrbuch",
+        crumb:'Netzwerk neu B1.2 <b>· Klett</b>', titel:"Lehrbuch",
+        desc:"Die Grammatik von Netzwerk neu B1.2, nach Einheiten geordnet."}
+};
+function buildTabs(){
+  tabsEl.innerHTML=Object.entries(VIEWS).map(([k,v])=>
+    `<button class="tab" role="tab" data-v="${k}" aria-controls="main" aria-selected="${k===view}">
+      <span class="num">${esc(v.kicker)}</span><span class="lbl">${esc(v.label)}</span></button>`).join("");
+  [...tabsEl.children].forEach(b=>b.onclick=()=>{
+    view=b.dataset.v; filter=""; searchEl.value="";
+    buildTabs(); render(); window.scrollTo({top:0,behavior:"smooth"});
+  });
+}
+
+/* Kopfzeile und Gruppenblock — einmal definiert, dreimal benutzt. */
+const ctxHead=(crumb,titel,desc,extra="")=>`<div class="ctx fade">
+  <div class="ctx-crumb">${crumb}</div>
+  <h2 class="ctx-title">${esc(titel)}</h2>
+  <p class="ctx-desc">${desc}</p>${extra}</div>`;
+const grp=(kopf,gs)=>kopf+`<div class="topics">${gs.map(topicCard).join("")}</div>`;
+const tagKopf=t=>`<div class="tagkopf">
+  <div class="tk-d">Tag ${t.n} · ${esc(t.wt)}, ${esc(t.datum)}</div>
+  <h3>${esc(t.thema)}</h3></div>`;
+const einKopf=(nr,titel,n)=>`<div class="einkopf"><h3>Einheit ${nr}</h3>
+  <span class="en">${esc(titel)}</span><span class="count">${n}</span><span class="rule"></span></div>`;
+
+function render(){
+  const v=VIEWS[view];
+  let h="", hits=[];
+  if(filter){
+    hits=G.filter(g=>(plain(g.t)+" "+plain(g.kurz)+" "+plain(g.body)).toLowerCase().includes(filter));
+    h=ctxHead("Suche", `„${filter}“`, "Gesucht wird überall — auch in den Regeln und Beispielen.",
+        `<span class="ctx-count">${hits.length} Treffer</span>`)
+      + `<div class="topics fade">${hits.map(topicCard).join("")}</div>`;
+  } else if(view==="kurs"){
+    const mit =G.filter(g=>g.tag!=null);
+    const ohne=G.filter(g=>g.tag==null && g.src.some(x=>x[0]==="kurs"));
+    hits=mit.concat(ohne);
+    h=ctxHead(v.crumb, v.titel, v.desc)+`<div class="fade">`;
+    TAGE.forEach(t=>{
+      const gs=mit.filter(g=>g.tag===t.n);
+      if(gs.length) h+=grp(tagKopf(t), gs);
+    });
+    if(ohne.length) h+=grp(`<div class="tagkopf"><div class="tk-d">noch ohne Datum</div>
+      <h3>Kommt noch</h3><div class="tk-t">Im Kurs angekündigt, aber noch nicht drangewesen.</div></div>`, ohne);
+    h+=`</div>`;
+  } else {
+    hits=G.filter(g=>g.kap!=null);
+    h=ctxHead(v.crumb, v.titel, v.desc)+`<div class="fade">`;
+    EINHEITEN.forEach(([nr,titel])=>{
+      const gs=hits.filter(g=>g.kap===nr);
+      if(gs.length) h+=grp(einKopf(nr,titel,gs.length), gs);
+    });
+    h+=`</div>`;
+  }
+  if(!hits.length) h+=`<div class="empty">Keine Treffer.</div>`;
+  mainEl.innerHTML=h;
+  mainEl.querySelectorAll(".topic").forEach(el=>
+    // feuert auch, wenn der Browser wegen Strg+F selbst aufklappt
+    el.addEventListener("toggle",()=>{
+      if(el.open){openIds.add(el.id); history.replaceState(null,"","#"+el.id);}
+      else {openIds.delete(el.id); if(location.hash==="#"+el.id) history.replaceState(null,"",location.pathname);}
+    }));
+  attachSay(mainEl);
+}
+searchEl.addEventListener("input",e=>{filter=e.target.value.trim().toLowerCase();render();});
+
+/* ---- Direktlink ---- */
+function fromHash(){
+  const id=location.hash.replace(/^#/,"");
+  const g=G.find(x=>x.id===id);
+  if(!g)return;
+  if(g.tag==null && !g.src.some(s=>s[0]==="kurs")) view="buch";
+  openIds.add(id);
+  buildTabs(); render();
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({block:"start"});
+}
+window.addEventListener("hashchange",fromHash);
+
+buildTabs();
+render();
+if(location.hash) fromHash();
+</script>
+</body>
+</html>
