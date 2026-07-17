@@ -1321,9 +1321,24 @@ const G=[
   <tr><td>Nominativ</td><td><b>der</b></td><td><b>die</b></td><td><b>das</b></td><td><b>die</b></td></tr>
   <tr><td>Akkusativ</td><td><b>den</b></td><td><b>die</b></td><td><b>das</b></td><td><b>die</b></td></tr>
   <tr><td>Dativ</td><td><b>dem</b></td><td><b>der</b></td><td><b>dem</b></td><td><b>denen</b></td></tr>
+  <tr><td>Genitiv</td><td><b>dessen</b></td><td><b>deren</b></td><td><b>dessen</b></td><td><b>deren</b></td></tr>
  </table>
- <p class="fine">Fast alles ist der bestimmte Artikel. <b>Eine</b> Form fällt aus der Reihe:
- der <b>Dativ Plural</b> heißt <b>denen</b>, nicht <i>den</i>.</p></div>
+ <p class="fine">Nominativ bis Dativ sind fast der bestimmte Artikel — nur der <b>Dativ Plural</b> heißt
+ <b>denen</b>, nicht <i>den</i>. Der <b>Genitiv</b> ist ganz eigen: <b>dessen</b> und <b>deren</b>.</p></div>
+
+ <div class="callout"><div class="callout-h">Der Genitiv: <i>dessen</i> und <i>deren</i></div>
+ <p>Der Genitiv drückt <b>Besitz</b> aus — er ersetzt ein Possessivpronomen:
+ <i>Der Mann. <b>Sein</b> Auto ist kaputt.</i> → <i>Der Mann, <b>dessen</b> Auto kaputt ist, …</i></p>
+ <p>Nur <b>zwei Formen</b>, und sie richten sich allein nach dem <b>Bezugswort</b>:</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">dessen</div><div class="mxh">deren</div>
+  <div class="mxr">Bezugswort</div>
+  <div class="mxc hi">maskulin · neutral</div>
+  <div class="mxc hi">feminin · Plural</div>
+ </div>
+ <p class="fine">Wichtig: Nach <i>dessen/deren</i> steht das Nomen <b>ohne Artikel</b> —
+ <i>dessen <b>Auto</b></i>, nicht <i>dessen das Auto</i>. Und die Form ändert sich <b>nicht</b>, egal welchen
+ Kasus das folgende Nomen im Relativsatz hat.</p></div>
 
  <div class="callout"><div class="callout-h">Beispiele — jede Zelle der Tabelle</div>
  ${exList([
@@ -1338,7 +1353,11 @@ const G=[
   ["Die Leute, <b>die</b> hier <b>wohnen</b>, sind freundlich.","Plural · Nominativ."],
   ["Die Freunde, <b>denen</b> ich <b>geschrieben habe</b>, antworten nicht.","Plural · Dativ → <b>denen</b>. Die einzige Sonderform."],
   ["Das ist der Kollege, <b>mit dem</b> ich <b>arbeite</b>.","Präposition steht <b>vor</b> dem Pronomen und bestimmt den Kasus."],
-  ["Die Firma, <b>für die</b> ich <b>arbeite</b>, ist klein.","<i>für</i> + Akkusativ → <i>die</i>."]
+  ["Die Firma, <b>für die</b> ich <b>arbeite</b>, ist klein.","<i>für</i> + Akkusativ → <i>die</i>."],
+  ["Der Mann, <b>dessen</b> Auto kaputt <b>ist</b>, wartet auf den Bus.","maskulin · Genitiv → <b>dessen</b>. Ersetzt <i>sein Auto</i>."],
+  ["Die Frau, <b>deren</b> Sohn hier <b>arbeitet</b>, ist meine Nachbarin.","feminin · Genitiv → <b>deren</b>. Ersetzt <i>ihr Sohn</i>."],
+  ["Das Kind, <b>dessen</b> Eltern verreist <b>sind</b>, wohnt bei uns.","neutral · Genitiv → <b>dessen</b>, wie maskulin."],
+  ["Die Nachbarn, <b>deren</b> Haus wir <b>gekauft haben</b>, sind nach Zürich gezogen.","Plural · Genitiv → <b>deren</b>. <i>Haus</i> ist hier Akkusativ — <i>deren</i> bleibt trotzdem <i>deren</i>."]
  ])}</div>
 
  <div class="callout warn"><div class="callout-h">Fallen</div>
@@ -1347,6 +1366,10 @@ const G=[
   <li><b>Genus und Kasus nicht verwechseln.</b> Das Bezugswort bestimmt <b>nur</b> das Genus — welchen Kasus du brauchst, entscheidet das Verb im Relativsatz.</li>
   <li>Die <b>Präposition steht vorn</b>: <i>der Kollege, <b>mit dem</b> ich arbeite</i> — nicht <i>der Kollege, den ich mit arbeite</i>.</li>
   <li><b>Verb ans Ende</b>, wie in jedem Nebensatz — und <b>immer ein Komma</b>.</li>
+  <li><b>Nach <i>dessen/deren</i> kein Artikel</b>: <i>der Mann, dessen <span style="color:var(--fem)">das</span> Auto …</i> ✗ → <i>dessen Auto</i> ✓.</li>
+  <li><b>dessen/deren ändern sich nie</b> nach dem folgenden Nomen. Der Kasus dieses Nomens ist eine
+      andere Frage — das Relativpronomen bleibt, wie das Bezugswort es vorgibt.</li>
+  <li><b>deren</b> für feminin <b>und</b> Plural, <b>dessen</b> für maskulin <b>und</b> neutral — vier Genera, zwei Formen.</li>
   <li><b>das</b> oder <b>dass</b>? <i>das</i> = Relativpronomen (man kann <i>welches</i> einsetzen), <i>dass</i> = Konjunktion.
       <i>Das Märchen, <b>das</b> wir lasen …</i> gegen <i>Ich glaube, <b>dass</b> es gut war.</i></li>
  </ul></div>`
