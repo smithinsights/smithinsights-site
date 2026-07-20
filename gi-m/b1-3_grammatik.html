@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kursstufe B1.3 · Grammatik · Kapitel 7–12 · Goethe-Institut München</title>
+<title>Kursstufe B1.3 · Grammatik &amp; Kultur · Kapitel 7–12 · Goethe-Institut München</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -11,10 +11,15 @@
 :root{
   --paper:#F4F5F2; --panel:#FFFFFF; --ink:#16191F; --muted:#666D77;
   --line:#E5E5DE; --line-strong:#D4D4CA;
-  --teal:#377DA0; --teal-2:#2C6E90; --teal-ink:#245972;
-  --accent:#E48347; --accent-soft:#FBEDE3;
-  --light-blue:#78B5CB; --lb-tint:rgba(120,181,203,.16);
+  --teal:var(--c-dblue); --teal-2:#2C6E90; --teal-ink:#245972;
+  --accent:var(--c-orange);
+  --light-blue:var(--c-lblue); --lb-tint:rgba(120,181,203,.16);
   --masc:#2D5FAA; --fem:#B23A48; --neut:#2E7D5B; --plural:#B26A00;
+  /* offizielle Kurs-Palette (aus den Lehrwerks-Farben) */
+  --c-dblue:#377DA0; --c-lblue:#78B5CB; --c-purple:#7D60A2;
+  --c-orange:#E48347; --c-green:#87B15A; --c-red:#AA435E;
+  --kurs:var(--c-green); --kurs-soft:#DEE7D4; --kurs-ink:#3D5A22;
+  --kultur:var(--c-purple);
   --head-bg:#123A5A; --head-hi:#AEDCEE; --head-fg:#8FC3DC; --head-dim:#84B2CD;
   --sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --disp:"Sora",var(--sans);
@@ -41,7 +46,7 @@ a{color:var(--teal-2)}
 .brand .place{margin:8px 0 0;font-size:13.5px;color:var(--head-dim)}
 
 /* Zwei-Zeilen-Navigation — wie im Wortschatz-Site */
-.tabwrap{position:sticky;top:0;z-index:20;background:var(--paper);
+.tabwrap{position:sticky;top:6px;z-index:20;background:var(--paper);
   border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(0,0,0,.01)}
 .navwrap{max-width:1080px;margin:0 auto;padding:9px 16px 12px}
 .navbar{display:flex;width:100%;background:var(--panel);border:1px solid var(--line-strong);overflow:hidden}
@@ -83,8 +88,9 @@ main{max-width:1080px;margin:0 auto;padding:20px 24px 80px}
 /* Akkordeon — dieselbe Mechanik wie die Verbkarten im Wortschatz-Site */
 .topics{display:grid;gap:10px}
 .topic{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--teal);
-  border-radius:12px;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:130px}
-.topic.kurs{border-left-color:var(--accent)}
+  border-radius:12px;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:136px}
+.topic.kurs{border-left-color:var(--kurs)}
+.topic.kultur{border-left-color:var(--kultur)}
 
 .t-head{cursor:pointer;padding:13px 16px;display:flex;gap:12px;align-items:flex-start;
   font-family:var(--sans);list-style:none}
@@ -98,7 +104,8 @@ main{max-width:1080px;margin:0 auto;padding:20px 24px 80px}
 .badge{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;
   padding:3px 8px;border-radius:5px;white-space:nowrap}
 .badge.buch{background:var(--lb-tint);color:var(--teal-ink)}
-.badge.kurs{background:var(--accent-soft);color:#9C4E1B}
+.badge.kurs{background:var(--kurs-soft);color:var(--kurs-ink)}
+.badge.kultur{background:#EFE9F3;color:#5E3E7E}
 
 .t-beleg{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
 .chev{flex-shrink:0;color:var(--muted);transition:transform .2s;margin-top:4px}
@@ -169,11 +176,12 @@ main{max-width:1080px;margin:0 auto;padding:20px 24px 80px}
 .say svg{width:14px;height:14px;display:block}
 
 /* Kurstag-Kopf */
-.tagkopf{margin:30px 0 12px;padding-left:14px;border-left:3px solid var(--accent)}
+.tagkopf{margin:30px 0 14px;padding:14px 18px;border-radius:12px;
+  background:var(--lb-tint);border:1px solid var(--light-blue)}
 .tagkopf:first-of-type{margin-top:6px}
-.tagkopf .tk-d{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal)}
-.tagkopf h3{font-family:var(--disp);font-weight:600;font-size:19px;margin:5px 0 0;color:var(--ink)}
-.tagkopf .tk-t{font-size:14px;color:var(--muted);margin-top:2px}
+.tagkopf .tk-d{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal-ink)}
+.tagkopf h3{font-family:var(--disp);font-weight:700;font-size:19px;margin:5px 0 0;color:var(--teal-ink);line-height:1.2}
+.tagkopf .tk-t{font-size:14px;color:var(--teal-2);margin-top:2px}
 .einkopf{display:flex;align-items:baseline;gap:12px;margin:30px 0 12px}
 .einkopf:first-of-type{margin-top:6px}
 .einkopf h3{font-family:var(--disp);font-weight:600;font-size:18px;margin:0;color:var(--teal-ink)}
@@ -181,9 +189,26 @@ main{max-width:1080px;margin:0 auto;padding:20px 24px 80px}
 .einkopf .count{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .einkopf .rule{flex:1;height:1px;background:var(--line);align-self:center}
 
+/* Zeitleiste (Kultur) */
+.tl{position:relative;margin:14px 0 4px;padding-left:26px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line-strong)}
+.tl-item{position:relative;padding:0 0 16px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-22px;top:5px;width:11px;height:11px;border-radius:50%;
+  background:var(--kultur);border:2px solid var(--panel);box-shadow:0 0 0 1px var(--kultur)}
+.tl-y{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--kultur);letter-spacing:.04em}
+.tl-t{font-size:14.5px;line-height:1.5;margin-top:1px}
+
+/* Farbband am Seitenende — jede Palettenfarbe 3×, zufällige Breite */
+.palette-band{position:fixed;left:0;right:0;bottom:0;height:6px;display:flex;z-index:50;
+  box-shadow:0 -1px 3px rgba(20,24,32,.12)}
+.palette-band.top{top:0;bottom:auto;box-shadow:0 1px 3px rgba(20,24,32,.12)}
+.palette-band span{display:block;height:100%}
+@media(prefers-reduced-motion:reduce){.palette-band{position:static}}
+
 /* colophon */
 footer{border-top:1px solid var(--line);background:#FBFBF8}
-.colophon{max-width:1080px;margin:0 auto;padding:22px 24px 40px;display:flex;
+.colophon{max-width:1080px;margin:0 auto;padding:22px 24px 46px;display:flex;
   gap:18px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
 .colophon .note{font-size:13px;color:var(--muted);max-width:640px;line-height:1.6}
 .colophon .note b{color:var(--ink);font-family:var(--disp)}
@@ -212,6 +237,8 @@ footer{border-top:1px solid var(--line);background:#FBFBF8}
 </style>
 </head>
 <body>
+<div class="palette-band top" aria-hidden="true"><span style="width:7.88%;background:var(--c-lblue)"></span><span style="width:5.004%;background:var(--c-green)"></span><span style="width:3.987%;background:var(--c-dblue)"></span><span style="width:5.557%;background:var(--c-purple)"></span><span style="width:4.45%;background:var(--c-dblue)"></span><span style="width:4.898%;background:var(--c-purple)"></span><span style="width:8.37%;background:var(--c-orange)"></span><span style="width:2.967%;background:var(--c-lblue)"></span><span style="width:3.489%;background:var(--c-green)"></span><span style="width:4.777%;background:var(--c-lblue)"></span><span style="width:8.243%;background:var(--c-orange)"></span><span style="width:7.051%;background:var(--c-red)"></span><span style="width:5.459%;background:var(--c-green)"></span><span style="width:4.909%;background:var(--c-purple)"></span><span style="width:5.609%;background:var(--c-orange)"></span><span style="width:6.554%;background:var(--c-red)"></span><span style="width:7.738%;background:var(--c-red)"></span><span style="width:3.058%;background:var(--c-dblue)"></span></div>
+
 <header class="masthead">
   <svg class="arcs" viewBox="0 0 1080 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <g stroke="#2E6C93" stroke-width="1.1" fill="none" opacity="0.9">
@@ -234,7 +261,7 @@ footer{border-top:1px solid var(--line);background:#FBFBF8}
   <div class="mast-inner">
     <div class="brand">
       <p class="eyebrow">Goethe-Institut München · Deutsch Intensiv Kompakt</p>
-      <h1>Kursstufe B1.3<br><em>Grammatik · Kapitel 7–12</em></h1>
+      <h1>Kursstufe B1.3<br><em>Grammatik &amp; Kultur · Kapitel 7–12</em></h1>
       <p class="place">Lehrwerk: Netzwerk neu B1.2 · Klett — ergänzt um Themen aus dem Kurs</p>
     </div>
   </div>
@@ -260,7 +287,8 @@ footer{border-top:1px solid var(--line);background:#FBFBF8}
     <p class="note"><b>Zu diesem Material.</b> Private Lernhilfe — <b>Erklärungen und Beispiele sind selbst formuliert</b> und im Zweifel gegen Kursbuch und Unterricht zu prüfen. Die Quelle steht auf jeder Karte. Logo: Goethe-Institut; keine offizielle Verbindung zum Institut oder zum Klett-Verlag.</p>
     <div class="legend" aria-label="Quellen">
       <span><i style="background:var(--light-blue)"></i>Netzwerk neu (Lehrwerk)</span>
-      <span><i style="background:var(--accent)"></i>Goethe-Kurs</span>
+      <span><i style="background:var(--kurs)"></i>Goethe-Kurs</span>
+      <span><i style="background:var(--kultur)"></i>Kultur &amp; Landeskunde</span>
     </div>
     </div>
     <div class="inst">
@@ -321,7 +349,9 @@ const TAGE=[
  {n:1, wt:"Montag",   datum:"13. Juli 2026", thema:"Beziehungen, Freundschaft & Wohnformen"},
  {n:2, wt:"Dienstag", datum:"14. Juli 2026", thema:"E-Mail & Anrede, Uhrzeit, temporale Nebensätze"},
  {n:3, wt:"Mittwoch", datum:"15. Juli 2026", thema:"Musik und Emotionen"},
- {n:4, wt:"Donnerstag", datum:"16. Juli 2026", thema:"Ernährung, Missverständnisse & Märchen"}
+ {n:4, wt:"Donnerstag", datum:"16. Juli 2026", thema:"Ernährung, Missverständnisse & Märchen"},
+ {n:5, wt:"Freitag", datum:"17. Juli 2026", thema:"Märchen: Lesen, Rollenspiel & eigenes Ende"},
+ {n:6, wt:"Montag",  datum:"20. Juli 2026", thema:"Wechselpräpositionen, Adjektivdeklination & Europa"}
 ];
 
 /* Einheiten aus Netzwerk neu B1.2 — ohne Abschnitte, die Einheit genügt. */
@@ -1493,6 +1523,649 @@ const G=[
   <li>Nicht mit der <b>Ortsangabe</b> verwechseln: <i>Ich warte <b>an der Haltestelle</b></i> (wo? → Dativ) gegen
       <i>Ich warte <b>auf den Bus</b></i> (Verb + Präposition → Akkusativ). Beides in einem Satz möglich.</li>
  </ul></div>`
+},
+{
+ id:"konsekutivsaetze", tag:5, kap:null, t:"Konsekutivsätze: <i>so … dass</i>",
+ src:[["kurs"]],
+ kurz:"Ursache und <b>Folge</b>: etwas ist so stark, <b>dass</b> etwas daraus folgt.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Idee</div>
+ <p>Ein Konsekutivsatz (Folgesatz) nennt die <b>Folge</b> von etwas: Die eine Sache ist so ausgeprägt,
+ <b>dass</b> die andere passiert. Man fragt <b>Mit welcher Folge?</b></p>
+ <p>Zwei Bauweisen, gleiche Bedeutung:</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">Adjektiv/Adverb betont</span><span class="htp">so … dass</span><span class="hte">Der Film war <b>so</b> traurig, <b>dass</b> ich weinte.</span></div>
+  <div class="htr"><span class="htq">ganzer Satz als Ursache</span><span class="htp">sodass</span><span class="hte">Es regnete stark, <b>sodass</b> wir zu Hause blieben.</span></div>
+ </div>
+ <p class="fine">Beide leiten einen <b>Nebensatz</b> ein: Verb ans Ende, Komma davor.
+ Bei <i>so … dass</i> steht <b>so</b> vor dem Adjektiv im Hauptsatz, <b>dass</b> leitet die Folge ein.</p></div>
+
+ <div class="callout"><div class="callout-h">so … dass oder sodass?</div>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">so … dass</div><div class="mxh">sodass</div>
+  <div class="mxr">betont</div>
+  <div class="mxc hi">ein Adjektiv / Adverb</div>
+  <div class="mxc">die ganze Aussage</div>
+  <div class="mxr">Bau</div>
+  <div class="mxc"><b>so</b> + Adjektiv, dann <b>dass</b></div>
+  <div class="mxc">ein Wort: <b>sodass</b></div>
+ </div>
+ <p class="fine">Faustregel: Willst du ein Wort hervorheben („so <b>müde</b>“), nimm <i>so … dass</i>.
+ Geht es um die ganze Situation, nimm <i>sodass</i>.</p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich war <b>so</b> müde, <b>dass</b> ich sofort einschlief.","<i>so</i> betont <i>müde</i>; <i>dass</i> bringt die Folge."],
+  ["Das Märchen war <b>so</b> spannend, <b>dass</b> ich es zweimal las.","Adjektiv betont."],
+  ["Es regnete stark, <b>sodass</b> das Fest ausfiel.","Ganze Ursache → <i>sodass</i>, ein Wort."],
+  ["Sie sprach <b>so</b> leise, <b>dass</b> ich nichts verstand.","Adverb betont."],
+  ["Der Wolf hatte <b>so</b> großen Hunger, <b>dass</b> er alles fraß.","Passend zum Märchenthema."],
+  ["Er verlief sich im Wald, <b>sodass</b> er den Weg nicht mehr fand.","Folge einer ganzen Situation."],
+  ["Die Suppe war <b>so</b> heiß, <b>dass</b> sie sich den Mund verbrannte.","<i>so heiß</i> → Folge."],
+  ["Das Kind weinte <b>so</b> laut, <b>dass</b> alle es hörten.","Adverb <i>laut</i>."],
+  ["Rumpelstilzchen wurde <b>so</b> wütend, <b>dass</b> er auf den Boden stampfte.","Aus dem Märchen — Folge der Wut."],
+  ["Wir hatten uns verspätet, <b>sodass</b> der Zug schon weg war.","Ursache = ganzer Satz."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Verb ans Ende</b> nach <i>dass</i>/<i>sodass</i>, wie in jedem Nebensatz: <i>…, dass ich sofort <b>einschlief</b>.</i></li>
+  <li><b>so</b> und <b>dass</b> stehen getrennt: <i>so</i> im Hauptsatz beim Adjektiv, <i>dass</i> am Anfang des Nebensatzes.
+      Nicht zu einem <i>sodass</i> zusammenziehen, wenn ein Adjektiv betont wird.</li>
+  <li><b>sodass</b> (ein Wort) und <b>so dass</b> (getrennt) sind beide erlaubt — aber nur, wenn <b>kein</b> Adjektiv dazwischen betont wird.</li>
+  <li>Nicht mit <b>damit</b> verwechseln: <i>damit</i> = Absicht (gewollt), <i>sodass</i> = Folge (passiert einfach).</li>
+ </ul></div>`
+},
+{
+ id:"relativ-was-wo", tag:5, kap:11, t:"Relativsätze mit <i>was</i> und <i>wo</i>",
+ src:[["buch","K11"],["kurs"]], beleg:"Übungsbuch K11, 9b–9c",
+ kurz:"Kein Nomen als Bezug? Dann <b>was</b> (für ganze Aussagen &amp; Unbestimmtes) oder <b>wo</b> (für Orte).",
+ body:`
+ <div class="callout"><div class="callout-h">Wann nicht der/die/das?</div>
+ <p>Die normalen Relativpronomen brauchen ein <b>Nomen</b> als Bezug. Manchmal gibt es keins —
+ dann nimmt man <b>was</b> oder <b>wo</b>.</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">ganzer Satz als Bezug</span><span class="htp">was</span><span class="hte">Er kam zu spät, <b>was</b> mich ärgerte.</span></div>
+  <div class="htr"><span class="htq">alles / etwas / nichts / das</span><span class="htp">was</span><span class="hte"><b>Alles</b>, <b>was</b> glänzt, ist nicht Gold.</span></div>
+  <div class="htr"><span class="htq">Superlativ (neutral)</span><span class="htp">was</span><span class="hte">Das Schönste, <b>was</b> ich kenne …</span></div>
+  <div class="htr"><span class="htq">Ort</span><span class="htp">wo</span><span class="hte">Das Café, <b>wo</b> ich oft sitze …</span></div>
+ </div></div>
+
+ <div class="callout"><div class="callout-h">was oder wo?</div>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">was</div><div class="mxh">wo</div>
+  <div class="mxr">Bezug</div>
+  <div class="mxc hi">ganze Aussage · alles/etwas/nichts · Superlativ</div>
+  <div class="mxc hi">ein Ort · eine Stadt</div>
+ </div>
+ <p class="fine">Bei Orten geht auch <i>in dem / an dem</i> — aber <b>wo</b> ist einfacher und im Alltag üblicher:
+ <i>die Stadt, <b>wo</b> ich wohne</i> = <i>die Stadt, <b>in der</b> ich wohne</i>.</p></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["<b>Alles</b>, <b>was</b> ich <b>brauche</b>, ist hier.","Bezug <i>alles</i> → was."],
+  ["Es gibt <b>nichts</b>, <b>was</b> mich <b>überrascht</b>.","Bezug <i>nichts</i> → was."],
+  ["Sie hat die Prüfung bestanden, <b>was</b> uns alle <b>freute</b>.","Bezug = der ganze erste Satz → was."],
+  ["Das ist das Beste, <b>was</b> mir <b>passieren</b> konnte.","Superlativ (neutral) → was."],
+  ["<b>Etwas</b>, <b>was</b> ich nie <b>vergesse</b>, ist ihr Lächeln.","Bezug <i>etwas</i> → was."],
+  ["Das ist die Stadt, <b>wo</b> ich <b>geboren</b> bin.","Ort → wo."],
+  ["Der Wald, <b>wo</b> das Mädchen sich <b>verlief</b>, war dunkel.","Ort im Märchen → wo."],
+  ["Das Café, <b>wo</b> wir uns immer <b>treffen</b>, hat zu.","Ort → wo (= <i>in dem</i>)."],
+  ["Ich zeige dir den Ort, <b>wo</b> ich jeden Tag <b>jogge</b>.","Aus der Übung 9c."],
+  ["Das Schloss, <b>wo</b> der Prinz <b>wohnte</b>, lag im Wald.","Märchenort → wo."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>was</b>, nicht <b>das</b>, nach <i>alles/etwas/nichts/viel/wenig</i>: <i>alles, <b>was</b> …</i>, nicht <i>alles, das …</i>.</li>
+  <li>Bezieht sich das Relativpronomen auf ein <b>Nomen</b>, gilt wieder <i>der/die/das</i>: <i>das Buch, <b>das</b> ich lese</i> — nicht <i>was</i>.</li>
+  <li><b>wo</b> nur für <b>Orte</b>, nicht für Zeit: „der Tag, <b>an dem</b> …“, nicht <i>der Tag, wo</i> (umgangssprachlich hört man es, im Kurs besser vermeiden).</li>
+  <li>Nach einem ganzen Satz immer <b>was</b>: <i>…, <b>was</b> mich freute</i> — nie <i>das mich freute</i>.</li>
+ </ul></div>`
+},
+{
+ id:"tekamolo", tag:5, kap:null, t:"Wortstellung im Mittelfeld: Te-Ka-Mo-Lo",
+ src:[["kurs"]],
+ kurz:"Wenn mehrere Angaben im Satz stehen: <b>Te</b>mporal – <b>Ka</b>usal – <b>Mo</b>dal – <b>Lo</b>kal.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Reihenfolge</div>
+ <p>Stehen mehrere Angaben im Mittelfeld, ordnet man sie nach <b>Te-Ka-Mo-Lo</b>.
+ Es ist eine <b>Tendenz</b>, keine eiserne Regel — aber sie klingt für Muttersprachler richtig.</p>
+ <table class="ptab">
+  <tr><th>Te</th><th>Ka</th><th>Mo</th><th>Lo</th></tr>
+  <tr><td><b>temporal</b></td><td><b>kausal</b></td><td><b>modal</b></td><td><b>lokal</b></td></tr>
+  <tr><td>Wann?</td><td>Warum?</td><td>Wie?</td><td>Wo? / Wohin?</td></tr>
+  <tr><td>heute</td><td>wegen des Regens</td><td>mit dem Bus</td><td>zur Arbeit</td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich fahre <b>heute</b> <b>mit dem Bus</b> <b>zur Arbeit</b>.","Te – Mo – Lo."],
+  ["Sie geht <b>morgen</b> <b>wegen der Prüfung</b> <b>nervös</b> <b>in die Schule</b>.","Te – Ka – Mo – Lo, alle vier."],
+  ["Wir treffen uns <b>am Freitag</b> <b>im Café</b>.","Te – Lo."],
+  ["Er kommt <b>heute</b> <b>wegen des Staus</b> <b>später</b>.","Te – Ka – Mo."],
+  ["Ich gehe <b>abends</b> <b>gern</b> <b>ins Kino</b>.","Te – Mo – Lo."],
+  ["Die Kinder spielen <b>nachmittags</b> <b>fröhlich</b> <b>im Garten</b>.","Te – Mo – Lo."],
+  ["Sie fährt <b>jeden Tag</b> <b>mit dem Fahrrad</b> <b>zur Uni</b>.","Te – Mo – Lo."],
+  ["Ich war <b>gestern</b> <b>wegen einer Erkältung</b> <b>zu Hause</b>.","Te – Ka – Lo."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Die <b>temporale</b> Angabe steht fast immer zuerst — das ist der stabilste Teil der Regel.</li>
+  <li><b>Lokal</b> steht am Ende, direkt vor dem Verb-Rest: <i>… mit dem Bus <b>zur Arbeit</b> gefahren.</i></li>
+  <li>Willst du etwas <b>betonen</b>, darf es auf <b>Position 1</b> — dann gilt Te-Ka-Mo-Lo nur noch für den Rest:
+      <i><b>Heute</b> fahre ich mit dem Bus zur Arbeit.</i></li>
+  <li>Es ist eine <b>Tendenz</b>. Ein Satz mit anderer Reihenfolge ist nicht falsch, klingt aber oft weniger natürlich.</li>
+ </ul></div>`
+},
+{
+ id:"wo-wohin", tag:5, kap:null, t:"<i>wo</i> oder <i>wohin</i>? Dativ oder Akkusativ",
+ src:[["kurs"]],
+ kurz:"<b>Wo?</b> → Ort, keine Bewegung, <b>Dativ</b>. <b>Wohin?</b> → Ziel, Bewegung, <b>Akkusativ</b>.",
+ body:`
+ <div class="callout"><div class="callout-h">Die Grundfrage</div>
+ <p>Bei den <b>Wechselpräpositionen</b> entscheidet nicht die Präposition über den Kasus, sondern die <b>Frage</b>:</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">Wo? — Position</div><div class="mxh">Wohin? — Richtung</div>
+  <div class="mxr">Bewegung</div>
+  <div class="mxc hi">keine → <b>Dativ</b></div>
+  <div class="mxc hi">ja, zu einem Ziel → <b>Akkusativ</b></div>
+  <div class="mxr">Beispiel</div>
+  <div class="mxc">Das Buch liegt <b>auf dem</b> Tisch.</div>
+  <div class="mxc">Ich lege das Buch <b>auf den</b> Tisch.</div>
+ </div>
+ <p class="fine">Merke: <b>Wo + Dativ</b> (beide mit „…o/…m“ als Eselsbrücke), <b>Wohin + Akkusativ</b>.</p></div>
+ <div class="callout"><div class="callout-h">Die Verben verraten den Kasus</div>
+ <p>Bestimmte Verbpaare gehören fest zu einer Seite:</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">Wohin? + Akkusativ</div><div class="mxh">Wo? + Dativ</div>
+  <div class="mxr">Verben</div>
+  <div class="mxc">stellen · legen · setzen · hängen · (sich) legen</div>
+  <div class="mxc">stehen · liegen · sitzen · hängen · stecken</div>
+ </div>
+ <p class="fine"><i>hängen</i> gibt es in beiden Reihen: <i>Ich hänge das Bild an die Wand</i> (wohin, Akk) —
+ <i>Das Bild hängt an der Wand</i> (wo, Dat).</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Das Buch liegt <b>auf dem</b> Tisch.","Wo? Keine Bewegung → Dativ."],
+  ["Ich lege das Buch <b>auf den</b> Tisch.","Wohin? Bewegung zum Ziel → Akkusativ."],
+  ["Die Kinder spielen <b>im</b> Garten.","Wo? → <i>in dem</i> = im, Dativ."],
+  ["Die Kinder laufen <b>in den</b> Garten.","Wohin? → Akkusativ."],
+  ["Das Bild hängt <b>an der</b> Wand.","Wo? → Dativ."],
+  ["Ich hänge das Bild <b>an die</b> Wand.","Wohin? → Akkusativ."],
+  ["Die Katze sitzt <b>unter dem</b> Stuhl.","Wo? → Dativ."],
+  ["Die Katze kriecht <b>unter den</b> Stuhl.","Wohin? → Akkusativ."],
+  ["Wir sind <b>im</b> Kino.","Wo? → Dativ."],
+  ["Wir gehen <b>ins</b> Kino.","Wohin? → <i>in das</i> = ins, Akkusativ."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Nur die <b>neun Wechselpräpositionen</b> haben die Wahl: <b>an · auf · hinter · in · neben · über · unter · vor · zwischen</b>.</li>
+  <li><b>stellen/legen/setzen/hängen</b> = Akkusativ (man tut etwas). <b>stehen/liegen/sitzen/hängen</b> = Dativ (etwas ist irgendwo).</li>
+  <li>Verschmelzungen: <i>ins</i> = in das, <i>im</i> = in dem, <i>ans</i> = an das, <i>am</i> = an dem, <i>aufs</i> = auf das.</li>
+  <li>Diese Regel gilt <b>nicht</b> für Verben mit fester Präposition (<i>warten auf</i> + Akk immer) — das ist ein eigenes Thema.</li>
+ </ul></div>`
+},
+{
+ id:"lokale-praepositionen", tag:6, kap:null, t:"Lokale Präpositionen: Wo? Wohin? Woher?",
+ src:[["kurs"]],
+ kurz:"Ein Raster: die <b>Frage</b> (Wo/Wohin/Woher) wählt den Kasus, die <b>Art des Ortes</b> wählt die Präposition.",
+ body:`
+ <div class="callout"><div class="callout-h">Die drei Grundfragen</div>
+ <p>Ortsangaben beantworten eine von drei Fragen — und jede zieht ihre eigenen Präpositionen und Kasus nach sich.
+ Das ist das Gerüst der lokalen Präpositionen.</p>
+ <table class="ptab">
+  <tr><th>Frage</th><th>bedeutet</th><th>Kasus</th></tr>
+  <tr><td><b>Wo?</b></td><td>Position — keine Bewegung</td><td>meist <b>Dativ</b></td></tr>
+  <tr><td><b>Wohin?</b></td><td>Ziel — Bewegung dorthin</td><td>meist <b>Akkusativ</b></td></tr>
+  <tr><td><b>Woher?</b></td><td>Herkunft — Bewegung von dort weg</td><td>immer <b>Dativ</b></td></tr>
+ </table></div>
+
+ <div class="callout"><div class="callout-h">Wo? — Position · <b>immer Dativ</b></div>
+ <p class="fine">Frage nach dem Ort, keine Bewegung. Welche Präposition? Das entscheidet die <b>Art des Ortes</b>.</p>
+ <table class="ptab">
+  <tr><th>Art des Ortes</th><th>Präposition</th><th>Beispiel</th></tr>
+  <tr><td>Räume · Städte · Länder<br><span class="htq">geschlossen, „innen“</span></td><td><b>in</b> + Dativ</td><td><b>im</b> Haus · <b>in</b> Berlin · <b>in</b> Deutschland</td></tr>
+  <tr><td>Kontakt · „am Wasser“<br><span class="htq">an einer Grenze / Linie</span></td><td><b>an</b> + Dativ</td><td><b>an der</b> Station · <b>am</b> Strand</td></tr>
+  <tr><td>Fläche · „auf dem Wasser“<br><span class="htq">oben drauf</span></td><td><b>auf</b> + Dativ</td><td><b>auf dem</b> Fußballplatz</td></tr>
+  <tr><td>Personen · Firmen · Aktivitäten<br><span class="htq">bei jemandem / etwas</span></td><td><b>bei</b> + Dativ</td><td><b>bei</b> Lisa · <b>bei</b> H&amp;M · <b>beim</b> Arzt · <b>beim</b> Picknick</td></tr>
+ </table></div>
+
+ <div class="callout"><div class="callout-h">Wohin? — Ziel · <b>Akkusativ</b> (aber <i>nach</i> &amp; <i>zu</i> + Dativ)</div>
+ <p class="fine">Bewegung zu einem Ziel. Bei den Wechselpräpositionen wird aus dem Dativ ein <b>Akkusativ</b> —
+ <i>nach</i> und <i>zu</i> bleiben aber Dativ.</p>
+ <table class="ptab">
+  <tr><th>Art des Ziels</th><th>Präposition</th><th>Beispiel</th></tr>
+  <tr><td>Städte · Länder ohne Artikel<br><span class="htq">bloßer Name</span></td><td><b>nach</b> + Dativ</td><td><b>nach</b> Paris · <b>nach</b> Japan</td></tr>
+  <tr><td>Räume · Länder mit Artikel<br><span class="htq">hinein</span></td><td><b>in</b> + Akkusativ</td><td><b>ins</b> Haus · <b>in die</b> Schweiz</td></tr>
+  <tr><td>Kontakt · „ans Wasser“<br><span class="htq">an eine Grenze / Linie</span></td><td><b>an</b> + Akkusativ</td><td><b>an die</b> Station · <b>an den</b> Strand</td></tr>
+  <tr><td>Fläche · „aufs Wasser“<br><span class="htq">hinauf, drauf</span></td><td><b>auf</b> + Akkusativ</td><td><b>auf den</b> Fußballplatz</td></tr>
+  <tr><td>Personen · Firmen · Aktivitäten<br><span class="htq">zu jemandem / etwas</span></td><td><b>zu</b> + Dativ</td><td><b>zu</b> Lisa · <b>zu</b> H&amp;M · <b>zum</b> Arzt · <b>zum</b> Picknick</td></tr>
+ </table></div>
+
+ <div class="callout"><div class="callout-h">Woher? — Herkunft · <b>immer Dativ</b></div>
+ <p class="fine">Bewegung von einem Ort weg. Nur zwei Präpositionen — die Wahl spiegelt <i>in</i> gegen <i>an/auf/bei</i>.</p>
+ <table class="ptab">
+  <tr><th>Herkunft</th><th>Präposition</th><th>Beispiel</th><th>spiegelt</th></tr>
+  <tr><td>Räume · Städte · Länder<br><span class="htq">von „innen“ heraus</span></td><td><b>aus</b> + Dativ</td><td><b>aus</b> Japan · <b>aus dem</b> Haus</td><td>Gegenstück zu <i>in</i></td></tr>
+  <tr><td>Kontakt · „Wasser“ · Personen · Firmen<br><span class="htq">von einem Punkt / einer Person weg</span></td><td><b>von</b> + Dativ</td><td><b>vom</b> Strand · <b>vom</b> Fußballplatz · <b>von</b> Lisa</td><td>Gegenstück zu <i>an/auf/bei</i></td></tr>
+ </table></div>
+
+ <div class="callout"><div class="callout-h">Sonderfall: <i>zu Hause</i> und <i>nach Hause</i></div>
+ <div class="howto">
+  <div class="htr"><span class="htq">Wo?</span><span class="htp">zu Hause</span><span class="hte">Ich bin <b>zu Hause</b>.</span></div>
+  <div class="htr"><span class="htq">Wohin?</span><span class="htp">nach Hause</span><span class="hte">Ich gehe <b>nach Hause</b>.</span></div>
+  <div class="htr"><span class="htq">Woher?</span><span class="htp">von zu Hause</span><span class="hte">Ich komme <b>von zu Hause</b>.</span></div>
+ </div></div>
+
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich wohne <b>in</b> Berlin.","Wo? Stadt → <i>in</i> + Dativ."],
+  ["Wir sind <b>am</b> Strand.","Wo? „Wasser“ → <i>an</i> + Dativ (am = an dem)."],
+  ["Sie ist <b>beim</b> Arzt.","Wo? Person → <i>bei</i> + Dativ (beim = bei dem)."],
+  ["Ich fahre <b>nach</b> Japan.","Wohin? Land ohne Artikel → <i>nach</i>."],
+  ["Wir fahren <b>in die</b> Schweiz.","Wohin? Land mit Artikel → <i>in</i> + Akkusativ."],
+  ["Er geht <b>an den</b> Strand.","Wohin? → <i>an</i> + Akkusativ."],
+  ["Ich gehe <b>zum</b> Arzt.","Wohin? Person → <i>zu</i> + Dativ (zum = zu dem)."],
+  ["Sie kommt <b>aus</b> Japan.","Woher? Land → <i>aus</i> + Dativ."],
+  ["Ich komme gerade <b>vom</b> Fußballplatz.","Woher? Fläche → <i>von</i> + Dativ (vom = von dem)."],
+  ["Wir kommen <b>von</b> Lisa.","Woher? Person → <i>von</i> + Dativ."],
+  ["Ich bin <b>zu Hause</b> und gehe später <b>nach Hause</b>.","Sonderfall: zu Hause (wo) / nach Hause (wohin)."],
+  ["Das Wasser kommt <b>aus dem</b> Hahn.","Woher? Raum/Gerät → <i>aus</i> + Dativ."]
+ ])}</div>
+
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Wohin</b> zu einer Person ist <b>zu</b> (+ Dativ), nicht <i>nach</i>: <i>Ich gehe <b>zum</b> Arzt</i>, nicht <i>nach dem Arzt</i>.</li>
+  <li><b>nach</b> nur für Städte/Länder <b>ohne</b> Artikel: <i>nach Paris</i>, aber <i>in die Schweiz</i>, <i>in die Türkei</i>.</li>
+  <li><b>aus</b> oder <b>von</b> bei Woher? <i>aus</i> für Länder und Räume (von innen), <i>von</i> für Personen, Flächen, Punkte.</li>
+  <li>Verschmelzungen kommen ständig vor: <b>im</b> = in dem · <b>am</b> = an dem · <b>beim</b> = bei dem · <b>zum</b> = zu dem · <b>zur</b> = zu der · <b>vom</b> = von dem · <b>ins</b> = in das · <b>ans</b> = an das.</li>
+  <li><b>bei</b> (Wo, Person) und <b>zu</b> (Wohin, Person) sind ein Paar: <i>Ich bin <b>bei</b> Lisa</i> → <i>Ich gehe <b>zu</b> Lisa</i> → <i>Ich komme <b>von</b> Lisa</i>.</li>
+ </ul></div>`
+},
+{
+ id:"gefallen", tag:6, kap:null, t:"<i>gefallen</i> — etwas gefällt mir",
+ src:[["kurs"]],
+ kurz:"Nicht <i>ich mag</i>, sondern <b>es gefällt mir</b>: Die Sache ist das Subjekt, die Person steht im <b>Dativ</b>.",
+ body:`
+ <div class="callout"><div class="callout-h">Umgekehrt gedacht</div>
+ <p><b>gefallen</b> funktioniert wie im Englischen <i>to please</i>, nicht wie <i>to like</i>:
+ Die <b>Sache</b> ist das Subjekt, die <b>Person</b> steht im <b>Dativ</b>. Das Verb richtet sich nach der Sache.</p>
+ <table class="ptab">
+  <tr><th>Person (Dativ)</th><th>gefallen</th><th>Sache (Subjekt)</th></tr>
+  <tr><td><b>Mir</b></td><td>gefällt</td><td>der Film. <span class="htq">(Singular)</span></td></tr>
+  <tr><td><b>Mir</b></td><td>gefallen</td><td>die Bilder. <span class="htq">(Plural)</span></td></tr>
+ </table>
+ <p class="fine">Also nicht „ich gefalle den Film“. Das Subjekt ist <b>der Film</b>, deshalb <i>gefällt</i> — und
+ bei mehreren Dingen <i>gefallen</i>.</p></div>
+ <div class="callout"><div class="callout-h">In der Vergangenheit</div>
+ <p>Perfekt mit <b>haben</b>: <i>hat … gefallen</i>. Die Person bleibt im Dativ.</p>
+ ${exList([
+  ["<b>Mir</b> gefällt dieses Lied.","Singular → <i>gefällt</i>. Person im Dativ."],
+  ["<b>Mir</b> gefallen diese Schuhe.","Plural → <i>gefallen</i>."],
+  ["Wie hat <b>dir</b> der Film gefallen?","Perfekt: <i>hat … gefallen</i>, Person im Dativ."],
+  ["Der Urlaub hat <b>uns</b> sehr gut gefallen.","Subjekt <i>der Urlaub</i> → Singular."],
+  ["Gefällt <b>Ihnen</b> die Wohnung?","Formell, Frage."],
+  ["Das Konzert hat <b>ihr</b> gut gefallen.","<i>ihr</i> = Dativ von <i>sie</i>."],
+  ["<b>Ihm</b> gefällt die Idee nicht.","Verneinung, Dativ <i>ihm</i>."],
+  ["Die neuen Bilder gefallen <b>mir</b> sehr.","Subjekt Plural → <i>gefallen</i>."],
+  ["Hat <b>euch</b> das Essen geschmeckt?","Gleiches Muster mit <i>schmecken</i>."],
+  ["Diese Stadt gefällt <b>mir</b> immer besser.","Subjekt <i>Stadt</i> → Singular <i>gefällt</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Person immer Dativ</b>: <i>Ich gefalle den Film</i> ✗ → <i>Mir gefällt der Film</i> ✓.</li>
+  <li>Das <b>Verb</b> richtet sich nach der <b>Sache</b>, nicht nach der Person: <i>Mir gefallen die Bilder</i> (Plural).</li>
+  <li>Perfekt mit <b>haben</b>, nicht sein: <i>hat mir gefallen</i>. Das Partizip <b>gefallen</b> ist stark (Endung <i>-en</i>) und sieht aus wie der Infinitiv.</li>
+  <li>Genauso gebaut: <b>schmecken</b> (das Essen schmeckt mir), <b>fehlen</b> (du fehlst mir), <b>passen</b> (das passt mir).</li>
+ </ul></div>`
+},
+{
+ id:"adjektivdeklination", tag:6, kap:null, t:"Adjektivdeklination",
+ src:[["kurs"]],
+ kurz:"Die Adjektivendung hängt vom <b>Artikel</b> ab: bestimmter, unbestimmter oder keiner.",
+ body:`
+ <div class="callout"><div class="callout-h">Die eine Frage: Zeigt der Artikel schon Genus und Kasus?</div>
+ <p>Ein Adjektiv vor einem Nomen bekommt fast immer eine Endung. Welche, hängt vom Artikel ab —
+ genauer: <b>ob der Artikel das Signal schon trägt</b>.</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">der/die/das …</span><span class="htp">schwach</span><span class="hte">Artikel zeigt alles → Adjektiv meist <b>-e</b> / <b>-en</b></span></div>
+  <div class="htr"><span class="htq">ein/kein/mein …</span><span class="htp">gemischt</span><span class="hte">Artikel zeigt nicht alles → Adjektiv springt ein</span></div>
+  <div class="htr"><span class="htq">kein Artikel</span><span class="htp">stark</span><span class="hte">Adjektiv trägt das volle Signal (eigenes Thema)</span></div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Mit bestimmtem Artikel (schwach)</div>
+ <table class="ptab">
+  <tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr>
+  <tr><td>Nom</td><td>der gut<b>e</b></td><td>die gut<b>e</b></td><td>das gut<b>e</b></td><td>die gut<b>en</b></td></tr>
+  <tr><td>Akk</td><td>den gut<b>en</b></td><td>die gut<b>e</b></td><td>das gut<b>e</b></td><td>die gut<b>en</b></td></tr>
+  <tr><td>Dat</td><td>dem gut<b>en</b></td><td>der gut<b>en</b></td><td>dem gut<b>en</b></td><td>den gut<b>en</b></td></tr>
+ </table>
+ <p class="fine">Nur fünf Formen sind <b>-e</b> (Nom Sg + fem/neutr Akk), <b>alles andere -en</b>. Sehr regelmäßig.</p></div>
+ <div class="callout"><div class="callout-h">Mit unbestimmtem Artikel (gemischt)</div>
+ <table class="ptab">
+  <tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr>
+  <tr><td>Nom</td><td>ein gut<b>er</b></td><td>eine gut<b>e</b></td><td>ein gut<b>es</b></td><td>keine gut<b>en</b></td></tr>
+  <tr><td>Akk</td><td>einen gut<b>en</b></td><td>eine gut<b>e</b></td><td>ein gut<b>es</b></td><td>keine gut<b>en</b></td></tr>
+  <tr><td>Dat</td><td>einem gut<b>en</b></td><td>einer gut<b>en</b></td><td>einem gut<b>en</b></td><td>keinen gut<b>en</b></td></tr>
+ </table>
+ <p class="fine">Der Unterschied liegt nur in drei Feldern: <b>maskulin Nom</b> (<i>-er</i>) und <b>neutral Nom/Akk</b> (<i>-es</i>) —
+ dort, wo <i>ein</i> das Genus <b>nicht</b> zeigt, springt das Adjektiv ein.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Der <b>neue</b> Kollege ist nett.","best. Artikel, mask. Nom → <i>-e</i>."],
+  ["Ich kenne den <b>neuen</b> Kollegen.","best. Artikel, mask. Akk → <i>-en</i>."],
+  ["Ein <b>neuer</b> Kollege fängt heute an.","unbest., mask. Nom → <i>-er</i>, weil <i>ein</i> nichts zeigt."],
+  ["Das ist ein <b>schönes</b> Bild.","unbest., neutr. Nom → <i>-es</i>."],
+  ["Sie hat eine <b>gute</b> Idee.","fem. → <i>-e</i> in beiden Systemen."],
+  ["Wir wohnen in einer <b>ruhigen</b> Straße.","unbest., fem. Dat → <i>-en</i>."],
+  ["Mit dem <b>alten</b> Auto fahre ich nicht mehr.","best., mask. Dat → <i>-en</i>."],
+  ["Er trinkt einen <b>starken</b> Kaffee.","unbest., mask. Akk → <i>-en</i>."],
+  ["Die <b>kleinen</b> Kinder spielen.","best., Plural → <i>-en</i>."],
+  ["Das ist mein <b>bester</b> Freund.","<i>mein</i> läuft wie <i>ein</i> → mask. Nom <i>-er</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Nach <b>der/die/das</b> gibt es nur <b>-e</b> oder <b>-en</b> — nie <i>-er</i> oder <i>-es</i>.</li>
+  <li>Nach <b>ein/kein/mein</b> braucht es <b>-er</b> (mask. Nom) und <b>-es</b> (neutr. Nom/Akk), weil der Artikel dort das Genus nicht zeigt.</li>
+  <li><b>Dativ ist fast immer -en</b> — in beiden Systemen, allen Genera. Der bequemste Merksatz.</li>
+  <li><b>mein · dein · sein · kein</b> laufen alle wie <b>ein</b> (gemischt).</li>
+  <li>Im <b>Plural</b> mit Artikel (die/keine/meine) ist die Endung <b>immer -en</b>.</li>
+ </ul></div>`
+},
+{
+ id:"ernaehrungsformen", tag:4, kap:null, kultur:true, src:[["kurs"]], t:"Ernährungsformen",
+ kurz:"Wer isst was — und warum. <i>Vegetarier</i>, <i>Veganer</i>, <i>Pescetarier</i>, <i>Paleo</i>.",
+ body:`
+ <div class="callout"><div class="callout-h">Wer isst was?</div>
+ <table class="ptab">
+  <tr><th>Form</th><th>isst</th><th>isst nicht</th></tr>
+  <tr><td><b>Vegetarier/in</b></td><td>Gemüse, Obst, Eier, Milchprodukte</td><td>Fleisch, Fisch</td></tr>
+  <tr><td><b>Veganer/in</b></td><td>nur Pflanzliches</td><td>alles Tierische: Fleisch, Fisch, Eier, Milch, Honig</td></tr>
+  <tr><td><b>Pescetarier/in</b></td><td>Fisch, Gemüse, Eier, Milch</td><td>Fleisch (aber Fisch ist erlaubt)</td></tr>
+  <tr><td><b>Paleo-Anhänger/in</b></td><td>Fleisch, Fisch, Gemüse, Obst, Nüsse</td><td>Getreide, Milchprodukte, Zucker, Fertigprodukte</td></tr>
+  <tr><td><b>Flexitarier/in</b></td><td>meistens vegetarisch</td><td>nur selten Fleisch</td></tr>
+ </table>
+ <p class="fine">Die Endungen zeigen Personen: <b>-er/-erin</b> (der Vegetarier / die Vegetarierin),
+ <b>-aner/-anerin</b> (der Veganer). Die Ernährung selbst ist ein Adjektiv: <i>vegetarisch</i>, <i>vegan</i>.</p></div>
+ <div class="callout"><div class="callout-h">Warum?</div>
+ <p>Gründe, die man im Kurs nennt: <b>Gesundheit</b> (weniger Fett, mehr Gemüse), <b>Tierschutz</b>
+ (keine Tiere töten), <b>Umwelt</b> (Fleisch braucht viel Wasser und CO₂) und <b>Geschmack</b>.
+ Nützliche Wendungen: <i>Ich ernähre mich vegetarisch. · Ich verzichte auf Fleisch. · Ich esse kein Fleisch,
+ weil …</i></p></div>`
+},
+{
+ id:"maerchen-merkmale", tag:4, kap:null, kultur:true, src:[["kurs"]], t:"Märchen: Merkmale &amp; Figuren",
+ kurz:"Was ein Märchen zum Märchen macht — und wer darin vorkommt.",
+ body:`
+ <div class="callout"><div class="callout-h">Typische Merkmale</div>
+ <ul class="mini">
+  <li><b>Fester Anfang und Schluss</b>: „<i>Es war einmal …</i>“ und „<i>… und wenn sie nicht gestorben sind, dann leben sie noch heute.</i>“</li>
+  <li><b>Keine genaue Zeit, kein genauer Ort</b>: irgendwann, irgendwo — „in einem fernen Land“.</li>
+  <li><b>Magie</b>: sprechende Tiere, Zauber, Verwandlungen, Wünsche.</li>
+  <li><b>Gut gegen Böse</b> — und am Ende siegt das Gute.</li>
+  <li><b>Zahlen</b> <b>3</b> und <b>7</b>: drei Wünsche, sieben Zwerge, drei Aufgaben.</li>
+  <li><b>Klare Moral</b>: Fleiß, Mut oder Ehrlichkeit werden belohnt, Bosheit bestraft.</li>
+ </ul></div>
+ <div class="callout"><div class="callout-h">Figuren und ihre Eigenschaften</div>
+ <table class="ptab">
+  <tr><th>Figur</th><th>oft …</th></tr>
+  <tr><td>König · Königin · Prinz · Prinzessin</td><td>mächtig, edel, manchmal hochmütig</td></tr>
+  <tr><td>Hexe · Zauberer</td><td>böse, listig, gefährlich</td></tr>
+  <tr><td>Stiefmutter</td><td>neidisch, grausam, ungerecht</td></tr>
+  <tr><td>Zwerg · Riese</td><td>fleißig und hilfsbereit / stark und dumm</td></tr>
+  <tr><td>Held · Heldin</td><td>mutig, klug, gutherzig</td></tr>
+  <tr><td>Rumpelstilzchen</td><td>listig, geheimnisvoll, jähzornig</td></tr>
+ </table>
+ <p class="fine">Nützliche Adjektive: <i>böse · gut · klug · dumm · faul · fleißig · neidisch · mutig ·
+ hilfsbereit · grausam · edel · listig</i>.</p></div>`
+},
+{
+ id:"neunter-november", tag:5, kap:null, kultur:true, src:[["kurs"]], t:"Der 9. November — deutscher Schicksalstag",
+ kurz:"Vier Ereignisse fielen auf den <b>9. November</b> — der Feiertag ist trotzdem der <b>3. Oktober</b>.",
+ body:`
+ <div class="callout"><div class="callout-h">Vier Mal 9. November</div>
+ <p>Kein anderer Tag trägt so viel deutsche Geschichte. Deshalb heißt er <b>Schicksalstag</b>.</p>
+ <table class="ptab">
+  <tr><th>Jahr</th><th>Ereignis</th></tr>
+  <tr><td><b>1918</b></td><td>Ausrufung der Republik — das Ende der Monarchie.</td></tr>
+  <tr><td><b>1923</b></td><td>Hitlerputsch in München — gescheiterter Umsturzversuch.</td></tr>
+  <tr><td><b>1938</b></td><td>Novemberpogrome („Reichskristallnacht“) — Gewalt gegen Jüdinnen und Juden.</td></tr>
+  <tr><td><b>1989</b></td><td>Fall der Berliner Mauer — der Weg zur Wiedervereinigung.</td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Warum ist der Feiertag der 3. Oktober?</div>
+ <p>Am <b>3. Oktober 1990</b> wurde Deutschland offiziell wiedervereinigt — das ist der <b>Tag der
+ Deutschen Einheit</b>, der Nationalfeiertag. Den 9. November wählte man <b>nicht</b>, weil an diesem
+ Datum auch die <b>Novemberpogrome von 1938</b> liegen. Ein Freudentag und ein Trauertag am selben
+ Datum — das passte nicht zusammen.</p></div>
+ <div class="callout warn"><div class="callout-h">Achtung</div>
+ <ul class="mini">
+  <li><b>1933</b> gehört <b>nicht</b> zum 9. November: Hitlers Machtübernahme war der <b>30. Januar 1933</b>.</li>
+  <li>Der <b>Nationalfeiertag</b> ist der <b>3. Oktober</b>, nicht der 9. November.</li>
+ </ul></div>`
+},
+{
+ id:"europaeische-union", tag:6, kap:null, kultur:true, src:[["kurs"]], t:"Die Europäische Union — ein Zeitstrahl",
+ beleg:"Netzwerk neu K10, S. 48–49",
+ kurz:"Von sechs Staaten (<b>1951</b>) über den Euro bis zum <b>Brexit 2020</b> — die EU in acht Schritten.",
+ body:`
+ <div class="callout"><div class="callout-h">Warum überhaupt?</div>
+ <p>Nach dem Zweiten Weltkrieg beschlossen die Länder Europas, enger <b>zusammenzuarbeiten</b> — die Idee:
+ Wer wirtschaftlich verbunden ist, führt keinen Krieg mehr gegeneinander. So begann die europäische Einigung.</p></div>
+ <div class="callout"><div class="callout-h">Der Zeitstrahl</div>
+ <div class="tl">
+  <div class="tl-item"><div class="tl-y">1951</div><div class="tl-t">Sechs Staaten gründen die <b>Europäische Gemeinschaft für Kohle und Stahl</b> (Montanunion) — um die Produktion von Kriegswaffen zu kontrollieren.</div></div>
+  <div class="tl-item"><div class="tl-y">1957</div><div class="tl-t">Die <b>Römischen Verträge</b>: zwei weitere Verträge regeln Wirtschaftsbeziehungen und den Umgang mit Atomkraft.</div></div>
+  <div class="tl-item"><div class="tl-y">1992</div><div class="tl-t">Der <b>Vertrag von Maastricht</b> (7. Februar) — aus der Gemeinschaft wird die <b>Europäische Union</b>.</div></div>
+  <div class="tl-item"><div class="tl-y">1995</div><div class="tl-t">Reisen ohne Grenzkontrollen: EU-Bürger/innen können frei reisen, studieren und arbeiten.</div></div>
+  <div class="tl-item"><div class="tl-y">2002</div><div class="tl-t">Der <b>Euro</b> kommt als Bargeld — immer mehr Länder nutzen dieselbe Währung.</div></div>
+  <div class="tl-item"><div class="tl-y">2020</div><div class="tl-t"><b>Brexit</b>: Großbritannien tritt aus. Seitdem hat die EU <b>27</b> Mitgliedstaaten.</div></div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Die sechs Gründungsstaaten</div>
+ <p><b>Belgien · Deutschland · Frankreich · Italien · Luxemburg · die Niederlande</b></p>
+ <p class="fine">Ihr Ziel laut Kursbuch (11a): <i>Krieg in Europa zu vermeiden</i>.
+ Der Vertrag von 1951 diente daneben dazu, <i>die Produktion von Kriegswaffen zu kontrollieren</i>.</p></div>
+ <div class="callout"><div class="callout-h">Und die Kritik?</div>
+ <p>Skeptiker/innen fürchten, dass die <b>nationalen Besonderheiten</b> der Länder verschwinden. Anderen gibt es
+ <b>zu viele Vorschriften</b>, oder Entscheidungen dauern ihnen zu lange. Die wichtigsten Werte der EU bleiben:
+ <i>Menschenwürde, Menschenrechte, Demokratie, Freiheit, Toleranz und Solidarität</i>.</p></div>`
+},
+{
+ id:"artikelwoerter-pronomen", kap:11, t:"Artikelwörter als Pronomen",
+ src:[["buch","K11"]], beleg:"Übungsbuch K11, 4c–4d",
+ kurz:"<i>ein</i>, <i>kein</i>, <i>welch-</i>, die Possessiva: allein stehen sie für ein Nomen — und tragen dann die <b>volle Endung</b>.",
+ body:`
+ <div class="callout"><div class="callout-h">Vom Begleiter zum Stellvertreter</div>
+ <p>Dieselben Wörter, die vor einem Nomen stehen (<i>ein Auto</i>), können das Nomen auch <b>ersetzen</b>
+ (<i>Ich habe eins</i>). Als Pronomen zeigen sie dann selbst Genus und Kasus — mit der Endung, die sonst
+ der bestimmte Artikel hätte.</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">als Begleiter</div><div class="mxh">als Pronomen</div>
+  <div class="mxr">maskulin</div>
+  <div class="mxc"><b>ein</b> Wagen</div>
+  <div class="mxc hi">Ich habe <b>einen</b>.</div>
+  <div class="mxr">neutral</div>
+  <div class="mxc"><b>kein</b> Auto</div>
+  <div class="mxc hi">Ich habe <b>keins</b>.</div>
+ </div>
+ <p class="fine">Beim Begleiter fehlt manchmal die Endung (<i>ein</i> Auto), beim Pronomen nie:
+ <i>ein<b>s</b></i>, <i>kein<b>s</b></i>, <i>ein<b>er</b></i>.</p></div>
+ <div class="callout"><div class="callout-h">Die Endungen (wie der bestimmte Artikel)</div>
+ <table class="ptab">
+  <tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr>
+  <tr><td>Nom</td><td>ein<b>er</b></td><td>ein<b>e</b></td><td>ein(e)<b>s</b></td><td>welch<b>e</b></td></tr>
+  <tr><td>Akk</td><td>ein<b>en</b></td><td>ein<b>e</b></td><td>ein(e)<b>s</b></td><td>welch<b>e</b></td></tr>
+  <tr><td>Dat</td><td>ein<b>em</b></td><td>ein<b>er</b></td><td>ein<b>em</b></td><td>welch<b>en</b></td></tr>
+ </table>
+ <p class="fine">Für den Plural von <i>ein</i> springt <b>welch-</b> ein (es gibt kein <i>eine</i> im Plural):
+ <i>Hast du Äpfel? — Ja, ich habe <b>welche</b>.</i></p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Brauchst du einen Stift? — Ich habe schon <b>einen</b>.","maskulin Akkusativ → <i>einen</i>."],
+  ["Ist das dein Auto? — Nein, ich habe <b>keins</b>.","neutral → <i>keins</i> (= kein + es)."],
+  ["Hast du Geschwister? — Ja, ich habe <b>welche</b>.","Plural, unbestimmt → <i>welche</i>."],
+  ["Möchtest du einen Kaffee? — Ich habe schon <b>einen</b>.","maskulin Akkusativ."],
+  ["Hast du einen Kuli? — Nein, ich habe <b>keinen</b>.","Verneinung, maskulin Akkusativ."],
+  ["Gibt es noch Milch? — Nein, es ist <b>keine</b> mehr da.","feminin Nominativ."],
+  ["Ist das deine Tasche? — Ja, das ist <b>meine</b>.","Possessiv als Pronomen: <i>meine</i>."],
+  ["Wem gehört das Buch? — Es ist <b>seins</b>.","neutral, Possessiv → <i>seins</i>."],
+  ["<b>Welcher</b> Zug fährt nach Köln?","<i>welch-</i> als Frage: maskulin Nominativ."],
+  ["Von den Kuchen nehme ich <b>keinen</b>.","maskulin Akkusativ nach Präposition-freiem Verb."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Als Pronomen immer mit Endung</b>: <i>Ich habe ein</i> ✗ → <i>Ich habe ein<b>s</b></i> / <i>ein<b>en</b></i>.</li>
+  <li><b>Plural von <i>ein</i></b> gibt es nicht — dafür <b>welche</b>: <i>Ich habe welche.</i></li>
+  <li><b>keins</b> und <b>eins</b> verlieren im Alltag das <i>e</i>: <i>kein<b>e</b>s → keins</i>.</li>
+  <li>Nicht mit dem <b>Begleiter</b> verwechseln: vor einem Nomen bleibt es <i>ein</i> Auto — allein wird es <i>eins</i>.</li>
+ </ul></div>`
+},
+{
+ id:"irgend",kap:11, t:"<i>irgend-</i>: irgendein, irgendwelche …",
+ src:[["buch","K11"]], beleg:"Übungsbuch K11, 5",
+ kurz:"<i>irgend-</i> macht unbestimmt: <b>irgendein</b> (Singular) und <b>irgendwelche</b> (Plural) — „egal welche/r“.",
+ body:`
+ <div class="callout"><div class="callout-h">Was <i>irgend-</i> tut</div>
+ <p><b>irgend-</b> heißt „egal welche/r, ich weiß es nicht genau“. Man setzt es vor Frage- und Artikelwörter.
+ Die wichtigsten für B1:</p>
+ <div class="howto">
+  <div class="htr"><span class="htq">Singular, mit Nomen</span><span class="htp">irgendein/-e</span><span class="hte"><b>Irgendein</b> Mann hat angerufen.</span></div>
+  <div class="htr"><span class="htq">Plural, mit Nomen</span><span class="htp">irgendwelche</span><span class="hte">Hast du <b>irgendwelche</b> Fragen?</span></div>
+  <div class="htr"><span class="htq">Person</span><span class="htp">irgendwer / irgendjemand</span><span class="hte"><b>Irgendjemand</b> muss es tun.</span></div>
+  <div class="htr"><span class="htq">Sache</span><span class="htp">irgendetwas / irgendwas</span><span class="hte">Möchtest du <b>irgendetwas</b> trinken?</span></div>
+  <div class="htr"><span class="htq">Ort / Zeit / Art</span><span class="htp">irgendwo · irgendwann · irgendwie</span><span class="hte">Wir treffen uns <b>irgendwann</b>.</span></div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Endungen</div>
+ <p><b>irgendein-</b> dekliniert wie <i>ein</i> (Singular), <b>irgendwelche-</b> wie <i>welche</i> (Plural).
+ Das <i>irgend-</i> selbst ändert sich nie.</p>
+ ${exList([
+  ["<b>Irgendein</b> Kind hat den Ball weggenommen.","Singular, maskulin/neutral Nominativ → wie <i>ein</i>."],
+  ["Hast du <b>irgendwelche</b> Ideen?","Plural → <i>irgendwelche</i>."],
+  ["Kann mir <b>irgendjemand</b> helfen?","Person, unbestimmt."],
+  ["Ich habe <b>irgendwas</b> vergessen.","Sache, umgangssprachlich für <i>irgendetwas</i>."],
+  ["Sie wohnt <b>irgendwo</b> in Berlin.","Ort, unbestimmt."],
+  ["Wir sehen uns <b>irgendwann</b> nächste Woche.","Zeit, unbestimmt."],
+  ["Gibt es <b>irgendwelche</b> Probleme?","Plural."],
+  ["Er hat mit <b>irgendeiner</b> Kollegin gesprochen.","feminin Dativ → <i>irgendeiner</i>."],
+  ["<b>Irgendwie</b> müssen wir das schaffen.","Art und Weise."],
+  ["Nimm <b>irgendeinen</b> Stift.","maskulin Akkusativ → <i>irgendeinen</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Singular</b> = irgendein-, <b>Plural</b> = irgendwelche-. <i>irgendein Fragen</i> ✗ → <i>irgendwelche Fragen</i> ✓.</li>
+  <li><b>irgendein</b> hat <b>keinen</b> eigenen Plural — genau wie <i>ein</i>. Der Plural ist <i>irgendwelche</i>.</li>
+  <li><b>irgendwas / irgendwer</b> sind die lockeren Formen von <i>irgendetwas / irgendjemand</i>.</li>
+  <li>Getrennt geschrieben nur, wenn <i>irgend</i> betont allein steht (<i>irgend so ein …</i>) — sonst zusammen.</li>
+ </ul></div>`
+},
+{
+ id:"adjektive-als-nomen", kap:11, t:"Adjektive als Nomen",
+ src:[["buch","K11"]], beleg:"Übungsbuch K11, 6a–6b",
+ kurz:"Aus einem Adjektiv wird ein Nomen: <b>groß</b> geschrieben, aber mit <b>Adjektivendung</b> dekliniert.",
+ body:`
+ <div class="callout"><div class="callout-h">Das Prinzip</div>
+ <p>Ein Adjektiv kann zu einem Nomen für Personen werden: <i>krank</i> → <b>der Kranke</b>, <i>bekannt</i> → <b>ein Bekannter</b>.
+ Es wird <b>großgeschrieben</b>, behält aber die <b>Adjektivendung</b> — die hängt weiter vom Artikel ab.</p>
+ <table class="ptab">
+  <tr><th></th><th>mit bestimmtem Artikel</th><th>mit unbestimmtem Artikel</th></tr>
+  <tr><td>maskulin</td><td>der Angestellt<b>e</b></td><td>ein Angestellt<b>er</b></td></tr>
+  <tr><td>feminin</td><td>die Angestellt<b>e</b></td><td>eine Angestellt<b>e</b></td></tr>
+  <tr><td>Plural</td><td>die Angestellt<b>en</b></td><td>Angestellt<b>e</b></td></tr>
+ </table>
+ <p class="fine">Genau die Endungen der Adjektivdeklination: <i>der gut<b>e</b> Mann</i> → <i>der Angestellt<b>e</b></i>;
+ <i>ein gut<b>er</b> Mann</i> → <i>ein Angestellt<b>er</b></i>.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["<b>Der Angestellte</b> geht nach Hause.","best. Artikel, maskulin → <i>-e</i>."],
+  ["<b>Ein Angestellter</b> hat angerufen.","unbest. Artikel, maskulin → <i>-er</i>."],
+  ["Ich habe mit <b>dem Angestellten</b> gesprochen.","Dativ → <i>-en</i>."],
+  ["<b>Die Kranke</b> braucht Ruhe.","feminin → <i>-e</i>."],
+  ["Wir helfen <b>den Kranken</b>.","Plural Dativ → <i>-en</i>."],
+  ["<b>Ein Bekannter</b> von mir wohnt in Zürich.","unbest., maskulin → <i>-er</i>."],
+  ["Sie ist <b>eine Bekannte</b> meiner Schwester.","feminin → <i>-e</i>."],
+  ["<b>Die Angehörigen</b> warten im Flur.","Plural, best. Artikel → <i>-en</i>."],
+  ["<b>Der Deutsche</b> spricht drei Sprachen.","Nationalität als Nomen, maskulin → <i>-e</i>."],
+  ["<b>Etwas Wichtiges</b> ist passiert.","nach <i>etwas</i>: neutral, großgeschrieben → <i>-es</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Großschreibung ja, Endung bleibt.</b> <i>Der Angestellt</i> ✗ → <i>der Angestellt<b>e</b></i> ✓.</li>
+  <li>Die Endung folgt dem <b>Artikel</b>, nicht dem Nomen: <i>der Angestellt<b>e</b></i> aber <i>ein Angestellt<b>er</b></i>.</li>
+  <li>Nach <b>etwas · nichts · viel · wenig</b> wird das Adjektiv-Nomen <b>neutral</b> und groß: <i>etwas <b>Neues</b></i>, <i>nichts <b>Gutes</b></i>.</li>
+  <li>Auch Nationalitäten: <i>der Deutsche · ein Deutscher</i> — aber <i>der Amerikaner</i> ist ein normales Nomen (nicht aus einem Adjektiv).</li>
+ </ul></div>`
+},
+{
+ id:"je-desto", kap:12, t:"<i>je … desto / umso</i>",
+ src:[["buch","K12"]], beleg:"Übungsbuch K12, 3e",
+ kurz:"Zwei Dinge steigen zusammen: <b>Je</b> mehr …, <b>desto</b> / <b>umso</b> besser.",
+ body:`
+ <div class="callout"><div class="callout-h">Der Bau</div>
+ <p>Zwei Komparative, die voneinander abhängen. <b>je</b> leitet einen <b>Nebensatz</b> ein (Verb ans Ende),
+ <b>desto</b>/<b>umso</b> den <b>Hauptsatz</b> (Verb direkt danach). <i>desto</i> und <i>umso</i> sind gleich.</p>
+ <table class="ptab">
+  <tr><th>Je + Komparativ … Verb,</th><th>desto/umso + Komparativ + Verb …</th></tr>
+  <tr><td><b>Je</b> mehr ich <b>lerne</b>,</td><td><b>desto</b> besser <b>verstehe</b> ich.</td></tr>
+  <tr><td><b>Je</b> höher das Einkommen <b>ist</b>,</td><td><b>umso</b> mehr Steuern <b>zahlt</b> man.</td></tr>
+ </table>
+ <p class="fine">Beide Teile beginnen mit dem <b>Komparativ</b>. Nach dem Komma (Hauptsatz) kommt sofort das Verb —
+ <i>desto besser <b>verstehe</b> ich</i>, nicht <i>desto ich verstehe</i>.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["<b>Je</b> mehr ich übe, <b>desto</b> sicherer werde ich.","Standardbau, Verb im je-Satz am Ende."],
+  ["<b>Je</b> älter man wird, <b>umso</b> schneller vergeht die Zeit.","<i>umso</i> = <i>desto</i>."],
+  ["<b>Je</b> höher das Einkommen ist, <b>desto</b> mehr Steuern zahlt man.","Aus der Übung 3e."],
+  ["<b>Je</b> früher wir losfahren, <b>desto</b> weniger Stau haben wir.","Zwei Komparative, die zusammenhängen."],
+  ["<b>Je</b> mehr Menschen kommen, <b>umso</b> lauter wird es.","Menge ↔ Folge."],
+  ["<b>Je</b> länger ich in München wohne, <b>desto</b> besser spreche ich Deutsch.","Zeit ↔ Fortschritt."],
+  ["<b>Je</b> teurer das Hotel ist, <b>desto</b> besser ist der Service — meistens.","Preis ↔ Qualität."],
+  ["<b>Je</b> weniger Zucker ich esse, <b>desto</b> besser fühle ich mich.","Weniger ↔ mehr Wohlbefinden."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Verb ans Ende im je-Satz</b>: <i>Je mehr ich <b>lerne</b></i> — nicht <i>Je mehr ich lerne nicht</i>.</li>
+  <li><b>Inversion nach dem Komma</b>: <i>desto besser <b>verstehe ich</b></i> — Verb vor dem Subjekt.</li>
+  <li><b>desto = umso</b>, frei wählbar. Aber nicht <i>je … je</i> (veraltet) im Kurs.</li>
+  <li>Beide Satzteile brauchen einen <b>Komparativ</b>: <i>mehr, besser, höher, schneller …</i></li>
+ </ul></div>`
+},
+{
+ id:"partizip-adjektiv", kap:12, t:"Partizip I und II als Adjektiv",
+ src:[["buch","K12"]], beleg:"Übungsbuch K12, 5b–5c · 8b–8c",
+ kurz:"Partizipien vor dem Nomen: <b>-end</b> (laufend, gerade aktiv) oder <b>Partizip II</b> (gekocht, schon fertig) — beide mit Adjektivendung.",
+ body:`
+ <div class="callout"><div class="callout-h">Zwei Partizipien, zwei Bedeutungen</div>
+ <p>Beide stehen vor dem Nomen und bekommen eine <b>Adjektivendung</b>. Der Unterschied ist die Zeit
+ und wer handelt:</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">Partizip I</div><div class="mxh">Partizip II</div>
+  <div class="mxr">Form</div>
+  <div class="mxc hi">Infinitiv + <b>-d</b><br>(lachen → lachend)</div>
+  <div class="mxc hi">wie im Perfekt<br>(kochen → gekocht)</div>
+  <div class="mxr">Bedeutung</div>
+  <div class="mxc"><b>gerade aktiv</b>, gleichzeitig<br>das <i>lachende</i> Kind = es lacht</div>
+  <div class="mxc"><b>schon passiert</b>, passiv<br>das <i>gekochte</i> Ei = es wurde gekocht</div>
+ </div>
+ <p class="fine">Faustregel: <b>Partizip I</b> = etwas tut gerade (aktiv). <b>Partizip II</b> = etwas ist getan
+ (fertig, oft passiv).</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Die <b>arbeitenden</b> Eltern haben wenig Zeit.","Partizip I: sie arbeiten gerade. Aus 8c."],
+  ["Das <b>weinende</b> Kind sucht seine Mutter.","Partizip I, aktiv und gleichzeitig."],
+  ["Ich mag den Geruch von <b>frisch gebackenem</b> Brot.","Partizip II: das Brot wurde gebacken. Aus 8b."],
+  ["Der <b>ausgefüllte</b> Antrag liegt auf dem Tisch.","Partizip II, schon fertig. Aus 5b."],
+  ["Die <b>gewählte</b> Bürgermeisterin hält eine Rede.","Partizip II, passiv: sie wurde gewählt."],
+  ["Ein <b>bellender</b> Hund lief über die Straße.","Partizip I, maskulin Nominativ → <i>-er</i>."],
+  ["Wir sortieren die <b>zurückgeschickten</b> Pakete.","Partizip II, Plural Akkusativ → <i>-en</i>."],
+  ["Das <b>lachende</b> Gesicht auf dem Foto ist meins.","Partizip I, neutral → <i>-e</i>."],
+  ["Sie trägt eine <b>selbst gemachte</b> Kette.","Partizip II, feminin → <i>-e</i>."],
+  ["Der <b>überzogene</b> Kredit macht Probleme.","Partizip II. Aus 5c."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Partizip I</b> = Infinitiv + <b>-d</b> + Adjektivendung: <i>lachen → lachen<b>d</b> → das lachen<b>de</b> Kind</i>.</li>
+  <li>Beide brauchen die <b>Adjektivendung</b>: <i>das gekocht Ei</i> ✗ → <i>das gekocht<b>e</b> Ei</i> ✓.</li>
+  <li><b>Aktiv oder passiv?</b> Partizip I = das Nomen tut es selbst (<i>der lesende Mann</i>), Partizip II = mit dem Nomen wurde etwas getan (<i>das gelesene Buch</i>).</li>
+  <li>Partizip I gibt es im Deutschen <b>nur</b> als Adjektiv/Adverb — nicht als Zeitform wie im Englischen (<i>-ing</i>).</li>
+ </ul></div>`
 }
 ];
 
@@ -1506,17 +2179,19 @@ const tabsEl=document.getElementById("tabs");
 const searchEl=document.getElementById("search");
 const mainEl=document.getElementById("main");
 
-const badges=g=>g.src.map(s=>s[0]==="buch"
-    ? `<span class="badge buch">Netzwerk neu · ${esc(s[1])}</span>`
-    : `<span class="badge kurs">Goethe-Kurs</span>`).join("")
+const badges=g=>(g.kultur
+    ? `<span class="badge kultur">Kultur</span>`
+    : g.src.map(s=>s[0]==="buch"
+        ? `<span class="badge buch">Netzwerk neu · ${esc(s[1])}</span>`
+        : `<span class="badge kurs">Goethe-Kurs</span>`).join(""))
   + (g.beleg?`<span class="t-beleg">${esc(g.beleg)}</span>`:"");
 
 /* <details> statt div: Der Browser klappt beim Suchen (Strg+F) selbst auf
    und liefert Tastaturbedienung gratis. */
 function topicCard(g){
-  const kurs=g.src.every(s=>s[0]==="kurs")?" kurs":"";
+  const cls=g.kultur?" kultur":(g.src.every(s=>s[0]==="kurs")?" kurs":"");
   const open=openIds.has(g.id)?" open":"";
-  return `<details class="topic${kurs}" id="${g.id}"${open}>
+  return `<details class="topic${cls}" id="${g.id}"${open}>
     <summary class="t-head">
       <div class="t-main">
         <div class="t-t">${g.t}</div>
@@ -1618,5 +2293,6 @@ buildTabs();
 render();
 if(location.hash) fromHash();
 </script>
+<div class="palette-band" aria-hidden="true"><span style="width:3.058%;background:var(--c-dblue)"></span><span style="width:7.738%;background:var(--c-red)"></span><span style="width:6.554%;background:var(--c-red)"></span><span style="width:5.609%;background:var(--c-orange)"></span><span style="width:4.909%;background:var(--c-purple)"></span><span style="width:5.459%;background:var(--c-green)"></span><span style="width:7.051%;background:var(--c-red)"></span><span style="width:8.243%;background:var(--c-orange)"></span><span style="width:4.777%;background:var(--c-lblue)"></span><span style="width:3.489%;background:var(--c-green)"></span><span style="width:2.967%;background:var(--c-lblue)"></span><span style="width:8.37%;background:var(--c-orange)"></span><span style="width:4.898%;background:var(--c-purple)"></span><span style="width:4.45%;background:var(--c-dblue)"></span><span style="width:5.557%;background:var(--c-purple)"></span><span style="width:3.987%;background:var(--c-dblue)"></span><span style="width:5.004%;background:var(--c-green)"></span><span style="width:7.88%;background:var(--c-lblue)"></span></div>
 </body>
 </html>
