@@ -351,7 +351,8 @@ const TAGE=[
  {n:3, wt:"Mittwoch", datum:"15. Juli 2026", thema:"Musik und Emotionen"},
  {n:4, wt:"Donnerstag", datum:"16. Juli 2026", thema:"Ernährung, Missverständnisse & Märchen"},
  {n:5, wt:"Freitag", datum:"17. Juli 2026", thema:"Märchen: Lesen, Rollenspiel & eigenes Ende"},
- {n:6, wt:"Montag",  datum:"20. Juli 2026", thema:"Wechselpräpositionen, Adjektivdeklination & Europa"}
+ {n:6, wt:"Montag",  datum:"20. Juli 2026", thema:"Wechselpräpositionen, Adjektivdeklination & Europa"},
+ {n:7, wt:"Dienstag", datum:"21. Juli 2026", thema:"Werte & Demokratie · Passiv (Wiederholung)"}
 ];
 
 /* Einheiten aus Netzwerk neu B1.2 — ohne Abschnitte, die Einheit genügt. */
@@ -1153,7 +1154,7 @@ const G=[
  </ul></div>`
 },
 {
- id:"passiv-praesens", kap:10, t:"Aktiv und Passiv",
+ id:"passiv-praesens", tag:7, kap:10, t:"Aktiv und Passiv",
  src:[["buch","K10"]], beleg:"Übungsbuch K10, 4c–4d",
  kurz:"<b>werden + Partizip II</b>. Wichtig ist, <b>was passiert</b> — nicht, wer es tut.",
  body:`
@@ -1198,7 +1199,7 @@ const G=[
  </ul></div>`
 },
 {
- id:"passiv-vergangenheit", kap:10, t:"Passiv in der Vergangenheit",
+ id:"passiv-vergangenheit", tag:7, kap:10, t:"Passiv in der Vergangenheit",
  src:[["buch","K10"]], beleg:"Übungsbuch K10, 4e",
  kurz:"<b>wurde</b> + Partizip II — und im Perfekt heißt es <b>worden</b>, nie <i>geworden</i>.",
  body:`
@@ -1238,7 +1239,7 @@ const G=[
  </ul></div>`
 },
 {
- id:"passiv-modalverb", kap:10, t:"Passiv mit Modalverb",
+ id:"passiv-modalverb", tag:7, kap:10, t:"Passiv mit Modalverb",
  src:[["buch","K10"]], beleg:"Übungsbuch K10, 8a–8b",
  kurz:"<b>muss … werden</b> — das Modalverb wird konjugiert, <i>werden</i> steht als <b>Infinitiv</b> am Ende.",
  body:`
@@ -1462,66 +1463,97 @@ const G=[
  </ul></div>`
 },
 {
- id:"verben-mit-praeposition", tag:4, kap:null, t:"Verben mit Präposition",
- src:[["kurs"]], beleg:"vgl. Wortschatz-Site: „Verben mit Präposition“ je Kapitel",
- kurz:"Die Präposition gehört zum Verb — und sie <b>bestimmt den Kasus</b>. Beides zusammen lernen.",
+ id:"verben-mit-praeposition", tag:7, kap:null, t:"Verben mit Präposition",
+ src:[["kurs"]], beleg:"Kurs · vgl. Wortschatz-Site je Kapitel",
+ kurz:"Manche Verben haben eine <b>feste Präposition</b> — und die bestimmt den Kasus. Beides zusammen lernen.",
  body:`
- <div class="callout"><div class="callout-h">Warum das keine Logik hat</div>
- <p>Viele Verben haben eine <b>feste</b> Präposition, und die legt den <b>Kasus</b> fest.
- Man kann ihn <b>nicht</b> erschließen — er gehört zum Verb wie der Artikel zum Nomen.
- Deshalb: <i>warten <b>auf</b> + Akkusativ</i> immer als <b>eine Einheit</b> lernen.</p>
- <p class="fine">Besonders wichtig bei <b>an · auf · in · über · vor</b>: Das sind Wechselpräpositionen.
- Sonst entscheidet die Bewegung über den Kasus — <b>hier nicht</b>. Hier entscheidet das Verb.
- <i>Ich warte <b>auf den</b> Bus</i> ist Akkusativ, obwohl sich niemand bewegt.</p></div>
-
- <div class="callout"><div class="callout-h">Nach Kasus sortiert</div>
- <div class="suffixtab">
-  <div class="sg kakk"><span class="sgh">+ Akkusativ</span><span class="sgs">warten <b>auf</b> · sich freuen <b>auf/über</b> · denken <b>an</b> ·
-    sich erinnern <b>an</b> · sich interessieren <b>für</b> · sich ärgern <b>über</b> · sprechen <b>über</b> ·
-    sich kümmern <b>um</b> · sich einigen <b>auf</b> · achten <b>auf</b> · sich wundern <b>über</b></span></div>
-  <div class="sg kdat"><span class="sgh">+ Dativ</span><span class="sgs">teilnehmen <b>an</b> · leiden <b>an</b> · helfen <b>bei</b> ·
-    sprechen <b>mit</b> · Angst haben <b>vor</b> · warnen <b>vor</b> · gehören <b>zu</b> · bestehen <b>aus</b> ·
-    raten <b>zu</b> · abhängen <b>von</b> · profitieren <b>von</b> · stammen <b>aus</b></span></div>
- </div></div>
-
+ <div class="callout"><div class="callout-h">Feste Verbindung, fester Kasus</div>
+ <p>Bei diesen Verben gehört die Präposition fest zum Verb. Sie ist oft <b>nicht logisch</b> und wird
+ mitgelernt. Wichtig: die Präposition legt den <b>Kasus</b> fest — auch bei Wechselpräpositionen gilt
+ hier <b>immer</b> derselbe Kasus (z. B. <i>warten auf</i> + Akkusativ, egal ob Bewegung oder nicht).</p></div>
+ <div class="callout"><div class="callout-h">Die häufigsten — Präposition + Akkusativ</div>
+ <table class="ptab">
+  <tr><th>Verb + Präposition</th><th>Bedeutung</th><th>Beispiel</th></tr>
+  <tr><td>warten <b>auf</b></td><td>to wait for</td><td>Ich warte <b>auf den</b> Bus.</td></tr>
+  <tr><td>sich freuen <b>auf</b> / <b>über</b></td><td>look forward to / be glad about</td><td>Ich freue mich <b>auf das</b> Wochenende.</td></tr>
+  <tr><td>denken <b>an</b></td><td>to think of</td><td>Ich denke oft <b>an dich</b>.</td></tr>
+  <tr><td>sich erinnern <b>an</b></td><td>to remember</td><td>Erinnerst du dich <b>an den</b> Tag?</td></tr>
+  <tr><td>sich gewöhnen <b>an</b></td><td>to get used to</td><td>Ich gewöhne mich <b>an das</b> Wetter.</td></tr>
+  <tr><td>glauben <b>an</b></td><td>to believe in</td><td>Sie glaubt <b>an sich</b> selbst.</td></tr>
+  <tr><td>sich interessieren <b>für</b></td><td>to be interested in</td><td>Er interessiert sich <b>für</b> Politik.</td></tr>
+  <tr><td>sich bewerben <b>um</b></td><td>to apply for</td><td>Ich bewerbe mich <b>um die</b> Stelle.</td></tr>
+  <tr><td>bitten <b>um</b></td><td>to ask for</td><td>Darf ich <b>um</b> Hilfe bitten?</td></tr>
+  <tr><td>sich kümmern <b>um</b></td><td>to take care of</td><td>Ich kümmere mich <b>um den</b> Hund.</td></tr>
+  <tr><td>sich ärgern <b>über</b></td><td>to be annoyed about</td><td>Er ärgert sich <b>über den</b> Stau.</td></tr>
+  <tr><td>sprechen / reden <b>über</b></td><td>to talk about</td><td>Wir sprechen <b>über das</b> Projekt.</td></tr>
+  <tr><td>achten <b>auf</b></td><td>to pay attention to</td><td>Achte <b>auf die</b> Zeit!</td></tr>
+  <tr><td>sich verlassen <b>auf</b></td><td>to rely on</td><td>Ich verlasse mich <b>auf dich</b>.</td></tr>
+  <tr><td>sich verlieben <b>in</b></td><td>to fall in love with</td><td>Er verliebt sich <b>in seine</b> Nachbarin.</td></tr>
+  <tr><td>sich entscheiden <b>für</b></td><td>to decide on</td><td>Ich entscheide mich <b>für den</b> Job.</td></tr>
+  <tr><td>verzichten <b>auf</b></td><td>to do without</td><td>Sie verzichtet <b>auf</b> Zucker.</td></tr>
+  <tr><td>sich vorbereiten <b>auf</b></td><td>to prepare for</td><td>Wir bereiten uns <b>auf die</b> Prüfung vor.</td></tr>
+  <tr><td>sich beschweren <b>über</b></td><td>to complain about</td><td>Er beschwert sich <b>über den</b> Lärm.</td></tr>
+  <tr><td>sorgen <b>für</b></td><td>to provide / care for</td><td>Ich sorge <b>für das</b> Essen.</td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Die häufigsten — Präposition + Dativ</div>
+ <table class="ptab">
+  <tr><th>Verb + Präposition</th><th>Bedeutung</th><th>Beispiel</th></tr>
+  <tr><td>teilnehmen <b>an</b></td><td>to take part in</td><td>Sie nimmt <b>an dem</b> Kurs teil.</td></tr>
+  <tr><td>leiden <b>an</b> / <b>unter</b></td><td>to suffer from</td><td>Er leidet <b>an einer</b> Allergie.</td></tr>
+  <tr><td>helfen <b>bei</b></td><td>to help with</td><td>Ich helfe dir <b>bei der</b> Arbeit.</td></tr>
+  <tr><td>sprechen <b>mit</b></td><td>to talk with</td><td>Ich spreche <b>mit dem</b> Chef.</td></tr>
+  <tr><td>sich beschäftigen <b>mit</b></td><td>to occupy oneself with</td><td>Sie beschäftigt sich <b>mit</b> Kunst.</td></tr>
+  <tr><td>anfangen / aufhören <b>mit</b></td><td>to start / stop</td><td>Hör <b>mit dem</b> Lärm auf!</td></tr>
+  <tr><td>Angst haben <b>vor</b></td><td>to be afraid of</td><td>Ich habe Angst <b>vor</b> Spinnen.</td></tr>
+  <tr><td>warnen <b>vor</b></td><td>to warn of</td><td>Man warnt <b>vor dem</b> Sturm.</td></tr>
+  <tr><td>träumen <b>von</b></td><td>to dream of</td><td>Sie träumt <b>von einer</b> Reise.</td></tr>
+  <tr><td>erzählen <b>von</b></td><td>to tell about</td><td>Erzähl mir <b>von</b> deinem Tag.</td></tr>
+  <tr><td>gehören <b>zu</b></td><td>to belong to</td><td>Das gehört <b>zu den</b> Regeln.</td></tr>
+  <tr><td>einladen <b>zu</b></td><td>to invite to</td><td>Ich lade dich <b>zu der</b> Party ein.</td></tr>
+  <tr><td>bestehen <b>aus</b></td><td>to consist of</td><td>Das Team besteht <b>aus</b> fünf Leuten.</td></tr>
+  <tr><td>sich erkundigen <b>nach</b></td><td>to inquire about</td><td>Ich erkundige mich <b>nach dem</b> Weg.</td></tr>
+  <tr><td>sich treffen <b>mit</b></td><td>to meet with</td><td>Ich treffe mich <b>mit</b> Freunden.</td></tr>
+  <tr><td>sich streiten <b>mit</b></td><td>to argue with</td><td>Er streitet sich <b>mit seinem</b> Bruder.</td></tr>
+  <tr><td>rechnen <b>mit</b></td><td>to count on / reckon with</td><td>Wir rechnen <b>mit</b> Regen.</td></tr>
+  <tr><td>fragen <b>nach</b></td><td>to ask about</td><td>Sie fragt <b>nach dem</b> Preis.</td></tr>
+  <tr><td>gratulieren <b>zu</b></td><td>to congratulate on</td><td>Ich gratuliere dir <b>zum</b> Geburtstag.</td></tr>
+  <tr><td>abhängen <b>von</b></td><td>to depend on</td><td>Das hängt <b>vom</b> Wetter ab.</td></tr>
+ </table></div>
  <div class="callout"><div class="callout-h">Fragen und Antworten: Person oder Sache?</div>
- <p>Danach fragt man <b>unterschiedlich</b> — je nachdem, ob eine <b>Person</b> oder eine <b>Sache</b> gemeint ist.</p>
+ <p><b>Sache</b> → <b>wo(r)-</b> in der Frage, <b>da(r)-</b> in der Antwort.
+ <b>Person</b> → Präposition + Fragewort/Person.</p>
  <div class="mx">
-  <div class="mxh"></div><div class="mxh">Person</div><div class="mxh">Sache</div>
+  <div class="mxh"></div><div class="mxh">Sache</div><div class="mxh">Person</div>
   <div class="mxr">Frage</div>
-  <div class="mxc">Präposition + wen/wem<br><i>Auf wen wartest du?</i></div>
-  <div class="mxc hi">wo(r) + Präposition<br><i>Worauf wartest du?</i></div>
+  <div class="mxc"><b>Worauf</b> wartest du?</div>
+  <div class="mxc"><b>Auf wen</b> wartest du?</div>
   <div class="mxr">Antwort</div>
-  <div class="mxc">auf ihn · mit ihr</div>
-  <div class="mxc hi">da(r) + Präposition<br><i>darauf · damit</i></div>
+  <div class="mxc"><b>Darauf</b>. / Auf den Bus.</div>
+  <div class="mxc"><b>Auf</b> meinen Freund.</div>
  </div>
- <p class="fine">Das <b>-r-</b> kommt nur vor Vokal: <i>wo<b>r</b>auf</i>, <i>da<b>r</b>über</i> — aber <i>womit</i>, <i>damit</i>.</p></div>
-
+ <p class="fine">Beginnt die Präposition mit einem Vokal, kommt ein <b>-r-</b> dazwischen:
+ <i>worauf, woran, worüber</i> — <i>darauf, daran, darüber</i>.</p></div>
  <div class="callout"><div class="callout-h">Beispiele</div>
  ${exList([
-  ["Ich warte <b>auf den Bus</b>.","<i>auf</i> + Akkusativ — obwohl keine Bewegung stattfindet."],
-  ["Ich freue mich <b>auf das Wochenende</b>.","<i>auf</i> = Vorfreude, etwas kommt noch."],
-  ["Ich freue mich <b>über dein Geschenk</b>.","<i>über</i> = jetzt oder vorbei. Gleiche Verben, andere Präposition."],
-  ["Sie denkt oft <b>an ihre Familie</b>.","<i>an</i> + Akkusativ."],
-  ["Er leidet <b>an einer Allergie</b>.","<i>an</i> + <b>Dativ</b> — dieselbe Präposition, anderer Kasus."],
-  ["Wir nehmen <b>an dem Kurs</b> teil.","<i>teilnehmen an</i> + Dativ; das Verb ist trennbar."],
-  ["Ich interessiere mich <b>für Kunst</b>.","<i>für</i> ist immer Akkusativ."],
-  ["Der Arzt rät <b>zu mehr Bewegung</b>.","<i>zu</i> ist immer Dativ."],
-  ["Ich habe Angst <b>vor Spinnen</b>.","<i>vor</i> + Dativ."],
-  ["<b>Worauf</b> wartest du? — <b>Darauf</b>, dass der Bus kommt.","Sache → <i>worauf/darauf</i>."],
-  ["<b>Auf wen</b> wartest du? — Auf meinen Bruder.","Person → <i>auf wen</i> + Akkusativ."],
-  ["<b>Woran</b> denkst du? — <b>Daran</b>, dass morgen Prüfung ist.","<i>-r-</i> vor Vokal: wo<b>r</b>an, da<b>r</b>an."]
+  ["Ich warte <b>auf den</b> Bus.","<i>warten auf</i> + Akkusativ."],
+  ["Sie interessiert sich <b>für</b> Kunst.","<i>sich interessieren für</i> + Akkusativ."],
+  ["Wir freuen uns <b>auf das</b> Wochenende.","<i>sich freuen auf</i> + Akkusativ."],
+  ["Ich erinnere mich <b>an den</b> Urlaub.","<i>sich erinnern an</i> + Akkusativ."],
+  ["Er bewirbt sich <b>um eine</b> Stelle.","<i>sich bewerben um</i> + Akkusativ."],
+  ["Sie nimmt <b>an dem</b> Kurs teil.","<i>teilnehmen an</i> + Dativ."],
+  ["Ich habe Angst <b>vor</b> Spinnen.","<i>Angst haben vor</i> + Dativ."],
+  ["Er träumt <b>von einer</b> Weltreise.","<i>träumen von</i> + Dativ."],
+  ["Das Team besteht <b>aus</b> fünf Personen.","<i>bestehen aus</i> + Dativ."],
+  ["<b>Worauf</b> wartest du? — <b>Auf wen</b> wartest du?","Sache = wor-, Person = Präposition + wen."],
+  ["Ich denke oft <b>daran</b>.","Sache → <i>da(r)-</i> als Antwort."],
+  ["Kümmerst du dich <b>um die</b> Kinder?","<i>sich kümmern um</i> + Akkusativ."]
  ])}</div>
-
  <div class="callout warn"><div class="callout-h">Fallen</div>
  <ul class="mini">
-  <li><b>Bei Wechselpräpositionen gilt die Bewegungsregel nicht.</b> <i>warten auf</i> ist Akkusativ, <i>leiden an</i> ist Dativ —
-      das muss man wissen, nicht denken.</li>
-  <li><b>sich freuen auf</b> (Zukunft) gegen <b>sich freuen über</b> (jetzt / vorbei). Dasselbe Verb, zwei Bedeutungen.</li>
-  <li><b>wo(r)-</b> nur für <b>Sachen</b>. Bei Personen: <i>Auf wen? Mit wem? An wen?</i> — nie <i>worauf</i> für einen Menschen.</li>
-  <li>Das <b>-r-</b> steht nur vor Vokal: <i>worauf · woran · worüber</i> — aber <i>womit · wovon · wofür</i>.</li>
-  <li>Nicht mit der <b>Ortsangabe</b> verwechseln: <i>Ich warte <b>an der Haltestelle</b></i> (wo? → Dativ) gegen
-      <i>Ich warte <b>auf den Bus</b></i> (Verb + Präposition → Akkusativ). Beides in einem Satz möglich.</li>
+  <li><b>Der Kasus kommt von der Präposition</b>, nicht vom Verb — und bei Wechselpräpositionen ist er hier <b>fest</b>: <i>warten auf</i> immer + Akkusativ.</li>
+  <li><b>wo(r)- / da(r)-</b> nur für <b>Sachen</b>: <i>Worauf?/Darauf.</i> Für Personen: <i>Auf wen?/Auf ihn.</i></li>
+  <li>Das <b>-r-</b> nur vor Vokal: <i>wor<b>auf</b>, dar<b>an</b></i> — aber <i>wo<b>mit</b>, da<b>von</b></i>.</li>
+  <li>Viele Verben sind <b>reflexiv</b>: <i>sich freuen auf, sich interessieren für, sich kümmern um</i> — das <i>sich</i> gehört dazu.</li>
  </ul></div>`
 },
 {
@@ -2165,6 +2197,218 @@ const G=[
   <li>Beide brauchen die <b>Adjektivendung</b>: <i>das gekocht Ei</i> ✗ → <i>das gekocht<b>e</b> Ei</i> ✓.</li>
   <li><b>Aktiv oder passiv?</b> Partizip I = das Nomen tut es selbst (<i>der lesende Mann</i>), Partizip II = mit dem Nomen wurde etwas getan (<i>das gelesene Buch</i>).</li>
   <li>Partizip I gibt es im Deutschen <b>nur</b> als Adjektiv/Adverb — nicht als Zeitform wie im Englischen (<i>-ing</i>).</li>
+ </ul></div>`
+},
+{
+ id:"demokratie-werte", tag:7, kap:null, kultur:true, src:[["kurs"]],
+ t:"Werte &amp; Demokratie — das Grundgesetz",
+ beleg:"Netzwerk neu K10 · Landeskunde",
+ kurz:"Die Grundwerte der deutschen Demokratie und wo sie stehen: im <b>Grundgesetz</b> von 1949.",
+ body:`
+ <div class="callout"><div class="callout-h">Das Grundgesetz (GG)</div>
+ <p>Deutschlands Verfassung heißt <b>Grundgesetz</b>. Es wurde <b>1949</b> beschlossen (8. Mai, in Kraft 23. Mai)
+ und gilt seit der Wiedervereinigung <b>1990</b> für ganz Deutschland. Ganz am Anfang stehen die
+ <b>Grundrechte</b> — sie gelten unmittelbar und man kann sie vor Gericht einklagen.</p>
+ <p class="fine">Der erste Satz gibt den Ton vor: „Die Würde des Menschen ist unantastbar.“ (Artikel 1)</p></div>
+ <div class="callout"><div class="callout-h">Elemente der Demokratie</div>
+ <table class="ptab">
+  <tr><th>Wert</th><th>bedeutet</th><th>im GG</th></tr>
+  <tr><td><b>Menschenwürde</b></td><td>Jeder Mensch ist gleich viel wert — der oberste Wert.</td><td>Art. 1</td></tr>
+  <tr><td><b>Meinungsfreiheit</b></td><td>Jede/r darf die eigene Meinung frei sagen (auch Presse- und Informationsfreiheit).</td><td>Art. 5</td></tr>
+  <tr><td><b>Gleichberechtigung</b></td><td>Alle sind vor dem Gesetz gleich; Männer und Frauen gleichberechtigt.</td><td>Art. 3</td></tr>
+  <tr><td><b>Rechtsstaatlichkeit</b></td><td>Auch der Staat steht unter dem Gesetz; unabhängige Gerichte.</td><td>Art. 20</td></tr>
+  <tr><td><b>Demokratie</b></td><td>Alle Macht geht vom Volk aus — freie Wahlen.</td><td>Art. 20</td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Die Gewaltenteilung — drei getrennte Gewalten</div>
+ <p>Damit niemand zu viel Macht hat, ist die Staatsgewalt in <b>drei</b> unabhängige Teile geteilt:</p>
+ <table class="ptab">
+  <tr><th>Gewalt</th><th>Aufgabe</th><th>wer</th></tr>
+  <tr><td><b>Legislative</b></td><td>macht die Gesetze</td><td>Bundestag &amp; Bundesrat</td></tr>
+  <tr><td><b>Exekutive</b></td><td>führt die Gesetze aus</td><td>Regierung &amp; Verwaltung</td></tr>
+  <tr><td><b>Judikative</b></td><td>spricht Recht, kontrolliert</td><td>Gerichte (unabhängige Richter)</td></tr>
+ </table>
+ <p class="fine">Die drei kontrollieren sich gegenseitig — das nennt man „<i>checks and balances</i>“.</p></div>
+ <div class="callout"><div class="callout-h">Die Freiheiten der Demokratie</div>
+ <ul class="mini">
+  <li><b>Meinungsfreiheit</b> — jede/r darf die eigene Meinung sagen (Art. 5).</li>
+  <li><b>Pressefreiheit</b> — freie, unabhängige Medien (Art. 5).</li>
+  <li><b>Versammlungsfreiheit</b> — man darf sich versammeln und demonstrieren (Art. 8).</li>
+  <li><b>Wahlfreiheit</b> — freie, geheime Wahlen; jede Stimme zählt gleich.</li>
+  <li><b>Gleichberechtigung</b> — alle sind vor dem Gesetz gleich (Art. 3).</li>
+ </ul></div>
+ <div class="callout"><div class="callout-h">Werte einer Gesellschaft</div>
+ <p>Was ein gutes Zusammenleben ausmacht — Begriffe aus dem Unterricht:</p>
+ <p class="fine"><b>die Gerechtigkeit · die Freiheit · die Zivilcourage · die Gesundheit · die Fairness ·
+ die Demokratie · die Rücksicht · die Bildung · die Sicherheit · der Respekt · die Ehrlichkeit ·
+ die Hilfsbereitschaft · die Gleichberechtigung · die gute Erziehung</b></p></div>
+ <div class="callout"><div class="callout-h">Weitere Grundwerte</div>
+ <ul class="mini">
+  <li><b>Freiheit</b> — Glaubens-, Reise-, Berufsfreiheit; freie Entfaltung der Persönlichkeit (Art. 2).</li>
+  <li><b>Toleranz</b> — verschiedene Religionen, Kulturen und Meinungen nebeneinander.</li>
+  <li><b>Solidarität</b> — Stärkere helfen Schwächeren (Sozialstaat).</li>
+  <li><b>Diskriminierungsverbot</b> — niemand darf wegen Geschlecht, Herkunft, Glauben oder Behinderung benachteiligt werden (Art. 3).</li>
+ </ul></div>
+ <div class="callout"><div class="callout-h">Gut zu wissen</div>
+ <ul class="mini">
+  <li>Die <b>Menschenwürde</b> (Art. 1) und das <b>Demokratieprinzip</b> (Art. 20) dürfen <b>nie</b> geändert werden — die „<b>Ewigkeitsklausel</b>“ (Art. 79).</li>
+  <li>Grundrechte gelten nicht grenzenlos: Meinungsfreiheit schützt z. B. keine <b>Beleidigungen</b>.</li>
+  <li>Für eine Änderung des Grundgesetzes braucht man eine <b>Zweidrittelmehrheit</b> in Bundestag und Bundesrat.</li>
+  <li>Wortschatz fürs Argumentieren: <i>Ich bin der Meinung, dass … · Einerseits … andererseits … · Das sehe ich anders, weil …</i></li>
+ </ul></div>`
+},
+{
+ id:"modalverben", tag:7, kap:null, t:"Modalverben — Bedeutung, Tempus, Perfekt",
+ src:[["kurs"]], beleg:"Kurs-Referenz (Aspekte, Klett)",
+ kurz:"Was jedes Modalverb ausdrückt, die Formen in Präsens/Präteritum und der <b>doppelte Infinitiv</b> im Perfekt.",
+ body:`
+ <div class="callout"><div class="callout-h">Was drückt welches Modalverb aus?</div>
+ <table class="ptab">
+  <tr><th>Modalverb</th><th>Bedeutung</th><th>Alternative (mit <i>zu</i> + Infinitiv)</th></tr>
+  <tr><td><b>dürfen</b></td><td>Erlaubnis</td><td>es ist erlaubt, das Recht haben</td></tr>
+  <tr><td><b>nicht dürfen</b></td><td>Verbot</td><td>es ist verboten, keine Erlaubnis haben</td></tr>
+  <tr><td><b>können</b></td><td>Möglichkeit / Fähigkeit</td><td>die Möglichkeit haben; in der Lage sein, imstande sein</td></tr>
+  <tr><td><b>möchten</b></td><td>Wunsch, Lust</td><td>Lust haben, den Wunsch haben</td></tr>
+  <tr><td><b>müssen</b></td><td>Notwendigkeit</td><td>es ist notwendig/erforderlich, gezwungen sein</td></tr>
+  <tr><td><b>sollen</b></td><td>Forderung</td><td>den Auftrag haben, aufgefordert sein, verpflichtet sein</td></tr>
+  <tr><td><b>wollen</b></td><td>eigener Wille, Absicht</td><td>die Absicht haben, beabsichtigen, vorhaben, planen</td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Formen: Präsens / Präteritum</div>
+ <table class="ptab">
+  <tr><th></th><th>wollen</th><th>können</th><th>müssen</th><th>dürfen</th><th>sollen</th></tr>
+  <tr><td>ich</td><td>will / wollte</td><td>kann / konnte</td><td>muss / musste</td><td>darf / durfte</td><td>soll / sollte</td></tr>
+  <tr><td>du</td><td>willst / wolltest</td><td>kannst / konntest</td><td>musst / musstest</td><td>darfst / durftest</td><td>sollst / solltest</td></tr>
+  <tr><td>er/es/sie</td><td>will / wollte</td><td>kann / konnte</td><td>muss / musste</td><td>darf / durfte</td><td>soll / sollte</td></tr>
+  <tr><td>wir</td><td>wollen / wollten</td><td>können / konnten</td><td>müssen / mussten</td><td>dürfen / durften</td><td>sollen / sollten</td></tr>
+  <tr><td>ihr</td><td>wollt / wolltet</td><td>könnt / konntet</td><td>müsst / musstet</td><td>dürft / durftet</td><td>sollt / solltet</td></tr>
+  <tr><td>sie/Sie</td><td>wollen / wollten</td><td>können / konnten</td><td>müssen / mussten</td><td>dürfen / durften</td><td>sollen / sollten</td></tr>
+ </table>
+ <p class="fine">Im Präsens sind <b>ich</b> und <b>er/es/sie</b> gleich und <b>endungslos</b> (<i>ich kann, er kann</i>).
+ <b>möchte</b> hat kein eigenes Präteritum — dafür nimmt man <b>wollte</b>:
+ <i>Ich möchte heute … – Ich wollte gestern …</i></p></div>
+ <div class="callout"><div class="callout-h">Perfekt: der doppelte Infinitiv</div>
+ <p>Mit einem zweiten Verb bildet das Modalverb das Perfekt mit <b>haben</b> und <b>zwei Infinitiven</b> am Ende —
+ nicht mit dem Partizip:</p>
+ <p><i>Simon hat nicht an der Prüfung <b>teilnehmen können</b>.</i> — haben + Infinitiv + Infinitiv (Modalverb).</p>
+ <p class="fine">Im Alltag spricht man über die Vergangenheit aber meist im <b>Präteritum</b>:
+ <i>Simon konnte nicht teilnehmen.</i> Das Perfekt mit doppeltem Infinitiv ist eher selten.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Hier <b>darf</b> man nicht rauchen.","<i>nicht dürfen</i> = Verbot."],
+  ["Ich <b>kann</b> gut schwimmen.","<i>können</i> = Fähigkeit."],
+  ["Wir <b>können</b> heute ins Kino gehen.","<i>können</i> = Möglichkeit."],
+  ["Ich <b>möchte</b> bitte einen Kaffee.","<i>möchten</i> = höflicher Wunsch."],
+  ["Du <b>musst</b> deine Hausaufgaben machen.","<i>müssen</i> = Notwendigkeit."],
+  ["Du <b>sollst</b> deine Mutter anrufen.","<i>sollen</i> = Auftrag/Forderung von außen."],
+  ["Ich <b>will</b> Ärztin werden.","<i>wollen</i> = eigener Wille, Absicht."],
+  ["Als Kind <b>durfte</b> ich nicht lange fernsehen.","Präteritum von <i>dürfen</i>."],
+  ["Simon <b>konnte</b> nicht an der Prüfung teilnehmen.","Präteritum von <i>können</i>."],
+  ["Ich <b>wollte</b> gestern kommen, aber ich war krank.","<i>möchte</i> → im Präteritum <i>wollte</i>."],
+  ["Er hat gestern nicht <b>kommen können</b>.","Perfekt mit doppeltem Infinitiv."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Ich</b> und <b>er/sie/es</b> sind im Präsens gleich und ohne Endung: <i>er kann</i>, nicht <i>er kannt</i>.</li>
+  <li><b>möchte</b> hat kein Präteritum — in der Vergangenheit wird daraus <b>wollte</b>.</li>
+  <li>Im Perfekt mit zweitem Verb: <b>doppelter Infinitiv</b>, kein Partizip: <i>hat teilnehmen können</i>, nicht <i>hat teilnehmen gekonnt</i>.</li>
+  <li>Über Vergangenes spricht man mit Modalverben meist im <b>Präteritum</b>, nicht im Perfekt.</li>
+ </ul></div>`
+},
+{
+ id:"passivformen", tag:7, kap:null, t:"Passiv — alle Formen im Überblick",
+ src:[["kurs"]], beleg:"Kurs-Referenz · vgl. Netzwerk neu K10",
+ kurz:"Passiv = <b>werden</b> + Partizip II. Nur das <i>werden</i> ändert die Zeit — hier alle Formen auf einen Blick.",
+ body:`
+ <div class="callout"><div class="callout-h">Aktiv wird Passiv</div>
+ <p>Im Passiv steht die <b>Handlung</b> im Mittelpunkt, nicht der Handelnde. Gebaut wird es mit
+ <b>werden + Partizip II</b>. Für die Zeit ändert sich <b>nur das <i>werden</i></b> — das Partizip bleibt gleich.</p>
+ <table class="ptab">
+  <tr><th>Zeit</th><th>Aktiv</th><th>Passiv (werden + Partizip II)</th></tr>
+  <tr><td>Präsens</td><td>man macht es</td><td>es <b>wird</b> gemacht</td></tr>
+  <tr><td>Präteritum</td><td>man machte es</td><td>es <b>wurde</b> gemacht</td></tr>
+  <tr><td>Perfekt</td><td>man hat es gemacht</td><td>es <b>ist</b> gemacht <b>worden</b></td></tr>
+  <tr><td>Plusquamperfekt</td><td>man hatte es gemacht</td><td>es <b>war</b> gemacht <b>worden</b></td></tr>
+  <tr><td>Futur I</td><td>man wird es machen</td><td>es <b>wird</b> gemacht <b>werden</b></td></tr>
+  <tr><td>mit Modalverb</td><td>man muss es machen</td><td>es <b>muss</b> gemacht <b>werden</b></td></tr>
+ </table>
+ <p class="fine">Im Perfekt und Plusquamperfekt heißt es <b>worden</b>, nicht <i>geworden</i> — das ist die spezielle
+ Passiv-Form des Partizips.</p></div>
+ <div class="callout"><div class="callout-h">Wer macht es? — <i>von</i> + Dativ</div>
+ <p>Wenn der Handelnde wichtig ist, nennt man ihn mit <b>von</b> + Dativ:
+ <i>Das Haus wird <b>von einem Architekten</b> geplant.</i> Oft lässt man ihn aber weg —
+ gerade das ist der Sinn des Passivs.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Das Haus <b>wird</b> gebaut.","Präsens Passiv."],
+  ["Die Briefe <b>wurden</b> gestern verschickt.","Präteritum Passiv."],
+  ["Der Patient <b>ist</b> sofort operiert <b>worden</b>.","Perfekt: <i>ist … worden</i>, nicht geworden."],
+  ["Das Formular <b>war</b> schon ausgefüllt <b>worden</b>.","Plusquamperfekt Passiv."],
+  ["Das Problem <b>wird</b> bald gelöst <b>werden</b>.","Futur I Passiv."],
+  ["Das Auto <b>muss</b> repariert <b>werden</b>.","Passiv mit Modalverb, Präsens."],
+  ["Der Termin <b>musste</b> verschoben <b>werden</b>.","Passiv mit Modalverb, Präteritum."],
+  ["Hier <b>darf</b> nicht geraucht <b>werden</b>.","subjektloses Passiv mit Modalverb."],
+  ["Die Rechnung <b>wird von der Firma</b> bezahlt.","Handelnder mit <i>von</i> + Dativ."],
+  ["Das Konzert <b>wurde</b> abgesagt.","Präteritum, Handelnder weggelassen."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Perfekt/Plusquamperfekt: <b>worden</b>, nicht <i>geworden</i> — <i>ist gemacht worden</i>.</li>
+  <li>Mit Modalverb steht <b>werden</b> im Infinitiv am Ende: <i>muss gemacht <b>werden</b></i>.</li>
+  <li>Der Handelnde kommt mit <b>von</b> + Dativ (<i>von dem Arzt</i>), das Mittel mit <b>durch</b> + Akkusativ.</li>
+  <li>Nur das <b>werden</b> wechselt die Zeit — das <b>Partizip II bleibt immer gleich</b>.</li>
+ </ul></div>`
+},
+{
+ id:"personen-beschreiben", tag:6, kap:null, t:"Personen beschreiben — Adjektivendungen",
+ src:[["kurs"]], beleg:"Kurs-Referenz",
+ kurz:"Aussehen beschreiben: <b>Er hat einen langen Bart</b> (Akkusativ) und <b>Er ist groß</b> — mit den richtigen Adjektivendungen.",
+ body:`
+ <div class="callout"><div class="callout-h">Zwei Bausteine</div>
+ <p>Personen beschreibt man vor allem mit zwei Mustern. Beim ersten braucht das Adjektiv eine <b>Endung</b>,
+ beim zweiten nicht:</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">er/sie <b>hat</b> …</div><div class="mxh">er/sie <b>ist</b> …</div>
+  <div class="mxr">Bau</div>
+  <div class="mxc hi">Akkusativ: <i>einen/eine/ein</i> + Adjektiv<b>+Endung</b> + Nomen</div>
+  <div class="mxc hi">Adjektiv <b>ohne</b> Endung (prädikativ)</div>
+  <div class="mxr">Beispiel</div>
+  <div class="mxc">Er hat <b>einen runden</b> Kopf.</div>
+  <div class="mxc">Er ist <b>groß</b> und <b>schlank</b>.</div>
+ </div>
+ <p class="fine">Nach <i>haben</i> steht das Objekt im <b>Akkusativ</b> — also die gemischten Endungen
+ (<i>einen langen</i>, <i>eine runde</i>, <i>ein schmales</i>).</p></div>
+ <div class="callout"><div class="callout-h">Wortschatz fürs Gesicht</div>
+ <table class="ptab">
+  <tr><th>Bereich</th><th>Wörter</th></tr>
+  <tr><td>Kopf &amp; Haare</td><td>der Kopf · das Gesicht · der Scheitel (Seiten-/Mittelscheitel) · die Glatze · glatt · lockig</td></tr>
+  <tr><td>Brille (Form)</td><td>die Brille: <b>eckig</b> · <b>rund</b> · <b>oval</b></td></tr>
+  <tr><td>Ausdruck</td><td>lächeln → <i>lächelnd</i> · die Stirn runzeln → <i>stirnrunzelnd</i> · freundlich · ernst</td></tr>
+  <tr><td>Bart</td><td>der Bart · der Stoppelbart · der Vollbart · der Schnauzbart · der Dreitagebart</td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Endungen im Akkusativ (nach <i>ein-</i>)</div>
+ <table class="ptab">
+  <tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th></tr>
+  <tr><td>er hat …</td><td>einen lang<b>en</b> Bart</td><td>eine rund<b>e</b> Brille</td><td>ein schmal<b>es</b> Gesicht</td></tr>
+ </table>
+ <p class="fine">Maskulin Akkusativ ist <b>-en</b>, feminin <b>-e</b>, neutral <b>-es</b> — die gemischte Deklination.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Er hat <b>einen runden</b> Kopf.","<i>haben</i> → Akkusativ, maskulin → <i>-en</i>."],
+  ["Sie hat <b>eine runde</b> Brille.","feminin Akkusativ → <i>-e</i>."],
+  ["Er trägt <b>eine eckige</b> Brille.","Brillenform <i>eckig</i>, feminin → <i>-e</i>."],
+  ["Er hat <b>einen langen</b> Vollbart.","maskulin Akkusativ → <i>-en</i>."],
+  ["Sie hat <b>einen</b> Seitenscheitel und <b>glatte</b> Haare.","Scheitel + Plural ohne Artikel → <i>-e</i>."],
+  ["Das Kind hat <b>ein schmales</b> Gesicht.","neutral Akkusativ → <i>-es</i>."],
+  ["Er ist <b>groß</b> und hat <b>einen</b> Stoppelbart.","<i>ist</i> → keine Endung; <i>hat</i> → Akkusativ."],
+  ["Der Mann auf dem Foto <b>lächelt</b> freundlich.","Ausdruck: <i>lächeln</i>."],
+  ["Die Frau schaut <b>ernst</b> und runzelt die Stirn.","Ausdruck: stirnrunzelnd."],
+  ["Er hat <b>einen</b> Schnauzbart und trägt <b>eine ovale</b> Brille.","Bart + ovale Brille, feminin → <i>-e</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Nach <b>haben</b> steht Akkusativ: <i>Er hat <b>einen</b> Bart</i>, nicht <i>ein Bart</i>.</li>
+  <li>Nach <b>sein</b> keine Endung: <i>Er ist groß</i>, nicht <i>Er ist großer</i>.</li>
+  <li>Endungen: maskulin Akk <b>-en</b>, feminin <b>-e</b>, neutral <b>-es</b> (gemischte Deklination nach <i>ein-</i>).</li>
+  <li>Brillenformen sind Adjektive: <i>eine <b>runde</b>/<b>eckige</b>/<b>ovale</b> Brille</i> — mit femininer Endung <i>-e</i>.</li>
  </ul></div>`
 }
 ];
