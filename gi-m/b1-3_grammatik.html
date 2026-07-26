@@ -353,7 +353,9 @@ const TAGE=[
  {n:5, wt:"Freitag", datum:"17. Juli 2026", thema:"Märchen: Lesen, Rollenspiel & eigenes Ende"},
  {n:6, wt:"Montag",  datum:"20. Juli 2026", thema:"Wechselpräpositionen, Adjektivdeklination & Europa"},
  {n:7, wt:"Dienstag", datum:"21. Juli 2026", thema:"Werte & Demokratie · Passiv (Wiederholung)"},
- {n:8, wt:"Mittwoch", datum:"22. Juli 2026", thema:"Ehrenamt, DDR/BRD & Passiv (Vertiefung)"}
+ {n:8, wt:"Mittwoch", datum:"22. Juli 2026", thema:"Ehrenamt, DDR/BRD & Passiv (Vertiefung)"},
+ {n:9, wt:"Donnerstag", datum:"23. Juli 2026", thema:"Stadt & Land · Konzessive und kausale Konnektoren"},
+ {n:10, wt:"Freitag", datum:"24. Juli 2026", thema:"je … desto & Komparativ (Wiederholung) · Stadt & Geld"}
 ];
 
 /* Einheiten aus Netzwerk neu B1.2 — ohne Abschnitte, die Einheit genügt. */
@@ -2127,7 +2129,7 @@ const G=[
  </ul></div>`
 },
 {
- id:"je-desto", kap:12, t:"<i>je … desto / umso</i>",
+ id:"je-desto", tag:10, kap:12, t:"<i>je … desto / umso</i>",
  src:[["buch","K12"]], beleg:"Übungsbuch K12, 3e",
  kurz:"Zwei Dinge steigen zusammen: <b>Je</b> mehr …, <b>desto</b> / <b>umso</b> besser.",
  body:`
@@ -2161,7 +2163,7 @@ const G=[
  </ul></div>`
 },
 {
- id:"partizip-adjektiv", kap:12, t:"Partizip I und II als Adjektiv",
+ id:"partizip-adjektiv", tag:9, kap:12, t:"Partizip I und II als Adjektiv",
  src:[["buch","K12"]], beleg:"Übungsbuch K12, 5b–5c · 8b–8c",
  kurz:"Partizipien vor dem Nomen: <b>-end</b> (laufend, gerade aktiv) oder <b>Partizip II</b> (gekocht, schon fertig) — beide mit Adjektivendung.",
  body:`
@@ -2656,6 +2658,279 @@ const G=[
   <li><b>der Kalauer</b> / <b>der Flachwitz</b> — das simple Wortspiel.</li>
   <li><b>die Pointe</b> — die entscheidende Schlusszeile.</li>
   <li>Wortspiele sind fast <b>unübersetzbar</b> — genau deshalb sind sie ein gutes Zeichen für Sprachgefühl.</li>
+ </ul></div>`
+},
+{
+ id:"konzessiv", tag:9, kap:null, t:"Konzessiv: <i>obwohl</i> und <i>trotzdem</i>",
+ src:[["kurs"]], beleg:"Kurs · Arbeitsblatt S. 20 Nr. 3",
+ kurz:"Etwas passiert <b>gegen</b> die Erwartung. <b>obwohl</b> → Nebensatz, <b>trotzdem</b> → Hauptsatz mit Inversion.",
+ body:`
+ <div class="callout"><div class="callout-h">Der Gedanke: unerwartete Folge</div>
+ <p>Konzessiv heißt: Es gibt einen Grund, der etwas verhindern sollte — aber es passiert
+ <b>trotzdem</b>. Dieselbe Aussage lässt sich auf zwei Wegen bauen:</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh"><b>obwohl</b></div><div class="mxh"><b>trotzdem</b></div>
+  <div class="mxr">Typ</div>
+  <div class="mxc hi">Subjunktion → <b>Nebensatz</b></div>
+  <div class="mxc hi">Verbindungsadverb → <b>Hauptsatz</b></div>
+  <div class="mxr">Verb</div>
+  <div class="mxc">ans <b>Ende</b></div>
+  <div class="mxc"><b>Position 2</b> → Inversion</div>
+  <div class="mxr">Beispiel</div>
+  <div class="mxc"><b>Obwohl</b> es regnete, <b>gingen</b> wir spazieren.</div>
+  <div class="mxc">Es regnete, <b>trotzdem gingen</b> wir spazieren.</div>
+ </div>
+ <p class="fine">Nach dem <i>obwohl</i>-Satz auf Position 1 folgt ebenfalls Inversion — der Nebensatz
+ besetzt Position 1, das Verb des Hauptsatzes kommt direkt danach.</p></div>
+ <div class="callout"><div class="callout-h">Die ganze Familie</div>
+ <table class="ptab">
+  <tr><th>Wort</th><th>Typ</th><th>Verbstellung</th><th>Beispiel</th></tr>
+  <tr><td><b>obwohl</b></td><td>Subjunktion</td><td>Verb ans Ende</td><td>…, obwohl er müde <b>war</b>.</td></tr>
+  <tr><td><b>obgleich</b> · <b>obschon</b></td><td>Subjunktion</td><td>Verb ans Ende</td><td>wie <i>obwohl</i>, aber gehoben</td></tr>
+  <tr><td><b>trotzdem</b> · <b>dennoch</b></td><td>Adverb</td><td>Inversion</td><td>…, trotzdem <b>kam</b> er.</td></tr>
+  <tr><td><b>trotz</b> + Genitiv</td><td>Präposition</td><td>—</td><td><b>Trotz des</b> Regens gingen wir.</td></tr>
+ </table>
+ <p class="fine">Alle vier sagen dasselbe — sie unterscheiden sich nur im <b>Satzbau</b>.
+ <i>trotz</i> steht mit <b>Genitiv</b>, in der Umgangssprache auch mit Dativ.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["<b>Obwohl</b> es regnete, gingen wir spazieren.","<i>obwohl</i> → Verb <i>regnete</i> ans Ende."],
+  ["Es regnete, <b>trotzdem</b> gingen wir spazieren.","<i>trotzdem</i> → Inversion: Verb vor Subjekt."],
+  ["Er kam zur Arbeit, <b>obwohl</b> er krank war.","Nebensatz hinten, Verb am Ende."],
+  ["Er war krank. <b>Trotzdem</b> kam er zur Arbeit.","Eigener Satz, Position 1 → Inversion."],
+  ["<b>Obwohl</b> die Stadt teuer ist, wohne ich gern hier.","Nebensatz auf Position 1."],
+  ["Die Stadt ist teuer, <b>dennoch</b> wohne ich gern hier.","<i>dennoch</i> = <i>trotzdem</i>, gehobener."],
+  ["<b>Trotz des</b> schlechten Wetters war das Fest schön.","<i>trotz</i> + Genitiv."],
+  ["<b>Obwohl</b> er wenig verdient, ist er zufrieden.","Grund gegen Erwartung."],
+  ["Sie hat wenig Zeit, <b>trotzdem</b> hilft sie ehrenamtlich.","Hauptsatz + Inversion."],
+  ["<b>Obwohl</b> ich müde bin, muss ich noch lernen.","Modalverb im Hauptsatz."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>trotzdem ist kein <i>obwohl</i></b>: <i>Trotzdem es regnete</i> ✗ → <i>Obwohl es regnete</i> ✓.</li>
+  <li>Nach <b>trotzdem</b> kommt <b>Inversion</b>: <i>trotzdem <b>gingen wir</b></i>, nicht <i>trotzdem wir gingen</i>.</li>
+  <li><b>obwohl</b> schickt das Verb <b>ans Ende</b> — auch bei trennbaren Verben bleibt es zusammen: <i>obwohl er <b>mitkommt</b></i>.</li>
+  <li><b>trotz</b> ist eine <b>Präposition</b> + Genitiv, kein Konnektor: <i>trotz des Regens</i>, nicht <i>trotz es regnete</i>.</li>
+ </ul></div>`
+},
+{
+ id:"kausal", tag:9, kap:null, t:"Kausal: <i>weil</i>, <i>denn</i>, <i>deshalb</i>",
+ src:[["kurs"]], beleg:"Kurs · Arbeitsblatt S. 20 Nr. 3",
+ kurz:"Grund und Folge. Drei Bautypen: <b>weil</b> (Nebensatz), <b>denn</b> (Position 0), <b>deshalb</b> (Inversion).",
+ body:`
+ <div class="callout"><div class="callout-h">Grund oder Folge?</div>
+ <p>Der entscheidende Unterschied: <b>weil/denn/da</b> leiten den <b>Grund</b> ein,
+ <b>deshalb/deswegen/darum/daher</b> die <b>Folge</b>. Der Inhalt dreht sich also um.</p>
+ <div class="mx">
+  <div class="mxh"></div><div class="mxh">Grund</div><div class="mxh">Folge</div>
+  <div class="mxr">Wort</div>
+  <div class="mxc hi">weil · da · denn</div>
+  <div class="mxc hi">deshalb · deswegen · darum · daher</div>
+  <div class="mxr">Beispiel</div>
+  <div class="mxc">Ich gehe früh ins Bett, <b>weil</b> ich müde bin.</div>
+  <div class="mxc">Ich bin müde, <b>deshalb</b> gehe ich früh ins Bett.</div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Drei Bautypen</div>
+ <table class="ptab">
+  <tr><th>Wort</th><th>Typ</th><th>Verbstellung</th><th>Beispiel</th></tr>
+  <tr><td><b>weil</b> · <b>da</b></td><td>Subjunktion</td><td>Verb <b>ans Ende</b></td><td>…, weil ich müde <b>bin</b>.</td></tr>
+  <tr><td><b>denn</b></td><td>Konjunktion (ADUSO)</td><td><b>Position 0</b> — normale Stellung</td><td>…, denn <b>ich bin</b> müde.</td></tr>
+  <tr><td><b>deshalb</b> · <b>deswegen</b><br><b>darum</b> · <b>daher</b></td><td>Adverb</td><td>Position 1 → <b>Inversion</b></td><td>…, deshalb <b>gehe ich</b> …</td></tr>
+  <tr><td><b>wegen</b> + Genitiv</td><td>Präposition</td><td>—</td><td><b>Wegen des</b> Regens bleibe ich zu Hause.</td></tr>
+ </table>
+ <p class="fine"><b>da</b> statt <i>weil</i>, wenn der Grund schon bekannt ist — steht oft am Satzanfang:
+ <i>Da es regnet, bleiben wir zu Hause.</i></p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich bleibe zu Hause, <b>weil</b> es regnet.","<i>weil</i> → Verb <i>regnet</i> ans Ende."],
+  ["Ich bleibe zu Hause, <b>denn</b> es regnet.","<i>denn</i> → Position 0, normale Wortstellung."],
+  ["Es regnet, <b>deshalb</b> bleibe ich zu Hause.","<i>deshalb</i> → Inversion, nennt die Folge."],
+  ["<b>Da</b> es regnet, bleiben wir zu Hause.","<i>da</i> am Satzanfang, Grund bekannt."],
+  ["<b>Wegen des</b> Regens bleibe ich zu Hause.","<i>wegen</i> + Genitiv."],
+  ["Sie zieht aufs Land, <b>weil</b> die Mieten dort günstiger sind.","Nebensatz, Verb am Ende."],
+  ["Die Mieten sind hoch, <b>darum</b> ziehen viele weg.","<i>darum</i> = <i>deshalb</i>."],
+  ["Er lernt viel, <b>denn</b> er will die Prüfung bestehen.","<i>denn</i>: kein Komma-Problem, Stellung normal."],
+  ["Die Stadt hat guten Nahverkehr, <b>daher</b> braucht man kein Auto.","<i>daher</i>, Folge mit Inversion."],
+  ["Ich komme später, <b>weil</b> ich noch arbeiten muss.","Modalverb ganz ans Ende."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>weil</b> und <b>denn</b> sind nicht austauschbar im Bau: <i>weil</i> → Verb ans Ende, <i>denn</i> → normale Stellung.</li>
+  <li>Nach <b>deshalb</b> kommt <b>Inversion</b>: <i>deshalb <b>gehe ich</b></i>, nicht <i>deshalb ich gehe</i>.</li>
+  <li><b>Grund oder Folge nicht vertauschen</b>: <i>Ich bin müde, deshalb gehe ich ins Bett</i> ✓ — <i>Ich gehe ins Bett, deshalb bin ich müde</i> sagt etwas anderes.</li>
+  <li><b>wegen</b> + Genitiv (<i>wegen des Wetters</i>); umgangssprachlich hört man auch Dativ.</li>
+ </ul></div>`
+},
+{
+ id:"lebenswerte-staedte", tag:9, kap:null, kultur:true, src:[["kurs"]],
+ t:"Lebenswerte Städte &amp; Leben auf dem Land",
+ beleg:"Netzwerk neu K11 · Landeskunde",
+ kurz:"Was macht eine Stadt <b>lebenswert</b>? Kriterien der großen Rankings — und Stadt gegen Land.",
+ body:`
+ <div class="callout"><div class="callout-h">Wie wird Lebensqualität gemessen?</div>
+ <p>Mehrere Institute veröffentlichen jährlich Ranglisten der <b>lebenswertesten Städte</b>:
+ der <b>Economist</b> (Global Liveability Index, seit 2002), <b>Mercer</b> (Quality of Living) und
+ das Magazin <b>Monocle</b>. Typische Kriterien:</p>
+ <ul class="mini">
+  <li><b>Stabilität und Sicherheit</b> — Kriminalität, politische Lage</li>
+  <li><b>Gesundheitsversorgung</b> — Ärzte, Krankenhäuser</li>
+  <li><b>Bildung</b> — Schulen und Universitäten</li>
+  <li><b>Infrastruktur</b> — öffentliche Verkehrsmittel, Wohnungsmarkt</li>
+  <li><b>Umwelt und Natur</b> — Grünflächen, Luftqualität, Klima</li>
+  <li><b>Kultur und Freizeit</b> — Museen, Restaurants, Veranstaltungen</li>
+ </ul>
+ <p class="fine">Achtung: Die Rankings sind <b>subjektiv</b> — es gibt keine allgemein anerkannte
+ Messweise für Lebensqualität, und viele Studien befragen vor allem <b>Expats</b>, nicht die
+ Einheimischen. <b>Wien</b> stand jahrelang an der Spitze; zuletzt lagen auch
+ <b>Kopenhagen</b> und <b>Zürich</b> vorn. Regelmäßig in den Top 10: <b>München</b>,
+ <b>Frankfurt</b> und <b>Düsseldorf</b>.</p></div>
+ <div class="callout"><div class="callout-h">Stadt oder Land? Pro und Contra</div>
+ <table class="ptab">
+  <tr><th></th><th>Stadt</th><th>Land</th></tr>
+  <tr><td><b>Vorteile</b></td>
+      <td>gute Infrastruktur · kurze Wege · viele Jobs · Kultur &amp; Nachtleben · guter Nahverkehr · Anonymität</td>
+      <td>günstigere Mieten · Ruhe &amp; frische Luft · mehr Platz · Natur vor der Tür · starke Gemeinschaft · sicherer für Kinder</td></tr>
+  <tr><td><b>Nachteile</b></td>
+      <td>hohe Mieten · Lärm &amp; Luftverschmutzung · Verkehr &amp; Stau · Anonymität · Stress</td>
+      <td>wenig Arbeitsplätze · schlechter Nahverkehr · Auto nötig · weniger Ärzte &amp; Geschäfte · wenig Kultur · soziale Kontrolle</td></tr>
+ </table>
+ <p class="fine">Beachte: <b>Anonymität</b> steht in beiden Spalten — für die einen Freiheit,
+ für die anderen Einsamkeit. Ein gutes Argument fürs Sprechen.</p></div>
+ <div class="callout"><div class="callout-h">Redemittel für die Diskussion</div>
+ <ul class="mini">
+  <li><b>Vorteil nennen</b>: <i>Ein großer Vorteil ist, dass … · Dafür spricht, dass …</i></li>
+  <li><b>Nachteil nennen</b>: <i>Ein Nachteil ist, dass … · Dagegen spricht, dass …</i></li>
+  <li><b>Abwägen</b>: <i>Einerseits …, andererseits … · Zwar …, aber …</i></li>
+  <li><b>Konzessiv</b> (heute!): <i><b>Obwohl</b> die Mieten hoch sind, wohne ich gern in der Stadt.</i></li>
+  <li><b>Kausal</b> (heute!): <i>Die Mieten sind hoch, <b>deshalb</b> ziehen viele aufs Land.</i></li>
+  <li><b>Meinung</b>: <i>Meiner Meinung nach … · Ich bin der Ansicht, dass …</i></li>
+ </ul></div>`
+},
+{
+ id:"bankgeschaefte", tag:10, kap:null, t:"Bankgeschäfte — Nomen-Verb-Verbindungen",
+ src:[["kurs"]], beleg:"Netzwerk neu K12 · Wortschatz",
+ kurz:"Was man bei der Bank macht: welches <b>Verb</b> zu welchem <b>Nomen</b> gehört.",
+ body:`
+ <div class="callout"><div class="callout-h">Was macht man bei der Bank?</div>
+ <table class="ptab">
+  <tr><th>Verb</th><th>typische Nomen</th><th>Bedeutung</th></tr>
+  <tr><td><b>eröffnen</b></td><td>ein Konto</td><td>to open (an account)</td></tr>
+  <tr><td><b>beantragen</b></td><td>einen Kredit · eine Bankkarte</td><td>to apply for</td></tr>
+  <tr><td><b>einzahlen</b></td><td>Geld · einen Betrag</td><td>to pay in / deposit</td></tr>
+  <tr><td><b>abheben</b></td><td>Geld · einen Betrag</td><td>to withdraw</td></tr>
+  <tr><td><b>überweisen</b></td><td>Geld · einen Betrag · eine Rate</td><td>to transfer</td></tr>
+  <tr><td><b>sparen</b></td><td>Geld · einen Betrag</td><td>to save</td></tr>
+  <tr><td><b>zahlen</b></td><td>die Rate · die Gebühr · die Zinsen</td><td>to pay</td></tr>
+  <tr><td><b>verlangen</b></td><td>eine Gebühr · Zinsen</td><td>to charge (the bank)</td></tr>
+  <tr><td><b>drucken</b></td><td>einen Kontoauszug · einen Beleg</td><td>to print</td></tr>
+  <tr><td><b>sperren</b></td><td>die Bankkarte · das Konto</td><td>to block</td></tr>
+  <tr><td><b>überziehen</b></td><td>das Konto</td><td>to overdraw</td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Der Wortschatz</div>
+ <div class="howto">
+  <div class="htr"><span class="htq">das Konto</span><span class="htp">account</span><span class="hte">eröffnen → überziehen → sperren (der ganze „Lebenslauf")</span></div>
+  <div class="htr"><span class="htq">der Betrag</span><span class="htp">amount</span><span class="hte">geht mit fast allen Geld-Verben</span></div>
+  <div class="htr"><span class="htq">die Überweisung</span><span class="htp">transfer</span><span class="hte">Geld von A nach B: <i>überweisen</i></span></div>
+  <div class="htr"><span class="htq">die Gebühr</span><span class="htp">fee</span><span class="hte">man <b>zahlt</b> sie / die Bank <b>verlangt</b> sie</span></div>
+  <div class="htr"><span class="htq">die Zinsen</span><span class="htp">interest</span><span class="hte">beim Sparen bekommt man sie, beim Kredit zahlt man sie</span></div>
+  <div class="htr"><span class="htq">die Rate</span><span class="htp">instalment</span><span class="hte">ein Teil eines Kredits, monatlich</span></div>
+  <div class="htr"><span class="htq">der Kontoauszug</span><span class="htp">statement</span><span class="hte">die Übersicht — vs. der Beleg = einzelne Quittung</span></div>
+ </div></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Ich möchte ein Konto <b>eröffnen</b>.","<i>Konto eröffnen</i>."],
+  ["Er <b>hebt</b> 100 Euro <b>ab</b>.","<i>abheben</i> ist trennbar: hebt … ab."],
+  ["Ich <b>zahle</b> jeden Monat Geld auf mein Sparkonto <b>ein</b>.","<i>einzahlen</i>, trennbar."],
+  ["Kannst du mir das Geld <b>überweisen</b>?","<i>überweisen</i> — untrennbar, kein <i>ge-</i> im Partizip: überwiesen."],
+  ["Die Bank <b>verlangt</b> eine Gebühr für die Karte.","Bank <i>verlangt</i>, Kunde <i>zahlt</i>."],
+  ["Ich <b>beantrage</b> einen Kredit.","<i>Kredit beantragen</i>."],
+  ["Für den Kredit muss ich <b>Zinsen zahlen</b>.","Kredit → Zinsen zahlen."],
+  ["Ich <b>drucke</b> den Kontoauszug am Automaten.","<i>Kontoauszug drucken</i>."],
+  ["Meine Karte war weg, also habe ich sie <b>sperren</b> lassen.","<i>Karte sperren</i>, mit <i>lassen</i>."],
+  ["Wenn das Konto leer ist und man trotzdem zahlt, <b>überzieht</b> man es.","<i>das Konto überziehen</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li><b>Gebühr / Zinsen</b>: der Kunde <b>zahlt</b> sie, die Bank <b>verlangt</b> sie — dasselbe Geld, andere Seite.</li>
+  <li><b>ab|heben · ein|zahlen</b> sind trennbar (<i>ich hebe ab</i>), <b>überweisen · überziehen · beantragen</b> nicht.</li>
+  <li>Partizip: <i>überwiesen</i>, <i>überzogen</i>, <i>beantragt</i> — untrennbar, also <b>kein <i>ge-</i></b>.</li>
+  <li><b>der Kontoauszug</b> = die ganze Übersicht, <b>der Beleg</b> = eine einzelne Quittung.</li>
+ </ul></div>`
+},
+{
+ id:"komparativ-tabelle", tag:10, kap:null, t:"Komparativ-Tabelle",
+ src:[["kurs"]], beleg:"Kurs-Referenz",
+ kurz:"Eine Referenzliste zum Steigern — regelmäßig, mit Umlaut, und die unregelmäßigen zum Auswendiglernen.",
+ body:`
+ <div class="callout"><div class="callout-h">Die drei Regeln in Kürze</div>
+ <ul class="mini">
+  <li><b>Grundregel</b>: Komparativ <b>-er</b>, Superlativ <b>am …-sten</b> — <i>klein → kleiner → am kleinsten</i>.</li>
+  <li><b>-est-</b> nach <b>-d, -t, -s, -ß, -sch, -z</b> (Aussprache): <i>alt → am ält<b>e</b>sten</i>, <i>heiß → am heiß<b>e</b>sten</i>.</li>
+  <li><b>Umlaut</b> bei vielen kurzen Adjektiven: a→ä, o→ö, u→ü — <i>lang → länger</i>.</li>
+ </ul></div>
+ <div class="callout"><div class="callout-h">Regelmäßig — ohne Umlaut</div>
+ <table class="ptab">
+  <tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th></tr>
+  <tr><td>klein</td><td>kleiner</td><td>am kleinsten</td></tr>
+  <tr><td>schnell</td><td>schneller</td><td>am schnellsten</td></tr>
+  <tr><td>schön</td><td>schöner</td><td>am schönsten</td></tr>
+  <tr><td>billig</td><td>billiger</td><td>am billigsten</td></tr>
+  <tr><td>langsam</td><td>langsamer</td><td>am langsamsten</td></tr>
+  <tr><td>interessant</td><td>interessanter</td><td>am interessant<b>e</b>sten</td></tr>
+  <tr><td>schlecht</td><td>schlechter</td><td>am schlecht<b>e</b>sten</td></tr>
+ </table>
+ <p class="fine"><i>interessant</i> und <i>schlecht</i> enden auf -t → Superlativ mit <b>-est-</b>.</p></div>
+ <div class="callout"><div class="callout-h">Mit Umlaut (a→ä · o→ö · u→ü)</div>
+ <table class="ptab">
+  <tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th></tr>
+  <tr><td>alt</td><td>älter</td><td>am ältesten</td></tr>
+  <tr><td>jung</td><td>jünger</td><td>am jüngsten</td></tr>
+  <tr><td>lang</td><td>länger</td><td>am längsten</td></tr>
+  <tr><td>kurz</td><td>kürzer</td><td>am kürzesten</td></tr>
+  <tr><td>warm</td><td>wärmer</td><td>am wärmsten</td></tr>
+  <tr><td>kalt</td><td>kälter</td><td>am kältesten</td></tr>
+  <tr><td>stark</td><td>stärker</td><td>am stärksten</td></tr>
+  <tr><td>schwach</td><td>schwächer</td><td>am schwächsten</td></tr>
+  <tr><td>hart</td><td>härter</td><td>am härtesten</td></tr>
+  <tr><td>klug</td><td>klüger</td><td>am klügsten</td></tr>
+  <tr><td>scharf</td><td>schärfer</td><td>am schärfsten</td></tr>
+  <tr><td>gesund</td><td>gesünder</td><td>am gesündesten</td></tr>
+ </table></div>
+ <div class="callout"><div class="callout-h">Unregelmäßig — auswendig lernen</div>
+ <table class="ptab">
+  <tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th></tr>
+  <tr><td><b>gut</b></td><td>besser</td><td>am besten</td></tr>
+  <tr><td><b>viel</b></td><td>mehr</td><td>am meisten</td></tr>
+  <tr><td><b>gern</b></td><td>lieber</td><td>am liebsten</td></tr>
+  <tr><td><b>hoch</b></td><td>höher</td><td>am höchsten</td></tr>
+  <tr><td><b>nah</b></td><td>näher</td><td>am nächsten</td></tr>
+  <tr><td><b>groß</b></td><td>größer</td><td>am größten</td></tr>
+  <tr><td><b>teuer</b></td><td>teurer</td><td>am teuersten</td></tr>
+  <tr><td><b>dunkel</b></td><td>dunkler</td><td>am dunkelsten</td></tr>
+ </table>
+ <p class="fine"><i>hoch</i> → <i>höher</i> (das <i>c</i> fällt weg), <i>nah</i> → <i>nächst-</i> (mit <i>ch</i>),
+ <i>teuer</i> und <i>dunkel</i> verlieren im Komparativ das <b>-e-</b>: <i>teu(e)rer</i>, <i>dunk(e)ler</i>.</p></div>
+ <div class="callout"><div class="callout-h">Beispiele</div>
+ ${exList([
+  ["Der Zug ist <b>schneller</b> als das Auto.","regelmäßig, ohne Umlaut."],
+  ["Heute ist es <b>wärmer</b> als gestern.","Umlaut: <i>warm → wärmer</i>."],
+  ["Mein Bruder ist <b>älter</b> als ich.","Umlaut + Superlativ <i>-est-</i>."],
+  ["Diese Frage ist <b>interessanter</b>.","-ant → regelmäßig <i>-er</i>."],
+  ["Obst ist <b>gesünder</b> als Schokolade.","Umlaut: <i>gesund → gesünder</i>."],
+  ["Das ist die <b>beste</b> Idee.","unregelmäßig <i>gut → besser → best-</i>."],
+  ["Ich trinke <b>lieber</b> Tee als Kaffee.","unregelmäßig <i>gern → lieber</i>."],
+  ["Der Mont Blanc ist <b>höher</b> als die Zugspitze.","unregelmäßig <i>hoch → höher</i>."],
+  ["München ist <b>teurer</b> als Leipzig.","<i>teuer → teurer</i> (ohne -e-)."],
+  ["Im Winter wird es <b>früher dunkler</b>.","<i>dunkel → dunkler</i> (ohne -e-)."],
+  ["Wer wohnt <b>am nächsten</b> zum Bahnhof?","unregelmäßig <i>nah → am nächsten</i>."],
+  ["Er verdient <b>mehr</b> als sie.","unregelmäßig <i>viel → mehr</i>."]
+ ])}</div>
+ <div class="callout warn"><div class="callout-h">Fallen</div>
+ <ul class="mini">
+  <li>Nicht jedes kurze Adjektiv bekommt Umlaut: <i>klar → klarer</i>, <i>voll → voller</i>, <i>bunt → bunter</i> — <b>ohne</b>.</li>
+  <li><b>-est-</b> nur nach -d/-t/-s/-ß/-sch/-z: <i>am kältesten</i>, aber <i>am kleinsten</i> (kein -e-).</li>
+  <li><b>teuer</b> und <b>dunkel</b> verlieren das <i>-e-</i> im Komparativ: <i>teurer</i>, <i>dunkler</i> — nicht <i>teuerer</i>.</li>
+  <li>Nach dem Komparativ steht <b>als</b>, nicht <i>wie</i>.</li>
  </ul></div>`
 }
 ];
