@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Why Men Stay - Facilitator Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azure:#487FC0;
+  --gold:#FFAE3B;
+  --night:#0d2137;
+  --dark:#2D2C2C;
+  --white:#ffffff;
+  --bg:#f4f7fb;
+  --border:#dde4ef;
+  --surface:#ffffff;
+  --ink2:#4a5a72;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--dark);
+  font-family:'DM Sans',sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Header */
+.header{
+  background:var(--night);
+  padding:32px 48px 28px;
+  display:flex;
+  align-items:center;
+  gap:28px;
+  border-bottom:4px solid var(--gold);
+}
+.wordmark{
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  line-height:1;
+  padding-right:28px;
+  border-right:1px solid #22456b;
+}
+.wordmark .greek{
+  font-family:'DM Serif Display',serif;
+  color:var(--gold);
+  font-size:2.1rem;
+  letter-spacing:0.04em;
+}
+.wordmark .name{
+  color:#9db4d4;
+  font-size:0.56rem;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  margin-top:5px;
+}
+.header-text h1{
+  font-family:'DM Serif Display',serif;
+  color:var(--white);
+  font-size:1.6rem;
+  line-height:1.2;
+  letter-spacing:-0.02em;
+}
+.header-text .meta{
+  color:var(--gold);
+  font-size:0.8rem;
+  font-weight:500;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-top:5px;
+}
+
+.container{max-width:880px;margin:0 auto;padding:40px 48px 60px;}
+
+.intro{font-size:0.98rem;color:#33455f;line-height:1.7;margin-bottom:30px;}
+
+/* Section heading */
+.section{margin-bottom:40px;}
+.section-heading{
+  font-family:'DM Serif Display',serif;
+  font-size:1.2rem;
+  color:var(--night);
+  margin-bottom:5px;
+}
+.section-divider{
+  height:3px;width:36px;background:var(--gold);
+  margin-bottom:16px;border-radius:2px;
+}
+.section p{font-size:0.94rem;color:#2c3a50;line-height:1.7;margin-bottom:12px;}
+
+/* Run of show */
+.ros{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:3px;
+  overflow:hidden;
+  margin:8px 0 4px;
+}
+.ros-row{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  align-items:center;
+  padding:12px 20px;
+  border-bottom:1px solid var(--border);
+  gap:18px;
+}
+.ros-row:last-child{border-bottom:none;}
+.ros-time{
+  font-family:'DM Serif Display',serif;
+  font-size:1.15rem;
+  color:var(--azure);
+  text-align:center;
+}
+.ros-time span{display:block;font-family:'DM Sans';font-size:0.6rem;color:#9aabca;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-top:1px;}
+.ros-label{font-size:0.94rem;color:var(--night);font-weight:500;}
+.ros-label small{display:block;font-weight:400;color:var(--ink2);font-size:0.82rem;margin-top:1px;}
+.ros-total{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 20px;background:var(--night);
+}
+.ros-total .l{color:#9db4d4;font-size:0.74rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+.ros-total .v{font-family:'DM Serif Display',serif;color:var(--gold);font-size:1.2rem;}
+
+/* Activity card */
+.activity{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-top:3px solid var(--azure);
+  border-radius:3px;
+  padding:26px 30px;
+  margin-bottom:26px;
+}
+.activity-head{
+  display:flex;align-items:baseline;gap:14px;
+  padding-bottom:14px;margin-bottom:18px;
+  border-bottom:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.activity-num{
+  font-family:'DM Serif Display',serif;
+  font-size:1.05rem;color:var(--azure);
+}
+.activity-title{
+  font-family:'DM Serif Display',serif;
+  font-size:1.35rem;color:var(--night);
+  flex:1;min-width:160px;
+}
+.time-badge{
+  background:var(--gold);color:var(--night);
+  font-size:0.72rem;font-weight:700;letter-spacing:0.06em;
+  text-transform:uppercase;padding:5px 12px;border-radius:2px;
+  white-space:nowrap;
+}
+
+.block-label{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--azure);
+  margin:18px 0 8px;
+}
+.block-label:first-child{margin-top:0;}
+
+.why{font-size:0.92rem;color:var(--ink2);line-height:1.65;}
+
+/* Facilitator step list */
+.steps{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+.steps li{display:flex;gap:12px;align-items:flex-start;font-size:0.92rem;color:#2c3a50;line-height:1.6;}
+.steps li .snum{
+  flex-shrink:0;width:22px;height:22px;background:var(--night);color:var(--white);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:0.68rem;font-weight:700;margin-top:2px;
+}
+.steps li .stime{
+  flex-shrink:0;font-size:0.72rem;font-weight:600;color:var(--azure);
+  width:44px;text-align:right;margin-top:4px;letter-spacing:0.03em;
+}
+
+/* Script cue */
+.cue{
+  background:#eef4fb;border-left:3px solid var(--azure);
+  border-radius:2px;padding:12px 16px;margin:8px 0 2px;
+  font-size:0.9rem;color:#2c3a50;line-height:1.6;font-style:italic;
+}
+.cue::before{content:'Say: ';font-style:normal;font-weight:700;color:var(--azure);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
+
+/* Capture box */
+.capture{
+  background:var(--night);color:#cdd8ea;border-left:4px solid var(--gold);
+  border-radius:3px;padding:16px 20px;margin-top:16px;
+}
+.capture .cl{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.capture p{font-size:0.9rem;line-height:1.65;color:#cdd8ea;margin:0;}
+.capture strong{color:var(--white);font-weight:600;}
+
+/* Worksheet grid */
+.worksheet{
+  border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-top:10px;
+}
+.worksheet-cap{
+  background:#f0f4fa;padding:8px 14px;font-size:0.7rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;color:#6b7a99;border-bottom:1px solid var(--border);
+}
+table.anchor{width:100%;border-collapse:collapse;font-size:0.86rem;}
+table.anchor th{
+  background:var(--surface);text-align:left;padding:9px 14px;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--azure);border-bottom:1px solid var(--border);
+}
+table.anchor th.c,table.anchor td.c{text-align:center;}
+table.anchor td{padding:11px 14px;border-bottom:1px solid var(--border);color:#42526b;}
+table.anchor tr:last-child td{border-bottom:none;}
+table.anchor .anchor-n{font-family:'DM Serif Display',serif;color:var(--azure);}
+.fill{color:#c3ccdb;letter-spacing:0.04em;}
+
+/* Materials / prep */
+.bullet-list{list-style:none;margin:8px 0 0;display:flex;flex-direction:column;gap:7px;}
+.bullet-list li{display:flex;gap:11px;align-items:flex-start;font-size:0.93rem;color:#2c3a50;line-height:1.55;}
+.bullet-list li::before{content:'';flex-shrink:0;width:7px;height:7px;background:var(--gold);border-radius:50%;margin-top:8px;}
+
+.callout{
+  background:var(--night);color:var(--white);border-radius:3px;
+  padding:20px 24px;margin:18px 0;border-left:4px solid var(--gold);
+}
+.callout-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.callout p{font-size:0.95rem;color:#cdd8ea;line-height:1.7;margin:0;}
+.callout p strong{color:var(--white);}
+
+.footer{
+  background:var(--night);padding:16px 48px;text-align:right;
+  font-size:0.76rem;color:#4a6080;border-top:1px solid #1e3a5a;
+}
+
+@media(max-width:640px){
+  .header{padding:22px 22px 20px;gap:16px;flex-wrap:wrap;}
+  .wordmark{padding-right:16px;}
+  .container{padding:28px 22px 44px;}
+  .activity{padding:20px 20px;}
+  .ros-row{grid-template-columns:56px 1fr;gap:12px;padding:11px 14px;}
+  .steps li .stime{display:none;}
+}
+@media(max-width:380px){
+  .header-text h1{font-size:1.3rem;}
+  .activity-title{font-size:1.15rem;}
+  table.anchor{font-size:0.78rem;}
+  table.anchor th,table.anchor td{padding:8px 8px;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="wordmark">
+    <div class="greek">AT&Omega;</div>
+    <div class="name">Alpha Tau Omega</div>
+  </div>
+  <div class="header-text">
+    <h1>Why Men Stay</h1>
+    <div class="meta">Facilitator Guide &nbsp;&middot;&nbsp; 60-Minute Connection Segment &nbsp;&middot;&nbsp; Chapter Leaders</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <p class="intro">
+    This segment opens with what the data shows about why men leave ATO, then runs three short activities to surface why men stay. You are walking the room toward two or three concrete things the National Fraternity can begin tracking to tell who is likely to stay and who is at risk. The activities do double duty: they strengthen brotherhood by getting men to say out loud why they are committed. Remember who is in the room. These are elected, older members, so their answers reflect a leader who already made it through the risky window. Frame their input as expert testimony from survivors, not as a survey of the average member.
+  </p>
+
+  <!-- PREP -->
+  <div class="section">
+    <div class="section-heading">Before You Start</div>
+    <div class="section-divider"></div>
+    <div class="block-label">Materials</div>
+    <ul class="bullet-list">
+      <li>Printed Anchor Map worksheet, one per man (grid on the last page of this guide).</li>
+      <li>Blank index cards or half-sheets for The Breaking Point, one per man, plus pens.</li>
+      <li>A flip chart or whiteboard for sorting moment types and posting the final vote.</li>
+      <li>The opening data slide showing departure timing and the pledge-brother contagion figure.</li>
+    </ul>
+    <div class="block-label">Room setup</div>
+    <ul class="bullet-list">
+      <li>Tables of 4 to 6. Men need small groups they can talk across for Activities 1 and 2.</li>
+      <li>Keep the anonymous collection point visible for Activity 3 so men trust it is truly unattributed.</li>
+    </ul>
+    <div class="block-label">Facilitator note</div>
+    <p class="why">The three captured measures are the point. If you run short on time, protect the capture step at the end of each activity over the discussion. A great conversation with nothing written down leaves us nothing to track.</p>
+  </div>
+
+  <!-- RUN OF SHOW -->
+  <div class="section">
+    <div class="section-heading">Run of Show</div>
+    <div class="section-divider"></div>
+    <div class="ros">
+      <div class="ros-row"><div class="ros-time">10<span>min</span></div><div class="ros-label">Opening: What we know about men who leave<small>Set the stakes with the departure data</small></div></div>
+      <div class="ros-row"><div class="ros-time">15<span>min</span></div><div class="ros-label">Activity 1 &middot; The Anchor Map<small>Who holds each man, and how concentrated those ties are</small></div></div>
+      <div class="ros-row"><div class="ros-time">17<span>min</span></div><div class="ros-label">Activity 2 &middot; The Moment<small>What turned membership into identity</small></div></div>
+      <div class="ros-row"><div class="ros-time">12<span>min</span></div><div class="ros-label">Activity 3 &middot; The Breaking Point<small>The load-bearing thing that holds each man in</small></div></div>
+      <div class="ros-row"><div class="ros-time">6<span>min</span></div><div class="ros-label">Close: Name the two or three takeaways<small>Room names what they carry out</small></div></div>
+      <div class="ros-total"><div class="l">Total</div><div class="v">60 minutes</div></div>
+    </div>
+  </div>
+
+  <!-- OPENING -->
+  <div class="section">
+    <div class="section-heading">Opening &middot; What We Know About Men Who Leave</div>
+    <div class="section-divider"></div>
+    <p><strong>10 minutes.</strong> Set the stakes before you ask them to open up. Keep it short and let the numbers land. You are earning the right to run the activities that follow.</p>
+    <div class="block-label">Points to make</div>
+    <ul class="bullet-list">
+      <li>Most departures land early. The risk is front-loaded, and the window stays open through roughly the two-year mark.</li>
+      <li>Men leave in clusters. When one man resigns, his pledge brothers become about 2.5 times more likely to follow.</li>
+      <li>The first resignation in a pledge class is a leading indicator, not an isolated loss.</li>
+    </ul>
+    <div class="cue">We know a fair amount about why men leave. Today I want your help with the other side of that question. You are the men who stayed. I want to know what held you, so we can build more of it on purpose.</div>
+  </div>
+
+  <!-- ACTIVITY 1 -->
+  <div class="activity">
+    <div class="activity-head">
+      <div class="activity-num">Activity 1</div>
+      <div class="activity-title">The Anchor Map</div>
+      <div class="time-badge">15 min</div>
+    </div>
+
+    <div class="block-label">What it is</div>
+    <p class="why">A quick personal exercise where each man identifies the brothers who hold him in the chapter, marks how each is tied to him by pledge class, and marks whether he has ever lived with him.</p>
+
+    <div class="block-label">Why it is here</div>
+    <p class="why">Men tend to leave in clusters, especially when close friends from their own pledge class leave first, and shared living arrangements make those ties tighter and the exposure more concentrated. This surfaces each man's "if they left, I would think about leaving too" people, and shows how much of his anchoring is stacked into one group he also lives or lived with.</p>
+
+    <div class="block-label">How to run it</div>
+    <ul class="steps">
+      <li><span class="snum">1</span><span class="stime">2 min</span><span>Hand out the worksheet. Explain the three marks: the brother's initials, whether he is from the same pledge class, older, or younger, and whether they have ever lived together.</span></li>
+      <li><span class="snum">2</span><span class="stime">5 min</span><span>Men work privately. Each writes the 3 to 5 brothers who anchor him and completes all three marks for each.</span></li>
+      <li><span class="snum">3</span><span class="stime">6 min</span><span>In small groups, men compare three things out loud: how many anchors they have, how many sit in a single pledge group, and how many they have lived with.</span></li>
+      <li><span class="snum">4</span><span class="stime">2 min</span><span>Capture the three numbers per man before moving on. See the capture note below.</span></li>
+    </ul>
+
+    <div class="cue">Write the men who, if they walked away from ATO, would make you seriously think about walking too. Not your favorite guys. The ones whose leaving would shake you.</div>
+
+    <div class="block-label">Participant worksheet</div>
+    <div class="worksheet">
+      <div class="worksheet-cap">My Anchors &middot; the brothers who hold me here</div>
+      <table class="anchor">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Brother (initials)</th>
+            <th class="c">Older / Same / Younger pledge class</th>
+            <th class="c">Ever lived together? (Y / N)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="anchor-n">1</td><td class="fill">................................</td><td class="c fill">O &nbsp; S &nbsp; Y</td><td class="c fill">Y &nbsp; N</td></tr>
+          <tr><td class="anchor-n">2</td><td class="fill">................................</td><td class="c fill">O &nbsp; S &nbsp; Y</td><td class="c fill">Y &nbsp; N</td></tr>
+          <tr><td class="anchor-n">3</td><td class="fill">................................</td><td class="c fill">O &nbsp; S &nbsp; Y</td><td class="c fill">Y &nbsp; N</td></tr>
+          <tr><td class="anchor-n">4</td><td class="fill">................................</td><td class="c fill">O &nbsp; S &nbsp; Y</td><td class="c fill">Y &nbsp; N</td></tr>
+          <tr><td class="anchor-n">5</td><td class="fill">................................</td><td class="c fill">O &nbsp; S &nbsp; Y</td><td class="c fill">Y &nbsp; N</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="capture">
+      <div class="cl">What we keep</div>
+      <p>For each man, three numbers: his <strong>anchor count</strong>, whether the anchors sit in <strong>one fragile cluster</strong> (all one pledge group), and his <strong>lived-with share</strong>. The most exposed man has few anchors, all from one group, and all men he has lived with. The trackable version for every member becomes anchor count, cluster concentration, and lived-with share.</p>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 2 -->
+  <div class="activity">
+    <div class="activity-head">
+      <div class="activity-num">Activity 2</div>
+      <div class="activity-title">The Moment</div>
+      <div class="time-badge">17 min</div>
+    </div>
+
+    <div class="block-label">What it is</div>
+    <p class="why">Storytelling about the moment ATO stopped being something a man did and became part of who he is.</p>
+
+    <div class="block-label">Why it is here</div>
+    <p class="why">The riskiest stretch runs to about the two-year mark. We want to know what creates real commitment before then, so chapters can make those moments happen on purpose instead of hoping they occur.</p>
+
+    <div class="block-label">How to run it</div>
+    <ul class="steps">
+      <li><span class="snum">1</span><span class="stime">2 min</span><span>Frame the prompt. This is one specific moment, not a general feeling. A scene with a time and a place.</span></li>
+      <li><span class="snum">2</span><span class="stime">8 min</span><span>In pairs, each man tells the story of the exact moment he knew he was staying. Give each man roughly four minutes.</span></li>
+      <li><span class="snum">3</span><span class="stime">5 min</span><span>Pairs name the type of moment to their table. As a table, group the types. Post recurring types on the flip chart.</span></li>
+      <li><span class="snum">4</span><span class="stime">2 min</span><span>Capture the sorted list of moment types across the room.</span></li>
+    </ul>
+
+    <div class="cue">Tell me the moment you knew you were in for good. Not the day you signed. The specific moment it stopped being a thing you joined and became part of who you are.</div>
+
+    <div class="callout">
+      <div class="callout-label">Listen for these types</div>
+      <p>A brother showing up in a personal crisis. Being handed a real role with real responsibility. A retreat or a ritual moment. Getting carried through a low point by the chapter. <strong>These are the moments we will try to engineer earlier for new members.</strong></p>
+    </div>
+
+    <div class="capture">
+      <div class="cl">What we keep</div>
+      <p>The list of what actually turns a man into a lifelong member. The trackable version is simple: <strong>has each new member had his moment yet, and by when.</strong></p>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 3 -->
+  <div class="activity">
+    <div class="activity-head">
+      <div class="activity-num">Activity 3</div>
+      <div class="activity-title">The Breaking Point</div>
+      <div class="time-badge">12 min</div>
+    </div>
+
+    <div class="block-label">What it is</div>
+    <p class="why">An honest, anonymous look at what would have had to break for each man to leave.</p>
+
+    <div class="block-label">Why it is here</div>
+    <p class="why">It pressure-tests our list of reasons men leave from the inside, using the men who made it through the risky window. They know which threads were actually load-bearing because they nearly pulled on them.</p>
+
+    <div class="block-label">How to run it</div>
+    <ul class="steps">
+      <li><span class="snum">1</span><span class="stime">2 min</span><span>Hand out cards. Stress that this is anonymous and collected blind. No names, no identifying detail.</span></li>
+      <li><span class="snum">2</span><span class="stime">3 min</span><span>Each man privately writes the one thing that, if it disappeared, would have made him leave.</span></li>
+      <li><span class="snum">3</span><span class="stime">1 min</span><span>Collect all cards into the visible collection point and shuffle.</span></li>
+      <li><span class="snum">4</span><span class="stime">4 min</span><span>Read cards aloud, group the repeats on the board, then have the room vote on which matter most.</span></li>
+      <li><span class="snum">5</span><span class="stime">2 min</span><span>Capture the short ranked list of load-bearing things.</span></li>
+    </ul>
+
+    <div class="cue">Write the one thing that, if it vanished tomorrow, would have made you walk. One thing. The load-bearing wall. No name on the card.</div>
+
+    <div class="capture">
+      <div class="cl">What we keep</div>
+      <p>The short list of load-bearing things that hold men in. For any member we can then ask whether his is present or missing, which gives us an <strong>early warning checklist</strong>.</p>
+    </div>
+  </div>
+
+  <!-- CLOSE -->
+  <div class="section">
+    <div class="section-heading">Close &middot; Name the Takeaways</div>
+    <div class="section-divider"></div>
+    <p><strong>6 minutes.</strong> Hand the room the pen. Ask them to name the two or three things they are carrying out of this session. Write them where everyone can see. This is what turns an exercise into a commitment, and it gives you the room's own words for the follow-up.</p>
+    <div class="cue">In your own words, what are the two or three things you are taking out of this room today? Not what I said. What you landed on.</div>
+  </div>
+
+  <!-- CAPTURE SUMMARY -->
+  <div class="section">
+    <div class="section-heading">The Three Things We Walk Out Tracking</div>
+    <div class="section-divider"></div>
+    <p>Everything above rolls up to measures the National Fraternity can begin asking of every member.</p>
+    <ul class="bullet-list">
+      <li><strong>Anchor exposure:</strong> anchor count, cluster concentration, and lived-with share per man. Flags who is most exposed if a single group leaves.</li>
+      <li><strong>The moment:</strong> has each new member had his commitment moment, and by when. Flags who is still uncommitted inside the risk window.</li>
+      <li><strong>The load-bearing wall:</strong> is each man's one essential thing present or missing. An early warning checklist built from the men who survived.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  Alpha Tau Omega &nbsp;&middot;&nbsp; Chapter Leader Focus Group &nbsp;&middot;&nbsp; Prepared by Chris Smith
+</div>
+
+</body>
+</html>
