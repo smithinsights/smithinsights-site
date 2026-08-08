@@ -6,12 +6,13 @@
 <title>Übungsbuch Grammatik A2–B2 · Lernplan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1A2028; --ink-soft:#4C5560;
-    --paper:#E6E8E3; --card:#F3F4F0; --rule:#C6CBC2;
-    --basis:#3D6472; --ausbau:#A35A18; --done:#5A7247;
+    --ink:#1C2024; --ink-soft:#5A636B;
+    --paper:#E2E3E3; --card:#F0F1F1; --rule:#C7CAC9;
+    --basis:#2E6480; --ausbau:#C42E38; --done:#2E6480;
+    --tint:#E8EAEA; --tint-done:#E4EBEF; --hair:#D9DCDC;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
@@ -22,8 +23,8 @@
   header{border-bottom:2px solid var(--ink);padding-bottom:22px}
   .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
     text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px}
-  h1{font-family:'Archivo',system-ui,sans-serif;font-weight:700;
-    font-size:clamp(30px,6vw,46px);line-height:1.02;letter-spacing:-.022em;
+  h1{font-family:'Jost',system-ui,sans-serif;font-weight:700;
+    font-size:clamp(30px,6vw,46px);line-height:1.02;letter-spacing:.005em;
     margin:0 0 12px;text-transform:uppercase}
   h1 .lvl{color:var(--ausbau)}
   .lede{margin:0;max-width:60ch;color:var(--ink-soft)}
@@ -31,17 +32,17 @@
   .progress{position:sticky;top:0;z-index:20;background:var(--paper);
     padding:14px 0 12px;margin-bottom:22px;border-bottom:1px solid var(--rule)}
   .progress-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
-  .count{font-family:'Archivo',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em}
+  .count{font-family:'Jost',sans-serif;font-weight:600;font-size:23px;letter-spacing:0}
   .count span{color:var(--ink-soft);font-weight:500}
   .count small{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;
     font-weight:400;letter-spacing:.06em;color:var(--ink-soft);margin-top:3px}
-  .bar{height:7px;background:#D3D7CF;margin-top:10px;overflow:hidden}
+  .bar{height:7px;background:var(--rule);margin-top:10px;overflow:hidden}
   .bar i{display:block;height:100%;width:0;background:var(--done);transition:width .35s ease}
   button.reset{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;
     text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--ink-soft);
     padding:6px 11px;cursor:pointer}
   button.reset:hover{border-color:var(--ink);color:var(--ink)}
-  button.reset:focus-visible,input:focus-visible{outline:2px solid var(--ausbau);outline-offset:2px}
+  button.reset:focus-visible,input:focus-visible{outline:2px solid var(--basis);outline-offset:2px}
 
   .legend{display:flex;gap:22px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;
     font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 24px}
@@ -49,7 +50,7 @@
   .swatch{display:inline-block;width:9px;height:9px;margin-right:7px;transform:translateY(1px)}
   .sw-b{background:var(--basis)} .sw-a{background:var(--ausbau)}
 
-  .block{font-family:'Archivo',sans-serif;font-weight:700;font-size:12px;letter-spacing:.17em;
+  .block{font-family:'Jost',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.17em;
     text-transform:uppercase;color:var(--ink-soft);margin:34px 0 14px;padding-bottom:7px;
     border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:12px}
   .block span{font-weight:500;letter-spacing:.06em;text-transform:none;
@@ -57,8 +58,8 @@
 
   /* Einheit */
   .unit{background:var(--card);border:1px solid var(--rule);margin-bottom:16px;
-    box-shadow:0 1px 0 rgba(26,32,40,.06), 0 2px 10px rgba(26,32,40,.05)}
-  .unit.complete{border-color:var(--done);background:#EDF1E8}
+    box-shadow:0 1px 0 rgba(28,32,36,.06), 0 2px 10px rgba(28,32,36,.05)}
+  .unit.complete{border-color:var(--done);background:var(--tint-done)}
   .unit-head{padding:16px 18px 0}
   .unit-num{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
     font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.13em;
@@ -69,41 +70,42 @@
   .arc::before{content:'';position:absolute;left:1px;top:8px;bottom:8px;width:10px;
     border:2px solid var(--rule);border-right:none}
   .unit.complete .arc::before{border-color:var(--done)}
-  .arc div{font-family:'Archivo',sans-serif;font-weight:600;font-size:18px;
-    letter-spacing:-.008em;line-height:1.3;padding:3px 0}
+  .arc div{font-family:'Jost',sans-serif;font-weight:500;font-size:19px;
+    letter-spacing:0;line-height:1.32;padding:3px 0}
   .arc em{font-style:italic;font-family:'Source Serif 4',serif;font-weight:400}
   .arc .role{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;
     text-transform:uppercase;font-weight:500;margin-right:9px}
   .r-basis{color:var(--basis)} .r-ausbau{color:var(--ausbau)}
-  .why{margin:11px 18px 0;padding:10px 13px;background:#EAECE6;border-left:3px solid var(--basis);
-    font-size:14.5px;line-height:1.5;color:#333B45}
+  .why{margin:11px 18px 0;padding:10px 13px;background:var(--tint);border-left:3px solid var(--basis);
+    font-size:14.5px;line-height:1.5;color:#3A4249}
   .why em{font-style:italic}
 
   /* Tage */
   .days{margin:13px 0 0;border-top:1px solid var(--rule)}
   .drow{display:grid;grid-template-columns:64px 1fr 1fr;gap:0;
-    border-bottom:1px solid #DFE2DC;align-items:stretch}
+    border-bottom:1px solid var(--hair);align-items:stretch}
   .drow:last-child{border-bottom:none}
   .dnum{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;
     color:var(--ink-soft);padding:11px 0 11px 18px;display:flex;align-items:center;
-    background:#EDEFE9;border-right:1px solid #DFE2DC}
-  .unit.complete .dnum{background:#E5EBDF}
+    background:var(--tint);border-right:1px solid var(--hair)}
+  .unit.complete .dnum{background:#DDE6EC}
   .drow.done .dnum{color:var(--done);font-weight:500}
-  .cell{display:flex;align-items:center;gap:10px;padding:9px 12px;border-right:1px solid #DFE2DC}
+  .cell{display:flex;align-items:center;gap:10px;padding:9px 12px;border-right:1px solid var(--hair)}
   .cell:last-child{border-right:none}
   .cell input{appearance:none;-webkit-appearance:none;flex:0 0 auto;width:17px;height:17px;
     border:2px solid var(--ink-soft);background:transparent;cursor:pointer;position:relative;margin:0}
   .cell input:checked{background:var(--done);border-color:var(--done)}
   .cell input:checked::after{content:'';position:absolute;left:4px;top:0;width:4px;height:9px;
-    border:solid #F3F4F0;border-width:0 2px 2px 0;transform:rotate(42deg)}
+    border:solid var(--card);border-width:0 2px 2px 0;transform:rotate(42deg)}
   .cell label{cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12.5px;
     color:var(--ink);line-height:1.35}
   .cell label small{color:var(--ink-soft)}
   .cell input:checked + label{text-decoration:line-through;color:var(--ink-soft)}
-  .pill{display:inline-block;background:var(--basis);color:#F3F4F0;font-size:9px;
+  .pill{display:inline-block;background:var(--basis);color:var(--card);font-size:9px;
     letter-spacing:.1em;padding:1px 4px;margin-left:6px;vertical-align:1px}
 
-  .extra{border-style:dashed;background:transparent}
+  .unit.extra{border-style:dashed;background:transparent;border-color:var(--rule)}
+  .unit.extra .dnum{background:transparent}
 
   .foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--rule);
     font-size:14px;color:var(--ink-soft);max-width:66ch}
@@ -115,8 +117,8 @@
     .unit-head{padding:14px 13px 0} .why{margin:10px 13px 0}
     .arc{padding-left:22px}
     .drow{grid-template-columns:1fr;}
-    .dnum{border-right:none;border-bottom:1px solid #DFE2DC;padding:7px 13px}
-    .cell{border-right:none;border-bottom:1px solid #E7E9E3;padding:9px 13px}
+    .dnum{border-right:none;border-bottom:1px solid var(--hair);padding:7px 13px}
+    .cell{border-right:none;border-bottom:1px solid #E4E6E6;padding:9px 13px}
     .drow .cell:last-child{border-bottom:none}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -1101,14 +1103,19 @@ const el = id => document.getElementById(id);
 let TOTAL_D = 0, TOTAL_P = 0;
 PLAN.forEach(u => { if(u.rows && u.tot){ TOTAL_D += u.rows.length; TOTAL_P += u.tot; } });
 
-function cell(uid, row, role){
+function plain(s){ return String(s).replace(/<[^>]+>/g, ''); }
+
+function cell(u, row, role){
   const c = role === 'b' ? row.b : row.a;
-  const id = 'u' + uid + 'd' + row.day + role;
+  const id = 'u' + u.e + 'd' + row.day + role;
   const label = role === 'b' ? 'Basis' : 'Ausbau';
+  const chapter = plain(role === 'b' ? u.bt : u.at);
   const es = c.es ? '<span class="pill">ES</span>' : '';
   const txt = c.n ? 'S. ' + c.p + ' <small>· ' + c.n + ' S.</small>' : c.p;
+  const aria = label + ', ' + chapter + ', ' + (c.n ? 'Seite ' + c.p : c.p);
   return '<div class="cell"><input type="checkbox" id="' + id + '" data-id="' + id +
-    '" data-n="' + c.n + '"><label for="' + id + '">' + txt + es + '</label></div>';
+    '" data-n="' + c.n + '" aria-label="' + aria + '"><label for="' + id + '">' +
+    txt + es + '</label></div>';
 }
 
 function render(){
@@ -1129,7 +1136,7 @@ function render(){
     u.rows.forEach(r => {
       const dl = (typeof r.day === 'number') ? 'Tag ' + String(r.day).padStart(2,'0') : 'Zusatz ' + r.day;
       rows += '<div class="drow" data-day="' + r.day + '"><div class="dnum">' + dl + '</div>' +
-        cell(u.e, r, 'b') + cell(u.e, r, 'a') + '</div>';
+        cell(u, r, 'b') + cell(u, r, 'a') + '</div>';
     });
     box.innerHTML =
       '<div class="unit-head">' +
@@ -1170,12 +1177,25 @@ function refresh(){
   });
 }
 
+const store = {
+  async get(k){
+    if(window.storage) return window.storage.get(k);
+    const v = localStorage.getItem(k);
+    return v === null ? null : { key:k, value:v };
+  },
+  async set(k, v){
+    if(window.storage) return window.storage.set(k, v);
+    localStorage.setItem(k, v);
+    return { key:k, value:v };
+  }
+};
+
 async function save(){
-  try{ await window.storage.set(KEY, JSON.stringify(state)); }
+  try{ await store.set(KEY, JSON.stringify(state)); }
   catch(e){ console.error('Fortschritt konnte nicht gespeichert werden', e); }
 }
 async function load(){
-  try{ const r = await window.storage.get(KEY); if(r && r.value) state = JSON.parse(r.value); }
+  try{ const r = await store.get(KEY); if(r && r.value) state = JSON.parse(r.value); }
   catch(e){ state = {}; }
   render();
 }
