@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Übungsbuch Grammatik A2–B2 · Lernplan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A2028; --ink-soft:#4C5560;
+    --paper:#E6E8E3; --card:#F3F4F0; --rule:#C6CBC2;
+    --basis:#3D6472; --ausbau:#A35A18; --done:#5A7247;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Source Serif 4',Georgia,serif;font-size:16px;line-height:1.5}
+  .wrap{max-width:880px;margin:0 auto;padding:40px 20px 90px}
+
+  header{border-bottom:2px solid var(--ink);padding-bottom:22px}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px}
+  h1{font-family:'Archivo',system-ui,sans-serif;font-weight:700;
+    font-size:clamp(30px,6vw,46px);line-height:1.02;letter-spacing:-.022em;
+    margin:0 0 12px;text-transform:uppercase}
+  h1 .lvl{color:var(--ausbau)}
+  .lede{margin:0;max-width:60ch;color:var(--ink-soft)}
+
+  .progress{position:sticky;top:0;z-index:20;background:var(--paper);
+    padding:14px 0 12px;margin-bottom:22px;border-bottom:1px solid var(--rule)}
+  .progress-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .count{font-family:'Archivo',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em}
+  .count span{color:var(--ink-soft);font-weight:500}
+  .count small{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;
+    font-weight:400;letter-spacing:.06em;color:var(--ink-soft);margin-top:3px}
+  .bar{height:7px;background:#D3D7CF;margin-top:10px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--done);transition:width .35s ease}
+  button.reset{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;
+    text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--ink-soft);
+    padding:6px 11px;cursor:pointer}
+  button.reset:hover{border-color:var(--ink);color:var(--ink)}
+  button.reset:focus-visible,input:focus-visible{outline:2px solid var(--ausbau);outline-offset:2px}
+
+  .legend{display:flex;gap:22px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 24px}
+  .legend b{font-weight:500}
+  .swatch{display:inline-block;width:9px;height:9px;margin-right:7px;transform:translateY(1px)}
+  .sw-b{background:var(--basis)} .sw-a{background:var(--ausbau)}
+
+  .block{font-family:'Archivo',sans-serif;font-weight:700;font-size:12px;letter-spacing:.17em;
+    text-transform:uppercase;color:var(--ink-soft);margin:34px 0 14px;padding-bottom:7px;
+    border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:12px}
+  .block span{font-weight:500;letter-spacing:.06em;text-transform:none;
+    font-family:'IBM Plex Mono',monospace;font-size:11px}
+
+  /* Einheit */
+  .unit{background:var(--card);border:1px solid var(--rule);margin-bottom:16px;
+    box-shadow:0 1px 0 rgba(26,32,40,.06), 0 2px 10px rgba(26,32,40,.05)}
+  .unit.complete{border-color:var(--done);background:#EDF1E8}
+  .unit-head{padding:16px 18px 0}
+  .unit-num{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px}
+  .unit.complete .unit-num b{color:var(--done)}
+  .unit-num b{font-weight:500;color:var(--ink)}
+  .arc{position:relative;padding-left:28px;margin-bottom:2px}
+  .arc::before{content:'';position:absolute;left:1px;top:8px;bottom:8px;width:10px;
+    border:2px solid var(--rule);border-right:none}
+  .unit.complete .arc::before{border-color:var(--done)}
+  .arc div{font-family:'Archivo',sans-serif;font-weight:600;font-size:18px;
+    letter-spacing:-.008em;line-height:1.3;padding:3px 0}
+  .arc em{font-style:italic;font-family:'Source Serif 4',serif;font-weight:400}
+  .arc .role{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;font-weight:500;margin-right:9px}
+  .r-basis{color:var(--basis)} .r-ausbau{color:var(--ausbau)}
+  .why{margin:11px 18px 0;padding:10px 13px;background:#EAECE6;border-left:3px solid var(--basis);
+    font-size:14.5px;line-height:1.5;color:#333B45}
+  .why em{font-style:italic}
+
+  /* Tage */
+  .days{margin:13px 0 0;border-top:1px solid var(--rule)}
+  .drow{display:grid;grid-template-columns:64px 1fr 1fr;gap:0;
+    border-bottom:1px solid #DFE2DC;align-items:stretch}
+  .drow:last-child{border-bottom:none}
+  .dnum{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;
+    color:var(--ink-soft);padding:11px 0 11px 18px;display:flex;align-items:center;
+    background:#EDEFE9;border-right:1px solid #DFE2DC}
+  .unit.complete .dnum{background:#E5EBDF}
+  .drow.done .dnum{color:var(--done);font-weight:500}
+  .cell{display:flex;align-items:center;gap:10px;padding:9px 12px;border-right:1px solid #DFE2DC}
+  .cell:last-child{border-right:none}
+  .cell input{appearance:none;-webkit-appearance:none;flex:0 0 auto;width:17px;height:17px;
+    border:2px solid var(--ink-soft);background:transparent;cursor:pointer;position:relative;margin:0}
+  .cell input:checked{background:var(--done);border-color:var(--done)}
+  .cell input:checked::after{content:'';position:absolute;left:4px;top:0;width:4px;height:9px;
+    border:solid #F3F4F0;border-width:0 2px 2px 0;transform:rotate(42deg)}
+  .cell label{cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12.5px;
+    color:var(--ink);line-height:1.35}
+  .cell label small{color:var(--ink-soft)}
+  .cell input:checked + label{text-decoration:line-through;color:var(--ink-soft)}
+  .pill{display:inline-block;background:var(--basis);color:#F3F4F0;font-size:9px;
+    letter-spacing:.1em;padding:1px 4px;margin-left:6px;vertical-align:1px}
+
+  .extra{border-style:dashed;background:transparent}
+
+  .foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--rule);
+    font-size:14px;color:var(--ink-soft);max-width:66ch}
+  .foot p{margin:0 0 9px}
+  .msg{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);padding:6px 0}
+
+  @media (max-width:560px){
+    .wrap{padding:26px 14px 70px}
+    .unit-head{padding:14px 13px 0} .why{margin:10px 13px 0}
+    .arc{padding-left:22px}
+    .drow{grid-template-columns:1fr;}
+    .dnum{border-right:none;border-bottom:1px solid #DFE2DC;padding:7px 13px}
+    .cell{border-right:none;border-bottom:1px solid #E7E9E3;padding:9px 13px}
+    .drow .cell:last-child{border-bottom:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media print{.progress,button.reset{display:none}body{background:#fff}.unit{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Geiger / Dinsel · Hueber 2019 · ISBN 978-3-19-131721-8</p>
+    <h1>Übungsbuch<br>Grammatik <span class="lvl">A2–B2</span></h1>
+    <p class="lede">50 Tage, 5 Seiten pro Tag, aufgeteilt in zwei kurze Einheiten: erst die Basis, dann der Ausbau, der darauf aufsetzt. Nicht in Buchreihenfolge. Die Klammer zeigt, welche zwei Kapitel zusammengehören.</p>
+  </header>
+
+  <div class="progress">
+    <div class="progress-top">
+      <div class="count" id="count">– <span>von 50 Tagen</span><small>0 von 237 Seiten</small></div>
+      <button class="reset" id="reset" type="button">Alles zurücksetzen</button>
+    </div>
+    <div class="bar"><i id="fill"></i></div>
+  </div>
+
+  <p class="legend">
+    <b><i class="swatch sw-b"></i>Basis · wiederholen</b>
+    <b><i class="swatch sw-a"></i>Ausbau · draufsetzen</b>
+    <b>ES = Einstiegsübung</b>
+  </p>
+
+  <div id="plan"><p class="msg">Plan wird geladen …</p></div>
+
+  <div class="foot">
+    <p><b>Einstiegsübung:</b> Jedes Kapitel beginnt mit einer Einstiegsübung, die die wichtigsten Regeln und Funktionen zeigt. Der entsprechende Tag ist mit ES markiert. Machen Sie diese Übung zuerst als Selbsttest.</p>
+    <p><b>B2-Markierung:</b> Alle Übungen ab Niveau B2 sind im Buch markiert. In der Basis-Spalte reichen oft die markierten Übungen. In der Ausbau-Spalte lohnt sich der ganze Durchgang.</p>
+    <p><b>Seitengrenzen:</b> Die Teilungen laufen nach Seitenzahl, nicht nach Übungsnummer. Wenn eine Übung über die Grenze läuft, schieben Sie den Schnitt um eine Seite.</p>
+    <p>Kein Tag ist länger als 6 Seiten, die meisten liegen bei 4 bis 5. Lösungen ab S. 247, Index ab S. 292.</p>
+  </div>
+
+</div>
+
+<script>
+const PLAN =
+[
+ {
+  "block": "Block 1 · Verbformen",
+  "note": "Tag 1–18 · 96 Seiten"
+ },
+ {
+  "e": 1,
+  "tot": 19,
+  "days": 4,
+  "bt": "Präsens",
+  "bk": 1,
+  "at": "Trennbare und untrennbare Verben",
+  "ak": 10,
+  "why": "Im Präsens steht das konjugierte Verb auf Position 2. Bei trennbaren Verben rutscht die Vorsilbe ans Satzende, und damit entsteht die Satzklammer, die den Rest des Buches trägt.",
+  "rows": [
+   {
+    "day": 1,
+    "b": {
+     "p": "8–10",
+     "n": 3,
+     "es": true
+    },
+    "a": {
+     "p": "86–87",
+     "n": 2,
+     "es": true
+    }
+   },
+   {
+    "day": 2,
+    "b": {
+     "p": "11–12",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "88–89",
+     "n": 2,
+     "es": false
+    }
+   },
+   {
+    "day": 3,
+    "b": {
+     "p": "13–14",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "90–92",
+     "n": 3,
+     "es": false
+    }
+   },
+   {
+    "day": 4,
+    "b": {
+     "p": "15–16",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "93–95",
+     "n": 3,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 2,
+  "tot": 18,
+  "days": 3,
+  "bt": "Perfekt",
+  "bk": 2,
+  "at": "Plusquamperfekt",
+  "ak": 4,
+  "why": "Erst <em>haben</em> oder <em>sein</em> und die Partizipbildung, dann dieselbe Konstruktion mit dem Hilfsverb im Präteritum. Das Plusquamperfekt kostet danach nur noch einen Schritt.",
+  "rows": [
+   {
+    "day": 5,
+    "b": {
+     "p": "17–21",
+     "n": 5,
+     "es": true
+    },
+    "a": {
+     "p": "39–39",
+     "n": 1,
+     "es": true
+    }
+   },
+   {
+    "day": 6,
+    "b": {
+     "p": "22–25",
+     "n": 4,
+     "es": false
+    },
+    "a": {
+     "p": "40–41",
+     "n": 2,
+     "es": false
+    }
+   },
+   {
+    "day": 7,
+    "b": {
+     "p": "26–29",
+     "n": 4,
+     "es": false
+    },
+    "a": {
+     "p": "42–43",
+     "n": 2,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 3,
+  "tot": 18,
+  "days": 3,
+  "bt": "Futur I + II",
+  "bk": 5,
+  "at": "Passiv",
+  "ak": 9,
+  "why": "<em>werden</em> als Hilfsverb der Zukunft, dann <em>werden</em> als Hilfsverb des Passivs. Eine Form in zwei Rollen, und genau hier entsteht die häufigste Verwechslung.",
+  "rows": [
+   {
+    "day": 8,
+    "b": {
+     "p": "44–46",
+     "n": 3,
+     "es": true
+    },
+    "a": {
+     "p": "75–77",
+     "n": 3,
+     "es": true
+    }
+   },
+   {
+    "day": 9,
+    "b": {
+     "p": "47–48",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "78–81",
+     "n": 4,
+     "es": false
+    }
+   },
+   {
+    "day": 10,
+    "b": {
+     "p": "49–50",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "82–85",
+     "n": 4,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 4,
+  "tot": 19,
+  "days": 4,
+  "bt": "Imperativ",
+  "bk": 6,
+  "at": "Modalverben",
+  "ak": 11,
+  "why": "Vom direkten Befehl zur abgestuften Aufforderung mit <em>sollen</em>, <em>müssen</em> und <em>dürfen</em>. Am Ende steht die subjektive Bedeutung: <em>er muss krank sein</em> heißt nicht, dass ihn jemand zwingt.",
+  "rows": [
+   {
+    "day": 11,
+    "b": {
+     "p": "51–52",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "96–98",
+     "n": 3,
+     "es": true
+    }
+   },
+   {
+    "day": 12,
+    "b": {
+     "p": "53–54",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "99–101",
+     "n": 3,
+     "es": false
+    }
+   },
+   {
+    "day": 13,
+    "b": {
+     "p": "55–55",
+     "n": 1,
+     "es": false
+    },
+    "a": {
+     "p": "102–104",
+     "n": 3,
+     "es": false
+    }
+   },
+   {
+    "day": 14,
+    "b": {
+     "p": "56–56",
+     "n": 1,
+     "es": false
+    },
+    "a": {
+     "p": "105–108",
+     "n": 4,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 5,
+  "tot": 22,
+  "days": 4,
+  "bt": "Präteritum",
+  "bk": 3,
+  "at": "Konjunktiv II",
+  "ak": 8,
+  "why": "Der Konjunktiv II wird direkt aus dem Präteritumstamm gebildet: aus <em>kam</em> wird <em>käme</em>, aus <em>ging</em> wird <em>ginge</em>. Erst die Stämme, dann die Umlautformen und die Vergangenheit mit <em>hätte</em> und <em>wäre</em>.",
+  "rows": [
+   {
+    "day": 15,
+    "b": {
+     "p": "30–32",
+     "n": 3,
+     "es": true
+    },
+    "a": {
+     "p": "62–64",
+     "n": 3,
+     "es": true
+    }
+   },
+   {
+    "day": 16,
+    "b": {
+     "p": "33–34",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "65–67",
+     "n": 3,
+     "es": false
+    }
+   },
+   {
+    "day": 17,
+    "b": {
+     "p": "35–36",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "68–70",
+     "n": 3,
+     "es": false
+    }
+   },
+   {
+    "day": 18,
+    "b": {
+     "p": "37–38",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "71–74",
+     "n": 4,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "block": "Block 2 · Wortformen und Mittelfeld",
+  "note": "Tag 19–30 · 53 Seiten"
+ },
+ {
+  "e": 6,
+  "tot": 7,
+  "days": 2,
+  "bt": "Satzstellung",
+  "bk": 21,
+  "at": "Negation",
+  "ak": 23,
+  "why": "Zuerst die Ordnung im Mittelfeld, dann die Position von <em>nicht</em> als härteste Probe darauf. Wer die Satzstellung beherrscht, muss die Negation nicht auswendig lernen.",
+  "rows": [
+   {
+    "day": 19,
+    "b": {
+     "p": "168–169",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "175–176",
+     "n": 2,
+     "es": true
+    }
+   },
+   {
+    "day": 20,
+    "b": {
+     "p": "170–170",
+     "n": 1,
+     "es": false
+    },
+    "a": {
+     "p": "177–178",
+     "n": 2,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 7,
+  "tot": 14,
+  "days": 3,
+  "bt": "Nomen",
+  "bk": 16,
+  "at": "Verben und Ergänzungen",
+  "ak": 12,
+  "why": "Erst die Kasusformen selbst, dann die eigentliche Frage: welches Verb verlangt welchen Kasus, und in welcher Reihenfolge stehen Dativ und Akkusativ.",
+  "rows": [
+   {
+    "day": 21,
+    "b": {
+     "p": "132–133",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "110–111",
+     "n": 2,
+     "es": true
+    }
+   },
+   {
+    "day": 22,
+    "b": {
+     "p": "134–135",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "112–114",
+     "n": 3,
+     "es": false
+    }
+   },
+   {
+    "day": 23,
+    "b": {
+     "p": "136–137",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "115–117",
+     "n": 3,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 8,
+  "tot": 14,
+  "days": 3,
+  "bt": "Artikel",
+  "bk": 15,
+  "at": "Adjektive",
+  "ak": 19,
+  "why": "Die Adjektivendung hängt vollständig am Artikeltyp. Ohne klares Artikelsystem ist die Deklination reines Raten. Danach Vergleich, Steigerung und Partizipien in Adjektivfunktion.",
+  "rows": [
+   {
+    "day": 24,
+    "b": {
+     "p": "128–129",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "153–155",
+     "n": 3,
+     "es": true
+    }
+   },
+   {
+    "day": 25,
+    "b": {
+     "p": "130–130",
+     "n": 1,
+     "es": false
+    },
+    "a": {
+     "p": "156–158",
+     "n": 3,
+     "es": false
+    }
+   },
+   {
+    "day": 26,
+    "b": {
+     "p": "131–131",
+     "n": 1,
+     "es": false
+    },
+    "a": {
+     "p": "159–162",
+     "n": 4,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 9,
+  "tot": 10,
+  "days": 2,
+  "bt": "Reflexive Verben",
+  "bk": 14,
+  "at": "Verben mit Präposition",
+  "ak": 13,
+  "why": "Von <em>sich freuen</em> zu <em>sich freuen auf</em> plus Akkusativ und weiter zu <em>darauf</em> und <em>worauf</em>. Feste Ergänzungen in zwei Stufen.",
+  "rows": [
+   {
+    "day": 27,
+    "b": {
+     "p": "124–125",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "118–120",
+     "n": 3,
+     "es": true
+    }
+   },
+   {
+    "day": 28,
+    "b": {
+     "p": "126–127",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "121–123",
+     "n": 3,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 10,
+  "tot": 8,
+  "days": 2,
+  "bt": "Präpositionen · Teil 1",
+  "bk": 18,
+  "at": "Präpositionen · Teil 2",
+  "ak": 18,
+  "why": "Erst die lokalen und temporalen Präpositionen, dann die Wechselpräpositionen und der Genitiv, der später die Formen mit <em>wegen</em> und <em>trotz</em> vorbereitet.",
+  "rows": [
+   {
+    "day": 29,
+    "b": {
+     "p": "145–146",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "149–150",
+     "n": 2,
+     "es": false
+    }
+   },
+   {
+    "day": 30,
+    "b": {
+     "p": "147–148",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "151–152",
+     "n": 2,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "block": "Block 3 · Satzbau und Nebensätze",
+  "note": "Tag 31–50 · 88 Seiten"
+ },
+ {
+  "e": 11,
+  "tot": 8,
+  "days": 2,
+  "bt": "Adverbien",
+  "bk": 20,
+  "at": "Satzverbindung",
+  "ak": 24,
+  "why": "Konnektoradverbien wie <em>deshalb</em> und <em>trotzdem</em> stehen auf Position 1 und drehen die Wortstellung. Danach die Konjunktionen, bei denen genau das nicht passiert.",
+  "rows": [
+   {
+    "day": 31,
+    "b": {
+     "p": "163–164",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "179–180",
+     "n": 2,
+     "es": true
+    }
+   },
+   {
+    "day": 32,
+    "b": {
+     "p": "165–166",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "181–182",
+     "n": 2,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 12,
+  "tot": 7,
+  "days": 2,
+  "bt": "Kausalsatz <em>weil</em> · Teil 1",
+  "bk": 28,
+  "at": "Kausalsatz <em>weil</em> · Teil 2",
+  "ak": 28,
+  "why": "Von <em>denn</em> im Hauptsatz zu <em>weil</em> und <em>da</em> im Nebensatz, dann weiter zu den nominalen Formen. Gleicher Inhalt, andere Verbposition.",
+  "rows": [
+   {
+    "day": 33,
+    "b": {
+     "p": "198–199",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "201–202",
+     "n": 2,
+     "es": false
+    }
+   },
+   {
+    "day": 34,
+    "b": {
+     "p": "200–200",
+     "n": 1,
+     "es": false
+    },
+    "a": {
+     "p": "203–204",
+     "n": 2,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 13,
+  "tot": 7,
+  "days": 2,
+  "bt": "dass-Satz",
+  "bk": 25,
+  "at": "Infinitivsatz <em>zu</em>",
+  "ak": 26,
+  "why": "Wann lässt sich ein dass-Satz zum Infinitiv mit <em>zu</em> verkürzen und wann nicht? Die Antwort hängt allein am Subjekt der beiden Sätze.",
+  "rows": [
+   {
+    "day": 35,
+    "b": {
+     "p": "183–184",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "186–187",
+     "n": 2,
+     "es": true
+    }
+   },
+   {
+    "day": 36,
+    "b": {
+     "p": "185–185",
+     "n": 1,
+     "es": false
+    },
+    "a": {
+     "p": "188–189",
+     "n": 2,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 14,
+  "tot": 9,
+  "days": 2,
+  "bt": "Fragesatz",
+  "bk": 22,
+  "at": "Konjunktiv I / Indirekte Rede",
+  "ak": 7,
+  "why": "Die direkte Frage wird zur indirekten Frage mit <em>ob</em>, dann zum Bericht im Konjunktiv I. Der Konjunktiv II aus Einheit 5 dient dabei als Ersatzform.",
+  "rows": [
+   {
+    "day": 37,
+    "b": {
+     "p": "171–172",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "57–58",
+     "n": 2,
+     "es": true
+    }
+   },
+   {
+    "day": 38,
+    "b": {
+     "p": "173–174",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "59–61",
+     "n": 3,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 15,
+  "tot": 15,
+  "days": 3,
+  "bt": "Pronomen",
+  "bk": 17,
+  "at": "Relativsatz",
+  "ak": 27,
+  "why": "Das Kasusparadigma der Pronomen kehrt im Relativpronomen fast unverändert wieder. Nur Genitiv und Dativ Plural weichen ab, dazu kommen <em>dessen</em>, <em>deren</em> und Präposition plus Relativpronomen.",
+  "rows": [
+   {
+    "day": 39,
+    "b": {
+     "p": "138–140",
+     "n": 3,
+     "es": true
+    },
+    "a": {
+     "p": "190–191",
+     "n": 2,
+     "es": true
+    }
+   },
+   {
+    "day": 40,
+    "b": {
+     "p": "141–142",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "192–194",
+     "n": 3,
+     "es": false
+    }
+   },
+   {
+    "day": 41,
+    "b": {
+     "p": "143–144",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "195–197",
+     "n": 3,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 16,
+  "tot": 10,
+  "days": 2,
+  "bt": "Temporalsatz <em>als</em> · Teil 1",
+  "bk": 29,
+  "at": "Temporalsatz <em>als</em> · Teil 2",
+  "ak": 29,
+  "why": "Erst die Trennung von <em>als</em> und temporalem <em>wenn</em>, dann <em>während</em>, <em>bevor</em> und <em>nachdem</em>, das ohne das Plusquamperfekt aus Einheit 2 nicht funktioniert.",
+  "rows": [
+   {
+    "day": 42,
+    "b": {
+     "p": "205–207",
+     "n": 3,
+     "es": true
+    },
+    "a": {
+     "p": "210–211",
+     "n": 2,
+     "es": false
+    }
+   },
+   {
+    "day": 43,
+    "b": {
+     "p": "208–209",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "212–214",
+     "n": 3,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 17,
+  "tot": 7,
+  "days": 2,
+  "bt": "Konditionalsatz <em>wenn</em> · Teil 1",
+  "bk": 30,
+  "at": "Konditionalsatz <em>wenn</em> · Teil 2",
+  "ak": 30,
+  "why": "Die reale Bedingung mit <em>wenn</em> und <em>falls</em>, dann die irreale Bedingung, für die der Konjunktiv II aus Einheit 5 gebraucht wird.",
+  "rows": [
+   {
+    "day": 44,
+    "b": {
+     "p": "215–216",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "218–219",
+     "n": 2,
+     "es": false
+    }
+   },
+   {
+    "day": 45,
+    "b": {
+     "p": "217–217",
+     "n": 1,
+     "es": false
+    },
+    "a": {
+     "p": "220–221",
+     "n": 2,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 18,
+  "tot": 12,
+  "days": 2,
+  "bt": "Finalsatz <em>damit</em>",
+  "bk": 31,
+  "at": "Modalsatz <em>indem</em>",
+  "ak": 34,
+  "why": "<em>Damit</em> und <em>um zu</em> beantworten wozu, <em>indem</em> und <em>dadurch dass</em> beantworten wie. Beide Male entscheidet das Subjekt über die mögliche Kurzform.",
+  "rows": [
+   {
+    "day": 46,
+    "b": {
+     "p": "222–224",
+     "n": 3,
+     "es": true
+    },
+    "a": {
+     "p": "241–243",
+     "n": 3,
+     "es": true
+    }
+   },
+   {
+    "day": 47,
+    "b": {
+     "p": "225–227",
+     "n": 3,
+     "es": false
+    },
+    "a": {
+     "p": "244–246",
+     "n": 3,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "e": 19,
+  "tot": 13,
+  "days": 3,
+  "bt": "Konsekutivsatz <em>sodass</em>",
+  "bk": 32,
+  "at": "Konzessivsatz <em>obwohl</em>",
+  "ak": 33,
+  "why": "Erst die erwartete Folge mit <em>sodass</em> und <em>so … dass</em>, dann die unerwartete Folge mit <em>obwohl</em>, <em>trotzdem</em> und <em>dennoch</em>. Der Gegensatz macht beide klarer.",
+  "rows": [
+   {
+    "day": 48,
+    "b": {
+     "p": "228–229",
+     "n": 2,
+     "es": true
+    },
+    "a": {
+     "p": "234–235",
+     "n": 2,
+     "es": true
+    }
+   },
+   {
+    "day": 49,
+    "b": {
+     "p": "230–231",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "236–237",
+     "n": 2,
+     "es": false
+    }
+   },
+   {
+    "day": 50,
+    "b": {
+     "p": "232–233",
+     "n": 2,
+     "es": false
+    },
+    "a": {
+     "p": "238–240",
+     "n": 3,
+     "es": false
+    }
+   }
+  ]
+ },
+ {
+  "block": "Ergänzung · nicht im Buch",
+  "note": "optional"
+ },
+ {
+  "e": "M",
+  "tot": 0,
+  "days": 2,
+  "bt": "Modalpartikeln · Grundfunktionen",
+  "bk": "–",
+  "at": "Modalpartikeln · Verwechslungspaare",
+  "ak": "–",
+  "why": "Das Übungsbuch hat kein Kapitel dazu. Basis: <em>ja</em>, <em>doch</em>, <em>mal</em>, <em>denn</em> im Vorher-Nachher-Vergleich. Ausbau: <em>ruhig</em> gegen <em>doch</em>, <em>ja</em> gegen <em>wohl</em>, <em>eigentlich</em> gegen <em>halt</em> und <em>eben</em>.",
+  "rows": [
+   {
+    "day": "+1",
+    "b": {
+     "p": "extern",
+     "n": 0,
+     "es": false
+    },
+    "a": {
+     "p": "extern",
+     "n": 0,
+     "es": false
+    }
+   },
+   {
+    "day": "+2",
+    "b": {
+     "p": "extern",
+     "n": 0,
+     "es": false
+    },
+    "a": {
+     "p": "extern",
+     "n": 0,
+     "es": false
+    }
+   }
+  ]
+ }
+];
+
+const KEY = 'hueber-a2b2-daily5-v3';
+let state = {};
+const el = id => document.getElementById(id);
+
+let TOTAL_D = 0, TOTAL_P = 0;
+PLAN.forEach(u => { if(u.rows && u.tot){ TOTAL_D += u.rows.length; TOTAL_P += u.tot; } });
+
+function cell(uid, row, role){
+  const c = role === 'b' ? row.b : row.a;
+  const id = 'u' + uid + 'd' + row.day + role;
+  const label = role === 'b' ? 'Basis' : 'Ausbau';
+  const es = c.es ? '<span class="pill">ES</span>' : '';
+  const txt = c.n ? 'S. ' + c.p + ' <small>· ' + c.n + ' S.</small>' : c.p;
+  return '<div class="cell"><input type="checkbox" id="' + id + '" data-id="' + id +
+    '" data-n="' + c.n + '"><label for="' + id + '">' + txt + es + '</label></div>';
+}
+
+function render(){
+  const host = el('plan');
+  host.innerHTML = '';
+  PLAN.forEach(u => {
+    if(u.block){
+      const h = document.createElement('div');
+      h.className = 'block';
+      h.innerHTML = '<div>' + u.block + '</div><span>' + u.note + '</span>';
+      host.appendChild(h);
+      return;
+    }
+    const box = document.createElement('div');
+    box.className = 'unit' + (u.tot ? '' : ' extra');
+    const meta = u.tot ? u.tot + ' Seiten · ' + u.days + ' Tage' : 'ohne Buch · ' + u.days + ' Tage';
+    let rows = '';
+    u.rows.forEach(r => {
+      const dl = (typeof r.day === 'number') ? 'Tag ' + String(r.day).padStart(2,'0') : 'Zusatz ' + r.day;
+      rows += '<div class="drow" data-day="' + r.day + '"><div class="dnum">' + dl + '</div>' +
+        cell(u.e, r, 'b') + cell(u.e, r, 'a') + '</div>';
+    });
+    box.innerHTML =
+      '<div class="unit-head">' +
+        '<div class="unit-num"><b>Einheit ' + (typeof u.e === 'number' ? String(u.e).padStart(2,'0') : u.e) +
+          '</b><span>' + meta + '</span></div>' +
+        '<div class="arc">' +
+          '<div><span class="role r-basis">Basis</span>' + u.bt + ' <span style="color:var(--ink-soft);font-weight:500">· Kap. ' + u.bk + '</span></div>' +
+          '<div><span class="role r-ausbau">Ausbau</span>' + u.at + ' <span style="color:var(--ink-soft);font-weight:500">· Kap. ' + u.ak + '</span></div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="why">' + u.why + '</div>' +
+      '<div class="days">' + rows + '</div>';
+    host.appendChild(box);
+  });
+
+  host.querySelectorAll('input[type=checkbox]').forEach(b => {
+    b.checked = !!state[b.dataset.id];
+    b.addEventListener('change', () => { state[b.dataset.id] = b.checked; save(); refresh(); });
+  });
+  refresh();
+}
+
+function refresh(){
+  let pages = 0, days = 0;
+  document.querySelectorAll('.drow').forEach(r => {
+    const boxes = [...r.querySelectorAll('input')];
+    const all = boxes.every(b => b.checked);
+    r.classList.toggle('done', all);
+    boxes.forEach(b => { if(b.checked) pages += Number(b.dataset.n); });
+    if(all && boxes.some(b => Number(b.dataset.n) > 0)) days++;
+  });
+  el('count').innerHTML = days + ' <span>von ' + TOTAL_D + ' Tagen</span><small>' +
+    pages + ' von ' + TOTAL_P + ' Seiten</small>';
+  el('fill').style.width = (pages / TOTAL_P * 100) + '%';
+  document.querySelectorAll('.unit').forEach(u => {
+    const boxes = [...u.querySelectorAll('input')];
+    u.classList.toggle('complete', boxes.length > 0 && boxes.every(b => b.checked));
+  });
+}
+
+async function save(){
+  try{ await window.storage.set(KEY, JSON.stringify(state)); }
+  catch(e){ console.error('Fortschritt konnte nicht gespeichert werden', e); }
+}
+async function load(){
+  try{ const r = await window.storage.get(KEY); if(r && r.value) state = JSON.parse(r.value); }
+  catch(e){ state = {}; }
+  render();
+}
+el('reset').addEventListener('click', async () => { state = {}; await save(); render(); });
+load();
+</script>
+</body>
+</html>
