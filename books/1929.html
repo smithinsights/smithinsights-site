@@ -64,6 +64,8 @@
   }
   .jump a:focus-visible{ outline:2px solid var(--steel); outline-offset:2px }
 
+  .toplink{ display:none }
+
   /* ---------- masthead ---------- */
 
   .mast{ padding:64px 0 0 }
@@ -234,15 +236,23 @@
 
     .jump{
       display:flex; gap:8px;
-      position:sticky; top:0; z-index:20;
-      margin:0 calc(var(--gut) * -1); padding:10px var(--gut);
+      position:sticky; position:-webkit-sticky; top:0; z-index:20;
+      margin:0; padding:10px var(--gut);
       overflow-x:auto; -webkit-overflow-scrolling:touch;
       scrollbar-width:none;
-      background:rgba(227,231,222,.94);
-      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+      background:var(--paper);
       border-bottom:1px solid var(--rule);
+      box-shadow:0 6px 14px -10px rgba(25,28,24,.55);
     }
     .jump::-webkit-scrollbar{ display:none }
+
+    .toplink{
+      display:block; text-align:right;
+      font-family:var(--mono); font-size:11px; font-weight:600;
+      letter-spacing:.14em; text-transform:uppercase;
+      color:var(--steel); text-decoration:none;
+      padding:20px 0 2px;
+    }
 
     .mast{ padding-top:36px }
     .mast h1{ font-size:26vw }
@@ -285,15 +295,15 @@
   }
 </style>
 
-<div class="sheet">
-
-<nav class="jump" aria-label="Jump to section">
+<nav class="jump" id="menu" aria-label="Jump to section">
   <a href="#tape">Tape</a>
   <a href="#cast">Cast</a>
   <a href="#machine">Machine</a>
   <a href="#calendar">Calendar</a>
   <a href="#watch">Watch for</a>
 </nav>
+
+<div class="sheet">
 
 <header class="mast">
   <div class="eyebrow">Reading scaffold · built before you read</div>
@@ -337,6 +347,7 @@
       Peak to trough: −89%. The index did not close above 381 again until November 1954.
     </div>
   </div>
+  <a class="toplink" href="#menu">↑ Menu</a>
 </section>
 
 <section id="cast">
@@ -515,6 +526,7 @@
       </div>
     </div>
   </div>
+  <a class="toplink" href="#menu">↑ Menu</a>
 </section>
 
 <section id="machine">
@@ -604,6 +616,7 @@
       <p>Read every scandal in the book against this list. Almost none of it was a crime at the time, which is why the second half is about writing laws rather than filing charges.</p>
     </div>
   </div>
+  <a class="toplink" href="#menu">↑ Menu</a>
 </section>
 
 <section id="calendar">
@@ -661,6 +674,7 @@
     <div class="yr">1934</div>
     <div class="ent"><div class="d">6 Jun</div><div class="t">The Securities Exchange Act creates the SEC. Joseph Kennedy, a pool operator himself, is its first chairman.</div></div>
   </div>
+  <a class="toplink" href="#menu">↑ Menu</a>
 </section>
 
 <div class="kicker" id="watch">
@@ -686,6 +700,7 @@
       and it reframes every argument about whether "this time is different."
     </p>
   </div>
+  <a class="toplink" href="#menu">↑ Menu</a>
 </div>
 
 </div>
