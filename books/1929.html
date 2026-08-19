@@ -23,6 +23,7 @@
     --lh: 32px;
     --gut: 32px;
     --gap: 96px;
+    --navh: 0px;
   }
 
   *{ box-sizing:border-box }
@@ -97,7 +98,8 @@
 
   /* ---------- section frame ---------- */
 
-  section{ margin-top:var(--gap); scroll-margin-top:20px }
+  section{ margin-top:var(--gap) }
+  #tape,#cast,#machine,#calendar,#watch{ scroll-margin-top:calc(var(--navh) + 14px) }
 
   .shead{
     display:flex; align-items:baseline; gap:20px; flex-wrap:wrap;
@@ -241,8 +243,6 @@
       border-bottom:1px solid var(--rule);
     }
     .jump::-webkit-scrollbar{ display:none }
-
-    section{ scroll-margin-top:60px }
 
     .mast{ padding-top:36px }
     .mast h1{ font-size:26vw }
@@ -772,5 +772,37 @@
   build();
   if (wide.addEventListener) wide.addEventListener('change', build);
   else wide.addListener(build);
+})();
+
+(function(){
+  var nav = document.querySelector('.jump');
+  if (!nav) return;
+
+  function navH(){
+    return getComputedStyle(nav).display === 'none' ? 0 : nav.getBoundingClientRect().height;
+  }
+
+  function sync(){
+    document.documentElement.style.setProperty('--navh', navH() + 'px');
+  }
+
+  sync();
+  window.addEventListener('resize', sync);
+  window.addEventListener('orientationchange', sync);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  Array.prototype.forEach.call(nav.querySelectorAll('a'), function(a){
+    a.addEventListener('click', function(e){
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if (!target) return;
+      e.preventDefault();
+      sync();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - navH() - 14;
+      window.scrollTo({ top: Math.max(0, top), behavior: reduce.matches ? 'auto' : 'smooth' });
+      if (history.replaceState) history.replaceState(null, '', '#' + target.id);
+    });
+  });
 })();
 </script>
