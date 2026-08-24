@@ -439,7 +439,7 @@
         <div class="thread"><dt>Blame is being assigned before causes are</dt><dd>The Senate is arguing about who rather than what, Glass has put all of it on Mitchell, and Mitchell’s face is in the papers. Nothing legislative happens for three more years. <b>Ch. 23</b></dd></div>
         <div class="thread"><dt>Hoover cannot sell a good idea</dt><dd>The public works push is sound economics that nobody understands, delivered by an engineer, against a full-time professional paid since May to make him unpopular. <b>Ch. 12, 23</b></dd></div>
         <div class="thread"><dt>The radio merger is still illegal</dt><dd>Section 17 of the White Act blocks RCA combining with a cable company, and the workaround is to call it national defence. Untested on anyone who can say no. <b>Ch. 6</b></dd></div>
-        <div class="thread"><dt>The gold standard has to give</dt><dd>Part Two names the constraint outright. The dollar is convertible at a fixed rate, so the Fed cannot ease hard without risking outflows, and every other central bank is caught the same way. Nothing recovers until somebody breaks it. Watch who goes first. <b>Part Two</b></dd></div>
+        <div class="thread"><dt>Britain went first</dt><dd>21 September 1931. The constraint Part Two named has now been broken by somebody, and the pound recovers faster than anyone expected. The open question is what that does to a United States still holding on, and how long Hoover can. <b>Part Two, Ch. 29</b></dd></div>
         <div class="thread"><dt>Smoot-Hawley took seventeen months</dt><dd>Hearings opened in January 1929 and Hoover signed in June 1930. A limited farm tariff became a general increase through vote trading, grain prices collapsed anyway, and the retaliation did the rest. <b>Part Two</b></dd></div>
         <div class="thread"><dt>1921 is the wrong analogy</dt><dd>The floor ends the year cheerful because the last sharp break was followed by eight years of the best gains anyone had seen. That memory is why the 1930 rally is believed. <b>Ch. 25</b></dd></div>
         <div class="thread"><dt>Does the small investor ever come back?</dt><dd>Part One closes on the person who lost savings in October rather than paper. Whether he trusts a share certificate again, or could afford one, is the question the second half has to answer. <b>Ch. 25</b></dd></div>
@@ -1065,6 +1065,9 @@ var PEOPLE = {
   sherrod: { name:'Julian Sherrod',         house:'forecasters', org:'Scapegoats, 1930',
              role:'Former National City bond salesman',
              bio:'Sold bonds for National City and lost heavily, then turned on the business in print with a book called Scapegoats. He is the most dangerous kind of critic Mitchell could acquire: not a reformer working from theory, but a man who ran the sales floor and knows exactly how the product was moved.' },
+  pearson: { name:'Pearson and Allen',        house:'forecasters', org:'Washington Merry-Go-Round',
+             role:'Anonymous authors, then columnists',
+             bio:'Drew Pearson and Robert Allen published Washington Merry-Go-Round anonymously in 1931, a bestseller that took the capital apart by name, Hoover and Mellon included. When their authorship came out they were sacked by their own papers, so they turned it into a syndicated column that ran for decades. It is the beginning of the modern Washington scandal column, and unlike Michelson\u2019s operation nobody was paying them to do it.' },
   meehan:  { name:'Michael J. Meehan',      house:'market', org:'NYSE floor specialist',
              role:'Floor specialist in RCA',
              bio:'Sold theatre tickets on Broadway before buying his way onto the exchange. As the RCA specialist he holds the book of unexecuted orders in the most watched stock in America, and he also runs pools in it. By 1929 his firm employs four hundred people across nine offices including one aboard an ocean liner. In 1935 he becomes the first individual the SEC prosecutes.' },
@@ -1113,6 +1116,21 @@ var PEOPLE = {
   maclafferty:{name:'James MacLafferty',    house:'washington', org:'Hoover\u2019s circle',
              role:'Informal adviser to the president',
              bio:'A former congressman who became one of Hoover\u2019s regular private callers and kept a diary of what was said. He believes the president is doing the work properly and being destroyed by the politics of it, which is roughly Hoover\u2019s own view of himself, and the diary is why we know it.' },
+  patman:  { name:'Wright Patman',           house:'washington', org:'House of Representatives',
+             role:'Congressman from Texas',
+             bio:'Filed impeachment articles against Mellon in January 1932, on the ground that a Treasury Secretary holding vast positions in Alcoa and Gulf was disqualified by his own holdings. The charge was never tested, because Hoover removed the problem by sending Mellon to London.' },
+  mills:   { name:'Ogden L. Mills',          house:'washington', org:'The Treasury',
+             role:'Secretary of the Treasury from 1932',
+             bio:'Mellon\u2019s under secretary and successor, and a different animal: he accepts that the government has to act rather than wait for the bust to finish. He inherits the Treasury with roughly a quarter of the workforce out of a job.' },
+  steagall:{ name:'Henry B. Steagall',       house:'washington', org:'House Banking Committee',
+             role:'Congressman from Alabama',
+             bio:'Runs banking in the House, from a rural district that had watched small banks fail for a decade. His name goes on the 1932 act that loosens the gold cover, and again on the 1933 act, where he supplies the half Glass did not want: federal insurance for ordinary depositors.' },
+  norbeck: { name:'Peter Norbeck',           house:'washington', org:'Senate Banking Committee',
+             role:'Senator from South Dakota',
+             bio:'A well driller by trade who ended up chairing the committee investigating Wall Street, and was candid that the subject was beyond him. He fumbles the language in public. He also keeps the inquiry alive long enough to hand it to somebody who can use it.' },
+  branch:  { name:'Claude R. Branch',        house:'washington', org:'Senate committee counsel',
+             role:'First counsel to the investigation',
+             bio:'The lawyer hired to run the Senate\u2019s inquiry into the crash, whose hearings went nowhere. Worth knowing precisely because he failed: the investigation that ends up rewriting American finance was nearly abandoned as a dud before Pecora took it over in January 1933.' },
   young:   { name:'Owen D. Young',          house:'industry', org:'RCA and General Electric',
              role:'Chairman of RCA, and of the Paris committee',
              bio:'Chairs General Electric and RCA, and in 1929 also chairs the Committee of Experts renegotiating German reparations. The plan takes his name. Nobody at the time thinks to ask whether running American reparations diplomacy should be walled off from negotiating a hundred-million-dollar merger with the banker across the table.' },
@@ -1127,7 +1145,7 @@ var PEOPLE = {
              bio:'Fifty-four, out of government since the Conservatives lost in May, and short of money for the whole of his adult life. The aristocratic name came without the fortune, and he paid for Chartwell and everything else by writing and speaking. In 1929 he crosses Canada and the United States on other people\u2019s hospitality, and he is carrying American investments while he does it.' }
 };
 
-var READ_THROUGH = { chapter:28, label:'Chapter 28' };
+var READ_THROUGH = { chapter:30, label:'Chapter 30' };
 
 var EVENTS = [
   {
@@ -1523,6 +1541,40 @@ var EVENTS = [
       { who:'raskob',      state:'present', note:'The midterms are what the permanent organisation was built for, and it worked. He is also about to discover that a machine which produces a winner does not obey the man who built it.' },
       { who:'fdr',         state:'acted',   note:'Wins New York by a record margin and becomes the obvious candidate the same night. Attempts to tie him to Tammany do not stick, which is its own lesson about the limits of the technique Michelson perfected.' },
       { who:'howe',        state:'acted',   note:'Had been aiming at 1936 and moves it to 1932. He grasps before almost anyone that the depression has changed what the country will accept in a candidate, and that waiting is now the risk rather than the safe play.' }
+    ]
+  },
+  {
+    id:'feb2_31', date:'1931-02-02', short:'2 Feb 1931',
+    title:'Mitchell explains it, and Glass writes it down',
+    chapter:'Chapter 29',
+    gist:'Mitchell goes to Washington to be questioned by Glass, with small banks failing everywhere and Chase now the largest in the world because his own merger died. His diagnosis is better than you would expect: credit was too cheap, money poured into call loans from outside the banking system entirely, that fuelled the speculation, and the Federal Reserve could have stopped it by raising the rediscount rate. Every word of which is true, and he is the man who broke the Fed\u2019s attempt to do exactly that in March 1929. His remedies are the opposite direction: abolish the capital gains tax, and stop requiring companies to disclose their holdings. Less visibility, not more. Glass listens and goes on drafting. The rest of the year is the world coming apart. Unemployment reaches about sixteen percent against three before the crash, and Hoover calls the number misleading. Germany is close to default with roughly a third of its workforce idle, Austria\u2019s largest bank collapses, and Lamont presses Hoover into a one-year holiday on war debts that Mellon has to go and sell to Europeans he privately thinks should be refused. On 21 September Britain abandons gold. Hoover summons the bankers privately and tells them to prop up the weak banks and stop foreclosing, or Congress will do it to them. And Churchill, on his way to see Baruch, who is trying to buy a gold mine so as to hold the metal itself, gets lost for an hour and is then hit by a car on Fifth Avenue.',
+    actors:[
+      { who:'mitchell',  state:'acted',  note:'The most damning testimony in the book is the accurate part. He identifies the mechanism precisely, and in March 1929 he personally destroyed the only policy that addressed it, in public, and was called a hero for it. Then he asks for the capital gains tax to go and for disclosure to be reduced. Two years after the crash, his proposed cure is less information reaching the public.' },
+      { who:'glass',     state:'acted',  note:'His summary is the sentence the whole book has been building toward: bankers doing indirectly what they were forbidden to do directly. That is the securities affiliate, the pool, the call loan, the affiliate buying the parent. He is drafting, and what he is drafting arrives in 1933.' },
+      { who:'hoover',    state:'acted',  note:'Calls a sixteen percent unemployment figure deceptive, having already ordered consuls to refuse immigrants who cannot prove a job. Then does something braver: puts the bankers in a room and tells them to support the weak banks and stop taking houses, or lose the argument to Congress permanently. It does not work, and Congress takes it anyway.' },
+      { who:'lamont',    state:'acted',  note:'Pushes the president into the debt holiday, which is the right call and far too small. He is doing in 1931 what he did in 1929: applying private influence to a public problem that has outgrown it.' },
+      { who:'mellon',    state:'acted',  note:'Sent to sell a moratorium he does not believe in. His own view is that debts should be paid and busts allowed to run, and he spends the year executing the opposite.' },
+      { who:'baruch',    state:'acted',  note:'Trying to buy a gold mine, which is the logical end of the position he has held since he sold out on the boat home. If money itself is the thing failing, own the metal rather than a claim on it.' },
+      { who:'churchill', state:'acted',  note:'Three blows in two years: the market took his money, his own party took his position over India, and now a car on Fifth Avenue nearly takes the rest. He looked the wrong way, which is the most English possible way to be hit by an American car.' }
+    ]
+  },
+  {
+    id:'feb18_32', date:'1932-02-18', short:'18 Feb 1932',
+    title:'Mellon goes to London',
+    chapter:'Chapter 30',
+    gist:'Eleven thousand banks gone for good and something close to a quarter of the country out of work. Hoover reaches for the language of war and gets rid of Mellon, not by firing him but by making him ambassador to Britain, because Wright Patman has filed impeachment articles and an impeachment in an election year would finish him. Ogden Mills takes the Treasury. The Reconstruction Finance Corporation is standing up. Hoover gathers people to face the gold problem, Steagall is in the room, and the act that carries his name and Glass\u2019s loosens what the Fed may hold against its own currency, while Glass keeps pushing the thing he actually wants, which is commercial banking separated from investment banking. Hoover has also decided that short sellers are wrecking the market and his presidency, and names Raskob and Baruch. The Senate inquiry, meanwhile, is failing: Norbeck chairs a subject he admits he does not understand and Claude Branch runs hearings that land on nothing, to Glass\u2019s fury. By summer Hoover is renominated with almost every vote, Roosevelt needs four ballots, and Hoover has quietly worked against Owen Young because he thinks Roosevelt is the easier opponent and too ill to last a term.',
+    actors:[
+      { who:'hoover',   state:'acted',  note:'Every instinct here is political rather than economic, and he is not wrong to have them: an impeachment would end him. He also manoeuvres to get the opponent he wants and gets him. Both judgements are correct and both are catastrophic.' },
+      { who:'mellon',   state:'acted',  note:'Eleven years at the Treasury under three presidents ends with a promotion designed to look like anything but removal. The charge against him was never really corruption. It was that nobody had written a rule saying he could not hold Alcoa and Gulf while running the Treasury.' },
+      { who:'patman',   state:'acted',  note:'The impeachment never gets tested because Hoover removes the defendant. Patman loses the case and wins the argument, which is roughly what happens to every reformer in this book before 1933.' },
+      { who:'mills',    state:'acted',  note:'Takes the Treasury believing the government has to act. The change of personality at Treasury matters more than the change of policy, because Mellon\u2019s doctrine was that you wait.' },
+      { who:'steagall', state:'acted',  note:'In the room for the gold problem, and his name goes on the 1932 act. The one people mean when they say Glass-Steagall is the other one, next year, and the half he insists on then is deposit insurance, which Glass does not want.' },
+      { who:'glass',    state:'acted',  note:'Furious that the inquiry has produced nothing, and still drafting. He has been saying the same thing since March 1929 and is three years from being able to enact it.' },
+      { who:'norbeck',  state:'acted',  note:'Out of his depth in public and honest about it. His real contribution is negative and large: he does not shut the investigation down.' },
+      { who:'branch',   state:'acted',  note:'The counsel who got nowhere. Remember him when the 1933 hearings look inevitable. They were not. The inquiry was a failure for most of a year and nearly died before it found the right lawyer.' },
+      { who:'pearson',  state:'acted',  note:'Washington Merry-Go-Round is out and selling, anonymous, and brutal about Hoover and Mellon. A second channel of attack the administration cannot answer, because unlike Michelson it has no paymaster to expose.' },
+      { who:'baruch',   state:'absent', note:'Named by the president as part of the problem, alongside Raskob. Blaming short sellers is the oldest reflex in the market and there is no good evidence it was ever true, in 1929 or in 1932.' },
+      { who:'fdr',      state:'present',note:'Wins the nomination on the fourth ballot, over opposition from his own party chairman. Hoover helped clear the field for him on the theory that he was beatable and would not survive four years. He serves twelve.' }
     ]
   }
 ];
