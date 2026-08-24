@@ -1092,6 +1092,12 @@ var PEOPLE = {
   walker:  { name:'James J. Walker',        house:'party', org:'Tammany Hall, New York',
              role:'Mayor of New York City',
              bio:'Beau James. A songwriter turned Tammany politician who ran the city like a nightclub host and was re-elected in November 1929 over Fiorello La Guardia, weeks after the crash. He is the machine at its most charming and least accountable, and La Guardia gets the job in 1934 largely because of what the intervening years expose about him.' },
+  fdr:     { name:'Franklin D. Roosevelt',  house:'party', org:'Governor of New York',
+             role:'Governor of New York',
+             bio:'Re-elected in November 1930 by the largest margin in the state\u2019s history, which converts him overnight from a governor into the obvious candidate. Hoover had thought well of him once and does not now. Raskob, who runs the party, will spend 1932 trying to stop him getting the nomination, and after losing that fight funds the main organised opposition to his presidency.' },
+  howe:    { name:'Louis Howe',              house:'party', org:'Roosevelt\u2019s strategist',
+             role:'Roosevelt\u2019s strategist',
+             bio:'Has been building a path to the White House for Roosevelt since before the polio, on a timetable that pointed at 1936. The depression moves it up to 1932. He is the one who understands earliest that the crisis has changed what the country will want from a candidate.' },
   hoover:  { name:'Herbert Hoover',         house:'washington', org:'The White House',
              role:'President of the United States',
              bio:'Mining engineer, wartime food administrator, and eight years at Commerce running so much of the government that the joke was Under-Secretary of Everything Else. He warned Coolidge about speculation as early as 1925 and pressed the Fed for higher rates before taking office. He arrives believing the problem is soluble by competent men.' },
@@ -1104,6 +1110,9 @@ var PEOPLE = {
   rlamont: { name:'Robert P. Lamont',       house:'washington', org:'Commerce Department',
              role:'Secretary of Commerce',
              bio:'A Chicago engineer and steel executive brought in to run the department Hoover himself had run for eight years. No relation whatever to Thomas W. Lamont of J.P. Morgan, and the coincidence is a trap: two men named Lamont are pressing the same president in the same weeks from opposite sides of the table.' },
+  maclafferty:{name:'James MacLafferty',    house:'washington', org:'Hoover\u2019s circle',
+             role:'Informal adviser to the president',
+             bio:'A former congressman who became one of Hoover\u2019s regular private callers and kept a diary of what was said. He believes the president is doing the work properly and being destroyed by the politics of it, which is roughly Hoover\u2019s own view of himself, and the diary is why we know it.' },
   young:   { name:'Owen D. Young',          house:'industry', org:'RCA and General Electric',
              role:'Chairman of RCA, and of the Paris committee',
              bio:'Chairs General Electric and RCA, and in 1929 also chairs the Committee of Experts renegotiating German reparations. The plan takes his name. Nobody at the time thinks to ask whether running American reparations diplomacy should be walled off from negotiating a hundred-million-dollar merger with the banker across the table.' },
@@ -1118,7 +1127,7 @@ var PEOPLE = {
              bio:'Fifty-four, out of government since the Conservatives lost in May, and short of money for the whole of his adult life. The aristocratic name came without the fortune, and he paid for Chartwell and everything else by writing and speaking. In 1929 he crosses Canada and the United States on other people\u2019s hospitality, and he is carrying American investments while he does it.' }
 };
 
-var READ_THROUGH = { chapter:27, label:'Chapter 27' };
+var READ_THROUGH = { chapter:28, label:'Chapter 28' };
 
 var EVENTS = [
   {
@@ -1500,6 +1509,20 @@ var EVENTS = [
       { who:'michelson', state:'acted',   note:'The operation has become the story, which is what happens to every attack machine eventually. Being accused of running a covert campaign is not a denial problem, it is a positioning problem, and the answer Raskob reaches for is the modern one: concede the activity, dispute the motive, and redirect to the opponent\u2019s record.' },
       { who:'hoover',    state:'absent',  note:'Attacked on the radio for a second consecutive autumn by a man who cannot be answered without dignifying him. The charge has also shifted since 1929: not that Hoover caused it, but that he has not done enough since. That is a much harder accusation to refute, because it has no test.' },
       { who:'sarnoff',   state:'present', note:'RCA anchoring Rockefeller Center puts two enormous towers into a city that cannot fill the ones it has. Raskob\u2019s and Rockefeller\u2019s, going up simultaneously through the worst years, financed on the belief that the future arrives eventually.' }
+    ]
+  },
+  {
+    id:'nov5_30', date:'1930-11-05', short:'5 Nov 1930',
+    title:'The midterms, and the word for it',
+    chapter:'Chapter 28',
+    gist:'The Republicans are wrecked at the midterms and Hoover works out that he is probably a one-term president. MacLafferty, who sees him privately and writes it down, thinks he is governing well and losing on politics, which is exactly how Hoover sees himself. What he cannot stand is Michelson, and above all the word Hooverville. The damage has also moved: the crash took money from people who had money, and what followed is taking work and savings from people who had neither, with more than thirteen hundred banks failing during the year. Hoover prefers the word depression to panic because it sounds less alarming, though the word is older than him. He wants the government out of the market and the thing fixed quickly, which are not compatible, so he leans on governors to spend because the federal government has almost no machinery to do it himself. Salmon Levinson, who had helped build the pact to outlaw war, now wants short selling suspended. And in December the Bank of United States goes down, four hundred thousand depositors, after the other New York banks look at its books, decline to buy it, meet again to prop it up, and fail.',
+    actors:[
+      { who:'hoover',      state:'acted',   note:'Governing against a problem nobody had instruments for. He asks governors to spend because Washington in 1930 has no real capacity to. He is also managing the vocabulary, which is the part that ages worst: choosing the milder word while more than a thousand banks fail is the behaviour of a man who thinks confidence is the disease rather than a symptom.' },
+      { who:'maclafferty', state:'acted',   note:'The private view of a president who is competent and unpopular, recorded by a friend. Useful and unreliable in the same breath, because it is the account Hoover wanted to exist.' },
+      { who:'michelson',   state:'acted',   note:'Hooverville is his, and it is the most effective political coinage of the century: one word that fixes blame on a person for a structural collapse, and cannot be argued with because it is a place people actually live. Eighteen months of paid daily work arrives here.' },
+      { who:'raskob',      state:'present', note:'The midterms are what the permanent organisation was built for, and it worked. He is also about to discover that a machine which produces a winner does not obey the man who built it.' },
+      { who:'fdr',         state:'acted',   note:'Wins New York by a record margin and becomes the obvious candidate the same night. Attempts to tie him to Tammany do not stick, which is its own lesson about the limits of the technique Michelson perfected.' },
+      { who:'howe',        state:'acted',   note:'Had been aiming at 1936 and moves it to 1932. He grasps before almost anyone that the depression has changed what the country will accept in a candidate, and that waiting is now the risk rather than the safe play.' }
     ]
   }
 ];
