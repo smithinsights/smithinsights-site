@@ -695,6 +695,17 @@
   </p>
 
   <div class="tgroup">
+    <h3>The basics</h3>
+    <dl>
+      <div class="term"><dt>Security</dt><dd>The umbrella word for a tradeable financial claim. A share of stock and a bond are both securities. Almost every institution and law in this book is named for the word: the securities affiliate, the Securities Act, the Securities and Exchange Commission. What they are all really about is who may create these claims, who may sell them, and what has to be told to the buyer.</dd></div>
+      <div class="term"><dt>Share, or stock</dt><dd>A piece of ownership in a company. It has no maturity and no promise of repayment. You make money if the company does well or if someone will pay you more than you paid, and you can lose all of it.</dd></div>
+      <div class="term"><dt>Bond</dt><dd>A loan, sliced into tradeable pieces. The issuer, a company or a government, pays interest on a schedule and returns the principal at the end. Safer than stock in principle, which is exactly why National City could sell foreign government bonds to schoolteachers, and why it mattered so much when some of those governments could not pay.</dd></div>
+      <div class="term"><dt>Issue, and underwriting</dt><dd>An issue is a batch of new securities sold to raise money. Underwriting is a bank agreeing to buy the whole batch from the issuer and resell it to the public, taking the risk and a fee. This is the business Glass-Steagall takes away from deposit-taking banks, because a bank that has already bought an issue has every reason to sell it to its own customers whatever it turns out to be worth.</dd></div>
+      <div class="term"><dt>Equity, debt</dt><dd>Two ways to finance anything. Equity is ownership and rides the outcome up and down. Debt is a fixed claim that must be paid regardless. Nearly every failure in this book is debt used to buy equity: margin, call loans, investment trusts, the Corn Exchange terms.</dd></div>
+    </dl>
+  </div>
+
+  <div class="tgroup">
     <h3>On the floor</h3>
     <dl>
       <div class="term"><dt>Post</dt><dd>The fixed station on the exchange floor where one stock traded. "The Steel post."</dd></div>
@@ -985,7 +996,7 @@
 var HOUSES = {
   banks:       { label:'The banks',           short:'Banks',       color:'#1F3A5F' },
   market:      { label:'The market',          short:'Market',      color:'#A85A2A' },
-  forecasters: { label:'The forecasters',     short:'Forecasters', color:'#9C6B9E' },
+  forecasters: { label:'The press and pundits', short:'Press',       color:'#9C6B9E' },
   fed:         { label:'The Federal Reserve', short:'Fed',         color:'#2F6B4F' },
   washington:  { label:'Washington',          short:'Washington',  color:'#6B4E9B' },
   party:       { label:'The party machine',   short:'Party',       color:'#8C3B5E' },
@@ -1039,7 +1050,7 @@ var PEOPLE = {
   lamb:    { name:'William F. Lamb',        house:'industry', org:'Shreve, Lamb & Harmon',
              role:'Architect, Shreve, Lamb & Harmon',
              bio:'The man handed the actual problem. Raskob\u2019s brief is not a building so much as a height, and Lamb has to turn a number into something that stands up, rents, and can be built fast enough to matter.' },
-  hearst:  { name:'William Randolph Hearst', house:'industry', org:'Hearst newspapers',
+  hearst:  { name:'William Randolph Hearst', house:'forecasters', org:'Hearst newspapers',
              role:'Newspaper proprietor',
              bio:'Runs the largest newspaper chain in the country and uses it as a political instrument rather than a business. He hosted Churchill at San Simeon in the autumn and now leans on the president to go out and talk to the public. He is not offering a policy. He is offering an audience, and telling Hoover that not using it is the mistake.' },
   adams:   { name:'Evangeline Adams',       house:'forecasters', org:'Forecasts by subscription',
@@ -1048,6 +1059,12 @@ var PEOPLE = {
   babson:  { name:'Roger W. Babson',        house:'forecasters', org:'Babson Statistical Org.',
              role:'Statistician and forecaster',
              bio:'An MIT engineer who built a subscription forecasting business and founded the college that carries his name. His Babsonchart rested on a borrowed physical law: what rises above the normal line must fall an equal distance below it. He had been warning of a break since 1928 and had been wrong long enough that people had stopped listening.' },
+  josephson:{name:'Matthew Josephson',      house:'forecasters', org:'The New Yorker',
+             role:'Writer and critic',
+             bio:'Came out of the Paris literary avant-garde of the twenties, then spent time selling bonds on Wall Street, which is where the anger comes from. He writes about what mass marketing does to ordinary lives and has no patience for a president asking people to buy American as a substitute for policy. In 1934 he publishes The Robber Barons and fixes that phrase on the previous century for good.' },
+  sherrod: { name:'Julian Sherrod',         house:'forecasters', org:'Scapegoats, 1930',
+             role:'Former National City bond salesman',
+             bio:'Sold bonds for National City and lost heavily, then turned on the business in print with a book called Scapegoats. He is the most dangerous kind of critic Mitchell could acquire: not a reformer working from theory, but a man who ran the sales floor and knows exactly how the product was moved.' },
   meehan:  { name:'Michael J. Meehan',      house:'market', org:'NYSE floor specialist',
              role:'Floor specialist in RCA',
              bio:'Sold theatre tickets on Broadway before buying his way onto the exchange. As the RCA specialist he holds the book of unexecuted orders in the most watched stock in America, and he also runs pools in it. By 1929 his firm employs four hundred people across nine offices including one aboard an ocean liner. In 1935 he becomes the first individual the SEC prosecutes.' },
@@ -1101,7 +1118,7 @@ var PEOPLE = {
              bio:'Fifty-four, out of government since the Conservatives lost in May, and short of money for the whole of his adult life. The aristocratic name came without the fortune, and he paid for Chartwell and everything else by writing and speaking. In 1929 he crosses Canada and the United States on other people\u2019s hospitality, and he is carrying American investments while he does it.' }
 };
 
-var READ_THROUGH = { chapter:25, label:'Chapter 25, end of Part One' };
+var READ_THROUGH = { chapter:26, label:'Chapter 26' };
 
 var EVENTS = [
   {
@@ -1457,6 +1474,20 @@ var EVENTS = [
     actors:[
       { who:'raskob', state:'acted',  note:'Count what this one man has now proposed or built inside the book: consumer credit for cars, mass stock ownership on installments, a permanent year-round political organisation, a full-time professional attack operation, the tallest building in the world, and now the five-day week. Almost all of it is ordinary life a century later. He is not a crank and he is not a prophet; he is a man who kept betting that the future would be richer than the present, and 1929 is the year that bet stops paying.' },
       { who:'walker', state:'acted',  note:'Re-elected in November over La Guardia, seven weeks after Black Thursday, which tells you the city had not yet understood what happened to it. He runs New York on charm and Tammany arithmetic. The investigations that end his career are three years out, and La Guardia gets the office in 1934 on the strength of what they turn up.' }
+    ]
+  },
+  {
+    id:'sep30', date:'1930-09-30', short:'30 Sep 1930',
+    title:'Lamont at sixty',
+    chapter:'Chapter 26',
+    gist:'Nine months on and the book restarts with a birthday. Lamont turns sixty, commutes to the office by yacht, and is about as admired in public as an American banker has ever been, on the strength of the firm\u2019s work abroad. That reputation includes Italy: Morgan lent Mussolini\u2019s government a hundred million dollars and Lamont spent years selling the regime to an American audience. Privately the firm has stopped expecting a quick recovery, an investment house has just gone under, and the tone of the country is turning. Two writers carry the turn. Matthew Josephson, once a bond salesman himself, attacks what mass marketing does to ordinary people and has nothing but contempt for a president who answers a depression by asking Americans to buy American. And Julian Sherrod, who sold bonds for National City and lost badly, publishes Scapegoats. The reckoning does not start in a courtroom. It starts in print, written by men who worked inside the machine.',
+    actors:[
+      { who:'lamont',    state:'acted',   note:'The public regard and the private assessment have come apart again, exactly as in 1929. He is celebrated abroad and inside the firm they have accepted that this will be slow. The Mussolini business is worth holding: Morgan lent Italy a hundred million and Lamont acted as its advocate in America for years. He is a professional persuader, which is the hardest thing about judging his sincerity anywhere in this book.' },
+      { who:'jpm',       state:'present', note:'The firm\u2019s standing rests heavily on its foreign work, which is what makes the Italian loan more than a footnote.' },
+      { who:'josephson', state:'acted',   note:'The critique moves from who caused the crash to what the whole system does to people, which is a different and more dangerous question. He had sold bonds himself, so he is not guessing about the machinery.' },
+      { who:'sherrod',   state:'acted',   note:'A National City bond salesman who lost his money and turned on his employer in print. Mitchell\u2019s worst problem is no longer Carter Glass. It is a former employee who can describe exactly how the securities were sold.' },
+      { who:'hoover',    state:'absent',  note:'Being written about rather than heard from. Buy American is a slogan standing where a policy should be, and it is the sort of thing Michelson has been paid since May 1929 to make sure the country notices.' },
+      { who:'mitchell',  state:'absent',  note:'Not present, and the target of a book by one of his own former salesmen. The 1933 hearings do not appear from nowhere; the case against him is being assembled in public three years early.' }
     ]
   }
 ];
