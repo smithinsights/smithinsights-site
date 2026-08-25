@@ -1057,7 +1057,7 @@ var HOUSES = {
   market:      { label:'The market',          short:'Market',      color:'#A85A2A' },
   forecasters: { label:'The press and pundits', short:'Press',       color:'#9C6B9E' },
   fed:         { label:'The Federal Reserve', short:'Fed',         color:'#2F6B4F' },
-  washington:  { label:'Washington',          short:'Washington',  color:'#6B4E9B' },
+  washington:  { label:'Government and the courts', short:'Government', color:'#6B4E9B' },
   party:       { label:'The party machine',   short:'Party',       color:'#8C3B5E' },
   industry:    { label:'Industry',            short:'Industry',    color:'#7A5C0F' },
   abroad:      { label:'Abroad',              short:'Abroad',      color:'#4A6B78' }
@@ -1091,6 +1091,9 @@ var PEOPLE = {
   rentschler:{name:'Gordon Rentschler',      house:'banks', org:'National City Bank',
              role:'President, National City Bank',
              bio:'An Ohio machinery manufacturer rather than a banker by training, and president of National City under Mitchell from 1929. He is the man who has to explain the morale loans: two and a half million lent to a hundred senior officers whose own stock had collapsed, quietly moved off the bank\u2019s books, and largely never repaid, while junior staff who had bought shares on an instalment plan went on paying or lost their jobs.' },
+  elizabeth:{name:'Elizabeth Mitchell',      house:'banks', org:'The other side of the sale',
+             role:'Barred from testifying',
+             bio:'The buyer in the transaction the entire case turns on, and the judge will not let her take the stand. Everything anyone knows about what she understood, agreed to or was told comes secondhand: from her husband, from her brother, and from two letters now known by their salutations. She is the most consequential figure in the trial and the only one who never speaks.' },
   riordan: { name:'James J. Riordan',       house:'banks', org:'County Trust Company',
              role:'President, County Trust',
              bio:'A New York banker close to Raskob and to Al Smith, and one of the men whose money and name stood behind the 1928 campaign. His bank is small, local and entirely dependent on the confidence of depositors who know him personally, which is what makes his death in November 1929 a financial event as well as a private one.' },
@@ -1211,6 +1214,12 @@ var PEOPLE = {
   pecora:  { name:'Ferdinand Pecora',        house:'washington', org:'Senate committee counsel',
              role:'Fourth counsel to the investigation',
              bio:'Sicilian-born, raised in New York, a former assistant district attorney who had tried an enormous number of cases and won most of them. He is the fourth lawyer hired to run an inquiry that has produced nothing in a year, he takes the job weeks before the committee is due to expire, and he decides almost immediately that the way to make it matter is to put one banker under oath and keep him there.' },
+  medalie: { name:'George Z. Medalie',       house:'washington', org:'US Attorney, New York',
+             role:'Prosecuting the case',
+             bio:'United States Attorney for the southern district of New York, running the tax case against Mitchell. His argument is not that Mitchell caused the crash but that he ran a hoax and dressed it as public service, and that somebody has to be answerable to a country that has been told for four years that nobody was.' },
+  steuer:  { name:'Max Steuer',              house:'washington', org:'Defence counsel',
+             role:'Defending Mitchell',
+             bio:'The most formidable trial lawyer in New York, who had won an acquittal for the owners of the Triangle Shirtwaist factory after a hundred and forty-six people died in it. His method here is not to deny the facts but to normalise them: everybody arranges their affairs to pay less tax, everybody in that world did what Mitchell did, and the government wants a big fish rather than a guilty one.' },
   garner:  { name:'John Nance Garner',       house:'washington', org:'Speaker of the House',
              role:'Speaker, then Vice President',
              bio:'A Texan who ran the House and then became Roosevelt\u2019s vice president, having released his delegates on the fourth ballot to make the nomination possible. His contribution here is disclosure: he forces out the names of the banks and companies taking Reconstruction Finance Corporation money, and what the list shows is not what the public had been told.' },
@@ -1228,7 +1237,7 @@ var PEOPLE = {
              bio:'Fifty-four, out of government since the Conservatives lost in May, and short of money for the whole of his adult life. The aristocratic name came without the fortune, and he paid for Chartwell and everything else by writing and speaking. In 1929 he crosses Canada and the United States on other people\u2019s hospitality, and he is carrying American investments while he does it.' }
 };
 
-var READ_THROUGH = { chapter:37, label:'Chapter 37' };
+var READ_THROUGH = { chapter:38, label:'Chapter 38' };
 
 var EVENTS = [
   {
@@ -1759,6 +1768,20 @@ var EVENTS = [
       { who:'fdr',      state:'acted',   note:'Takes the meeting, takes the memo, and concedes nothing. He names separation and insider dealing as the problems to the one man best placed to argue otherwise, and then legislates both anyway.' },
       { who:'pecora',   state:'present', note:'Not in the room and shaping it. The reason Lamont is at the White House at all is that the hearings have moved past National City.' },
       { who:'jpm',      state:'present', note:'The firm that lent Mitchell over ten million in October 1929 to keep his bank standing now learns it will get two thirds back. The rescue and the reckoning close the loop on each other in a single letter.' }
+    ]
+  },
+  {
+    id:'may16_33', date:'1933-05-16', short:'16 May 1933',
+    title:'The trial',
+    chapter:'Chapter 38',
+    gist:'The government\u2019s case is simple: the shares went to his wife to avoid the tax. Steuer does not really contest the facts. He argues the system, not the man: everybody arranges their affairs to pay less, everybody in that world did this, Mitchell held the bank together when it could have gone, and he is broke now and did not take the bankruptcy that was available to him. A witness named Barrett is taken through Mrs Mitchell\u2019s gains from pools, and then through the price: the shares went to her at a level the bank\u2019s own staff were not permitted to buy at, and no investor selling to a stranger would ever have accepted it. The judge bars Elizabeth from testifying. Mitchell takes the stand himself and says he sold to her because there was no market to sell into, that counsel had advised the bonus group the payments were advances and untaxed, that he had sold stock to his own employees and booked the loss, that he had written to Morgan to say he could not repay, and that he later bought the shares back from her. Two letters are read out and are known ever after by how they open: Dear Charles, and Dear Elizabeth. Her brother testifies that he told her to buy National City at the Drake in Chicago, and again later, and that she said she already held a great deal and was embarrassed, and that he was embarrassed to have pushed her. Steuer closes on the idea that any of us would have done the same. Medalie closes on the idea that this was a hoax dressed as public service.',
+    actors:[
+      { who:'mitchell',  state:'acted',   note:'Testifies in his own defence and in doing so confirms most of it: the sale, the loss, the advances, the letter to Morgan, the repurchase. His position throughout is not that he did nothing but that nothing he did was wrong, which has been his position since March 1929 and is entirely consistent.' },
+      { who:'steuer',    state:'acted',   note:'Runs the only defence available, which is that the conduct was ordinary. He is right that it was ordinary. That is exactly what the Banking Act being written four blocks away is designed to establish as unacceptable, and it is why a man can be genuinely typical and still be the one who answers for it.' },
+      { who:'medalie',   state:'acted',   note:'Argues that Mitchell was not a public benefactor but the author of a hoax, and that the country needs somebody answerable. Say that plainly and it is a confession that the trial is doing work the law could not: there was no statute for the affiliate, the pools or the conflicts, so the tax return has to carry all of it.' },
+      { who:'elizabeth', state:'absent',  note:'Barred from the stand by the judge. The transaction at the centre of the case has two parties and only one of them is permitted to describe it. Everything about her understanding reaches the jury through her husband, her brother, and two letters. She is the case, and she is the only person in it who never gets to speak.' },
+      { who:'jpm',       state:'present', note:'The letter about the loan is read into a criminal trial. What was a private accommodation between two houses in October 1929 is now evidence.' },
+      { who:'pecora',    state:'absent',  note:'Not in the courtroom, and the reason there is one. The hearings did not prosecute anybody. They produced the facts under oath that made a prosecution possible, which is a different instrument and, on the evidence of the next few weeks, a more reliable one.' }
     ]
   }
 ];
