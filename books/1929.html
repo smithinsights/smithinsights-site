@@ -452,6 +452,7 @@
         <div class="thread"><dt class="closed">The 1907 playbook has failed</dt><dd>One good afternoon on 24 October, then nothing. The authority was never in the building; it was in the belief, and Lamont is not Pierpont Morgan. Livermore is now reaching for the same empty role. <b>Closed, Ch. 20</b></dd></div>
         <div class="thread"><dt>What was Wiggin doing with his own money?</dt><dd>He sat in Lamont’s office on 24 October pledging Chase’s capital. Hold the date. <b>Ch. 14, 19</b></dd></div>
         <div class="thread"><dt>Who knew, and when</dt><dd>Lamont sold in June and rang the president each morning. Adams steadied a room and liquidated the next day. Baruch sold on the boat home, then hosted a party where everyone agreed it would come back. Mitchell arranges his own tax in December. One behaviour, four kinds of person. <b>Ch. 13, 19, 20, 24</b></dd></div>
+        <div class="thread"><dt>Deposit insurance has already failed once</dt><dd>Eight states guaranteed deposits after 1907 and every bank in those schemes was gone by 1929. Glass has the evidence and Steagall has the country. Roosevelt sides with Steagall because separation is invisible to a depositor and a guarantee is not. <b>Ch. 39</b></dd></div>
         <div class="thread"><dt>Does the reckoning reach Morgan?</dt><dd>Lamont sold in June 1929, reassured the president through October, and is now asking that president to call off an inquiry that is questioning him. Nothing he did was against any law then in force. Whether that settles it is the book’s open question. <b>Ch. 13, 18, 37</b></dd></div>
         <div class="thread"><dt>Morgan is now inside the bill</dt><dd>Aldrich publicly demands that separation bind private partnerships too. Glass never intended that. If it survives, the House of Morgan has to break itself in half, and no accusation against it has been made. <b>Ch. 36</b></dd></div>
         <div class="thread"><dt>23 Wall Street is now a liability</dt><dd>The book opened at that address on the proposition that character was the collateral. In February 1933 an incoming president refuses a Treasury appointment because the man is tied to it. Nothing has been proved against anyone there yet. <b>Ch. 1, 32</b></dd></div>
@@ -1139,6 +1140,9 @@ var PEOPLE = {
   pearson: { name:'Pearson and Allen',        house:'forecasters', org:'Washington Merry-Go-Round',
              role:'Anonymous authors, then columnists',
              bio:'Drew Pearson and Robert Allen published Washington Merry-Go-Round anonymously in 1931, a bestseller that took the capital apart by name, Hoover and Mellon included. When their authorship came out they were sacked by their own papers, so they turned it into a syndicated column that ran for decades. It is the beginning of the modern Washington scandal column, and unlike Michelson\u2019s operation nobody was paying them to do it.' },
+  rogers:  { name:'Will Rogers',              house:'forecasters', org:'Newspaper columns',
+             role:'Humorist and columnist',
+             bio:'Cherokee, from Oklahoma, a rope-trick performer who became the most widely read commentator in America through a short daily column carried in hundreds of papers. He is trusted in a way no editorial writer is, and when he tells readers that a reform is right, it is not an argument so much as a verdict.' },
   meehan:  { name:'Michael J. Meehan',      house:'market', org:'NYSE floor specialist',
              role:'Floor specialist in RCA',
              bio:'Sold theatre tickets on Broadway before buying his way onto the exchange. As the RCA specialist he holds the book of unexecuted orders in the most watched stock in America, and he also runs pools in it. By 1929 his firm employs four hundred people across nine offices including one aboard an ocean liner. In 1935 he becomes the first individual the SEC prosecutes.' },
@@ -1237,7 +1241,7 @@ var PEOPLE = {
              bio:'Fifty-four, out of government since the Conservatives lost in May, and short of money for the whole of his adult life. The aristocratic name came without the fortune, and he paid for Chartwell and everything else by writing and speaking. In 1929 he crosses Canada and the United States on other people\u2019s hospitality, and he is carrying American investments while he does it.' }
 };
 
-var READ_THROUGH = { chapter:38, label:'Chapter 38' };
+var READ_THROUGH = { chapter:39, label:'Chapter 39' };
 
 var EVENTS = [
   {
@@ -1782,6 +1786,20 @@ var EVENTS = [
       { who:'elizabeth', state:'absent',  note:'Barred from the stand by the judge. The transaction at the centre of the case has two parties and only one of them is permitted to describe it. Everything about her understanding reaches the jury through her husband, her brother, and two letters. She is the case, and she is the only person in it who never gets to speak.' },
       { who:'jpm',       state:'present', note:'The letter about the loan is read into a criminal trial. What was a private accommodation between two houses in October 1929 is now evidence.' },
       { who:'pecora',    state:'absent',  note:'Not in the courtroom, and the reason there is one. The hearings did not prosecute anybody. They produced the facts under oath that made a prosecution possible, which is a different instrument and, on the evidence of the next few weeks, a more reliable one.' }
+    ]
+  },
+  {
+    id:'may22_33', date:'1933-05-22', short:'22 May 1933',
+    title:'Whose bill is it',
+    chapter:'Chapter 39',
+    gist:'Roosevelt tells Glass he likes the bill and that Aldrich will be supplying further language for it. Glass comes apart: a banker is now drafting his legislation, and doing it to injure a rival. Section 32, barring a man from running a securities house and sitting on the board of a member bank, is Aldrich\u2019s. In public the Rockefeller connection is discussed openly, on the view that Aldrich has never produced a thought that was not first Rockefeller\u2019s. The diary of the Federal Reserve chairman\u2019s wife records something closer to the national mood: that the bankers were all practically criminal, that reform was overdue, and that she could not stand Mitchell. Roosevelt is meanwhile circling gold, and Glass comes apart again, pointing out that the United States holds around forty percent of the world\u2019s supply. And Roosevelt needs Steagall, who wants the federal government to guarantee deposits. Glass hates it and has the better precedent: eight states set up guarantee schemes after 1907 and every bank in them had failed by 1929. Roosevelt takes it anyway, because without it the public will not accept the rest. Glass\u2019s bill rearranges the furniture. Steagall\u2019s rebuilds the house. On the twentieth Will Rogers puts a letter in the Times saying the point of the thing is to make bankers answerable to bankers instead of leaving it to depositors.',
+    actors:[
+      { who:'glass',    state:'acted',  note:'Loses control of his own bill twice in one chapter, to a banker on one side and to a rural congressman on the other, and both losses improve it. He is right about the deposit guarantee on the evidence and wrong about what the country will accept, which turn out to be different questions.' },
+      { who:'aldrich',  state:'acted',  note:'Writes section 32, which is aimed squarely at the interlock between Morgan and the boards of member banks. A banker drafting the clause that breaks his largest competitor, inside a reform bill, in public, and being thanked for it.' },
+      { who:'fdr',      state:'acted',  note:'Takes language from a banker, insurance from a rural populist and credit for all of it. The judgement that matters is the political one: separation alone is invisible to a depositor, and deposit insurance is the thing an ordinary person can feel. He buys the structural reform with the popular one.' },
+      { who:'steagall', state:'acted',  note:'Will not move without a federal guarantee, from a district that watched small banks fail for a decade. He is arguing against the recorded evidence and he is right about the thing the evidence cannot measure, which is whether people will put money back in a bank at all.' },
+      { who:'rogers',   state:'acted',  note:'One short letter, and the framing that carries: this makes bankers answerable to bankers rather than leaving depositors to work it out. That is the entire argument for supervision, said by a rope-trick comedian in a paragraph, to an audience no senator could reach.' },
+      { who:'lamont',   state:'absent', note:'Section 32 has his firm\u2019s name nowhere in it and is about nothing else. Three months ago the address became unusable, then a rival forced private partnerships into the bill, and now that rival is drafting the clause about interlocking directors.' }
     ]
   }
 ];
