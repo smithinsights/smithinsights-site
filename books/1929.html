@@ -452,6 +452,8 @@
         <div class="thread"><dt class="closed">The 1907 playbook has failed</dt><dd>One good afternoon on 24 October, then nothing. The authority was never in the building; it was in the belief, and Lamont is not Pierpont Morgan. Livermore is now reaching for the same empty role. <b>Closed, Ch. 20</b></dd></div>
         <div class="thread"><dt>What was Wiggin doing with his own money?</dt><dd>He sat in Lamont’s office on 24 October pledging Chase’s capital. Hold the date. <b>Ch. 14, 19</b></dd></div>
         <div class="thread"><dt>Who knew, and when</dt><dd>Lamont sold in June and rang the president each morning. Adams steadied a room and liquidated the next day. Baruch sold on the boat home, then hosted a party where everyone agreed it would come back. Mitchell arranges his own tax in December. One behaviour, four kinds of person. <b>Ch. 13, 19, 20, 24</b></dd></div>
+        <div class="thread"><dt>Does the reckoning reach Morgan?</dt><dd>Lamont sold in June 1929, reassured the president through October, and is now asking that president to call off an inquiry that is questioning him. Nothing he did was against any law then in force. Whether that settles it is the book’s open question. <b>Ch. 13, 18, 37</b></dd></div>
+        <div class="thread"><dt>Morgan is now inside the bill</dt><dd>Aldrich publicly demands that separation bind private partnerships too. Glass never intended that. If it survives, the House of Morgan has to break itself in half, and no accusation against it has been made. <b>Ch. 36</b></dd></div>
         <div class="thread"><dt>23 Wall Street is now a liability</dt><dd>The book opened at that address on the proposition that character was the collateral. In February 1933 an incoming president refuses a Treasury appointment because the man is tied to it. Nothing has been proved against anyone there yet. <b>Ch. 1, 32</b></dd></div>
         <div class="thread"><dt class="closed">Pecora had until 4 March</dt><dd>The committee survives. Roosevelt tells it to keep going on the day he is sworn in, it resists, and Congress backs him. What started as Norbeck wanting a scalp before the session ended is now the administration’s policy. <b>Closed, Ch. 35</b></dd></div>
         <div class="thread"><dt>Blame is being assigned before causes are</dt><dd>The Senate is arguing about who rather than what, Glass has put all of it on Mitchell, and Mitchell’s face is in the papers. Nothing legislative happens for three more years. <b>Ch. 23</b></dd></div>
@@ -1077,6 +1079,9 @@ var PEOPLE = {
   wiggin:  { name:'Albert H. Wiggin',       house:'banks', org:'Chase National Bank',
              role:'Chairman, Chase National Bank',
              bio:'A physician\u2019s son from Medford, Massachusetts who started as a bank clerk and ran Chase from 1911. He sits on dozens of corporate boards and operates Chase Securities Corporation, the mirror of Mitchell\u2019s National City Company. Through 1929 and 1930 he buys his way toward the largest bank in the world, and he is the quieter of the two men by temperament and by design.' },
+  aldrich: { name:'Winthrop Aldrich',        house:'banks', org:'Chase National Bank',
+             role:'President, Chase National Bank',
+             bio:'Son of Senator Nelson Aldrich, whose plan became the Federal Reserve, and brother of Abby Aldrich, who married John D. Rockefeller Jr. He arrives at Chase through the Equitable Trust merger as the Rockefeller interest, pushes Wiggin out, and then does the thing nobody expects: calls publicly for a total separation of commercial and investment banking, private partnerships included. He fights it in the newspapers rather than in back rooms, and he wins.' },
   merrill: { name:'Charles E. Merrill',     house:'banks', org:'Merrill Lynch',
              role:'Partner, Merrill Lynch',
              bio:'Warned his clients in early 1929 to get out of debt and largely stepped back from the brokerage business himself, which makes him the rare figure in the book who saw it and acted. On the day the bankers organise their support, he discovers that what was supposed to be happening is not.' },
@@ -1197,6 +1202,9 @@ var PEOPLE = {
   couzens: { name:'James Couzens',           house:'washington', org:'Senate, Michigan',
              role:'Senator from Michigan',
              bio:'Ran the business side of Ford Motor Company, took about eleven percent of it, and sold that stake back for a fortune. Then police commissioner and mayor of Detroit, then a Republican senator who spent most of his career at odds with his own party and with Wall Street. He is rich enough that none of it can be dismissed as envy, and he is from the city whose banks collapsed a week before these hearings opened.' },
+  long:    { name:'Huey Long',               house:'washington', org:'Senate, Louisiana',
+             role:'Senator from Louisiana',
+             bio:'The Kingfish, in the Senate since 1932 and already a national force with his own following. On banking he is for the small state bank and against anything that lets a large one cross a state line, and he is willing to hold the floor for as long as it takes to stop it. He is assassinated in 1935.' },
   branch:  { name:'Claude R. Branch',        house:'washington', org:'Senate committee counsel',
              role:'First counsel to the investigation',
              bio:'The lawyer hired to run the Senate\u2019s inquiry into the crash, whose hearings went nowhere. Worth knowing precisely because he failed: the investigation that ends up rewriting American finance was nearly abandoned as a dud before Pecora took it over in January 1933.' },
@@ -1220,7 +1228,7 @@ var PEOPLE = {
              bio:'Fifty-four, out of government since the Conservatives lost in May, and short of money for the whole of his adult life. The aristocratic name came without the fortune, and he paid for Chartwell and everything else by writing and speaking. In 1929 he crosses Canada and the United States on other people\u2019s hospitality, and he is carrying American investments while he does it.' }
 };
 
-var READ_THROUGH = { chapter:35, label:'Chapter 35' };
+var READ_THROUGH = { chapter:37, label:'Chapter 37' };
 
 var EVENTS = [
   {
@@ -1722,6 +1730,35 @@ var EVENTS = [
       { who:'mills',  state:'present', note:'The outgoing Treasury Secretary works alongside the incoming one through the crisis. The two men holding the office across a change of party do the same job in the same room, which is not how any other part of this transition went.' },
       { who:'pecora', state:'acted',   note:'Told to continue. The committee that was to expire on 4 March survives because the incoming president wants the hearings, and Congress agrees. What began as Norbeck wanting a scalp is now policy.' },
       { who:'glass',  state:'present', note:'Watching relief and recovery move fast while his own bill does not. The Emergency Banking Act takes days. The separation of commercial and investment banking, which he has wanted since 1929, takes until June.' }
+    ]
+  },
+  {
+    id:'mar7_33', date:'1933-03-07', short:'7 Mar 1933',
+    title:'Aldrich changes the target',
+    chapter:'Chapter 36',
+    gist:'National City announces it will cut loose National City Company. Then Aldrich at Chase goes much further in public: every bank should do the same, a man should not sit on the board of a bank and of a securities house at once, and the rule should bind private partnerships as well as listed banks. That last clause is aimed at one address. Aldrich makes the argument in the newspapers rather than through quiet influence, and he has already forced Wiggin out. It blindsides Glass, who had meant his bill for large publicly traded banks and not for houses like Morgan, where his own old Treasury deputy is a partner. Glass finds himself defending a Wall Street firm he spent a career attacking, and is glad again that he did not take the Treasury. Four days later the Senate nearly comes to blows: Huey Long wants small state banks brought under the regional reserve banks and will not have them crossing state lines, Glass wants branch banking so a bank\u2019s risk is not confined to one local economy. Long holds the floor for ten days. The bill passes the Senate and dies in the House, and Glass is a national figure again. That evening Roosevelt is on the radio telling the country their money is safer in a reopened bank than under a mattress.',
+    actors:[
+      { who:'aldrich',     state:'acted',  note:'The most consequential intervention by a banker in the entire book, and it comes from a banker. He is the son of the man whose plan became the Federal Reserve and the brother-in-law of the Rockefellers, and he uses that standing to demand a rule his own competitors will hate. Because of this, section 21 of the Banking Act reaches private partnerships, which is why J.P. Morgan & Co. has to choose in 1935 and why Morgan Stanley exists at all. Go and look at the Banks chart: that branch is his.' },
+      { who:'rentschler',  state:'acted',  note:'Cuts the affiliate loose on 8 March, three weeks after Pecora opened it up and ten days after Mitchell resigned. The structure that made National City the largest bank in the world is abandoned by the bank itself before any law requires it.' },
+      { who:'wiggin',      state:'absent', note:'Gone, pushed out by the man now speaking for Chase. What he did with his own money in October 1929 is about to be established under oath, and the bank has already removed him.' },
+      { who:'glass',       state:'acted',  note:'Ambushed by an ally. He wanted separation for listed banks, not for private houses, and Aldrich has just made the wider version the public position of the second largest bank in America. On branch banking he is right and loses: a bank confined to one town fails when that town does.' },
+      { who:'leffingwell', state:'absent', note:'The reason Glass\u2019s position is awkward. His old Treasury deputy is a Morgan partner, and Aldrich\u2019s proposal puts Morgan inside the bill.' },
+      { who:'lamont',      state:'absent', note:'The target, named by nobody. First the address becomes unusable in February, now a rival proposes a law that will force the firm to break itself in half. Neither blow involves an accusation of wrongdoing.' },
+      { who:'long',        state:'acted',  note:'Ten days on the floor to protect the small state bank. He is obstructing a reform, and he is not simply wrong: branch banking really would end thousands of local institutions, which is exactly what happens over the following decades.' },
+      { who:'fdr',         state:'acted',  note:'The first fireside chat. Safer in a reopened bank than under the mattress, said plainly enough that people act on it. A president talking directly to depositors turns out to be a monetary instrument.' }
+    ]
+  },
+  {
+    id:'mar21_33', date:'1933-03-21', short:'21 Mar 1933',
+    title:'An arrest, and a visit',
+    chapter:'Chapter 37',
+    gist:'Mitchell is arrested for tax evasion. The same stretch, Lamont goes to the White House to make the case that Morgan is a different kind of institution and should not be treated like the rest. Roosevelt talks instead about separating banks from securities houses and about how corrosive insider dealing is. Lamont argues that bankers should not be barred from trading, offers to send a memo setting out options for bank reform, and is taken up on it; the memo arrives four days later. He also mentions that Pecora is questioning him and that the witch hunt ought to stop. A week after that a letter reaches him from Mitchell: he can repay two thirds of the loan, and could he have more time for the rest.',
+    actors:[
+      { who:'mitchell', state:'acted',   note:'Arrested three weeks after resigning and four weeks after first taking the oath. The fall is not slow at all once it starts. Note again what he is charged with: not the affiliate, not the conflict, not the sales force. The personal tax return.' },
+      { who:'lamont',   state:'acted',   note:'Does what he has done since 1929, which is apply private access to a public problem. He gets the meeting, he gets asked for a memo, and he is heard. He also asks the president to call off an investigation while that investigation is questioning him, which reads very differently in 1933 than it would have in 1929.' },
+      { who:'fdr',      state:'acted',   note:'Takes the meeting, takes the memo, and concedes nothing. He names separation and insider dealing as the problems to the one man best placed to argue otherwise, and then legislates both anyway.' },
+      { who:'pecora',   state:'present', note:'Not in the room and shaping it. The reason Lamont is at the White House at all is that the hearings have moved past National City.' },
+      { who:'jpm',      state:'present', note:'The firm that lent Mitchell over ten million in October 1929 to keep his bank standing now learns it will get two thirds back. The rescue and the reckoning close the loop on each other in a single letter.' }
     ]
   }
 ];
