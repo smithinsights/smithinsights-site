@@ -89,17 +89,16 @@
   .dow-line{ fill:none; stroke:var(--paper); stroke-width:2; stroke-linejoin:round; stroke-linecap:round }
   .dow-fill{ fill:rgba(227,231,222,.07) }
   .mark-dot{ fill:var(--tape) }
-  .mark-rule{ stroke:var(--tape); stroke-width:1; stroke-dasharray:2 3 }
   .mark-lab{ font-family:var(--mono); font-weight:500; fill:#E3E7DE }
   .mark-val{ font-family:var(--mono); fill:var(--tape) }
   tspan.mark-val{ font-size:inherit }
   .anim .dow-line{ animation:draw 2.4s .3s ease-out forwards }
-  .anim .mark-dot,.anim .mark-rule,.anim .mark-lab,.anim .mark-val{ opacity:0; animation:fade .6s ease-out forwards }
+  .anim .mark-dot,.anim .mark-lab,.anim .mark-val{ opacity:0; animation:fade .6s ease-out forwards }
   @keyframes draw{ to{ stroke-dashoffset:0 } }
   @keyframes fade{ to{ opacity:1 } }
   @media (prefers-reduced-motion:reduce){
     .anim .dow-line{ animation:none; stroke-dashoffset:0 !important }
-    .anim .mark-dot,.anim .mark-rule,.anim .mark-lab,.anim .mark-val{ animation:none; opacity:1 }
+    .anim .mark-dot,.anim .mark-lab,.anim .mark-val{ animation:none; opacity:1 }
   }
   .marklist{ display:none; font-family:var(--mono); font-size:11.5px; line-height:1.75; margin-top:20px }
   .marklist div{ display:flex; justify-content:space-between; gap:14px; padding:7px 0; border-top:1px solid #333a31 }
@@ -315,7 +314,6 @@
   .lineage .join{ stroke-width:2; fill:none; opacity:.9 }
   .lineage .fail{ stroke-width:2; fill:none; stroke-dasharray:3 4 }
   .lineage .mark{ font-family:var(--mono); font-size:15px; font-weight:600 }
-  .lineage .crisis{ stroke:var(--tape); stroke-width:1.4; fill:var(--paper) }
   .lncap{ font-family:var(--mono); font-size:11px; line-height:1.95; color:var(--ink-soft);
     margin-top:16px; border-top:1px solid var(--rule); padding-top:12px;
     display:flex; flex-direction:column; gap:2px }
@@ -415,7 +413,7 @@
 </header>
 </div>
 
-<nav class="jump" id="menu" aria-label="Sections">
+<nav class="jump" aria-label="Sections">
   <div class="jumpinner">
     <a href="#home">Home</a>
     <a href="#tape">Tape</a>
@@ -448,12 +446,14 @@
         can carry into the next chapter.
       </p>
       <dl class="threads">
-        <div class="thread"><dt>The sale to Elizabeth Mitchell</dt><dd>Shares moved to his wife at a loss, cancelling his 1929 income tax, hidden from the firm that had just lent him millions. Legal enough in December 1929. Watch what it costs him. <b>Ch. 24</b></dd></div>
+        <div class="thread"><dt>He has admitted the sale, not the buyer</dt><dd>Under oath he concedes he took the loss to wipe out his 1929 tax and that the shares went to a family member. He has not said it was Elizabeth. The chapter stops there. <b>Ch. 24, 33</b></dd></div>
         <div class="thread"><dt>Can National City cover what it owes?</dt><dd>The affiliate has been buying the parent’s stock, Mitchell has pledged his own money, and Morgan has lent him over ten million. The merger that justified it is gone. <b>Ch. 19, 20, 21</b></dd></div>
         <div class="thread"><dt class="closed">Mitchell needed $450</dt><dd>National City did not hold it, Corn Exchange holders take the cash, and the merger dies. Lamont writes that it cannot be saved. <b>Closed, Ch. 21</b></dd></div>
         <div class="thread"><dt class="closed">The 1907 playbook has failed</dt><dd>One good afternoon on 24 October, then nothing. The authority was never in the building; it was in the belief, and Lamont is not Pierpont Morgan. Livermore is now reaching for the same empty role. <b>Closed, Ch. 20</b></dd></div>
         <div class="thread"><dt>What was Wiggin doing with his own money?</dt><dd>He sat in Lamont’s office on 24 October pledging Chase’s capital. Hold the date. <b>Ch. 14, 19</b></dd></div>
         <div class="thread"><dt>Who knew, and when</dt><dd>Lamont sold in June and rang the president each morning. Adams steadied a room and liquidated the next day. Baruch sold on the boat home, then hosted a party where everyone agreed it would come back. Mitchell arranges his own tax in December. One behaviour, four kinds of person. <b>Ch. 13, 19, 20, 24</b></dd></div>
+        <div class="thread"><dt>23 Wall Street is now a liability</dt><dd>The book opened at that address on the proposition that character was the collateral. In February 1933 an incoming president refuses a Treasury appointment because the man is tied to it. Nothing has been proved against anyone there yet. <b>Ch. 1, 32</b></dd></div>
+        <div class="thread"><dt>Pecora has until 4 March</dt><dd>The committee expires the day Roosevelt is sworn in. Four counsels, a year of nothing, and a lawyer hired at the end of it who has decided to spend what is left on one man. <b>Ch. 30, 31</b></dd></div>
         <div class="thread"><dt>Blame is being assigned before causes are</dt><dd>The Senate is arguing about who rather than what, Glass has put all of it on Mitchell, and Mitchell’s face is in the papers. Nothing legislative happens for three more years. <b>Ch. 23</b></dd></div>
         <div class="thread"><dt>Hoover cannot sell a good idea</dt><dd>The public works push is sound economics that nobody understands, delivered by an engineer, against a full-time professional paid since May to make him unpopular. <b>Ch. 12, 23</b></dd></div>
         <div class="thread"><dt>The radio merger is still illegal</dt><dd>Section 17 of the White Act blocks RCA combining with a cable company, and the workaround is to call it national defence. Untested on anyone who can say no. <b>Ch. 6</b></dd></div>
@@ -1083,9 +1083,15 @@ var PEOPLE = {
   baker:   { name:'Hugh B. Baker',         house:'banks', org:'National City Company',
              role:'President, National City Company',
              bio:'Runs the securities affiliate: the sales force, the branch offices, the quotas, the bonds pushed to depositors. In the last week of October he is also the man told to buy National City Bank stock with National City Company money, which is the affiliate propping up its own parent. Four years later the mechanics of his sales operation are the most damaging testimony Pecora extracts.' },
+  rentschler:{name:'Gordon Rentschler',      house:'banks', org:'National City Bank',
+             role:'President, National City Bank',
+             bio:'An Ohio machinery manufacturer rather than a banker by training, and president of National City under Mitchell from 1929. He is the man who has to explain the morale loans: two and a half million lent to a hundred senior officers whose own stock had collapsed, quietly moved off the bank\u2019s books, and largely never repaid, while junior staff who had bought shares on an instalment plan went on paying or lost their jobs.' },
   riordan: { name:'James J. Riordan',       house:'banks', org:'County Trust Company',
              role:'President, County Trust',
              bio:'A New York banker close to Raskob and to Al Smith, and one of the men whose money and name stood behind the 1928 campaign. His bank is small, local and entirely dependent on the confidence of depositors who know him personally, which is what makes his death in November 1929 a financial event as well as a private one.' },
+  leffingwell:{name:'Russell Leffingwell',  house:'banks', org:'J.P. Morgan & Co.',
+             role:'Morgan partner',
+             bio:'Assistant Secretary of the Treasury under Glass during the war, then a partner at Morgan and one of Lamont\u2019s closest colleagues. He is the private channel between the House of Morgan and the Senate\u2019s fiercest critic of Wall Street, which is why Glass wants him at Treasury in 1933 and exactly why Roosevelt will not have him.' },
   robinson:{ name:'Henry M. Robinson',      house:'banks', org:'Los Angeles',
              role:'Banker and Hoover adviser',
              bio:'A Los Angeles banker Hoover trusts and uses as a private channel to the financial world. He tells the president what the reassuring statements do not: that firms are going to close because of what speculation has done to them.' },
@@ -1179,15 +1185,27 @@ var PEOPLE = {
   mills:   { name:'Ogden L. Mills',          house:'washington', org:'The Treasury',
              role:'Secretary of the Treasury from 1932',
              bio:'Mellon\u2019s under secretary and successor, and a different animal: he accepts that the government has to act rather than wait for the bust to finish. He inherits the Treasury with roughly a quarter of the workforce out of a job.' },
+  woodin:  { name:'William Woodin',          house:'washington', org:'The Treasury',
+             role:'Secretary of the Treasury from 1933',
+             bio:'An industrialist who built railway cars, a lifelong Republican who backed Roosevelt, and an amateur composer who wrote songs in his spare time. He is chosen partly because he is none of the things a Morgan man would be. He takes the Treasury into the bank holiday and is gone within a year, in failing health.' },
   steagall:{ name:'Henry B. Steagall',       house:'washington', org:'House Banking Committee',
              role:'Congressman from Alabama',
              bio:'Runs banking in the House, from a rural district that had watched small banks fail for a decade. His name goes on the 1932 act that loosens the gold cover, and again on the 1933 act, where he supplies the half Glass did not want: federal insurance for ordinary depositors.' },
   norbeck: { name:'Peter Norbeck',           house:'washington', org:'Senate Banking Committee',
              role:'Senator from South Dakota',
-             bio:'A well driller by trade who ended up chairing the committee investigating Wall Street, and was candid that the subject was beyond him. He fumbles the language in public. He also keeps the inquiry alive long enough to hand it to somebody who can use it.' },
+             bio:'A well driller by trade who ended up chairing the committee investigating Wall Street, and was candid that the subject was beyond him. He fumbles the language in public and keeps the inquiry alive long enough to hand it to somebody who can use it. As governor of South Dakota he signed the state\u2019s 1917 eugenic sterilization law, which covered the institution at Redfield and was widened in 1925; roughly 789 people were sterilized in the state under it. Both of those are the same man.' },
+  couzens: { name:'James Couzens',           house:'washington', org:'Senate, Michigan',
+             role:'Senator from Michigan',
+             bio:'Ran the business side of Ford Motor Company, took about eleven percent of it, and sold that stake back for a fortune. Then police commissioner and mayor of Detroit, then a Republican senator who spent most of his career at odds with his own party and with Wall Street. He is rich enough that none of it can be dismissed as envy, and he is from the city whose banks collapsed a week before these hearings opened.' },
   branch:  { name:'Claude R. Branch',        house:'washington', org:'Senate committee counsel',
              role:'First counsel to the investigation',
              bio:'The lawyer hired to run the Senate\u2019s inquiry into the crash, whose hearings went nowhere. Worth knowing precisely because he failed: the investigation that ends up rewriting American finance was nearly abandoned as a dud before Pecora took it over in January 1933.' },
+  pecora:  { name:'Ferdinand Pecora',        house:'washington', org:'Senate committee counsel',
+             role:'Fourth counsel to the investigation',
+             bio:'Sicilian-born, raised in New York, a former assistant district attorney who had tried an enormous number of cases and won most of them. He is the fourth lawyer hired to run an inquiry that has produced nothing in a year, he takes the job weeks before the committee is due to expire, and he decides almost immediately that the way to make it matter is to put one banker under oath and keep him there.' },
+  garner:  { name:'John Nance Garner',       house:'washington', org:'Speaker of the House',
+             role:'Speaker, then Vice President',
+             bio:'A Texan who ran the House and then became Roosevelt\u2019s vice president, having released his delegates on the fourth ballot to make the nomination possible. His contribution here is disclosure: he forces out the names of the banks and companies taking Reconstruction Finance Corporation money, and what the list shows is not what the public had been told.' },
   young:   { name:'Owen D. Young',          house:'industry', org:'RCA and General Electric',
              role:'Chairman of RCA, and of the Paris committee',
              bio:'Chairs General Electric and RCA, and in 1929 also chairs the Committee of Experts renegotiating German reparations. The plan takes his name. Nobody at the time thinks to ask whether running American reparations diplomacy should be walled off from negotiating a hundred-million-dollar merger with the banker across the table.' },
@@ -1202,7 +1220,7 @@ var PEOPLE = {
              bio:'Fifty-four, out of government since the Conservatives lost in May, and short of money for the whole of his adult life. The aristocratic name came without the fortune, and he paid for Chartwell and everything else by writing and speaking. In 1929 he crosses Canada and the United States on other people\u2019s hospitality, and he is carrying American investments while he does it.' }
 };
 
-var READ_THROUGH = { chapter:30, label:'Chapter 30' };
+var READ_THROUGH = { chapter:34, label:'Chapter 34' };
 
 var EVENTS = [
   {
@@ -1633,6 +1651,64 @@ var EVENTS = [
       { who:'baruch',   state:'absent', note:'Named by the president as part of the problem, alongside Raskob. Blaming short sellers is the oldest reflex in the market and there is no good evidence it was ever true, in 1929 or in 1932.' },
       { who:'fdr',      state:'present',note:'Wins the nomination on the fourth ballot, over opposition from his own party chairman. Hoover helped clear the field for him on the theory that he was beatable and would not survive four years. He serves twelve.' }
     ]
+  },
+  {
+    id:'nov8_32', date:'1932-11-08', short:'8 Nov 1932',
+    title:'Election day, and a lawyer is hired',
+    chapter:'Chapter 31',
+    gist:'Hoover waits out the result in the same house he waited in during 1928, already knowing from polling that he has lost, and knowing that the issue moving the most voters is Prohibition rather than the economy. Garner has meanwhile forced the Reconstruction Finance Corporation to name the recipients of its money, and the list is not evenly spread: among the beneficiaries are the Van Sweringen railroads, financed by the House of Morgan. The gold argument goes on while money leaves the country. And Norbeck, wanting to burn somebody before the lame duck session runs out, hires a fourth counsel for his dead investigation. Ferdinand Pecora takes the job with the committee due to expire on 4 March 1933, the day Roosevelt is sworn in. He learns Mitchell is about to sail for Europe, and decides that National City, no longer even the largest bank, is where he will make his mark.',
+    actors:[
+      { who:'hoover',       state:'acted',   note:'Loses knowing he will lose, and on an issue that has nothing to do with the depression. Prohibition moving more votes than unemployment in 1932 is the strangest fact in the chapter and worth sitting with.' },
+      { who:'garner',       state:'acted',   note:'Forces the RFC to publish who is getting the money. The disclosure is correct in principle and does real damage in practice: naming a bank that needed help tells depositors it needed help. It is the same problem Raskob was managing when he held back news of a death in 1930, and there is still no deposit insurance to solve it.' },
+      { who:'vansweringen', state:'present', note:'On the list. Public money reaching a railway empire built on stacked holding companies and floated by Morgan is exactly the pattern the whole book has been describing, appearing this time with the government as the lender.' },
+      { who:'jpm',          state:'present', note:'The firm behind the Van Sweringens and behind the Alleghany offering. Nothing improper has been alleged. That is the point, and it holds for about ninety more days.' },
+      { who:'norbeck',      state:'acted',   note:'Hires the right man for the wrong reason, wanting a scalp before the session ends. He is also the governor who signed South Dakota\u2019s sterilization law in 1917, and the chapter does not soften it. The most consequential thing he ever does is make one hire and then get out of the way, and the reform that follows is a genuine public good produced by a man whose own record includes that.' },
+      { who:'pecora',       state:'acted',   note:'The fourth lawyer on a failed inquiry, with weeks on the clock and no expectation from anyone that he will find anything. He picks National City, which is not even the largest bank any more, because he has worked out that the target is not the institution. It is a man, under oath, in public, for as long as it takes.' },
+      { who:'mitchell',     state:'absent',  note:'About to sail for Europe, and unaware that a committee everyone has written off has just hired somebody who intends to spend its final weeks on him.' }
+    ]
+  },
+  {
+    id:'feb18_33', date:'1933-02-18', short:'18 Feb 1933',
+    title:'Two weeks of nobody in charge',
+    chapter:'Chapter 32',
+    gist:'Hoover writes to Roosevelt asking him to say something reassuring to the country, and lists what is breaking: hoarding, Detroit, gold going to Europe, credit that has stopped moving, and no named Treasury Secretary. Roosevelt will not do it. He has fourteen days until he is president and he refuses to spend them underwriting the outgoing administration\u2019s record, because a New Deal that begins by ratifying Hoover is not a new deal. He wants Glass at Treasury; Glass thinks him too loose on money and would rather stay in the Senate and write the law he has been drafting since 1929. Glass asks for Russell Leffingwell as his under secretary, and Roosevelt refuses on the ground that they cannot be tied to 23. Four years earlier that address was the closest thing America had to a central bank. Now it is a disqualification. Woodin gets the job instead.',
+    actors:[
+      { who:'hoover',      state:'acted',   note:'Asks his successor to do the one thing that would validate him, at the moment he has no power to do anything else. He is not wrong about the diagnosis and it does not matter, because he no longer has standing to be believed.' },
+      { who:'fdr',         state:'acted',   note:'Refuses to touch any of it. Read this as either the coldest calculation in the book or the only correct read of what a mandate is for. He has no authority until 4 March and knows that sharing responsibility now costs him the thing he actually won on.' },
+      { who:'glass',       state:'acted',   note:'Turns down the Treasury to stay in the Senate, because from the Senate he can pass the separation of commercial and investment banking he has wanted since Mitchell broke the Fed in March 1929. He chooses the law over the office and gets the law four months later.' },
+      { who:'leffingwell', state:'absent',  note:'Proposed and vetoed. He is the private wire between Morgan and Glass, which is precisely his qualification and precisely the problem.' },
+      { who:'lamont',      state:'absent',  note:'The whole point of the veto. The book opened at 23 Wall Street on the proposition that character was the collateral the system ran on. Four years on, that address cannot be associated with an incoming administration. Nothing has been proved against anyone there. The name is simply no longer usable.' },
+      { who:'woodin',      state:'acted',   note:'Gets the Treasury largely for what he is not: a railway car manufacturer and part-time composer, a Republican for Roosevelt, and nobody\u2019s Wall Street man. Within three weeks he is running a national bank holiday.' },
+      { who:'baruch',      state:'acted',   note:'Warning against loose money talk, from the man who sold everything in 1929 and then tried to buy a gold mine. His caution is consistent and it is about to be overtaken.' }
+    ]
+  },
+  {
+    id:'feb21_33', date:'1933-02-21', short:'21 Feb 1933',
+    title:'Mitchell under oath',
+    chapter:'Chapter 33',
+    gist:'It starts with him trying to manage it. He telephones Pecora directly, which is not how this is done, and his people arrive without the subpoenaed documents. Then Pecora takes him through the pay. A salary of twenty-five thousand dollars, and roughly three and a half million once the management fund pays out, a bonus pool split among senior officers on the bank\u2019s profits. Then the securities: how many of the bonds National City sold to ordinary Americans are now in default. Then the part that finishes him. The fund was empty by the end of 1929 but the men had already been paid, so the payments were reclassified as advances, which meant no tax was owed on them. And Mitchell, defending the sales operation, compares selling securities to selling coffee. Pecora\u2019s answer is the sentence the hearings are remembered for: a man buying coffee knows what coffee is. Then Mitchell concedes he took a stock loss to wipe out his 1929 income tax, and that he sold the shares to a member of his family. He does not yet say which one.',
+    actors:[
+      { who:'pecora',   state:'acted',   note:'Does not argue about causes of the crash at all. He asks about pay, about products, and about tax, because those are answerable under oath by a single witness and the causes are not. Four counsels failed at this by trying to investigate an event. He investigates a man.' },
+      { who:'mitchell', state:'acted',   note:'Handles it exactly as he has handled everything since 1929: personally, confidently, and on the assumption that explaining will be enough. The coffee comparison is not a slip. He genuinely believes selling securities to ordinary people is a retail trade like any other, which is what he has believed since he built the sales force, and it is the belief the entire hearing is designed to break.' },
+      { who:'couzens',  state:'acted',   note:'Interrupts constantly. He made his own fortune inside Ford and cannot be waved away as resentful, and his city\u2019s banks shut a week ago. His presence is why the room has no patience.' },
+      { who:'norbeck',  state:'present', note:'Chairing the thing he kept alive. Pecora\u2019s private frustration is with senators who take the questioning away from him to produce a line for the evening papers, which is the permanent tension of any public hearing.' },
+      { who:'glass',    state:'present', note:'On the committee, listening to sworn testimony that describes precisely the conduct his bill is written to end. He has been saying this since March 1929 and is now watching it be established as fact.' },
+      { who:'baker',    state:'absent',  note:'Not in the chair, and the sales operation being described is his: the salesmen, the quotas, the branch offices, the foreign bonds. The prologue put him in a room with Mitchell working out what the affiliate could buy. This is the bill for that arriving.' }
+    ]
+  },
+  {
+    id:'feb22_33', date:'1933-02-22', short:'22 Feb 1933',
+    title:'Which relative?',
+    chapter:'Chapter 34',
+    gist:'The reporters want one thing all morning: the name of the family member. Mitchell has stopped being smooth. In the afternoon Pecora calls Rentschler and opens the morale fund, roughly two and a half million lent to about a hundred senior officers whose own stock had collapsed, moved off the bank\u2019s books into the securities company, and largely never repaid. Junior employees who had been put into the same stock on an instalment plan kept paying, or lost their jobs. Then the trading between the bank and its own affiliate, and the discounted shares used to bring in customers. Mitchell allows that the bank has a long way to go. The New York attorney general opens his own inquiry into whether the bonuses broke federal law. The committee starts looking for a way to sit past 4 March. Glass is feeding questions to senators and sends two of his own to Pecora, and when Mitchell is finally done Glass says, in effect, that he told them so four years ago about the Federal Reserve being used to finance speculation. Mitchell resigns at half past eleven at night on 26 February. His lawyer rings Pecora to say he is no longer with the bank and should not be recalled. Pecora tells him it is a fact-finding investigation and he is not finished.',
+    actors:[
+      { who:'pecora',     state:'acted',   note:'Refuses to let a resignation end the questioning, which is the moment the hearings stop being about one bank. Leaving the institution does not settle what happened inside it, and no rule at the time said otherwise.' },
+      { who:'rentschler', state:'acted',   note:'Has to explain the two-tier arithmetic out loud. A hundred senior men were lent money to cover losses on stock they were paid in, and were not made to repay it. Junior staff in the identical position went on paying. Nothing illegal there either, and it is the single detail from these hearings that ordinary people understood immediately.' },
+      { who:'mitchell',   state:'acted',   note:'The composure is gone. Twelve months earlier he was explaining the crash to the Senate with a diagnosis that was largely correct. Now he is conceding that the bank has a long way to go, and four days later he resigns at half past eleven at night.' },
+      { who:'glass',      state:'acted',   note:'Feeds questions from the committee bench and, at the end, says he told them. He did: in March 1929 he demanded Mitchell resign from the Federal Reserve Bank of New York for using the central bank to finance gambling. It took four years, a depression and a lawyer to make the point land.' },
+      { who:'couzens',    state:'present', note:'Still in the room. The morale fund is exactly the kind of arithmetic he came to find.' },
+      { who:'baker',      state:'absent',  note:'The securities company took the loans off the bank\u2019s books, which is his machine used as a place to hide something rather than to sell something. Same structure, new function.' }
+    ]
   }
 ];
 
@@ -1666,16 +1742,16 @@ var PANEL_HOOKS = {};
   /* ---- cast ---- */
   var cast = document.getElementById('castout');
   if (cast){
-    var byHouse = {}, seq = [];
+    var grouped = {}, seq = [];
     castOrder.forEach(function(k){
       var h = PEOPLE[k].house;
-      if (!byHouse[h]){ byHouse[h] = []; seq.push(h) }
-      byHouse[h].push(k);
+      if (!grouped[h]){ grouped[h] = []; seq.push(h) }
+      grouped[h].push(k);
     });
     cast.innerHTML = seq.map(function(h){
       var c = HOUSES[h].color;
       return '<div class="house" data-house="'+h+'"><div class="house-name" style="color:'+c+'">'+HOUSES[h].label+'</div>'+
-        '<div class="cards">'+ byHouse[h].map(function(k){
+        '<div class="cards">'+ grouped[h].map(function(k){
           var p = PEOPLE[k];
           return '<div class="card'+(p.offstage?' offstage':'')+'" style="color:'+c+'"><h3>'+p.name+'</h3>'+
             '<div class="role" style="color:'+c+'">'+(p.role||p.org||HOUSES[h].label)+
@@ -1693,7 +1769,7 @@ var PANEL_HOOKS = {};
     var s = ['<div class="fill" style="width:'+pos.toFixed(2)+'%"></div>'], l = [];
     [1929,1930,1931,1932,1933,1934].forEach(function(y){
       var px = (Date.parse(y+'-01-01') - ARC0) / (ARC1 - ARC0) * 100;
-      s.push('<div class="yr-tick" style="position:absolute;top:0;bottom:0;width:1px;background:var(--paper);left:'+px.toFixed(2)+'%"></div>');
+      s.push('<div style="position:absolute;top:0;bottom:0;width:1px;background:var(--paper);left:'+px.toFixed(2)+'%"></div>');
       l.push('<span style="left:'+px.toFixed(2)+'%">'+y+'</span>');
     });
     bar.innerHTML = s.join('');
