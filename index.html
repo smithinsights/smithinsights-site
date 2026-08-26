@@ -1,152 +1,518 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smith Insights</title>
+  <meta name="description" content="Smith Insights increases accuracy in the world by helping organizations navigate complex data landscapes and make informed decisions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#13344C;
+      --blue:#005792;
+      --offwhite:#F6F6E9;
+      --orange:#FD5F00;
+      --grey:#7F7F7F;
+      --accent:var(--orange);
+      --border:rgba(19,52,76,0.18);
+      --max:1000px;
 
-    <title>Smith Insights</title>
-    <meta
-      name="description"
-      content="Smith Insights increases accuracy in the world by helping organizations navigate complex data landscapes and make informed decisions."
-    />
+      /* Radius system: outer = inner + padding */
+      --radius-btn:12px;       /* button corner */
+      --radius-card:16px;      /* card corner */
+      --radius-inner:4px;      /* element inside a card: 16 - 12 padding = 4 */
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    *{ box-sizing:border-box; }
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+    body{
+      margin:0;
+      font-family:"Raleway",system-ui,sans-serif;
+      color:var(--navy);
+      line-height:1.55;
+      background:#fff;
+    }
 
-  <body>
-    <header class="nav">
-      <div class="container">
-        <div class="logo">
-          <div class="logo-frame">
-            <img src="assets/logo-white.png" alt="Smith Insights logo" />
-          </div>
-        </div>
+    h1,h2,h3{ font-family:"Merriweather",Georgia,serif; }
 
-        <nav class="links">
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a class="btn btn-ghost" href="#contact">Contact</a>
-        </nav>
+    .container{
+      max-width:var(--max);
+      padding:0 20px;
+      margin:0 auto;
+    }
 
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      background:var(--navy);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      z-index:10;
+      overflow:hidden;
+    }
+
+    .nav::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:repeating-linear-gradient(
+        -45deg,transparent,transparent 60px,
+        rgba(255,255,255,0.025) 60px,rgba(255,255,255,0.025) 61px
+      );
+      pointer-events:none;
+    }
+
+    .nav .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 20px;
+      position:relative;
+    }
+
+    .logo{ display:flex; align-items:center; }
+
+    .logo-frame{
+      height:44px;
+      width:180px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.15);
+      border-radius:6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:rgba(255,255,255,0.4);
+      font-size:12px;
+      letter-spacing:0.1em;
+    }
+
+    .links a{
+      margin-left:16px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:600;
+      font-size:15px;
+    }
+
+    .links a:hover{ color:rgba(255,255,255,0.75); }
+
+    .btn-ghost{
+      background:transparent;
+      color:#fff !important;
+      border:2px solid rgba(255,255,255,0.7);
+      padding:8px 16px;
+      border-radius:var(--radius-btn);
+    }
+
+    .btn-ghost:hover{ background:rgba(255,255,255,0.1); }
+
+    /* HAMBURGER */
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      gap:5px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+      /* larger tap target on mobile */
+      min-width:44px;
+      min-height:44px;
+    }
+
+    .hamburger span{
+      display:block;
+      width:24px;
+      height:2px;
+      background:#fff;
+      border-radius:2px;
+      transition:transform 0.2s,opacity 0.2s;
+    }
+
+    .hamburger[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu{
+      display:none;
+      flex-direction:column;
+      padding:16px 20px 20px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      gap:16px;
+      background:var(--navy);
+    }
+
+    .mobile-menu.open{ display:flex; }
+    .mobile-menu a{ text-decoration:none; color:#fff; font-weight:600; font-size:17px; }
+    .mobile-menu .btn-ghost{ align-self:flex-start; }
+
+    /* BUTTONS */
+    .btn{
+      background:var(--accent);
+      color:#fff;
+      padding:12px 20px;
+      border-radius:var(--radius-btn);
+      text-decoration:none;
+      font-weight:600;
+      display:inline-block;
+      border:none;
+      cursor:pointer;
+      font-size:15px;
+      /* minimum tap target */
+      min-height:44px;
+      line-height:1.3;
+    }
+
+    .btn:hover{ filter:brightness(0.92); }
+    .btn:active{ transform:translateY(1px); }
+
+    .btn-schedule{
+      margin-top:24px;
+      background:var(--navy);
+      display:inline-block;
+    }
+
+    /* Full-width CTA on small screens */
+    @media (max-width:480px){
+      .cta .btn{ width:100%; text-align:center; }
+      .btn-schedule{ width:100%; text-align:center; }
+    }
+
+    /* HERO */
+    .hero{
+      background:var(--navy);
+      color:#fff;
+      padding:72px 0 80px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:repeating-linear-gradient(
+        -45deg,transparent,transparent 60px,
+        rgba(255,255,255,0.025) 60px,rgba(255,255,255,0.025) 61px
+      );
+      pointer-events:none;
+    }
+
+    .hero .container{ position:relative; }
+
+    .eyebrow{
+      font-family:"Merriweather",Georgia,serif;
+      font-size:11px;
+      font-weight:400;
+      letter-spacing:0.15em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.55);
+      margin-bottom:14px;
+    }
+
+    .hero h1{
+      margin:0 0 16px 0;
+      font-size:clamp(30px,5vw,52px);
+      line-height:1.15;
+      letter-spacing:-0.01em;
+      color:#fff;
+    }
+
+    .hero h1 em{
+      font-style:italic;
+      color:var(--orange);
+      font-weight:700;
+    }
+
+    .hero p{
+      margin:0 0 28px 0;
+      color:rgba(255,255,255,0.78);
+      max-width:600px;
+      font-size:clamp(16px,2.5vw,18px);
+      font-family:"Merriweather",Georgia,serif;
+      font-weight:300;
+      line-height:1.7;
+    }
+
+    .cta{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+
+    .link{
+      color:#fff;
+      opacity:0.85;
+      text-decoration:none;
+      border-bottom:2px solid rgba(255,255,255,0.35);
+      font-weight:600;
+      padding-bottom:2px;
+    }
+
+    .link:hover{ opacity:1; }
+
+    /* SECTIONS */
+    .section{ padding:56px 0; background:var(--offwhite); }
+    .section.alt{ background:#fff; }
+
+    .section-intro{
+      max-width:680px;
+      margin:0 0 28px 0;
+      font-size:16px;
+      color:var(--grey);
+      line-height:1.65;
+    }
+
+    h2{ margin:0 0 20px 0; font-size:clamp(22px,3vw,28px); color:var(--navy); }
+    h3{ margin:0 0 6px 0; font-size:16px; color:var(--navy); }
+
+    /* GRID */
+    .grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .grid-4{ grid-template-columns:repeat(4,minmax(0,1fr)); }
+
+    /* CARDS */
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius-card);
+      padding:20px;
+    }
+
+    #who .card{
+      background:var(--offwhite);
+      border-color:rgba(19,52,76,0.12);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--grey);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .card-header{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:8px;
+    }
+
+    .card-header h3{ margin:0; }
+
+    .card-icon{
+      font-size:20px;
+      color:var(--accent);
+      flex-shrink:0;
+    }
+
+    /* ABOUT */
+    .about-text p{
+      margin:0 0 16px 0;
+      font-size:16px;
+      color:var(--navy);
+      max-width:680px;
+      line-height:1.7;
+    }
+
+    /* CONTACT */
+    .section.alt p a{
+      color:var(--blue);
+      font-weight:600;
+    }
+
+    /* FOOTER */
+    .footer{
+      padding:20px 0;
+      background:var(--navy);
+      color:rgba(255,255,255,0.55);
+      font-size:13px;
+    }
+
+    /* SCROLL FADE-IN */
+    .fade-up{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity 0.55s ease,transform 0.55s ease;
+    }
+
+    .fade-up.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .fade-up{ opacity:1; transform:none; transition:none; }
+    }
+
+    /* TABLET */
+    @media (max-width:720px){
+      .grid{ grid-template-columns:1fr; }
+      .grid-4{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .links{ display:none; }
+      .hamburger{ display:flex; }
+      .section{ padding:48px 0; }
+      .hero{ padding:56px 0 64px; }
+    }
+
+    /* MOBILE */
+    @media (max-width:480px){
+      .grid-4{ grid-template-columns:1fr; }
+      .hero{ padding:48px 0 56px; }
+      .section{ padding:40px 0; }
+      .logo-frame{ width:140px; height:38px; }
+      .card{ padding:16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container">
+      <div class="logo">
+        <div class="logo-frame">LOGO</div>
       </div>
-
-      <div class="mobile-menu" id="mobile-menu">
+      <nav class="links">
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a class="btn btn-ghost" href="#contact">Contact</a>
-      </div>
-    </header>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a class="btn btn-ghost" href="#contact">Contact</a>
+    </div>
+  </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div class="container">
-          <h1>Increasing accuracy in the world</h1>
-          <p>
-            Navigating complex data landscapes so organizations can make accurate,
-            informed decisions.
-          </p>
-          <div class="cta">
-            <a class="btn" href="#contact">Contact</a>
-            <a class="link" href="#services">Learn more</a>
-          </div>
-        </div>
-      </section>
+  <main>
 
-      <!-- SERVICES -->
-      <section id="services" class="section">
-        <div class="container">
-          <h2>Services</h2>
-
-          <div class="grid">
-            <article class="card">
-              <h3>Data Strategy</h3>
-              <p>Establishing how data supports organizational goals. Understanding what data exists, what does not, and what you actually need to make better decisions.</p>
-            </article>
-
-            <article class="card">
-              <h3>Data Warehousing</h3>
-              <p>Centralizing and maintaining data for analysis and reporting. Evaluating how your data is structured and integrated so analysis is reliable and repeatable.</p>
-            </article>
-
-            <article class="card">
-              <h3>Data Analysis</h3>
-              <p>Using data to inform decisions. Identifying target predictors, clustering populations, and building models that turn data into direction.</p>
-            </article>
-
-            <article class="card">
-              <h3>Data Visualization</h3>
-              <p>Making data easier to interpret and share. Turning analysis into easily understood visuals that stakeholders can read, comprehend, and act on.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- WHO I WORK WITH -->
-      <section id="who" class="section alt">
-        <div class="container">
-          <h2>Who I Work With</h2>
-          <p class="section-intro">My clients are membership-driven organizations navigating data complexity: national associations, Greek-letter organizations, foundations, and higher education institutions.</p>
-
-          <div class="grid grid-4">
-            <article class="card">
-              <div class="card-header"><span class="card-icon">⬡</span><h3>Fraternities &amp; Sororities</h3></div>
-              <p>Recruitment analysis, membership trends, and data infrastructure for national organizations and their foundations.</p>
-            </article>
-
-            <article class="card">
-              <div class="card-header"><span class="card-icon">⬡</span><h3>Associations</h3></div>
-              <p>Reporting, trend analysis, and survey insights across member organizations at the national level.</p>
-            </article>
-
-            <article class="card">
-              <div class="card-header"><span class="card-icon">⬡</span><h3>Foundations</h3></div>
-              <p>Donor propensity modeling, portfolio development, and donation forecasting to support development officers.</p>
-            </article>
-
-            <article class="card">
-              <div class="card-header"><span class="card-icon">⬡</span><h3>Higher Education</h3></div>
-              <p>Data strategy and analysis for institutions looking to make better decisions around student success and engagement.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ABOUT -->
-      <section id="about" class="section">
-        <div class="container about-layout">
-          <div class="about-text">
-            <h2>About</h2>
-            <p>Chris Smith is the founder of Smith Insights, a data consulting practice built on a single mission: increase accuracy in the world. Since 2008, he has connected membership data and behavioral metrics to drive successful initiatives for fraternities, foundations, and the associations that serve them. His clients include the North American Interfraternity Conference (NIC) and the National Panhellenic Conference (NPC).</p>
-            <p>In addition to his consulting work, Chris serves as Director of Systems at Alpha Tau Omega National Fraternity and Director of Research for the Alpha Tau Omega Foundation, where he oversees membership data, predictive modeling, and donor research. He is also a certified Birkman Method consultant with over a decade of practice.</p>
-            <p>Chris holds a B.S. in Mathematics with a Professional Mathematics concentration from Middle Tennessee State University (MTSU) and is a member of Alpha Tau Omega Fraternity. Based in Atlanta, he works with clients nationwide.</p>
-            <a class="btn btn-schedule" href="https://smithinsightsllc.hbportal.co/schedule/626207fc751b0b23f508ec3c" target="_blank" rel="noopener">Schedule a Discovery Call</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="section alt">
-        <div class="container">
-          <h2>Contact</h2>
-          <p>You can reach me at <a href="mailto:chris@smithinsights.co">chris@smithinsights.co</a>.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
+    <!-- HERO -->
+    <section class="hero">
       <div class="container">
-        <span>&copy; <span id="year"></span> Smith Insights, LLC &middot; Atlanta, GA</span>
+        <div class="eyebrow">Smith Insights &middot; Data Consulting</div>
+        <h1>Increasing <em>accuracy</em> in the world</h1>
+        <p>Navigating complex data landscapes so organizations can make accurate, informed decisions.</p>
+        <div class="cta">
+          <a class="btn" href="#contact">Contact</a>
+          <a class="link" href="#services">Learn more</a>
+        </div>
       </div>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="fade-up">Services</h2>
+        <div class="grid">
+          <article class="card fade-up">
+            <h3>Data Strategy</h3>
+            <p>Establishing how data supports organizational goals. Understanding what data exists, what does not, and what you actually need to make better decisions.</p>
+          </article>
+          <article class="card fade-up">
+            <h3>Data Warehousing</h3>
+            <p>Centralizing and maintaining data for analysis and reporting. Evaluating how your data is structured and integrated so analysis is reliable and repeatable.</p>
+          </article>
+          <article class="card fade-up">
+            <h3>Data Analysis</h3>
+            <p>Using data to inform decisions. Identifying target predictors, clustering populations, and building models that turn data into direction.</p>
+          </article>
+          <article class="card fade-up">
+            <h3>Data Visualization</h3>
+            <p>Making data easier to interpret and share. Turning analysis into easily understood visuals that stakeholders can read, comprehend, and act on.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO I WORK WITH -->
+    <section id="who" class="section alt">
+      <div class="container">
+        <h2 class="fade-up">Who I Work With</h2>
+        <p class="section-intro fade-up">My clients are membership-driven organizations navigating data complexity: national associations, Greek-letter organizations, foundations, and higher education institutions.</p>
+        <div class="grid grid-4">
+          <article class="card fade-up">
+            <div class="card-header"><span class="card-icon">⬡</span><h3>Fraternities &amp; Sororities</h3></div>
+            <p>Recruitment analysis, membership trends, and data infrastructure for national organizations and their foundations.</p>
+          </article>
+          <article class="card fade-up">
+            <div class="card-header"><span class="card-icon">⬡</span><h3>Associations</h3></div>
+            <p>Reporting, trend analysis, and survey insights across member organizations at the national level.</p>
+          </article>
+          <article class="card fade-up">
+            <div class="card-header"><span class="card-icon">⬡</span><h3>Foundations</h3></div>
+            <p>Donor propensity modeling, portfolio development, and donation forecasting to support development officers.</p>
+          </article>
+          <article class="card fade-up">
+            <div class="card-header"><span class="card-icon">⬡</span><h3>Higher Education</h3></div>
+            <p>Data strategy and analysis for institutions looking to make better decisions around student success and engagement.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="about-text">
+          <h2 class="fade-up">About</h2>
+          <p class="fade-up">Chris Smith is the founder of Smith Insights, a data consulting practice built on a single mission: increase accuracy in the world. Since 2008, he has connected membership data and behavioral metrics to drive successful initiatives for fraternities, foundations, and the associations that serve them. His clients include the North American Interfraternity Conference (NIC) and the National Panhellenic Conference (NPC).</p>
+          <p class="fade-up">In addition to his consulting work, Chris serves as Director of Systems at Alpha Tau Omega National Fraternity and Director of Research for the Alpha Tau Omega Foundation, where he oversees membership data, predictive modeling, and donor research. He is also a certified Birkman Method consultant with over a decade of practice.</p>
+          <p class="fade-up">Chris holds a B.S. in Mathematics with a Professional Mathematics concentration from Middle Tennessee State University (MTSU) and is a member of Alpha Tau Omega Fraternity. Based in Atlanta, he works with clients nationwide.</p>
+          <a class="btn btn-schedule fade-up" href="https://smithinsightsllc.hbportal.co/schedule/626207fc751b0b23f508ec3c" target="_blank" rel="noopener">Schedule a Discovery Call</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section alt">
+      <div class="container">
+        <h2 class="fade-up">Contact</h2>
+        <p class="fade-up">You can reach me at <a href="mailto:chris@smithinsights.co">chris@smithinsights.co</a>.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>&copy; <span id="year"></span> Smith Insights, LLC &middot; Atlanta, GA</span>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    hamburger.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", isOpen);
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", false);
+      });
+    });
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+  </script>
+
+</body>
 </html>
