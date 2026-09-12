@@ -298,5 +298,345 @@
   Alpha Tau Omega &nbsp;&middot;&nbsp; Officer Tenure and Membership Retention &nbsp;&middot;&nbsp; Prepared by Chris Smith
 </div>
 
+
+<!-- ================= EMBEDDED METHODOLOGY (not rendered) =================
+     Machine-readable spec + full re-runnable source travel with this file.
+     Extract: open in any text editor, or read the two <script> blocks below. -->
+<script type="application/json" id="methodology-spec">
+{
+  "report": "ATO Officer Tenure and Membership Retention",
+  "version": "1.0",
+  "generated": "2026-06",
+  "snapshot_date": "2026-06-05",
+  "author": "Chris Smith, Director of Systems",
+  "reruns_from": "the <script id='analysis-source'> block in this file; save it as ato_retention_analysis.py",
+  "inputs": {
+    "cohort": {
+      "file": "Chapter_Review_Master.xlsx",
+      "sheet": "Cohort0607-2",
+      "grain": "one initiated member",
+      "join_key": "18 Character ID"
+    },
+    "officers": {
+      "file": "ato_officers.csv",
+      "encoding": "cp1252",
+      "grain": "one member-role service span",
+      "role_field": "Contact Group Role: Contact Group Role Name"
+    }
+  },
+  "population": "Initiated members only (Initiation Date present), cohort 2007-2026. Depledges excluded (never eligible for roles). Current undergraduates censored (outcome unknown).",
+  "outcome": "Reached Alumnus vs left as Former Member, among members settled at analysis time.",
+  "cleaning": {
+    "admin_sweep_removal": {
+      "rule": "former-member exit date shared by >= N chapters is an administrative reclassification, not attrition",
+      "N_chapters": 10,
+      "removed": 2084,
+      "example_date": "2019-01-25 (146 chapters)"
+    },
+    "closure_removal": {
+      "rule": "chapter-specific mass former-member exits after which the chapter stops initiating; remove members within +/- window of the closure date",
+      "min_simultaneous_exits": 8,
+      "max_initiations_after": 8,
+      "window_days": 60,
+      "removed": 910
+    },
+    "nexus_removal": {
+      "rule": "time-aware: remove members initiated after their chapter's closure/re-start (pre-charter Nexus era); retain prior Open-era brothers of the same chapter",
+      "chapters": 22,
+      "removed_nexus_era": 509,
+      "note": "literal removal of all 22 chapters vs this time-aware rule does not change any conclusion (2.1 vs 2.2pp gap)"
+    }
+  },
+  "landmark": {
+    "definition": "member classified by role status attained within first N months post-initiation; outcome measured from the landmark forward among members still active at the landmark; removes immortal-time / survivorship bias",
+    "primary_months": 12,
+    "role_gradient_months": 24,
+    "day_conversion": "round(months*30.44)"
+  },
+  "covariates": {
+    "era": [
+      "2007-2012",
+      "2013-2017",
+      "2018-2021",
+      "2022+"
+    ],
+    "size_tier": "terciles of chapter active-membership at landmark (cut at 0.333/0.667)",
+    "chapter_size_at_date": "count of initiated members active in the chapter on a given date (Initiation<=D<active_until, not deceased)"
+  },
+  "models": {
+    "any_officer": "logistic  alum ~ officer + C(era) + C(size_tier)",
+    "role_gradient": "logistic  alum ~ [role dummies] + C(era)   at 24-month landmark",
+    "size_interaction": "logistic  alum ~ officer*C(size_tier) + C(era); plus officer OR fit within each tier",
+    "competing_risks": "multinomial  outcome{Alumnus=ref, Resigned, Expelled} ~ officer + era + size_tier",
+    "resignation_by_role": "logistic  resign ~ [role dummies] + C(era)  (Alumnus vs Resigned only; sparse cells, convergence flag expected)",
+    "expulsion": "logistic  exp ~ officer + C(era)  (Alumnus vs Expelled only; n_expelled=196)"
+  },
+  "key_results": {
+    "sample_12mo_survivors": 33929,
+    "alumnus_rate": {
+      "non_officer": 0.935,
+      "officer": 0.956,
+      "officer_adj_OR": 1.72,
+      "p": "<0.001"
+    },
+    "raw_uncleaned_ever_never_gap_pp": 12.5,
+    "role_gradient_24mo_OR": {
+      "President": 2.83,
+      "Alumni Relations": 2.78,
+      "Treasurer": 2.03,
+      "Chaplain": 1.84,
+      "Vice President": 1.77,
+      "committee_chairs": "not significant"
+    },
+    "size_interaction_officer_OR": {
+      "Small": 1.45,
+      "Medium": 1.9,
+      "Large": 2.06,
+      "interaction_p": "0.015-0.031"
+    },
+    "competing_risk_officer_RRR": {
+      "resigned": 0.64,
+      "expelled": 0.49
+    },
+    "resignation_protective_roles_OR": {
+      "Alumni Relations": 0.42,
+      "Chaplain": 0.43,
+      "Recruitment": 0.58,
+      "Secretary": 0.6
+    },
+    "resignation_officer_OR_by_size": {
+      "Small": 0.73,
+      "Medium": 0.67,
+      "Large": 0.46
+    },
+    "expulsion": {
+      "officer_OR": 0.58,
+      "p": 0.002,
+      "exec_tier_rate": 0.0029,
+      "other_rate": 0.0064,
+      "n_expelled": 196
+    },
+    "time_to_alumnus_years_median": {
+      "officer": 3.13,
+      "non_officer": 3.14
+    }
+  },
+  "caveats": [
+    "Landmark removes survivorship artifact, not selection: officers are elected volunteers.",
+    "Per-role resignation model fit on sparse cells; trust only the flagged-significant roles.",
+    "629 former members carry no coded departure reason and are held out of the resign/expel split."
+  ]
+}
+</script>
+<script type="text/x-python" id="analysis-source">
+#!/usr/bin/env python3
+"""
+ATO Officer Tenure & Membership Retention -- full re-runnable analysis.
+
+Reproduces every figure in ATO_Officer_Retention_Analysis.html.
+
+Inputs (two files, same directory or adjust paths):
+  - Chapter_Review_Master.xlsx   sheet 'Cohort0607-2'  (member lifecycle cohort)
+  - ato_officers.csv             (officer service record, cp1252)
+
+Run:  python3 ato_retention_analysis.py
+Deps: pandas, numpy, statsmodels, openpyxl
+"""
+import pandas as pd, numpy as np, warnings
+warnings.filterwarnings('ignore')
+import statsmodels.formula.api as smf
+import statsmodels.api as sm
+
+# ---------------------------------------------------------------- parameters
+COHORT_XLSX = 'Chapter_Review_Master.xlsx'
+COHORT_SHEET = 'Cohort0607-2'
+OFFICERS_CSV = 'ato_officers.csv'
+SNAP = pd.Timestamp('2026-06-05')          # data snapshot / censoring date
+ADMIN_MIN_CHAPTERS = 10                     # exit date shared by >= this many chapters = admin sweep
+CLOSURE_MIN_SIMULT = 8                      # >= this many simultaneous former-member exits = candidate closure
+CLOSURE_MAX_INIT_AFTER = 8                  # ... and < this many initiations afterward = real closure (went dormant)
+CLOSURE_WINDOW_DAYS = 60                    # remove former-members within +/- this many days of a closure date
+ERA_CUTS = [(2012,'2007-2012'),(2017,'2013-2017'),(2021,'2018-2021'),(9999,'2022+')]
+NEXUS = ['Carnegie-Mellon','Indiana State','Jacksonville State','Kansas State','Lander','Montana',
+         'Salisbury','Embry-Riddle','Iowa','Michigan','Nevada-Las Vegas','North Carolina State',
+         'Northern Arizona','San Diego','South Florida','Southern California','Syracuse',
+         'Tarleton State','Texas','UC-Davis','UCLA','Utah State']
+ROLECOL = 'Contact Group Role: Contact Group Role Name'
+
+def era_of(y):
+    for cut,lab in ERA_CUTS:
+        if y<=cut: return lab
+
+# ---------------------------------------------------------------- load
+def load():
+    c = pd.read_excel(COHORT_XLSX, sheet_name=COHORT_SHEET)
+    o = pd.read_csv(OFFICERS_CSV, encoding='cp1252', dtype=str)
+    for col in ['Initiation Date','Current Status Begin Date','Deceased Date']:
+        c[col] = pd.to_datetime(c[col], errors='coerce')
+    o['Begin Date'] = pd.to_datetime(o['Begin Date'], errors='coerce')
+    c = c[c['Initiation Date'].notna()].copy()                      # initiated members only
+    c['status'] = c['Undergraduate Chapter Status']
+    c['CH'] = c['Chapter of Graduation Name']
+    # active_until: settled members -> status-change date; still-active -> snapshot
+    c['active_until'] = pd.to_datetime(np.where(
+        c['status'].isin(['Alumnus','Former Member']), c['Current Status Begin Date'], SNAP))
+    return c, o
+
+# ---------------------------------------------------------------- cleaning flags
+def flag_contaminants(c):
+    fm = c[c['status']=='Former Member']
+    # (1) admin sweep dates: one exit date hitting many chapters at once
+    per_date = fm.groupby('Current Status Begin Date')['CH'].nunique()
+    admin_dates = set(per_date[per_date>=ADMIN_MIN_CHAPTERS].index)
+    c['admin_exit'] = (c['status']=='Former Member') & (c['Current Status Begin Date'].isin(admin_dates))
+    # (2) closures: chapter-specific mass exits after which the chapter stops initiating
+    fm2 = fm[~fm['Current Status Begin Date'].isin(admin_dates)]
+    cand = fm2.groupby(['CH','Current Status Begin Date']).size().rename('n').reset_index()
+    cand = cand[cand['n']>=CLOSURE_MIN_SIMULT]
+    cand['init_after'] = cand.apply(
+        lambda r: c[(c['CH']==r['CH']) & (c['Initiation Date']>r['Current Status Begin Date'])].shape[0], axis=1)
+    closures = cand[cand['init_after']<CLOSURE_MAX_INIT_AFTER]
+    c['closure_hit'] = False
+    close_map = {}
+    for _,r in closures.iterrows():
+        d = r['Current Status Begin Date']; close_map.setdefault(r['CH'],[]).append(d)
+        w = ((c['CH']==r['CH']) & (c['status']=='Former Member') &
+             (c['Current Status Begin Date'].between(d-pd.Timedelta(days=CLOSURE_WINDOW_DAYS),
+                                                     d+pd.Timedelta(days=CLOSURE_WINDOW_DAYS))))
+        c.loc[w,'closure_hit'] = True
+    # (3) nexus-era: initiated after the chapter's last detected closure (post-restart, pre-charter)
+    c['nexus_era'] = False
+    for ch in NEXUS:
+        dts = close_map.get(ch, [])
+        cutoff = max(dts) if dts else None
+        if cutoff is not None:
+            c.loc[(c['CH']==ch)&(c['Initiation Date']>cutoff),'nexus_era'] = True
+        else:
+            c.loc[c['CH']==ch,'nexus_era'] = True
+    return c, close_map
+
+# ---------------------------------------------------------------- chapter size at a date
+def size_engine(c):
+    grp = {ch:(g['Initiation Date'].values.astype('datetime64[ns]'),
+               g['active_until'].values.astype('datetime64[ns]'))
+           for ch,g in c.groupby('CH')}
+    def sizes_for(chs, dates):
+        out = np.full(len(chs), np.nan)
+        df = pd.DataFrame({'ch':chs.values,'D':pd.to_datetime(dates).values})
+        for ch,idx in df.groupby('ch').groups.items():
+            if ch not in grp: continue
+            inits,untils = grp[ch]
+            D = df.loc[idx,'D'].values.astype('datetime64[ns]')
+            cnt = ((inits[None,:]<=D[:,None]) & (untils[None,:]>D[:,None])).sum(axis=1)
+            out[[df.index.get_loc(i) for i in idx]] = cnt
+        return out
+    return sizes_for
+
+# ---------------------------------------------------------------- landmark builder
+def build_landmark(c, o, sizes_for, months):
+    """Members still active at initiation+months, settled (alumnus/former), with officer &
+    role status attained BY the landmark, chapter-size tier, and departure type."""
+    L = int(round(months*30.44))
+    d = c[~c['closure_hit'] & ~c['admin_exit'] & ~c['nexus_era']].copy()   # apply cleaning
+    d['landmark'] = d['Initiation Date'] + pd.to_timedelta(L, unit='D')
+    d = d[(d['landmark']<=SNAP) & (d['active_until']>d['landmark'])]        # survived to landmark
+    d = d[d['status'].isin(['Alumnus','Former Member'])].copy()            # settled outcome
+    d['alum'] = (d['status']=='Alumnus').astype(int)
+    # officer / role status attained by landmark
+    om = o.merge(d[['18 Character ID','landmark']], on='18 Character ID', how='inner')
+    om = om[om['Begin Date']<=om['landmark']]
+    d['officer'] = d['18 Character ID'].isin(set(om['18 Character ID'])).astype(int)
+    piv = om.assign(v=1).pivot_table(index='18 Character ID', columns=ROLECOL, values='v',
+                                     aggfunc='max', fill_value=0)
+    d = d.merge(piv, left_on='18 Character ID', right_index=True, how='left')
+    roles = list(piv.columns)
+    for r in roles: d[r] = d[r].fillna(0).astype(int)
+    fr = om.sort_values('Begin Date').groupby('18 Character ID').first()[['Begin Date']]
+    d = d.merge(fr, left_on='18 Character ID', right_index=True, how='left')
+    # covariates
+    d['era'] = pd.to_datetime(d['Initiation Date']).dt.year.map(era_of)
+    d['size_at_landmark'] = sizes_for(d['CH'], d['landmark'])
+    q = d['size_at_landmark'].quantile([.333,.667]).values
+    d['size_tier'] = pd.cut(d['size_at_landmark'], [-1,q[0],q[1],1e9], labels=['Small','Medium','Large'])
+    # departure type
+    def cls(r):
+        if pd.isna(r): return 'Unknown'
+        if r=='Resigned': return 'Resigned'
+        if str(r).startswith('Expelled'): return 'Expelled'
+        return 'Other'
+    d['leave_type'] = d['Status Reason'].apply(cls)
+    d.loc[d['status']=='Alumnus','leave_type'] = 'Alumnus'
+    return d, roles
+
+def safe(r): return r.replace(' ','_').replace('&','and').replace('-','_').replace('.','')
+
+# ---------------------------------------------------------------- analysis
+def run():
+    c, o = load()
+    c, close_map = flag_contaminants(c)
+    sizes_for = size_engine(c)
+    d12, roles = build_landmark(c, o, sizes_for, 12)
+    d24, _     = build_landmark(c, o, sizes_for, 24)
+
+    print('REMOVED  closure=%d  admin=%d  nexus_era=%d' % (
+        c['closure_hit'].sum(), c['admin_exit'].sum(), c['nexus_era'].sum()))
+    print('SAMPLE   12mo settled survivors n=%d' % len(d12))
+
+    # Q1 any-officer
+    r = d12.groupby('officer')['alum'].agg(['mean','count'])
+    m1a = smf.logit('alum ~ officer + C(era) + C(size_tier)', data=d12).fit(disp=0)
+    print('\nQ1 alumnus: nonoff=%.3f(n%d)  off=%.3f(n%d)  adjOR=%.2f p=%.4f' % (
+        r.loc[0,'mean'],r.loc[0,'count'],r.loc[1,'mean'],r.loc[1,'count'],
+        np.exp(m1a.params.officer), m1a.pvalues.officer))
+
+    # Q2 role gradient (24mo)
+    for r_ in roles: d24[safe(r_)] = d24[r_]
+    m2 = smf.logit('alum ~ '+' + '.join(safe(x) for x in roles)+' + C(era)', data=d24).fit(disp=0)
+    grad = sorted(((x, round(np.exp(m2.params[safe(x)]),2), round(m2.pvalues[safe(x)],4)) for x in roles),
+                  key=lambda t:-t[1])[:6]
+    print('\nQ2 role gradient (24mo, top): ', grad)
+
+    # Q3 size interaction (alumnus)
+    print('\nQ3 officer OR by size tier (alumnus):')
+    for t in ['Small','Medium','Large']:
+        s = d12[d12['size_tier']==t]; mm = smf.logit('alum ~ officer + C(era)', data=s).fit(disp=0)
+        print('   %-6s OR=%.2f p=%.4f' % (t, np.exp(mm.params.officer), mm.pvalues.officer))
+
+    # competing risks: multinomial
+    mn = d12[d12['leave_type'].isin(['Alumnus','Resigned','Expelled'])].copy()
+    mn['y'] = mn['leave_type'].map({'Alumnus':0,'Resigned':1,'Expelled':2})
+    X = sm.add_constant(pd.get_dummies(mn[['officer','era','size_tier']],
+                                       columns=['era','size_tier'], drop_first=True).astype(float))
+    mod = sm.MNLogit(mn['y'], X).fit(disp=0)
+    print('\nCompeting risk RRR (alumnus ref): resign=%.2f  expel=%.2f' % (
+        np.exp(mod.params[0]['officer']), np.exp(mod.params[1]['officer'])))
+
+    # resignation by role
+    sub = d12[d12['leave_type'].isin(['Alumnus','Resigned'])].copy()
+    sub['resign'] = (sub['leave_type']=='Resigned').astype(int)
+    for r_ in roles: sub[safe(r_)] = sub[r_]
+    mr = smf.logit('resign ~ '+' + '.join(safe(x) for x in roles)+' + C(era)', data=sub).fit(disp=0)
+    prot = sorted(((x, round(np.exp(mr.params[safe(x)]),2), round(mr.pvalues[safe(x)],4)) for x in roles),
+                  key=lambda t:t[1])[:5]
+    print('resignation protective roles (lowest OR):', prot)
+
+    # resignation officer x size
+    print('resignation officer OR by size tier:')
+    for t in ['Small','Medium','Large']:
+        s = sub[sub['size_tier']==t]; mm = smf.logit('resign ~ officer + C(era)', data=s).fit(disp=0)
+        print('   %-6s OR=%.2f p=%.4f' % (t, np.exp(mm.params.officer), mm.pvalues.officer))
+
+    # expulsion
+    ex = d12[d12['leave_type'].isin(['Alumnus','Expelled'])].copy()
+    ex['exp'] = (ex['leave_type']=='Expelled').astype(int)
+    me = smf.logit('exp ~ officer + C(era)', data=ex).fit(disp=0)
+    print('\nExpulsion officer OR=%.2f p=%.4f (n_expelled=%d)' % (
+        np.exp(me.params.officer), me.pvalues.officer, int(ex.exp.sum())))
+    return d12, d24
+
+if __name__ == '__main__':
+    run()
+
+</script>
 </body>
 </html>
