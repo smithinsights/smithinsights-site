@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Wikimedia lehnt Hotlinks ohne Referrer ab. Bitte stehen lassen. -->
+<meta name="referrer" content="no-referrer-when-downgrade">
 <title>B1+ German with History &amp; Culture &ndash; Vom Beginn der Bronzezeit bis zum Hellenismus</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -237,6 +239,61 @@ body{
   padding:6px 11px; border-radius:3px; background:var(--parch);
   border:1px solid var(--parch-d); color:#2c3a37}
 .strand.arch .chips li{background:var(--burg-l); border-color:#c6dfd8; color:var(--burg-d)}
+.strand.kunst .chips li{background:var(--gilt-l); border-color:#e8cdc2; color:var(--gilt)}
+
+/* ── Werke: Objekte, Bauten und Denker einer Epoche ── */
+.werke{display:grid; gap:14px; margin:0; padding:0; list-style:none;
+  align-items:start; grid-template-columns:repeat(auto-fill,minmax(285px,1fr))}
+.werk{display:flex; gap:12px; padding:11px 13px; border-radius:3px;
+  background:var(--parch); border:1px solid var(--parch-d);
+  border-left:3px solid var(--gilt)}
+.werk.denker{border-left-color:var(--burg)}
+.werk-bild{flex:none; width:76px}
+.werk-bild a{display:block; line-height:0}
+.werk-bild img{width:76px; height:100px; object-fit:cover; border-radius:2px;
+  background:var(--bone-d); border:1px solid var(--parch-d)}
+.werk-bild.fehlt{display:flex; align-items:center; justify-content:center;
+  height:100px; border:1px dashed var(--stone-l); border-radius:2px;
+  background:repeating-linear-gradient(45deg,var(--bone) 0 6px,var(--parch-d) 6px 12px)}
+.werk-bild.fehlt a{line-height:1.2; text-align:center; border-radius:2px;
+  font-family:var(--font-sans); font-size:.62rem; letter-spacing:.02em;
+  color:var(--burg-d); background:var(--bone); padding:4px 5px; text-decoration:none}
+.werk-bild.fehlt a:hover{color:var(--gilt)}
+.werk-txt{min-width:0}
+.werk-txt h4{font-family:var(--font-display); font-weight:400; font-size:1.04rem;
+  line-height:1.25; margin:0 0 2px; color:var(--burg-d)}
+.werk-dat{display:block; font-family:var(--font-mono); font-size:.72rem;
+  color:var(--stone); margin-bottom:6px}
+.werk-txt p{font-family:var(--font-sans); font-size:.82rem; line-height:1.48;
+  margin:0; color:#2c3a37}
+.quellen{font-family:var(--font-sans); font-size:.74rem; line-height:1.5;
+  color:var(--stone); margin:16px 0 0}
+.quellen a{color:var(--burg-d)}
+
+/* ── Säulenordnungen ── */
+.fig-scroll{overflow-x:auto; margin:6px 0 34px; padding-bottom:4px}
+.fig-inner{min-width:820px}
+.fig-inner svg{display:block; width:100%; height:auto}
+.aside{background:var(--bone); border-left:3px solid var(--gilt);
+  border-radius:0 3px 3px 0; padding:14px 18px; margin:0 0 34px;
+  font-size:.96rem; color:#2c3a37}
+.aside b{color:var(--burg-d)}
+.ord-grid{display:grid; gap:18px; margin:0 0 38px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.ord-card{background:var(--bone); border:1px solid var(--bone-d);
+  border-top:3px solid var(--gilt); border-radius:3px; padding:20px 22px 22px}
+.ord-card h3{font-family:var(--font-display); font-weight:400; font-size:1.35rem;
+  margin:0 0 3px; color:var(--burg-d); letter-spacing:.02em}
+.ord-wo{display:block; font-family:var(--font-sans); font-size:.76rem;
+  color:var(--gilt); margin-bottom:14px}
+.ord-list{margin:0; padding:0; list-style:none}
+.ord-list li{font-family:var(--font-sans); font-size:.86rem; line-height:1.5;
+  padding:0 0 0 16px; margin-bottom:8px; position:relative; color:#2c3a37}
+.ord-list li::before{content:''; position:absolute; left:0; top:.6em;
+  width:6px; height:6px; border-radius:50%; background:var(--burg); opacity:.55}
+.ord-list li:last-child{margin-bottom:0}
+.ord-card.spaet{border-top-color:var(--stone-l)}
+.ord-card.spaet .ord-wo{color:var(--stone)}
 
 .rail-zone{position:relative; height:46px; margin:6px 0 22px}
 .rail-zone.has-marks{height:158px}
@@ -423,6 +480,8 @@ footer a:hover{text-decoration:underline}
   .history-wrap{padding:28px 16px 56px}
   .detail{padding:20px 18px 24px}
   .tick-lab{width:160px}
+  .werke{grid-template-columns:1fr}
+  .ord-card{padding:16px 16px 18px}
 }
 @media (prefers-reduced-motion:reduce){ .seg{transition:none} }
 </style>
@@ -456,6 +515,7 @@ footer a:hover{text-decoration:underline}
   <button class="tab-btn active" id="tab-zeit"  role="tab" aria-controls="panel-zeit"  aria-selected="true"  data-tab="zeit"  data-panel="panel-zeit">🕰 Zeitleiste</button>
   <button class="tab-btn"        id="tab-karte" role="tab" aria-controls="panel-karte" aria-selected="false" data-tab="karte" data-panel="panel-karte">🗺 Karte</button>
   <button class="tab-btn"        id="tab-modal" role="tab" aria-controls="panel-modal" aria-selected="false" data-tab="modal" data-panel="panel-modal">🕮 Modalverben</button>
+  <button class="tab-btn"        id="tab-saeulen" role="tab" aria-controls="panel-saeulen" aria-selected="false" data-tab="saeulen" data-panel="panel-saeulen">&#127963; Säulenordnungen</button>
 </nav>
 
 <!-- ════════════════════════════════════════════
@@ -728,6 +788,350 @@ footer a:hover{text-decoration:underline}
 </div>
 
 <!-- ════════════════════════════════════════════
+     PANEL 4: SÄULENORDNUNGEN
+     ════════════════════════════════════════════ -->
+<div class="panel zone-history" id="panel-saeulen" role="tabpanel" aria-labelledby="tab-saeulen">
+  <div class="history-wrap">
+
+    <p class="eyebrow">Architektur</p>
+    <h2>Die drei Säulenordnungen</h2>
+    <p class="lede">Eine Ordnung ist ein ganzes Paket: Basis, Schaft, Kapitell und das Gebälk
+      darüber. In der Archaik entstehen die dorische und die ionische Ordnung, die korinthische
+      kommt erst im späten 5. Jh. v. Chr. dazu. Am sichersten erkennt man sie am Kapitell:
+      Kissen, Spirale oder Blatt.</p>
+
+    <div class="fig-scroll">
+      <div class="fig-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1560 900" role="img"
+             aria-label="Dorische, ionische und korinthische Säule im Vergleich">
+        <rect x="74.0" y="800.0" width="372.0" height="14.0" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="58.0" y="814.0" width="404.0" height="14.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="88.0" y="128.0" width="344.0" height="18.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="98.0" y="146.0" width="324.0" height="12.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="88.0" y="158.0" width="344.0" height="54.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="126.1" y="158.0" width="22" height="54" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1.4"/>
+        <line x1="133.1" y1="161.0" x2="133.1" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="137.1" y1="161.0" x2="137.1" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="141.1" y1="161.0" x2="141.1" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <rect x="175.3" y="158.0" width="22" height="54" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1.4"/>
+        <line x1="182.3" y1="161.0" x2="182.3" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="186.3" y1="161.0" x2="186.3" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="190.3" y1="161.0" x2="190.3" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <rect x="224.4" y="158.0" width="22" height="54" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1.4"/>
+        <line x1="231.4" y1="161.0" x2="231.4" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="235.4" y1="161.0" x2="235.4" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="239.4" y1="161.0" x2="239.4" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <rect x="273.6" y="158.0" width="22" height="54" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1.4"/>
+        <line x1="280.6" y1="161.0" x2="280.6" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="284.6" y1="161.0" x2="284.6" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="288.6" y1="161.0" x2="288.6" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <rect x="322.7" y="158.0" width="22" height="54" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1.4"/>
+        <line x1="329.7" y1="161.0" x2="329.7" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="333.7" y1="161.0" x2="333.7" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="337.7" y1="161.0" x2="337.7" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <rect x="371.9" y="158.0" width="22" height="54" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1.4"/>
+        <line x1="378.9" y1="161.0" x2="378.9" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="382.9" y1="161.0" x2="382.9" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <line x1="386.9" y1="161.0" x2="386.9" y2="209.0" stroke="var(--stone)" stroke-width="1.2"/>
+        <rect x="88.0" y="212.0" width="344.0" height="32.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="176.0" y="248.0" width="168.0" height="20.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 176.0 268.0 C 190.0 282.0 200.0 288.0 204.0 300.0 L 316.0 300.0 C 320.0 288.0 330.0 282.0 344.0 268.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <line x1="203.0" y1="294" x2="317.0" y2="294" stroke="var(--stone)" stroke-width="1" opacity="0.65"/>
+        <line x1="203.0" y1="289" x2="317.0" y2="289" stroke="var(--stone)" stroke-width="1" opacity="0.65"/>
+        <path d="M 190.0 800.0 L 204.0 300.0 L 316.0 300.0 L 330.0 800.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 282.4 800.0 L 277.9 300.0 L 316.0 300.0 L 330.0 800.0 Z" fill="var(--bone-d)" opacity="0.55" stroke="none"/>
+        <line x1="215.20" y1="300.0" x2="204.00" y2="800.0" stroke="var(--stone)" stroke-width="1.3" opacity="0.85"/>
+        <line x1="226.40" y1="300.0" x2="218.00" y2="800.0" stroke="var(--stone)" stroke-width="1.3" opacity="0.85"/>
+        <line x1="237.60" y1="300.0" x2="232.00" y2="800.0" stroke="var(--stone)" stroke-width="1.3" opacity="0.85"/>
+        <line x1="248.80" y1="300.0" x2="246.00" y2="800.0" stroke="var(--stone)" stroke-width="1.3" opacity="0.85"/>
+        <line x1="260.00" y1="300.0" x2="260.00" y2="800.0" stroke="var(--stone)" stroke-width="1.3" opacity="0.85"/>
+        <line x1="271.20" y1="300.0" x2="274.00" y2="800.0" stroke="var(--stone)" stroke-width="1.3" opacity="0.85"/>
+        <line x1="282.40" y1="300.0" x2="288.00" y2="800.0" stroke="var(--stone)" stroke-width="1.3" opacity="0.85"/>
+        <line x1="293.60" y1="300.0" x2="302.00" y2="800.0" stroke="var(--stone)" stroke-width="1.3" opacity="0.85"/>
+        <line x1="304.80" y1="300.0" x2="316.00" y2="800.0" stroke="var(--stone)" stroke-width="1.3" opacity="0.85"/>
+        <path d="M 190.0 800.0 L 204.0 300.0 L 316.0 300.0 L 330.0 800.0" fill="none" stroke="var(--stone)" stroke-width="2"/>
+        <text x="164" y="262" text-anchor="end" font-size="20.5" fill="var(--gilt)" font-weight="600">Abakus</text>
+        <path d="M 156 257 L 176 258" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="176" cy="258" r="2.6" fill="var(--gilt)"/>
+        <text x="164" y="296" text-anchor="end" font-size="20.5" fill="var(--gilt)" font-weight="600">Echinus</text>
+        <path d="M 156 291 L 204 288" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="204" cy="288" r="2.6" fill="var(--gilt)"/>
+        <text x="364" y="372" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">Triglyph</text>
+        <path d="M 372 367 L 383 190" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="383" cy="190" r="2.6" fill="var(--gilt)"/>
+        <text x="364" y="400" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">Metope</text>
+        <path d="M 372 395 L 358 206" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="358" cy="206" r="2.6" fill="var(--gilt)"/>
+        <text x="364" y="520" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">20 Kanneluren,</text>
+        <text x="364" y="540" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">scharfe Grate</text>
+        <path d="M 372 515 L 322 520" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="322" cy="520" r="2.6" fill="var(--gilt)"/>
+        <text x="164" y="762" text-anchor="end" font-size="20.5" fill="var(--gilt)" font-weight="600">keine Basis</text>
+        <path d="M 156 757 L 196 758" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="196" cy="758" r="2.6" fill="var(--gilt)"/>
+        <rect x="594.0" y="800.0" width="372.0" height="14.0" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="578.0" y="814.0" width="404.0" height="14.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="608.0" y="128.0" width="344.0" height="18.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="618.0" y="146.0" width="324.0" height="12.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="624.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="638.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="652.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="666.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="680.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="694.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="708.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="722.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="736.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="750.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="764.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="778.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="792.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="806.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="820.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="834.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="848.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="862.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="876.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="890.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="904.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="918.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="608.0" y="158.0" width="344.0" height="54.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 622 198 q 20 -26 40 0 q 20 -30 40 0 q 20 -26 40 0 q 20 -30 40 0 q 20 -26 40 0 q 20 -30 40 0 q 20 -26 40 0 q 20 -30 40 0" fill="none" stroke="var(--stone)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="608.0" y="212.0" width="344.0" height="32.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="706.0" y="250.0" width="148.0" height="12.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 710.0 262.0 L 850.0 262.0 L 850.0 296.0 Q 820.0 310.0 818.0 306.0 L 742.0 306.0 Q 740.0 310.0 710.0 296.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 756.00 284.00 L 755.71 281.45 L 755.13 278.98 L 754.28 276.60 L 753.15 274.35 L 751.78 272.26 L 750.19 270.36 L 748.40 268.67 L 746.43 267.21 L 744.32 265.99 L 742.10 265.04 L 739.80 264.36 L 737.45 263.95 L 735.09 263.83 L 732.74 263.98 L 730.44 264.39 L 728.22 265.07 L 726.12 266.00 L 724.14 267.16 L 722.33 268.53 L 720.71 270.10 L 719.29 271.83 L 718.09 273.70 L 717.12 275.68 L 716.40 277.75 L 715.92 279.87 L 715.70 282.02 L 715.73 284.16 L 716.01 286.27 L 716.54 288.32 L 717.29 290.27 L 718.25 292.11 L 719.42 293.81 L 720.77 295.35 L 722.27 296.72 L 723.91 297.88 L 725.67 298.84 L 727.50 299.58 L 729.40 300.10 L 731.33 300.39 L 733.26 300.45 L 735.17 300.29 L 737.03 299.91 L 738.82 299.31 L 740.52 298.52 L 742.09 297.54 L 743.53 296.40 L 744.81 295.11 L 745.92 293.69 L 746.85 292.16 L 747.59 290.55 L 748.13 288.87 L 748.47 287.17 L 748.60 285.45 L 748.53 283.74 L 748.26 282.07 L 747.81 280.45 L 747.17 278.92 L 746.37 277.49 L 745.41 276.17 L 744.32 274.98 L 743.11 273.95 L 741.79 273.07 L 740.40 272.36 L 738.95 271.82 L 737.46 271.46 L 735.96 271.28 L 734.46 271.27 L 732.98 271.44 L 731.56 271.78 L 730.19 272.28 L 728.91 272.93 L 727.73 273.72 L 726.66 274.63 L 725.72 275.64 L 724.91 276.75 L 724.24 277.93 L 723.73 279.17 L 723.37 280.44 L 723.16 281.73 L 723.11 283.02 L 723.21 284.29 L 723.45 285.53 L 723.83 286.71 L 724.35 287.82 L 724.98 288.86 L 725.72 289.79 L 726.55 290.63 L 727.47 291.34 L 728.44 291.94 L 729.47 292.41 L 730.53 292.75 L 731.61 292.97 L 732.69 293.05 L 733.76 293.00 L 734.79 292.83 L 735.79 292.54 L 736.73 292.14 L 737.60 291.64 L 738.39 291.06 L 739.09 290.39 L 739.71 289.65 L 740.22 288.87 L 740.62 288.04 L 740.92 287.18 L 741.11 286.31 L 741.20 285.44 L 741.18 284.58 L 741.06 283.75 L 740.85 282.95 L 740.54 282.19 L 740.16 281.50 L 739.71 280.86 L 739.19 280.30 L 738.62 279.81 L 738.01 279.41 L 737.37 279.09 L 736.71 278.85 L 736.04 278.70 L 735.38 278.63 L 734.73 278.64 L 734.09 278.73 L 733.49 278.90 L 732.93 279.12 L 732.42 279.41 L 731.95 279.75 L 731.55 280.14 L 731.20 280.56 L 730.92 281.00 L 730.70 281.46 L 730.55 281.94 L 730.46 282.41 L 730.43 282.87 L 730.46 283.32 L 730.54 283.75 L 730.67 284.15 L 730.85 284.51 L 731.06 284.84 L 731.31 285.12 L 731.58 285.36 L 731.86 285.55" fill="none" stroke="var(--stone)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M 804.00 284.00 L 804.29 281.45 L 804.87 278.98 L 805.72 276.60 L 806.85 274.35 L 808.22 272.26 L 809.81 270.36 L 811.60 268.67 L 813.57 267.21 L 815.68 265.99 L 817.90 265.04 L 820.20 264.36 L 822.55 263.95 L 824.91 263.83 L 827.26 263.98 L 829.56 264.39 L 831.78 265.07 L 833.88 266.00 L 835.86 267.16 L 837.67 268.53 L 839.29 270.10 L 840.71 271.83 L 841.91 273.70 L 842.88 275.68 L 843.60 277.75 L 844.08 279.87 L 844.30 282.02 L 844.27 284.16 L 843.99 286.27 L 843.46 288.32 L 842.71 290.27 L 841.75 292.11 L 840.58 293.81 L 839.23 295.35 L 837.73 296.72 L 836.09 297.88 L 834.33 298.84 L 832.50 299.58 L 830.60 300.10 L 828.67 300.39 L 826.74 300.45 L 824.83 300.29 L 822.97 299.91 L 821.18 299.31 L 819.48 298.52 L 817.91 297.54 L 816.47 296.40 L 815.19 295.11 L 814.08 293.69 L 813.15 292.16 L 812.41 290.55 L 811.87 288.87 L 811.53 287.17 L 811.40 285.45 L 811.47 283.74 L 811.74 282.07 L 812.19 280.45 L 812.83 278.92 L 813.63 277.49 L 814.59 276.17 L 815.68 274.98 L 816.89 273.95 L 818.21 273.07 L 819.60 272.36 L 821.05 271.82 L 822.54 271.46 L 824.04 271.28 L 825.54 271.27 L 827.02 271.44 L 828.44 271.78 L 829.81 272.28 L 831.09 272.93 L 832.27 273.72 L 833.34 274.63 L 834.28 275.64 L 835.09 276.75 L 835.76 277.93 L 836.27 279.17 L 836.63 280.44 L 836.84 281.73 L 836.89 283.02 L 836.79 284.29 L 836.55 285.53 L 836.17 286.71 L 835.65 287.82 L 835.02 288.86 L 834.28 289.79 L 833.45 290.63 L 832.53 291.34 L 831.56 291.94 L 830.53 292.41 L 829.47 292.75 L 828.39 292.97 L 827.31 293.05 L 826.24 293.00 L 825.21 292.83 L 824.21 292.54 L 823.27 292.14 L 822.40 291.64 L 821.61 291.06 L 820.91 290.39 L 820.29 289.65 L 819.78 288.87 L 819.38 288.04 L 819.08 287.18 L 818.89 286.31 L 818.80 285.44 L 818.82 284.58 L 818.94 283.75 L 819.15 282.95 L 819.46 282.19 L 819.84 281.50 L 820.29 280.86 L 820.81 280.30 L 821.38 279.81 L 821.99 279.41 L 822.63 279.09 L 823.29 278.85 L 823.96 278.70 L 824.62 278.63 L 825.27 278.64 L 825.91 278.73 L 826.51 278.90 L 827.07 279.12 L 827.58 279.41 L 828.05 279.75 L 828.45 280.14 L 828.80 280.56 L 829.08 281.00 L 829.30 281.46 L 829.45 281.94 L 829.54 282.41 L 829.57 282.87 L 829.54 283.32 L 829.46 283.75 L 829.33 284.15 L 829.15 284.51 L 828.94 284.84 L 828.69 285.12 L 828.42 285.36 L 828.14 285.55" fill="none" stroke="var(--stone)" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="764" cy="278" r="4.5" fill="none" stroke="var(--stone)" stroke-width="1.2" opacity="0.7"/>
+        <circle cx="780" cy="278" r="4.5" fill="none" stroke="var(--stone)" stroke-width="1.2" opacity="0.7"/>
+        <circle cx="796" cy="278" r="4.5" fill="none" stroke="var(--stone)" stroke-width="1.2" opacity="0.7"/>
+        <path d="M 733.0 760.0 L 742.0 306.0 L 818.0 306.0 L 827.0 760.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 795.0 760.0 L 792.2 306.0 L 818.0 306.0 L 827.0 760.0 Z" fill="var(--bone-d)" opacity="0.55" stroke="none"/>
+        <line x1="747.12" y1="306.0" x2="739.33" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="749.55" y1="306.0" x2="742.34" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="753.45" y1="306.0" x2="747.16" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="755.88" y1="306.0" x2="750.17" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="759.78" y1="306.0" x2="755.00" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="762.22" y1="306.0" x2="758.00" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="766.12" y1="306.0" x2="762.83" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="768.55" y1="306.0" x2="765.84" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="772.45" y1="306.0" x2="770.66" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="774.88" y1="306.0" x2="773.67" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="778.78" y1="306.0" x2="778.50" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="781.22" y1="306.0" x2="781.50" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="785.12" y1="306.0" x2="786.33" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="787.55" y1="306.0" x2="789.34" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="791.45" y1="306.0" x2="794.16" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="793.88" y1="306.0" x2="797.17" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="797.78" y1="306.0" x2="802.00" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="800.22" y1="306.0" x2="805.00" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="804.12" y1="306.0" x2="809.83" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="806.55" y1="306.0" x2="812.84" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="810.45" y1="306.0" x2="817.66" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="812.88" y1="306.0" x2="820.67" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <path d="M 733.0 760.0 L 742.0 306.0 L 818.0 306.0 L 827.0 760.0" fill="none" stroke="var(--stone)" stroke-width="2"/>
+        <rect x="736.8" y="760.0" width="86.5" height="10.0" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="742.4" y="770.0" width="75.2" height="10.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="733.0" y="780.0" width="94.0" height="11.0" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="726.4" y="791.0" width="107.2" height="9.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <text x="688" y="284" text-anchor="end" font-size="20.5" fill="var(--gilt)" font-weight="600">Voluten</text>
+        <path d="M 680 279 L 718 282" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="718" cy="282" r="2.6" fill="var(--gilt)"/>
+        <text x="884" y="372" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">Zahnschnitt</text>
+        <path d="M 892 367 L 908 150" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="908" cy="150" r="2.6" fill="var(--gilt)"/>
+        <text x="884" y="400" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">durchlaufender</text>
+        <text x="884" y="420" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">Fries</text>
+        <path d="M 892 395 L 890 188" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="890" cy="188" r="2.6" fill="var(--gilt)"/>
+        <text x="884" y="520" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">24 Kanneluren</text>
+        <text x="884" y="540" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">mit Stegen</text>
+        <path d="M 892 515 L 824 520" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="824" cy="520" r="2.6" fill="var(--gilt)"/>
+        <text x="688" y="784" text-anchor="end" font-size="20.5" fill="var(--gilt)" font-weight="600">attische Basis</text>
+        <path d="M 680 779 L 724 780" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="724" cy="780" r="2.6" fill="var(--gilt)"/>
+        <rect x="1114.0" y="800.0" width="372.0" height="14.0" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="1098.0" y="814.0" width="404.0" height="14.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="1128.0" y="128.0" width="344.0" height="18.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="1138.0" y="146.0" width="324.0" height="12.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="1144.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1158.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1172.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1186.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1200.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1214.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1228.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1242.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1256.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1270.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1284.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1298.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1312.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1326.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1340.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1354.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1368.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1382.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1396.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1410.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1424.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1438.0" y="147.0" width="8" height="10" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1148.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1174.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1200.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1226.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1252.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1278.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1304.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1330.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1356.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1382.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1408.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <path d="M 1434.0 132.0 q 10 4 10 12 l -10 0 Z" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="1"/>
+        <rect x="1128.0" y="158.0" width="344.0" height="54.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 1142 198 q 20 -26 40 0 q 20 -30 40 0 q 20 -26 40 0 q 20 -30 40 0 q 20 -26 40 0 q 20 -30 40 0 q 20 -26 40 0 q 20 -30 40 0" fill="none" stroke="var(--stone)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="1128.0" y="212.0" width="344.0" height="32.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 1262.0 340.0 C 1254.0 306.0 1244.0 280.0 1238.0 264.0 L 1362.0 264.0 C 1356.0 280.0 1346.0 306.0 1338.0 340.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 1253.0 338.0 C 1252.3 320.0 1261.2 306.0 1270.0 298.0 C 1278.8 306.0 1287.7 320.0 1287.0 338.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="1.6" opacity="1.0"/>
+        <line x1="1270.0" y1="336.0" x2="1270.0" y2="304.0" stroke="var(--stone)" stroke-width="1" opacity="0.6"/>
+        <path d="M 1283.0 338.0 C 1282.3 320.0 1291.2 306.0 1300.0 298.0 C 1308.8 306.0 1317.7 320.0 1317.0 338.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="1.6" opacity="1.0"/>
+        <line x1="1300.0" y1="336.0" x2="1300.0" y2="304.0" stroke="var(--stone)" stroke-width="1" opacity="0.6"/>
+        <path d="M 1313.0 338.0 C 1312.3 320.0 1321.2 306.0 1330.0 298.0 C 1338.8 306.0 1347.7 320.0 1347.0 338.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="1.6" opacity="1.0"/>
+        <line x1="1330.0" y1="336.0" x2="1330.0" y2="304.0" stroke="var(--stone)" stroke-width="1" opacity="0.6"/>
+        <path d="M 1241.0 306.0 C 1240.4 288.9 1248.2 275.6 1256.0 268.0 C 1263.8 275.6 1271.6 288.9 1271.0 306.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="1.6" opacity="1.0"/>
+        <line x1="1256.0" y1="304.0" x2="1256.0" y2="273.7" stroke="var(--stone)" stroke-width="1" opacity="0.6"/>
+        <path d="M 1270.0 306.0 C 1269.4 288.9 1277.2 275.6 1285.0 268.0 C 1292.8 275.6 1300.6 288.9 1300.0 306.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="1.6" opacity="1.0"/>
+        <line x1="1285.0" y1="304.0" x2="1285.0" y2="273.7" stroke="var(--stone)" stroke-width="1" opacity="0.6"/>
+        <path d="M 1300.0 306.0 C 1299.4 288.9 1307.2 275.6 1315.0 268.0 C 1322.8 275.6 1330.6 288.9 1330.0 306.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="1.6" opacity="1.0"/>
+        <line x1="1315.0" y1="304.0" x2="1315.0" y2="273.7" stroke="var(--stone)" stroke-width="1" opacity="0.6"/>
+        <path d="M 1329.0 306.0 C 1328.4 288.9 1336.2 275.6 1344.0 268.0 C 1351.8 275.6 1359.6 288.9 1359.0 306.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="1.6" opacity="1.0"/>
+        <line x1="1344.0" y1="304.0" x2="1344.0" y2="273.7" stroke="var(--stone)" stroke-width="1" opacity="0.6"/>
+        <path d="M 1267.00 282.00 L 1266.83 280.53 L 1266.52 279.09 L 1266.08 277.70 L 1265.50 276.37 L 1264.79 275.12 L 1263.97 273.94 L 1263.05 272.86 L 1262.03 271.88 L 1260.92 271.02 L 1259.74 270.27 L 1258.51 269.65 L 1257.22 269.15 L 1255.90 268.79 L 1254.56 268.56 L 1253.22 268.47 L 1251.88 268.51 L 1250.56 268.68 L 1249.27 268.98 L 1248.03 269.40 L 1246.85 269.94 L 1245.73 270.59 L 1244.69 271.34 L 1243.73 272.19 L 1242.87 273.12 L 1242.12 274.12 L 1241.47 275.18 L 1240.93 276.30 L 1240.51 277.45 L 1240.21 278.63 L 1240.02 279.83 L 1239.96 281.03 L 1240.02 282.22 L 1240.19 283.38 L 1240.48 284.52 L 1240.87 285.62 L 1241.37 286.66 L 1241.96 287.64 L 1242.64 288.54 L 1243.41 289.37 L 1244.24 290.12 L 1245.14 290.77 L 1246.08 291.32 L 1247.07 291.77 L 1248.10 292.12 L 1249.14 292.37 L 1250.19 292.51 L 1251.24 292.54 L 1252.28 292.47 L 1253.30 292.30 L 1254.29 292.03 L 1255.24 291.66 L 1256.13 291.21 L 1256.98 290.68 L 1257.75 290.07 L 1258.46 289.39 L 1259.09 288.65 L 1259.63 287.87 L 1260.09 287.03 L 1260.47 286.17 L 1260.75 285.28 L 1260.94 284.38 L 1261.04 283.47 L 1261.04 282.57 L 1260.96 281.68 L 1260.79 280.81 L 1260.54 279.97 L 1260.21 279.17 L 1259.80 278.41 L 1259.33 277.71 L 1258.80 277.06 L 1258.21 276.48 L 1257.57 275.96 L 1256.89 275.52 L 1256.18 275.15 L 1255.44 274.86 L 1254.69 274.64 L 1253.92 274.50 L 1253.16 274.44 L 1252.41 274.46 L 1251.67 274.55 L 1250.95 274.71 L 1250.26 274.94 L 1249.60 275.24 L 1248.99 275.59 L 1248.42 276.00 L 1247.90 276.46 L 1247.44 276.96 L 1247.03 277.50 L 1246.69 278.07 L 1246.41 278.66 L 1246.19 279.27 L 1246.04 279.88 L 1245.95 280.50 L 1245.93 281.12 L 1245.96 281.73 L 1246.06 282.32 L 1246.21 282.89 L 1246.42 283.43 L 1246.68 283.94 L 1246.98 284.42 L 1247.32 284.85 L 1247.70 285.24 L 1248.11 285.59 L 1248.55 285.88 L 1249.00 286.13 L 1249.47 286.32 L 1249.95 286.46 L 1250.43 286.55 L 1250.91 286.59 L 1251.38 286.59 L 1251.84 286.53 L 1252.28 286.43 L 1252.70 286.29 L 1253.09 286.11 L 1253.46 285.89 L 1253.80 285.64 L 1254.10 285.37 L 1254.36 285.07 L 1254.59 284.76 L 1254.78 284.42 L 1254.92 284.08 L 1255.03 283.74 L 1255.10 283.39 L 1255.14 283.05 L 1255.13 282.72 L 1255.10 282.39 L 1255.02 282.08 L 1254.92 281.79 L 1254.80 281.52 L 1254.64 281.27 L 1254.47 281.05 L 1254.28 280.85 L 1254.08 280.68 L 1253.86 280.54 L 1253.64 280.43 L 1253.42 280.35 L 1253.19 280.29 L 1252.97 280.27 L 1252.76 280.26 L 1252.56 280.29" fill="none" stroke="var(--stone)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M 1333.00 282.00 L 1333.17 280.53 L 1333.48 279.09 L 1333.92 277.70 L 1334.50 276.37 L 1335.21 275.12 L 1336.03 273.94 L 1336.95 272.86 L 1337.97 271.88 L 1339.08 271.02 L 1340.26 270.27 L 1341.49 269.65 L 1342.78 269.15 L 1344.10 268.79 L 1345.44 268.56 L 1346.78 268.47 L 1348.12 268.51 L 1349.44 268.68 L 1350.73 268.98 L 1351.97 269.40 L 1353.15 269.94 L 1354.27 270.59 L 1355.31 271.34 L 1356.27 272.19 L 1357.13 273.12 L 1357.88 274.12 L 1358.53 275.18 L 1359.07 276.30 L 1359.49 277.45 L 1359.79 278.63 L 1359.98 279.83 L 1360.04 281.03 L 1359.98 282.22 L 1359.81 283.38 L 1359.52 284.52 L 1359.13 285.62 L 1358.63 286.66 L 1358.04 287.64 L 1357.36 288.54 L 1356.59 289.37 L 1355.76 290.12 L 1354.86 290.77 L 1353.92 291.32 L 1352.93 291.77 L 1351.90 292.12 L 1350.86 292.37 L 1349.81 292.51 L 1348.76 292.54 L 1347.72 292.47 L 1346.70 292.30 L 1345.71 292.03 L 1344.76 291.66 L 1343.87 291.21 L 1343.02 290.68 L 1342.25 290.07 L 1341.54 289.39 L 1340.91 288.65 L 1340.37 287.87 L 1339.91 287.03 L 1339.53 286.17 L 1339.25 285.28 L 1339.06 284.38 L 1338.96 283.47 L 1338.96 282.57 L 1339.04 281.68 L 1339.21 280.81 L 1339.46 279.97 L 1339.79 279.17 L 1340.20 278.41 L 1340.67 277.71 L 1341.20 277.06 L 1341.79 276.48 L 1342.43 275.96 L 1343.11 275.52 L 1343.82 275.15 L 1344.56 274.86 L 1345.31 274.64 L 1346.08 274.50 L 1346.84 274.44 L 1347.59 274.46 L 1348.33 274.55 L 1349.05 274.71 L 1349.74 274.94 L 1350.40 275.24 L 1351.01 275.59 L 1351.58 276.00 L 1352.10 276.46 L 1352.56 276.96 L 1352.97 277.50 L 1353.31 278.07 L 1353.59 278.66 L 1353.81 279.27 L 1353.96 279.88 L 1354.05 280.50 L 1354.07 281.12 L 1354.04 281.73 L 1353.94 282.32 L 1353.79 282.89 L 1353.58 283.43 L 1353.32 283.94 L 1353.02 284.42 L 1352.68 284.85 L 1352.30 285.24 L 1351.89 285.59 L 1351.45 285.88 L 1351.00 286.13 L 1350.53 286.32 L 1350.05 286.46 L 1349.57 286.55 L 1349.09 286.59 L 1348.62 286.59 L 1348.16 286.53 L 1347.72 286.43 L 1347.30 286.29 L 1346.91 286.11 L 1346.54 285.89 L 1346.20 285.64 L 1345.90 285.37 L 1345.64 285.07 L 1345.41 284.76 L 1345.22 284.42 L 1345.08 284.08 L 1344.97 283.74 L 1344.90 283.39 L 1344.86 283.05 L 1344.87 282.72 L 1344.90 282.39 L 1344.98 282.08 L 1345.08 281.79 L 1345.20 281.52 L 1345.36 281.27 L 1345.53 281.05 L 1345.72 280.85 L 1345.92 280.68 L 1346.14 280.54 L 1346.36 280.43 L 1346.58 280.35 L 1346.81 280.29 L 1347.03 280.27 L 1347.24 280.26 L 1347.44 280.29" fill="none" stroke="var(--stone)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M 1224.0 248.0 L 1376.0 248.0 L 1362.0 264.0 Q 1300.0 256.0 1238.0 264.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 1253.0 760.0 L 1262.0 340.0 L 1338.0 340.0 L 1347.0 760.0 Z" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <path d="M 1315.0 760.0 L 1312.2 340.0 L 1338.0 340.0 L 1347.0 760.0 Z" fill="var(--bone-d)" opacity="0.55" stroke="none"/>
+        <line x1="1267.12" y1="340.0" x2="1259.33" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1269.55" y1="340.0" x2="1262.34" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1273.45" y1="340.0" x2="1267.16" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1275.88" y1="340.0" x2="1270.17" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1279.78" y1="340.0" x2="1275.00" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1282.22" y1="340.0" x2="1278.00" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1286.12" y1="340.0" x2="1282.83" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1288.55" y1="340.0" x2="1285.84" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1292.45" y1="340.0" x2="1290.66" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1294.88" y1="340.0" x2="1293.67" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1298.78" y1="340.0" x2="1298.50" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1301.22" y1="340.0" x2="1301.50" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1305.12" y1="340.0" x2="1306.33" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1307.55" y1="340.0" x2="1309.34" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1311.45" y1="340.0" x2="1314.16" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1313.88" y1="340.0" x2="1317.17" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1317.78" y1="340.0" x2="1322.00" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1320.22" y1="340.0" x2="1325.00" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1324.12" y1="340.0" x2="1329.83" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1326.55" y1="340.0" x2="1332.84" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1330.45" y1="340.0" x2="1337.66" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <line x1="1332.88" y1="340.0" x2="1340.67" y2="760.0" stroke="var(--stone)" stroke-width="1.1" opacity="0.75"/>
+        <path d="M 1253.0 760.0 L 1262.0 340.0 L 1338.0 340.0 L 1347.0 760.0" fill="none" stroke="var(--stone)" stroke-width="2"/>
+        <rect x="1256.8" y="760.0" width="86.5" height="10.0" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="1262.4" y="770.0" width="75.2" height="10.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="1253.0" y="780.0" width="94.0" height="11.0" fill="var(--bone-d)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <rect x="1246.4" y="791.0" width="107.2" height="9.0" fill="var(--bone)" stroke="var(--stone)" stroke-width="2.0" stroke-linejoin="round"/>
+        <text x="1200" y="400" text-anchor="end" font-size="20.5" fill="var(--gilt)" font-weight="600">Akanthusblätter</text>
+        <path d="M 1192 395 L 1254 330" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="1254" cy="330" r="2.6" fill="var(--gilt)"/>
+        <text x="1404" y="300" text-anchor="start" font-size="20.5" fill="var(--gilt)" font-weight="600">Eckvoluten</text>
+        <path d="M 1412 295 L 1358 280" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="1358" cy="280" r="2.6" fill="var(--gilt)"/>
+        <text x="1200" y="520" text-anchor="end" font-size="20.5" fill="var(--gilt)" font-weight="600">Schaft und Basis</text>
+        <text x="1200" y="540" text-anchor="end" font-size="20.5" fill="var(--gilt)" font-weight="600">wie ionisch</text>
+        <path d="M 1192 515 L 1256 520" stroke="var(--gilt)" stroke-width="1.2" fill="none" opacity="0.7"/>
+        <circle cx="1256" cy="520" r="2.6" fill="var(--gilt)"/>
+        <text x="260" y="876" text-anchor="middle" font-size="31" font-weight="700" fill="var(--ink)" letter-spacing="2">DORISCH</text>
+        <text x="780" y="876" text-anchor="middle" font-size="31" font-weight="700" fill="var(--ink)" letter-spacing="2">IONISCH</text>
+        <text x="1300" y="876" text-anchor="middle" font-size="31" font-weight="700" fill="var(--ink)" letter-spacing="2">KORINTHISCH</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="ord-grid">
+      <div class="ord-card">
+        <h3>DORISCH</h3>
+        <span class="ord-wo">Festland, Peloponnes, Westkolonien</span>
+        <ul class="ord-list">
+          <li>keine Basis, die Säule steht direkt auf dem Stylobat</li>
+          <li>schwerer Schaft mit 20 Kanneluren, die in scharfen Graten zusammenstoßen</li>
+          <li>Kapitell: rundes Polster (Echinus) unter einer quadratischen Platte (Abakus)</li>
+          <li>Fries aus Triglyphen und Metopen, der Schmuck sitzt in den Metopen</li>
+          <li>Heratempel in Olympia, Paestum, Parthenon</li>
+        </ul>
+      </div>
+      <div class="ord-card">
+        <h3>IONISCH</h3>
+        <span class="ord-wo">Kleinasien und die Inseln</span>
+        <ul class="ord-list">
+          <li>profilierte Basis, die sogenannte attische Basis</li>
+          <li>schlanker Schaft mit 24 tieferen Kanneluren, dazwischen schmale Stege</li>
+          <li>Kapitell: zwei Spiralvoluten, das sicherste Kennzeichen</li>
+          <li>durchlaufender Fries ohne Triglyphen, oft mit Zahnschnitt</li>
+          <li>Heraion von Samos, Artemision von Ephesos, Erechtheion</li>
+        </ul>
+      </div>
+      <div class="ord-card spaet">
+        <h3>KORINTHISCH</h3>
+        <span class="ord-wo">erst spätes 5. Jh. v. Chr., nicht archaisch</span>
+        <ul class="ord-list">
+          <li>Basis und Schaft wie in der ionischen Ordnung</li>
+          <li>Kapitell: hoher Kelch mit zwei Reihen Akanthusblättern</li>
+          <li>kleine Voluten an den Ecken</li>
+          <li>zuerst in Innenräumen, später der Standard der Römer</li>
+          <li>Bassae um 430 v. Chr., Olympieion in Athen</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="aside">Wer den Begriff eng auf die Archaik bezieht, nennt als dritte Form
+      manchmal nicht die korinthische, sondern die <b>äolische Ordnung</b> aus dem
+      nordwestlichen Kleinasien. Ihr Kapitell lässt zwei Voluten wie Pflanzenstängel aus dem
+      Schaft wachsen. Sie setzt sich nicht durch und verschwindet wieder.</p>
+
+    <p class="eyebrow">Wortschatz</p>
+    <h2>Die Teile der Säule</h2>
+
+    <div class="tbl-scroll">
+    <table class="mv">
+      <thead><tr><th>Wort</th><th>Erklärung</th><th>English</th></tr></thead>
+      <tbody>
+        <tr><td><em>das Gebälk</em></td><td>alles, was über den Säulen liegt</td><td class="form">entablature</td></tr>
+        <tr><td><em>der Architrav</em></td><td>der untere Balken des Gebälks</td><td class="form">architrave</td></tr>
+        <tr><td><em>der Fries</em></td><td>das mittlere Band des Gebälks</td><td class="form">frieze</td></tr>
+        <tr><td><em>der Triglyph</em></td><td>das dreigeteilte Feld im dorischen Fries</td><td class="form">triglyph</td></tr>
+        <tr><td><em>die Metope</em></td><td>das glatte Feld zwischen zwei Triglyphen, oft mit Relief</td><td class="form">metope</td></tr>
+        <tr><td><em>der Zahnschnitt</em></td><td>die Reihe kleiner Blöcke unter dem Dach der ionischen Ordnung</td><td class="form">dentils</td></tr>
+        <tr><td><em>das Kapitell</em></td><td>der obere Abschluss der Säule</td><td class="form">capital</td></tr>
+        <tr><td><em>der Abakus</em></td><td>die quadratische Deckplatte des Kapitells</td><td class="form">abacus</td></tr>
+        <tr><td><em>der Echinus</em></td><td>das runde Polster unter dem Abakus</td><td class="form">echinus</td></tr>
+        <tr><td><em>die Volute</em></td><td>die Spirale des ionischen Kapitells</td><td class="form">volute</td></tr>
+        <tr><td><em>das Akanthusblatt</em></td><td>das Blatt am korinthischen Kapitell</td><td class="form">acanthus leaf</td></tr>
+        <tr><td><em>der Schaft</em></td><td>der Körper der Säule</td><td class="form">shaft</td></tr>
+        <tr><td><em>die Kannelur</em></td><td>die senkrechte Rille im Schaft</td><td class="form">flute</td></tr>
+        <tr><td><em>der Grat</em></td><td>die scharfe Kante zwischen zwei dorischen Kanneluren</td><td class="form">arris</td></tr>
+        <tr><td><em>der Steg</em></td><td>der schmale Streifen zwischen zwei ionischen Kanneluren</td><td class="form">fillet</td></tr>
+        <tr><td><em>die Basis</em></td><td>der Fuß der Säule</td><td class="form">base</td></tr>
+        <tr><td><em>der Stylobat</em></td><td>die oberste Stufe, auf der die Säulen stehen</td><td class="form">stylobate</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p class="hint">Faustregel: Kissen ist dorisch, Spirale ist ionisch, Blatt ist korinthisch.
+      Basis, Kannelur und Fries bestätigen nur.</p>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
      FOOTER
      ════════════════════════════════════════════ -->
 <footer>
@@ -795,6 +1199,8 @@ const ERAS = [
  {n:4, name:'Dunkles Zeitalter', short:'Dunkle Zeit', from:1100, to:800, color:'#1E6F63',
   hist:['Nur wenige schriftliche Quellen sind erhalten','Für Archäologen ist die Epoche keineswegs dunkel'],
   arch:['Protogeometrische Phase','Geometrische Phase','Eisen ersetzt nach und nach die Bronze'],
+  werke:[
+           {t:'Geometrischer Stil', d:'ca. 900 bis 700 v. Chr.', n:'Typisch sind Mäander, geometrische Muster und stilisierte Figuren. Ab dem 8. Jh. erscheinen zunehmend Menschen, Tiere und mythologische Szenen. Der Stil entsteht im griechischen „Dunklen Zeitalter“ und entwickelt sich zum Vorläufer der archaischen Kunst.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Dipylon_Amphora.jpg/260px-Dipylon_Amphora.jpg', f:'https://commons.wikimedia.org/wiki/File:Dipylon_Amphora.jpg', q:'Dipylon amphora geometric style'}],
   points:[{year:800, approx:true, label:'Das Alphabet kommt von den Phöniziern',
            note:'Ilias und Odyssee werden Homer zugeschrieben. Es entsteht der Panhellenismus.'}]},
 
@@ -804,7 +1210,18 @@ const ERAS = [
         'In Athen entwickelt sich schrittweise die Demokratie'],
   arch:['Kolonien im Mittelmeerraum und am Schwarzen Meer',
         'Die Siedlungen fördern Handel, Kultur und den Austausch von Wissen'],
-  points:[]},
+  werke:[
+           {t:'Schwarzfigurige Vasenmalerei', d:'7. bis 5. Jh. v. Chr.', n:'Bedeutender Stil der griechischen Vasenmalerei, zunächst vor allem in Korinth, später in Athen. Schwarze Figuren werden auf den roten Tongrund gemalt, Details anschließend eingeritzt und teils weiß oder rot ergänzt. Die Verbreitung reicht weit über Griechenland hinaus, besonders nach Italien und zu den Etruskern.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Exekias_Dionysos_Staatliche_Antikensammlungen_2044.jpg/260px-Exekias_Dionysos_Staatliche_Antikensammlungen_2044.jpg', f:'https://commons.wikimedia.org/wiki/File:Exekias_Dionysos_Staatliche_Antikensammlungen_2044.jpg', q:'black figure pottery Exekias'},
+           {t:'Rotfigurige Vasenmalerei', d:'ab ca. 530 v. Chr.', n:'In Athen wird das Verfahren umgekehrt: Der Hintergrund wird mit Glanzton ausgefüllt, die Figuren bleiben in der Farbe des Tons. Die Binnenzeichnung wird jetzt mit dem Pinsel gemalt und nicht mehr mit dem Griffel geritzt.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Euphronios_krater_side_A_MET_L.2006.10.jpg/260px-Euphronios_krater_side_A_MET_L.2006.10.jpg', f:'https://commons.wikimedia.org/wiki/File:Euphronios_krater_side_A_MET_L.2006.10.jpg', q:'red figure krater Euphronios'},
+         {t:'Schwarzfigurig oder rotfigurig', d:'der Unterschied liegt im Werkzeug', n:'Der Griffel schneidet und liefert harte, gleichmäßige Umrisse. Der Pinsel erlaubt fließende Linien und damit Verkürzung, Dreiviertelansichten, überschnittene Körper und fallende Gewänder. Zwischen 530 und 480 v. Chr. entstehen bilingue Vasen, die beide Techniken auf einem Gefäß zeigen.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Bilingual_amphora_Andokides_Painter_Munich_2301.jpg/260px-Bilingual_amphora_Andokides_Painter_Munich_2301.jpg', f:'https://commons.wikimedia.org/wiki/File:Bilingual_amphora_Andokides_Painter_Munich_2301.jpg', q:'bilingual amphora Andokides Painter'},
+         {t:'Kleobis und Biton', d:'Delphi, Archäologisches Museum, Marmor', n:'Statuen des Kleobis und Biton, Weihegeschenk der Argiver in Delphi.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Delphi_Kleobis_and_Biton.jpg/260px-Delphi_Kleobis_and_Biton.jpg', f:'https://commons.wikimedia.org/wiki/File:Delphi_Kleobis_and_Biton.jpg', q:'Kleobis Biton Delphi kouros'},
+           {t:'Vix-Krater', d:'um 500 v. Chr.', n:'Ein importiertes griechisches Bronzegefäß zum Mischen von Wein, gefunden im Hallstatt- und La-Tène-Grab der „Fürstin von Vix“ in Burgund.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Vix_Krater_01.jpg/260px-Vix_Krater_01.jpg', f:'https://commons.wikimedia.org/wiki/File:Vix_Krater_01.jpg', q:'Vix krater bronze'},
+           {t:'Münzprägung in Lydien', d:'um 650 v. Chr.', n:'Zunächst gibt es keine Münzen, Werte werden in Vieh oder Metall bemessen. Um 650 v. Chr. beginnt die Münzprägung in Lydien und verbreitet sich rasch in Griechenland.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Lydian_Lion_Trite.jpg/260px-Lydian_Lion_Trite.jpg', f:'https://commons.wikimedia.org/wiki/File:Lydian_Lion_Trite.jpg', q:'Lydian lion electrum coin'},
+           {t:'Hera-Tempel I in Paestum', d:'um 550 bis 525 v. Chr.', n:'Einer der ältesten erhaltenen griechischen Tempel Italiens, im dorischen Stil erbaut und Basilika genannt. Paestum hieß ursprünglich Poseidonia und wurde von griechischen Siedlern aus Sybaris gegründet.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Paestum_BW_2013-05-17_15-01-33.jpg/260px-Paestum_BW_2013-05-17_15-01-33.jpg', f:'https://commons.wikimedia.org/wiki/File:Paestum_BW_2013-05-17_15-01-33.jpg', q:'Paestum Basilica temple Hera'}],
+  points:[{year:650, approx:true, label:'Münzprägung in Lydien',
+           note:'Davor werden Werte in Vieh oder Metall bemessen'},
+          {year:550, approx:true, label:'Hera-Tempel I in Paestum',
+           note:'Dorischer Stil, um 550 bis 525 v. Chr.'}]},
 
  {n:6, name:'Klassische Zeit', short:'Klassik', from:480, to:323, color:'#4E8A7C',
   hist:['Unter Perikles erlebt Athen eine kulturelle Blüte','Phidias schafft berühmte Werke',
@@ -813,6 +1230,18 @@ const ERAS = [
   arch:['Parthenon und Erechtheion auf der Akropolis','Athener Agora und Bouleuterion',
         'Mehr als 1200 Ostraka zeigen das Scherbengericht','Wasseruhren, Losmaschinen und Inschriften',
         'Delphi: eingestürzte Mauern und verstreute Steinblöcke'],
+  werke:[
+           {t:'Lekythos, Abschied am Grab', d:'um 450 v. Chr.', n:'Vasenmalerei der Hochklassik.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Lekythos_Achilles_Painter.jpg/260px-Lekythos_Achilles_Painter.jpg', f:'https://commons.wikimedia.org/wiki/File:Lekythos_Achilles_Painter.jpg', q:'white ground lekythos grave'},
+           {t:'Attisch rotfiguriger Glockenkrater', d:'um 330 v. Chr.', n:'Hase und Weinranken auf einem Glockenkrater der Laurel Spray Gruppe.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Bell_krater_Laurel_Spray_Group.jpg/260px-Bell_krater_Laurel_Spray_Group.jpg', f:'https://commons.wikimedia.org/wiki/File:Bell_krater_Laurel_Spray_Group.jpg', q:'red figure bell krater 4th century'},
+           {t:'Apollonstatue Typus Kassel', d:'Louvre, Paris', n:'Eine der bekanntesten Apollondarstellungen der Klassik.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Apollo_Kassel_Louvre_Ma10.jpg/260px-Apollo_Kassel_Louvre_Ma10.jpg', f:'https://commons.wikimedia.org/wiki/File:Apollo_Kassel_Louvre_Ma10.jpg', q:'Apollo Kassel type Louvre'},
+           {t:'Tempel des Poseidon am Kap Sounion', d:'5. Jh. v. Chr.', n:'Dorischer Tempel über dem Meer an der Südspitze Attikas.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Temple_of_Poseidon_Sounion.jpg/260px-Temple_of_Poseidon_Sounion.jpg', f:'https://commons.wikimedia.org/wiki/File:Temple_of_Poseidon_Sounion.jpg', q:'Temple of Poseidon Sounion'},
+           {t:'Parthenon auf der Akropolis', d:'5. Jh. v. Chr.', n:'Der Haupttempel der Athena auf der Athener Akropolis, errichtet unter Perikles.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/The_Parthenon_in_Athens.jpg/260px-The_Parthenon_in_Athens.jpg', f:'https://commons.wikimedia.org/wiki/File:The_Parthenon_in_Athens.jpg', q:'Parthenon Acropolis Athens'},
+           {t:'Korenhalle des Erechtheion', d:'5. Jh. v. Chr.', n:'Die Halle der Koren auf der Akropolis, deren Gebälk von sechs Mädchenfiguren getragen wird.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Erechtheion_Caryatids.jpg/260px-Erechtheion_Caryatids.jpg', f:'https://commons.wikimedia.org/wiki/File:Erechtheion_Caryatids.jpg', q:'Erechtheion caryatids porch'},
+           {t:'Delphi, Tempel des Apollo', d:'4. Jh. v. Chr.', n:'Eines der bedeutendsten Heiligtümer der griechischen Welt, dem Gott Apollo gewidmet. Hier wirkte die Pythia, das berühmte Orakel von Delphi, und verkündete angeblich die Weissagungen des Apollo. Der heute sichtbare Tempel stammt aus dem 4. Jh. v. Chr., Delphi war aber bereits seit dem 8. Jh. v. Chr. ein wichtiges panhellenisches Heiligtum.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Temple_of_Apollo_Delphi.jpg/260px-Temple_of_Apollo_Delphi.jpg', f:'https://commons.wikimedia.org/wiki/File:Temple_of_Apollo_Delphi.jpg', q:'Temple of Apollo Delphi'},
+           {t:'Die Akropolis um 1819', d:'Ansicht aus dem 19. Jh.', n:'So sah die Akropolis aus, bevor die Ausgrabungen des 19. und 20. Jh. begannen.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Acropolis_1819.jpg/260px-Acropolis_1819.jpg', f:'https://commons.wikimedia.org/wiki/File:Acropolis_1819.jpg', q:'Acropolis Athens 1819 view'},
+           {t:'Sokrates', d:'469 bis 399 v. Chr.', denker:true, n:'Athener Philosoph und Begründer der klassischen Philosophie. Seine Methode sind Fragen statt fertiger Antworten, die „sokratische Methode“. Seine Themen sind Tugend, Wissen, Gerechtigkeit und das gute Leben, seine Grundidee lautet: „Ich weiß, dass ich nichts weiß.“ Er wurde zum Tode verurteilt und starb durch den Giftbecher.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Socrates_Louvre.jpg/260px-Socrates_Louvre.jpg', f:'https://commons.wikimedia.org/wiki/File:Socrates_Louvre.jpg', q:'Socrates bust Louvre'},
+           {t:'Die sophistische Aufklärung und die Rhetorik', d:'5. Jh. v. Chr.', denker:true, n:'Logos statt Mythos: eine frühe Aufklärung, die absolute Wahrheiten relativiert. Protagoras: „Der Mensch ist das Maß aller Dinge.“ Sprache wird zum zentralen Instrument staatsbürgerlicher Handlungsfähigkeit. Platon kritisiert die reine Überredungskunst als Scheinkunst und warnt vor der Macht durch bloße Redegewandtheit.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg/260px-Plato_Silanion_Musei_Capitolini_MC1377.jpg', f:'https://commons.wikimedia.org/wiki/File:Plato_Silanion_Musei_Capitolini_MC1377.jpg', q:'Plato bust Capitoline'},
+           {t:'Aristoteles', d:'384 bis 322 v. Chr.', denker:true, n:'Er verbindet in seiner Synthese die realistische Alltagsorientierung der Sophistik, also die Wahrscheinlichkeiten, mit der logischen Methodik Platons, der Dialektik.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/260px-Aristotle_Altemps_Inv8575.jpg', f:'https://commons.wikimedia.org/wiki/File:Aristotle_Altemps_Inv8575.jpg', q:'Aristotle bust Roman copy'}],
   points:[{year:480, label:'Die Perserkriege', note:'Mehrere Poleis besiegen gemeinsam das Perserreich'},
           {year:404, label:'Ende des Peloponnesischen Krieges', note:'Athen verliert seine führende Stellung. Erst Sparta, dann Theben.'},
           {year:323, label:'Tod Alexanders des Großen', note:'Sein Reich reichte bis Ägypten und Indien'}]},
@@ -822,6 +1251,13 @@ const ERAS = [
         'Delos verliert nach mehreren Angriffen seine Bedeutung'],
   arch:['Priene: ein regelmäßiges Straßennetz, bis heute erhalten','Wohnhäuser, Theater, Tempel, öffentliche Gebäude',
         'Der Tempel der Athena Polias hilft bei der Datierung','Delos: großer Hafen und zahlreiche Lagerhäuser'],
+  werke:[
+           {t:'Priene', d:'4. Jh. v. Chr. und später', n:'Hellenistische Stadt mit einem regelmäßigen Straßennetz, das bis heute erhalten ist.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Priene_Athenatempel.jpg/260px-Priene_Athenatempel.jpg', f:'https://commons.wikimedia.org/wiki/File:Priene_Athenatempel.jpg', q:'Priene temple of Athena'},
+           {t:'Säulenstraße in Gerasa', d:'Jordanien', n:'Eine der eindrucksvollsten erhaltenen Säulenstraßen des Ostens.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Jerash_Cardo_Maximus.jpg/260px-Jerash_Cardo_Maximus.jpg', f:'https://commons.wikimedia.org/wiki/File:Jerash_Cardo_Maximus.jpg', q:'Jerash Gerasa colonnaded street'},
+           {t:'Pergamonaltar', d:'2. Jh. v. Chr.', n:'Meisterwerk hellenistischer Kunst, errichtet unter Eumenes II. und berühmt für den monumentalen Gigantenfries. Er zeigt den Kampf der Götter gegen die Giganten und symbolisiert zugleich die militärischen Erfolge der pergamenischen Herrscher.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Pergamonmuseum_Pergamonaltar.jpg/260px-Pergamonmuseum_Pergamonaltar.jpg', f:'https://commons.wikimedia.org/wiki/File:Pergamonmuseum_Pergamonaltar.jpg', q:'Pergamon altar gigantomachy frieze'},
+           {t:'Zenon von Kition', d:'ca. 334 bis 262 v. Chr.', denker:true, n:'Gründer der Stoa in Athen. Seine Lehre setzt Vernunft und Tugend als Grundlage des guten Lebens, das Ziel ist die innere Ruhe durch Selbstbeherrschung und die Akzeptanz des Unvermeidlichen. Grundidee: Nicht die Ereignisse selbst, sondern unsere Urteile darüber bestimmen unser Leiden.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Zeno_of_Citium.jpg/260px-Zeno_of_Citium.jpg', f:'https://commons.wikimedia.org/wiki/File:Zeno_of_Citium.jpg', q:'Zeno of Citium bust'},
+           {t:'Philosophenschulen in Athen', d:'3. Jh. v. Chr.', denker:true, n:'Athen: Zenon von Kition, Krates von Theben oder Epikur.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Epicurus_Louvre.jpg/260px-Epicurus_Louvre.jpg', f:'https://commons.wikimedia.org/wiki/File:Epicurus_Louvre.jpg', q:'Epicurus bust'},
+           {t:'Odeon des Herodes Atticus, Athen', d:'161 n. Chr.', n:'Schon aus römischer Zeit. Griechenland gerät im 2. und 1. Jh. v. Chr. unter römische Herrschaft, die griechische Kultur bleibt aber einflussreich.', u:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Odeon_of_Herodes_Atticus.jpg/260px-Odeon_of_Herodes_Atticus.jpg', f:'https://commons.wikimedia.org/wiki/File:Odeon_of_Herodes_Atticus.jpg', q:'Odeon of Herodes Atticus Athens'}],
   points:[{year:323, label:'Das hellenistische Zeitalter beginnt', note:'Mit dem Tod Alexanders des Großen'},
           {year:30, label:'Die römische Eroberung', note:'Griechenland verliert seine politische Selbstständigkeit, doch seine Kultur prägt Europa weiter'}]}
 ];
@@ -866,6 +1302,37 @@ function chipList(items, cls, label) {
     items.map(t => '<li>' + t + '</li>').join('') + '</ul></div>';
 }
 
+function werkeList(items) {
+  if (!items || !items.length) return '';
+  return '<div class="strand kunst"><p class="strand-label">Kunst, Architektur und Denken</p>' +
+    '<ul class="werke">' + items.map(w =>
+      '<li class="werk' + (w.denker ? ' denker' : '') + '">' +
+        '<div class="werk-bild" data-q="' + encodeURIComponent(w.q) + '">' +
+          '<a href="' + w.f + '" target="_blank" rel="noopener">' +
+          '<img src="' + w.u + '" alt="' + w.t + '" loading="lazy">' +
+          '</a></div>' +
+        '<div class="werk-txt"><h4>' + w.t + '</h4>' +
+          '<span class="werk-dat">' + w.d + '</span><p>' + w.n + '</p></div>' +
+      '</li>').join('') + '</ul>' +
+    '<p class="quellen">Die Abbildungen liegen bei Wikimedia Commons. Ein Klick öffnet die Originaldatei.</p>' +
+    '</div>';
+}
+
+/* Ein toter Hotlink hinterlässt kein Loch, sondern ein schraffiertes Feld
+   mit einem Suchlink auf Commons. */
+function bilderPruefen() {
+  detail.querySelectorAll('.werk-bild img').forEach(im => {
+    im.addEventListener('error', () => {
+      const box = im.closest('.werk-bild');
+      if (!box) return;
+      box.classList.add('fehlt');
+      box.innerHTML = '<a href="https://commons.wikimedia.org/w/index.php?search=' +
+        box.dataset.q + '&title=Special:MediaSearch&type=image" ' +
+        'target="_blank" rel="noopener">Bild suchen</a>';
+    }, { once: true });
+  });
+}
+
 function render(i) {
   const e = ERAS[i];
   const inner = e.from - e.to;
@@ -898,7 +1365,11 @@ function render(i) {
     (e.points.length ? '' :
       '<p class="nodate">Der Text nennt für diese Epoche kein einzelnes Datum. Alle Angaben gelten für den ganzen Zeitraum.</p>') +
 
-    chipList(e.arch, 'arch', 'Was Archäologen untersuchen');
+    chipList(e.arch, 'arch', 'Was Archäologen untersuchen') +
+
+    werkeList(e.werke);
+
+  bilderPruefen();
 }
 
 let cur = [0, 0], anim = null;
