@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die Berechnung des Osterdatums</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #162030;
+    --text: #ecdfc8;
+    --text-sec: #98aabb;
+    --a1: #7aaccb;
+    --a2: #c87840;
+    --fh: 'Cinzel', serif;
+    --fb: 'Cormorant Garamond', serif;
+    --pe: clamp(2.8rem, 5.5vw, 5.5rem);
+    --pt: clamp(2.5rem, 4vh, 4rem);
+    --co: clamp(16px, 2.5vw, 28px);
+    --cs: clamp(36px, 4vw, 56px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; background: #0a0f18; }
+  .deck { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+
+  .slide {
+    position: absolute; inset: 0;
+    width: 100%; height: 100vh; height: 100dvh;
+    overflow: hidden; background: var(--bg);
+    display: flex; flex-direction: column;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .slide.active { opacity: 1; pointer-events: all; }
+
+  /* corners */
+  .corner { position: absolute; z-index: 3; width: var(--cs); height: var(--cs); opacity: 0.28; }
+  .corner-tl { top: var(--co); left: var(--co); border-top: 1.5px solid var(--a2); border-left: 1.5px solid var(--a2); }
+  .corner-tr { top: var(--co); right: var(--co); border-top: 1.5px solid var(--a2); border-right: 1.5px solid var(--a2); }
+  .corner-bl { bottom: var(--co); left: var(--co); border-bottom: 1.5px solid var(--a2); border-left: 1.5px solid var(--a2); }
+  .corner-br { bottom: var(--co); right: var(--co); border-bottom: 1.5px solid var(--a2); border-right: 1.5px solid var(--a2); }
+
+  /* section tag */
+  .stag {
+    position: absolute;
+    top: calc(var(--co) + var(--cs) + 0.5rem);
+    left: calc(var(--co) + var(--cs) + 0.8rem);
+    z-index: 4;
+    font-family: var(--fh); font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+    font-weight: 700;
+    color: var(--a1); letter-spacing: 0.3em; text-transform: uppercase;
+  }
+
+  /* ── OPENING QUESTION SLIDE ── */
+  .slide-opening { position: relative; }
+  .opening-monks {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: row;
+  }
+  .opening-left, .opening-right {
+    flex: 1; position: relative; overflow: hidden;
+    padding-bottom: 5%;
+  }
+  .opening-left::after, .opening-right::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(10,15,24,0.55) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .opening-monk {
+    position: absolute; bottom: 5%;
+    height: 90%; width: auto;
+  }
+  .opening-left .opening-monk { left: 50%; transform: translateX(-50%); }
+  .opening-right .opening-monk { left: 50%; transform: translateX(-50%); }
+  .opening-label {
+    position: absolute; bottom: 5%;
+    left: 0; right: 0;
+    padding: clamp(0.5rem,1vh,1rem) clamp(1rem,2vw,2rem);
+    text-align: center;
+  }
+  .opening-tradition { font-family: var(--fh); font-size: clamp(1.2rem,2.2vw,2rem); font-weight: 600; color: var(--text); letter-spacing: 0.04em; }
+  .opening-detail { font-family: var(--fb); font-size: clamp(1.1rem,1.8vw,1.6rem); color: var(--text-sec); font-style: italic; margin-top: 0.4rem; }
+  .opening-overlay {
+    position: absolute; inset: 0; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    pointer-events: none;
+  }
+  .opening-question {
+    font-family: var(--fh); font-size: clamp(2.4rem,4.5vw,4.8rem);
+    font-weight: 700; color: var(--text); line-height: 1.35; letter-spacing: 0.04em;
+    text-shadow: 0 2px 24px rgba(10,15,24,0.9), 0 0 60px rgba(10,15,24,0.7);
+    opacity: 0; animation: fu 0.9s ease 0.4s forwards;
+  }
+  .slide.active .opening-tradition, .slide.active .opening-detail { opacity: 0; animation: fu 0.7s ease 0.8s forwards; }
+  .slide.active .opening-monk { opacity: 0; animation: fi 0.8s ease 0s forwards; }
+  .slide.active .opening-tradition, .slide.active .opening-detail { opacity: 0; animation: fu 0.7s ease 0.2s forwards; }
+  .slide.active .opening-monk { opacity: 0; animation: fi 0.8s ease 0s forwards; }
+
+  /* ── TITLE ── */
+  .slide-title { justify-content: center; align-items: center; text-align: center; padding: var(--pt) var(--pe); }
+  .ornament { font-family: var(--fh); color: var(--a1); font-size: clamp(0.85rem, 1.3vw, 1.1rem); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: clamp(1rem, 2vh, 2rem); opacity: 0; animation: fu 0.8s ease 0.2s forwards; }
+  .slide-title h1 { font-family: var(--fh); font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 700; color: var(--text); line-height: 1.1; letter-spacing: 0.04em; opacity: 0; animation: fu 0.8s ease 0.5s forwards; }
+  .trule { width: clamp(60px,8vw,100px); height: 3px; background: var(--a2); margin: clamp(1.2rem,2.5vh,2.5rem) auto; opacity: 0; animation: fi 0.8s ease 0.9s forwards; }
+  .subtitle { font-family: var(--fb); font-size: clamp(1.3rem,2.4vw,2rem); color: var(--text-sec); font-style: italic; font-weight: 400; opacity: 0; animation: fu 0.8s ease 1.1s forwards; }
+  .meta { margin-top: clamp(2rem,4vh,4rem); font-family: var(--fb); font-size: clamp(1rem,1.6vw,1.35rem); color: var(--text-sec); opacity: 0; animation: fu 0.8s ease 1.4s forwards; line-height: 1.8; font-weight: 400; font-style: normal; }
+  .meta strong { color: var(--a1); font-style: italic; font-weight: 600; font-family: var(--fb); }
+
+  /* ── GLIEDERUNG ── */
+  .slide-glied { justify-content: center; padding: var(--pt) var(--pe); gap: clamp(1rem,2vh,2rem); }
+  .slide-glied h2 { font-family: var(--fh); font-size: clamp(1.6rem,2.8vw,2.6rem); font-weight: 600; color: var(--text); letter-spacing: 0.04em; text-align: center; }
+  .grule { width: clamp(50px,6vw,80px); height: 2px; background: var(--a2); margin: 0 auto; }
+  .ggrid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(1rem,2vw,2.5rem); }
+  .gcol { display: flex; flex-direction: column; gap: clamp(0.5rem,1vh,1rem); padding: clamp(1rem,1.5vw,1.8rem) clamp(0.8rem,1.2vw,1.5rem); border-top: 2px solid var(--a2); opacity: 0; animation: fu 0.6s ease forwards; }
+  .gcol:nth-child(1){animation-delay:0.2s} .gcol:nth-child(2){animation-delay:0.45s} .gcol:nth-child(3){animation-delay:0.7s}
+  .gcol-head { font-family: var(--fh); font-size: clamp(1.1rem,1.8vw,1.6rem); font-weight: 600; color: var(--a1); letter-spacing: 0.05em; margin-bottom: clamp(0.3rem,0.6vh,0.6rem); }
+  .gcol ul { list-style: none; display: flex; flex-direction: column; gap: clamp(0.35rem,0.8vh,0.8rem); }
+  .gcol ul li { font-family: var(--fb); font-size: clamp(1.05rem,1.7vw,1.45rem); color: var(--text-sec); line-height: 1.45; padding-left: 1.2em; position: relative; font-weight: 400; font-style: normal; }
+  .gcol ul li::before { content: '◆'; color: var(--a2); font-size: 0.45em; position: absolute; left: 0; top: 0.45em; }
+
+  /* ── SPLIT: text left, image right ── */
+  .slide-c { flex-direction: row; }
+  .cl { flex: 1.1; display: flex; flex-direction: column; justify-content: center; padding: calc(var(--pt) + 2.5rem) var(--pe) var(--pt) var(--pe); border-right: 1px solid rgba(122,172,203,0.15); }
+  .cl h2 { font-family: var(--fh); font-size: clamp(1.8rem,3.2vw,3rem); font-weight: 600; color: var(--text); line-height: 1.15; letter-spacing: 0.03em; margin-bottom: clamp(0.6rem,1.2vh,1.2rem); }
+  .crule { width: clamp(40px,5vw,60px); height: 2px; background: var(--a2); margin-bottom: clamp(1.2rem,2.5vh,2.5rem); }
+  .bullets { list-style: none; display: flex; flex-direction: column; gap: clamp(1rem,2.2vh,2.2rem); }
+  .bullets li { font-family: var(--fb); font-size: clamp(1.3rem,2.2vw,1.9rem); color: var(--text-sec); line-height: 1.5; padding-left: 1.4em; position: relative; font-weight: 400; font-style: normal; }
+  .bullets li::before { content: '◆'; color: var(--a2); font-size: 0.5em; position: absolute; left: 0; top: 0.5em; }
+  .bullets li b { color: var(--text); font-weight: 600; font-style: italic; font-family: var(--fb); }
+  .cr { flex: 0.9; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: var(--pt) var(--pe); }
+  .cr img { max-width: 100%; max-height: min(84vh,624px); object-fit: contain; border-radius: 4px; }
+  .cap { font-family: var(--fb); font-size: clamp(0.85rem,1.1vw,1.05rem); color: var(--text-sec); font-style: italic; opacity: 0.65; text-align: center; font-weight: 400; }
+
+  /* ── SPLIT: image left, text right ── */
+  .slide-il { flex-direction: row; }
+  .il { flex: 1; display: flex; align-items: center; justify-content: center; padding: var(--pt) var(--pe); border-right: 1px solid rgba(122,172,203,0.15); }
+  .il img { max-width: 100%; max-height: min(91vh,650px); object-fit: contain; border-radius: 4px; }
+  .ir { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: calc(var(--pt) + 2.5rem) var(--pe) var(--pt) var(--pe); }
+  .ir h2 { font-family: var(--fh); font-size: clamp(1.8rem,3.2vw,3rem); font-weight: 600; color: var(--text); line-height: 1.15; letter-spacing: 0.03em; margin-bottom: clamp(0.6rem,1.2vh,1.2rem); }
+
+  /* ── FULL BLEED ── */
+  .slide-full { }
+  .full-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-size: cover; background-position: center;
+  }
+  .full-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to right, rgba(10,15,24,0.75) 40%, rgba(10,15,24,0.1) 100%);
+  }
+  .full-overlay-bottom {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, rgba(10,15,24,0.82) 25%, rgba(10,15,24,0.1) 100%);
+  }
+  .full-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    height: 100%; padding: calc(var(--pt) + 2.5rem) var(--pe) var(--pt) var(--pe);
+    max-width: 70%;
+  }
+  .full-content h2 { font-family: var(--fh); font-size: clamp(2rem,3.8vw,3.6rem); font-weight: 700; color: var(--text); line-height: 1.1; letter-spacing: 0.04em; margin-bottom: clamp(0.6rem,1.2vh,1.5rem); white-space: nowrap; }
+  .full-content .bullets li { white-space: nowrap; font-size: clamp(1.2rem,2vw,1.7rem); }
+  .full-content .crule { margin-bottom: clamp(1.2rem,2.5vh,2.5rem); }
+
+  /* ── STATEMENT SLIDE ── */
+  .slide-statement { justify-content: center; align-items: center; text-align: center; padding: var(--pt) clamp(4rem,12vw,14rem); }
+  .statement-kicker { font-family: var(--fh); font-size: clamp(0.8rem,1.2vw,1rem); color: var(--a1); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: clamp(1.5rem,3vh,3rem); }
+  .statement-text { font-family: var(--fb); font-size: clamp(2rem,4.5vw,4.2rem); color: var(--text); line-height: 1.25; font-style: italic; font-weight: 400; }
+  .statement-text b { color: var(--a2); font-style: normal; font-weight: 600; font-family: var(--fb); }
+  .statement-sub { margin-top: clamp(1.5rem,3vh,3rem); font-family: var(--fb); font-size: clamp(1rem,1.8vw,1.5rem); color: var(--text-sec); font-style: italic; }
+
+  #demoYear::-webkit-inner-spin-button,
+  #demoYear::-webkit-outer-spin-button { -webkit-appearance: none; }
+  #demoYear { -moz-appearance: textfield; }
+  #demoYear:focus { border-color: var(--a1) !important; }
+
+  /* ── NAV ── */
+  .nav { position: fixed; bottom: clamp(1rem,2.5vh,2rem); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: clamp(0.6rem,1.2vw,1.2rem); z-index: 100; background: rgba(22,32,48,0.92); padding: 0.5rem 1.2rem; border-radius: 2rem; border: 1px solid rgba(122,172,203,0.2); backdrop-filter: blur(4px); }
+  .nav button { background: none; border: none; cursor: pointer; color: var(--a2); font-size: clamp(1rem,1.5vw,1.3rem); padding: 0.2rem 0.5rem; font-family: var(--fh); transition: color 0.2s; }
+  .nav button:hover { color: var(--text); }
+  .ndots { display: flex; gap: 0.5rem; align-items: center; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(122,172,203,0.25); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+  .dot.active { background: var(--a2); transform: scale(1.3); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fu { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fi { from{opacity:0} to{opacity:1} }
+  @keyframes fs { from{opacity:0;transform:scale(1.04)} to{opacity:1;transform:scale(1)} }
+
+  .slide.active .bullets li { opacity:0; animation: fu 0.5s ease forwards; }
+  .slide.active .bullets li:nth-child(1){animation-delay:0.3s}
+  .slide.active .bullets li:nth-child(2){animation-delay:0.55s}
+  .slide.active .bullets li:nth-child(3){animation-delay:0.8s}
+  .slide.active .cl h2, .slide.active .ir h2, .slide.active .full-content h2 { opacity:0; animation: fu 0.6s ease 0.15s forwards; }
+  .slide.active .crule { opacity:0; animation: fu 0.6s ease 0.25s forwards; }
+  .slide.active .stag { opacity:0; animation: fu 0.5s ease 0s forwards; }
+  .slide.active .cr, .slide.active .il { opacity:0; animation: fi 0.9s ease 0.3s forwards; }
+  .slide.active .full-bg { opacity: 1; }
+  .slide.active .statement-kicker { opacity:0; animation: fu 0.7s ease 0.1s forwards; }
+  .slide.active .statement-text { opacity:0; animation: fu 0.9s ease 0.4s forwards; }
+  .slide.active .statement-sub { opacity:0; animation: fu 0.7s ease 0.9s forwards; }
+
+  @media (prefers-reduced-motion:reduce) { .slide *, .slide.active * { animation:none !important; opacity:1 !important; } }
+  @media (max-height:700px) { .bullets li{font-size:clamp(1.1rem,1.8vw,1.55rem)} .cl h2,.ir h2{font-size:clamp(1.5rem,2.5vw,2.4rem)} }
+
+  @media print {
+    @page { size: landscape; margin: 0; }
+    html, body { width: 100%; height: auto; background: #162030; }
+    .deck { position: static; width: 100%; height: auto; overflow: visible; }
+    .nav { display: none !important; }
+    .slide {
+      position: relative !important;
+      display: flex !important;
+      opacity: 1 !important;
+      pointer-events: none;
+      width: 100vw;
+      height: 100vh;
+      page-break-after: always;
+      break-after: page;
+      overflow: hidden;
+    }
+    .slide *, .slide.active * {
+      animation: none !important;
+      opacity: 1 !important;
+      transition: none !important;
+    }
+    .full-bg { opacity: 1 !important; }
+    /* opening slide fixes */
+    .opening-question {
+      opacity: 1 !important;
+      animation: none !important;
+      text-shadow: none !important;
+    }
+    .opening-monk { opacity: 1 !important; }
+    .opening-tradition, .opening-detail { opacity: 1 !important; }
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- 1: TITLE -->
+<div class="slide slide-title active">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="ornament">B1+ Deutsch mit Geschichte &amp; Kultur</div>
+  <h1>Die Berechnung<br>des Osterdatums</h1>
+  <div class="trule"></div>
+  <div class="subtitle">Computus: Griechische Mathematik im Dienst der Kirche</div>
+  <div class="meta"><strong>Chris Smith</strong><br>Goethe-Zentrum Atlanta</div>
+</div>
+
+<!-- 2: ERÖFFNUNGSFRAGE -->
+<div class="slide slide-opening">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="opening-monks">
+    <div class="opening-left">
+      <img class="opening-monk" src="https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/left_monk.png" alt="Keltischer Mönch"/>
+      <div class="opening-label">
+        <div class="opening-tradition">Keltische Kirche</div>
+        <div class="opening-detail">84-Jahr-Zyklus · Iona, Irland</div>
+      </div>
+    </div>
+    <div class="opening-right">
+      <img class="opening-monk" src="https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/right_monk.png" alt="Römischer Mönch"/>
+      <div class="opening-label">
+        <div class="opening-tradition">Römische Kirche</div>
+        <div class="opening-detail">19-Jahr-Zyklus · Alexandria, Rom</div>
+      </div>
+    </div>
+  </div>
+  <div class="opening-overlay">
+    <div class="opening-question">An welchem Tag<br>soll Ostern<br>gefeiert werden?</div>
+  </div>
+</div>
+
+<!-- 3: GLIEDERUNG -->
+<div class="slide slide-glied">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <h2>Gliederung</h2>
+  <div class="grule"></div>
+  <svg width="100%" viewBox="0 0 900 300" style="margin-top:1rem;">
+    <line x1="300" y1="20" x2="300" y2="260" stroke="#c87840" stroke-width="1" opacity="0.3"/>
+    <line x1="600" y1="20" x2="600" y2="260" stroke="#c87840" stroke-width="1" opacity="0.3"/>
+    <text x="150" y="145" text-anchor="middle" font-family="Cinzel,serif" font-size="72" fill="#ecdfc8" font-weight="700">I</text>
+    <text x="150" y="200" text-anchor="middle" font-family="Cinzel,serif" font-size="16" fill="#c87840" letter-spacing="4">URSPRUNG</text>
+    <text x="450" y="145" text-anchor="middle" font-family="Cinzel,serif" font-size="72" fill="#ecdfc8" font-weight="700">II</text>
+    <text x="450" y="200" text-anchor="middle" font-family="Cinzel,serif" font-size="16" fill="#c87840" letter-spacing="4">KONFLIKT</text>
+    <text x="750" y="145" text-anchor="middle" font-family="Cinzel,serif" font-size="72" fill="#ecdfc8" font-weight="700">III</text>
+    <text x="750" y="200" text-anchor="middle" font-family="Cinzel,serif" font-size="16" fill="#c87840" letter-spacing="4">ERGEBNIS</text>
+  </svg>
+</div>
+
+<!-- 3: LUNISOLAR-PROBLEM (split) -->
+<div class="slide slide-c">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Ursprung</div>
+  <div class="cl">
+    <h2>Das Lunisolar-Problem</h2>
+    <div class="crule"></div>
+    <ul class="bullets">
+      <li>Sonnenjahr: <b>365 Tage</b>: Mondjahr: <b>354 Tage</b></li>
+      <li>Jedes Jahr verschiebt sich das Datum um <b>11 Tage</b></li>
+      <li>Ostern folgt beiden Zyklen zugleich: wie berechnet man das?</li>
+    </ul>
+  </div>
+  <div class="cr" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <svg width="100%" viewBox="0 0 680 580" role="img" aria-label="Sonnenjahr vs. Mondjahr Vergleich" style="max-height:calc(100% - 2rem);">
+      <rect width="680" height="580" fill="#162030"/>
+      <!-- dividing line -->
+      <line x1="340" y1="20" x2="340" y2="560" stroke="#98aabb" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
+      <!-- column headers -->
+      <text x="170" y="44" text-anchor="middle" font-family="Cinzel,serif" font-size="17" fill="#ecdfc8" letter-spacing="2">SONNENJAHR</text>
+      <text x="510" y="44" text-anchor="middle" font-family="Cinzel,serif" font-size="17" fill="#ecdfc8" letter-spacing="2">MONDJAHR</text>
+      <!-- large sun icon -->
+      <circle cx="170" cy="78" r="18" fill="none" stroke="#c87840" stroke-width="2.5"/>
+      <circle cx="170" cy="78" r="8" fill="#c87840"/>
+      <line x1="170" y1="54" x2="170" y2="48" stroke="#c87840" stroke-width="2"/>
+      <line x1="170" y1="102" x2="170" y2="108" stroke="#c87840" stroke-width="2"/>
+      <line x1="146" y1="78" x2="140" y2="78" stroke="#c87840" stroke-width="2"/>
+      <line x1="194" y1="78" x2="200" y2="78" stroke="#c87840" stroke-width="2"/>
+      <line x1="153" y1="61" x2="149" y2="57" stroke="#c87840" stroke-width="2"/>
+      <line x1="187" y1="95" x2="191" y2="99" stroke="#c87840" stroke-width="2"/>
+      <line x1="187" y1="61" x2="191" y2="57" stroke="#c87840" stroke-width="2"/>
+      <line x1="153" y1="95" x2="149" y2="99" stroke="#c87840" stroke-width="2"/>
+      <!-- large moon icon -->
+      <path d="M510,60 a18,18 0 1,0 0,36 a12,12 0 1,1 0,-36" fill="#7aaccb" opacity="0.85"/>
+      <!-- solar month boxes: 12 boxes, 28px each, starting y=108 -->
+      <!-- box height 28, gap 3 → step 31; 12 boxes: y from 108 to 108+11*31=449, bottom at 449+28=477 -->
+      <!-- total solar column height: 477-108 = 369px ... let's scale to fill to y=520 -->
+      <!-- Solar: 12 months, box h=32, gap=2, step=34; start y=108, end bottom = 108+12*34-2=514 -->
+      <g id="solar-months">
+        <rect x="80" y="108" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="124" r="5" fill="#c87840"/>
+        <rect x="80" y="142" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="158" r="5" fill="#c87840"/>
+        <rect x="80" y="176" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="192" r="5" fill="#c87840"/>
+        <rect x="80" y="210" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="226" r="5" fill="#c87840"/>
+        <rect x="80" y="244" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="260" r="5" fill="#c87840"/>
+        <rect x="80" y="278" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="294" r="5" fill="#c87840"/>
+        <rect x="80" y="312" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="328" r="5" fill="#c87840"/>
+        <rect x="80" y="346" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="362" r="5" fill="#c87840"/>
+        <rect x="80" y="380" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="396" r="5" fill="#c87840"/>
+        <rect x="80" y="414" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="430" r="5" fill="#c87840"/>
+        <rect x="80" y="448" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="464" r="5" fill="#c87840"/>
+        <rect x="80" y="482" width="180" height="32" rx="3" fill="#c87840" opacity="0.35" stroke="#c87840" stroke-width="1.5"/><circle cx="170" cy="498" r="5" fill="#c87840"/>
+      </g>
+      <!-- solar total label -->
+      <text x="170" y="530" text-anchor="middle" font-family="Cinzel,serif" font-size="15" fill="#c87840" font-weight="600">365 Tage</text>
+      <!-- lunar month boxes: 12 boxes, 26px each, gap=2, step=28; start y=108 -->
+      <!-- 12 months: bottom = 108 + 12*28 - 2 = 442 -->
+      <g id="lunar-months">
+        <rect x="420" y="108" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="121" r="5" fill="#7aaccb"/>
+        <rect x="420" y="136" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="149" r="5" fill="#7aaccb"/>
+        <rect x="420" y="164" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="177" r="5" fill="#7aaccb"/>
+        <rect x="420" y="192" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="205" r="5" fill="#7aaccb"/>
+        <rect x="420" y="220" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="233" r="5" fill="#7aaccb"/>
+        <rect x="420" y="248" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="261" r="5" fill="#7aaccb"/>
+        <rect x="420" y="276" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="289" r="5" fill="#7aaccb"/>
+        <rect x="420" y="304" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="317" r="5" fill="#7aaccb"/>
+        <rect x="420" y="332" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="345" r="5" fill="#7aaccb"/>
+        <rect x="420" y="360" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="373" r="5" fill="#7aaccb"/>
+        <rect x="420" y="388" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="401" r="5" fill="#7aaccb"/>
+        <rect x="420" y="416" width="180" height="26" rx="3" fill="#7aaccb" opacity="0.35" stroke="#7aaccb" stroke-width="1.5"/><circle cx="510" cy="429" r="5" fill="#7aaccb"/>
+      </g>
+      <!-- gap box: from y=444 to y=514 (70px = ~11 days visually) -->
+      <rect x="420" y="446" width="180" height="68" rx="3" fill="#c87840" opacity="0.12" stroke="#c87840" stroke-width="1.5" stroke-dasharray="5 3"/>
+      <text x="510" y="474" text-anchor="middle" font-family="Cinzel,serif" font-size="13" fill="#c87840" font-weight="600">11 Tage</text>
+      <text x="510" y="494" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" fill="#c87840">fehlen, jedes Jahr</text>
+      <!-- lunar total label -->
+      <text x="510" y="530" text-anchor="middle" font-family="Cinzel,serif" font-size="15" fill="#7aaccb" font-weight="600">354 Tage</text>
+    </svg>
+    <div class="cap">12 Sonnenmonate · 12 Mondmonate · 11 fehlende Tage</div>
+  </div>
+</div>
+
+<!-- 4: BABYLON (full bleed) -->
+<div class="slide slide-full">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Ursprung</div>
+  <div class="full-bg" style="background-image: url('https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/babylon_zikkurat.png'); background-position: center 20%;"></div>
+  <div class="full-overlay"></div>
+  <div class="full-content" style="justify-content: flex-end; max-width: 100%; padding-bottom: clamp(5rem,9vh,9rem);">
+    <h2 style="white-space: nowrap;">Babylon: Der erste Versuch</h2>
+    <div class="crule"></div>
+    <ul class="bullets">
+      <li>8 Sonnenjahre sind fast genau <b>99 Mondmonate</b></li>
+      <li>Fehler: <b>1,5 Tage</b> pro Zyklus</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 5: METON (split) -->
+<div class="slide slide-c">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Ursprung</div>
+  <div class="cl">
+    <h2>Meton von Athen, 432 v. Chr.</h2>
+    <div class="crule"></div>
+    <ul class="bullets">
+      <li><b>19 Sonnenjahre = 235 Mondmonate</b></li>
+      <li>Fehler: nur rund <b>2 Stunden</b> pro Zyklus</li>
+    </ul>
+  </div>
+  <div class="cr">
+    <img src="https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/meton.png" alt="Meton von Athen"/>
+  </div>
+</div>
+
+<!-- 6: METONISCHER ZYKLUS (SVG diagram) -->
+<div class="slide" style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem 2.5rem;">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Ursprung</div>
+  <h2 style="font-family:var(--fh);font-size:clamp(2rem,3.8vw,3.6rem);font-weight:700;color:var(--text);letter-spacing:0.04em;line-height:1.1;margin-bottom:1.5rem;">Der Metonische Zyklus</h2>
+  <svg width="100%" viewBox="0 0 1020 400" style="max-width:960px;">
+    <!-- Labels -->
+    <text x="30" y="68" font-family="Cinzel,serif" font-size="13" fill="#c87840" letter-spacing="1" opacity="0.8">SONNENJAHRE</text>
+    <text x="30" y="255" font-family="Cinzel,serif" font-size="13" fill="#7aaccb" letter-spacing="1" opacity="0.8">MONDMONATE</text>
+    <!-- 19 solar year boxes -->
+    <rect x="90"  y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="111" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">1</text>
+    <rect x="136" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="157" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">2</text>
+    <rect x="182" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="203" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">3</text>
+    <rect x="228" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="249" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">4</text>
+    <rect x="274" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="295" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">5</text>
+    <rect x="320" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="341" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">6</text>
+    <rect x="366" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="387" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">7</text>
+    <rect x="412" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="433" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">8</text>
+    <rect x="458" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="479" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">9</text>
+    <rect x="504" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="525" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">10</text>
+    <rect x="550" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="571" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">11</text>
+    <rect x="596" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="617" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">12</text>
+    <rect x="642" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="663" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">13</text>
+    <rect x="688" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="709" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">14</text>
+    <rect x="734" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="755" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">15</text>
+    <rect x="780" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="801" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">16</text>
+    <rect x="826" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="847" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">17</text>
+    <rect x="872" y="80" width="42" height="70" rx="2" fill="#c87840" fill-opacity="0.15" stroke="#c87840" stroke-width="1" stroke-opacity="0.5"/><text x="893" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#c87840" opacity="0.7">18</text>
+    <rect x="918" y="74" width="42" height="82" rx="2" fill="#c87840" fill-opacity="0.35" stroke="#c87840" stroke-width="2"/>
+    <text x="939" y="120" text-anchor="middle" font-family="Cinzel,serif" font-size="13" fill="#c87840" font-weight="700">19</text>
+    <!-- Sun symbols (circles instead of Unicode ☀ for PDF compatibility) -->
+    <g opacity="0.6" fill="#c87840">
+      <circle cx="111" cy="90" r="4"/><circle cx="157" cy="90" r="4"/><circle cx="203" cy="90" r="4"/><circle cx="249" cy="90" r="4"/><circle cx="295" cy="90" r="4"/><circle cx="341" cy="90" r="4"/><circle cx="387" cy="90" r="4"/><circle cx="433" cy="90" r="4"/><circle cx="479" cy="90" r="4"/><circle cx="525" cy="90" r="4"/><circle cx="571" cy="90" r="4"/><circle cx="617" cy="90" r="4"/><circle cx="663" cy="90" r="4"/><circle cx="709" cy="90" r="4"/><circle cx="755" cy="90" r="4"/><circle cx="801" cy="90" r="4"/><circle cx="847" cy="90" r="4"/><circle cx="893" cy="90" r="4"/>
+      <circle cx="939" cy="90" r="5" opacity="1"/>
+    </g>
+    <!-- Lunar band -->
+    <rect x="90" y="270" width="870" height="54" rx="2" fill="#7aaccb" fill-opacity="0.08" stroke="#7aaccb" stroke-width="1" stroke-opacity="0.3"/>
+    <g fill="#7aaccb" fill-opacity="0.55">
+      <rect x="91.0" y="275" width="2" height="44"/><rect x="94.7" y="275" width="2" height="44"/><rect x="98.4" y="275" width="2" height="44"/><rect x="102.1" y="275" width="2" height="44"/><rect x="105.8" y="275" width="2" height="44"/><rect x="109.5" y="275" width="2" height="44"/><rect x="113.2" y="275" width="2" height="44"/><rect x="116.9" y="275" width="2" height="44"/><rect x="120.6" y="275" width="2" height="44"/><rect x="124.3" y="275" width="2" height="44"/>
+      <rect x="128.0" y="275" width="2" height="44"/><rect x="131.7" y="275" width="2" height="44"/><rect x="135.4" y="275" width="2" height="44"/><rect x="139.1" y="275" width="2" height="44"/><rect x="142.8" y="275" width="2" height="44"/><rect x="146.5" y="275" width="2" height="44"/><rect x="150.2" y="275" width="2" height="44"/><rect x="153.9" y="275" width="2" height="44"/><rect x="157.6" y="275" width="2" height="44"/><rect x="161.3" y="275" width="2" height="44"/>
+      <rect x="165.0" y="275" width="2" height="44"/><rect x="168.7" y="275" width="2" height="44"/><rect x="172.4" y="275" width="2" height="44"/><rect x="176.1" y="275" width="2" height="44"/><rect x="179.8" y="275" width="2" height="44"/><rect x="183.5" y="275" width="2" height="44"/><rect x="187.2" y="275" width="2" height="44"/><rect x="190.9" y="275" width="2" height="44"/><rect x="194.6" y="275" width="2" height="44"/><rect x="198.3" y="275" width="2" height="44"/>
+      <rect x="202.0" y="275" width="2" height="44"/><rect x="205.7" y="275" width="2" height="44"/><rect x="209.4" y="275" width="2" height="44"/><rect x="213.1" y="275" width="2" height="44"/><rect x="216.8" y="275" width="2" height="44"/><rect x="220.5" y="275" width="2" height="44"/><rect x="224.2" y="275" width="2" height="44"/><rect x="227.9" y="275" width="2" height="44"/><rect x="231.6" y="275" width="2" height="44"/><rect x="235.3" y="275" width="2" height="44"/>
+      <rect x="239.0" y="275" width="2" height="44"/><rect x="242.7" y="275" width="2" height="44"/><rect x="246.4" y="275" width="2" height="44"/><rect x="250.1" y="275" width="2" height="44"/><rect x="253.8" y="275" width="2" height="44"/><rect x="257.5" y="275" width="2" height="44"/><rect x="261.2" y="275" width="2" height="44"/><rect x="264.9" y="275" width="2" height="44"/><rect x="268.6" y="275" width="2" height="44"/><rect x="272.3" y="275" width="2" height="44"/>
+      <rect x="276.0" y="275" width="2" height="44"/><rect x="279.7" y="275" width="2" height="44"/><rect x="283.4" y="275" width="2" height="44"/><rect x="287.1" y="275" width="2" height="44"/><rect x="290.8" y="275" width="2" height="44"/><rect x="294.5" y="275" width="2" height="44"/><rect x="298.2" y="275" width="2" height="44"/><rect x="301.9" y="275" width="2" height="44"/><rect x="305.6" y="275" width="2" height="44"/><rect x="309.3" y="275" width="2" height="44"/>
+      <rect x="313.0" y="275" width="2" height="44"/><rect x="316.7" y="275" width="2" height="44"/><rect x="320.4" y="275" width="2" height="44"/><rect x="324.1" y="275" width="2" height="44"/><rect x="327.8" y="275" width="2" height="44"/><rect x="331.5" y="275" width="2" height="44"/><rect x="335.2" y="275" width="2" height="44"/><rect x="338.9" y="275" width="2" height="44"/><rect x="342.6" y="275" width="2" height="44"/><rect x="346.3" y="275" width="2" height="44"/>
+      <rect x="350.0" y="275" width="2" height="44"/><rect x="353.7" y="275" width="2" height="44"/><rect x="357.4" y="275" width="2" height="44"/><rect x="361.1" y="275" width="2" height="44"/><rect x="364.8" y="275" width="2" height="44"/><rect x="368.5" y="275" width="2" height="44"/><rect x="372.2" y="275" width="2" height="44"/><rect x="375.9" y="275" width="2" height="44"/><rect x="379.6" y="275" width="2" height="44"/><rect x="383.3" y="275" width="2" height="44"/>
+      <rect x="387.0" y="275" width="2" height="44"/><rect x="390.7" y="275" width="2" height="44"/><rect x="394.4" y="275" width="2" height="44"/><rect x="398.1" y="275" width="2" height="44"/><rect x="401.8" y="275" width="2" height="44"/><rect x="405.5" y="275" width="2" height="44"/><rect x="409.2" y="275" width="2" height="44"/><rect x="412.9" y="275" width="2" height="44"/><rect x="416.6" y="275" width="2" height="44"/><rect x="420.3" y="275" width="2" height="44"/>
+      <rect x="424.0" y="275" width="2" height="44"/><rect x="427.7" y="275" width="2" height="44"/><rect x="431.4" y="275" width="2" height="44"/><rect x="435.1" y="275" width="2" height="44"/><rect x="438.8" y="275" width="2" height="44"/><rect x="442.5" y="275" width="2" height="44"/><rect x="446.2" y="275" width="2" height="44"/><rect x="449.9" y="275" width="2" height="44"/><rect x="453.6" y="275" width="2" height="44"/><rect x="457.3" y="275" width="2" height="44"/>
+      <rect x="461.0" y="275" width="2" height="44"/><rect x="464.7" y="275" width="2" height="44"/><rect x="468.4" y="275" width="2" height="44"/><rect x="472.1" y="275" width="2" height="44"/><rect x="475.8" y="275" width="2" height="44"/><rect x="479.5" y="275" width="2" height="44"/><rect x="483.2" y="275" width="2" height="44"/><rect x="486.9" y="275" width="2" height="44"/><rect x="490.6" y="275" width="2" height="44"/><rect x="494.3" y="275" width="2" height="44"/>
+      <rect x="498.0" y="275" width="2" height="44"/><rect x="501.7" y="275" width="2" height="44"/><rect x="505.4" y="275" width="2" height="44"/><rect x="509.1" y="275" width="2" height="44"/><rect x="512.8" y="275" width="2" height="44"/><rect x="516.5" y="275" width="2" height="44"/><rect x="520.2" y="275" width="2" height="44"/><rect x="523.9" y="275" width="2" height="44"/><rect x="527.6" y="275" width="2" height="44"/><rect x="531.3" y="275" width="2" height="44"/>
+      <rect x="535.0" y="275" width="2" height="44"/><rect x="538.7" y="275" width="2" height="44"/><rect x="542.4" y="275" width="2" height="44"/><rect x="546.1" y="275" width="2" height="44"/><rect x="549.8" y="275" width="2" height="44"/><rect x="553.5" y="275" width="2" height="44"/><rect x="557.2" y="275" width="2" height="44"/><rect x="560.9" y="275" width="2" height="44"/><rect x="564.6" y="275" width="2" height="44"/><rect x="568.3" y="275" width="2" height="44"/>
+      <rect x="572.0" y="275" width="2" height="44"/><rect x="575.7" y="275" width="2" height="44"/><rect x="579.4" y="275" width="2" height="44"/><rect x="583.1" y="275" width="2" height="44"/><rect x="586.8" y="275" width="2" height="44"/><rect x="590.5" y="275" width="2" height="44"/><rect x="594.2" y="275" width="2" height="44"/><rect x="597.9" y="275" width="2" height="44"/><rect x="601.6" y="275" width="2" height="44"/><rect x="605.3" y="275" width="2" height="44"/>
+      <rect x="609.0" y="275" width="2" height="44"/><rect x="612.7" y="275" width="2" height="44"/><rect x="616.4" y="275" width="2" height="44"/><rect x="620.1" y="275" width="2" height="44"/><rect x="623.8" y="275" width="2" height="44"/><rect x="627.5" y="275" width="2" height="44"/><rect x="631.2" y="275" width="2" height="44"/><rect x="634.9" y="275" width="2" height="44"/><rect x="638.6" y="275" width="2" height="44"/><rect x="642.3" y="275" width="2" height="44"/>
+      <rect x="646.0" y="275" width="2" height="44"/><rect x="649.7" y="275" width="2" height="44"/><rect x="653.4" y="275" width="2" height="44"/><rect x="657.1" y="275" width="2" height="44"/><rect x="660.8" y="275" width="2" height="44"/><rect x="664.5" y="275" width="2" height="44"/><rect x="668.2" y="275" width="2" height="44"/><rect x="671.9" y="275" width="2" height="44"/><rect x="675.6" y="275" width="2" height="44"/><rect x="679.3" y="275" width="2" height="44"/>
+      <rect x="683.0" y="275" width="2" height="44"/><rect x="686.7" y="275" width="2" height="44"/><rect x="690.4" y="275" width="2" height="44"/><rect x="694.1" y="275" width="2" height="44"/><rect x="697.8" y="275" width="2" height="44"/><rect x="701.5" y="275" width="2" height="44"/><rect x="705.2" y="275" width="2" height="44"/><rect x="708.9" y="275" width="2" height="44"/><rect x="712.6" y="275" width="2" height="44"/><rect x="716.3" y="275" width="2" height="44"/>
+      <rect x="720.0" y="275" width="2" height="44"/><rect x="723.7" y="275" width="2" height="44"/><rect x="727.4" y="275" width="2" height="44"/><rect x="731.1" y="275" width="2" height="44"/><rect x="734.8" y="275" width="2" height="44"/><rect x="738.5" y="275" width="2" height="44"/><rect x="742.2" y="275" width="2" height="44"/><rect x="745.9" y="275" width="2" height="44"/><rect x="749.6" y="275" width="2" height="44"/><rect x="753.3" y="275" width="2" height="44"/>
+      <rect x="757.0" y="275" width="2" height="44"/><rect x="760.7" y="275" width="2" height="44"/><rect x="764.4" y="275" width="2" height="44"/><rect x="768.1" y="275" width="2" height="44"/><rect x="771.8" y="275" width="2" height="44"/><rect x="775.5" y="275" width="2" height="44"/><rect x="779.2" y="275" width="2" height="44"/><rect x="782.9" y="275" width="2" height="44"/><rect x="786.6" y="275" width="2" height="44"/><rect x="790.3" y="275" width="2" height="44"/>
+      <rect x="794.0" y="275" width="2" height="44"/><rect x="797.7" y="275" width="2" height="44"/><rect x="801.4" y="275" width="2" height="44"/><rect x="805.1" y="275" width="2" height="44"/><rect x="808.8" y="275" width="2" height="44"/><rect x="812.5" y="275" width="2" height="44"/><rect x="816.2" y="275" width="2" height="44"/><rect x="819.9" y="275" width="2" height="44"/><rect x="823.6" y="275" width="2" height="44"/><rect x="827.3" y="275" width="2" height="44"/>
+      <rect x="831.0" y="275" width="2" height="44"/><rect x="834.7" y="275" width="2" height="44"/><rect x="838.4" y="275" width="2" height="44"/><rect x="842.1" y="275" width="2" height="44"/><rect x="845.8" y="275" width="2" height="44"/><rect x="849.5" y="275" width="2" height="44"/><rect x="853.2" y="275" width="2" height="44"/><rect x="856.9" y="275" width="2" height="44"/><rect x="860.6" y="275" width="2" height="44"/><rect x="864.3" y="275" width="2" height="44"/>
+      <rect x="868.0" y="275" width="2" height="44"/><rect x="871.7" y="275" width="2" height="44"/><rect x="875.4" y="275" width="2" height="44"/><rect x="879.1" y="275" width="2" height="44"/><rect x="882.8" y="275" width="2" height="44"/><rect x="886.5" y="275" width="2" height="44"/><rect x="890.2" y="275" width="2" height="44"/><rect x="893.9" y="275" width="2" height="44"/><rect x="897.6" y="275" width="2" height="44"/><rect x="901.3" y="275" width="2" height="44"/>
+      <rect x="905.0" y="275" width="2" height="44"/><rect x="908.7" y="275" width="2" height="44"/><rect x="912.4" y="275" width="2" height="44"/><rect x="916.1" y="275" width="2" height="44"/><rect x="919.8" y="275" width="2" height="44"/><rect x="923.5" y="275" width="2" height="44"/><rect x="927.2" y="275" width="2" height="44"/><rect x="930.9" y="275" width="2" height="44"/><rect x="934.6" y="275" width="2" height="44"/><rect x="938.3" y="275" width="2" height="44"/>
+      <rect x="942.0" y="275" width="2" height="44"/><rect x="945.7" y="275" width="2" height="44"/><rect x="949.4" y="275" width="2" height="44"/><rect x="953.1" y="275" width="2" height="44"/><rect x="956.8" y="275" width="2" height="44"/>
+    </g>
+    <!-- Sync arrow -->
+    <line x1="939" y1="157" x2="939" y2="264" stroke="#ecdfc8" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+    <polygon points="933,262 939,276 945,262" fill="#ecdfc8" opacity="0.6"/>
+    <!-- Labels -->
+    <text x="90" y="178" font-family="Cormorant Garamond,serif" font-size="15" fill="#c87840" font-style="italic">19 Jahre</text>
+    <text x="90" y="345" font-family="Cormorant Garamond,serif" font-size="15" fill="#7aaccb" font-style="italic">235 Monate</text>
+    <!-- Footer -->
+    <text x="510" y="390" text-anchor="middle" font-family="Cinzel,serif" font-size="12" fill="#ecdfc8" opacity="0.45" letter-spacing="2">METONISCHER ZYKLUS · 432 V. CHR.</text>
+  </svg>
+</div>
+
+<!-- 7: ALEXANDRIA (split) -->
+<div class="slide slide-il">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Ursprung</div>
+  <div class="il">
+    <img src="https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/alexandria_gelehrter.png" alt="Alexandrinischer Gelehrter"/>
+  </div>
+  <div class="ir">
+    <h2>Alexandria verfeinert die Mathematik</h2>
+    <div class="crule"></div>
+    <ul class="bullets">
+      <li>Gelehrte definieren den <b>Epakt</b>: das Mondalter am 1. Januar</li>
+      <li>Daraus folgt das <b>Paschalvollmonddatum</b></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 8: NIZÄA (split) -->
+<div class="slide slide-c">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Ursprung</div>
+  <div class="cl">
+    <h2>Konzil von Nizäa, 325</h2>
+    <div class="crule"></div>
+    <ul class="bullets">
+      <li>Erster Sonntag nach dem ersten Vollmond nach der <b>Frühlings-Tagundnachtgleiche</b></li>
+      <li>Alexandria erhält den Auftrag: <b>jährlich berechnen und ankündigen</b></li>
+    </ul>
+  </div>
+  <div class="cr">
+    <img src="https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/nicaea.png" alt="Konzil von Nizäa"/>
+  </div>
+</div>
+
+<!-- 9: DREI TRADITIONEN (split) -->
+<div class="slide slide-il">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Konflikt</div>
+  <div class="il">
+    <img src="https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/lunisolar_dekorativ.png" alt="Drei Traditionen"/>
+  </div>
+  <div class="ir">
+    <h2>Drei Tische, drei Traditionen</h2>
+    <div class="crule"></div>
+    <ul class="bullets">
+      <li><b>Alexandria:</b> griechische Mathematik, römischer Auftrag</li>
+      <li><b>Rom:</b> eigene Berechnungen, oft abweichend</li>
+      <li><b>Irland:</b> der alte keltische Zyklus, isoliert vom Kontinent</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 10: COLUMBAN (split) -->
+<div class="slide slide-c">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Konflikt</div>
+  <div class="cl">
+    <h2>Columban und die Päpste</h2>
+    <div class="crule"></div>
+    <ul class="bullets">
+      <li>Irischer Mönch, missioniert im Frankenreich</li>
+      <li>Schreibt <b>drei Briefe</b> an drei Päpste: nennt ihre Berechnung "blind und absurd"</li>
+    </ul>
+  </div>
+  <div class="cr">
+    <img src="https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/columbanus.png" alt="Columban"/>
+  </div>
+</div>
+
+<!-- 11: WHITBY (full bleed) -->
+<div class="slide slide-full">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Konflikt</div>
+  <div class="full-bg" style="background-image: url('https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/whitby_abbey.png'); background-position: center center;"></div>
+  <div class="full-overlay-bottom"></div>
+  <div class="full-content" style="justify-content: flex-end; max-width: 100%; padding-bottom: clamp(5rem,9vh,9rem);">
+    <h2 style="font-size: clamp(2rem,4vw,3.8rem); white-space: nowrap;">Synode von Whitby, 664</h2>
+    <div class="crule"></div>
+    <ul class="bullets" style="max-width: 60%;">
+      <li>Rom gegen Irland: wer berechnet Ostern richtig?</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 12: BEDA (split) -->
+<div class="slide slide-il">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Ergebnis</div>
+  <div class="il">
+    <img src="https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/bede.png" alt="Beda Venerabilis"/>
+  </div>
+  <div class="ir">
+    <h2>Beda Venerabilis, 725</h2>
+    <div class="crule"></div>
+    <ul class="bullets">
+      <li>Sein Werk <b>De temporum ratione</b>, 725</li>
+      <li>Kodifiziert den <b>metonischen Zyklus</b> für die gesamte westliche Kirche</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 13: KARL DER GROSSE (full bleed) -->
+<div class="slide slide-full">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Ergebnis</div>
+  <div class="full-bg" style="background-image: url('https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/karldergrosse.png'); background-position: center center;"></div>
+  <div class="full-overlay"></div>
+  <div class="full-content" style="justify-content: flex-end; max-width: 100%; padding-bottom: clamp(5rem,9vh,9rem);">
+    <h2 style="white-space: nowrap;">Karl der Gro<span style="font-family:var(--fb);font-size:1em;text-transform:none;font-weight:600;">ß</span>e</h2>
+    <div class="crule"></div>
+    <ul class="bullets">
+      <li>Griechische Mathematik verwaltet das christliche Europa</li>
+      <li>Ein Zyklus aus Athen, 432 v. Chr., bestimmt den Kalender eines Kaisers</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 15: ZWEI MÖNCHE -->
+<div class="slide slide-full">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="full-bg" style="background-image: url('https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/zwei_moenche.png'); background-size: 40%; background-repeat: no-repeat; background-position: center top;"></div>
+  <div class="full-overlay-bottom"></div>
+  <div class="full-content" style="justify-content: flex-end; max-width: 100%; padding-bottom: clamp(5rem,9vh,9rem); align-items: center; text-align: center;">
+    <h2 style="font-size: clamp(1.8rem,3.5vw,3.2rem); white-space: nowrap;">Welcher M&ouml;nch hat Recht?</h2>
+    <div class="crule" style="margin: 1rem auto 0;"></div>
+  </div>
+</div>
+
+<!-- 17: ABSCHLIESSEND -->
+<div class="slide" id="slide-abschluss" style="position:absolute;inset:0;background:#0a1220;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <!-- Metonischer Zyklus image, full opacity center, darkens toward edges -->
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+    <img src="https://raw.githubusercontent.com/smithinsights/smithinsights-site/main/gza/images/metonischer_zyklus.png" style="width:100%;height:100%;object-fit:cover;opacity:0.92;">
+    <!-- radial overlay: transparent center, dark at edges for text contrast -->
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 65% 65% at 50% 50%, transparent 30%, rgba(10,18,32,0.55) 65%, rgba(10,18,32,0.88) 100%);"></div>
+  </div>
+  <!-- "Abschließend" label above image layer -->
+  <div style="position:absolute;top:clamp(2rem,4vh,4rem);left:0;right:0;text-align:center;font-family:var(--fh);font-size:clamp(2rem,3.8vw,3.6rem);font-weight:700;color:var(--text);letter-spacing:0.04em;line-height:1.1;z-index:2;">Abschlie<span style="font-family:var(--fb);font-size:1em;text-transform:none;font-weight:600;">ß</span>end</div>
+  <!-- text at bottom corners -->
+  <div style="position:absolute;bottom:clamp(2.5rem,6vh,5rem);left:0;right:0;display:flex;justify-content:space-between;padding:0 clamp(2rem,5vw,5rem);pointer-events:none;">
+    <div style="text-align:left;max-width:36vw;">
+      <div style="font-family:var(--fh);font-size:clamp(1.1rem,1.9vw,1.7rem);font-weight:600;color:var(--a1);letter-spacing:0.06em;margin-bottom:0.35rem;">Keltische Kirche</div>
+      <div style="font-family:var(--fb);font-size:clamp(1rem,1.6vw,1.45rem);color:var(--text-sec);font-style:italic;line-height:1.35;">Kein einheitliches Datum: der Streit war der Punkt</div>
+    </div>
+    <div style="text-align:right;max-width:36vw;">
+      <div style="font-family:var(--fh);font-size:clamp(1.1rem,1.9vw,1.7rem);font-weight:600;color:var(--a2);letter-spacing:0.06em;margin-bottom:0.35rem;">R&#246;mische Kirche</div>
+      <div style="font-family:var(--fb);font-size:clamp(1rem,1.6vw,1.45rem);color:var(--text-sec);font-style:italic;line-height:1.35;">28.&nbsp;M&#228;rz 2027: weltweit einheitlich</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- LAST: BERECHNUNG DES OSTERDATUMS -->
+<div class="slide" style="display:flex;flex-direction:column;padding:var(--co) var(--pe) calc(var(--co)*1.5);gap:0;background:#0a1220;">
+  <div class="corner corner-tl"></div><div class="corner corner-tr"></div><div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  <div class="stag">Ergebnis</div>
+  <div style="flex-shrink:0;height:calc(var(--co) + var(--cs) + 1.5rem);"></div>
+
+  <!-- Title -->
+  <h2 style="font-family:var(--fh);font-size:clamp(2rem,3.8vw,3.6rem);font-weight:700;color:var(--text);letter-spacing:0.04em;line-height:1.1;text-align:center;margin:0;">Berechnung des Osterdatums</h2>
+
+  <!-- Jahr box -->
+  <div style="display:flex;align-items:center;justify-content:center;margin:0.75rem auto 0;border:1.5px solid var(--a2);padding:0.3rem 0.9rem;gap:0.4rem;">
+    <span style="font-family:var(--fh);font-size:1.1rem;letter-spacing:0.1em;color:var(--text);">Jahr</span>
+    <input id="demoYear" type="number" value="2027" min="100" max="9999"
+      style="background:transparent;border:none;color:var(--text);font-family:var(--fh);font-size:1.1rem;width:68px;text-align:center;padding:0;outline:none;-moz-appearance:textfield;">
+  </div>
+
+  <!-- 4×2 step grid -->
+  <div id="demoGrid" style="margin-top:0.75rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(120,140,160,0.18);flex-shrink:0;"></div>
+
+  <!-- Result -->
+  <div style="margin-top:0.75rem;background:rgba(42,72,42,0.7);border:1px solid rgba(100,160,80,0.35);padding:0.35rem 1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.05rem;flex-shrink:0;">
+    <div style="font-family:var(--fh);font-size:0.7rem;letter-spacing:0.2em;color:var(--text-sec);text-transform:uppercase;">Ostersonntag</div>
+    <div id="res-date" style="font-family:var(--fb);font-size:clamp(1.4rem,2.4vw,2rem);font-weight:600;color:#a0d080;letter-spacing:0.02em;">28. Mär 2027</div>
+    <div id="res-day" style="font-family:var(--fb);font-size:0.85rem;color:var(--text-sec);font-style:italic;">Sonntag</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <button onclick="go(-1)">&#8592;</button>
+  <div class="ndots" id="dots"></div>
+  <button onclick="go(1)">&#8594;</button>
+</nav>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('dots');
+  let cur = 0;
+  slides.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===0?' active':'');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dotsEl.children[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dotsEl.children[cur].classList.add('active');
+  }
+  function go(d) { goTo(cur+d); }
+  document.addEventListener('keydown', e => {
+    if(e.key==='ArrowRight'||e.key===' ') go(1);
+    if(e.key==='ArrowLeft') go(-1);
+  });
+
+  // ── Computus live demo (last slide) ──
+  (function() {
+    const MS = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+    const DD = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+    function fmt(m,d){ return d+'. '+MS[m-1]; }
+
+    function computus(Y) {
+      const GN = (Y%19)+1, a = GN-1, b = Math.floor(Y/100);
+      const solar = Math.floor(b/4)-b, lunar = Math.floor((8*b+13)/25);
+      let epact = (11*a+20+solar-lunar)%30;
+      if(epact<0) epact+=30;
+      const edge = GN>11 && epact===29;
+      let pfm = edge ? 16 : 44-epact;
+      if(pfm<21) pfm+=30;
+      const dA = pfm-31;
+      let mo, dy;
+      if(dA>0){mo=4;dy=dA;} else if(dA===0){mo=3;dy=31;} else{mo=3;dy=31+dA;}
+      const pfmDate = new Date(Y,mo-1,dy), dow = pfmDate.getDay();
+      const toSun = dow===0?7:7-dow;
+      const easter = new Date(Y,mo-1,dy+toSun);
+      return {GN,a,b,solar,lunar,epact,pfmMonth:mo,pfmDay:dy,pfmDate,toSun,easter,edge};
+    }
+
+    function renderDemo(Y) {
+      const r = computus(Y);
+      const pfmL = fmt(r.pfmMonth,r.pfmDay);
+      const pfmDow = DD[r.pfmDate.getDay()];
+      const ed = r.easter;
+      const eStr = ed.getDate()+'. '+MS[ed.getMonth()]+' '+ed.getFullYear();
+      const pfmX = (44-r.epact<21)?' + 30':'';
+
+      const steps = [
+        {n:'1', name:'Goldene Zahl',     f:`${Y} mod 19 + 1`,                             v:String(r.GN)},
+        {n:'2', name:'Basis (a)',         f:`GN − 1 = ${r.GN} − 1`,                        v:String(r.a)},
+        {n:'3', name:'Jahrhundert (b)',   f:`⌊${Y} / 100⌋`,                                v:String(r.b)},
+        {n:'4', name:'Sonnen-Korrektur',  f:`⌊${r.b}/4⌋ − ${r.b}`,                         v:String(r.solar)},
+        {n:'5', name:'Mond-Korrektur',    f:`⌊(8×${r.b}+13)/25⌋`,                          v:String(r.lunar)},
+        {n:'6', name:'Epakte',            f:`(11×${r.a}+20+${r.solar}−${r.lunar}) mod 30`,  v:String(r.epact), note:r.edge?'Sonderfall':''},
+        {n:'7', name:'Ostermond',         f:`44 − ${r.epact}${pfmX}`,                       v:pfmL},
+        {n:'8', name:'Nächster Sonntag',  f:`${pfmL} = ${pfmDow} → +${r.toSun} Tage`,      v:eStr},
+      ];
+
+      const grid = document.getElementById('demoGrid');
+      grid.innerHTML = '';
+      steps.forEach(c => {
+        const div = document.createElement('div');
+        div.style.cssText = 'background:#0d1928;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:0.18rem;';
+        div.innerHTML =
+          `<div style="display:flex;align-items:baseline;gap:0;">`+
+          `<span style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:#c87840;letter-spacing:0.08em;margin-right:0.4em;">${c.n}</span>`+
+          `<span style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--text);letter-spacing:0.06em;line-height:1.2;">${c.name}</span>`+
+          `</div>`+
+          `<span style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#98aabb;font-style:italic;line-height:1.3;">${c.f}</span>`+
+          `<span style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--text);margin-top:0.15rem;">${c.v}</span>`+
+          (c.note?`<span style="font-size:0.6rem;color:#c87840;font-style:italic;">${c.note}</span>`:'');
+        grid.appendChild(div);
+      });
+
+      document.getElementById('res-date').textContent = eStr;
+      document.getElementById('res-day').textContent  = DD[ed.getDay()];
+    }
+
+    const inp = document.getElementById('demoYear');
+    inp.addEventListener('input', () => { const Y=parseInt(inp.value); if(Y>=100&&Y<=9999) renderDemo(Y); });
+    inp.addEventListener('keydown', e => e.stopPropagation());
+    renderDemo(2027);
+  })();
+</script>
+</body>
+</html>
